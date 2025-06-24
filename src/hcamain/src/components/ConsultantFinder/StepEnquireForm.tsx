@@ -37,7 +37,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import EnquireNowBtns from '@component-library/consultant-finder/EnquireNowBtns/EnquireNowBtns';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 interface Fields {
   EnquireFormMarketingPreferencesFieldsEmailLabel: Field<string>;

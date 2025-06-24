@@ -24,7 +24,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;

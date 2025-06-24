@@ -16,7 +16,7 @@ import ProgressBar from '@component-library/consultant-finder/ProgressBar/Progre
 import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
 import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
 import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import Script from 'next/script';

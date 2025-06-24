@@ -15,7 +15,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {

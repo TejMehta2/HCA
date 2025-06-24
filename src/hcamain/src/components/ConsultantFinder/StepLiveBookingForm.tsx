@@ -23,7 +23,7 @@ import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB'
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import LiveBookingForm from '@component-library/consultant-finder/LiveBookingForm/LiveBookingForm';
 import AppointmentSummary from '@component-library/consultant-finder/AppointmentSummary/AppointmentSummary';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';

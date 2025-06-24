@@ -51,7 +51,9 @@ export const SideBySideWithWrapping: StoryObj<typeof TextLink> = {
   args: {
     children: (
       <button onClick={exampleClick}>
-        <span>Text Link Text Link Text Link Text Link Text Link Text Link</span>{' '}
+        <span>
+          Text Link Text Link Text Link Text Link Text Link Text Link
+        </span>{' '}
       </button>
     ),
   },

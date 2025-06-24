@@ -12,7 +12,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import Container from '@component-library/foundation/Containers/Container';

@@ -20,7 +20,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ConsultantCard from '@component-library/consultant-finder/ConsultantCard/ConsultantCard';
 import Pagination from '@component-library/core-components/Pagination/Pagination';
 import axios, { CancelTokenSource } from 'axios';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Filters from '@component-library/consultant-finder/FiltersCF/FiltersCF';

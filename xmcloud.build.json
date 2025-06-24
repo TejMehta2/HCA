@@ -7,8 +7,7 @@
         "enabled": true,
         "type": "sxa",
         "lintCommand": "lint",
-        "startCommand": "hcamain:start:production",
-        "buildCommand": "hcamain:build",
+        "buildCommand": "hcamain:copybuild",
         "runCommand": "hcamain:next:start"
       }
     },

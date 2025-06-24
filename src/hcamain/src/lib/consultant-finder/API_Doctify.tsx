@@ -337,19 +337,32 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
   return docitfyData;
 }
 
-export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
+export interface IDoctifyConsultantRecord {
+  slug: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  suffix: string;
+  proId: string;
+  proIdType: string;
+  isGP: boolean;
+}
+
+export async function doctifyGetAllConsultantSlugs(): Promise<
+  IDoctifyConsultantRecord[]
+> {
   const doctifyConfig = await GetDoctifyConfig();
   const baseURL =
     doctifyConfig?.aPI_DoctifySearch_BaseURL ||
     'https://api.doctify.com/api/hca/search';
   let consIdx = 0;
   let maxConsultants = 5000;
-  const pageSize = 100;
-  const stop = false;
-  let slugs: string[] = [];
+  const pageSize = 200;
+  let stop = false;
+  let recs: IDoctifyConsultantRecord[] = [];
 
   for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
-    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    const consultantProfilesURL = `${baseURL}?sortType=rating&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
     try {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
@@ -362,15 +375,50 @@ export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
         const consultantJSON = await res.json();
         maxConsultants = consultantJSON.total;
         consultantJSON.rows.forEach((entry: any) => {
-          slugs = slugs.concat(entry.slug);
+          // gmcNumber/professional id
+          let proId = entry?.registrationBodies.filter(
+            (item: any) => item.name === 'General Medical Council'
+          )[0]?.registrationNumber;
+
+          let proIdType = 'General Medical Council';
+          // https://hcauk-digital.atlassian.net/browse/HED-1551
+          // fallback if consultant is not a GMC member, but they are online consultant booking
+          if (
+            (!proId || proId.length === 0) &&
+            entry?.registrationBodies?.length > 0
+          ) {
+            // we pick off the first prof reg body as the identifier
+            proId = entry?.registrationBodies[0]?.registrationNumber;
+            proIdType = entry?.registrationBodies[0]?.name;
+          }
+
+          const topSpecialty = entry?.keywords?.filter(
+            (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+          );
+          const isGP = topSpecialty?.name === 'General Practice (GP)';
+
+          const record: IDoctifyConsultantRecord = {
+            slug: entry.slug,
+            title: entry.title,
+            firstName: entry.firstName,
+            lastName: entry.lastName,
+            suffix: entry.suffix,
+            proId: proId,
+            proIdType: proIdType,
+            isGP: isGP,
+          };
+          recs = recs.concat(record);
         });
       }
     } catch (e) {
       console.warn(
         `Could not load consultant profiles list for pre-render from ${consultantProfilesURL} failed with exception ${e}`
       );
+      recs = [];
+      stop = true;
+      break;
     }
   }
 
-  return slugs;
+  return recs;
 }

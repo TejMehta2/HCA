@@ -12,7 +12,7 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import CardComparison from '@component-library/components/CardComparison/CardComparison';
 import {
