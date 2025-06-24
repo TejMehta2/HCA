@@ -33,6 +33,8 @@ class InPageNavGlobalStore extends EventEmitter {
     }
 
     this.list.push(navItem);
+    console.log('[NavStore] Item added:', navItem);
+    console.log('[NavStore] Updated list:', this.list);
     this.emit('navigableComponentsListUpdated', this.list);
     return componentAnchorId;
   }

@@ -45,8 +45,6 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   const hasNoDatasource = !props.fields;
 
-  console.log('t datasource', props.fields?.Title);
-
   return (
     <Themes theme={'A-HCA-White'} collapse={false}>
       <JumpToLinks
