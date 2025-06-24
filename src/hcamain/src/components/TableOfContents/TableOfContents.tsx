@@ -12,6 +12,7 @@ import {
   TableOfContentsProps,
 } from './TableOfContents.types';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import router from 'next/router';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>(
@@ -20,7 +21,14 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   // Clear list when component mounts (i.e., on each page visit)
   useEffect(() => {
-    inPageNavGlobalStore.clearList();
+    const handleRouteChange = () => {
+      console.log('[ToC] Route changed. Clearing list.');
+      inPageNavGlobalStore.clearList();
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -28,6 +36,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
       updatedList: NavigableComponent[]
     ) => {
       setComponentsList([...updatedList]);
+      console.log('updatedList', updatedList);
     };
 
     inPageNavGlobalStore.on(

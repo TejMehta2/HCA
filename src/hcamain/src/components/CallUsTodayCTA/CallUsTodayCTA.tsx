@@ -81,7 +81,6 @@ export const Default = (props: DefaultProps): JSX.Element => {
 
     const availabilityString = OpeningHours(contactUnit, 'linebreaks') || [];
 
-    console.log('availabilityString', availabilityString);
     contacts.push({
       title: <JssText field={title} />,
       phone: phone?.[0],
