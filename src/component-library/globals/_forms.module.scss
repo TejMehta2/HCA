@@ -80,4 +80,10 @@ byoc-sitecore-form,
       border-radius: px-to-rem(48) !important;
     }
   }
+
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    padding-left: 0;
+  }
 }
