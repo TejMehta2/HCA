@@ -18,7 +18,19 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
       setActiveIndex(index);
       setTimeout(() => {
         const heading = document.getElementById(`accordion-heading-${index}`);
-        heading?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const stickyHeader = document.getElementById('header');
+        if (heading) {
+          let headerHeight = 0;
+          if (stickyHeader) {
+            headerHeight = stickyHeader.offsetHeight;
+          }
+          const headingTop =
+            heading.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: headingTop - headerHeight - 10, // 10px optional spacing
+            behavior: 'smooth',
+          });
+        }
       }, 100);
     } else {
       setActiveIndex(null);
