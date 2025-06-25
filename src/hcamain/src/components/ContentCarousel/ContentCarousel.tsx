@@ -11,7 +11,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 
 interface CardFields {
   fields?: {

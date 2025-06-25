@@ -13,7 +13,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Text from '@component-library/foundation/Text/Text';
 import Container from '@component-library/foundation/Containers/Container';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 
 interface AuthorFields {
   fields?: {

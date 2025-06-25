@@ -41,7 +41,9 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
               name={name}
               value={value}
               disabled={disabled}
-              ref={(el) => el && (el.indeterminate = indeterminate)}
+              ref={(el) => {
+                el && (el.indeterminate = indeterminate);
+              }}
               defaultChecked={defaultChecked}
               onChange={onChange}
               checked={checked}

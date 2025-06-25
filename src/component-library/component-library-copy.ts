@@ -10,17 +10,21 @@ fs.mkdirSync(destinationDirectory, { recursive: true });
 
 const performCopy = () => {
   const foldersToCopy = [
-    'components',
-    'core-components',
-    'yext',
-    'site-components',
+    'assets',
     'careers',
+    'components',
+    'context',
+    'consultant-finder',
+    'core-components',
     'foundation',
     'globals',
-    'assets',
     'hooks',
+    'site-components',
+    'the-birth-company',
+    'types',
     'utilities',
     'utility-functions',
+    'yext',
   ];
 
   try {
@@ -47,20 +51,4 @@ const performCopy = () => {
     console.error(err);
   }
 };
-
-if (process.argv.includes('--watch')) {
-  let isWatching = false;
-  fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
-    if (isWatching) return;
-    isWatching = true;
-    if (eventType === 'change') {
-      console.log(`Change detected in ${fileName}`);
-      performCopy();
-    }
-    setTimeout(() => {
-      isWatching = false;
-    }, 500);
-  });
-} else {
-  performCopy();
-}
+performCopy();

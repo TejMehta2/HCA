@@ -9,7 +9,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';

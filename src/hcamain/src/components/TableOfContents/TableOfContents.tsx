@@ -11,25 +11,41 @@ import {
   NavigableComponent,
   TableOfContentsProps,
 } from './TableOfContents.types';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import router from 'next/router';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>(
     inPageNavGlobalStore.getList()
   );
 
+  // Clear list when component mounts (i.e., on each page visit)
+  useEffect(() => {
+    const handleRouteChange = () => {
+      // console.log('[ToC] Route changed. Clearing list.');
+      inPageNavGlobalStore.clearList();
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, []);
+
   useEffect(() => {
     const handleNavigableComponentsListUpdated = (
       updatedList: NavigableComponent[]
     ) => {
+      // console.log('[ToC] Received updated list', updatedList);
       setComponentsList([...updatedList]);
     };
-
+    // Sync immediately on mount
+    const currentList = inPageNavGlobalStore.getList();
+    // console.log('[ToC] Initial list on mount', currentList);
+    setComponentsList([...currentList]);
     inPageNavGlobalStore.on(
       'navigableComponentsListUpdated',
       handleNavigableComponentsListUpdated
     );
-
     return () => {
       inPageNavGlobalStore.off(
         'navigableComponentsListUpdated',
@@ -39,8 +55,6 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   }, []);
 
   const hasNoDatasource = !props.fields;
-
-  console.log('t datasource', props.fields?.Title);
 
   return (
     <Themes theme={'A-HCA-White'} collapse={false}>

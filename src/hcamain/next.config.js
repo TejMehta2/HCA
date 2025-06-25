@@ -17,8 +17,8 @@ const cspHeader = `
 
 const securityHeaders = [
   {
-   key: cspHeaderKey,
-   value: cspHeaderSingleLineValue              
+    key: cspHeaderKey,
+    value: cspHeaderSingleLineValue              
   },
   {
     key: 'X-Frame-Options',

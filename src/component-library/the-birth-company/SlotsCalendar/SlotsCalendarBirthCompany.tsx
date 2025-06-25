@@ -12,7 +12,7 @@ import {
   formatDateLong,
   formatDateDDMMM,
 } from '../../utility-functions/index';
-import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
+import { TheBirthCompanyContext } from '../../context/theBirthCompanyContext';
 import LoaderCF from '../../consultant-finder/LoaderCF/LoaderCF';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';

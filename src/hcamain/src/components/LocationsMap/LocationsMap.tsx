@@ -15,7 +15,7 @@ import CardLocation from '@component-library/components/CardLocation/CardLocatio
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicOurLocations = dynamic(

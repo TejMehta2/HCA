@@ -98,7 +98,7 @@
       // We couldn't otherwise scale the line both relative to this child element's dynamic height, and the parent's height without JavaScript
       content: '';
       position: absolute;
-      background-color: var(--background);
+      background-color: transparent;
       left: calc(var(--label-size) / 2 - px-to-rem(1));
       top: calc(3 * var(--label-size));
       height: calc(100% - 3 * var(--label-size));
