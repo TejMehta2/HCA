@@ -34,6 +34,10 @@ byoc-sitecore-form,
     }
   }
 
+  p {
+    margin-top: $spacing-5 !important;
+  }
+
   .main-form-wrapper {
     width: 100%;
 
@@ -78,6 +82,17 @@ byoc-sitecore-form,
   .global-input-wrapper {
     input {
       border-radius: px-to-rem(48) !important;
+    }
+  }
+
+  ul:not(.tick):not(.tick-2-cols) {
+    margin-top: $spacing-4;
+    list-style: disc;
+    list-style-position: outside;
+    padding-left: px-to-rem(24);
+
+    li {
+      margin-bottom: px-to-rem(12);
     }
   }
 }
