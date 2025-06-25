@@ -88,7 +88,11 @@ byoc-sitecore-form,
   ul {
     margin-top: $spacing-4;
     list-style: disc;
-    list-style-position: inside;
+    list-style-position: outside;
     padding-left: 0;
+
+    li {
+      margin-bottom: px-to-rem(12);
+    }
   }
 }
