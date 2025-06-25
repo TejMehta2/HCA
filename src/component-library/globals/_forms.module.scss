@@ -85,7 +85,7 @@ byoc-sitecore-form,
     }
   }
 
-  ul {
+  ul:not(.tick):not(.tick-2-cols) {
     margin-top: $spacing-4;
     list-style: disc;
     list-style-position: outside;
