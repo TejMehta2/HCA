@@ -6,7 +6,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import styles from './ProgressBar.module.scss';
 import TextLink from '../../core-components/TextLink/TextLink';
-import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const ProgressBar = (props: ProgressBarProps): JSX.Element => {
   const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);

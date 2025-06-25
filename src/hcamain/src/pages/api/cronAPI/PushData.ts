@@ -230,9 +230,8 @@ export default async function PushData(
       {
         log: (msg: string) => {
           writer.ready
-            .then(
-              () =>
-                writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
+            .then(() =>
+              writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
             )
             .catch((err) => {
               gStreamClosed = true;

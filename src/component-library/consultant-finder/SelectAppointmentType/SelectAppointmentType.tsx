@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SelectAppointmentTypeProps } from './SelectAppointmentType.types';
 import styles from './SelectAppointmentType.module.scss';
 import AppointmentTypeCard from '../AppointmentTypeCard/AppointmentTypeCard';
-import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SelectAppointmentType = (
   props: SelectAppointmentTypeProps

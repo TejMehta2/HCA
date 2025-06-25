@@ -9,6 +9,25 @@ import {
 import { revalidate } from './revalidateNow';
 import { BASE_URL } from 'lib/constants';
 
+export interface IConsultantRecord {
+  slug: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  suffix: string;
+  proId: string;
+  proIdType: string;
+  mnemonicMT: string;
+  refreshDate: Date;
+  live: boolean;
+  liveStatus: string;
+  liveOnProd: boolean;
+  liveOnUAT: boolean;
+  noReview: boolean;
+  isGP: boolean;
+  doctifyPhone: boolean;
+}
+
 /******All consultants********/
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   if (revalidate.noCache()) {
@@ -119,7 +138,8 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
       }
     }
   } else {
-    slugs = await doctifyGetAllConsultantSlugs();
+    const recs = await doctifyGetAllConsultantSlugs();
+    slugs = recs?.map(({ slug }) => slug);
   }
 
   return slugs;
