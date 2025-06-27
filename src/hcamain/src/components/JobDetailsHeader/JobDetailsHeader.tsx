@@ -59,21 +59,21 @@ const JobDetailsNotFoundHeaderDefaultComponent = (): JSX.Element => {
 };
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
-  console.log("starting");
+  console.log('starting');
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
-  console.log("data: ", data);
+  console.log('data: ', data);
 
   if (!props?.fields?.data?.item || !data) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
-  console.log("data not empty: ");
+  console.log('data not empty: ');
 
   if (!data.name) {
     return <JobDetailsNotFoundHeaderDefaultComponent />;
   }
 
-  console.log("data.name not empty: ");
+  console.log('data.name not empty: ');
 
   const matchedSetting =
     props.fields?.data?.item?.headerImageMapping?.targetItems?.find(
