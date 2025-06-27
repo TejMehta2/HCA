@@ -62,13 +62,18 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  if (context.params) {
-    context.params.requestPath = context.params.path;
-    context.params.path = [`Careers/Vacancy/,-w-,`];
+  try {
+    if (context.params) {
+      context.params.requestPath = context.params.path;
+      context.params.path = [`Careers/Vacancy/,-w-,`];
+    }
+    const props = await sitecorePagePropsFactory.create(context);
+    console.log('sitecorePagePropsFactory.create returned:', props);
+    return { props };
+  } catch (e) {   
+    console.error('Fatal SSR error:', e);
+    return { props: { error: e?.toString?.() ?? 'Unknown SSR error' } };
   }
-
-  const props = await sitecorePagePropsFactory.create(context);
-  return { props };
 }
 
 export default SitecorePage;
