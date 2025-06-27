@@ -70,7 +70,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const props = await sitecorePagePropsFactory.create(context);
     console.log('sitecorePagePropsFactory.create returned:', props);
     return { props };
-  } catch (e) {   
+  } catch (e) {
     console.error('Fatal SSR error:', e);
     return { props: { error: e?.toString?.() ?? 'Unknown SSR error' } };
   }
