@@ -172,6 +172,6 @@ export const getServerSideProps: GetStaticComponentProps = async (
     return await data.response;
   } catch (error) {
     //console.error('JobDetailsHeader fetch error:', error);
-    return {};
+    //return {};
   }
 };
