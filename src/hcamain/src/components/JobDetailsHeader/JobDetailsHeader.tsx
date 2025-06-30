@@ -49,7 +49,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   }
 
   if (!data.name) {
-    return <></> ;
+    return <></>;
   }
 
   const matchedSetting =
