@@ -72,7 +72,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props };
   } catch (e) {
     console.error('Fatal SSR error:', e);
-    return { props: { error: e?.toString?.() ?? 'Unknown SSR error' } };
+    return {
+      notFound: true,
+    };
   }
 }
 
