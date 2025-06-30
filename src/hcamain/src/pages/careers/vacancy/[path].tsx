@@ -11,6 +11,7 @@ import {
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
@@ -68,7 +69,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       context.params.path = [`Careers/Vacancy/,-w-,`];
     }
     const props = await sitecorePagePropsFactory.create(context);
-    console.log('sitecorePagePropsFactory.create returned:', props);
+    debug.common('sitecorePagePropsFactory.create returned:', props);
     return { props };
   } catch (e) {
     console.error('Fatal SSR error:', e);
