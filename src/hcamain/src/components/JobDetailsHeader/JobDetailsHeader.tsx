@@ -42,10 +42,14 @@ const JobDetailsHeaderDefaultComponent = (
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
-  debug.common.log('data: ', data);
+  debug.common('data: ', data);
 
   if (!props?.fields?.data?.item || !data) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
+  }
+
+  if (!data.name) {
+    return <></> ;
   }
 
   const matchedSetting =
@@ -145,6 +149,6 @@ export const getServerSideProps: GetStaticComponentProps = async (
     return await data.response;
   } catch (error) {
     console.error('JobDetailsHeader fetch error:', error);
-    return {};
+    return { error: error?.toString?.() ?? 'Unknown error' };
   }
 };
