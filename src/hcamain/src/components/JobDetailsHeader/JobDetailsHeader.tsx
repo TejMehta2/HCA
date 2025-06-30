@@ -40,7 +40,7 @@ const JobDetailsHeaderDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: JobDetailsHeaderProps): JSX.Element => {  
+export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
   debug.common.log('data: ', data);
 
