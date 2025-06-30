@@ -26,7 +26,7 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !layoutData.sitecore.route) {
+  if (notFound || !layoutData?.sitecore?.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
     return <NotFound />;
   }
