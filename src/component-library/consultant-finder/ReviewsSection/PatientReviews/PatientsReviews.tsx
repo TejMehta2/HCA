@@ -17,6 +17,26 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [offset, setOffset] = useState(0);
   const [selectValue, setSelectValue] = useState<string>('desc');
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [consulantName, setConsulantName] = useState('');
+  const [profileImage, setProfileImage] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.doctify.com/api/hca/specialists/${props.slug}`)
+      .then((resp) => {
+        setIsLoadingProfile(false);
+        // console.log(resp?.data);
+        setConsulantName(
+          `${resp?.data?.title} ${resp?.data?.firstName} ${resp?.data?.lastName}`
+        );
+        setProfileImage(resp?.data?.images?.logo || null);
+      })
+      .catch((error) => {
+        setIsLoadingProfile(false);
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     //console.log('patient reviews', props);
@@ -33,7 +53,6 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
       .then((resp) => {
         // console.log(resp);
         setIsLoading(false);
-        //console.log('reviews', resp.data);
         setReviews((reviews: any) => [...reviews, ...resp.data.rows]);
         setTotal(resp.data.total);
       })
@@ -148,6 +167,38 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                       )}
                     </div>
                   </div>
+                  {
+                    review.comment && review.comment.text && review.comment.createdAt &&
+                    <div className={styles.reply}>
+                      <div className={styles['reply-header']}>
+                        {profileImage && (
+                          <div className={styles.image}>
+                            <img src={profileImage} alt="profile image" width="60" height="60" />
+                          </div>
+                        )
+                        }
+                        <div>
+                          {
+                            !isLoadingProfile &&
+                            <Text tag="p" variation="body-medium-medium">
+                              {consulantName}:
+                            </Text>
+                          }
+                          <div>
+                            <Text tag="p" variation="body-medium">
+                              {review?.comment?.text}
+                            </Text>
+                          </div>
+                          <div>
+                            <Text tag="p" variation="body-small">
+                              {formatDate(review?.comment?.createdAt)}
+                            </Text>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  }
                 </div>
               ))}
             {!isLoading && reviews.length < total && (
