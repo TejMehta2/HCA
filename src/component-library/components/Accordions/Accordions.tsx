@@ -16,6 +16,22 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
   const onShow = (index: number) => {
     if (activeIndex !== index) {
       setActiveIndex(index);
+      setTimeout(() => {
+        const heading = document.getElementById(`accordion-heading-${index}`);
+        const stickyHeader = document.getElementById('header');
+        if (heading) {
+          let headerHeight = 0;
+          if (stickyHeader) {
+            headerHeight = stickyHeader.offsetHeight;
+          }
+          const headingTop =
+            heading.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: headingTop - headerHeight - 10, // 10px optional spacing
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
     } else {
       setActiveIndex(null);
     }
@@ -36,6 +52,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
           openIcon={openIcon}
           closeIcon={closeIcon}
           contentVariation={contentVariation}
+          id={`accordion-heading-${index}`}
         >
           {children}
         </Accordion>

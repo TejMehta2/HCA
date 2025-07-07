@@ -11,6 +11,7 @@ import {
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
@@ -26,7 +27,7 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !layoutData.sitecore.route) {
+  if (notFound || !layoutData?.sitecore?.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
     return <NotFound />;
   }
@@ -62,13 +63,20 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  if (context.params) {
-    context.params.requestPath = context.params.path;
-    context.params.path = [`Careers/Vacancy/,-w-,`];
+  try {
+    if (context.params) {
+      context.params.requestPath = context.params.path;
+      context.params.path = [`Careers/Vacancy/,-w-,`];
+    }
+    const props = await sitecorePagePropsFactory.create(context);
+    debug.common('sitecorePagePropsFactory.create returned:', props);
+    return { props };
+  } catch (e) {
+    console.error('Fatal SSR error:', e);
+    return {
+      notFound: true,
+    };
   }
-
-  const props = await sitecorePagePropsFactory.create(context);
-  return { props };
 }
 
 export default SitecorePage;
