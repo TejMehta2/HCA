@@ -3,7 +3,7 @@ import {
   useSitecoreContext,
   GetStaticComponentProps,
   useComponentProps,
-  RichText,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -20,7 +20,6 @@ import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
-import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -41,32 +40,16 @@ const JobDetailsHeaderDefaultComponent = (
   return <></>;
 };
 
-const JobDetailsNotFoundHeaderDefaultComponent = (): JSX.Element => {
-  return (
-    <>
-      <Head>
-        <title>Vacancy not found</title>
-      </Head>
-      <TextBlock
-        text={
-          <RichText>
-            <Text tag="p">Vacancy not found</Text>
-          </RichText>
-        }
-      />
-    </>
-  );
-};
-
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
+  debug.common('data: ', data);
 
   if (!props?.fields?.data?.item || !data) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
   if (!data.name) {
-    return <JobDetailsNotFoundHeaderDefaultComponent />;
+    return <></>;
   }
 
   const matchedSetting =
@@ -166,6 +149,6 @@ export const getServerSideProps: GetStaticComponentProps = async (
     return await data.response;
   } catch (error) {
     console.error('JobDetailsHeader fetch error:', error);
-    return {};
+    return { error: error?.toString?.() ?? 'Unknown error' };
   }
 };

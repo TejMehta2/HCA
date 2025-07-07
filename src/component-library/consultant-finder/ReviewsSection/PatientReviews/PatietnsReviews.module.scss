@@ -68,4 +68,63 @@
       margin-left: $spacing-1;
     }
   }
+
+  .reply-header {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+
+    @include media(screen-l) {
+      align-items: center;
+    }
+  }
+
+  .image {
+    height: px-to-rem(60);
+    width: px-to-rem(60);
+    min-width: px-to-rem(60);
+    max-width: px-to-rem(60);
+    max-height: px-to-rem(60);
+    margin-right: $spacing-2;
+
+    @include media(screen-l) {
+      margin-right: $spacing-2;
+      // height: px-to-rem(170);
+      // width: px-to-rem(170);
+      // max-width: px-to-rem(170);
+      // max-height: px-to-rem(170);
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .reply {
+    margin-top: $spacing-6;
+    margin-left: 0;
+    background-color: $teal-5;
+    padding: $spacing-4;
+    border-radius: $radius-small;
+    position: relative;
+
+    @include media(screen-m) {
+      margin-left: $spacing-4;
+    }
+  }
+
+  .reply::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: $spacing-4;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $teal-5;
+    transform: translateY(-100%);
+  }
 }
