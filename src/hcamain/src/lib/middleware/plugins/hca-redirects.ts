@@ -57,22 +57,12 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
       const cacheKey = pathname.toLowerCase() + search;
       const now = Date.now();
 
-      // Dump cache contents for debugging
-      const cacheDump = Array.from(redirectCache.entries())
-        .map(
-          ([key, { redirectUrl, statusCode, timestamp }]) =>
-            `${key}=>${redirectUrl ?? 'null'}[${statusCode ?? ''}]@${new Date(timestamp).toISOString()}`
-        )
-        .join(' | ');
-      debug.redirects(`HCA Redirects: Cache dump: ${cacheDump}`);
-
       debug.redirects(
         `HCA Redirects: Checking for redirect - url=${url}, pathname=${pathname}, search=${search}`
       );
 
       // Check in-memory cache first
       const cached = redirectCache.get(cacheKey);
-      debug.redirects(`HCA Redirects: cached=${cached}`);
 
       if (cached && now - cached.timestamp < CACHE_TTL) {
         debug.redirects(`HCA Redirects: Cache hit for ${cacheKey}`);
@@ -87,12 +77,12 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
       }
 
       // Construct Integration Layer API URL
+      //`https://www.hcahealthcareqa.co.uk/api/api-layer/redirects/find?source=${pathname.toLowerCase()}`
       const proxyPath = process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH;
       const apiUrl = new URL(
-        `https://www.hcahealthcareqa.co.uk/api/api-layer/redirects/find?source=${pathname.toLowerCase()}`
+        `${req.nextUrl.origin}${proxyPath}/redirects/find?source=${pathname.toLowerCase()}`
       );
 
-      //`${req.nextUrl.origin}${proxyPath}/redirects/find?source=${pathname.toLowerCase()}`
       debug.redirects(
         `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
       );
@@ -135,14 +125,7 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
               statusCode,
               timestamp: now,
             });
-            // Dump cache contents for debugging
-            const cacheDump1 = Array.from(redirectCache.entries())
-              .map(
-                ([key, { redirectUrl, statusCode, timestamp }]) =>
-                  `${key}=>${redirectUrl ?? 'null'}[${statusCode ?? ''}]@${new Date(timestamp).toISOString()}`
-              )
-              .join(' | ');
-            debug.redirects(`HCA Redirects: Updated cache: ${cacheDump1}`);
+
             return NextResponse.redirect(redirectUrl, statusCode);
           }
         }
@@ -160,6 +143,3 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
 }
 
 export const hcaRedirectsPlugin = new HcaRedirectsPlugin();
-
-// Exporting cache so it can be inspected via an API endpoint
-export { redirectCache };
