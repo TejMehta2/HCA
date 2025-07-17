@@ -130,9 +130,6 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
           }
         }
       }
-
-      // Cache "no redirect" result
-      redirectCache.set(cacheKey, { redirectUrl: null, timestamp: now });
     } catch (error) {
       debug.redirects('HCA Redirects: Middleware error', error);
     }
