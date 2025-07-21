@@ -1,4 +1,10 @@
-import { ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  ImageField,
+  LayoutServiceContextData,
+  LayoutServiceData,
+  RouteData,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import { SitecorePageProps } from 'lib/page-props';
 import Params from 'src/types/params';
 
 export interface Fields {
@@ -29,7 +35,7 @@ export type JobDetailsHeaderProps = {
   };
 };
 
-export interface JobsResponse {
+export interface VacancyResponse {
   employmentType: string;
   jobAreas: string[];
   jobFamilyGroup: string;
@@ -49,4 +55,20 @@ export interface JobsResponse {
   uid: number;
   landingPageUrl: string;
   applicationUrl: string;
+}
+
+export type VacancyRoute = RouteData & {
+  vacancy?: VacancyResponse;
+};
+
+export interface SitecoreVacancyPageProps extends SitecorePageProps {
+  layoutData: LayoutServiceData & {
+    sitecore: LayoutServiceContextData & {
+      route:
+        | RouteData
+        | (null & {
+            vacancy: VacancyResponse;
+          });
+    };
+  };
 }
