@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import { AccordionsProps } from './Accordions.types';
 import styles from './Accordions.module.scss';
 import Accordion from '../../components/Accordion/Accordion';
@@ -12,12 +12,12 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
   } = props;
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
+  const accordionContentId = useId();
   const onShow = (index: number) => {
     if (activeIndex !== index) {
       setActiveIndex(index);
       setTimeout(() => {
-        const heading = document.getElementById(`accordion-heading-${index}`);
+        const heading = document.getElementById(`accordion-heading-${index}-${accordionContentId}`);
         const stickyHeader = document.getElementById('header');
         if (heading) {
           let headerHeight = 0;
@@ -48,11 +48,13 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
           key={index}
           title={title}
           isActive={activeIndex === index}
-          onShow={() => onShow(index)}
+          onShow={() => {
+            onShow(index)
+          }}
           openIcon={openIcon}
           closeIcon={closeIcon}
           contentVariation={contentVariation}
-          id={`accordion-heading-${index}`}
+          id={`accordion-heading-${index}-${accordionContentId}`}
         >
           {children}
         </Accordion>
