@@ -1,22 +1,12 @@
 import React from 'react';
-import {
-  useSitecoreContext,
-  GetStaticComponentProps,
-  useComponentProps,
-  debug,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import Themes from '@component-library/foundation/Themes/Themes';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
-import { JobDetailsHeaderProps, JobsResponse } from './JobDetailsHeader.types';
-import { GetServerSidePropsContext } from 'next';
+import { JobDetailsHeaderProps, VacancyRoute } from './JobDetailsHeader.types';
 import Text from '@component-library/foundation/Text/Text';
-import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Head from 'next/head';
-import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
@@ -41,14 +31,19 @@ const JobDetailsHeaderDefaultComponent = (
 };
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
-  const data = useComponentProps<JobsResponse>(props.rendering?.uid);
-  debug.common('data: ', data);
+  const { sitecoreContext } = useSitecoreContext();
+  const vacancydata = sitecoreContext.route as VacancyRoute | undefined;
+  const data = vacancydata?.vacancy;
 
-  if (!props?.fields?.data?.item || !data) {
+  if (!props?.fields?.data?.item) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
-  if (!data.name) {
+  if (sitecoreContext?.pageEditing) {
+    return <div>Vacancy details header</div>;
+  }
+
+  if (!data?.name) {
     return <></>;
   }
 
@@ -116,39 +111,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           )
         }
       />
-      <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
-        <div className="vacancy-rte">
-          <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>
-        </div>
-        <Container marginTop="spacing-6" marginBottom="spacing-6">
-          <Button variation={'full-dark'} size="large">
-            <a href={data.applicationUrl}>
-              <span>
-                Apply <strong>now</strong>
-              </span>
-              <Icons iconName={'iconArrowRight'} />
-            </a>
-          </Button>
-        </Container>
-      </BlogContent>
     </Themes>
   );
-};
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getServerSideProps: GetStaticComponentProps = async (
-  _,
-  __,
-  context: GetServerSidePropsContext
-) => {
-  try {
-    const response = await fetch(
-      `${process.env.INTEGRATION_LAYER_URL}/careers/job/${context.query.path}`
-    );
-    const data = await response.json();
-    return await data.response;
-  } catch (error) {
-    console.error('JobDetailsHeader fetch error:', error);
-    return { error: error?.toString?.() ?? 'Unknown error' };
-  }
 };
