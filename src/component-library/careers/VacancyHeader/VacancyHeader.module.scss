@@ -7,6 +7,7 @@
   position: relative;
   min-height: calc(100svh - px-to-rem(70 + 40 + 72));
   display: flex;
+  margin-bottom: $spacing-4;
 }
 
 .image {
@@ -47,10 +48,11 @@
   gap: $spacing-4 $spacing-5;
   flex-wrap: wrap;
 
-  > * {
+  >* {
     display: flex;
     gap: px-to-rem(8);
   }
+
   @include media(screen-l) {
     gap: $spacing-5;
   }
