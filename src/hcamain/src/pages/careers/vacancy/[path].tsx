@@ -84,6 +84,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       `${process.env.INTEGRATION_LAYER_URL}/careers/job/${context.query.path}`
     );
 
+    if (response.status === 404) {
+      return { notFound: true };
+    }
+
     const data = await response.json();
     const vacancy = data.response;
     return {
