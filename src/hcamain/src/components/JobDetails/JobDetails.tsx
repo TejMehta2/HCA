@@ -9,6 +9,7 @@ import {
   JobDetailsHeaderProps,
   VacancyRoute,
 } from 'components/JobDetailsHeader/JobDetailsHeader.types';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -23,8 +24,13 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     return <></>;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   return (
-    <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+    <BlogContent
+      theme={props.params?.Theme || 'A-HCA-White'}
+      id={componentAnchorId}
+    >
       <div className="vacancy-rte">
         <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>
       </div>
