@@ -84,20 +84,17 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
             //     }}
             //   />
             // ),
-            image: cards?.fields?.Image?.value?.src
-              ? (
-                <NextJssImage
-                  field={cards?.fields?.Image}
-                  editable={false}
-                  next={{
-                    width: 500,
-                    height: 400,
-                    sizes: '(max-width: 768px) 100vw, 30vw',
-                  }}
-                />
-              )
-              : null,
-
+            image: cards?.fields?.Image?.value?.src ? (
+              <NextJssImage
+                field={cards?.fields?.Image}
+                editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
+              />
+            ) : null,
           })) || []
         }
       />
