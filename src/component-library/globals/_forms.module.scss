@@ -10,12 +10,10 @@ byoc-sitecore-form,
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
 
-    &:not(
-        .submit-button,
-        .submit-button > *,
-        .global-input-error-message,
-        .iti__arrow
-      ) {
+    &:not(.submit-button,
+      .submit-button > *,
+      .global-input-error-message,
+      .iti__arrow) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
@@ -32,10 +30,6 @@ byoc-sitecore-form,
     .form-field-label {
       font-weight: $base-font-weight !important;
     }
-  }
-
-  p {
-    margin-top: $spacing-5 !important;
   }
 
   .main-form-wrapper {
@@ -55,7 +49,7 @@ byoc-sitecore-form,
   }
 
   // override for character limit shown on short fields
-  input + .limit-counter {
+  input+.limit-counter {
     display: none;
   }
 
