@@ -89,4 +89,10 @@ byoc-sitecore-form,
       margin-bottom: px-to-rem(12);
     }
   }
+
+  // Add margin-bottom for .tick and .tick-col-2 items
+  ul.tick li,
+  ul.tick-col-2 li {
+    margin-bottom: $spacing-4;
+  }
 }
