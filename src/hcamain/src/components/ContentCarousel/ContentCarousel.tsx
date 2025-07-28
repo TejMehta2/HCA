@@ -73,17 +73,31 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
                 </RichText>
               </Text>
             ),
-            image: (
-              <NextJssImage
-                field={cards?.fields?.Image}
-                editable={false}
-                next={{
-                  width: 500,
-                  height: 400,
-                  sizes: '(max-width: 768px) 100vw, 30vw',
-                }}
-              />
-            ),
+            // image: (
+            //   <NextJssImage
+            //     field={cards?.fields?.Image}
+            //     editable={false}
+            //     next={{
+            //       width: 500,
+            //       height: 400,
+            //       sizes: '(max-width: 768px) 100vw, 30vw',
+            //     }}
+            //   />
+            // ),
+            image: cards?.fields?.Image?.value?.src
+              ? (
+                <NextJssImage
+                  field={cards?.fields?.Image}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
+              )
+              : null,
+
           })) || []
         }
       />
