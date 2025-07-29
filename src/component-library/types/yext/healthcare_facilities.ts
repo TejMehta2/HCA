@@ -1,3 +1,5 @@
+import { BaseYextEntity } from "./baseYextEntity";
+
 export interface Interval {
   start: unknown;
   end: unknown;
@@ -505,7 +507,7 @@ export interface ComplexVideo {
   description?: string;
 }
 
-export default interface HealthcareFacility {
+export default interface HealthcareFacility extends BaseYextEntity {
   accessHours?: Hours;
   appleActionLinks?: AppleActionLinks[];
   appleBusinessConnectLinkedAccount?: unknown;
@@ -559,7 +561,6 @@ export default interface HealthcareFacility {
   distance?: string;
   hours?: Hours;
   logo?: ComplexImage;
-  name: string;
   categories?: unknown;
   cityCoordinate?: Coordinate;
   closed?: boolean;
@@ -675,7 +676,6 @@ export default interface HealthcareFacility {
   services?: string[];
   shortName35?: string;
   shortName64?: string;
-  id: string;
   timezone?: unknown;
   tollFreePhone?: unknown;
   ttyPhone?: unknown;
