@@ -73,7 +73,7 @@ const YextResultCardArticlesAdaptor = (
         </Text>
       }
       copy={
-        c_body ? (
+        resultDescription ? (
           <Text tag="div" variation={'body-large'}>
             <span dangerouslySetInnerHTML={{ __html: resultDescription }} />
           </Text>
