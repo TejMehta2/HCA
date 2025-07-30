@@ -27,6 +27,9 @@
 
 %tick-list {
   list-style: none;
+  display: grid;
+  gap: px-to-rem(12) px-to-rem(24);
+  align-items: flex-start;
   padding-left: 0;
   margin: $spacing-4 0 0;
 
