@@ -12,7 +12,6 @@ const YextResultCardDepartmentsAdaptor = (
   const { name, rawData } = result;
 
   const {
-    c_body,
     c_uRL,
     c_answersPrimaryCallToAction,
     c_abstractText,

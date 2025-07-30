@@ -25,7 +25,6 @@ const YextResultCardArticlesAdaptor = (
   const {
     // c_activeInSearch,
     c_answersPrimaryCallToAction,
-    c_body,
     c_nameRichText,
     c_primaryImage,
     c_servicesImage,

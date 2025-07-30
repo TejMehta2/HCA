@@ -14,7 +14,6 @@ const YextResultCardTestsAndTreatments = (
 
   const {
     c_answersPrimaryCallToAction,
-    c_body,
     c_nameRichText,
     c_primaryImage,
     c_servicesImage,
