@@ -1,3 +1,5 @@
+import { BaseYextEntity } from './baseYextEntity';
+
 export enum LinkType {
   OTHER = 'Other',
   URL = 'URL',
@@ -54,26 +56,24 @@ export interface Image {
   alternateText?: string;
 }
 
-export interface Ce_patientStory {
+export interface Ce_patientStory extends BaseYextEntity {
   landingPageUrl?: string;
-  c_uRL?: string;
   description?: string;
-  name: string;
   c_activeInSearch?: boolean;
   c_answersPrimaryCallToAction?: C_answersPrimaryCallToAction;
   c_answersSecondaryCallToAction?: C_answersSecondaryCallToAction;
   c_articleCategory?: C_articleCategory;
   c_articleCTAButton?: C_articleCTAButton;
-  c_body?: string;
-  c_fullBodyText?: string;
   c_linkedLocationPageArticlesSection?: EntityReference[];
   c_micrositeBrand?: C_micrositeBrand[];
   c_nameRichText?: string;
   c_primaryImage?: Image;
+  c_pageImage?: string;
+  c_abstractImage?: string;
+  c_servicesImage?: Image;
   c_subtitle?: string;
   c_contentGenTest?: string;
   keywords?: string[];
-  id: string;
 }
 
 export interface Ce_youtubeVideo {
@@ -95,23 +95,22 @@ export interface Ce_youtubeVideo {
   id: string;
 }
 
-export interface Ce_blogPost {
+export interface Ce_blogPost extends BaseYextEntity {
   landingPageUrl?: string;
   description?: string;
-  name: string;
+
   c_activeInSearch?: boolean;
   c_answersPrimaryCallToAction?: C_answersPrimaryCallToAction;
   c_answersSecondaryCallToAction?: C_answersSecondaryCallToAction;
   c_articleCategory?: C_articleCategory;
   c_articleCTAButton?: C_articleCTAButton;
-  c_body?: string;
-  c_fullBodyText?: string;
   c_linkedLocationPageArticlesSection?: EntityReference[];
   c_nameRichText?: string;
   c_primaryImage?: Image;
+  c_pageImage?: Image;
+  c_abstractImage?: Image;
+  c_servicesImage?: Image;
   c_subtitle?: string;
   c_contentGenTest?: string;
   keywords?: string[];
-  id: string;
-  c_uRL: string;
 }
