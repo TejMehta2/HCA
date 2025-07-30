@@ -12,7 +12,6 @@ const YextResultCardDepartmentsAdaptor = (
   const { name, rawData } = result;
 
   const {
-    c_body,
     c_uRL,
     c_answersPrimaryCallToAction,
     c_abstractText,
@@ -36,7 +35,7 @@ const YextResultCardDepartmentsAdaptor = (
         </Text>
       }
       copy={
-        c_body ? (
+        resultDescription ? (
           <Text tag="div" variation={'body-large'}>
             <span dangerouslySetInnerHTML={{ __html: resultDescription }} />
           </Text>

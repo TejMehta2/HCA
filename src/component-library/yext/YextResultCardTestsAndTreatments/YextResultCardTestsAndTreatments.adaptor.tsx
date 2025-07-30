@@ -14,7 +14,6 @@ const YextResultCardTestsAndTreatments = (
 
   const {
     c_answersPrimaryCallToAction,
-    c_body,
     c_nameRichText,
     c_primaryImage,
     c_servicesImage,
@@ -58,7 +57,7 @@ const YextResultCardTestsAndTreatments = (
         </Text>
       }
       copy={
-        c_body ? (
+        resultDescription ? (
           <Text tag="div" variation={'body-large'}>
             <span dangerouslySetInnerHTML={{ __html: resultDescription }} />
           </Text>
