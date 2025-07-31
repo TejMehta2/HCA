@@ -37,7 +37,6 @@ const YextResultCardArticlesAdaptor = (
     c_abstractTitle,
     c_abstractText,
     c_pageTitle,
-    c_pageText,
     c_abstractImage,
     c_pageImage,
   } = rawData;
@@ -45,7 +44,7 @@ const YextResultCardArticlesAdaptor = (
   const resultTitle =
     c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
 
-  const resultDescription = c_abstractText || c_pageText;
+  const resultDescription = c_abstractText;
 
   const yextImage = c_servicesImage || c_primaryImage;
 

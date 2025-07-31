@@ -22,7 +22,6 @@ const YextResultCardTestsAndTreatments = (
     c_abstractTitle,
     c_abstractText,
     c_pageTitle,
-    c_body,
     c_abstractImage,
     c_pageImage,
   } = rawData;
@@ -30,7 +29,7 @@ const YextResultCardTestsAndTreatments = (
   const resultTitle =
     c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
 
-  const resultDescription = c_abstractText || c_body;
+  const resultDescription = c_abstractText;
 
   const yextImage = c_servicesImage || c_primaryImage;
 
