@@ -41,9 +41,32 @@ const YextResultSectionLocationsAdaptor = (
       closed,
       hours,
       c_heroImage,
+      c_abstractImage,
+      c_pageImage,
       googlePlaceId,
       c_uRL,
     } = result.rawData;
+
+    const yextImage = c_heroImage;
+
+    const sitecoreImage = c_abstractImage || c_pageImage;
+
+    const displayImage =
+      name && yextImage?.url
+        ? {
+            alt: yextImage.alternateText || '',
+            src: yextImage?.url,
+            width: yextImage?.width,
+            height: yextImage?.height,
+          }
+        : name && sitecoreImage
+          ? {
+              alt: name,
+              src: sitecoreImage,
+              width: 480,
+              height: 384,
+            }
+          : undefined;
 
     const id = (index + 1).toString();
 
@@ -68,14 +91,7 @@ const YextResultSectionLocationsAdaptor = (
       result.rawData.geocodedCoordinate || result.rawData.displayCoordinate;
     const cardProps = {
       number: <Numbers number={<span>{id}</span>} />,
-      image: c_heroImage ? (
-        <Image
-          src={c_heroImage.url}
-          alt={c_heroImage.alternateText || ''}
-          width={c_heroImage.width}
-          height={c_heroImage.height}
-        />
-      ) : undefined,
+      image: displayImage ? <Image {...displayImage} /> : undefined,
       title: (
         <Text variation="heading-1">
           {c_uRL ? <a href={c_uRL}>{name}</a> : name}
