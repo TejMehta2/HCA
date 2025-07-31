@@ -73,7 +73,7 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
                 </RichText>
               </Text>
             ),
-            image: (
+            image: cards?.fields?.Image?.value?.src ? (
               <NextJssImage
                 field={cards?.fields?.Image}
                 editable={false}
@@ -83,7 +83,7 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
                   sizes: '(max-width: 768px) 100vw, 30vw',
                 }}
               />
-            ),
+            ) : null,
           })) || []
         }
       />
