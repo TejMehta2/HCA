@@ -57,10 +57,17 @@ Languages:
               s:ph="headless-main" />
             <r
               uid="{32818366-CAD9-4A01-BF52-E4FBB895D48E}"
-              p:after="*[1=2]"
+              p:after="r[@uid='{4C1E7C40-88BA-4029-BA5E-EC7ABEED1CFA}']"
               s:ds="local:/Page Data/Content Cards"
               s:id="{0BC95DF5-F0A9-4A88-AE3A-1B3D841DA92F}"
               s:par="Columns&amp;HeadingTag=h1&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B56DFBCE9-0CD7-440C-9890-FF42CF59DAC8%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+            <r
+              uid="{D65BFDB1-E4BF-4928-BAF4-2D58FBAC7B4E}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Content Cards"
+              s:id="{0BC95DF5-F0A9-4A88-AE3A-1B3D841DA92F}"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B56DFBCE9-0CD7-440C-9890-FF42CF59DAC8%7D&amp;Styles&amp;Theme=Chelsea-Beige&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
               s:ph="headless-main" />
           </d>
         </r>
@@ -77,14 +84,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8eef1700-11a7-4d9f-a959-6eebd5e2a039"
+      Value: "dc592508-1ff1-4722-9b89-8b5b73664bf3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T102446Z
+      Value: 20250808T143207Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Timeline
