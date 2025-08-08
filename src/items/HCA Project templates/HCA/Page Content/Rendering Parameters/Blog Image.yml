@@ -17,9 +17,13 @@ SharedFields:
     {DBBEC324-525B-422A-951A-B98BDF9C9C28}
     {3CB863CA-B547-479F-9099-AE0B8ED26ABC}
     {ACF7C5BC-AD93-4783-98A9-2F906B8DD7C0}
+    {39263096-45D2-439E-83BB-194F4DA3C828}
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
   Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "455f6959-26e1-4516-b9df-1b39ba120812"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
   Value: "{B18BF95F-C246-4C18-AB63-8A50A730D76C}"
@@ -66,14 +70,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4b011ae2-60ea-434b-820f-adf7789ab01b"
+      Value: "74d78add-110f-42cd-ba8a-6906a2ee3e5d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250115T093801Z
+      Value: 20250808T141018Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
