@@ -3,6 +3,8 @@ export interface BaseYextEntity {
   c_abstractText: string;
   c_pageTitle: string;
   c_pageText: string;
+  c_pageImage?: string;
+  c_abstractImage?: string;
   c_nameRichText?: string;
   name: string;
   id: string;

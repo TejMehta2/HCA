@@ -37,25 +37,35 @@ const YextResultCardArticlesAdaptor = (
     c_abstractTitle,
     c_abstractText,
     c_pageTitle,
-    c_pageText,
+    c_abstractImage,
+    c_pageImage,
   } = rawData;
 
   const resultTitle =
     c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
 
-  const resultDescription = c_abstractText || c_pageText;
+  const resultDescription = c_abstractText;
 
-  const image = c_servicesImage || c_primaryImage;
+  const yextImage = c_servicesImage || c_primaryImage;
+
+  const sitecoreImage = c_abstractImage || c_pageImage;
 
   const displayImage =
-    name && image?.url
+    name && yextImage?.url
       ? {
           alt: name,
-          src: image?.url,
-          width: image?.width,
-          height: image?.height,
+          src: yextImage?.url,
+          width: yextImage?.width,
+          height: yextImage?.height,
         }
-      : undefined;
+      : name && sitecoreImage
+        ? {
+            alt: name,
+            src: sitecoreImage,
+            width: 480,
+            height: 384,
+          }
+        : undefined;
 
   return (
     <YextResultCardArticles
