@@ -12,6 +12,7 @@
   --field-unfilled-label: #{$navy-blue-30};
   --field-active-outline: #{$white};
   --field-error-colour: #{$red-60};
+  --reviews-stars: #{$teal-100};
 
   @include apply-cta-full-light;
   @include apply-cta-social-light;
@@ -33,6 +34,7 @@
   --field-unfilled-label: #{$navy-blue-70};
   --field-active-outline: #{$navy-blue-100};
   --field-error-colour: #{$red-100};
+  --reviews-stars: #{$teal-100};
 
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
@@ -56,6 +58,7 @@
   --quote-tag-background: #{$orange-60};
   --quote-tag-background-hover: #{$orange-80};
   --table-color: #{$teal-5};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-orange-40;
   @include apply-tabs(#{$orange-60});
@@ -81,6 +84,7 @@
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-60};
   --table-color: #{$navy-blue-80};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-navy-blue-70;
   @include apply-tabs($navy-blue-80, $white);
@@ -107,6 +111,7 @@
   --quote-tag-background-hover: #{$denim-50};
   --text-date: #{$navy-blue-10};
   --table-color: #{$denim-80};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-denim-40;
   @include apply-tabs($denim-40, $white, $navy-blue-100);
@@ -133,6 +138,7 @@
   --quote-tag-background: #{$teal-10};
   --quote-tag-background-hover: #{$teal-20};
   --table-color: #{$teal-40};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-teal-20;
   @include apply-tabs($teal-10);
@@ -159,6 +165,7 @@
   --quote-tag-background: #{$denim-5};
   --quote-tag-background-hover: #{$denim-20};
   --table-color: #{$denim-10};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-denim-20;
   @include apply-tabs($denim-5);
@@ -184,6 +191,7 @@
   --quote-tag-background: #{$fern-20};
   --quote-tag-background-hover: #{$fern-40};
   --table-color: #{$fern-60};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-fern-60;
   @include apply-tabs($fern-20);
@@ -209,6 +217,7 @@
   --quote-tag-background: #{$orange-40};
   --quote-tag-background-hover: #{$orange-20};
   --table-color: #{$orange-60};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-orange-60;
   @include apply-tabs($orange-20);
@@ -222,6 +231,7 @@
   --compare-tag-text-color-1: #{$white};
   --compare-tag-color-2: #{$orange-60};
   --compare-tag-text-color-2: #{$navy-blue-100};
+  --reviews-stars: #{$teal-100};
 }
 
 @mixin apply-theme-h-tangerine {
@@ -234,6 +244,7 @@
   --quote-tag-background: #{$tangerine-30};
   --quote-tag-background-hover: #{$goldenrod-100};
   --table-color: #{$tangerine-70};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-tangerine-70;
   @include apply-tabs($tangerine-30);
@@ -259,6 +270,7 @@
   --quote-tag-background: #{$goldenrod-20};
   --quote-tag-background-hover: #{$goldenrod-60};
   --table-color: #{$goldenrod-60};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-goldenrod;
   @include apply-tabs($goldenrod-20);
@@ -284,6 +296,7 @@
   --quote-tag-background: #{$orange-100};
   --quote-tag-background-hover: #{$orange-60};
   --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-orange-40;
   @include apply-tabs($orange-100);
@@ -309,6 +322,7 @@
   --quote-tag-background: #{$fern-60};
   --quote-tag-background-hover: #{$fern-100};
   --table-color: #{$fern-10};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-fern-20;
   @include apply-tabs($fern-60);
@@ -334,6 +348,7 @@
   --quote-tag-background: #{$teal-40};
   --quote-tag-background-hover: #{$teal-80};
   --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-teal-10;
   @include apply-tabs($teal-40);
@@ -359,6 +374,7 @@
   --quote-tag-background: #{$tangerine-100};
   --quote-tag-background-hover: #{$orange-100};
   --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-goldenrod;
   @include apply-tabs($tangerine-100);
@@ -384,6 +400,7 @@
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
   --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-denim-10;
   @include apply-tabs($denim-40);
@@ -409,6 +426,7 @@
   --quote-tag-background: #{$teal-80};
   --quote-tag-background-hover: #{$teal-120};
   --table-color: #{$teal-10};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-teal-20;
   @include apply-tabs($teal-100);
@@ -435,18 +453,15 @@
   --quote-tag-background: #{$palace-red-20};
   --quote-tag-background-hover: #{$palace-red-60};
   --table-color: #{$palace-red-05};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-palace-white;
-  @include apply-cta-palace-full(
-    #{$white},
+  @include apply-cta-palace-full(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-palace-outline(
-    #{$white},
+    #{$navy-blue-100});
+  @include apply-cta-palace-outline(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$palace-red-20});
   @include apply-pagination-palace-white;
   @include apply-controls-palace;
@@ -471,6 +486,7 @@
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-90};
   --table-color: #{$navy-blue-80};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-palace-navy-blue;
   @include apply-tabs($navy-blue-80, $white);
@@ -502,17 +518,14 @@
   --quote-tag-background-hover: #{$orange-60};
   --quote-tag-color: $navy-blue-100;
   --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
 
-  @include apply-cta-palace-full(
-    #{$tangerine-20},
+  @include apply-cta-palace-full(#{$tangerine-20},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-palace-outline(
-    #{$tangerine-20},
+    #{$navy-blue-100});
+  @include apply-cta-palace-outline(#{$tangerine-20},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
 
   @include apply-tag-palace-beige;
   @include apply-tabs(#{$orange-100});
@@ -540,18 +553,15 @@
   --quote-tag-background: #{$chelsea-gold-80};
   --quote-tag-background-hover: #{$chelsea-gold-100};
   --table-color: #{$chelsea-gold-20};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-chelsea-white;
-  @include apply-cta-chelsea-full(
-    #{$white},
+  @include apply-cta-chelsea-full(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-chelsea-outline(
-    #{$chelsea-gold-100},
+    #{$navy-blue-100});
+  @include apply-cta-chelsea-outline(#{$chelsea-gold-100},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$chelsea-gold-80});
   @include apply-pagination-chelsea-gold-80;
   @include apply-controls-chelsea;
@@ -576,6 +586,7 @@
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-90};
   --table-color: #{$navy-blue-80};
+  --reviews-stars: #{$teal-100};
 
   @include apply-tag-chelsea-navy-blue;
   @include apply-tabs($navy-blue-80, $white);
@@ -606,17 +617,14 @@
   --quote-tag-background-hover: #{$chelsea-gold-100};
   --quote-tag-color: $navy-blue-100;
   --table-color: #{$chelsea-gold-20};
+  --reviews-stars: #{$chelsea-gold-100};
 
-  @include apply-cta-chelsea-full(
-    #{$white},
+  @include apply-cta-chelsea-full(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-chelsea-outline(
-    #{$chelsea-gold-100},
+    #{$navy-blue-100});
+  @include apply-cta-chelsea-outline(#{$chelsea-gold-100},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
 
   @include apply-tag-chelsea-beige;
   @include apply-tabs(#{$chelsea-gold-80});

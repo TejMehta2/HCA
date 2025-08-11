@@ -21,7 +21,7 @@
   gap: $spacing-3;
 
   & svg {
-    color: $teal-100;
+    color: var(--reviews-stars);
     width: px-to-rem(25.29);
     height: px-to-rem(25.29);
   }
@@ -50,7 +50,7 @@
   & div[class*='slick-slide'] {
     padding-right: $spacing-4;
 
-    > div {
+    >div {
       max-width: px-to-rem(741);
       margin: auto;
     }
