@@ -17,6 +17,7 @@ import Timeline, {
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -119,91 +120,93 @@ export const Default = (props: TimelineProps): JSX.Element => {
   );
   return (
     <>
-      <Timeline
-        id={componentAnchorId}
-        subheading={
-          !isExperienceEditor ||
-          props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag={subheadingTag} variation={'subheading-1'}>
-              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
-            </Text>
-          ) : (
-            <></>
-          )
-        }
-        heading={
-          <Text
-            variation={props.params?.HeadingSize || 'display-3'}
-            tag={headingTag}
-          >
-            <JssText
-              tag={'span'}
-              field={props.fields?.data?.item?.title?.jsonValue}
-            />
-          </Text>
-        }
-        ctas={link ? <TextLink>{link}</TextLink> : undefined}
-        copy={
-          props.fields?.data?.item?.text?.jsonValue || isExperienceEditor ? (
-            <Text tag="div" variation="body-large">
-              <JssRichText
-                tag="div"
-                field={props.fields?.data?.item?.text?.jsonValue}
+      <Themes theme={props?.params?.Theme || 'A-HCA-White'}>
+        <Timeline
+          id={componentAnchorId}
+          subheading={
+            !isExperienceEditor ||
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+              <Text tag={subheadingTag} variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            ) : (
+              <></>
+            )
+          }
+          heading={
+            <Text
+              variation={props.params?.HeadingSize || 'display-3'}
+              tag={headingTag}
+            >
+              <JssText
+                tag={'span'}
+                field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>
-          ) : (
-            <></>
-          )
-        }
-      >
-        <>
-          {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => {
-            const cardCtaUrl = card?.proxyurl?.path
-              ? card?.proxyurl?.path
-              : card?.url?.path;
-            return (
-              <TimelineStep
-                key={index}
-                index={
-                  <Text variation="display-5">
-                    {(index + 1).toString().padStart(2, '0')}
-                  </Text>
-                }
-                heading={
-                  <Text variation="display-5">
-                    {card.abstractTitle?.value ? (
-                      <JssText field={card.abstractTitle} />
+          }
+          ctas={link ? <TextLink>{link}</TextLink> : undefined}
+          copy={
+            props.fields?.data?.item?.text?.jsonValue || isExperienceEditor ? (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  tag="div"
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            ) : (
+              <></>
+            )
+          }
+        >
+          <>
+            {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => {
+              const cardCtaUrl = card?.proxyurl?.path
+                ? card?.proxyurl?.path
+                : card?.url?.path;
+              return (
+                <TimelineStep
+                  key={index}
+                  index={
+                    <Text variation="display-5">
+                      {(index + 1).toString().padStart(2, '0')}
+                    </Text>
+                  }
+                  heading={
+                    <Text variation="display-5">
+                      {card.abstractTitle?.value ? (
+                        <JssText field={card.abstractTitle} />
+                      ) : (
+                        <JssText field={card.title} />
+                      )}
+                    </Text>
+                  }
+                  copy={
+                    <Text variation="body-large">
+                      {card.abstractText?.value ? (
+                        <JssRichText tag="div" field={card.abstractText} />
+                      ) : (
+                        <JssRichText tag="div" field={card.text} />
+                      )}
+                    </Text>
+                  }
+                  link={
+                    cardCtaUrl ? (
+                      <a href={cardCtaUrl}>
+                        <JssRichText
+                          tag="div"
+                          field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                        />
+                      </a>
                     ) : (
-                      <JssText field={card.title} />
-                    )}
-                  </Text>
-                }
-                copy={
-                  <Text variation="body-large">
-                    {card.abstractText?.value ? (
-                      <JssRichText tag="div" field={card.abstractText} />
-                    ) : (
-                      <JssRichText tag="div" field={card.text} />
-                    )}
-                  </Text>
-                }
-                link={
-                  cardCtaUrl ? (
-                    <a href={cardCtaUrl}>
-                      <JssRichText
-                        tag="div"
-                        field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                      />
-                    </a>
-                  ) : (
-                    <></>
-                  )
-                }
-              />
-            );
-          })}
-        </>
-      </Timeline>
+                      <></>
+                    )
+                  }
+                />
+              );
+            })}
+          </>
+        </Timeline>
+      </Themes>
     </>
   );
 };
