@@ -194,7 +194,8 @@ export const Default = (props: TimelineProps): JSX.Element => {
                       <a href={cardCtaUrl}>
                         <JssRichText
                           tag="div"
-                          field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                          field={props.fields?.data?.item?.cTACardText?.jsonValue
+                          }
                         />
                       </a>
                     ) : (
