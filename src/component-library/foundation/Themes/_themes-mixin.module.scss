@@ -4,6 +4,7 @@
 
 @mixin apply-shared-theme-dark {
   --text: #{$white};
+  --doctify-text: #{$white};
   --text-date: #{$navy-blue-40};
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$navy-blue-100};
@@ -26,6 +27,7 @@
 
 @mixin apply-shared-theme-light {
   --text: #{$navy-blue-100};
+  --doctify-text: #{$navy-blue-100};
   --text-date: #{$navy-blue-60};
   --card-secondary-background: #{$navy-blue-100};
   --card-secondary-text: #{$white};
@@ -52,8 +54,7 @@
   --background: #{$white};
   --card-background: #{$tangerine-20};
   --card-background-selected: #{$orange-20}; // Used in Yext for selected card backgrounds
-  --doctify-empty-star: #{$navy-blue-30};
-  --doctify-full-star: #{$orange-100};
+  --doctify-full-star: #{$teal-100};
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$orange-60};
   --quote-tag-background-hover: #{$orange-80};
@@ -549,6 +550,7 @@
   --card-background: #{$tangerine-20};
   --doctify-empty-star: #{$navy-blue-30};
   --doctify-full-star: #{$chelsea-gold-150};
+  --doctify-text: #{$white};
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$chelsea-gold-80};
   --quote-tag-background-hover: #{$chelsea-gold-100};
@@ -583,6 +585,7 @@
   --card-background: #{$navy-blue-80};
   --doctify-full-star: #{$chelsea-gold-80};
   --doctify-empty-star: #{$white};
+  --doctify-text: #{$white};
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-90};
   --table-color: #{$navy-blue-80};
@@ -612,6 +615,7 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$navy-blue-50};
   --doctify-full-star: #{$chelsea-gold-150};
+  --doctify-text: #{$white};
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$chelsea-gold-80};
   --quote-tag-background-hover: #{$chelsea-gold-100};

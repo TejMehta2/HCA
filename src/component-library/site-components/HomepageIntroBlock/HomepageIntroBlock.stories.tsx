@@ -35,6 +35,7 @@ export const Default: StoryObj<typeof HomepageIntroBlock> = {
         dolore.
       </Text>
     ),
+    theme: 'A-HCA-White',
     stats: [
       {
         value: <span>26</span>,
