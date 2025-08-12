@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: var(--text);
+  color: var(--doctify-text);
   display: grid;
   gap: px-to-rem(8) 0;
   width: fit-content;
@@ -84,7 +84,7 @@
 }
 
 @include theme-mode(light, dark) using ($mode) {
-  @if $mode == light {
+  @if $mode ==light {
     .light-logo {
       display: block;
     }
@@ -93,7 +93,8 @@
       display: none;
     }
   }
-  @if $mode == dark {
+
+  @if $mode ==dark {
     .light-logo {
       display: none;
     }
@@ -101,5 +102,18 @@
     .dark-logo {
       display: block;
     }
+  }
+
+  //Show light logo and hide dark logo for Chelsea themes based on data-theme attribute [data-theme='Chelsea-Beige'] .light-logo,
+  [data-theme='Chelsea-Navy-Blue'] .light-logo,
+  [data-theme='Chelsea-White'] .light-logo,
+  [data-theme='Chelsea-Beige'] .light-logo {
+    display: block !important;
+  }
+
+  [data-theme='Chelsea-Beige'] .dark-logo,
+  [data-theme='Chelsea-Navy-Blue'] .dark-logo,
+  [data-theme='Chelsea-White'] .dark-logo {
+    display: none !important;
   }
 }
