@@ -553,7 +553,7 @@
   --quote-tag-background: #{$chelsea-gold-80};
   --quote-tag-background-hover: #{$chelsea-gold-100};
   --table-color: #{$chelsea-gold-20};
-  --reviews-stars: #{$teal-100};
+  --reviews-stars: #{$chelsea-gold-100};
 
   @include apply-tag-chelsea-white;
   @include apply-cta-chelsea-full(#{$white},
@@ -586,7 +586,7 @@
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-90};
   --table-color: #{$navy-blue-80};
-  --reviews-stars: #{$teal-100};
+  --reviews-stars: #{$chelsea-gold-100};
 
   @include apply-tag-chelsea-navy-blue;
   @include apply-tabs($navy-blue-80, $white);
