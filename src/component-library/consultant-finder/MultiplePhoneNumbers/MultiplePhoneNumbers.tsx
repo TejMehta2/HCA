@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MultiplePhoneNumbersProps } from './MultiplePhoneNumbers.types';
 import Address from '../Address/Address';
 import Text from '../../foundation/Text/Text';
@@ -153,7 +153,7 @@ const MultiplePhoneNumbers = (
                 <div key={index} className={styles['phone-btn']}>
                   {shouldRenderPracticePhones && (
                     <Button variation="full-dark" size="small">
-                      <a href={`tel: ${phone}`}>
+                      <a href={`tel:${phone}`}>
                         <span>
                           <Icons iconName="iconPhone" />
                         </span>
@@ -163,7 +163,7 @@ const MultiplePhoneNumbers = (
                   )}
                   {!shouldRenderPracticePhones && (
                     <Button variation="full-dark" size="small">
-                      <a href={`tel: pract:${props.defaultNumber}`}>
+                      <a href={`tel:${props.defaultNumber}`}>
                         <span>
                           <Icons iconName="iconPhone" />
                         </span>
