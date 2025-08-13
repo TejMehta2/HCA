@@ -233,6 +233,7 @@ const nextConfig = {
         { source: "/obstetrics-registration-form.php", destination: "/obstetrics-registration-form", permanent: true },
         { source: "/gynaecological-registration-form.php", destination: "/gynaecological-registration-form", permanent: true },
         { source: "/pathology-registration-form.php", destination: "/pathology-registration-form", permanent: true },
+        { source: "/types-of-scans-available/nipt/safe-test", destination: "/types-of-scans-available/nipt/prenatalsafe-test", permanent: true },
         { source: "/:path*.php", destination: "/", permanent: true },
       ];
     } else if (SITECORE_SITE_NAME === "hcamain") {
