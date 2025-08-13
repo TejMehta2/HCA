@@ -11,20 +11,33 @@ const YextResultCardDepartmentsAdaptor = (
   const { result } = props;
   const { name, rawData } = result;
 
-  const { c_body, c_uRL, c_answersPrimaryCallToAction } = rawData;
+  const {
+    c_uRL,
+    c_answersPrimaryCallToAction,
+    c_abstractText,
+    c_pageText,
+    c_nameRichText,
+    c_abstractTitle,
+    c_pageTitle,
+  } = rawData;
+
+  const resultTitle =
+    c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
+
+  const resultDescription = c_abstractText || c_pageText;
 
   return (
     <YextResultCardArticles
       image={undefined}
       title={
         <Text tag="h3" variation={'heading-1'}>
-          {name}
+          {resultTitle}
         </Text>
       }
       copy={
-        c_body ? (
+        resultDescription ? (
           <Text tag="div" variation={'body-large'}>
-            <span dangerouslySetInnerHTML={{ __html: c_body }} />
+            <span dangerouslySetInnerHTML={{ __html: resultDescription }} />
           </Text>
         ) : undefined
       }

@@ -14,41 +14,62 @@ const YextResultCardTestsAndTreatments = (
 
   const {
     c_answersPrimaryCallToAction,
-    c_body,
     c_nameRichText,
     c_primaryImage,
+    c_servicesImage,
     c_uRL,
     name,
+    c_abstractTitle,
+    c_abstractText,
+    c_pageTitle,
+    c_abstractImage,
+    c_pageImage,
   } = rawData;
 
-  const image =
-    name && c_primaryImage?.url
+  const resultTitle =
+    c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
+
+  const resultDescription = c_abstractText;
+
+  const yextImage = c_servicesImage || c_primaryImage;
+
+  const sitecoreImage = c_abstractImage || c_pageImage;
+
+  const displayImage =
+    name && yextImage?.url
       ? {
           alt: name,
-          src: c_primaryImage?.url,
-          width: c_primaryImage?.width,
-          height: c_primaryImage?.height,
+          src: yextImage?.url,
+          width: yextImage?.width,
+          height: yextImage?.height,
         }
-      : undefined;
+      : name && sitecoreImage
+        ? {
+            alt: name,
+            src: sitecoreImage,
+            width: 480,
+            height: 384,
+          }
+        : undefined;
 
   return (
     <YextResultCardArticles
       image={
-        image ? (
+        displayImage ? (
           <>
-            <Image {...image} />
+            <Image {...displayImage} />
           </>
         ) : undefined
       }
       title={
         <Text tag="h3" variation={'heading-1'}>
-          {c_nameRichText || name}
+          {resultTitle}
         </Text>
       }
       copy={
-        c_body ? (
+        resultDescription ? (
           <Text tag="div" variation={'body-large'}>
-            <span dangerouslySetInnerHTML={{ __html: c_body }} />
+            <span dangerouslySetInnerHTML={{ __html: resultDescription }} />
           </Text>
         ) : undefined
       }

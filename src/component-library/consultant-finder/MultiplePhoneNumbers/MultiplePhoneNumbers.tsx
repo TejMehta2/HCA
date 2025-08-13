@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MultiplePhoneNumbersProps } from './MultiplePhoneNumbers.types';
 import Address from '../Address/Address';
 import Text from '../../foundation/Text/Text';
@@ -11,6 +11,82 @@ import TextLink from '../../core-components/TextLink/TextLink';
 const MultiplePhoneNumbers = (
   props: MultiplePhoneNumbersProps
 ): JSX.Element => {
+  // Set up a MutationObserver to watch for changes in the DOM look for phone number changes
+  useEffect(() => {
+    const observer = new MutationObserver(checkPhoneFormat);
+    // Observe changes in the body element
+    const body = document.body;
+    observer.observe(body, {
+      childList: true,
+      subtree: true,
+    });
+    // Clean up the observer when the component unmounts
+    return () => {
+      observer.disconnect();
+    };
+  });
+
+  const checkPhoneFormat = () => {
+    const phoneEles = document.getElementsByClassName('phoneText');
+    if (phoneEles) {
+      const elementsArray = Array.from(phoneEles);
+      elementsArray.forEach((el) => {
+        if (el.textContent !== phoneFormat(el.textContent)) {
+          el.textContent = phoneFormat(el.textContent);
+        }
+      });
+    }
+  };
+
+  // A function to re-format a phone number
+  const phoneFormat = (
+    input: string | null,
+    includeCountry: boolean = true
+  ) => {
+    if (input) {
+      // Strip all characters from the input except digits
+      input = input?.replace(/\D/g, '');
+
+      // uk prefix?
+      let had44: boolean = true;
+      if (input.substring(0, 2) === '44') {
+        // drop the 44
+        input = input.substring(2);
+        had44 = true;
+      }
+
+      if (input.substring(0, 1) != '0') {
+        // no zero?
+        input = '0' + input; // add in the zero
+      }
+
+      // Based upon the length of the string, we add formatting as necessary
+      const size = input?.length;
+
+      if (size < 11) {
+        input = input;
+      } else if (size == 11 && input.substring(0, 2) !== '07') {
+        // standard UK number
+        input =
+          input.substring(0, 3) +
+          ' ' +
+          input.substring(3, 7) +
+          ' ' +
+          input.substring(7, 11);
+      } else {
+        // uk mobile
+        input = input.substring(0, 5) + ' ' + input.substring(5, 11);
+      }
+
+      if (had44 && includeCountry) {
+        // add +44 and drop leading zero
+        input = '(+44) ' + input.substring(1);
+      }
+    }
+
+    return input;
+  };
+
   const filteredPractices = props.practices.filter(
     (practice: { slug: string }) => practice.slug !== 'video-consultation'
   );
@@ -23,9 +99,9 @@ const MultiplePhoneNumbers = (
     shouldRenderPracticePhones = props.isDoctifyPhoneNumberConsultant;
   }
 
-  // console.log('slug', props.slug);
-  // console.log('shouldRenderPracticePhones', shouldRenderPracticePhones);
-  // console.log('default number', props.defaultNumber);
+  //console.log('slug', props.slug);
+  //console.log('shouldRenderPracticePhones', shouldRenderPracticePhones);
+  //console.log('default number', props.defaultNumber);
 
   return (
     <div
@@ -81,7 +157,7 @@ const MultiplePhoneNumbers = (
                         <span>
                           <Icons iconName="iconPhone" />
                         </span>
-                        <span>{phone}</span>
+                        <span className="phoneText">{phone}</span>
                       </a>
                     </Button>
                   )}
@@ -91,7 +167,7 @@ const MultiplePhoneNumbers = (
                         <span>
                           <Icons iconName="iconPhone" />
                         </span>
-                        <span>{props.defaultNumber}</span>
+                        <span className="phoneText">{props.defaultNumber}</span>
                       </a>
                     </Button>
                   )}
@@ -104,7 +180,7 @@ const MultiplePhoneNumbers = (
                     <span>
                       <Icons iconName="iconPhone" />
                     </span>
-                    <span>{props.defaultNumber}</span>
+                    <span className="phoneText">{props.defaultNumber}</span>
                   </a>
                 </Button>
               </div>
@@ -118,7 +194,7 @@ const MultiplePhoneNumbers = (
               <span>
                 <Icons iconName="iconPhone" />
               </span>
-              <span>{props.defaultNumber}</span>
+              <span className="phoneText">{props.defaultNumber}</span>
             </a>
           </Button>
         </div>

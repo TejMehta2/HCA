@@ -15,7 +15,7 @@ const CarouselContent = (props: CarouselContentProps): JSX.Element => {
       <React.Fragment key={index}>
         <div className={styles.slide}>
           <div className={styles.image}>{slide.image}</div>
-          <div className={styles.text}>
+          <div className={`${styles.text} ${!slide.image ? styles.noImagePadding : ''}`}>
             {slide.title}
             {slide.body}
           </div>

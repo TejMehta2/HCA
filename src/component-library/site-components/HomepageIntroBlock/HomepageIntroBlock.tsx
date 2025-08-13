@@ -82,7 +82,13 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
               <div className={styles.cqc}>{cqc}</div>
               <div className={styles.mobile}>{doctify}</div>
               <div className={styles.tablet}>
-                <Themes theme={'B-HCA-Navy-Blue'}>{doctify}</Themes>
+                <Themes
+                  theme={
+                    ['Chelsea-Beige', 'Chelsea-Navy-Blue', 'Chelsea-White'].includes(theme)
+                      ? theme
+                      : 'B-HCA-Navy-Blue'
+                  }
+                >{doctify}</Themes>
               </div>
             </div>
           </div>
