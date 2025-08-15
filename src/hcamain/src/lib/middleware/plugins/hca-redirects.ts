@@ -88,10 +88,8 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
         `${req.nextUrl.origin}${proxyPath}/redirects/find?source=${pathname.toLowerCase()}`
       );
 
-      debug.redirects(
-        `HCA Redirects: ${pathname.toLowerCase()}`
-      );
-      
+      debug.redirects(`HCA Redirects: ${pathname.toLowerCase()}`);
+
       debug.redirects(
         `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
       );
@@ -137,8 +135,7 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
 
             return NextResponse.redirect(redirectUrl, statusCode);
           }
-        }
-        else {
+        } else {
           // Cache "no redirect" result
           redirectCache.set(cacheKey, { redirectUrl: null, timestamp: now });
         }
