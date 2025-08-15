@@ -84,8 +84,11 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
       );
 
       debug.redirects(
-        `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
+        `HCA Redirects: ${pathname.toLowerCase()}`
       );
+      debug.redirects(
+        `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
+      );      
 
       // Perform fetch without automatic Next.js middleware caching
       const apiResponse = await fetch(apiUrl.href);
