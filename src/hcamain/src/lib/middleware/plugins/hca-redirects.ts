@@ -22,7 +22,12 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
   order = 0; // Run early, after lowercase normalization
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
+    const isXmc = process.env.Sitecore_Is_XMC === '1';
     const response = res || NextResponse.next();
+
+    if (isXmc) {
+      return response;
+    }
 
     const { url } = req;
     const { pathname, search } = new URL(url);
@@ -83,6 +88,8 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
         `${req.nextUrl.origin}${proxyPath}/redirects/find?source=${pathname.toLowerCase()}`
       );
 
+      debug.redirects(`HCA Redirects: ${pathname.toLowerCase()}`);
+
       debug.redirects(
         `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
       );
@@ -128,6 +135,9 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
 
             return NextResponse.redirect(redirectUrl, statusCode);
           }
+        } else {
+          // Cache "no redirect" result
+          redirectCache.set(cacheKey, { redirectUrl: null, timestamp: now });
         }
       }
     } catch (error) {
