@@ -22,7 +22,13 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
   order = 0; // Run early, after lowercase normalization
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
+    const isXmc = process.env.Sitecore_Is_XMC === '1';   
     const response = res || NextResponse.next();
+
+    if(isXmc)
+    {
+      return response;
+    }
 
     const { url } = req;
     const { pathname, search } = new URL(url);
