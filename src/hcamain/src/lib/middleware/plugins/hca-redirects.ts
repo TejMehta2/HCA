@@ -22,11 +22,10 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
   order = 0; // Run early, after lowercase normalization
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
-    const isXmc = process.env.Sitecore_Is_XMC === '1';   
+    const isXmc = process.env.Sitecore_Is_XMC === '1';
     const response = res || NextResponse.next();
 
-    if(isXmc)
-    {
+    if (isXmc) {
       return response;
     }
 
@@ -94,7 +93,7 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
       );
       debug.redirects(
         `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
-      );      
+      );
 
       // Perform fetch without automatic Next.js middleware caching
       const apiResponse = await fetch(apiUrl.href);
