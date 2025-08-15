@@ -91,6 +91,7 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
       debug.redirects(
         `HCA Redirects: ${pathname.toLowerCase()}`
       );
+      
       debug.redirects(
         `HCA Redirects: Fetching redirect data from ${apiUrl.href}`
       );
