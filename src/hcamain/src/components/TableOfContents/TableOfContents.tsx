@@ -23,9 +23,11 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   // Sync whenever URL changes (catch hash or query updates)
   useEffect(() => {
+    inPageNavGlobalStore.clearList();
+    setComponentsList([]);
     const listOnUrlChange = inPageNavGlobalStore.getList();
     console.log('[ToC] URL changed, syncing list:', router.asPath, listOnUrlChange);
-    setComponentsList([...listOnUrlChange]);
+    setComponentsList(listOnUrlChange);
   }, [router.asPath]);
 
   // Clear list on route changes
@@ -55,7 +57,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     return () => {
       inPageNavGlobalStore.off('navigableComponentsListUpdated', handleNavigableComponentsListUpdated);
     };
-  }, [router.asPath]);
+  }, []);
 
 
 

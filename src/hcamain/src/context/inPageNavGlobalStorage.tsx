@@ -12,6 +12,7 @@ class InPageNavGlobalStore extends EventEmitter {
   ): string {
     const navTitle =
       componentParams?.TableOfContentsLinkTitle || componentTitle;
+    console.log('navTitle', navTitle);
 
     if (!navTitle || componentParams?.ExcludeFromTableOfContents) {
       return '';
@@ -34,6 +35,7 @@ class InPageNavGlobalStore extends EventEmitter {
 
     this.list.push(navItem);
     this.emit('navigableComponentsListUpdated', this.list);
+    console.log('this.list', this.list);
     return componentAnchorId;
   }
 
@@ -42,7 +44,7 @@ class InPageNavGlobalStore extends EventEmitter {
   }
 
   clearList(): void {
-    // console.log('[InPageNavGlobalStore] List cleared');
+    console.log('[InPageNavGlobalStore] List cleared');
     this.list = [];
     this.emit('navigableComponentsListUpdated', this.list);
   }
