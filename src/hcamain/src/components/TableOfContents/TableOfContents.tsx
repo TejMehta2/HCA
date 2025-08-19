@@ -15,61 +15,47 @@ import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import router from 'next/router';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
-  const [components, setComponentsList] = useState<NavigableComponent[]>(() => {
-    const initialList = inPageNavGlobalStore.getList();
-    console.log('[ToC] Initial state:', initialList);
-    return [];
-  });
-  console.log('components initial', components);
+  const [components, setComponentsList] = useState<NavigableComponent[]>([]);
 
-  // Sync whenever URL changes (catch hash or query updates)
-  useEffect(() => {
-    inPageNavGlobalStore.clearList();
-    setComponentsList([]);
-    const listOnUrlChange = inPageNavGlobalStore.getList();
-    console.log('[ToC] URL changed, syncing list:', router.asPath, listOnUrlChange);
-    let listToUpdate = [...listOnUrlChange];
-    console.log('listToUpdate', listToUpdate);
-    setComponentsList([...listOnUrlChange]);
-  }, [router.asPath]);
-
-  // Clear list on route changes
+  // Clear list when component mounts (i.e., on each page visit)
   useEffect(() => {
     const handleRouteChange = () => {
-      // console.log('[ToC] Route change started. URL:');
+      console.log('[ToC] Route and url changed. Clearing list.');
       inPageNavGlobalStore.clearList();
-      setComponentsList([]);
-      console.log('[ToC] List cleared after route change.');
     };
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
-  }, []);
+  }, [router.asPath]);
 
-  // Listen for updates from global store
   useEffect(() => {
-    const handleNavigableComponentsListUpdated = (updatedList: NavigableComponent[]) => {
-      console.log('[ToC] Global store updated:', updatedList);
+    const handleNavigableComponentsListUpdated = (
+      updatedList: NavigableComponent[]
+    ) => {
+      console.log('[ToC] Received updated list', updatedList);
       setComponentsList([...updatedList]);
     };
+    // Sync immediately on mount
     const currentList = inPageNavGlobalStore.getList();
-    console.log('[ToC] Sync on mount:', currentList);
+    console.log('[ToC] Initial list on mount', currentList);
     setComponentsList([...currentList]);
-    inPageNavGlobalStore.on('navigableComponentsListUpdated', handleNavigableComponentsListUpdated);
+    inPageNavGlobalStore.on(
+      'navigableComponentsListUpdated',
+      handleNavigableComponentsListUpdated
+    );
     return () => {
-      inPageNavGlobalStore.off('navigableComponentsListUpdated', handleNavigableComponentsListUpdated);
+      inPageNavGlobalStore.off(
+        'navigableComponentsListUpdated',
+        handleNavigableComponentsListUpdated
+      );
     };
   }, []);
-
-
 
   const hasNoDatasource = !props.fields;
 
-  console.log('[ToC] Rendering with components:', components);
-
   return (
-    <Themes theme="A-HCA-White" collapse={false}>
+    <Themes theme={'A-HCA-White'} collapse={false}>
       <JumpToLinks
         heading={
           hasNoDatasource ? (
@@ -81,16 +67,17 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
           )
         }
       >
-        {components.map(item => (
-          <JumpToAnchor key={item.Id}>
-            <a href={'#' + item.Id}>
-              <Icons iconName="iconArrowSmallDown" />
-              <span>{item.TableOfContentsLinkTitle}</span>
-            </a>
-          </JumpToAnchor>
-        ))}
+        {components.length > 0 && components.map((item, index) => {
+          return (
+            <JumpToAnchor key={index}>
+              <a href={'#' + item.Id}>
+                <Icons iconName="iconArrowSmallDown" />
+                <span>{item.TableOfContentsLinkTitle}</span>
+              </a>
+            </JumpToAnchor>
+          );
+        })}
       </JumpToLinks>
     </Themes>
   );
 };
-
