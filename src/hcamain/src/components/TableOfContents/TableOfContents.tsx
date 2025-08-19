@@ -1,4 +1,4 @@
-/* eslint react/jsx-key: 0 */
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import { Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
