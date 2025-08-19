@@ -7,12 +7,10 @@ import Params from 'src/types/params';
 class InPageNavGlobalStore extends EventEmitter {
   private list: NavigableComponent[] = [];
 
-
   addItem(
     componentParams: Params | undefined,
     componentTitle: string | undefined
   ): string {
-    console.log('componentParams', componentParams);
     const navTitle =
       componentParams?.TableOfContentsLinkTitle || componentTitle;
 
@@ -30,6 +28,9 @@ class InPageNavGlobalStore extends EventEmitter {
     const exists = this.list.some(
       (existingItem) => existingItem.Id === navItem.Id
     );
+
+    console.log('exists', exists);
+    console.log('navItem', navItem.TableOfContentsLinkTitle);
 
     if (exists || typeof window === 'undefined') {
       return componentAnchorId;
