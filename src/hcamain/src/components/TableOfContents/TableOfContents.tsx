@@ -32,7 +32,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   // Clear list on route changes
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
+    const handleRouteChange = () => {
       // console.log('[ToC] Route change started. URL:', url);
       inPageNavGlobalStore.clearList();
       setComponentsList([]);
