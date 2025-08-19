@@ -29,8 +29,8 @@ class InPageNavGlobalStore extends EventEmitter {
       (existingItem) => existingItem.Id === navItem.Id
     );
 
-    console.log('exists', exists);
-    console.log('navItem exists', navItem.TableOfContentsLinkTitle);
+    // console.log('exists', exists);
+    // console.log('navItem exists', navItem.TableOfContentsLinkTitle);
 
     if (exists || typeof window === 'undefined') {
       return componentAnchorId;
@@ -38,7 +38,7 @@ class InPageNavGlobalStore extends EventEmitter {
 
     this.list.push(navItem);
     this.emit('navigableComponentsListUpdated', this.list);
-    console.log('this.list', this.list);
+    // console.log('this.list', this.list);
     return componentAnchorId;
   }
 

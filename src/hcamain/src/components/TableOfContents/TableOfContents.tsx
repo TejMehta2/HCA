@@ -20,6 +20,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     console.log('[ToC] Initial state:', initialList);
     return [];
   });
+  console.log('components initial', components);
 
   // Sync whenever URL changes (catch hash or query updates)
   useEffect(() => {
@@ -27,16 +28,18 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     setComponentsList([]);
     const listOnUrlChange = inPageNavGlobalStore.getList();
     console.log('[ToC] URL changed, syncing list:', router.asPath, listOnUrlChange);
-    setComponentsList(listOnUrlChange);
+    let listToUpdate = [...listOnUrlChange];
+    console.log('listToUpdate', listToUpdate);
+    setComponentsList([...listOnUrlChange]);
   }, [router.asPath]);
 
   // Clear list on route changes
   useEffect(() => {
     const handleRouteChange = () => {
-      // console.log('[ToC] Route change started. URL:', url);
+      // console.log('[ToC] Route change started. URL:');
       inPageNavGlobalStore.clearList();
       setComponentsList([]);
-      // console.log('[ToC] List cleared after route change.');
+      console.log('[ToC] List cleared after route change.');
     };
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {
@@ -47,7 +50,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   // Listen for updates from global store
   useEffect(() => {
     const handleNavigableComponentsListUpdated = (updatedList: NavigableComponent[]) => {
-      // console.log('[ToC] Global store updated:', updatedList);
+      console.log('[ToC] Global store updated:', updatedList);
       setComponentsList([...updatedList]);
     };
     const currentList = inPageNavGlobalStore.getList();
