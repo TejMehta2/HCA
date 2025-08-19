@@ -6,6 +6,7 @@ import Params from 'src/types/params';
 class InPageNavGlobalStore extends EventEmitter {
   private list: NavigableComponent[] = [];
 
+
   addItem(
     componentParams: Params | undefined,
     componentTitle: string | undefined
@@ -40,6 +41,7 @@ class InPageNavGlobalStore extends EventEmitter {
   }
 
   getList(): NavigableComponent[] {
+    console.log('this.list', this.list);
     return this.list;
   }
 
