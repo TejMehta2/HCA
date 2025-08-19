@@ -30,7 +30,7 @@ class InPageNavGlobalStore extends EventEmitter {
     );
 
     console.log('exists', exists);
-    console.log('navItem', navItem.TableOfContentsLinkTitle);
+    console.log('navItem exists', navItem.TableOfContentsLinkTitle);
 
     if (exists || typeof window === 'undefined') {
       return componentAnchorId;
