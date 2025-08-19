@@ -31,14 +31,8 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   useEffect(() => {
     console.log('test');
-    const handleRouteChange = () => {
-      console.log('[ToC] Route and url changed. Clearing list.');
-      inPageNavGlobalStore.clearList();
-    };
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
+    inPageNavGlobalStore.clearList();
+    // setComponentsList([]);
   }, []);
 
   useEffect(() => {
