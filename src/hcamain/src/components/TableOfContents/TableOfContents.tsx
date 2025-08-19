@@ -21,14 +21,14 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     return initialList;
   });
 
-  // Sync whenever URL changes (catch hash or query updates)
-  useEffect(() => {
-    inPageNavGlobalStore.clearList();
-    setComponentsList([]);
-    const listOnUrlChange = inPageNavGlobalStore.getList();
-    console.log('[ToC] URL changed, syncing list:', router.asPath, listOnUrlChange);
-    setComponentsList(listOnUrlChange);
-  }, [router.asPath]);
+  // // Sync whenever URL changes (catch hash or query updates)
+  // useEffect(() => {
+  //   inPageNavGlobalStore.clearList();
+  //   setComponentsList([]);
+  //   const listOnUrlChange = inPageNavGlobalStore.getList();
+  //   console.log('[ToC] URL changed, syncing list:', router.asPath, listOnUrlChange);
+  //   setComponentsList(listOnUrlChange);
+  // }, [router.asPath]);
 
   // Clear list on route changes
   useEffect(() => {
