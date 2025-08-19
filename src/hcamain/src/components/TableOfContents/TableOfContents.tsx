@@ -22,7 +22,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   // Clear list when component mounts (i.e., on each page visit)
   useEffect(() => {
     const handleRouteChange = () => {
-      // console.log('[ToC] Route changed. Clearing list.');
+      console.log('[ToC] Route changed. Clearing list.');
       inPageNavGlobalStore.clearList();
     };
     router.events.on('routeChangeStart', handleRouteChange);
@@ -35,12 +35,12 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     const handleNavigableComponentsListUpdated = (
       updatedList: NavigableComponent[]
     ) => {
-      // console.log('[ToC] Received updated list', updatedList);
+      console.log('[ToC] Received updated list', updatedList);
       setComponentsList([...updatedList]);
     };
     // Sync immediately on mount
     const currentList = inPageNavGlobalStore.getList();
-    // console.log('[ToC] Initial list on mount', currentList);
+    console.log('[ToC] Initial list on mount', currentList);
     setComponentsList([...currentList]);
     inPageNavGlobalStore.on(
       'navigableComponentsListUpdated',
