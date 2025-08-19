@@ -30,6 +30,10 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   }, [router.asPath]);
 
   useEffect(() => {
+    console.log('test');
+  }, []);
+
+  useEffect(() => {
     const handleNavigableComponentsListUpdated = (
       updatedList: NavigableComponent[]
     ) => {
