@@ -30,25 +30,14 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   }, [router.asPath]);
 
   useEffect(() => {
-    const handleNavigableComponentsListUpdated = (
-      updatedList: NavigableComponent[]
-    ) => {
-      console.log('[ToC] Received updated list', updatedList);
-      setComponentsList([...updatedList]);
+    console.log('test');
+    const handleRouteChange = () => {
+      console.log('[ToC] Route and url changed. Clearing list.');
+      inPageNavGlobalStore.clearList();
     };
-    // Sync immediately on mount
-    const currentList = inPageNavGlobalStore.getList();
-    console.log('[ToC] Initial list on mount', currentList);
-    setComponentsList([...currentList]);
-    inPageNavGlobalStore.on(
-      'navigableComponentsListUpdated',
-      handleNavigableComponentsListUpdated
-    );
+    router.events.on('routeChangeStart', handleRouteChange);
     return () => {
-      inPageNavGlobalStore.off(
-        'navigableComponentsListUpdated',
-        handleNavigableComponentsListUpdated
-      );
+      router.events.off('routeChangeStart', handleRouteChange);
     };
   }, []);
 
