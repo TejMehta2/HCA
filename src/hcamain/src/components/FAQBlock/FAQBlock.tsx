@@ -187,7 +187,8 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
+        // {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
+        datasubnavtitle={linkDataAttribute || ''}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
