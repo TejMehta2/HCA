@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -12,6 +13,7 @@ import Accreditations from '@component-library/careers/Accreditations/Accreditat
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 type HCAIconFields = {
   SvgMarkup?: Field<string>;
@@ -76,6 +78,12 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
+  let linkDataAttribute = props?.params?.TableOfContentsLinkTitle;
+
+  if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
+    linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
+  }
+
   const centered =
     props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
@@ -83,6 +91,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
+      {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
     >
       <Accreditations
         columns={columns}

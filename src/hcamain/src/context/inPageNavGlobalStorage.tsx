@@ -13,7 +13,6 @@ class InPageNavGlobalStore extends EventEmitter {
   ): string {
     const navTitle =
       componentParams?.TableOfContentsLinkTitle || componentTitle;
-    console.log('navTitle', navTitle);
 
     if (!navTitle || componentParams?.ExcludeFromTableOfContents) {
       return '';
