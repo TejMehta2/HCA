@@ -19,7 +19,6 @@ class InPageNavGlobalStore extends EventEmitter {
     }
 
     const componentAnchorId = generateHtmlSafeId(navTitle);
-    console.log('componentAnchorId', componentAnchorId);
 
     const navItem: NavigableComponent = {
       TableOfContentsLinkTitle: navTitle,

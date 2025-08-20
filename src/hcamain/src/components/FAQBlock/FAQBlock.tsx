@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -18,6 +19,7 @@ import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 type CTAIconFields = {
   fields?: {
@@ -158,6 +160,13 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
+  let linkDataAttribute = props?.params?.TableOfContentsLinkTitle;
+
+  if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
+    linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
+  }
+
+
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
@@ -178,6 +187,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
+        {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
