@@ -165,6 +165,8 @@ export const Default = (props: FAQProps): JSX.Element => {
   if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
     linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
     console.log('data-attribute', generateHtmlSafeId(linkDataAttribute));
+    console.log('excluded', props?.params?.ExcludeFromTableOfContents);
+    console.log('excluded', props?.params?.ExcludeFromTableOfContents ? true : false);
   }
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
@@ -187,7 +189,8 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        datasubnavtitle={linkDataAttribute}
+        datasubnavtitle={props?.fields?.Title?.value}
+        isExcludedFromTableOfContent={props?.params?.ExcludeFromTableOfContents ? true : false}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (

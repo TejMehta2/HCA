@@ -29,26 +29,20 @@ class InPageNavGlobalStore extends EventEmitter {
       (existingItem) => existingItem.Id === navItem.Id
     );
 
-    // console.log('exists', exists);
-    // console.log('navItem exists', navItem.TableOfContentsLinkTitle);
-
     if (exists || typeof window === 'undefined') {
       return componentAnchorId;
     }
 
     this.list.push(navItem);
     this.emit('navigableComponentsListUpdated', this.list);
-    // console.log('this.list', this.list);
     return componentAnchorId;
   }
 
   getList(): NavigableComponent[] {
-    console.log('this.list', this.list);
     return this.list;
   }
 
   clearList(): void {
-    console.log('[InPageNavGlobalStore] List cleared');
     this.list = [];
     this.emit('navigableComponentsListUpdated', this.list);
   }

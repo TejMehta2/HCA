@@ -10,5 +10,6 @@ export interface AccordionsBlockProps {
   accordions: Accordions;
   ctas?: ReactNode | JSX.Element;
   id?: string;
-  datasubnavtitle?: string;
+  datasubnavtitle?: string | null;
+  isExcludedFromTableOfContent?: boolean;
 }
