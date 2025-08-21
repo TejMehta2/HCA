@@ -10,7 +10,7 @@ const AccordionsBlock = (props: AccordionsBlockProps): JSX.Element => {
   const { theme, subtitle, header, body, accordions, ctas, id, datasubnavtitle } = props;
 
   return (
-    <Themes theme={theme} id={id} data-subnav-title-test={datasubnavtitle}>
+    <Themes theme={theme} id={id} subnavLink={datasubnavtitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.content}>

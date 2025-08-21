@@ -25,6 +25,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
       data-theme={theme}
       data-theme-mode={styles?.[`mode-${theme}`]}
       data-subnav-link={subnavLink}
+      data-subnav-link-test={'test'}
     >
       {children}
     </CustomTag>
