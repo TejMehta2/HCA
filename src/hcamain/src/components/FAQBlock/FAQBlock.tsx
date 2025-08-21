@@ -161,9 +161,11 @@ export const Default = (props: FAQProps): JSX.Element => {
   );
 
   let linkDataAttribute = props?.params?.TableOfContentsLinkTitle;
+  console.log('linkDataAttribute', linkDataAttribute);
 
   if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
     linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
+    console.log('data-attribute', generateHtmlSafeId(linkDataAttribute));
   }
 
 
@@ -187,8 +189,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        // {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
-        datasubnavtitle={linkDataAttribute || ''}
+        datasubnavtitle={linkDataAttribute}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (

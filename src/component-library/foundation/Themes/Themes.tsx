@@ -10,6 +10,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
     topLevelTheme,
     id,
     collapse = true,
+    subnavLink
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
   return (
@@ -23,7 +24,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
       ].join(' ')}
       data-theme={theme}
       data-theme-mode={styles?.[`mode-${theme}`]}
-      data-subnav-title-test="test"
+      data-subnav-link={subnavLink}
     >
       {children}
     </CustomTag>
