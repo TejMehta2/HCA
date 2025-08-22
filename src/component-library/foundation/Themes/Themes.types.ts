@@ -30,5 +30,5 @@ export interface ThemesProps {
   id?: string;
   collapse?: boolean;
   subnavLink?: string | null;
-  isExcludedFromTableOfContent: boolean;
+  isExcludedFromTableOfContent?: boolean;
 }
