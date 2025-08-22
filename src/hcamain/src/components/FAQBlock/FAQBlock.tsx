@@ -167,6 +167,7 @@ export const Default = (props: FAQProps): JSX.Element => {
     console.log('data-attribute', generateHtmlSafeId(linkDataAttribute));
     console.log('excluded', props?.params?.ExcludeFromTableOfContents);
     console.log('excluded', props?.params?.ExcludeFromTableOfContents ? true : false);
+    console.log('params', props.params);
   }
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);

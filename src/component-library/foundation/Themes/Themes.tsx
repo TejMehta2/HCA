@@ -10,8 +10,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
     topLevelTheme,
     id,
     collapse = true,
-    subnavLink,
-    isExcludedFromTableOfContent
+    subnavLink
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
 
