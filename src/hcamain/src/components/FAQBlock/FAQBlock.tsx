@@ -160,11 +160,11 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  let linkDataAttribute = props?.params?.TableOfContentsLinkTitle;
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
-  if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
-    linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
-    console.log('data-attribute', generateHtmlSafeId(linkDataAttribute));
+  if (tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents) {
+    tableOfContentTitle = generateHtmlSafeId(tableOfContentTitle);
+    console.log('data-attribute', generateHtmlSafeId(tableOfContentTitle));
     console.log('excluded', props?.params?.ExcludeFromTableOfContents);
     console.log('excluded', props?.params?.ExcludeFromTableOfContents ? true : false);
     console.log('params', props.params);
@@ -190,9 +190,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        {...(linkDataAttribute && !props?.params?.ExcludeFromTableOfContents ? { datasubnavtitle: linkDataAttribute } : {})}
-        // datasubnavtitle={linkDataAttribute}
-        // isExcludedFromTableOfContent={props?.params?.ExcludeFromTableOfContents ? true : false}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { datasubnavtitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (

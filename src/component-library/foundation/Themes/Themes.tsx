@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemesProps } from './Themes.types';
 import styles from './Themes.module.scss';
+import { generateHtmlSafeId } from '../../../hcamain/src/lib/utility-functions/generateHtmlSafeId';
 
 const Themes = (props: ThemesProps): JSX.Element => {
   const {
@@ -10,11 +11,18 @@ const Themes = (props: ThemesProps): JSX.Element => {
     topLevelTheme,
     id,
     collapse = true,
-    subnavLink
+    tableOfContentTitle
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
 
-  // aici avem nevoie sa pun tagul cu titlul si cu id-ul sectiunii
+  let linkTableOfContentId;
+  let linkTableOfContentTitle;
+
+  if (tableOfContentTitle) {
+    linkTableOfContentTitle = tableOfContentTitle;
+    linkTableOfContentId = generateHtmlSafeId(tableOfContentTitle);
+  }
+
   return (
     <CustomTag
       id={id}
@@ -26,7 +34,8 @@ const Themes = (props: ThemesProps): JSX.Element => {
       ].join(' ')}
       data-theme={theme}
       data-theme-mode={styles?.[`mode-${theme}`]}
-      {...(subnavLink ? { 'data-subnav-link': subnavLink } : {})}
+      {...(tableOfContentTitle ? { 'data-subnav-link-title': linkTableOfContentTitle } : {})}
+      {...(tableOfContentTitle ? { 'data-subnav-link-id': linkTableOfContentId } : {})}
     >
       {children}
     </CustomTag>

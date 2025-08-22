@@ -29,6 +29,5 @@ export interface ThemesProps {
   topLevelTheme?: Theme;
   id?: string;
   collapse?: boolean;
-  subnavLink?: string | null;
-  isExcludedFromTableOfContent?: boolean;
+  tableOfContentTitle?: string | null;
 }
