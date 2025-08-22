@@ -190,8 +190,9 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        datasubnavtitle={props?.fields?.Title?.value}
-        isExcludedFromTableOfContent={props?.params?.ExcludeFromTableOfContents ? true : false}
+        {...(linkDataAttribute && !props?.params?.ExcludeFromTableOfContents ? { datasubnavtitle: linkDataAttribute } : {})}
+        // datasubnavtitle={linkDataAttribute}
+        // isExcludedFromTableOfContent={props?.params?.ExcludeFromTableOfContents ? true : false}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (

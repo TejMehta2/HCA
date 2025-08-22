@@ -14,7 +14,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
 
-
+  // aici avem nevoie sa pun tagul cu titlul si cu id-ul sectiunii
   return (
     <CustomTag
       id={id}
