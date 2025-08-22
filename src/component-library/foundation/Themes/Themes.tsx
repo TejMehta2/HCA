@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemesProps } from './Themes.types';
 import styles from './Themes.module.scss';
-import { generateHtmlSafeId } from '../../../hcamain/src/lib/utility-functions/generateHtmlSafeId';
+import { generateHtmlSafeId } from '../../utility-functions/index';
 
 const Themes = (props: ThemesProps): JSX.Element => {
   const {
