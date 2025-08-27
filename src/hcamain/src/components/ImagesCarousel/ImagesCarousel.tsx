@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';

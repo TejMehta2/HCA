@@ -19,7 +19,6 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import Themes from 'temp/component-library/foundation/Themes/Themes';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 interface PagesFields {
   abstractTitle?: { value?: string };
   abstractText?: { value?: string };

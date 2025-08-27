@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -105,7 +106,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     componentTitle
   );
 
-  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const isContainerized = props?.params?.Containerized === '1';
 

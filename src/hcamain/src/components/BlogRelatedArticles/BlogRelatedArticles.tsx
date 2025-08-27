@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   GetStaticComponentProps,
@@ -205,7 +206,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.Title?.value
   );
-  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href

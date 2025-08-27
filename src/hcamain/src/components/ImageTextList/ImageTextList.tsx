@@ -13,7 +13,6 @@ import Accreditations from '@component-library/careers/Accreditations/Accreditat
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 type HCAIconFields = {
   SvgMarkup?: Field<string>;
