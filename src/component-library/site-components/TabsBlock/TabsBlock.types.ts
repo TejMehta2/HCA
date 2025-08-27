@@ -13,4 +13,5 @@ export interface TabsBlockProps {
   title?: JSX.Element;
   tabsContent?: TabsContent[];
   id?: string;
+  tableOfContentTitle?: string;
 }

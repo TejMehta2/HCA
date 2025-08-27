@@ -7,4 +7,5 @@ export interface CardDoctorLayoutProps {
   cta: JSX.Element;
   theme: Theme;
   id?: string;
+  tableOfContentTitle?: string;
 }

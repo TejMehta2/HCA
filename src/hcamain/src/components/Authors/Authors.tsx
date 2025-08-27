@@ -105,6 +105,8 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     componentTitle
   );
 
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const isContainerized = props?.params?.Containerized === '1';
 
   if (isContainerized) {
@@ -120,6 +122,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       {props?.fields?.Title && (
         <Container marginBottom="spacing-4">

@@ -6,7 +6,7 @@ import { NextArrow, PrevArrow } from '../CarouselCards/CustomArrows';
 import Slider from '@ant-design/react-slick';
 
 const CarouselContent = (props: CarouselContentProps): JSX.Element => {
-  const { slides, theme, id } = props;
+  const { slides, theme, id, tableOfContentTitle } = props;
 
   const renderedSlides = slides.map((slide, index) => {
     /* Fragment is needed to get around a bug with react-slick. 
@@ -36,7 +36,7 @@ const CarouselContent = (props: CarouselContentProps): JSX.Element => {
   };
 
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div>

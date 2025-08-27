@@ -18,11 +18,12 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     doctify,
     children,
     id,
+    tableOfContentTitle,
     imageKeepAspectRatio = false,
     theme = 'A-HCA-White',
   } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div
         className={[
           styles['intro-block'],

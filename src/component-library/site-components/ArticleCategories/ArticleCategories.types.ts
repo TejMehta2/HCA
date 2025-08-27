@@ -5,4 +5,5 @@ export interface ArticleCategoriesProps {
   title: JSX.Element;
   categories?: JSX.Element[];
   id?: string;
+  tableOfContentTitle?: string;
 }

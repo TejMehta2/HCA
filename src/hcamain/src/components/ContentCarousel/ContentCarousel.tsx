@@ -50,11 +50,13 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <>
       <CarouselContent
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         slides={
           props.fields?.Cards?.map((cards) => ({

@@ -55,6 +55,7 @@ const IntegratedFixedPricedPackage = (
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -63,6 +64,7 @@ const IntegratedFixedPricedPackage = (
     <>
       <ImageAndTextBlock
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={props.imageAlignment}
         length="short"

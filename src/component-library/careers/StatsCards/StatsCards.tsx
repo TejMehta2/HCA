@@ -12,6 +12,7 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
     subheader,
     bodyCopy,
     stats,
+    tableOfContentTitle
   } = props;
 
   const [started, setStarted] = useState(false);
@@ -108,7 +109,7 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   }, [handleScroll, statsRef, isReducedMotion]);
 
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.text} data-animate="xs">

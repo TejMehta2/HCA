@@ -85,10 +85,12 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <CarouselCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -184,10 +186,12 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <SideScrollingCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         props.fields?.data?.item?.cTALink?.jsonValue ? (

@@ -66,6 +66,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const contactListItems: ContactItem[] = [];
 
@@ -110,6 +111,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"

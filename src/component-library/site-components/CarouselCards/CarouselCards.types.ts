@@ -9,4 +9,5 @@ export interface CarouselCardsProps {
   children?: JSX.Element[];
   bodyCopy?: JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

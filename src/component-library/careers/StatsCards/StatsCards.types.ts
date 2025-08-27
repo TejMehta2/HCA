@@ -13,4 +13,5 @@ export interface StatsCardsProps {
   header: ReactNode | JSX.Element;
   bodyCopy: ReactNode | JSX.Element;
   stats: StatProps[];
+  tableOfContentTitle?: string;
 }

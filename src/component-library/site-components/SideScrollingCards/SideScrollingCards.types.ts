@@ -6,4 +6,5 @@ export interface SideScrollingCardsProps {
   link: JSX.Element | undefined;
   children: JSX.Element | ReactNode;
   id?: string;
+  tableOfContentTitle?: string;
 }

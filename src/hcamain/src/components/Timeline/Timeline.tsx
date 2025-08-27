@@ -97,12 +97,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-
-  let linkDataAttribute = props?.params?.TableOfContentsLinkTitle;
-
-  if (linkDataAttribute && !props?.params?.ExcludeFromTableOfContents) {
-    linkDataAttribute = generateHtmlSafeId(linkDataAttribute);
-  }
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -127,9 +122,8 @@ export const Default = (props: TimelineProps): JSX.Element => {
   );
   return (
     <>
-      <Themes theme={props?.params?.Theme || 'A-HCA-White'}>
+      <Themes theme={props?.params?.Theme || 'A-HCA-White'} tableOfContentTitle={tableOfContentTitle}>
         <Timeline
-          {...(linkDataAttribute ? { datasubnavtitle: linkDataAttribute } : {})}
           id={componentAnchorId}
           subheading={
             !isExperienceEditor ||

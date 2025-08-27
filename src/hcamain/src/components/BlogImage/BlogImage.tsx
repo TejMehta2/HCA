@@ -43,6 +43,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const image = (
     props.fields?.Image
@@ -82,6 +83,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         contentVariation="image"
         imageKeepAspectRatio={keepAspectRatio}
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       >
         <figure>
           <NextJssImage

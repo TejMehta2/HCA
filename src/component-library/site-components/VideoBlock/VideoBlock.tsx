@@ -10,9 +10,10 @@ const VideoBlock = (props: VideoBlockProps): JSX.Element => {
     theme = 'A-HCA-White',
     variation = 'standard',
     id,
+    tableOfContentTitle
   } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={[styles.wrapper, styles[variation]].join(' ')}>
         <div className={styles.content}>
           <div className={styles.header}>{header}</div>

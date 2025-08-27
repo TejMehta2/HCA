@@ -10,4 +10,5 @@ export interface CarouselContentProps {
   slides: SlideProps[];
   theme: Theme;
   id?: string;
+  tableOfContentTitle?: string;
 }

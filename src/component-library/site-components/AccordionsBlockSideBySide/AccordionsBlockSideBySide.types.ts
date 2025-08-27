@@ -10,4 +10,5 @@ export interface AccordionsBlockSideBySideProps {
   accordions: Accordions;
   ctas?: ReactNode | JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

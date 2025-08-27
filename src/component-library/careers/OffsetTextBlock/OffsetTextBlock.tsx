@@ -10,10 +10,11 @@ const OffsetTextBlock = (props: OffsetTextBlockProps): JSX.Element => {
     title,
     bodyCopy,
     ctas,
+    tableOfContentTitle,
     id,
   } = props;
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper} id={id}>
         <div className={styles.container}>
           {subheading && (

@@ -41,12 +41,15 @@ export const Default = (props: BlogTextProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const isContainerized = props?.params?.Containerized === '1';
 
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      >
         <JssRichText field={props.fields?.Text} />
       </RichText>
     );
@@ -56,6 +59,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <RichText>
         <JssRichText field={props.fields?.Text} />

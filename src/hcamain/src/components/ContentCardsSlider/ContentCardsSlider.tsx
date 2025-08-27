@@ -90,6 +90,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
@@ -116,6 +117,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -158,7 +160,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             image={
               showImage ? (
                 cards.abstractImage?.jsonValue.value?.src &&
-                cards.abstractImage?.jsonValue.value?.class !==
+                  cards.abstractImage?.jsonValue.value?.class !==
                   'scEmptyImage' ? (
                   <NextJssImage
                     field={cards.abstractImage.jsonValue}

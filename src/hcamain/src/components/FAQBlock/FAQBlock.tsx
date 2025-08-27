@@ -19,7 +19,6 @@ import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 type CTAIconFields = {
   fields?: {
@@ -160,15 +159,7 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
-
-  if (tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents) {
-    tableOfContentTitle = generateHtmlSafeId(tableOfContentTitle);
-    console.log('data-attribute', generateHtmlSafeId(tableOfContentTitle));
-    console.log('excluded', props?.params?.ExcludeFromTableOfContents);
-    console.log('excluded', props?.params?.ExcludeFromTableOfContents ? true : false);
-    console.log('params', props.params);
-  }
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
@@ -266,6 +257,8 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const faqSchema = getSchema(props.fields?.Questions);
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -281,6 +274,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={

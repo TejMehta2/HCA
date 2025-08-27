@@ -6,9 +6,9 @@ import CardBlockCarouselDesktop from './CardBlockCarouselDesktop';
 import CardBlockCarouselMobile from './CardBlockCarouselMobile';
 
 const CardBlockCarousel = (props: CardBlockCarouselProps): JSX.Element => {
-  const { theme = 'J-HCA-Tangerine-20', id, subtitle, title, bodyText } = props;
+  const { theme = 'J-HCA-Tangerine-20', id, subtitle, title, bodyText, tableOfContentTitle } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.intro} data-animate="s">

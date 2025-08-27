@@ -13,9 +13,10 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
     gapSize = 'large',
     cta,
     id,
+    tableOfContentTitle,
   } = props;
   return (
-    <Themes id={id} theme={theme}>
+    <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.block}>
           <div

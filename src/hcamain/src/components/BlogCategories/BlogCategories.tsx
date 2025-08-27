@@ -54,10 +54,12 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     props?.params,
     componentTitle
   );
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <ArticleCategories
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text

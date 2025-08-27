@@ -8,4 +8,5 @@ export interface CTABlockProps {
   ctas?: ReactNode | JSX.Element;
   theme: Theme;
   id?: string;
+  tableOfContentTitle?: string;
 }

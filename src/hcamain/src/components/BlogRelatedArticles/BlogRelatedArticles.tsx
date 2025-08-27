@@ -205,6 +205,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.Title?.value
   );
+  let tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
@@ -217,6 +218,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <Text
           tag={headingTag}
@@ -299,7 +301,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     .map(([key, nestedValue]) => [
       key,
       nestedValue?.value &&
-        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+      nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
     ]);
 
   const contextSearchIdParams = Object.entries(

@@ -30,9 +30,10 @@ const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
     cta,
     body,
     theme = 'A-HCA-White',
+    tableOfContentTitle
   } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <AdvancedBlockHeader

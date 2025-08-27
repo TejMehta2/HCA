@@ -9,4 +9,5 @@ export interface TextBlockProps {
   ctas?: ReactNode | JSX.Element;
   contentVariation?: 'centered';
   id?: string;
+  tableOfContentTitle?: string;
 }

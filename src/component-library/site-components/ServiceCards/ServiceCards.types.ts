@@ -10,4 +10,5 @@ export interface ServiceCardsProps {
   id?: string;
   theme?: Theme;
   contentVariation?: 'service' | 'role';
+  tableOfContentTitle?: string;
 }

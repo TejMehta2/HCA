@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CarouselImagesProps } from './CarouselImages.types';
 import styles from './CarouselImages.module.scss';
+import { generateHtmlSafeId } from '../../utility-functions';
 
 const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
-  const { images, contentVariation, id } = props;
+  const { images, contentVariation, id, tableOfContentTitle } = props;
   const [isDragging, setIsDragging] = useState(false);
   const [startDragClientX, setStartDragClientX] = useState<number>(0);
   const [translateX, setTranslateX] = useState<number>(0);
@@ -73,9 +74,19 @@ const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
     wrapperRef.current.scrollLeft = translateX - walk;
   };
 
+  let linkTableOfContentId;
+  let linkTableOfContentTitle;
+
+  if (tableOfContentTitle) {
+    linkTableOfContentTitle = tableOfContentTitle;
+    linkTableOfContentId = generateHtmlSafeId(tableOfContentTitle);
+  }
+
   return (
     <div
       id={id}
+      {...(tableOfContentTitle ? { 'data-subnav-link-title': linkTableOfContentTitle } : {})}
+      {...(tableOfContentTitle ? { 'data-subnav-link-id': linkTableOfContentId } : {})}
       className={[
         styles.wrapper,
         contentVariation === 'equalSize' && styles['equal-size'],

@@ -25,11 +25,13 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <div className="vacancy-rte">
         <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>

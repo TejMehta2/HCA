@@ -1,6 +1,7 @@
 import React from 'react';
 import { RichTextProps } from './RichText.types';
 import styles from './RichText.module.scss';
+import { generateHtmlSafeId } from '../../utility-functions/index';
 
 // The applyCssModules can be abstracted to a utility folder if the need appears in other components
 // Here it is essentially a way to allow us to parse a list of CMSable class strings based on bootstrap grids and use them as CSS grids via our CSS module instead
@@ -28,11 +29,21 @@ const applyCssModules = (
 };
 
 export const RichTextElement = (props: RichTextProps) => {
-  const { additionalStyles = '', children, id } = props;
+  const { additionalStyles = '', children, id, tableOfContentTitle } = props;
+
+  let linkTableOfContentId;
+  let linkTableOfContentTitle;
+
+  if (tableOfContentTitle) {
+    linkTableOfContentTitle = tableOfContentTitle;
+    linkTableOfContentId = generateHtmlSafeId(tableOfContentTitle);
+  }
   return (
     <div
       id={id}
       className={[applyCssModules(additionalStyles, styles)].join(' ')}
+      {...(tableOfContentTitle ? { 'data-subnav-link-title': linkTableOfContentTitle } : {})}
+      {...(tableOfContentTitle ? { 'data-subnav-link-id': linkTableOfContentId } : {})}
     >
       {children}
     </div>

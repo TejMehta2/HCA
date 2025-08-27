@@ -4,9 +4,9 @@ import styles from './CTABlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const CTABlock = (props: CTABlockProps): JSX.Element => {
-  const { header, subheader, children, ctas, theme, id } = props;
+  const { header, subheader, children, ctas, theme, id, tableOfContentTitle } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
           <div className={styles['text-column']}>

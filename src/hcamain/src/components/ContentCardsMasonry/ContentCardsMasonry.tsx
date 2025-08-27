@@ -105,6 +105,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const layoutPattern = getMasonryCardsLayoutPattern(
     props.fields?.data?.item?.pages?.PagesList?.length || 0
@@ -136,6 +137,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     <MasonryCards
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <>
           <Text
@@ -238,7 +240,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
                 }
                 image={
                   card.abstractImage?.jsonValue.value?.src &&
-                  card.abstractImage?.jsonValue.value?.class !==
+                    card.abstractImage?.jsonValue.value?.class !==
                     'scEmptyImage' ? (
                     <Image
                       src={card.abstractImage.jsonValue?.value?.src || ''}

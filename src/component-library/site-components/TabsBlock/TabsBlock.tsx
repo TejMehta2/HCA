@@ -7,7 +7,7 @@ import Slider, { Settings } from '@ant-design/react-slick';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 
 const TabsBlock = (props: TabsBlockProps): JSX.Element => {
-  const { theme = 'D-HCA-Teal', title, tabsContent = [], id } = props;
+  const { theme = 'D-HCA-Teal', title, tabsContent = [], id, tableOfContentTitle } = props;
   const sliderRef = useRef<Slider>(null);
 
   /* Carousel settings */
@@ -58,7 +58,7 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
   );
 
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div
         className={styles.wrapper}
         data-navigation-type="inpageNavigationClick"

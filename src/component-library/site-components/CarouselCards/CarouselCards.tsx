@@ -16,6 +16,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     subtitle,
     id,
     cardsToDisplay = 3,
+    tableOfContentTitle
   } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -77,7 +78,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
   };
 
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles['wrapper']} id={id}>
         <div className={styles['container']}>
           {title && (

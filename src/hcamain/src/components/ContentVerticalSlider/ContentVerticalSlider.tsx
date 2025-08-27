@@ -89,6 +89,7 @@ export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -99,6 +100,7 @@ export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
     <DynamicServiceCards
       theme={props.params?.Theme || 'I-HCA-Goldenrod'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       contentVariation={'role'}
       title={
         (props.fields?.Title || isExperienceEditor) && (

@@ -5,4 +5,5 @@ export interface RichTextProps {
   additionalStyles?: string | string[];
   id?: string;
   imageKeepAspectRatio?: boolean;
+  tableOfContentTitle?: string;
 }
