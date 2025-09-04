@@ -7,13 +7,10 @@ const GetLDBFirstAppointmentDataAll = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
-  if(!req)
-  {
+  if (!req) {
     console.error('error - no request found for GetLDBFirstAppointmentDataAll');
   }
-  const response = await getLDBFirstAppointmentDatas(
-    [], ''
-  ); // no params - get all
+  const response = await getLDBFirstAppointmentDatas([], ''); // no params - get all
   res.appendHeader('Cache-Control', 'max-age=3600');
   res.appendHeader('CDN-Cache-Control', 'max-age=3600');
   res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
