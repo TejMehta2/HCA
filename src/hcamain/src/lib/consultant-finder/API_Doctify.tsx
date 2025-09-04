@@ -88,7 +88,7 @@ export async function getSpecialistProfileData(
         // https://hcauk-digital.atlassian.net/browse/HED-1551
         // fallback if consultant is not a GMC member, but they are online consultant booking
         if (
-          docitfyData.isLiveDiaryConsultant &&
+          //docitfyData.isLiveDiaryConsultant && - HED-2174
           (!gmcNumber || gmcNumber.length === 0) &&
           docitfyData?.registrationBodies?.length > 0
         ) {
