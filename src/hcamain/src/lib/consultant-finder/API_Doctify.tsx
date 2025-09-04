@@ -357,11 +357,11 @@ export async function doctifyGetAllConsultantSlugs(): Promise<
     'https://api.doctify.com/api/hca/search';
   let consIdx = 0;
   let maxConsultants = 5000;
-  const pageSize = 200;
+  const pageSize = 150;
   let stop = false;
   let recs: IDoctifyConsultantRecord[] = [];
 
-  for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
+  for (consIdx = 0; consIdx < maxConsultants && !stop; ) {
     const consultantProfilesURL = `${baseURL}?sortType=rating&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
     try {
       // need to cache these requests so we don't make hundreds of them
@@ -374,6 +374,7 @@ export async function doctifyGetAllConsultantSlugs(): Promise<
       if (res.ok) {
         const consultantJSON = await res.json();
         maxConsultants = consultantJSON.total;
+        //console.log('len:' + consultantJSON.rows.length);
         consultantJSON.rows.forEach((entry: any) => {
           // gmcNumber/professional id
           let proId = entry?.registrationBodies.filter(
@@ -409,6 +410,9 @@ export async function doctifyGetAllConsultantSlugs(): Promise<
           };
           recs = recs.concat(record);
         });
+        consIdx += consultantJSON.rows.length;
+      } else {
+        stop = true;
       }
     } catch (e) {
       console.warn(

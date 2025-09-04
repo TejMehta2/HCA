@@ -100,9 +100,9 @@ async function loadExcel(
             isGP: false,
           };
           existingConsultants.push(newRec);
-          /*notify?.log(
-            `Appending slug ${newCount} ${rec?.Key} from original Excel`
-          );*/
+          notify?.log(
+            `Appending slug ${cnt} ${rec?.Key} from original Excel`
+          );
         });
       }
     } catch (error) {
@@ -146,10 +146,13 @@ const longRunning = async (notify: Notify) => {
         for (let consIdx = 0; consIdx < doctifyRecords.length; consIdx++) {
           const slug = doctifyRecords[consIdx].slug;
           const index = records.findIndex((rec: any) => rec.slug == slug);
-
+          notify?.log(
+            `Doctify slug ${consIdx}: ${slug} index: ${index}`
+          );
           // not in original spreadsheet
           if (index == -1) {
             records.push(doctifyRecords[consIdx]);
+            notify?.log(`Not in original spreadsheet...${JSON.stringify(doctifyRecords[consIdx])}`);
           } else {
             // copy flags from original spreadsheet
             doctifyRecords[consIdx].noReview = records[index].noReview;
@@ -158,6 +161,12 @@ const longRunning = async (notify: Notify) => {
             doctifyRecords[consIdx].refreshDate = new Date();
             // write the doctify version back to record
             records[index] = doctifyRecords[consIdx];
+            if(doctifyRecords[consIdx].slug=='miss-jenny-lo')
+            {
+              notify?.log(
+                `GOT ${JSON.stringify(records[index])}`
+              );
+            }
           }
         }
 
@@ -214,7 +223,8 @@ const longRunning = async (notify: Notify) => {
             //notify?.log(`sql - ${query}`);
             const values = [recArray];
             const result1 = await sql.query(query1, values);
-            notify?.log(`ocbconsultants query result - result: ${result1}`);
+            notify?.log(`truncate ocbconsultants query result - result: ${result1}`);
+            notify?.log(`attempting merge into main table...`);
             const query2 = `
               MERGE INTO consultants c
                     USING 
