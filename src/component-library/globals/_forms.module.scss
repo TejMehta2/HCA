@@ -2,7 +2,6 @@
 @use '../utilities/index.module' as *;
 
 /* stylelint-disable selector-class-pattern, no-descending-specificity */
-
 byoc-sitecore-form,
 [data-byoc-sitecore-form] {
   * {
@@ -14,7 +13,8 @@ byoc-sitecore-form,
     &:not(.submit-button,
       .submit-button > *,
       .global-input-error-message,
-      .iti__arrow, p) {
+      .iti__arrow,
+      p) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
