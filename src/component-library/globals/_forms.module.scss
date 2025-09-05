@@ -9,11 +9,12 @@ byoc-sitecore-form,
     font-family: $font-family !important;
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
+    color: var(--text);
 
     &:not(.submit-button,
       .submit-button > *,
       .global-input-error-message,
-      .iti__arrow) {
+      .iti__arrow, p) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
