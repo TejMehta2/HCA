@@ -12,14 +12,10 @@ byoc-sitecore-form,
     &:not(.submit-button,
       .submit-button > *,
       .global-input-error-message,
-      .iti__arrow, span) {
+      .iti__arrow, p > span) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
-  }
-
-  span {
-    color: var(--text);
   }
 
   margin-top: $spacing-8;
