@@ -191,32 +191,37 @@ export default async function handler(
           }
         }
         break;
-      case 'accesscode': // this is a request for access code content
+
+      case 'accesscodes': // this is a request for access code content
         {
-          if (req?.body && req.body.accessCode) {
-            const accessCodeRequested = req.body.accessCode;
-            //console.log('accessCodeRequested', accessCodeRequested);
-            const accessCodesData = await getRecurseAppItemsFromGraphQL(
-              accessCodesRootPath,
-              lang,
-              platform
-            );
+          if (req?.method === 'POST') {
+            if (req?.body && req.body.accessCode) {
+              const accessCodeRequested = req.body.accessCode;
+              //console.log('accessCodeRequested', accessCodeRequested);
+              const accessCodesData = await getRecurseAppItemsFromGraphQL(
+                accessCodesRootPath,
+                lang,
+                platform
+              );
 
-            if (accessCodesData?.codes) {
-              const accessCodesArray = Object.entries(accessCodesData.codes);
-              accessCodesArray.forEach((accessCode: Array<unknown>) => {
-                if (Object.values(accessCode).length > 1) {
-                  const entry: IAccessCodeProps = Object.values(
-                    accessCode
-                  )[1] as IAccessCodeProps;
+              if (accessCodesData?.codes) {
+                const accessCodesArray = Object.entries(accessCodesData.codes);
+                accessCodesArray.forEach((accessCode: Array<unknown>) => {
+                  if (Object.values(accessCode).length > 1) {
+                    const entry: IAccessCodeProps = Object.values(
+                      accessCode
+                    )[1] as IAccessCodeProps;
 
-                  if (accessCodeRequested === entry.accessCode) {
-                    //console.log('accessCode', entry.accessCode);
-                    output = entry; // return data on match of access code
+                    if (accessCodeRequested === entry.accessCode) {
+                      //console.log('accessCode', entry.accessCode);
+                      output = { codes: [entry] }; // return data on match of access code
+                    }
                   }
-                }
-              });
+                });
+              }
             }
+          } else {
+            output = '{ "error": "invalid method" }';
           }
         }
         break;
