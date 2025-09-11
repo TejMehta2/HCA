@@ -168,7 +168,13 @@ const longRunning = async (notify: Notify) => {
         // TODO CHECK DOCTIFY DATA INTEGRITY
 
         notify?.log(`Getting Dynamics records ...`);
-        const C2Response = await getLDBFirstAppointmentDatas([], '');
+        const C2Response = await getLDBFirstAppointmentDatas(
+          [],
+          '',
+          undefined,
+          undefined,
+          'includeLocations=true'
+        );
 
         notify.log('Got C2 Response');
 
@@ -176,6 +182,7 @@ const longRunning = async (notify: Notify) => {
           notify?.log(`Loaded ${C2Response?.length} CRM consultant records`);
           for (let c2RecIdx = 0; c2RecIdx < C2Response.length; c2RecIdx++) {
             const c2Rec = C2Response[c2RecIdx];
+            notify.log(JSON.stringify(c2Rec));
             const index = records.findIndex(
               (rec: any) => rec.proId == c2Rec?.professionalRegistrationNumber
             );
