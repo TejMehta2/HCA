@@ -220,13 +220,19 @@ const longRunning = async (notify: Notify) => {
 
             const recArray = { arr: records };
             notify?.log(`truncate ocbconsultants`);
-            await sql.query('truncate table ocbconsultants');
+            await sql.query(`truncate table ocbconsultants`);
             const query1 = `insert into ocbConsultants (updated, crmRecords) values(current_timestamp, $1);`;
             //notify?.log(`sql - ${query}`);
             const values = [recArray];
             const result1 = await sql.query(query1, values);
             notify?.log(
-              `truncate ocbconsultants query result - result: ${result1}`
+              `insert ocbconsultants query result - result: ${result1}`
+            );
+            notify?.log(
+              `attempting delete of temp consultants in main table...`
+            );
+            await sql.query(
+              `delete from consultants where professionalidtype like 'temp'`
             );
             notify?.log(`attempting merge into main table...`);
             const query2 = `
