@@ -64,6 +64,36 @@
                         "scope": "ignored"
                      }
                 ]
+            },
+            {
+                "name": "HCA Project Rules Elements",
+                "path": "/sitecore/system/Settings/Rules/Definitions/Elements",
+                "rules": [
+                    {
+                        "path": "/HCA *",
+                        "scope": "ItemAndDescendants",
+                        "allowedPushOperations": "CreateUpdateAndDelete"
+                    },                 
+                    {
+                        "path": "*",
+                        "scope": "ignored"
+                     }
+                ]
+            },
+            {
+                "name": "HCA Project Rules Tags",
+                "path": "/sitecore/system/Settings/Rules/Definitions/Tags",
+                "rules": [                   
+                    {
+                        "path": "/HCA*",
+                        "scope": "ItemAndDescendants",
+                        "allowedPushOperations": "CreateUpdateAndDelete"
+                    },
+                    {
+                        "path": "*",
+                        "scope": "ignored"
+                     }
+                ]
             }
         ]
     },

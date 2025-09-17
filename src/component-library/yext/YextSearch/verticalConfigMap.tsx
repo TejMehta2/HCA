@@ -59,13 +59,9 @@ export const verticalConfigMap: VerticalConfigMap<{
     ),
   },
   treatments: {
-    label: 'Treatments',
-    SectionComponent: (props) => (
-      <YextUniversalSection
-        results={props.results}
-        CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
-        title="Treatments"
-      />
+    label: '',
+    SectionComponent: () => (
+      null
     ),
   },
   specialties: {

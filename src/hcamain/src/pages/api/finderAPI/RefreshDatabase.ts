@@ -100,9 +100,7 @@ async function loadExcel(
             isGP: false,
           };
           existingConsultants.push(newRec);
-          /*notify?.log(
-            `Appending slug ${newCount} ${rec?.Key} from original Excel`
-          );*/
+          notify?.log(`Appending slug ${cnt} ${rec?.Key} from original Excel`);
         });
       }
     } catch (error) {
@@ -146,10 +144,13 @@ const longRunning = async (notify: Notify) => {
         for (let consIdx = 0; consIdx < doctifyRecords.length; consIdx++) {
           const slug = doctifyRecords[consIdx].slug;
           const index = records.findIndex((rec: any) => rec.slug == slug);
-
+          notify?.log(`Doctify slug ${consIdx}: ${slug} index: ${index}`);
           // not in original spreadsheet
           if (index == -1) {
             records.push(doctifyRecords[consIdx]);
+            notify?.log(
+              `Not in original spreadsheet...${JSON.stringify(doctifyRecords[consIdx])}`
+            );
           } else {
             // copy flags from original spreadsheet
             doctifyRecords[consIdx].noReview = records[index].noReview;
@@ -158,13 +159,22 @@ const longRunning = async (notify: Notify) => {
             doctifyRecords[consIdx].refreshDate = new Date();
             // write the doctify version back to record
             records[index] = doctifyRecords[consIdx];
+            if (doctifyRecords[consIdx].slug == 'miss-jenny-lo') {
+              notify?.log(`GOT ${JSON.stringify(records[index])}`);
+            }
           }
         }
 
         // TODO CHECK DOCTIFY DATA INTEGRITY
 
         notify?.log(`Getting Dynamics records ...`);
-        const C2Response = await getLDBFirstAppointmentDatas([], '');
+        const C2Response = await getLDBFirstAppointmentDatas(
+          [],
+          '',
+          undefined,
+          undefined,
+          'includeLocations=true'
+        );
 
         notify.log('Got C2 Response');
 
@@ -172,6 +182,7 @@ const longRunning = async (notify: Notify) => {
           notify?.log(`Loaded ${C2Response?.length} CRM consultant records`);
           for (let c2RecIdx = 0; c2RecIdx < C2Response.length; c2RecIdx++) {
             const c2Rec = C2Response[c2RecIdx];
+            notify.log(JSON.stringify(c2Rec));
             const index = records.findIndex(
               (rec: any) => rec.proId == c2Rec?.professionalRegistrationNumber
             );
@@ -209,12 +220,21 @@ const longRunning = async (notify: Notify) => {
 
             const recArray = { arr: records };
             notify?.log(`truncate ocbconsultants`);
-            await sql.query('truncate table ocbconsultants');
+            await sql.query(`truncate table ocbconsultants`);
             const query1 = `insert into ocbConsultants (updated, crmRecords) values(current_timestamp, $1);`;
             //notify?.log(`sql - ${query}`);
             const values = [recArray];
             const result1 = await sql.query(query1, values);
-            notify?.log(`ocbconsultants query result - result: ${result1}`);
+            notify?.log(
+              `insert ocbconsultants query result - result: ${result1}`
+            );
+            notify?.log(
+              `attempting delete of temp consultants in main table...`
+            );
+            await sql.query(
+              `delete from consultants where professionalidtype like 'temp'`
+            );
+            notify?.log(`attempting merge into main table...`);
             const query2 = `
               MERGE INTO consultants c
                     USING 
