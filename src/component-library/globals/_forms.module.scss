@@ -9,7 +9,7 @@ byoc-sitecore-form,
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
 
-    &:not(.submit-button) :not(.submit-button > *) :not(.global-input-error-message) :not(.iti__arrow) :not(p span) :not(.global-input-error-message.form-input-error-message) {
+    &:not(.submit-button) :not(.submit-button > *) :not(.global-input-error-message) :not(.iti__arrow) :not(p span) :not(.global-input-error-message) :not(.form-input-error-message) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
