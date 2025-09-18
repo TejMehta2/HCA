@@ -35,6 +35,10 @@ byoc-sitecore-form,
     @include responsive-grid-span($breakpoint-l: 8);
   }
 
+  .mdi-alert-circle::before {
+    color: #f03434;
+  }
+
   //  phone field overrides
   .iti__selected-country {
     background-color: transparent !important;
