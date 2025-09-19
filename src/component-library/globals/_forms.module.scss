@@ -53,6 +53,18 @@ byoc-sitecore-form,
     display: none;
   }
 
+  /* hide number field arrows For Chrome, Safari, Edge, and Opera */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* For Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   // Hide/show asterisk for required fields (copied from Sitecore formbuilder inline styles)
   .shared-input-field label .form-field-label .form-field-required,
   .checkbox-field .form-field-label .form-field-required,
