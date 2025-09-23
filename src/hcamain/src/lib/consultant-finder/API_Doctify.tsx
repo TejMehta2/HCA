@@ -362,19 +362,19 @@ export async function doctifyGetAllConsultantSlugs(): Promise<
   let recs: IDoctifyConsultantRecord[] = [];
 
   for (consIdx = 0; consIdx < maxConsultants && !stop; ) {
-    const consultantProfilesURL = `${baseURL}?sortType=rating&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    const consultantProfilesURL = `${baseURL}?sortType=relevance&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    //console.log('link:' + consultantProfilesURL);
     try {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(consultantProfilesURL, {
         next: {
-          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 120,
         },
       });
       if (res.ok) {
         const consultantJSON = await res.json();
         maxConsultants = consultantJSON.total;
-        //console.log('len:' + consultantJSON.rows.length);
         consultantJSON.rows.forEach((entry: any) => {
           // gmcNumber/professional id
           let proId = entry?.registrationBodies.filter(
@@ -413,6 +413,7 @@ export async function doctifyGetAllConsultantSlugs(): Promise<
         consIdx += consultantJSON.rows.length;
       } else {
         stop = true;
+        console.log('end of Doctify scan: ', JSON.stringify(res));
       }
     } catch (e) {
       console.warn(
