@@ -77,12 +77,6 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   }
 
   let availabilityString;
-  // props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.map(
-  //   (contactUnit: ContactUnitFields) => {
-  //     availabilityString = OpeningHours(contactUnit, 'linebreaks');
-  //   }
-  // );
-
   // Compute opening hours only if children.results is not empty
   props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.forEach(
     (contactUnit: ContactUnitFields) => {
