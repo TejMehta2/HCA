@@ -26,21 +26,26 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
     contentVariation,
     subtitle,
     image,
+    subtitlePlacement
   } = props;
 
   return (
     <div className={styles.wrapper}>
       {image && <div className={styles.image}>{image}</div>}
       <div
-        className={`${styles.inner} ${
-          contentVariation ? styles[contentVariation] : ''
-        } `}
+        className={`${styles.inner} ${contentVariation ? styles[contentVariation] : ''
+          } `}
       >
         <div className={styles.grid}>
           <div className={styles.half}>
             {metatitle && <div className={styles.metatitle}>{metatitle}</div>}
+            {subtitlePlacement === 'before' && subtitle && (
+              <div className={styles.subtitle}>{subtitle}</div>
+            )}
             <div className={styles.heading}>{heading}</div>
-            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
+            {subtitlePlacement === 'after' && subtitle && (
+              <div className={styles.subtitle}>{subtitle}</div>
+            )}
             {description && (
               <div className={styles['body-copy']}>{description}</div>
             )}
