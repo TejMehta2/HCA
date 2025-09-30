@@ -22,11 +22,6 @@ interface Notify {
   close: () => void;
 }
 
-// Utility
-function uniqByFilter<T>(array: T[]) {
-  return array.filter((value, index) => array.indexOf(value) === index);
-}
-
 // Excel
 export async function readExcelWorkbook(
   xlUrl: string
@@ -132,10 +127,8 @@ const longRunning = async (notify: Notify) => {
       notify?.log(`Loaded ${records?.length} Excel consultant records`);
       // load up the basic record data from Doctify
       notify?.log(`Loading consultant data from Doctify...`);
-      const doctifyRecords: IConsultantRecord[] = uniqByFilter(
-        (await doctifyGetAllConsultantSlugs()) as IConsultantRecord[]
-      ); // strange Doctify calls can sometimes give duplicate keys back
-
+      const doctifyRecords: IConsultantRecord[] =
+        (await doctifyGetAllConsultantSlugs()) as IConsultantRecord[];
       if (doctifyRecords?.length > 2500) {
         notify?.log(
           `Loaded ${doctifyRecords?.length} Doctify consultant records`
