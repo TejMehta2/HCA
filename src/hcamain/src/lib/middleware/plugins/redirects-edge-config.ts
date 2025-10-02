@@ -33,7 +33,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
 
       debug.redirects(`HCA Redirects (EC): resolved siteName=${siteName}`);
 
-      if(!siteName)
+      if (!siteName)
         return response;
 
       const key = this.buildKey(url, siteName);
@@ -62,7 +62,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
 
         debug.redirects(`HCA Redirects (EC): redirect to=${destUrl} (${code})`);
 
-        const r = NextResponse.redirect(destUrl, code);    
+        const r = NextResponse.redirect(destUrl, code);
         return r;
       }
     } catch (err) {
@@ -75,7 +75,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
   // Resolve site name: Check for 'sc_site' cookie (set by multisite middleware)
   private resolveSiteName(req: NextRequest): string | null {
     const c = req.cookies.get('sc_site')?.value;
-    if (!c) return null;    
+    if (!c) return null;
     const v = c.trim().replace(/^"+|"+$/g, '');
     return v || null;
   }
@@ -88,7 +88,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
    * - Prefix with "red_<siteName>_"
    * - Enforce 256-char limit; return empty string if exceeded
    */
-  private buildKey(url: URL, siteName: string): string {   
+  private buildKey(url: URL, siteName: string): string {
     let path = url.pathname;
     if (path.length > 1 && path.endsWith('/')) {
       path = path.slice(0, -1);
@@ -101,11 +101,11 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
       .replaceAll(';', '__sq__')
       .replaceAll('?', '__qm__')
       .replaceAll('=', '__eq__');
-  
+
     keyBody = keyBody.replace(/[^A-Za-z0-9_-]/g, '_');
 
     const key = `red_${siteName}_${keyBody}`;
-    if (key.length > 256) { 
+    if (key.length > 256) {
       debug.redirects(`HCA Redirects (EC): redirect key too long key=${key}`);
       return '';
     }
@@ -122,7 +122,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
     const destParams = new URLSearchParams(destUrl.search);
     for (const [k, v] of sourceParams.entries()) {
       if (!destParams.has(k)) destParams.append(k, v);
-    }    
+    }
     const s = destParams.toString();
     destUrl.search = s;
   }
