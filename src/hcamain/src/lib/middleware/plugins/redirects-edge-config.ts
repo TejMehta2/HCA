@@ -6,7 +6,7 @@ import { get } from '@vercel/edge-config';
 
 type RedirectValue = {
   to: string;
-  c: number;    // redirect status code (301/302)
+  c: number; // redirect status code (301/302)
   pq?: boolean; // preserve querystring; if false or null -> do NOT merge QS
 };
 
