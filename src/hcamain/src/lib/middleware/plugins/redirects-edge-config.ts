@@ -33,8 +33,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
 
       debug.redirects(`HCA Redirects (EC): resolved siteName=${siteName}`);
 
-      if (!siteName)
-        return response;
+      if (!siteName) return response;
 
       const key = this.buildKey(url, siteName);
       if (!key) {
