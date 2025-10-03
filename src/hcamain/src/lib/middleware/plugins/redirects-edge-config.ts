@@ -92,8 +92,9 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
     if (path.length > 1 && path.endsWith('/')) {
       path = path.slice(0, -1);
     }
-    
-    let keyBody = path.toLowerCase()
+
+    let keyBody = path
+      .toLowerCase()
       .replaceAll('/', '___')
       .replaceAll('%', '__pr__')
       .replaceAll(';', '__sq__')
