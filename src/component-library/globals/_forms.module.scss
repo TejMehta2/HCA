@@ -83,6 +83,12 @@ byoc-sitecore-form,
     border-color: var(--field-error-colour) !important;
   }
 
+  .email_input-component .form-input-error-message,
+  .text_input-component .form-input-error-message {
+    font-style: normal !important;
+    font-size: px-to-rem(14) !important;
+  }
+
   //  border radius is only applied by sitecore to input wrapper so when webkit autofill is
   //  applied the background colour is not respecting the border radius
   .global-input-wrapper {
