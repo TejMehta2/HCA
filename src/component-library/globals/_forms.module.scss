@@ -110,6 +110,6 @@ byoc-sitecore-form,
 
   &:has(.form-input-error-field) [data-component-type="submit_button"]::before {
     content: "Please correct the highlighted fields before submitting.";
-    color: #b00020;
+    color: #f03434;
   }
 }
