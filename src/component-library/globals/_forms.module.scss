@@ -108,8 +108,11 @@ byoc-sitecore-form,
     margin-bottom: $spacing-4;
   }
 
-  &:has(.form-input-error-field) [data-component-type="submit_button"]::before {
+  &:has(.form-input-error-field) [data-component-type="submit_button"]::after {
     content: "Please correct the highlighted fields before submitting.";
     color: #f03434;
+    display: block;
+    width: 100%;
+    margin-bottom: $spacing-4;
   }
 }
