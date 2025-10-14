@@ -51,6 +51,9 @@ interface Fields {
   CantFindBannerText: Field<string>;
   CantFindPhoneNumber: Field<string>;
   CantFindIcon: any;
+  servicesFolder: {
+    id: string;
+  };
 }
 
 type StepProps = {
@@ -97,6 +100,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
   const searchParams = useSearchParams();
 
   const paramTypeId = searchParams.get('typeId');
+  const configurationId = props.fields.servicesFolder.id;
 
   // Set params for next page
   const nextPageParams = new URLSearchParams(searchParams.toString());
@@ -131,7 +135,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
 
     const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
-    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}${extras}`;
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}&configurationid=${configurationId}${extras}`;
 
     axios
       .get(requestURL)

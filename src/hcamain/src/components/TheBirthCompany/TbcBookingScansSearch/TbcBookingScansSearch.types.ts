@@ -53,6 +53,7 @@ export interface TbcService {
 
 export interface TbcServicesFolder {
   targetItem: {
+    id: string;
     children: {
       results: TbcService[];
     };

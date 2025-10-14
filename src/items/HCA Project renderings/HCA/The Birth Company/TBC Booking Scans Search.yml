@@ -27,53 +27,12 @@ SharedFields:
           }
           servicesFolder {
             targetItem {
-              ... on TBCServicesFolder {
-                children(
-                  first: 100
-                  includeTemplateIDs: "89bdf4c5720f495baea3ef754e72b0e6"
-                ) {
-                  results {
-                    ... on TBCService {
-                      id
-                      serviceName {
-                        value
-                      }
-                      area {
-                        targetItem {
-                          ... on TBCMedicalArea {
-                            id
-                            medicalAreaName {
-                              value
-                            }
-                          }
-                        }
-                      }
-                      extras {
-                        targetItems {
-                          ... on TBCServiceExtras {
-                            id
-                            serviceExtraName {
-                              value
-                            }
-                            price {
-                              value
-                            }
-                            duration {
-                              value
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              id         
             }
           }
         }
       }
     }
-    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/The Birth Company/TBC Booking Scans Search
@@ -96,6 +55,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{15B9F17A-5B4D-4B2F-911A-027D87744F41}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "fa7119d5-17d2-4569-b2d5-ea578155f9eb"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -145,14 +107,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c9c453c5-42b4-4e9b-91bc-39e392d143a8"
+      Value: "484e9400-d52a-41e0-80dd-9e9ff95d9321"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250401T224524Z
+      Value: 20251013T185526Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
