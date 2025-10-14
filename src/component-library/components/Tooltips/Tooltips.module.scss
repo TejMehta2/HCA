@@ -25,7 +25,7 @@
 
   @include media(screen-l) {
     &:hover {
-      & ~ .content {
+      &~.content {
         opacity: 1;
       }
     }
@@ -41,8 +41,12 @@
   position: absolute;
   top: calc(100% + px-to-rem(15));
   width: max-content;
-  max-width: px-to-rem(362);
+  max-width: 50vw;
   z-index: 5;
+
+  @include media(screen-m) {
+    max-width: px-to-rem(362);
+  }
 
   @include apply-body-medium-medium;
 
