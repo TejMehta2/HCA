@@ -38,19 +38,13 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
                 <li
                   key={item.id}
                   aria-label="option"
-                  onClick={() =>
-                    handleClick(
-                      item.serviceName.value,
-                      item.id,
-                      item.extras.targetItems
-                    )
-                  }
+                  onClick={() => handleClick(item.name, item.id, item.extras)}
                 >
                   <span className={styles['search-dropdown-icon']}>
                     <Icons iconName="iconSearch" />
                   </span>
                   <Text tag="p" variation="body-medium">
-                    {item.serviceName.value}
+                    {item.name}
                   </Text>
                 </li>
               ))}
@@ -68,19 +62,13 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
                 <li
                   key={item.id}
                   aria-label="option"
-                  onClick={() =>
-                    handleClick(
-                      item.serviceName.value,
-                      item.id,
-                      item.extras.targetItems
-                    )
-                  }
+                  onClick={() => handleClick(item.name, item.id, item.extras)}
                 >
                   <span className={styles['search-dropdown-icon']}>
                     <Icons iconName="iconSearch" />
                   </span>
                   <Text tag="p" variation="body-medium">
-                    {item.serviceName.value}
+                    {item.name}
                   </Text>
                 </li>
               ))}
