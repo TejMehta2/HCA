@@ -100,6 +100,10 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
 
   // Fetch list of scans
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
     const paramLocationId = searchParams.get('locationId');
     const paramTypeId = searchParams.get('typeId');
 
