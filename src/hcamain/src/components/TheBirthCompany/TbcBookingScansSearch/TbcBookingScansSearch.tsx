@@ -164,8 +164,6 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
     return <TbcBookingScansSearchDefaultComponent {...props} />;
   }
 
-  console.log(scansList);
-
   const groupedServices = groupByArea(scansList);
 
   const handleSubmit = () => {
