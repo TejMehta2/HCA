@@ -9,31 +9,14 @@ export default interface SearchProps {
 
 export interface TbcServiceExtra {
   id: string;
-  serviceExtraName: {
-    value: string;
-  };
-  price: {
-    value: string; // Can be a number or percentage (e.g., "50%" or "60")
-  };
-  duration: {
-    value: string; // Minutes
-  };
+  name: string;
+  price: string; // Can be a number or percentage (e.g., "50%" or "60")
+  duration: string; // Minutes
 }
 
 export interface TbcService {
   id: string;
-  serviceName: {
-    value: string;
-  };
-  area: {
-    targetItem: {
-      id: string;
-      value: {
-        value: string;
-      };
-    };
-  };
-  extras: {
-    targetItems: TbcServiceExtra[];
-  };
+  name: string;
+  area: string;
+  extras: TbcServiceExtra[];
 }

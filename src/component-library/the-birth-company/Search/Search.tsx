@@ -45,9 +45,7 @@ const Search = (props: SearchProps): JSX.Element => {
       const filteredData: any[] = [];
       fullData.forEach((subData: TbcService[]) => {
         const filteredSubData = subData.filter((item) => {
-          return item.serviceName.value
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase());
+          return item.name.toLowerCase().includes(e.target.value.toLowerCase());
         });
 
         filteredData.push(filteredSubData);
