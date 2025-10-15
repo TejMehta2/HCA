@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-
+import axios from 'axios';
 import Themes from '@component-library/foundation/Themes/Themes';
 import {
+  ApiFields,
   TbcBookingScansSearchProps,
-  TbcService,
   TbcServiceExtra,
 } from './TbcBookingScansSearch.types';
 import Button from '@component-library/core-components/Button/Button';
@@ -18,6 +18,7 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Container from '@component-library/foundation/Containers/Container';
+import LoaderCF from 'temp/component-library/consultant-finder/LoaderCF/LoaderCF';
 
 // Function to help process total price when x% of surcharge needs to be added
 // const applyPercentage = (value: string, baseValue: number): number => {
@@ -34,9 +35,11 @@ const formatPrice = (value: string): string => {
     : `£${Math.round(parseFloat(value))}`;
 };
 
-const groupByArea = (services: TbcService[]) => {
-  return services.reduce<Record<string, TbcService[]>>((acc, service) => {
-    const area = service.area?.targetItem?.medicalAreaName?.value;
+const groupByArea = (services: ApiFields[]) => {
+  if (!services) return [];
+
+  return services.reduce<Record<string, ApiFields[]>>((acc, service) => {
+    const area = service.area;
     if (!acc[area]) {
       acc[area] = [];
     }
@@ -85,7 +88,45 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
   } = useContext(TheBirthCompanyContext);
 
   const router = useRouter();
+  const [scansList, setScansList] = useState<ApiFields[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   const searchParams = useSearchParams();
+  const nextPageParams = new URLSearchParams(searchParams.toString());
+
+  const configurationId =
+    props.fields?.data?.item?.servicesFolder.targetItem.id;
+
+  // Fetch list of scans
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const paramLocationId = searchParams.get('locationId');
+    const paramTypeId = searchParams.get('typeId');
+
+    //  if any required params are missing redirect back to the start of the journey
+    if (!paramLocationId || !paramTypeId || !configurationId)
+      router.push('/booking/location');
+
+    setLoading(true);
+
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/scans?&locationid=${paramLocationId}&typeid=${paramTypeId}&configurationid=${configurationId}`;
+
+    axios
+      .get(requestURL)
+      .then((res) => {
+        setLoading(false);
+        setError(false);
+        setScansList(res?.data || []);
+      })
+      .catch((error) => {
+        setError(true);
+        console.log(error);
+      });
+  }, [router, configurationId, searchParams]);
 
   // Use params to preselect search and extras
   useEffect(() => {
@@ -97,43 +138,41 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
     }
     setKeywordId(paramScanId);
 
-    const preSelectedScan =
-      props.fields?.data?.item?.servicesFolder.targetItem.children.results.find(
-        (element) => element.id === paramScanId
-      );
+    const preSelectedScan = scansList.find(
+      (element) => element.id === paramScanId
+    );
 
-    if (preSelectedScan?.serviceName.value) {
-      setSearchString(preSelectedScan?.serviceName.value);
+    if (preSelectedScan?.name) {
+      setSearchString(preSelectedScan?.name);
     }
 
     // Check for extras
-    if (preSelectedScan?.extras.targetItems) {
-      setExtrasList(preSelectedScan?.extras.targetItems);
+    if (preSelectedScan?.extras) {
+      setExtrasList(preSelectedScan?.extras);
       setSelectedExtras(paramExtras);
     }
   }, [
+    scansList,
     searchParams,
     setKeywordId,
     setSearchString,
     setExtrasList,
     setSelectedExtras,
-    props.fields?.data?.item?.servicesFolder.targetItem.children.results,
   ]);
 
   if (!props?.fields?.data?.item) {
     return <TbcBookingScansSearchDefaultComponent {...props} />;
   }
 
-  const groupedServices = groupByArea(
-    props.fields.data.item.servicesFolder.targetItem.children.results
-  );
+  const groupedServices = groupByArea(scansList);
 
   const handleSubmit = () => {
     const baseURLResults =
       props?.fields?.data?.item?.startBookingCTA.jsonValue?.value.href;
 
+    nextPageParams.set('scanId', keywordId);
     const extras = selectedExtras.map((item) => `&extraId=${item}`).join('');
-    router.push(`${baseURLResults}?scanId=${keywordId}${extras}`);
+    router.push(`${baseURLResults}?${nextPageParams}${extras}`);
   };
 
   let extras;
@@ -146,17 +185,15 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
           </Text>
         </Container>
         {extrasList.map((extra: TbcServiceExtra, index) => {
-          const label = `${extra.serviceExtraName.value} (${formatPrice(
-            extra.price.value
-          )})`;
+          const label = `${extra.name} (${formatPrice(extra.price)})`;
 
           return (
             <Container key={index} marginBottom="spacing-2">
               <Checkbox
                 id={index.toString()}
                 label={label}
-                name={extra.serviceExtraName.value}
-                value={extra.serviceExtraName.value}
+                name={extra.name}
+                value={extra.name}
                 checked={(selectedExtras as string[]).includes(extra.id)}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (e.target.checked) {
@@ -177,28 +214,33 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      <Search
-        placeholder={
-          props?.fields?.data?.item?.searchPhrasePlaceholder?.value ||
-          'Type in a scan or test...'
-        }
-        dropdownColumn1Label={Object.keys(groupedServices)[0]}
-        dropdownColumn1List={Object.values(groupedServices)[0] || []}
-        dropdownColumn2Label={Object.keys(groupedServices)[1]}
-        dropdownColumn2List={Object.values(groupedServices)[1] || []}
-      />
-      {extras}
-      <Container width="fit" marginTop="spacing-5">
-        <Button size={'large'} variation={'full'}>
-          <button
-            type="submit"
-            disabled={keywordId === '0' ? true : false}
-            onClick={handleSubmit}
-          >
-            {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
-          </button>
-        </Button>
-      </Container>
+      {loading && <LoaderCF />}
+      {!loading && !error && (
+        <>
+          <Search
+            placeholder={
+              props?.fields?.data?.item?.searchPhrasePlaceholder?.value ||
+              'Type in a scan or test...'
+            }
+            dropdownColumn1Label={Object.keys(groupedServices)[0]}
+            dropdownColumn1List={Object.values(groupedServices)[0] || []}
+            dropdownColumn2Label={Object.keys(groupedServices)[1]}
+            dropdownColumn2List={Object.values(groupedServices)[1] || []}
+          />
+          {extras}
+          <Container width="fit" marginTop="spacing-5">
+            <Button size={'large'} variation={'full'}>
+              <button
+                type="submit"
+                disabled={keywordId === '0' ? true : false}
+                onClick={handleSubmit}
+              >
+                {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
+              </button>
+            </Button>
+          </Container>
+        </>
+      )}
     </Themes>
   );
 };

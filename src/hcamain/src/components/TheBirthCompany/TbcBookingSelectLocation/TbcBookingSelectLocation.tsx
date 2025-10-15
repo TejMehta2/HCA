@@ -43,12 +43,14 @@ interface Fields {
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
-  API_C2_GetConsultantDetails_BaseURL: Field<string>;
   CardTimeIcon: any;
   CantFindBannerText: Field<string>;
   CantFindPhoneNumber: Field<string>;
   CantFindIcon: any;
   HeadingText: Field<string>;
+  servicesFolder: {
+    id: string;
+  };
 }
 
 type StepProps = {
@@ -101,6 +103,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
   const searchParams = useSearchParams();
   const paramScanId = searchParams.get('scanId');
   const paramLocationId = searchParams.get('locationId');
+  const configurationId = props.fields.servicesFolder.id;
 
   // Set params for next page
   const nextPageParams = new URLSearchParams(searchParams.toString());
@@ -124,12 +127,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       return;
     }
 
-    //  if any required params are missing redirect back to the start of the journey
-    if (!paramScanId) {
-      router.push('/booking');
-    }
-
-    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${paramScanId}`;
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${paramScanId}&configurationId=${configurationId}`;
 
     axios
       .get(requestURL)
@@ -142,7 +140,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router, router.isReady, paramScanId]);
+  }, [router, router.isReady, paramScanId, configurationId]);
 
   if (props.fields) {
     return (
