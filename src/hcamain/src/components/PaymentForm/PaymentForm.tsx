@@ -4,6 +4,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import {
   ButtonTemplate,
@@ -33,6 +34,8 @@ import { useRouter } from 'next/router';
 import DynamicSelectField from './helpers/DynamicSelectField';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const context = useSitecoreContext().sitecoreContext;
   const siteName = context?.site?.name;
   const itemPath = context?.itemPath;
@@ -99,9 +102,26 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return false;
   };
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   //  by default billing address fields are hidden and values assumed to be the same as prior address fields
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Get token from reCAPTCHA
+    // If we don't have a token yet, trigger invisible challenge
+    let token = recaptchaToken;
+    if (!token) {
+      try {
+        token = (await recaptchaRef.current?.executeAsync()) || '';
+        setRecaptchaToken(token);
+      } catch (e) {
+        console.error('payment form reCAPTCHA execute error', e);
+        return; // stop submit; show message here
+      } finally {
+        recaptchaRef.current?.reset(); // refresh token for the next submit
+      }
+    }
 
     const isValid = validateFormData();
     if (!isValid) {
@@ -122,6 +142,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         '';
 
       const formData = new FormData(formRef?.current);
+
       const response = await fetch(
         `${action}?site=${siteName}&itemPath=${itemPath}`,
         {
@@ -457,6 +478,24 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </Checkboxes>
               }
             />
+
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={siteKey || ''}
+              onChange={(value) => {
+                setRecaptchaToken(value || '');
+              }}
+              onErrored={() =>
+                console.error('payment form reCAPTCHA onErrored')
+              }
+              onExpired={() => {
+                setRecaptchaToken('');
+                console.warn('payment form reCAPTCHA onExpired');
+              }}
+            />
+
+            <input name="Recaptcha" type="hidden" value={recaptchaToken} />
+
             <div>
               <Button size="large" variation="full">
                 <button type={'submit'}>
