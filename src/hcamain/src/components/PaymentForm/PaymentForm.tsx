@@ -5,6 +5,9 @@ import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Icons from '../../../../component-library/foundation/Icons/Icons';
+import Container from '../../../../component-library/core-components/form/basic/Container/Container';
+import styles from '../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
   ButtonTemplate,
@@ -36,6 +39,8 @@ import DynamicSelectField from './helpers/DynamicSelectField';
 export const Default = (props: PaymentFormProps): JSX.Element => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string>('');
+  const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');
+  const [recaptchaTouched, setRecaptchaTouched] = useState(false);
   const context = useSitecoreContext().sitecoreContext;
   const siteName = context?.site?.name;
   const itemPath = context?.itemPath;
@@ -65,10 +70,15 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const partialSchema = z.object(partialSchemaObj);
   const conditionalSchemaObject = createSchema(fields, true); // Just billing fields
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   // All fields
   const allSchema = z.object({
     ...partialSchemaObj,
     ...conditionalSchemaObject,
+    ...(siteKey
+      ? { Recaptcha: z.string().min(1, 'Please complete the reCAPTCHA verification') }
+      : {})
   });
 
   const validateFormData = (name?: string) => {
@@ -102,25 +112,23 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return false;
   };
 
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
   //  by default billing address fields are hidden and values assumed to be the same as prior address fields
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setRecaptchaTouched(true);
 
     // Get token from reCAPTCHA
-    // If we don't have a token yet, trigger invisible challenge
     let token = recaptchaToken;
-    if (!token) {
-      try {
-        token = (await recaptchaRef.current?.executeAsync()) || '';
-        setRecaptchaToken(token);
-      } catch (e) {
-        console.error('payment form reCAPTCHA execute error', e);
-        return; // stop submit; show message here
-      } finally {
-        recaptchaRef.current?.reset(); // refresh token for the next submit
-      }
+
+    if (siteKey && !token) {
+      validateFormData();
+
+      setFormErrors((prev) => {
+        const next = new Map(prev);
+        next.set('Recaptcha', 'Please complete the reCAPTCHA verification');
+        return next;
+      });
+      return;
     }
 
     const isValid = validateFormData();
@@ -192,7 +200,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   };
 
   return (
-    <>
+    <div className={styles.payment}>
       <Header />
 
       <Themes theme="A-HCA-White">
@@ -466,9 +474,8 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       <Checkbox
                         key={option.name}
                         label={option.displayName}
-                        name={`${
-                          getField<ListTemplate>('communicationMode').name
-                        }`}
+                        name={`${getField<ListTemplate>('communicationMode').name
+                          }`}
                         value={option.name}
                         id={option.name}
                         required={false}
@@ -479,24 +486,47 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               }
             />
 
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={siteKey || ''}
-              onChange={(value) => {
-                setRecaptchaToken(value || '');
-              }}
-              onErrored={() =>
-                console.error('payment form reCAPTCHA onErrored')
-              }
-              onExpired={() => {
-                setRecaptchaToken('');
-                console.warn('payment form reCAPTCHA onExpired');
-              }}
-            />
+            {
+              siteKey &&
+              <>
+                <ReCAPTCHA
+                  className={styles.recaptcha}
+                  ref={recaptchaRef}
+                  sitekey={siteKey || ''}
+                  onChange={(value) => {
+                    setRecaptchaToken(value || '');
+                    setErrorRecaptcha('');         // clear custom error
+                    setFormErrors((prev) => {
+                      const next = new Map(prev);
+                      next.delete('Recaptcha');
+                      return next;
+                    });
+                  }}
+                  onErrored={() => {
+                    console.error('payment form reCAPTCHA onErrored');
+                    setErrorRecaptcha('Something went wrong with reCAPTCHA');
+                  }}
+                  onExpired={() => {
+                    setRecaptchaToken('');
+                    setErrorRecaptcha('reCAPTCHA expired — please verify again'); // custom message
+                    setRecaptchaTouched(true); // ensure error displays on expiry
+                  }}
+                />
 
-            <input name="Recaptcha" type="hidden" value={recaptchaToken} />
+                {recaptchaTouched && (!recaptchaToken || formErrors.get('Recaptcha') || errorRecaptcha) && (
+                  <Container isErrorMsg={true}>
+                    <Icons iconName="iconWarning" />
+                    <Text variation="body-medium-medium">
+                      {formErrors.get('Recaptcha') || errorRecaptcha || 'Please complete the reCAPTCHA verification'}
+                    </Text>
+                  </Container>
+                )}
 
-            <div>
+                <input name="Recaptcha" type="hidden" value={recaptchaToken} />
+              </>
+            }
+
+            <div className={styles.button}>
               <Button size="large" variation="full">
                 <button type={'submit'}>
                   {
@@ -512,6 +542,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           </FormContainer>
         </form>
       </Themes>
-    </>
+    </div>
   );
 };
