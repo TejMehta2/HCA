@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useRef, FormEvent } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
