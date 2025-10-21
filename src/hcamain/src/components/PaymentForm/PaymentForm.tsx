@@ -564,18 +564,18 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </button>
               </Button>
             </div>
-            {serverMessages.length > 0 && (
-              <div className={styles.serverMessages}>
-                {serverMessages.map((msg: any, index) => (
-                  <Container key={index} isErrorMsg={true}>
-                    <Icons iconName="iconWarning" />
-                    <Text variation="body-medium-medium">
-                      {msg?.value || 'An unknown error occurred'}
-                    </Text>
-                  </Container>
-                ))}
-              </div>
-            )}
+            {serverMessages
+              .filter((msg: any) => msg?.value?.trim())
+              .map((msg: any, index) => (
+                <Container key={index} isErrorMsg={true}>
+                  <Icons iconName="iconWarning" />
+                  <Text variation="body-medium-medium">
+                    {msg?.key?.trim() ? `${msg.key}: ` : ''}
+                    {msg.value}
+                  </Text>
+                </Container>
+              ))}
+
 
           </FormContainer>
         </form>
