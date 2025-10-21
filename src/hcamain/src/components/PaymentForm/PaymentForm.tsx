@@ -169,10 +169,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
       }
       const result: PaymentAPIResponse = await response.json();
 
-      // if (result.response.success) {
-      //   router.replace(result.response.redirectUrl);
-      // }
-
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
       } else {
@@ -181,9 +177,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           (m: any) => m.key === 'Recaptcha'
         );
 
-        console.log('recaptchaError', recaptchaError);
         if (recaptchaError) {
-          console.log('reset reCAPTCHA UI');
           // reset reCAPTCHA UI
           recaptchaRef.current?.reset();
           setRecaptchaToken('');
