@@ -54,6 +54,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
   const [ukResident, setUkResident] = useState(true);
+  const [serverMessages, setServerMessages] = useState<[]>([]);
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -172,6 +173,9 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
       } else {
+        const messages: any = result.response.messages || [];
+        setServerMessages(messages);
+
         // Check if server says reCAPTCHA failed
         const recaptchaError = result.response?.messages?.find(
           (m: any) => m.key === 'Recaptcha'
@@ -560,6 +564,19 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </button>
               </Button>
             </div>
+            {serverMessages.length > 0 && (
+              <div className={styles.serverMessages}>
+                {serverMessages.map((msg: any, index) => (
+                  <Container key={index} isErrorMsg={true}>
+                    <Icons iconName="iconWarning" />
+                    <Text variation="body-medium-medium">
+                      {msg?.value || 'An unknown error occurred'}
+                    </Text>
+                  </Container>
+                ))}
+              </div>
+            )}
+
           </FormContainer>
         </form>
       </Themes>
