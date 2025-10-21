@@ -1,9 +1,14 @@
+/* eslint-disable */
 import React, { useState, useRef, FormEvent } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Icons from '../../../../component-library/foundation/Icons/Icons';
+import Container from '../../../../component-library/core-components/form/basic/Container/Container';
+import styles from '../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
   ButtonTemplate,
@@ -33,6 +38,10 @@ import { useRouter } from 'next/router';
 import DynamicSelectField from './helpers/DynamicSelectField';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
+  const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');
+  const [recaptchaTouched, setRecaptchaTouched] = useState(false);
   const context = useSitecoreContext().sitecoreContext;
   const siteName = context?.site?.name;
   const itemPath = context?.itemPath;
@@ -45,6 +54,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
   const [ukResident, setUkResident] = useState(true);
+  const [serverMessages, setServerMessages] = useState<[]>([]);
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -62,10 +72,15 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const partialSchema = z.object(partialSchemaObj);
   const conditionalSchemaObject = createSchema(fields, true); // Just billing fields
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   // All fields
   const allSchema = z.object({
     ...partialSchemaObj,
     ...conditionalSchemaObject,
+    ...(siteKey
+      ? { Recaptcha: z.string().min(1, 'Please complete the reCAPTCHA verification') }
+      : {})
   });
 
   const validateFormData = (name?: string) => {
@@ -102,6 +117,21 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   //  by default billing address fields are hidden and values assumed to be the same as prior address fields
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setRecaptchaTouched(true);
+
+    // Get token from reCAPTCHA
+    let token = recaptchaToken;
+
+    if (siteKey && !token) {
+      validateFormData();
+
+      setFormErrors((prev) => {
+        const next = new Map(prev);
+        next.set('Recaptcha', 'Please complete the reCAPTCHA verification');
+        return next;
+      });
+      return;
+    }
 
     const isValid = validateFormData();
     if (!isValid) {
@@ -122,6 +152,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         '';
 
       const formData = new FormData(formRef?.current);
+
       const response = await fetch(
         `${action}?site=${siteName}&itemPath=${itemPath}`,
         {
@@ -141,6 +172,29 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
+      } else {
+        const messages: any = result.response.messages || [];
+        setServerMessages(messages);
+
+        // Check if server says reCAPTCHA failed
+        const recaptchaError = result.response?.messages?.find(
+          (m: any) => m.key === 'Recaptcha'
+        );
+
+        if (recaptchaError) {
+          // reset reCAPTCHA UI
+          recaptchaRef.current?.reset();
+          setRecaptchaToken('');
+          setErrorRecaptcha(formErrors.get('Recaptcha') || 'reCAPTCHA validation failed');
+          setRecaptchaTouched(true);
+
+          // update form error state so it displays properly
+          setFormErrors((prev) => {
+            const next = new Map(prev);
+            next.set('Recaptcha', formErrors.get('Recaptcha') || 'Please complete the reCAPTCHA verification');
+            return next;
+          });
+        }
       }
     } catch (err) {
       process.env.NODE_ENV === 'development' && console.log(err);
@@ -171,7 +225,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   };
 
   return (
-    <>
+    <div className={styles.payment}>
       <Header />
 
       <Themes theme="A-HCA-White">
@@ -445,9 +499,8 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       <Checkbox
                         key={option.name}
                         label={option.displayName}
-                        name={`${
-                          getField<ListTemplate>('communicationMode').name
-                        }`}
+                        name={`${getField<ListTemplate>('communicationMode').name
+                          }`}
                         value={option.name}
                         id={option.name}
                         required={false}
@@ -457,7 +510,48 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </Checkboxes>
               }
             />
-            <div>
+
+            {
+              siteKey &&
+              <>
+                <ReCAPTCHA
+                  className={styles.recaptcha}
+                  ref={recaptchaRef}
+                  sitekey={siteKey || ''}
+                  onChange={(value) => {
+                    setRecaptchaToken(value || '');
+                    setErrorRecaptcha('');         // clear custom error
+                    setFormErrors((prev) => {
+                      const next = new Map(prev);
+                      next.delete('Recaptcha');
+                      return next;
+                    });
+                  }}
+                  onErrored={() => {
+                    console.error('payment form reCAPTCHA onErrored');
+                    setErrorRecaptcha('Something went wrong with reCAPTCHA');
+                  }}
+                  onExpired={() => {
+                    setRecaptchaToken('');
+                    setErrorRecaptcha('reCAPTCHA expired — please verify again'); // custom message
+                    setRecaptchaTouched(true); // ensure error displays on expiry
+                  }}
+                />
+
+                {recaptchaTouched && (!recaptchaToken || formErrors.get('Recaptcha') || errorRecaptcha) && (
+                  <Container isErrorMsg={true}>
+                    <Icons iconName="iconWarning" />
+                    <Text variation="body-medium-medium">
+                      {formErrors.get('Recaptcha') || errorRecaptcha || 'Please complete the reCAPTCHA verification'}
+                    </Text>
+                  </Container>
+                )}
+
+                <input name="Recaptcha" type="hidden" value={recaptchaToken} />
+              </>
+            }
+
+            <div className={styles.button}>
               <Button size="large" variation="full">
                 <button type={'submit'}>
                   {
@@ -470,9 +564,22 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </button>
               </Button>
             </div>
+            {serverMessages
+              .filter((msg: any) => msg?.value?.trim())
+              .map((msg: any, index) => (
+                <Container key={index} isErrorMsg={true}>
+                  <Icons iconName="iconWarning" />
+                  <Text variation="body-medium-medium">
+                    {msg?.key?.trim() ? `${msg.key}: ` : ''}
+                    {msg.value}
+                  </Text>
+                </Container>
+              ))}
+
+
           </FormContainer>
         </form>
       </Themes>
-    </>
+    </div>
   );
 };

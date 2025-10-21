@@ -1,0 +1,17 @@
+@use '../../../../foundation/index.module' as *;
+@use '../../../../utilities/index.module' as *;
+
+.wrapper {
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-top: $spacing-2;
+    scroll-margin-top: px-to-rem(300);
+    color: var(--field-error-colour);
+  }
+
+  .content {
+    margin-bottom: $spacing-2;
+  }
+}
