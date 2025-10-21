@@ -169,8 +169,19 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
       }
       const result: PaymentAPIResponse = await response.json();
 
+      // if (result.response.success) {
+      //   router.replace(result.response.redirectUrl);
+      // }
+
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
+      } else {
+        // Check if server says reCAPTCHA failed
+        const recaptchaError = result.response?.messages?.find(
+          (m: any) => m.key === 'Recaptcha'
+        );
+
+        console.log('recaptchaError', recaptchaError);
       }
     } catch (err) {
       process.env.NODE_ENV === 'development' && console.log(err);
