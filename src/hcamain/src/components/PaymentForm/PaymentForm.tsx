@@ -54,6 +54,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
   const [ukResident, setUkResident] = useState(true);
+  const [serverMessages, setServerMessages] = useState<[]>([]);
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -171,6 +172,29 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
+      } else {
+        const messages: any = result.response.messages || [];
+        setServerMessages(messages);
+
+        // Check if server says reCAPTCHA failed
+        const recaptchaError = result.response?.messages?.find(
+          (m: any) => m.key === 'Recaptcha'
+        );
+
+        if (recaptchaError) {
+          // reset reCAPTCHA UI
+          recaptchaRef.current?.reset();
+          setRecaptchaToken('');
+          setErrorRecaptcha(formErrors.get('Recaptcha') || 'reCAPTCHA validation failed');
+          setRecaptchaTouched(true);
+
+          // update form error state so it displays properly
+          setFormErrors((prev) => {
+            const next = new Map(prev);
+            next.set('Recaptcha', formErrors.get('Recaptcha') || 'Please complete the reCAPTCHA verification');
+            return next;
+          });
+        }
       }
     } catch (err) {
       process.env.NODE_ENV === 'development' && console.log(err);
@@ -540,6 +564,19 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </button>
               </Button>
             </div>
+            {serverMessages
+              .filter((msg: any) => msg?.value?.trim())
+              .map((msg: any, index) => (
+                <Container key={index} isErrorMsg={true}>
+                  <Icons iconName="iconWarning" />
+                  <Text variation="body-medium-medium">
+                    {msg?.key?.trim() ? `${msg.key}: ` : ''}
+                    {msg.value}
+                  </Text>
+                </Container>
+              ))}
+
+
           </FormContainer>
         </form>
       </Themes>
