@@ -182,6 +182,21 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         );
 
         console.log('recaptchaError', recaptchaError);
+        if (recaptchaError) {
+          console.log('reset reCAPTCHA UI');
+          // reset reCAPTCHA UI
+          recaptchaRef.current?.reset();
+          setRecaptchaToken('');
+          setErrorRecaptcha(formErrors.get('Recaptcha') || 'reCAPTCHA validation failed');
+          setRecaptchaTouched(true);
+
+          // update form error state so it displays properly
+          setFormErrors((prev) => {
+            const next = new Map(prev);
+            next.set('Recaptcha', formErrors.get('Recaptcha') || 'Please complete the reCAPTCHA verification');
+            return next;
+          });
+        }
       }
     } catch (err) {
       process.env.NODE_ENV === 'development' && console.log(err);
