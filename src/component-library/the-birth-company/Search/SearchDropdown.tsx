@@ -54,7 +54,7 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
       </React.Fragment>
     ));
   };
-  console.log('column1Data', column1Data);
+
   return (
     <div className={styles['search-dropdown']}>
       {/* results */}
