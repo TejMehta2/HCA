@@ -40,8 +40,10 @@ const Search = (props: SearchProps): JSX.Element => {
     setSearchString(e.target.value);
     setKeywordId('0');
 
+    console.log('e.target.value', e.target.value);
+
     /* Filter dropdown list based on user input */
-    if (e.target.value.trim().length > 0) {
+    if (e.target.value.length > 0) {
       const filteredData = fullData.map((sectionGroup) => {
         return sectionGroup.map((section) => {
           const filteredScans = section.scans.filter((scan) =>
@@ -51,6 +53,8 @@ const Search = (props: SearchProps): JSX.Element => {
           return { ...section, scans: filteredScans };
         });
       });
+
+      console.log('filteredData', filteredData);
 
       setData(filteredData);
     } else if (e.target.value.trim().length === 0) {

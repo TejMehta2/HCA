@@ -57,17 +57,15 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
 
   return (
     <div className={styles['search-dropdown']}>
-      {/* results */}
-
       <div className={styles['search-dropdown-results']}>
-        {column1Data[0].scans.length === 0 &&
-          column2Data[0].scans.length === 0 && (
+        {column1Data.every((arr) => arr.scans.length === 0) &&
+          column2Data.every((arr) => arr.scans.length === 0) && (
             <Text tag="p" variation="body-large">
               {'No matches found, please try typing something else.'}
             </Text>
           )}
 
-        {column1Data[0].scans.length > 0 && (
+        {column1Data.some((arr) => arr.scans.length > 0) && (
           <div className={styles['search-dropdown-col']}>
             <div className={styles['search-dropdown-header']}>
               <Text tag="h2" variation="subheading-2">
@@ -77,7 +75,7 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
             {displayData(column1Data)}
           </div>
         )}
-        {column2Data[0].scans.length > 0 && (
+        {column2Data.some((arr) => arr.scans.length > 0) && (
           <div className={styles['search-dropdown-col']}>
             <div className={styles['search-dropdown-header']}>
               <Text tag="p" variation="subheading-2">
