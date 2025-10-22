@@ -3,8 +3,8 @@ import React, { MouseEventHandler, useId, useState, useContext } from 'react';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
-import SearchProps, { TbcService } from './Search.types';
-import SearchDdropdown from './SearchDropwdown';
+import SearchProps, { TbcDropdownColumn } from './Search.types';
+import SearchDropdown from './SearchDropdown';
 import { TheBirthCompanyContext } from '../../context/theBirthCompanyContext';
 import TextLink from '../../core-components/TextLink/TextLink';
 
@@ -13,12 +13,12 @@ const Search = (props: SearchProps): JSX.Element => {
     useContext(TheBirthCompanyContext);
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<TbcDropdownColumn[][]>([]);
   const searchId = useId();
 
-  const fullData: any = [
-    [...props.dropdownColumn1List],
-    [...props.dropdownColumn2List],
+  const fullData: TbcDropdownColumn[][] = [
+    [...(props.dropdownColumn1List || [])],
+    [...(props.dropdownColumn2List || [])],
   ];
 
   const handlePopularSearch = () => {
@@ -42,13 +42,14 @@ const Search = (props: SearchProps): JSX.Element => {
 
     /* Filter dropdown list based on user input */
     if (e.target.value.trim().length > 0) {
-      const filteredData: any[] = [];
-      fullData.forEach((subData: TbcService[]) => {
-        const filteredSubData = subData.filter((item) => {
-          return item.name.toLowerCase().includes(e.target.value.toLowerCase());
-        });
+      const filteredData = fullData.map((sectionGroup) => {
+        return sectionGroup.map((section) => {
+          const filteredScans = section.scans.filter((scan) =>
+            scan.name.toLowerCase().includes(e.target.value.toLowerCase())
+          );
 
-        filteredData.push(filteredSubData);
+          return { ...section, scans: filteredScans };
+        });
       });
 
       setData(filteredData);
@@ -74,10 +75,11 @@ const Search = (props: SearchProps): JSX.Element => {
             onChange={handleChange}
             onClick={handleOnClick}
             value={searchString}
+            autoComplete="off"
           />
         </label>
         {isComponentVisible && (
-          <SearchDdropdown
+          <SearchDropdown
             data={data}
             setIsComponentVisible={setIsComponentVisible}
             dropdownColumn1Label={props.dropdownColumn1Label}
