@@ -25,7 +25,7 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
   const displayData = (columnData: TbcDropdownColumn[]) => {
     return columnData.map((item: TbcDropdownColumn, index) => (
       <React.Fragment key={index}>
-        {item.title && (
+        {item.title && item.scans.length > 0 && (
           <div className={styles['search-dropdown-sub-header']}>
             <Text tag="h4" variation="subheading-2">
               {item.title}
@@ -33,7 +33,7 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
           </div>
         )}
         <ul>
-          {item.scans?.length > 0 &&
+          {item.scans.length > 0 &&
             item.scans.map((scan) => (
               <li key={scan.id} aria-label="option">
                 <button
@@ -54,28 +54,39 @@ const SearchDropdown = (props: SearchDropdownProps): JSX.Element => {
       </React.Fragment>
     ));
   };
-
+  console.log('column1Data', column1Data);
   return (
     <div className={styles['search-dropdown']}>
       {/* results */}
 
       <div className={styles['search-dropdown-results']}>
-        <div className={styles['search-dropdown-col']}>
-          <div className={styles['search-dropdown-header']}>
-            <Text tag="h2" variation="subheading-2">
-              {props.dropdownColumn1Label || 'Gynaecological scans'}
+        {column1Data[0].scans.length === 0 &&
+          column2Data[0].scans.length === 0 && (
+            <Text tag="p" variation="body-large">
+              {'No matches found, please try typing something else.'}
             </Text>
+          )}
+
+        {column1Data[0].scans.length > 0 && (
+          <div className={styles['search-dropdown-col']}>
+            <div className={styles['search-dropdown-header']}>
+              <Text tag="h2" variation="subheading-2">
+                {props.dropdownColumn1Label || 'Gynaecological scans'}
+              </Text>
+            </div>
+            {displayData(column1Data)}
           </div>
-          {column1Data.length > 0 && displayData(column1Data)}
-        </div>
-        <div className={styles['search-dropdown-col']}>
-          <div className={styles['search-dropdown-header']}>
-            <Text tag="p" variation="subheading-2">
-              {props.dropdownColumn2Label || 'Pregnancy scans'}
-            </Text>
+        )}
+        {column2Data[0].scans.length > 0 && (
+          <div className={styles['search-dropdown-col']}>
+            <div className={styles['search-dropdown-header']}>
+              <Text tag="p" variation="subheading-2">
+                {props.dropdownColumn2Label || 'Pregnancy scans'}
+              </Text>
+            </div>
+            {displayData(column2Data)}
           </div>
-          {column2Data.length > 0 && displayData(column2Data)}
-        </div>
+        )}
       </div>
     </div>
   );

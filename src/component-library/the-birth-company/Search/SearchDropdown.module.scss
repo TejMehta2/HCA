@@ -83,6 +83,7 @@
         padding: 0;
         margin: 0;
         cursor: pointer;
+        justify-content: flex-start !important; // important tags are needed as this is nested within ImageAndTextBlock component, but needs to work differently
         text-align: left !important;
       }
     }
