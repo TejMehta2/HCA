@@ -20,8 +20,8 @@
 
   padding: $spacing-8 0;
 
-  & > * {
-    &:not(:last-child) {
+  &>* {
+    &:not(:last-child):not(.recaptcha) {
       margin-bottom: $spacing-8;
     }
 
@@ -33,6 +33,16 @@
     flex-direction: column;
     gap: $spacing-5;
   }
+
+  .recaptcha {
+    margin-bottom: $spacing-2;
+  }
+}
+
+.payment {
+  .button {
+    margin-top: $spacing-8;
+  }
 }
 
 .has-aside {
@@ -40,7 +50,7 @@
     @include responsive-grid-start($breakpoint-l: 10);
     @include responsive-grid-span($breakpoint-l: 3);
 
-    & > * {
+    &>* {
       margin-top: $spacing-8;
       margin-bottom: $spacing-8;
       position: sticky;
@@ -52,7 +62,7 @@
     @include responsive-grid-start($breakpoint-l: 1);
     @include responsive-grid-span($breakpoint-l: 7);
 
-    & > * {
+    &>* {
       &:first-child {
         margin-bottom: $spacing-8;
       }
