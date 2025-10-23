@@ -14,8 +14,16 @@ export interface Fields {
 export interface ApiFields {
   id: string;
   name: string;
-  area: string;
+  area?: string;
+  subArea?: string | null;
   extras?: { id: string; name: string; duration: string; price: string }[];
+}
+
+export type GroupedScans = Record<string, TbcDropdownColumn[]>;
+
+export interface TbcDropdownColumn {
+  title?: string;
+  scans: ApiFields[];
 }
 
 export type TbcBookingScansSearchProps = {

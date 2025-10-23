@@ -6,7 +6,9 @@ import axios from 'axios';
 import Themes from '@component-library/foundation/Themes/Themes';
 import {
   ApiFields,
+  GroupedScans,
   TbcBookingScansSearchProps,
+  TbcDropdownColumn,
   TbcServiceExtra,
 } from './TbcBookingScansSearch.types';
 import Button from '@component-library/core-components/Button/Button';
@@ -35,17 +37,35 @@ const formatPrice = (value: string): string => {
     : `£${Math.round(parseFloat(value))}`;
 };
 
-const groupByArea = (services: ApiFields[]) => {
-  if (!services) return [];
+const groupByArea = (data: ApiFields[]): GroupedScans => {
+  const grouped: Record<string, Record<string, ApiFields[]>> = {};
 
-  return services.reduce<Record<string, ApiFields[]>>((acc, service) => {
-    const area = service.area;
-    if (!acc[area]) {
-      acc[area] = [];
-    }
-    acc[area].push(service);
-    return acc;
-  }, {});
+  data.forEach((item) => {
+    const area = item.area;
+    const subArea = item.subArea || '';
+
+    if (!area) return;
+
+    if (!grouped[area]) grouped[area] = {};
+    if (!grouped[area][subArea]) grouped[area][subArea] = [];
+
+    grouped[area][subArea].push(item);
+  });
+
+  const result: GroupedScans = {};
+
+  Object.entries(grouped).forEach(([area, subAreas]) => {
+    const sections: TbcDropdownColumn[] = Object.entries(subAreas).map(
+      ([subArea, scans]) => ({
+        title: subArea && subArea,
+        scans,
+      })
+    );
+
+    result[area] = sections;
+  });
+
+  return result;
 };
 
 const TbcBookingScansSearchDefaultComponent = (

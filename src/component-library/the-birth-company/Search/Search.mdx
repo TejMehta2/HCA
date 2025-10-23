@@ -7,7 +7,7 @@ import * as SearchStories from './Search.stories';
 
 ## Description
 
-The Search component is a simplified version of the Consultant Finder Search component
+The Search component is a simplified version of the Consultant Finder Search component. A slight difference between the two is this version supports subheadings within the dropdown
 
 It takes a list of data and displays in two columns. This can be filtered by typing into the input field
 
@@ -17,73 +17,81 @@ It can be composed like this:
 
 ```tsx
 <Search
-  placeholder={'Type in a scan or test...'}
   dropdownColumn1Label="Gynaecological scans"
   dropdownColumn1List={[
     {
-      id: '1',
-      serviceName: { value: 'Hip Replacement' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-        },
-      },
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '1',
+          name: 'Hip Replacement'
+        }
+      ],
+      title: 'Fertility'
     },
     {
-      id: '2',
-      serviceName: { value: 'Hip Replacement' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-        },
-      },
-    },
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '2',
+          name: 'Hip Replacement'
+        }
+      ],
+      title: 'Gynaecology'
+    }
   ]}
   dropdownColumn2Label="Pregnancy scans"
   dropdownColumn2List={[
     {
-      id: '1',
-      serviceName: { value: 'Anatomy Scan' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-        },
-      },
-    },
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '1',
+          name: 'Anatomy Scan'
+        }
+      ]
+    }
   ]}
+  placeholder="Type in a scan or test..."
 />
 ```
 
