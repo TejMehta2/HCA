@@ -34,6 +34,13 @@
     }
   }
 
+  .weekdays,
+  .week-header {
+    @include media(screen-l) {
+      gap: px-to-rem(32);
+    }
+  }
+
   .header-container,
   .week-header,
   .weekdays {
@@ -70,6 +77,12 @@
       height: px-to-rem(24);
       text-align: center;
       cursor: pointer;
+
+      &:focus-visible {
+        outline-offset: 0.25rem;
+        border-radius: 0.5rem;
+        outline: 1px solid currentcolor;
+      }
     }
   }
 
@@ -89,6 +102,16 @@
       padding: $spacing-2 $spacing-1;
       margin-bottom: $spacing-2;
       cursor: pointer;
+
+      &:hover {
+        border-color: $navy-blue-100;
+      }
+
+      &:focus-visible {
+        border-color: $navy-blue-40;
+        outline: 2px solid $navy-blue-100;
+        outline-offset: -0.25rem;
+      }
 
       @include media(screen-m) {
         border-radius: px-to-rem(31);

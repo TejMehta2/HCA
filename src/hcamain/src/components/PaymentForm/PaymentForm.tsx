@@ -79,8 +79,12 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     ...partialSchemaObj,
     ...conditionalSchemaObject,
     ...(siteKey
-      ? { Recaptcha: z.string().min(1, 'Please complete the reCAPTCHA verification') }
-      : {})
+      ? {
+          Recaptcha: z
+            .string()
+            .min(1, 'Please complete the reCAPTCHA verification'),
+        }
+      : {}),
   });
 
   const validateFormData = (name?: string) => {
@@ -185,13 +189,19 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           // reset reCAPTCHA UI
           recaptchaRef.current?.reset();
           setRecaptchaToken('');
-          setErrorRecaptcha(formErrors.get('Recaptcha') || 'reCAPTCHA validation failed');
+          setErrorRecaptcha(
+            formErrors.get('Recaptcha') || 'reCAPTCHA validation failed'
+          );
           setRecaptchaTouched(true);
 
           // update form error state so it displays properly
           setFormErrors((prev) => {
             const next = new Map(prev);
-            next.set('Recaptcha', formErrors.get('Recaptcha') || 'Please complete the reCAPTCHA verification');
+            next.set(
+              'Recaptcha',
+              formErrors.get('Recaptcha') ||
+                'Please complete the reCAPTCHA verification'
+            );
             return next;
           });
         }
@@ -499,8 +509,9 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       <Checkbox
                         key={option.name}
                         label={option.displayName}
-                        name={`${getField<ListTemplate>('communicationMode').name
-                          }`}
+                        name={`${
+                          getField<ListTemplate>('communicationMode').name
+                        }`}
                         value={option.name}
                         id={option.name}
                         required={false}
@@ -511,8 +522,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               }
             />
 
-            {
-              siteKey &&
+            {siteKey && (
               <>
                 <ReCAPTCHA
                   className={styles.recaptcha}
@@ -520,7 +530,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   sitekey={siteKey || ''}
                   onChange={(value) => {
                     setRecaptchaToken(value || '');
-                    setErrorRecaptcha('');         // clear custom error
+                    setErrorRecaptcha(''); // clear custom error
                     setFormErrors((prev) => {
                       const next = new Map(prev);
                       next.delete('Recaptcha');
@@ -533,23 +543,42 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   }}
                   onExpired={() => {
                     setRecaptchaToken('');
-                    setErrorRecaptcha('reCAPTCHA expired — please verify again'); // custom message
+                    setErrorRecaptcha(
+                      'reCAPTCHA expired — please verify again'
+                    ); // custom message
                     setRecaptchaTouched(true); // ensure error displays on expiry
                   }}
                 />
 
-                {recaptchaTouched && (!recaptchaToken || formErrors.get('Recaptcha') || errorRecaptcha) && (
-                  <Container isErrorMsg={true}>
-                    <Icons iconName="iconWarning" />
-                    <Text variation="body-medium-medium">
-                      {formErrors.get('Recaptcha') || errorRecaptcha || 'Please complete the reCAPTCHA verification'}
-                    </Text>
-                  </Container>
-                )}
+                {recaptchaTouched &&
+                  (!recaptchaToken ||
+                    formErrors.get('Recaptcha') ||
+                    errorRecaptcha) && (
+                    <Container isErrorMsg={true}>
+                      <Icons iconName="iconWarning" />
+                      <Text variation="body-medium-medium">
+                        {formErrors.get('Recaptcha') ||
+                          errorRecaptcha ||
+                          'Please complete the reCAPTCHA verification'}
+                      </Text>
+                    </Container>
+                  )}
 
                 <input name="Recaptcha" type="hidden" value={recaptchaToken} />
               </>
-            }
+            )}
+
+            {serverMessages
+              .filter((msg: any) => msg?.value?.trim())
+              .map((msg: any, index) => (
+                <Container key={index} isErrorMsg={true}>
+                  <Icons iconName="iconWarning" />
+                  <Text variation="body-medium-medium">
+                    {msg?.key?.trim() ? `${msg.key}: ` : ''}
+                    {msg.value}
+                  </Text>
+                </Container>
+              ))}
 
             <div className={styles.button}>
               <Button size="large" variation="full">
@@ -564,19 +593,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </button>
               </Button>
             </div>
-            {serverMessages
-              .filter((msg: any) => msg?.value?.trim())
-              .map((msg: any, index) => (
-                <Container key={index} isErrorMsg={true}>
-                  <Icons iconName="iconWarning" />
-                  <Text variation="body-medium-medium">
-                    {msg?.key?.trim() ? `${msg.key}: ` : ''}
-                    {msg.value}
-                  </Text>
-                </Container>
-              ))}
-
-
           </FormContainer>
         </form>
       </Themes>
