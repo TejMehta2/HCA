@@ -338,12 +338,8 @@ export const getServerSideProps: GetServerSideComponentProps = async (
 
   try {
     const url = `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${orderIdQuery}&${site}&${itemPath}`;
-    debug.common(
-      'TBCBookingConfirmation API fetch url', url
-    );
-    response = await fetch(
-      url
-    );
+    debug.common('TBCBookingConfirmation API fetch url', url);
+    response = await fetch(url);
     const transactionStatus = await response.json();
     return transactionStatus?.response;
   } catch (error) {
