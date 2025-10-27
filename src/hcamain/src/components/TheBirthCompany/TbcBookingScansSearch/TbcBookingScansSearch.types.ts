@@ -11,10 +11,24 @@ export interface Fields {
     };
   };
 }
+export interface ApiFields {
+  id: string;
+  name: string;
+  area?: string;
+  subArea?: string | null;
+  extras?: { id: string; name: string; duration: string; price: string }[];
+}
+
+export type GroupedScans = Record<string, TbcDropdownColumn[]>;
+
+export interface TbcDropdownColumn {
+  title?: string;
+  scans: ApiFields[];
+}
 
 export type TbcBookingScansSearchProps = {
   params?: Params;
-  fields?: Fields;
+  fields: Fields;
   rendering?: {
     uid?: string;
   };
@@ -22,15 +36,9 @@ export type TbcBookingScansSearchProps = {
 
 export interface TbcServiceExtra {
   id: string;
-  serviceExtraName: {
-    value: string;
-  };
-  price: {
-    value: string; // Can be a number or percentage (e.g., "50%" or "60")
-  };
-  duration: {
-    value: string; // Minutes
-  };
+  name: string;
+  price: string; // Can be a number or percentage (e.g., "50%" or "60")
+  duration: string; // Minutes
 }
 
 export interface TbcService {
@@ -53,6 +61,7 @@ export interface TbcService {
 
 export interface TbcServicesFolder {
   targetItem: {
+    id: string;
     children: {
       results: TbcService[];
     };

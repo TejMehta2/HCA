@@ -24,66 +24,74 @@ Default.args = {
   dropdownColumn2Label: 'Pregnancy scans',
   dropdownColumn1List: [
     {
-      id: '1',
-      serviceName: { value: 'Hip Replacement' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
+      title: 'Fertility',
+      scans: [
+        {
+          id: '1',
+          name: 'Hip Replacement',
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              price: '60',
+              name: 'Blood Test',
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              price: '60',
+              name: 'Blood Test',
+            },
+          ],
         },
-      },
+      ],
     },
     {
-      id: '2',
-      serviceName: { value: 'Hip Replacement' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
+      title: 'Gynaecology',
+      scans: [
+        {
+          id: '2',
+          name: 'Hip Replacement',
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              price: '60',
+              name: 'Blood Test',
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              price: '60',
+              name: 'Blood Test',
+            },
+          ],
         },
-      },
+      ],
     },
   ],
   dropdownColumn2List: [
     {
-      id: '1',
-      serviceName: { value: 'Anatomy Scan' },
-      extras: {
-        targetItems: {
-          0: {
-            duration: { value: '10' },
-            id: 'targetItem0',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
-          1: {
-            duration: { value: '10' },
-            id: 'targetItem1',
-            price: { value: '60' },
-            serviceExtraName: { value: 'Blood Test' },
-          },
+      scans: [
+        {
+          id: '1',
+          name: 'Anatomy Scan',
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              price: '60',
+              name: 'Blood Test',
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              price: '60',
+              name: 'Blood Test',
+            },
+          ],
         },
-      },
+      ],
     },
   ],
 };

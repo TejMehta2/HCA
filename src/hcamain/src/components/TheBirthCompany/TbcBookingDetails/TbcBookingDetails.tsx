@@ -120,7 +120,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     //  if any required params are missing redirect back to the start of the journey
     if (!paramScanId || !paramLocationId || !paramSlotId || !paramTypeId) {
-      router.push('/booking');
+      router.push('/booking/location');
     }
 
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;

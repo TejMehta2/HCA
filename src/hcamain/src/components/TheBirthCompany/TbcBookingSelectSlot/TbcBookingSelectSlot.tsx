@@ -162,7 +162,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
 
     //  if any required params are missing redirect back to the start of the journey
     if (!paramScanId || !paramLocationId || !paramTypeId) {
-      router.push('/booking');
+      router.push('/booking/location');
     }
   }, [router, paramScanId, paramLocationId, paramTypeId]);
 

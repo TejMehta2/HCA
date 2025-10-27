@@ -1,0 +1,51 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as BookingTypeCardsStories from './BookingTypeCards.stories'
+
+<Meta of={BookingTypeCardsStories} />
+
+# BookingTypeCards
+
+## Description
+
+The BookingTypeCards component has a grid-like appearance which allows users to select the type of booking they wish to make
+
+It is intended to be used in the birth company booking flow
+
+It can be composed like this:
+
+``` tsx
+<BookingTypeCards
+  cards={[
+    {
+      copy: <span>Text explaining what that appointment would involve and why choose a consultant obstetrician.</span>,
+      cta: <Button size="small" variation="full"><a href="#"><span><Icons iconName="iconCalendar" /></span><span>Find a consultant</span></a></Button>,
+      title: <span>Consultant obstetrician</span>
+    },
+    {
+      copy: <span>Text explaining what that appointment would involve and why choose a consultant obstetrician.</span>,
+      cta: <Button size="small" variation="full"><a href="#"><span><Icons iconName="iconCalendar" /></span><span>Book a scan</span></a></Button>,
+      title: <span>Sonographer</span>
+    },
+    {
+      copy: <span>Text explaining what that appointment would involve and why choose a consultant obstetrician.</span>,
+      cta: <Button size="small" variation="full"><a href="#"><span><Icons iconName="iconCalendar" /></span><span>Find a consultant</span></a></Button>,
+      title: <span>Consultant gynaecologists</span>
+    },
+    {
+      copy: <span>Text explaining what that appointment would involve and why choose a consultant obstetrician.</span>,
+      cta: <><Text tag="p" variation="body-bold-small">Call to book below:</Text><TextButton><a href="#"><Icons iconName="iconPhone" />Hale: 020 3131 5978</a></TextButton></>,
+      title: <span>Midwife</span>
+    },
+    {
+      copy: <span>Text explaining what that appointment would involve and why choose a consultant obstetrician.</span>,
+      cta: <Button size="small" variation="full"><a href="#"><span><Icons iconName="iconCalendar" /></span><span>Book a scan</span></a></Button>,
+      title: <span>Consultant</span>
+    }
+  ]}
+ />
+```
+
+## Example 
+
+<Canvas of={BookingTypeCardsStories.Default} />
+<Controls of={BookingTypeCardsStories.Default} />
