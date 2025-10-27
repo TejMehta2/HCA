@@ -312,10 +312,13 @@ export const getServerSideProps: GetServerSideComponentProps = async (
 ) => {
   const { query } = context;
   let response;
+
+  const orderIdQuery = `orderId=${query.path}`;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
+  debug.common('TBCBookingConfirmation query.path', query.path);
   debug.common('TBCBookingConfirmation getServerSideProps started');
 
   if (layoutData.sitecore.context.pageEditing) {
@@ -334,11 +337,12 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   }
 
   try {
+    const url = `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${orderIdQuery}&${site}&${itemPath}`;
     debug.common(
-      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+      'TBCBookingConfirmation API fetch url', url
     );
     response = await fetch(
-      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+      url
     );
     const transactionStatus = await response.json();
     return transactionStatus?.response;
