@@ -44,28 +44,40 @@ function getEcommerceDataLayer(
       props.serviceName + (props.extras ? `,${props.extras}` : '');
     const itemBrand = props.location;
 
-    const dataLayer = [
-      'window.dataLayer = window.dataLayer || [];',
-      'window.dataLayer.push({ ecommerce: null });',
-      `window.dataLayer.push(${JSON.stringify({
-        event: transactionId ? 'purchase' : 'booking_confirmation',
-        ecommerce: {
-          transaction_id: transactionId ? transactionId : orderId,
-          value,
-          currency,
-          items: [
-            {
-              item_name: itemName,
-              item_brand: itemBrand,
-              item_id: transactionId ? transactionId : orderId,
-              price: value,
-              quantity: '1',
+    const dataLayer = transactionId
+      ? [
+          'window.dataLayer = window.dataLayer || [];',
+          'window.dataLayer.push({ ecommerce: null });',
+          `window.dataLayer.push(${JSON.stringify({
+            event: 'purchase',
+            ecommerce: {
+              transaction_id: transactionId,
+              value,
+              currency,
+              items: [
+                {
+                  item_name: itemName,
+                  item_brand: itemBrand,
+                  item_id: transactionId,
+                  price: value,
+                  quantity: '1',
+                },
+              ],
             },
-          ],
-        },
-      })});`,
-    ];
-
+          })});`,
+        ]
+      : [
+          'window.dataLayer = window.dataLayer || [];',
+          `window.dataLayer.push(${JSON.stringify({
+            event: 'birthCompanyBooking',
+            goalType: 'appointmentBooking',
+            scanType: itemName,
+            apptWith: props.type,
+            location: itemBrand,
+            apptCost: value,
+            bookingID: orderId,
+          })});`,
+        ];
     return dataLayer.join('\n');
   } catch (error) {
     console.error('Failed to generate ecommerce data layer:', error);
