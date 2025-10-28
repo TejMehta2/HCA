@@ -215,15 +215,17 @@ const SlotsCalendarBirthCompany = (
 
   useEffect(() => {
     setLoadingSlots(true);
-    const firstDay: any = new Date();
 
-    setFirstDayOfWeek(firstDay);
+    const today = new Date();
+    const firstDayOfCurrentWeek: any = getFirstDayOfWeek(today);
 
-    getSlots(firstDay);
-    setDates(getDates(formatDateYYYYMMDD(firstDay)));
+    setFirstDayOfWeek(firstDayOfCurrentWeek);
+    setDates(getDates(formatDateYYYYMMDD(firstDayOfCurrentWeek)));
 
+    getSlots(firstDayOfCurrentWeek);
     // eslint-disable-next-line
   }, []);
+
 
   useEffect(() => {
     getSlots(formatDateYYYYMMDD(firstDayOfWeek));
