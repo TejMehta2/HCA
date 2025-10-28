@@ -8,6 +8,7 @@
   background-color: var(--background);
   color: var(--text);
   margin-top: $spacing-7;
+  margin-bottom: px-to-rem(80);
   max-width: px-to-rem(1120);
 
   @include responsive-container;
