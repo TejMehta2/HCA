@@ -57,7 +57,7 @@ function getEcommerceDataLayer(
             {
               item_name: itemName,
               item_brand: itemBrand,
-              item_id: transactionId,
+              item_id: transactionId ? transactionId : orderId,
               price: value,
               quantity: '1',
             },
