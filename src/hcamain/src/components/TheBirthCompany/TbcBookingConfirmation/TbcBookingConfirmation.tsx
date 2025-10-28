@@ -29,16 +29,11 @@ const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
 function getEcommerceDataLayer(
   props: TbcBookingConfirmationProps,
-  transactionId: string | null
+  transactionId: string | null,
+  orderId: string | null
 ): string {
   try {
-    if (
-      !props ||
-      !transactionId ||
-      !props.amount ||
-      !props.serviceName ||
-      !props.location
-    ) {
+    if (!props || !props.amount || !props.serviceName || !props.location) {
       return '';
     }
 
@@ -53,9 +48,9 @@ function getEcommerceDataLayer(
       'window.dataLayer = window.dataLayer || [];',
       'window.dataLayer.push({ ecommerce: null });',
       `window.dataLayer.push(${JSON.stringify({
-        event: 'purchase',
+        event: transactionId ? 'purchase' : 'booking_confirmation',
         ecommerce: {
-          transaction_id: transactionId,
+          transaction_id: transactionId ? transactionId : orderId,
           value,
           currency,
           items: [
@@ -123,10 +118,10 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
 
-  const transactionIdFromQuery = searchParams.get('transaction_id');
   const ecommerceDataLayer = getEcommerceDataLayer(
     props,
-    transactionIdFromQuery
+    transactionStatus?.paymentTransactionId || '',
+    transactionStatus?.orderId || ''
   );
 
   if (transactionStatus?.status !== 'Successful' || paramErrors) {
