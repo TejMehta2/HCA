@@ -196,10 +196,10 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     ...conditionalSchemaObject,
     ...(siteKey
       ? {
-          Recaptcha: z
-            .string()
-            .min(1, 'Please complete the reCAPTCHA verification'),
-        }
+        Recaptcha: z
+          .string()
+          .min(1, 'Please complete the reCAPTCHA verification'),
+      }
       : {}),
   });
 
@@ -253,6 +253,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         next.set('Recaptcha', 'Please complete the reCAPTCHA verification');
         return next;
       });
+      setFormSubmitting(false);
       return;
     }
 
@@ -313,7 +314,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
             next.set(
               'Recaptcha',
               formErrors.get('Recaptcha') ||
-                'Please complete the reCAPTCHA verification'
+              'Please complete the reCAPTCHA verification'
             );
             return next;
           });
@@ -427,17 +428,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   locationTitle={'Location'}
                   location={appointmentDetails.location}
                   scanTitle={'Scan'}
-                  scan={`${appointmentDetails.scanName} ${
-                    appointmentDetails.extras.length
+                  scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
                       ? '(' + appointmentDetails.extras.join(', ') + ')'
                       : ''
-                  }`}
+                    }`}
                   appointmentTitle={'Appointment'}
                   appointment={appointmentDetails.appointmentType}
                   dateTitle={'Date & time'}
-                  date={`${formatDate(appointmentDetails.slot)} (${
-                    appointmentDetails.duration
-                  })`}
+                  date={`${formatDate(appointmentDetails.slot)} (${appointmentDetails.duration
+                    })`}
                   priceTitle={`Price to pay`}
                   price={appointmentDetails.price}
                 />
@@ -454,17 +453,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                     locationTitle={'Location'}
                     location={appointmentDetails.location}
                     scanTitle={'Scan'}
-                    scan={`${appointmentDetails.scanName} ${
-                      appointmentDetails.extras.length
+                    scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
                         ? '(' + appointmentDetails.extras.join(', ') + ')'
                         : ''
-                    }`}
+                      }`}
                     appointmentTitle={'Appointment'}
                     appointment={appointmentDetails.appointmentType}
                     dateTitle={'Date & time'}
-                    date={`${formatDate(appointmentDetails.slot)} (${
-                      appointmentDetails.duration
-                    })`}
+                    date={`${formatDate(appointmentDetails.slot)} (${appointmentDetails.duration
+                      })`}
                     priceTitle={`Price to pay`}
                     price={appointmentDetails.price}
                   />
@@ -800,9 +797,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                             }}
                           ></span>
                         }
-                        name={`${
-                          getField<ListTemplate>('attendanceConfirmation').name
-                        }`}
+                        name={`${getField<ListTemplate>('attendanceConfirmation').name
+                          }`}
                         value={
                           getField<ListTemplate>('attendanceConfirmation').name
                         }
