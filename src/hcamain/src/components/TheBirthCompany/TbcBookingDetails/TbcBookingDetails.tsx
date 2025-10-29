@@ -315,6 +315,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
               formErrors.get('Recaptcha') ||
                 'Please complete the reCAPTCHA verification'
             );
+            setFormSubmitting(false);
             return next;
           });
         }
