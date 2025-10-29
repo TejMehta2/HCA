@@ -11,11 +11,8 @@ import router from 'next/router';
 export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>([]);
 
-
   useEffect(() => {
-    console.log('test 1');
     const handleRouteChange = () => {
-      console.log('[ToC] Route changed. Rebuilding ToC.');
       buildToC();
     };
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -26,25 +23,23 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
 
   // Initial scan
   useEffect(() => {
-    console.log('test 2');
     buildToC();
   }, []);
 
   const buildToC = () => {
     // Scan DOM for elements with data-subnav-link-title
     const elements = document.querySelectorAll<HTMLElement>('[data-subnav-link-title]');
-    console.log('[ToC] Found elements:', elements);
+    // console.log('[ToC] Found elements:', elements);
 
     const tocComponents: NavigableComponent[] = Array.from(elements).map(el => {
       const item = {
         TableOfContentsLinkTitle: el.dataset.subnavLinkTitle || '',
         Id: el.dataset.subnavLinkId || el.id || '', // fallback to id if not present
       };
-      console.log('[ToC] Item:', item);
       return item;
     });
 
-    console.log('[ToC] Final array:', tocComponents);
+    // console.log('[ToC] Final array:', tocComponents);
     setComponentsList(tocComponents);
   };
 
