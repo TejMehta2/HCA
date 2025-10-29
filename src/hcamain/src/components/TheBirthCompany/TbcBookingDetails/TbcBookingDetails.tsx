@@ -791,7 +791,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
               {siteKey && (
                 <>
-                  <ReCAPTCHA                   
+                  <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey={siteKey || ''}
                     onChange={(value) => {
