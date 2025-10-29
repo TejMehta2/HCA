@@ -124,7 +124,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     setRecaptchaTouched(true);
 
     // Get token from reCAPTCHA
-    let token = recaptchaToken;
+    const token = recaptchaToken;
 
     if (siteKey && !token) {
       validateFormData();

@@ -243,7 +243,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     setRecaptchaTouched(true);
 
     // Get token from reCAPTCHA
-    let token = recaptchaToken;
+    const token = recaptchaToken;
 
     if (siteKey && !token) {
       validateFormData();
