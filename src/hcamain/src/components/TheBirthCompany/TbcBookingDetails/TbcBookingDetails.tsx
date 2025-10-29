@@ -295,7 +295,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
         // Check if server says reCAPTCHA failed
         const recaptchaError = result.response?.messages?.find(
-          (m: any) => m.key === 'Recaptcha'
+          (m: PaymentAPIResponseMessage) => m.key === 'Recaptcha'
         );
 
         if (recaptchaError) {
