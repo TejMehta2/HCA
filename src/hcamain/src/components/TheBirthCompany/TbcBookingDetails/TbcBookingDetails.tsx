@@ -7,6 +7,7 @@ import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
+import styles from '../../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
   ButtonTemplate,
@@ -799,6 +800,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
               {siteKey && (
                 <>
                   <ReCAPTCHA
+                    className={styles.recaptcha}
                     ref={recaptchaRef}
                     sitekey={siteKey || ''}
                     onChange={(value) => {
