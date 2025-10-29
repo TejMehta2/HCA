@@ -29,16 +29,11 @@ const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
 function getEcommerceDataLayer(
   props: TbcBookingConfirmationProps,
-  transactionId: string | null
+  transactionId: string | null,
+  orderId: string | null
 ): string {
   try {
-    if (
-      !props ||
-      !transactionId ||
-      !props.amount ||
-      !props.serviceName ||
-      !props.location
-    ) {
+    if (!props || !props.amount || !props.serviceName || !props.location) {
       return '';
     }
 
@@ -49,28 +44,40 @@ function getEcommerceDataLayer(
       props.serviceName + (props.extras ? `,${props.extras}` : '');
     const itemBrand = props.location;
 
-    const dataLayer = [
-      'window.dataLayer = window.dataLayer || [];',
-      'window.dataLayer.push({ ecommerce: null });',
-      `window.dataLayer.push(${JSON.stringify({
-        event: 'purchase',
-        ecommerce: {
-          transaction_id: transactionId,
-          value,
-          currency,
-          items: [
-            {
-              item_name: itemName,
-              item_brand: itemBrand,
-              item_id: transactionId,
-              price: value,
-              quantity: '1',
+    const dataLayer = transactionId
+      ? [
+          'window.dataLayer = window.dataLayer || [];',
+          'window.dataLayer.push({ ecommerce: null });',
+          `window.dataLayer.push(${JSON.stringify({
+            event: 'purchase',
+            ecommerce: {
+              transaction_id: transactionId,
+              value,
+              currency,
+              items: [
+                {
+                  item_name: itemName,
+                  item_brand: itemBrand,
+                  item_id: transactionId,
+                  price: value,
+                  quantity: '1',
+                },
+              ],
             },
-          ],
-        },
-      })});`,
-    ];
-
+          })});`,
+        ]
+      : [
+          'window.dataLayer = window.dataLayer || [];',
+          `window.dataLayer.push(${JSON.stringify({
+            event: 'birthCompanyBooking',
+            goalType: 'appointmentBooking',
+            scanType: itemName,
+            apptWith: props.type,
+            location: itemBrand,
+            apptCost: value,
+            bookingID: orderId,
+          })});`,
+        ];
     return dataLayer.join('\n');
   } catch (error) {
     console.error('Failed to generate ecommerce data layer:', error);
@@ -123,10 +130,10 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
 
-  const transactionIdFromQuery = searchParams.get('transaction_id');
   const ecommerceDataLayer = getEcommerceDataLayer(
     props,
-    transactionIdFromQuery
+    transactionStatus?.paymentTransactionId || '',
+    transactionStatus?.orderId || ''
   );
 
   if (transactionStatus?.status !== 'Successful' || paramErrors) {
@@ -312,10 +319,13 @@ export const getServerSideProps: GetServerSideComponentProps = async (
 ) => {
   const { query } = context;
   let response;
+
+  const orderIdQuery = `orderId=${query.path}`;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
+  debug.common('TBCBookingConfirmation query.path', query.path);
   debug.common('TBCBookingConfirmation getServerSideProps started');
 
   if (layoutData.sitecore.context.pageEditing) {
@@ -334,12 +344,9 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   }
 
   try {
-    debug.common(
-      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
-    );
-    response = await fetch(
-      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
-    );
+    const url = `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${orderIdQuery}&${site}&${itemPath}`;
+    debug.common('TBCBookingConfirmation API fetch url', url);
+    response = await fetch(url);
     const transactionStatus = await response.json();
     return transactionStatus?.response;
   } catch (error) {

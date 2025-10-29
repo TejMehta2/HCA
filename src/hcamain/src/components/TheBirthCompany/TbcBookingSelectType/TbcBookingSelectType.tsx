@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -17,20 +17,13 @@ import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import Icons from '@component-library/foundation/Icons/Icons';
-import Container from '@component-library/foundation/Containers/Container';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import Icons from '@component-library/foundation/Icons/Icons';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import LocationCardBlock from '@component-library/the-birth-company/LocationCardBlock/LocationCardBlock';
-import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
-import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 
-import {
-  TheBirthCompanyContext,
-  TheBirthCompanyContextProvider,
-} from '@component-library/context/theBirthCompanyContext';
+import { TheBirthCompanyContextProvider } from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import BookingTypeCards from 'temp/component-library/the-birth-company/BookingTypeCards/BookingTypeCards';
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
@@ -50,6 +43,9 @@ interface Fields {
   CantFindBannerText: Field<string>;
   CantFindPhoneNumber: Field<string>;
   CantFindIcon: any;
+  servicesFolder: {
+    id: string;
+  };
 }
 
 type StepProps = {
@@ -63,6 +59,11 @@ interface TypeFields {
   description: string;
   duration: string;
   price: string;
+  type: 'booking' | 'phone' | 'cta';
+  link: {
+    title: string;
+    url: string;
+  };
 }
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
@@ -82,30 +83,17 @@ export const Default = (props: StepProps): JSX.Element => {
 };
 
 export const TbcLocations = (props: StepProps): JSX.Element => {
-  const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
-    useContext(TheBirthCompanyContext);
-
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [appointmentTypes, setAppointmentTypes] = useState<TypeFields[]>([]);
-  const [loading, seLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const searchParams = useSearchParams();
 
-  const paramTypeId = searchParams.get('typeId');
-
   // Set params for next page
   const nextPageParams = new URLSearchParams(searchParams.toString());
-  if (selectedTypeOfAppointment) {
-    nextPageParams.set('typeId', selectedTypeOfAppointment);
-  }
-
-  useEffect(() => {
-    if (paramTypeId) {
-      setSelectedTypeOfAppointment(paramTypeId);
-    }
-  }, [paramTypeId, setSelectedTypeOfAppointment]);
+  const configurationId = props.fields.servicesFolder.id;
 
   useEffect(() => {
     window.scrollTo({
@@ -122,19 +110,18 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
     const paramLocationId = searchParams.get('locationId');
 
     //  if any required params are missing redirect back to the start of the journey
-    if (!paramScanId || !paramLocationId) {
-      router.push('/booking');
+    if (!paramLocationId) {
+      router.push('/booking/location');
     }
 
     const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
-    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}${extras}`;
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}&configurationid=${configurationId}${extras}`;
 
     axios
       .get(requestURL)
       .then((res) => {
-        // console.log('res', res);
-        seLoading(false);
+        setLoading(false);
         setError(false);
         setAppointmentTypes(res?.data || []);
       })
@@ -142,149 +129,104 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router, router.isReady, searchParams]);
+  }, [router, router.isReady, searchParams, configurationId]);
+
+  const handleSubmit = (selectedTypeId: string) => {
+    nextPageParams.set('typeId', selectedTypeId);
+    router.push(`${props?.fields?.NextLink?.value?.href}?${nextPageParams}`);
+  };
+
+  const typeCtas = appointmentTypes.map((appointmentType) => {
+    let cta;
+
+    if (appointmentType.type === 'phone') {
+      cta = (
+        <>
+          <Text variation="body-bold-small" tag="p">
+            Call to book below:
+          </Text>
+          <TextButton>
+            <a href={`tel:${appointmentType.link.url}`}>
+              <Icons iconName="iconPhone" />
+              {appointmentType.link.title}
+            </a>
+          </TextButton>
+        </>
+      );
+    } else if (appointmentType.type === 'booking') {
+      cta = (
+        <Button size="small" variation="full">
+          <button onClick={() => handleSubmit(appointmentType.id)}>
+            <span>
+              <Icons iconName="iconCalendar" />
+            </span>
+            <span>{appointmentType.link.title}</span>
+          </button>
+        </Button>
+      );
+    } else if (appointmentType.type === 'cta') {
+      cta = (
+        <Button size="small" variation="full">
+          <a href={appointmentType.link.url}>
+            <span>
+              <Icons iconName="iconCalendar" />
+            </span>
+            <span>{appointmentType.link.title}</span>
+          </a>
+        </Button>
+      );
+    }
+
+    return {
+      title: <span>{appointmentType.name}</span>,
+      copy: <span>{appointmentType.description}</span>,
+      cta: cta,
+    };
+  });
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        {router.isReady && (
-          <div className="component-content">
-            <HeaderLDB
-              logo={<JssImage field={props?.fields?.HCALogo} />}
-              progress={
-                <ProgressBar
-                  currentPage={props?.fields?.CurrentStep?.value}
-                  steps={props?.fields?.Steps}
-                ></ProgressBar>
-              }
-            ></HeaderLDB>
-            <Headline>
-              <Text tag="h1" variation="heading-1">
-                <JssText field={props?.fields?.Title}></JssText>
-              </Text>
-            </Headline>
-            {loading && <LoaderCF />}
-            {!loading && !error && (
-              <LocationCardBlock
-                cta={
-                  props?.fields?.CantFindPhoneNumber?.value && (
-                    <CantFind
-                      contentVariation="the-birth-company"
-                      title={
-                        <Text tag="p" variation="body-medium-large">
-                          {props?.fields?.CantFindBannerText?.value}
-                        </Text>
-                      }
-                    >
-                      <TextButton>
-                        <a
-                          href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
-                            /\s/g,
-                            ''
-                          )}`}
-                        >
-                          <SitecoreSvg>
-                            {
-                              props?.fields?.CantFindIcon?.fields?.SvgMarkup
-                                ?.value
-                            }
-                          </SitecoreSvg>
-                          <span>
-                            {props?.fields?.CantFindPhoneNumber?.value}
-                          </span>
-                        </a>
-                      </TextButton>
-                    </CantFind>
-                  )
+      <>
+        <div
+          className={`component promo ${props.params.styles}`}
+          id={id ? id : undefined}
+        >
+          {router.isReady && (
+            <div className="component-content">
+              <HeaderLDB
+                logo={<JssImage field={props?.fields?.HCALogo} />}
+                progress={
+                  <ProgressBar
+                    currentPage={props?.fields?.CurrentStep?.value}
+                    steps={props?.fields?.Steps}
+                  ></ProgressBar>
                 }
+              ></HeaderLDB>
+              <Headline>
+                <Text tag="h1" variation="heading-1">
+                  <JssText field={props?.fields?.Title}></JssText>
+                </Text>
+              </Headline>
+              {loading && <LoaderCF />}
+              {!loading && !error && <BookingTypeCards cards={typeCtas} />}
+            </div>
+          )}
+        </div>
+        <Navigation>
+          <div>
+            <TextButton>
+              <Link
+                href={`${
+                  props?.fields?.BackLink?.value?.href
+                }?${searchParams.toString()}`}
               >
-                <>
-                  {appointmentTypes.map((appointmentType, index) => (
-                    <LocationCard
-                      key={index}
-                      contentVariation="appointmentType"
-                      selected={
-                        selectedTypeOfAppointment === appointmentType.id
-                      }
-                      name={
-                        <Text variation="body-bold-large">
-                          {appointmentType.name}
-                        </Text>
-                      }
-                      description={
-                        appointmentType.description ? (
-                          <Text variation="body-small">
-                            {appointmentType.description}
-                          </Text>
-                        ) : undefined
-                      }
-                      handleClick={() => {
-                        setSelectedTypeOfAppointment(appointmentType.id);
-                      }}
-                    >
-                      {appointmentType.duration && (
-                        <span>
-                          <Icons iconName="iconClock" />
-                          <Text variation="body-small" tag="p">
-                            {appointmentType.duration}
-                          </Text>
-                        </span>
-                      )}
-                      {appointmentType.price && (
-                        <span>
-                          <Icons iconName="iconCreditCard" />
-                          <Text variation="body-small" tag="p">
-                            {appointmentType.price}
-                          </Text>
-                        </span>
-                      )}
-                    </LocationCard>
-                  ))}
-                </>
-              </LocationCardBlock>
-            )}
-            <Navigation hideTextMobile={true}>
-              <div>
-                <TextButton>
-                  <Link
-                    href={`${
-                      props?.fields?.BackLink?.value?.href
-                    }?${searchParams.toString()}`}
-                  >
-                    <Icons iconName="iconArrowSmallLeft" />
-                    <span>
-                      {props?.fields?.BackLink?.value?.text || 'Back'}
-                    </span>
-                  </Link>
-                </TextButton>
-              </div>
-              <Container>
-                <Button size={'small'} variation={'full-dark'}>
-                  <button
-                    disabled={
-                      selectedTypeOfAppointment.length === 0 ? true : false
-                    }
-                    onClick={() =>
-                      router.push(
-                        `${
-                          props?.fields?.NextLink?.value?.href
-                        }?${nextPageParams.toString()}`
-                      )
-                    }
-                  >
-                    <span>
-                      {props?.fields?.NextLink?.value?.text || 'Next'}
-                    </span>
-                  </button>
-                </Button>
-              </Container>
-            </Navigation>
+                <Icons iconName="iconArrowSmallLeft" />
+                <span>{props.fields.BackLink.value.text || 'Back'}</span>
+              </Link>
+            </TextButton>
           </div>
-        )}
-      </div>
+        </Navigation>
+      </>
     );
   }
 

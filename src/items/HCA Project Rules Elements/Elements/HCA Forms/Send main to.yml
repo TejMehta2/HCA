@@ -1,0 +1,44 @@
+﻿---
+ID: "528cb769-8417-4991-87e3-ae4e3dd0c0b2"
+Parent: "4a72cf42-5f06-474f-b3eb-ad178ea6f47d"
+Template: "f90052a5-b4e6-4e6d-9812-1e1b88a6fcea"
+Path: /sitecore/system/Settings/Rules/Definitions/Elements/HCA Forms/Send main to
+SharedFields:
+- ID: "0b8b930b-8916-4462-bd4d-700303eadfd6"
+  Hint: Code
+  Value: code goes here
+- ID: "cde63811-197e-49b5-b16a-9f6ea642e3f9"
+  Hint: References
+  Value: reference
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "36e8b4f1-2cb3-4f2a-a163-6893a6acd532"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250819T135030Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7bce2c21-6881-4d98-9333-a7a5ce25ee59"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250819T135359Z
+    - ID: "eeb36a3b-40d9-4af5-862a-de257b84dca3"
+      Hint: Text
+      Value: "send e-mail message to [value,,,specified] e-mail address"

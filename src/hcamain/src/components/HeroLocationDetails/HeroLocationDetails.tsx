@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Field,
@@ -76,9 +77,19 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   }
 
   let availabilityString;
-  props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.map(
+  // Compute opening hours only if children.results is not empty
+  props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.forEach(
     (contactUnit: ContactUnitFields) => {
-      availabilityString = OpeningHours(contactUnit, 'linebreaks');
+      // only compute if children.results exists and not empty
+      if (
+        contactUnit.children?.results &&
+        contactUnit.children.results.length > 0
+      ) {
+        const hours = OpeningHours(contactUnit, 'linebreaks');
+        if (hours) {
+          availabilityString = hours;
+        }
+      }
     }
   );
 
@@ -110,46 +121,46 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           <Text variation="body-large" tag="span">
             {(props.fields?.data?.contextItem?.addressLine1?.jsonValue?.value ||
               isExperienceEditor) && (
-              <>
-                <JssText
-                  field={
-                    props.fields?.data?.contextItem?.addressLine1?.jsonValue
-                  }
-                />
-                <br />
-              </>
-            )}
+                <>
+                  <JssText
+                    field={
+                      props.fields?.data?.contextItem?.addressLine1?.jsonValue
+                    }
+                  />
+                  <br />
+                </>
+              )}
 
             {(props.fields?.data?.contextItem?.addressLine2?.jsonValue?.value ||
               isExperienceEditor) && (
-              <>
-                <JssText
-                  field={
-                    props.fields?.data?.contextItem?.addressLine2?.jsonValue
-                  }
-                />
-                <br />
-              </>
-            )}
+                <>
+                  <JssText
+                    field={
+                      props.fields?.data?.contextItem?.addressLine2?.jsonValue
+                    }
+                  />
+                  <br />
+                </>
+              )}
 
             {(props.fields?.data?.contextItem?.city?.jsonValue?.value ||
               isExperienceEditor) && (
-              <>
-                <JssText
-                  field={props.fields?.data?.contextItem?.city?.jsonValue}
-                />
-                <br />
-              </>
-            )}
+                <>
+                  <JssText
+                    field={props.fields?.data?.contextItem?.city?.jsonValue}
+                  />
+                  <br />
+                </>
+              )}
 
             {(props.fields?.data?.contextItem?.postCode?.jsonValue?.value ||
               isExperienceEditor) && (
-              <>
-                <JssText
-                  field={props.fields?.data?.contextItem?.postCode?.jsonValue}
-                />
-              </>
-            )}
+                <>
+                  <JssText
+                    field={props.fields?.data?.contextItem?.postCode?.jsonValue}
+                  />
+                </>
+              )}
           </Text>
         ),
 
@@ -172,13 +183,13 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       open={
         availabilityString
           ? {
-              icon: <Icons iconName="iconClock"></Icons>,
-              text: (
-                <Text variation="body-large" tag="span">
-                  {availabilityString}
-                </Text>
-              ),
-            }
+            icon: <Icons iconName="iconClock"></Icons>,
+            text: (
+              <Text variation="body-large" tag="span">
+                {availabilityString}
+              </Text>
+            ),
+          }
           : undefined
       }
       ctas={

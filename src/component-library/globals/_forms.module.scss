@@ -2,7 +2,6 @@
 @use '../utilities/index.module' as *;
 
 /* stylelint-disable selector-class-pattern, no-descending-specificity */
-
 byoc-sitecore-form,
 [data-byoc-sitecore-form] {
   * {
@@ -10,10 +9,7 @@ byoc-sitecore-form,
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
 
-    &:not(.submit-button,
-      .submit-button > *,
-      .global-input-error-message,
-      .iti__arrow) {
+    &:not(.submit-button):not(.submit-button > *):not(.global-input-error-message):not(.iti__arrow):not(.global-input-error-message):not(.form-input-error-message):not(p span) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
@@ -39,6 +35,10 @@ byoc-sitecore-form,
     @include responsive-grid-span($breakpoint-l: 8);
   }
 
+  .mdi-alert-circle::before {
+    color: #f03434;
+  }
+
   //  phone field overrides
   .iti__selected-country {
     background-color: transparent !important;
@@ -51,6 +51,18 @@ byoc-sitecore-form,
   // override for character limit shown on short fields
   input+.limit-counter {
     display: none;
+  }
+
+  /* hide number field arrows For Chrome, Safari, Edge, and Opera */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* For Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 
   // Hide/show asterisk for required fields (copied from Sitecore formbuilder inline styles)
@@ -69,6 +81,12 @@ byoc-sitecore-form,
   //  make sure error colour is applied to all field borders
   .form-input-error-field .global-input-wrapper {
     border-color: var(--field-error-colour) !important;
+  }
+
+  .email_input-component .form-input-error-message,
+  .text_input-component .form-input-error-message {
+    font-style: normal !important;
+    font-size: px-to-rem(14) !important;
   }
 
   //  border radius is only applied by sitecore to input wrapper so when webkit autofill is
@@ -93,6 +111,15 @@ byoc-sitecore-form,
   // Add margin-bottom for .tick and .tick-col-2
   ul.tick,
   ul.tick-col-2 {
+    margin-bottom: $spacing-4;
+  }
+
+  &:has(.form-input-error-field) [data-component-type="submit_button"]::after {
+    content: "Please correct the highlighted fields before submitting.";
+    color: #f03434;
+    display: block;
+    width: 100%;
+    text-align: center;
     margin-bottom: $spacing-4;
   }
 }

@@ -8,4 +8,5 @@ export interface HeaderPlainProps {
   contentVariation?: 'padding-small';
   subtitle?: ReactNode | JSX.Element;
   image?: ReactNode | JSX.Element;
+  subtitlePlacement?: 'before' | 'after';
 }

@@ -40,11 +40,12 @@ export async function getLDBFirstAppointmentDatas(
   gmcNumber: string[], // pass as individual gmcNumber=xx&gmcNumber=yy
   gmcNumbers: string, // pass as comma separated gmcNumbers=xx,yy
   serviceURL?: string,
-  headerKey?: string
+  headerKey?: string,
+  queryString?: string // additonal query string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
   const config = !serviceURL && !headerKey ? await GetC2Config() : null;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}${queryString ? '?' + queryString : ''}`;
   const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
 
   let returnData: any = '';
@@ -178,11 +179,12 @@ export async function getLDBFirstAppointmentDatas(
 export async function getLDBFirstAppointmentData(
   gmcNumber: string,
   serviceURL?: string,
-  headerKey?: string
+  headerKey?: string,
+  queryString?: string // additonal query string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
   const config = !serviceURL && !headerKey ? await GetC2Config() : null;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}${queryString ? '?' + queryString : ''}`;
   const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
 
   let returnData: string = '';

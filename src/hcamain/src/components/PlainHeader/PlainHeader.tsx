@@ -55,6 +55,9 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
             />
           </Text>
         }
+        subtitlePlacement={
+          props?.params?.HeadingBeforeTitle === '1' ? 'before' : 'after'
+        }
         heading={
           <Text
             tag={headingTag}

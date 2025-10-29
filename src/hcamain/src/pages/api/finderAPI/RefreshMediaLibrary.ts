@@ -431,7 +431,7 @@ const longRunning = async (notify: Notify) => {
       process.env.SITECORE_XL_ORIGINAL_SRC!,
       `UAT`,
       `ldbConsultants`,
-      `Project/HCA/HCA Main/Lookup API/UATfinder - Lookup API Data`,
+      `Project/HCA/HCA Main/Lookup API/UAT/finder - Lookup API Data`,
       `UATFinderData.xlsx`
     );
 
@@ -440,7 +440,7 @@ const longRunning = async (notify: Notify) => {
       process.env.SITECORE_XL_ORIGINAL_SRC!,
       `PROD`,
       `ldbConsultants`,
-      `Project/HCA/HCA Main/Lookup API/Prodfinder - Lookup API Data`,
+      `Project/HCA/HCA Main/Lookup API/Prod/finder - Lookup API Data`,
       `ProdFinderData.xlsx`
     );
   } catch (e) {

@@ -25,6 +25,7 @@ export const verticalConfigMap: VerticalConfigMap<{
   scans: unknown;
   patientstories: unknown;
   treatments: unknown;
+  conditions: unknown;
   promotion: unknown;
 }> = {
   healthcare_facilities: {
@@ -59,12 +60,19 @@ export const verticalConfigMap: VerticalConfigMap<{
     ),
   },
   treatments: {
-    label: 'Treatments',
+    label: '',
+    SectionComponent: () => (
+      null
+    ),
+  },
+  conditions: {
+    label: 'Conditions',
     SectionComponent: (props) => (
       <YextUniversalSection
         results={props.results}
         CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
-        title="Treatments"
+        title="Conditions"
+        verticalKey="conditions"
       />
     ),
   },
