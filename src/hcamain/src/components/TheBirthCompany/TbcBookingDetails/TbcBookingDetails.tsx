@@ -107,8 +107,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
   const searchParams = useSearchParams();
 
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -186,6 +184,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     });
   });
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   const partialSchemaObj = createSchema(fields, false); // All except billing fields
   const partialSchema = z.object(partialSchemaObj);
   const conditionalSchemaObject = createSchema(fields, true); // Just billing fields
@@ -240,6 +240,22 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     setFormSubmitting(true);
 
+    setRecaptchaTouched(true);
+
+    // Get token from reCAPTCHA
+    let token = recaptchaToken;
+
+    if (siteKey && !token) {
+      validateFormData();
+
+      setFormErrors((prev) => {
+        const next = new Map(prev);
+        next.set('Recaptcha', 'Please complete the reCAPTCHA verification');
+        return next;
+      });
+      return;
+    }
+
     const isValid = validateFormData();
     if (!isValid) {
       setTimeout(() => {
@@ -276,6 +292,32 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         router.replace(result.response.redirectUrl);
       } else {
         setSubmissionErrors(result.response.messages);
+
+        // Check if server says reCAPTCHA failed
+        const recaptchaError = result.response?.messages?.find(
+          (m: any) => m.key === 'Recaptcha'
+        );
+
+        if (recaptchaError) {
+          // reset reCAPTCHA UI
+          recaptchaRef.current?.reset();
+          setRecaptchaToken('');
+          setErrorRecaptcha(
+            formErrors.get('Recaptcha') || 'reCAPTCHA validation failed'
+          );
+          setRecaptchaTouched(true);
+
+          // update form error state so it displays properly
+          setFormErrors((prev) => {
+            const next = new Map(prev);
+            next.set(
+              'Recaptcha',
+              formErrors.get('Recaptcha') ||
+                'Please complete the reCAPTCHA verification'
+            );
+            return next;
+          });
+        }
       }
 
       setFormSubmitting(false);
