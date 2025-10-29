@@ -193,6 +193,13 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const allSchema = z.object({
     ...partialSchemaObj,
     ...conditionalSchemaObject,
+    ...(siteKey
+      ? {
+          Recaptcha: z
+            .string()
+            .min(1, 'Please complete the reCAPTCHA verification'),
+        }
+      : {}),
   });
 
   const validateFormData = (name?: string) => {
