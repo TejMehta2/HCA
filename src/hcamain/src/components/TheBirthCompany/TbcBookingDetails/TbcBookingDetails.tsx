@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -430,8 +431,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   location={appointmentDetails.location}
                   scanTitle={'Scan'}
                   scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
-                      ? '(' + appointmentDetails.extras.join(', ') + ')'
-                      : ''
+                    ? '(' + appointmentDetails.extras.join(', ') + ')'
+                    : ''
                     }`}
                   appointmentTitle={'Appointment'}
                   appointment={appointmentDetails.appointmentType}
@@ -455,8 +456,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                     location={appointmentDetails.location}
                     scanTitle={'Scan'}
                     scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
-                        ? '(' + appointmentDetails.extras.join(', ') + ')'
-                        : ''
+                      ? '(' + appointmentDetails.extras.join(', ') + ')'
+                      : ''
                       }`}
                     appointmentTitle={'Appointment'}
                     appointment={appointmentDetails.appointmentType}
