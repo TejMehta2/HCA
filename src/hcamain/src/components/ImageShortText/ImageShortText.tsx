@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -75,6 +76,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
@@ -86,6 +88,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     <>
       <DynamicImageAndTextBlock
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
         imageKeepAspectRatio={keepAspectRatio}

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -105,6 +106,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.data?.item?.heading?.jsonValue?.value
@@ -112,6 +115,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <Text
           tag={headingTag}
@@ -168,7 +172,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         return (
           <CardBlog key={card.id}>
             {card.abstractImage?.jsonValue.value?.src &&
-            card.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
+              card.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
               <Image
                 src={card.abstractImage?.jsonValue?.value?.src || ''}
                 alt={
@@ -238,10 +242,13 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     componentTitle
   );
 
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   return (
     <>
       <DynamicCardBlogBlock
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}
@@ -284,8 +291,8 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               variation={isFeature ? 'feature' : 'default'}
             >
               {isFeature &&
-              card.abstractImage?.jsonValue?.value?.src &&
-              card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
+                card.abstractImage?.jsonValue?.value?.src &&
+                card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
                 <Image
                   src={card.abstractImage?.jsonValue?.value?.src || ''}
                   alt={

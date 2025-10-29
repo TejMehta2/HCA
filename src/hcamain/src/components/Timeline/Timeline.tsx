@@ -19,7 +19,6 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import Themes from 'temp/component-library/foundation/Themes/Themes';
-
 interface PagesFields {
   abstractTitle?: { value?: string };
   abstractText?: { value?: string };
@@ -97,6 +96,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -121,7 +121,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
   );
   return (
     <>
-      <Themes theme={props?.params?.Theme || 'A-HCA-White'}>
+      <Themes theme={props?.params?.Theme || 'A-HCA-White'} tableOfContentTitle={tableOfContentTitle}>
         <Timeline
           id={componentAnchorId}
           subheading={

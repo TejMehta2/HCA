@@ -8,4 +8,5 @@ export interface CardBlockProps {
   gapSize?: 'small' | 'large';
   cta?: JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

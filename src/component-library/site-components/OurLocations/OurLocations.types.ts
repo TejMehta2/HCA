@@ -18,4 +18,5 @@ export interface OurLocationsProps {
   theme?: Theme;
   mapImage?: JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

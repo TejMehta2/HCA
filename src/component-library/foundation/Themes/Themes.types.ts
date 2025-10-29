@@ -29,4 +29,5 @@ export interface ThemesProps {
   topLevelTheme?: Theme;
   id?: string;
   collapse?: boolean;
+  tableOfContentTitle?: string | null;
 }

@@ -8,7 +8,7 @@ import Themes from '../../foundation/Themes/Themes';
 import { useDebouncedCallback } from 'use-debounce';
 
 const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
-  const { title, bodyCopy, link, children, id } = props;
+  const { title, bodyCopy, link, children, id, tableOfContentTitle } = props;
   const [translateX, setTranslateX] = useState<number>();
   const [height, setHeight] = useState<number>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,8 +85,8 @@ const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
 
     setHeight(
       containerRef.current.scrollWidth -
-        containerRef.current.offsetWidth +
-        containerRef.current.offsetHeight
+      containerRef.current.offsetWidth +
+      containerRef.current.offsetHeight
     );
     scrollHandler();
     window.addEventListener('scroll', scrollHandler);
@@ -102,7 +102,7 @@ const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
   }, [sideScrollSetup]);
 
   return (
-    <Themes theme="J-HCA-Tangerine-20" id={id}>
+    <Themes theme="J-HCA-Tangerine-20" id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles['wrapper']} style={{ height: `${height}px` }}>
         <div
           ref={containerRef}

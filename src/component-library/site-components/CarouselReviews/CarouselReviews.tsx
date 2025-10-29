@@ -12,7 +12,7 @@ import StarEmpty from '../../assets/shapes/StarEmpty.svg';
 import StarHalf from '../../assets/shapes/StarHalf.svg';
 
 const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
-  const { theme, rating, reviewCount, children, id } = props;
+  const { theme, rating, reviewCount, children, id, tableOfContentTitle } = props;
 
   /* Carousel settings */
   const settings = {
@@ -43,7 +43,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
   }
 
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
           <div>

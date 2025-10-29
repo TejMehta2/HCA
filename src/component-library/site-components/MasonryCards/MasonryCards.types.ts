@@ -18,4 +18,5 @@ export interface MasonryCardsProps {
   id?: string;
   cta?: ReactNode | JSX.Element;
   theme: Theme;
+  tableOfContentTitle?: string;
 }

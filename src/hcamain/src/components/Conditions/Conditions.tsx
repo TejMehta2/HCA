@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -138,6 +139,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const displayAllCards = item?.displayAllCards?.jsonValue?.value;
   const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;
@@ -172,6 +174,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}

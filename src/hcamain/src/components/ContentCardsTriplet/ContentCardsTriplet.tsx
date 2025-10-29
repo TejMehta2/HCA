@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -73,11 +74,13 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
@@ -116,50 +119,50 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 <>
                   {(card?.fields?.PrimaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button
-                      variation="full"
-                      size="small"
-                      contentVariation="full-width"
-                    >
-                      <JssLink field={card.fields.PrimaryCTA}>
-                        {!isExperienceEditor && (
-                          <>
-                            {card?.fields?.PrimaryCTA.value?.text && (
-                              <JssRichText
-                                tag="span"
-                                field={{
-                                  value: card?.fields?.PrimaryCTA.value?.text,
-                                }}
-                              />
-                            )}
-                          </>
-                        )}
-                      </JssLink>
-                    </Button>
-                  )}
+                      <Button
+                        variation="full"
+                        size="small"
+                        contentVariation="full-width"
+                      >
+                        <JssLink field={card.fields.PrimaryCTA}>
+                          {!isExperienceEditor && (
+                            <>
+                              {card?.fields?.PrimaryCTA.value?.text && (
+                                <JssRichText
+                                  tag="span"
+                                  field={{
+                                    value: card?.fields?.PrimaryCTA.value?.text,
+                                  }}
+                                />
+                              )}
+                            </>
+                          )}
+                        </JssLink>
+                      </Button>
+                    )}
                   {(card?.fields?.SecondaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button
-                      variation="outline"
-                      size="small"
-                      contentVariation="full-width"
-                    >
-                      <JssLink field={card.fields.SecondaryCTA}>
-                        {!isExperienceEditor && (
-                          <>
-                            {card?.fields?.SecondaryCTA.value?.text && (
-                              <JssRichText
-                                tag="span"
-                                field={{
-                                  value: card?.fields?.SecondaryCTA.value?.text,
-                                }}
-                              />
-                            )}
-                          </>
-                        )}
-                      </JssLink>
-                    </Button>
-                  )}
+                      <Button
+                        variation="outline"
+                        size="small"
+                        contentVariation="full-width"
+                      >
+                        <JssLink field={card.fields.SecondaryCTA}>
+                          {!isExperienceEditor && (
+                            <>
+                              {card?.fields?.SecondaryCTA.value?.text && (
+                                <JssRichText
+                                  tag="span"
+                                  field={{
+                                    value: card?.fields?.SecondaryCTA.value?.text,
+                                  }}
+                                />
+                              )}
+                            </>
+                          )}
+                        </JssLink>
+                      </Button>
+                    )}
                 </>
               }
             />

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -76,6 +77,8 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const centered =
     props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
@@ -83,6 +86,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <Accreditations
         columns={columns}
@@ -121,6 +125,7 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const leftAlign =
     props?.params?.styles &&
     props?.params?.styles?.split(' ').indexOf('position-left') !== -1;
@@ -129,6 +134,7 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <Accreditations
         columns={3}

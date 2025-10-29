@@ -7,4 +7,5 @@ export interface BlogContentProps {
   imageKeepAspectRatio?: boolean;
   contentVariation?: 'quote-center' | 'quote' | 'image';
   id?: string;
+  tableOfContentTitle?: string;
 }

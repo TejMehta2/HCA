@@ -10,14 +10,14 @@ const BlogContent = (props: BlogContentProps): JSX.Element => {
     imageKeepAspectRatio = false,
     contentVariation,
     id,
+    tableOfContentTitle
   } = props;
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper} id={id}>
         <div
-          className={`${styles.container} ${
-            contentVariation ? styles[contentVariation + '-block'] : ''
-          } ${imageKeepAspectRatio ? styles['keep-aspect-ratio'] : ''}`}
+          className={`${styles.container} ${contentVariation ? styles[contentVariation + '-block'] : ''
+            } ${imageKeepAspectRatio ? styles['keep-aspect-ratio'] : ''}`}
         >
           <div className={styles.grid}>{children}</div>
         </div>

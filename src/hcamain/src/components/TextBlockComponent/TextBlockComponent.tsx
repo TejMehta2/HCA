@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -61,6 +62,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -73,6 +75,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   return (
     <TextBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={centered ? 'centered' : undefined}
       subheading={
@@ -124,6 +127,7 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -131,6 +135,7 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
   return (
     <OffsetTextBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         (props.fields?.Heading?.value || isExperienceEditor) && (
