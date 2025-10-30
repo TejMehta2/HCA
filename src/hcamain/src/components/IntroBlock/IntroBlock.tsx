@@ -145,7 +145,9 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       imageAlignment={imageAlignment}
       imageKeepAspectRatio={keepAspectRatio}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -154,7 +156,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           tag={headingTag}
           variation={props.params?.HeadingSize || 'display-3'}
         >
-          <JSSText field={props.fields?.Title} />
+          <JssRichText tag="span" field={props.fields?.Title} />
         </Text>
       }
       subtitle={
