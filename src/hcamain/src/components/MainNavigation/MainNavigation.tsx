@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint react/jsx-key: 0 */
 import React, { useRef } from 'react';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
@@ -13,6 +14,7 @@ import {
   Link as JssLink,
   Text as JssText,
   useSitecoreContext,
+  Image,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
@@ -145,6 +147,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         themeClosed={props.params?.Theme || 'I-HCA-Goldenrod'}
         themeOpen={props.params?.ThemeOpen || 'B-HCA-Navy-Blue'}
         tabs={tabs}
+        logo={<Image field={props?.fields?.data?.item?.logo?.jsonValue.value} />}
+        darkLogo={<Image field={props?.fields?.data?.item?.darkLogo?.jsonValue.value} />}
         eyebrow={eyebrow}
         search={
           searchModalConfig?.baseUrl?.jsonValue?.value?.href ? (
