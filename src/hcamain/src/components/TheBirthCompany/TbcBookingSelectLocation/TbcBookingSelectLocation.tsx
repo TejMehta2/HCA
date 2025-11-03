@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 // Based on src\hcamain\src\components\ConsultantFinder\StepLocationSelect.tsx

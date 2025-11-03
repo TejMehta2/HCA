@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint react/jsx-key: 0 */
 import React, { useRef } from 'react';
 import Navigation from '@component-library/site-components/Navigation/Navigation';

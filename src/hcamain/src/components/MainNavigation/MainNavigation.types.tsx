@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import {
   Field,
