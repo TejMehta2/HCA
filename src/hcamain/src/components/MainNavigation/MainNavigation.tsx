@@ -13,6 +13,7 @@ import {
   Link as JssLink,
   Text as JssText,
   useSitecoreContext,
+  Image,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
@@ -57,6 +58,8 @@ const TabChildHeading = (props: MainNavigationTabChild) => {
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  console.log('props', props);
+  console.log('logo', props?.fields?.data?.item?.logo?.jsonValue.value?.src);
 
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
@@ -145,6 +148,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         themeClosed={props.params?.Theme || 'I-HCA-Goldenrod'}
         themeOpen={props.params?.ThemeOpen || 'B-HCA-Navy-Blue'}
         tabs={tabs}
+        logo={props?.fields?.data?.item?.logo?.jsonValue.value?.src ?? <Image field={props?.fields?.data?.item?.logo?.jsonValue.value} />}
+        darkLogo={props?.fields?.data?.item?.darkLogo?.jsonValue.value?.src ?? <Image field={props?.fields?.data?.item?.darkLogo?.jsonValue.value} />}
         eyebrow={eyebrow}
         search={
           searchModalConfig?.baseUrl?.jsonValue?.value?.href ? (
