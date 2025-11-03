@@ -8,4 +8,5 @@ export interface OffsetTextBlockProps {
   bodyCopy?: ReactNode | JSX.Element;
   ctas?: ReactNode | JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

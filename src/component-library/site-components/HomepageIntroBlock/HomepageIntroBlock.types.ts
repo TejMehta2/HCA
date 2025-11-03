@@ -14,4 +14,5 @@ export interface HomepageIntroBlockProps {
   id?: string;
   imageKeepAspectRatio?: boolean;
   theme: Theme;
+  tableOfContentTitle?: string;
 }

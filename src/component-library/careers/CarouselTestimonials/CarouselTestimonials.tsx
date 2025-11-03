@@ -8,7 +8,7 @@ import Icons from '../../foundation/Icons/Icons';
 const CarouselTestimonials = (
   props: CarouselTestimonialsProps
 ): JSX.Element => {
-  const { id, theme, subtitle, title, slides } = props;
+  const { id, theme, subtitle, title, slides, tableOfContentTitle } = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const [degrees, setDegrees] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -53,8 +53,8 @@ const CarouselTestimonials = (
       style={
         activeSlide === i
           ? {
-              ['--carousel-degrees' as string]: `${degrees}deg`,
-            }
+            ['--carousel-degrees' as string]: `${degrees}deg`,
+          }
           : {}
       }
     >
@@ -124,7 +124,7 @@ const CarouselTestimonials = (
   );
 
   return (
-    <Themes theme={theme || 'B-HCA-Navy-Blue'} id={id}>
+    <Themes theme={theme || 'B-HCA-Navy-Blue'} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.title} data-animate="xs">

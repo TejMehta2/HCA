@@ -21,10 +21,11 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     contentVariation,
     noOverflownHidden,
     id,
+    tableOfContentTitle
   } = props;
 
   return (
-    <Themes id={id} theme={theme}>
+    <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={noOverflownHidden ? '' : styles.background}>
         <div
           className={[

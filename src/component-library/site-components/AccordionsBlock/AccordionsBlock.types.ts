@@ -10,4 +10,5 @@ export interface AccordionsBlockProps {
   accordions: Accordions;
   ctas?: ReactNode | JSX.Element;
   id?: string;
+  tableOfContentTitle?: string | null;
 }

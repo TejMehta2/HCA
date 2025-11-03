@@ -1,58 +1,47 @@
-/* eslint react/jsx-key: 0 */
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import { Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
-import JumpToLinks, {
-  JumpToAnchor,
-} from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import JumpToLinks, { JumpToAnchor } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Icons from '@component-library/foundation/Icons/Icons';
-import {
-  NavigableComponent,
-  TableOfContentsProps,
-} from './TableOfContents.types';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { TableOfContentsProps, NavigableComponent } from './TableOfContents.types';
 import router from 'next/router';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
-  const [components, setComponentsList] = useState<NavigableComponent[]>(
-    inPageNavGlobalStore.getList()
-  );
+  const [components, setComponentsList] = useState<NavigableComponent[]>([]);
 
-  // Clear list when component mounts (i.e., on each page visit)
   useEffect(() => {
     const handleRouteChange = () => {
-      // console.log('[ToC] Route changed. Clearing list.');
-      inPageNavGlobalStore.clearList();
+      buildToC();
     };
-    router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
 
+  // Initial scan
   useEffect(() => {
-    const handleNavigableComponentsListUpdated = (
-      updatedList: NavigableComponent[]
-    ) => {
-      // console.log('[ToC] Received updated list', updatedList);
-      setComponentsList([...updatedList]);
-    };
-    // Sync immediately on mount
-    const currentList = inPageNavGlobalStore.getList();
-    // console.log('[ToC] Initial list on mount', currentList);
-    setComponentsList([...currentList]);
-    inPageNavGlobalStore.on(
-      'navigableComponentsListUpdated',
-      handleNavigableComponentsListUpdated
-    );
-    return () => {
-      inPageNavGlobalStore.off(
-        'navigableComponentsListUpdated',
-        handleNavigableComponentsListUpdated
-      );
-    };
+    buildToC();
   }, []);
+
+  const buildToC = () => {
+    // Scan DOM for elements with data-subnav-link-title
+    const elements = document.querySelectorAll<HTMLElement>('[data-subnav-link-title]');
+    // console.log('[ToC] Found elements:', elements);
+
+    const tocComponents: NavigableComponent[] = Array.from(elements).map(el => {
+      const item = {
+        TableOfContentsLinkTitle: el.dataset.subnavLinkTitle || '',
+        Id: el.dataset.subnavLinkId || el.id || '', // fallback to id if not present
+      };
+      return item;
+    });
+
+    // console.log('[ToC] Final array:', tocComponents);
+    setComponentsList(tocComponents);
+  };
 
   const hasNoDatasource = !props.fields;
 
@@ -69,16 +58,15 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
           )
         }
       >
-        {components.map((item, index) => {
-          return (
+        {components.length > 0 &&
+          components.map((item, index) => (
             <JumpToAnchor key={index}>
               <a href={'#' + item.Id}>
                 <Icons iconName="iconArrowSmallDown" />
                 <span>{item.TableOfContentsLinkTitle}</span>
               </a>
             </JumpToAnchor>
-          );
-        })}
+          ))}
       </JumpToLinks>
     </Themes>
   );

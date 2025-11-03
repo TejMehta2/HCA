@@ -25,4 +25,5 @@ export interface ImageAndTextBlockProps {
   contentVariation?: 'pricing' | 'hero' | 'hero-cf';
   noOverflownHidden?: boolean;
   id?: string;
+  tableOfContentTitle?: string;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -110,6 +111,7 @@ export const Default = ({
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -118,6 +120,7 @@ export const Default = ({
   return (
     <DynamicServiceCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       contentVariation={variant}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
@@ -191,7 +194,7 @@ export const Default = ({
               key={index}
             >
               {service.abstractImage?.jsonValue.value?.src &&
-              service.abstractImage?.jsonValue.value?.class !==
+                service.abstractImage?.jsonValue.value?.class !==
                 'scEmptyImage' ? (
                 <Image
                   src={service?.abstractImage.jsonValue?.value?.src || ''}

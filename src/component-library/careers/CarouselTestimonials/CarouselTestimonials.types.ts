@@ -15,4 +15,5 @@ export interface CarouselTestimonialsProps {
   subtitle?: JSX.Element | ReactNode;
   title: JSX.Element | ReactNode;
   slides: SlideProps[];
+  tableOfContentTitle?: string;
 }

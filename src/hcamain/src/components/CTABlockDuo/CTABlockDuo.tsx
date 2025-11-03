@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   ComponentRendering,
@@ -15,12 +16,14 @@ type TextBlockComponentDuoProps = {
 
 export const Default = (props: TextBlockComponentDuoProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const phKey = `cta-block-duo-${props?.params?.DynamicPlaceholderId}`;
 
   return (
     <DualCTABlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       content={
         <PlaceHolderWrapper>

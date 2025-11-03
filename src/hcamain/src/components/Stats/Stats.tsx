@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Text as JssText,
   useSitecoreContext,
@@ -39,9 +40,10 @@ export const Default = (props: StatsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
-    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId} tableOfContentTitle={tableOfContentTitle}>
       <Stats
         heading={
           <Text
@@ -80,9 +82,10 @@ export const ThreeColumns = (props: StatsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
-    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId} tableOfContentTitle={tableOfContentTitle}>
       <Stats
         variant={'threeCol'}
         heading={
@@ -124,6 +127,7 @@ export const Cards = (props: StatsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const stats: StatProps[] = (props.fields?.Counters || []).map((counter) => {
     const stat = counter.fields?.Number?.value || '';
@@ -135,6 +139,7 @@ export const Cards = (props: StatsProps): JSX.Element => {
     <StatsCards
       theme={props.params?.Theme || 'D-HCA-Teal'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       header={
         <Text
           tag={props.params?.HeadingTag || 'h2'}

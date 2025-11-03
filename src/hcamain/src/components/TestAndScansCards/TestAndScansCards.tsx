@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -98,7 +99,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
       props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
-      props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+        props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
         <JssLink
           field={props.fields?.data?.item?.cTALink?.jsonValue}
           href={
@@ -220,6 +221,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.data?.item?.heading?.jsonValue?.value
@@ -227,6 +229,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}

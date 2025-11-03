@@ -12,4 +12,5 @@ export interface DualCTABlockProps {
   content?: ReactNode | JSX.Element;
   theme: Theme;
   id?: string;
+  tableOfContentTitle?: string;
 }

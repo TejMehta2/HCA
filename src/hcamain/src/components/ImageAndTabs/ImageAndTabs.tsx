@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -62,10 +63,12 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <TabsBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text

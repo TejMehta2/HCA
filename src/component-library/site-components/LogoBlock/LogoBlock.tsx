@@ -11,9 +11,10 @@ const LogoBlock = (props: LogoBlockProps): JSX.Element => {
     variation = 'standard',
     columns = 4,
     id,
+    tableOfContentTitle
   } = props;
   return (
-    <Themes theme={theme} id={id}>
+    <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div
         className={[
           styles.wrapper,
