@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import {
   Field,
@@ -36,9 +37,9 @@ export interface MainNavigationTabChild {
   };
   template?: {
     name:
-      | 'Navigation Content Block'
-      | 'Main Navigation Links List'
-      | 'Navigation Blog Post Card';
+    | 'Navigation Content Block'
+    | 'Main Navigation Links List'
+    | 'Navigation Blog Post Card';
   };
   date?: ExtendedDate;
   tag?: Field<string>;
@@ -89,7 +90,8 @@ export interface PopularSearch {
 export interface Fields {
   data?: {
     item?: {
-      logo?: ImageField;
+      logo?: { jsonValue: ImageField };
+      darkLogo?: { jsonValue: ImageField };
       navigationTabs?: {
         targetItems?: MainNavigationTab[];
       };

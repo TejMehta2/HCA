@@ -3,6 +3,7 @@
 
 .wrapper {
   display: none;
+
   @include media(screen-l) {
     display: block;
   }
@@ -11,11 +12,9 @@
   background-color: var(--background);
 
   &.closed {
-    background-color: color-mix(
-      in srgb,
-      var(--card-background),
-      transparent 40%
-    ); // apply opacity to hex color
+    background-color: color-mix(in srgb,
+        var(--card-background),
+        transparent 40%); // apply opacity to hex color
 
     backdrop-filter: blur(#{px-to-rem(28)});
   }
@@ -68,6 +67,12 @@
 
   svg {
     aspect-ratio: 160.5 / 45;
+  }
+
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
   }
 }
 
@@ -134,9 +139,7 @@
     display: none;
   }
 
-  max-height: calc(
-    100vh - #{px-to-rem(136)}
-  ); // limit height and scroll in case CMS users over-fill
+  max-height: calc(100vh - #{px-to-rem(136)}); // limit height and scroll in case CMS users over-fill
 
   overflow-y: auto;
 }
@@ -152,7 +155,7 @@
     margin-top: px-to-rem(24);
     margin-bottom: px-to-rem(24);
 
-    > li {
+    >li {
       margin-top: $spacing-4;
       margin-bottom: $spacing-4;
 

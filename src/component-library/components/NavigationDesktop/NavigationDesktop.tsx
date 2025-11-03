@@ -26,6 +26,8 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     defaultTab = null,
     search,
     homeUrl = '/',
+    logo,
+    darkLogo
   } = props;
 
   // close the nav when clicking a link within
@@ -254,7 +256,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
               data-navigation-type="logoNavigation"
             >
               <span className="sr-only">Home</span>
-              {isOpen ? <LogoWhite /> : <LogoBlue />}
+              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
             </a>
             <ul className={styles.tabs}>
               {tabs.map((tab, tabIndex) => {
