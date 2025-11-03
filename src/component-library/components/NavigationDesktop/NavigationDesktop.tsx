@@ -30,9 +30,6 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     darkLogo
   } = props;
 
-  console.log('logo', logo);
-  console.log('darkLogo', darkLogo);
-
   // close the nav when clicking a link within
   const router = useRouter();
   useEffect(() => {

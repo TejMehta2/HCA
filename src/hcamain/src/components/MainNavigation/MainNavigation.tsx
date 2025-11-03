@@ -59,8 +59,6 @@ const TabChildHeading = (props: MainNavigationTabChild) => {
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  console.log('props', props);
-  console.log('logo', props?.fields?.data?.item?.logo?.jsonValue.value?.src);
 
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
