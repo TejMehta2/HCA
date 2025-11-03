@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -54,10 +55,12 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     props?.params,
     componentTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <ArticleCategories
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text

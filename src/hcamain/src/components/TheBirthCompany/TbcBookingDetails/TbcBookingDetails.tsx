@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
+import styles from '../../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
   ButtonTemplate,
@@ -43,6 +45,8 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Container from '@component-library/core-components/form/basic/Container/Container';
 
 export interface TbcBookingDetailsProps extends PaymentFormProps {
   params: { [key: string]: string };
@@ -76,6 +80,10 @@ interface PaymentAPIResponse {
 }
 
 export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
+  const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');
+  const [recaptchaTouched, setRecaptchaTouched] = useState(false);
   const context = useSitecoreContext().sitecoreContext;
   const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
   const siteName = context?.site?.name;
@@ -177,6 +185,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     });
   });
 
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   const partialSchemaObj = createSchema(fields, false); // All except billing fields
   const partialSchema = z.object(partialSchemaObj);
   const conditionalSchemaObject = createSchema(fields, true); // Just billing fields
@@ -185,6 +195,13 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const allSchema = z.object({
     ...partialSchemaObj,
     ...conditionalSchemaObject,
+    ...(siteKey
+      ? {
+        Recaptcha: z
+          .string()
+          .min(1, 'Please complete the reCAPTCHA verification'),
+      }
+      : {}),
   });
 
   const validateFormData = (name?: string) => {
@@ -224,6 +241,23 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     setFormSubmitting(true);
 
+    setRecaptchaTouched(true);
+
+    // Get token from reCAPTCHA
+    const token = recaptchaToken;
+
+    if (siteKey && !token) {
+      validateFormData();
+
+      setFormErrors((prev) => {
+        const next = new Map(prev);
+        next.set('Recaptcha', 'Please complete the reCAPTCHA verification');
+        return next;
+      });
+      setFormSubmitting(false);
+      return;
+    }
+
     const isValid = validateFormData();
     if (!isValid) {
       setTimeout(() => {
@@ -260,6 +294,33 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         router.replace(result.response.redirectUrl);
       } else {
         setSubmissionErrors(result.response.messages);
+
+        // Check if server says reCAPTCHA failed
+        const recaptchaError = result.response?.messages?.find(
+          (m: PaymentAPIResponseMessage) => m.key === 'Recaptcha'
+        );
+
+        if (recaptchaError) {
+          // reset reCAPTCHA UI
+          recaptchaRef.current?.reset();
+          setRecaptchaToken('');
+          setErrorRecaptcha(
+            formErrors.get('Recaptcha') || 'reCAPTCHA validation failed'
+          );
+          setRecaptchaTouched(true);
+
+          // update form error state so it displays properly
+          setFormErrors((prev) => {
+            const next = new Map(prev);
+            next.set(
+              'Recaptcha',
+              formErrors.get('Recaptcha') ||
+              'Please complete the reCAPTCHA verification'
+            );
+            setFormSubmitting(false);
+            return next;
+          });
+        }
       }
 
       setFormSubmitting(false);
@@ -369,17 +430,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   locationTitle={'Location'}
                   location={appointmentDetails.location}
                   scanTitle={'Scan'}
-                  scan={`${appointmentDetails.scanName} ${
-                    appointmentDetails.extras.length
-                      ? '(' + appointmentDetails.extras.join(', ') + ')'
-                      : ''
-                  }`}
+                  scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
+                    ? '(' + appointmentDetails.extras.join(', ') + ')'
+                    : ''
+                    }`}
                   appointmentTitle={'Appointment'}
                   appointment={appointmentDetails.appointmentType}
                   dateTitle={'Date & time'}
-                  date={`${formatDate(appointmentDetails.slot)} (${
-                    appointmentDetails.duration
-                  })`}
+                  date={`${formatDate(appointmentDetails.slot)} (${appointmentDetails.duration
+                    })`}
                   priceTitle={`Price to pay`}
                   price={appointmentDetails.price}
                 />
@@ -396,17 +455,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                     locationTitle={'Location'}
                     location={appointmentDetails.location}
                     scanTitle={'Scan'}
-                    scan={`${appointmentDetails.scanName} ${
-                      appointmentDetails.extras.length
-                        ? '(' + appointmentDetails.extras.join(', ') + ')'
-                        : ''
-                    }`}
+                    scan={`${appointmentDetails.scanName} ${appointmentDetails.extras.length
+                      ? '(' + appointmentDetails.extras.join(', ') + ')'
+                      : ''
+                      }`}
                     appointmentTitle={'Appointment'}
                     appointment={appointmentDetails.appointmentType}
                     dateTitle={'Date & time'}
-                    date={`${formatDate(appointmentDetails.slot)} (${
-                      appointmentDetails.duration
-                    })`}
+                    date={`${formatDate(appointmentDetails.slot)} (${appointmentDetails.duration
+                      })`}
                     priceTitle={`Price to pay`}
                     price={appointmentDetails.price}
                   />
@@ -742,9 +799,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                             }}
                           ></span>
                         }
-                        name={`${
-                          getField<ListTemplate>('attendanceConfirmation').name
-                        }`}
+                        name={`${getField<ListTemplate>('attendanceConfirmation').name
+                          }`}
                         value={
                           getField<ListTemplate>('attendanceConfirmation').name
                         }
@@ -780,6 +836,56 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 name="extrasIds"
                 value={appointmentDetails?.extrasIds || ''}
               />
+
+              {siteKey && (
+                <>
+                  <ReCAPTCHA
+                    className={styles.recaptcha}
+                    ref={recaptchaRef}
+                    sitekey={siteKey || ''}
+                    onChange={(value) => {
+                      setRecaptchaToken(value || '');
+                      setErrorRecaptcha(''); // clear custom error
+                      setFormErrors((prev) => {
+                        const next = new Map(prev);
+                        next.delete('Recaptcha');
+                        return next;
+                      });
+                    }}
+                    onErrored={() => {
+                      console.error('payment form reCAPTCHA onErrored');
+                      setErrorRecaptcha('Something went wrong with reCAPTCHA');
+                    }}
+                    onExpired={() => {
+                      setRecaptchaToken('');
+                      setErrorRecaptcha(
+                        'reCAPTCHA expired — please verify again'
+                      ); // custom message
+                      setRecaptchaTouched(true); // ensure error displays on expiry
+                    }}
+                  />
+
+                  {recaptchaTouched &&
+                    (!recaptchaToken ||
+                      formErrors.get('Recaptcha') ||
+                      errorRecaptcha) && (
+                      <Container isErrorMsg={true}>
+                        <Icons iconName="iconWarning" />
+                        <Text variation="body-medium-medium">
+                          {formErrors.get('Recaptcha') ||
+                            errorRecaptcha ||
+                            'Please complete the reCAPTCHA verification'}
+                        </Text>
+                      </Container>
+                    )}
+
+                  <input
+                    name="Recaptcha"
+                    type="hidden"
+                    value={recaptchaToken}
+                  />
+                </>
+              )}
 
               {submissionErrors.length > 0 && (
                 <div>

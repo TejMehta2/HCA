@@ -11,10 +11,11 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
     text,
     ctas,
     contentVariation,
+    tableOfContentTitle,
     id,
   } = props;
   return (
-    <Themes id={id} theme={theme}>
+    <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         <div className={styles.grid}>
           <div

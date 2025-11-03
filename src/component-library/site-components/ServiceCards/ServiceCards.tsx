@@ -14,10 +14,11 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
     id,
     theme = 'I-HCA-Goldenrod',
     contentVariation = 'service',
+    tableOfContentTitle
   } = props;
 
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper} id={id}>
         <div className={styles.container}>
           <div className={styles['sticky-track']}>

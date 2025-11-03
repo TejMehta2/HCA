@@ -3,6 +3,7 @@
 
 .wrapper {
   display: block;
+
   @include media(screen-l) {
     display: none;
   }
@@ -11,11 +12,9 @@
   background-color: var(--background);
 
   &.closed {
-    background-color: color-mix(
-      in srgb,
-      var(--card-background),
-      transparent 40%
-    ); // apply opacity to hex color
+    background-color: color-mix(in srgb,
+        var(--card-background),
+        transparent 40%); // apply opacity to hex color
 
     backdrop-filter: blur(#{px-to-rem(28)});
   }
@@ -30,7 +29,7 @@
   padding-top: $spacing-5;
   padding-bottom: $spacing-5;
 
-  > * {
+  >* {
     @include responsive-container;
   }
 }
@@ -48,7 +47,7 @@
     padding-top: $spacing-7;
     padding-bottom: $spacing-7;
 
-    > * {
+    >* {
       @include apply-body-extra-large;
 
       margin-top: px-to-rem(24);
@@ -90,6 +89,12 @@
 
   svg {
     aspect-ratio: 149 / 42;
+  }
+
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
   }
 }
 

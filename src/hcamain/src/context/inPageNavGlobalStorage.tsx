@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { NavigableComponent } from 'components/TableOfContents/TableOfContents.types';
 import EventEmitter from 'events';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
@@ -42,7 +43,6 @@ class InPageNavGlobalStore extends EventEmitter {
   }
 
   clearList(): void {
-    // console.log('[InPageNavGlobalStore] List cleared');
     this.list = [];
     this.emit('navigableComponentsListUpdated', this.list);
   }

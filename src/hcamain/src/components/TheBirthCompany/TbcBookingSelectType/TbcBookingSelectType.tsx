@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import {
   Image as JssImage,
@@ -16,6 +17,7 @@ import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 
@@ -184,31 +186,47 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        {router.isReady && (
-          <div className="component-content">
-            <HeaderLDB
-              logo={<JssImage field={props?.fields?.HCALogo} />}
-              progress={
-                <ProgressBar
-                  currentPage={props?.fields?.CurrentStep?.value}
-                  steps={props?.fields?.Steps}
-                ></ProgressBar>
-              }
-            ></HeaderLDB>
-            <Headline>
-              <Text tag="h1" variation="heading-1">
-                <JssText field={props?.fields?.Title}></JssText>
-              </Text>
-            </Headline>
-            {loading && <LoaderCF />}
-            {!loading && !error && <BookingTypeCards cards={typeCtas} />}
+      <>
+        <div
+          className={`component promo ${props.params.styles}`}
+          id={id ? id : undefined}
+        >
+          {router.isReady && (
+            <div className="component-content">
+              <HeaderLDB
+                logo={<JssImage field={props?.fields?.HCALogo} />}
+                progress={
+                  <ProgressBar
+                    currentPage={props?.fields?.CurrentStep?.value}
+                    steps={props?.fields?.Steps}
+                  ></ProgressBar>
+                }
+              ></HeaderLDB>
+              <Headline>
+                <Text tag="h1" variation="heading-1">
+                  <JssText field={props?.fields?.Title}></JssText>
+                </Text>
+              </Headline>
+              {loading && <LoaderCF />}
+              {!loading && !error && <BookingTypeCards cards={typeCtas} />}
+            </div>
+          )}
+        </div>
+        <Navigation>
+          <div>
+            <TextButton>
+              <Link
+                href={`${
+                  props?.fields?.BackLink?.value?.href
+                }?${searchParams.toString()}`}
+              >
+                <Icons iconName="iconArrowSmallLeft" />
+                <span>{props.fields.BackLink.value.text || 'Back'}</span>
+              </Link>
+            </TextButton>
           </div>
-        )}
-      </div>
+        </Navigation>
+      </>
     );
   }
 

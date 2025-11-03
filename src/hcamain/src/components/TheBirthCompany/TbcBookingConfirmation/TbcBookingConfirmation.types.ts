@@ -61,5 +61,6 @@ export interface TransactionStatusResponse {
   lastUpdateDate: string;
   paymentType: string;
   status: string;
-  transactionId: string;
+  paymentTransactionId: string;
+  orderId: string;
 }

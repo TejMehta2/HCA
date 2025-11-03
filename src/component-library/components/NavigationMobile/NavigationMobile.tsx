@@ -39,6 +39,8 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
     themeClosed = 'I-HCA-Goldenrod',
     search,
     homeUrl = '/',
+    logo,
+    darkLogo
   } = props;
 
   // Hooks
@@ -125,7 +127,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
           <div className={styles.main}>
             <a className={styles.logo} href={homeUrl}>
               <span className="sr-only">Home</span>
-              {isOpen ? <LogoWhite /> : <LogoBlue />}
+              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
             </a>
             <div className={styles.ctas}>
               {search && (
@@ -144,18 +146,18 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
               <>
                 {(secondaryChoice === null ||
                   mobileTabs[primaryChoice].content.length <= 1) && (
-                  <BackButton
-                    callback={() => {
-                      setPrimaryChoice(null);
-                      setSecondaryChoice(null);
-                    }}
-                    displayText={
-                      <>
-                        Back to <strong>Menu</strong>
-                      </>
-                    }
-                  />
-                )}
+                    <BackButton
+                      callback={() => {
+                        setPrimaryChoice(null);
+                        setSecondaryChoice(null);
+                      }}
+                      displayText={
+                        <>
+                          Back to <strong>Menu</strong>
+                        </>
+                      }
+                    />
+                  )}
                 {secondaryChoice !== null &&
                   mobileTabs[primaryChoice].content.length > 1 && (
                     <BackButton
@@ -218,7 +220,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                     <li
                                       className={
                                         primaryChoice === primaryIndex &&
-                                        secondaryChoice === null
+                                          secondaryChoice === null
                                           ? ''
                                           : styles.hidden
                                       }
@@ -260,7 +262,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                               className={
                                                 primaryChoice ===
                                                   primaryIndex &&
-                                                secondaryChoice ===
+                                                  secondaryChoice ===
                                                   secondaryIndex
                                                   ? ''
                                                   : styles.hidden
@@ -277,7 +279,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                       className={[
                                         styles.bottom,
                                         primaryChoice === primaryIndex &&
-                                        secondaryChoice === secondaryIndex
+                                          secondaryChoice === secondaryIndex
                                           ? ''
                                           : styles.hidden,
                                       ].join(' ')}
@@ -301,8 +303,8 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                             className={[
                               styles.bottom,
                               primaryChoice === primaryIndex &&
-                              (secondaryChoice === null ||
-                                primary.content.length <= 1)
+                                (secondaryChoice === null ||
+                                  primary.content.length <= 1)
                                 ? ''
                                 : styles.hidden,
                             ].join(' ')}

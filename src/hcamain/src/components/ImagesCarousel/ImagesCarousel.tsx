@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -71,10 +72,12 @@ export const Default = (props: EqualSizeProps): JSX.Element => {
     props?.params,
     'Gallery'
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <CarouselImages
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       contentVariation={variation}
       images={
         props.fields?.data?.item?.images?.targetItems?.map((card, index) => {

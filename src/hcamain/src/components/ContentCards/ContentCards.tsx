@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -105,6 +106,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -134,6 +136,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -201,7 +204,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               image={
                 showImage ? (
                   card.abstractImage?.jsonValue.value?.src &&
-                  card.abstractImage?.jsonValue.value?.class !==
+                    card.abstractImage?.jsonValue.value?.class !==
                     'scEmptyImage' ? (
                     <Image
                       src={card.abstractImage.jsonValue?.value?.src || ''}
@@ -247,7 +250,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 cardCtaUrl ? (
                   <a href={cardCtaUrl}>
                     {isExperienceEditor ||
-                    props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
+                      props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
                       <JssRichText
                         tag="div"
                         field={props.fields?.data?.item?.cTACardText?.jsonValue}

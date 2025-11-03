@@ -7,4 +7,5 @@ export interface VideoBlockProps {
   variation?: 'standard' | 'side-by-side';
   video: ReactNode | JSX.Element;
   id?: string;
+  tableOfContentTitle?: string;
 }

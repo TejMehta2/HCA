@@ -7,4 +7,5 @@ export interface CardBlogBlockProps {
   title?: JSX.Element;
   theme: Theme;
   id?: string;
+  tableOfContentTitle?: string;
 }

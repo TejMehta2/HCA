@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -158,6 +159,8 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
@@ -178,6 +181,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
@@ -253,6 +257,8 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+
   const faqSchema = getSchema(props.fields?.Questions);
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -268,6 +274,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
+        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
         id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={

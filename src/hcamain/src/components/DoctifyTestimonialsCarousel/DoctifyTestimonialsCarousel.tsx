@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 
 import {
@@ -58,12 +59,14 @@ export const Default = (
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const ratingAsNumber = Number(props.fields?.Reviews?.fields?.Stars?.value);
 
   return (
     <CarouselReviews
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       rating={ratingAsNumber}
       reviewCount={
         <>

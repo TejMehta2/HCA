@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 // Based on src\hcamain\src\components\ConsultantFinder\StepLocationSelect.tsx
@@ -235,9 +236,8 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${
-                      props?.fields?.BackLink?.value?.href
-                    }?${searchParams.toString()}`}
+                    href={`${props?.fields?.BackLink?.value?.href
+                      }?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -250,8 +250,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                     disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
-                        `${
-                          props?.fields?.NextLink?.value?.href
+                        `${props?.fields?.NextLink?.value?.href
                         }?${nextPageParams.toString()}`
                       )
                     }

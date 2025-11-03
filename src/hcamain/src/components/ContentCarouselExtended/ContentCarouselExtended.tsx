@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -75,6 +76,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const cards =
     props.fields?.Cards?.map((card) => {
@@ -151,6 +153,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       cards={cards}
     ></CardBlockCarousel>
   );

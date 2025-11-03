@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Text as JssText,
@@ -250,6 +251,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -262,6 +264,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -371,6 +374,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -383,6 +387,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -489,10 +494,12 @@ export const SliderWithLeftText = (
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <SideScrollingCards
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (
@@ -560,21 +567,21 @@ export const getStaticProps: GetStaticComponentProps = async (
   const contextSearchParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchParams || {})
-        .filter(([, nestedValue]) => nestedValue.value !== '')
-        .map(([key, nestedValue]) => [
-          key,
-          nestedValue?.value &&
-            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-        ]);
+      .filter(([, nestedValue]) => nestedValue.value !== '')
+      .map(([key, nestedValue]) => [
+        key,
+        nestedValue?.value &&
+        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+      ]);
 
   const contextSearchIdParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchIdParams || {})
-        .filter(([, value]) => value !== '')
-        .map(([key, value]) => [
-          key,
-          value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-        ]); // clean up bad ID characters
+      .filter(([, value]) => value !== '')
+      .map(([key, value]) => [
+        key,
+        value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+      ]); // clean up bad ID characters
 
   const params = [
     ['verticalKey', 'patientstories'],

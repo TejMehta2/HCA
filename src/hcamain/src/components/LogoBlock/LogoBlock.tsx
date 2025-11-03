@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -65,7 +66,7 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
@@ -76,6 +77,7 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   return (
     <LogoBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       columns={columns}
       variation={variation}
