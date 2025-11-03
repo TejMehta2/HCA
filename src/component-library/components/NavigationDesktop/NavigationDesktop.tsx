@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
-// import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
-// import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
+import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
+import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 import CardNavigation from '../../components/CardNavigation/CardNavigation';
@@ -29,6 +29,9 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     logo,
     darkLogo
   } = props;
+
+  console.log('logo', logo);
+  console.log('darkLogo', darkLogo);
 
   // close the nav when clicking a link within
   const router = useRouter();
@@ -256,8 +259,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
               data-navigation-type="logoNavigation"
             >
               <span className="sr-only">Home</span>
-              <div>{'testx'}</div>
-              {isOpen ? logo : darkLogo}
+              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
             </a>
             <ul className={styles.tabs}>
               {tabs.map((tab, tabIndex) => {
