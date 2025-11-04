@@ -1,12 +1,8 @@
 import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
-import { smallcaseurlMiddleware } from 'lib/middleware/smallcase-url-Middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  const lowercaseRespone = smallcaseurlMiddleware(req);
-  if (lowercaseRespone) return lowercaseRespone;
-
   // test for exclusions e.g. finder and payments
   const url = req.nextUrl.clone();
   const pathname = url.pathname.toLowerCase();
