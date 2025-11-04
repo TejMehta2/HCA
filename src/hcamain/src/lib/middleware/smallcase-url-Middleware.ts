@@ -1,3 +1,4 @@
+import { debug } from '@sitecore-jss/sitecore-jss-nextjs';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
@@ -19,6 +20,7 @@ export function smallcaseurlMiddleware(
 
   // Redirect to the lowercase version of the pathname
   const lowercaseUrl = new URL(`${origin}${pathname.toLowerCase()}${search}`);
+  debug.redirects(`Smallcase redirect: will redirect to url=${lowercaseUrl}`);
   const response = NextResponse.redirect(lowercaseUrl, 308);
 
   // Set custom header to indicate that a redirect has occurred
