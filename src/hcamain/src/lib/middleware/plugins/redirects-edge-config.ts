@@ -29,9 +29,8 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
 
     try {
       const url = new URL(req.url);
-      const siteName = this.resolveSiteName(req);
-
-      debug.redirects(`HCA Redirects (EC): resolved siteName=${siteName}`);
+      debug.redirects(`HCA Redirects: processing redirect for url=${url}`);
+      const siteName = this.resolveSiteName(req, res);
 
       if (!siteName) return response;
 
@@ -41,8 +40,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
         return response;
       }
 
-      debug.redirects(`HCA Redirects (EC): lookup key=${key}`);
-      debug.redirects(req);
+      debug.redirects(`HCA Redirects: lookup key=${key}`);
 
       // Single key lookup in Edge Config
       const hit = await get<RedirectValue>(key);
@@ -59,24 +57,41 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
           this.mergeQueryStrings(url, destUrl);
         }
 
-        debug.redirects(`HCA Redirects (EC): redirect to=${destUrl} (${code})`);
+        debug.redirects(`HCA Redirects: redirect to = ${destUrl} (${code})`);
 
         const r = NextResponse.redirect(destUrl, code);
         return r;
       }
     } catch (err) {
-      debug.redirects('HCA Redirects (EC): error', err);
+      debug.redirects('HCA Redirects: error', err);
     }
 
     return response;
   }
 
-  // Resolve site name: Check for 'sc_site' cookie (set by multisite middleware)
-  private resolveSiteName(req: NextRequest): string | null {
-    const c = req.cookies.get('sc_site')?.value;
-    if (!c) return null;
-    const v = c.trim().replace(/^"+|"+$/g, '');
-    return v || null;
+  // Resolve site name: Check for 'sc_site' cookie first. If missing, fallback to 'x-sc-rewrite' header.
+  private resolveSiteName(req: NextRequest, res?: NextResponse): string | null {
+    // 1. Try cookie from request
+    let site = req.cookies.get('sc_site')?.value?.trim() || null;
+
+    // 2. Try cookie from response (set by previous middleware)
+    if (!site && res) {
+      site = res?.cookies?.get('sc_site')?.value?.trim() || null;
+    }
+
+    // 3. Fallback: header (from request or response)
+    if (!site) {
+      const rewriteHeader =
+        req.headers.get('x-sc-rewrite') ??
+        res?.headers.get('x-sc-rewrite') ??
+        null;
+
+      const match = rewriteHeader?.match(/\/?_site_([^/]+)(?:\/|$)/i);
+      site = match?.[1] ?? null;
+    }
+
+    debug.redirects(`HCA Redirects: resolved site = ${site}`);
+    return site || null;
   }
 
   /**
@@ -105,7 +120,7 @@ export class RedirectsEdgeConfigPlugin implements MiddlewarePlugin {
 
     const key = `red_${siteName}_${keyBody}`;
     if (key.length > 256) {
-      debug.redirects(`HCA Redirects (EC): redirect key too long key=${key}`);
+      debug.redirects(`HCA Redirects: redirect key too long key=${key}`);
       return '';
     }
 
