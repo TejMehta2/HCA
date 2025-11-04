@@ -147,8 +147,16 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         themeClosed={props.params?.Theme || 'I-HCA-Goldenrod'}
         themeOpen={props.params?.ThemeOpen || 'B-HCA-Navy-Blue'}
         tabs={tabs}
-        logo={<Image field={props?.fields?.data?.item?.logo?.jsonValue.value} />}
-        darkLogo={<Image field={props?.fields?.data?.item?.darkLogo?.jsonValue.value} />}
+        logo={props?.fields?.data?.item?.logo?.jsonValue?.value &&
+          props.fields.data.item.logo.jsonValue.value.src &&
+          props.fields.data.item.logo.jsonValue.value.src.trim() !== ''
+          ? <Image field={props.fields.data.item.logo.jsonValue.value} />
+          : null}
+        darkLogo={props?.fields?.data?.item?.darkLogo?.jsonValue?.value &&
+          props.fields.data.item.darkLogo.jsonValue.value.src &&
+          props.fields.data.item.darkLogo.jsonValue.value.src.trim() !== ''
+          ? <Image field={props.fields.data.item.darkLogo.jsonValue.value} />
+          : null}
         eyebrow={eyebrow}
         search={
           searchModalConfig?.baseUrl?.jsonValue?.value?.href ? (
