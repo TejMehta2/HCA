@@ -77,7 +77,7 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   return (
     <LogoBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       columns={columns}
       variation={variation}

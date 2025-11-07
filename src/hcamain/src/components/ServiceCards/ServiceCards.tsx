@@ -120,7 +120,7 @@ export const Default = ({
   return (
     <DynamicServiceCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       contentVariation={variant}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (

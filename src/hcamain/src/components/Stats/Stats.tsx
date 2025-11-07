@@ -139,7 +139,7 @@ export const Cards = (props: StatsProps): JSX.Element => {
     <StatsCards
       theme={props.params?.Theme || 'D-HCA-Teal'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       header={
         <Text
           tag={props.params?.HeadingTag || 'h2'}

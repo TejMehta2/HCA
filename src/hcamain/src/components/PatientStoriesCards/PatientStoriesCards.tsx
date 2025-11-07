@@ -264,7 +264,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -387,7 +387,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -499,7 +499,7 @@ export const SliderWithLeftText = (
   return (
     <SideScrollingCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (

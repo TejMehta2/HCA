@@ -145,7 +145,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       imageAlignment={imageAlignment}

@@ -77,7 +77,7 @@ export const Default = (props: EqualSizeProps): JSX.Element => {
   return (
     <CarouselImages
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       contentVariation={variation}
       images={
         props.fields?.data?.item?.images?.targetItems?.map((card, index) => {

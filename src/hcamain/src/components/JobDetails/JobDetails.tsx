@@ -32,7 +32,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <div className="vacancy-rte">
         <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>

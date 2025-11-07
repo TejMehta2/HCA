@@ -197,7 +197,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
   return (
     <DynamicOurLocations
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       mapAspectRatio={3000 / 3444}
       headerProps={headerProps}
       locations={locationCards}

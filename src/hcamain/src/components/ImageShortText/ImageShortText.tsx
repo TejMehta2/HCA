@@ -88,7 +88,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     <>
       <DynamicImageAndTextBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1'
           ? { tableOfContentTitle: tableOfContentTitle }
           : {})}
         theme={props.params?.Theme || 'A-HCA-White'}

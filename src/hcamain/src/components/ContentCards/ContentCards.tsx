@@ -84,6 +84,8 @@ interface WithImageProps extends ContentCardsProps {
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  console.log('props?.params', props?.params);
+
 
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
@@ -106,6 +108,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+
+  console.log('componentAnchorId content card', componentAnchorId);
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
@@ -136,7 +140,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}

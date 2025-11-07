@@ -123,7 +123,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       {props?.fields?.Title && (
         <Container marginBottom="spacing-4">

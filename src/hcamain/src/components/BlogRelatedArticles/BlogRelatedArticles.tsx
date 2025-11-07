@@ -219,7 +219,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <Text
           tag={headingTag}

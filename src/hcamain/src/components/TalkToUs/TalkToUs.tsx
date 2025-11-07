@@ -112,7 +112,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"

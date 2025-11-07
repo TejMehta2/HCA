@@ -60,7 +60,7 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
   return (
     <ArticleCategories
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text

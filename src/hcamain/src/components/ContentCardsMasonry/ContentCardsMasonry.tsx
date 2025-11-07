@@ -138,7 +138,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     <MasonryCards
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <>
           <Text
