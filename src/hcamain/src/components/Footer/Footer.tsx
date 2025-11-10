@@ -2,47 +2,65 @@ import React from 'react';
 import {
   Placeholder,
   Text as JssText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
-import { Default as Doctify } from '../Doctify/Doctify';
-import { Default as CQCRating } from '../CQCRating/CQCRating';
+import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
+import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
 import Text from '@component-library/foundation/Text/Text';
 import Footer from '@component-library/site-components/Footer/Footer';
 
-const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Empty Footer</span>
-    </div>
-  </div>
-);
+const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Footer. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 export const Default = (props: FooterProps): JSX.Element => {
   if (!props.fields) {
     return <FooterDefaultComponent {...props} />;
   }
   // Map children using utilities
-  const socials = props.fields?.SocialMediaProfilesGroup?.fields?.Profiles?.map(
-    (profile: Profile, index: number) => (
-      <SocialMediaCta key={index} {...profile} />
-    )
-  );
+  const socials =
+    props.fields?.data?.item?.socialMediaProfilesGroup?.targetItem?.profiles?.targetItems?.map(
+      (profile: Profile, index: number) => (
+        <SocialMediaCta key={index} {...profile} />
+      )
+    );
   const columns =
-    props.fields?.NavigationColumnsFolders?.map(columnMapper(socials)) || [];
+    props.fields?.data?.item?.navigationColumnsFolders?.targetItems?.map(
+      columnMapper(socials)
+    ) || [];
+
   const reviewColumn = {
     reviews: [
-      props.fields?.CqcStatus?.fields ? (
+      props.fields?.data?.item?.cqcStatus?.targetItem ? (
         <CQCRating
           key={1}
           length="short"
           hideRating={true}
-          {...props.fields?.CqcStatus}
+          fields={{
+            data: {
+              item: props.fields?.data?.item?.cqcStatus?.targetItem,
+            },
+          }}
         />
       ) : (
         <></>
       ),
-      props.fields?.DoctifyReviews?.fields &&
+      props.fields?.data?.item?.doctifyReviews?.targetItem &&
       typeof window !== 'undefined' &&
       window.location.href.indexOf(
         process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
@@ -50,17 +68,22 @@ export const Default = (props: FooterProps): JSX.Element => {
         <Doctify
           params={props.params}
           key={2}
-          fields={{ Reviews: props.fields?.DoctifyReviews }}
+          fields={{
+            data: {
+              item: { Reviews: props.fields?.data?.item?.doctifyReviews },
+            },
+          }}
         />
       ) : (
         <></>
       ),
     ],
   };
-  const legals = props.fields?.BottomLineLinksFolder?.fields?.Links?.reduce(
-    linkReducer,
-    []
-  );
+  const legals =
+    props.fields?.data?.item?.bottomLineLinksFolder?.targetItem?.links?.targetItems?.reduce(
+      linkReducer,
+      []
+    );
 
   const contactUnitDetails: {
     internationalPhoneNumber: string | undefined;
@@ -68,21 +91,22 @@ export const Default = (props: FooterProps): JSX.Element => {
     unitName: string | undefined;
   } = {
     internationalPhoneNumber:
-      props.fields.Contact?.fields?.TelephoneNumber[0]?.fields
-        ?.InternationPhoneNumber?.value,
+      props.fields.data?.item?.contact?.targetItem?.telephoneNumber
+        .targetItems[0]?.internationPhoneNumber?.value,
     phoneNumber:
-      props.fields.Contact?.fields?.TelephoneNumber[0]?.fields?.PhoneNumber
-        ?.value,
-    unitName: props.fields.Contact?.fields?.ContactUnitName?.value,
+      props.fields.data?.item?.contact?.targetItem?.telephoneNumber
+        .targetItems[0]?.phoneNumber?.value,
+    unitName:
+      props.fields.data?.item?.contact?.targetItem?.contactUnitName?.value,
   };
 
   return (
     <Footer
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       copyright={
-        props.fields?.Copyright?.value ? (
+        props.fields?.data?.item?.copyright?.value ? (
           <Text variation={'body-small'}>
-            <JssText field={props.fields?.Copyright} />
+            <JssText field={props.fields?.data?.item?.copyright} />
           </Text>
         ) : undefined
       }

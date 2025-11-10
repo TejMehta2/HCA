@@ -13,14 +13,14 @@ export const linkReducer = (
   current: Link,
   index: number
 ) =>
-  current.fields?.Link
-    ? [...accumulator, <JssLink key={index} field={current.fields?.Link} />]
+  current.link
+    ? [...accumulator, <JssLink key={index} field={current.link?.jsonValue} />]
     : accumulator;
 
 export const SocialMediaCta = (props: Profile) => (
   <Button key={props.id} size={'small'} variation={'social'}>
     <a
-      href={props.fields?.ProfileUrl?.value}
+      href={props.profileUrl?.value}
       target={'blank'}
       rel={'noopener noreferrer'}
     >
@@ -34,11 +34,11 @@ export const SocialMediaCta = (props: Profile) => (
 export const columnMapper =
   (socials?: JSX.Element[]) =>
   (linksColumn: NavigationColumnsFolder, index: number) => {
-    const title = linksColumn.fields?.Title ? (
-      <JssText field={linksColumn.fields?.Title} />
+    const title = linksColumn.title ? (
+      <JssText field={linksColumn.title} />
     ) : undefined;
 
-    const links = linksColumn.fields?.Links?.reduce(linkReducer, []);
+    const links = linksColumn.links?.targetItems?.reduce(linkReducer, []);
 
     return {
       title,
