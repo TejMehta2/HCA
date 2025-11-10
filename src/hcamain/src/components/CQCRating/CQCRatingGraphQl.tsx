@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Image as JssImage,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import { CQCBlockProps } from '@component-library/components/CQCBlock/CQCBlock.types';

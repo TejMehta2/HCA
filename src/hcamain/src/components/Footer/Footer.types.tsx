@@ -44,7 +44,7 @@ export interface Fields {
       bottomLineLinksFolder?: { targetItem: NavigationColumnsFolder };
       navigationColumnsFolders?: { targetItems: NavigationColumnsFolder[] };
       socialMediaProfilesGroup?: { targetItem: SocialMediaProfilesGroup };
-      doctifyReviews?: {targetItem: DoctifyReviewsFieldsGraphQl};
+      doctifyReviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
       cqcStatus?: { targetItem?: FieldsGraphQl };
       copyright?: TextField;
       contact?: { targetItem: ContactUnit };
