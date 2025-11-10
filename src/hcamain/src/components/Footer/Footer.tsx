@@ -85,19 +85,21 @@ export const Default = (props: FooterProps): JSX.Element => {
       []
     );
 
+  const contact = props.fields.data?.item?.contact?.targetItem;
+  const hasTelephone = contact?.telephoneNumber?.targetItems ? true : false;
+
   const contactUnitDetails: {
     internationalPhoneNumber: string | undefined;
     phoneNumber: string | undefined;
     unitName: string | undefined;
   } = {
-    internationalPhoneNumber:
-      props.fields.data?.item?.contact?.targetItem?.telephoneNumber
-        .targetItems[0]?.internationPhoneNumber?.value,
-    phoneNumber:
-      props.fields.data?.item?.contact?.targetItem?.telephoneNumber
-        .targetItems[0]?.phoneNumber?.value,
-    unitName:
-      props.fields.data?.item?.contact?.targetItem?.contactUnitName?.value,
+    internationalPhoneNumber: hasTelephone
+      ? contact?.telephoneNumber?.targetItems[0]?.internationPhoneNumber?.value
+      : '',
+    phoneNumber: hasTelephone
+      ? contact?.telephoneNumber?.targetItems[0]?.phoneNumber?.value
+      : '',
+    unitName: contact?.contactUnitName?.value,
   };
 
   return (

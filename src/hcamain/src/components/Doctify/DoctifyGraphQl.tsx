@@ -35,9 +35,9 @@ export const Default = (props: DoctifyPropsGraphQl): JSX.Element => {
   );
 
   const lightLogo =
-    reviews?.targetItem?.doctifyLogoLight?.targetItem?.logo.jsonValue;
+    reviews?.targetItem?.doctifyLogoLight?.targetItem?.logo?.jsonValue;
   const darkLogo =
-    reviews?.targetItem?.doctifyLogoDark?.targetItem?.logo.jsonValue;
+    reviews?.targetItem?.doctifyLogoDark?.targetItem?.logo?.jsonValue;
 
   return (
     <div
