@@ -3,6 +3,7 @@ import {
   Placeholder,
   Text as JssText,
   useSitecoreContext,
+  Image,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
@@ -10,6 +11,7 @@ import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
 import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
 import Text from '@component-library/foundation/Text/Text';
 import Footer from '@component-library/site-components/Footer/Footer';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -104,6 +106,19 @@ export const Default = (props: FooterProps): JSX.Element => {
 
   return (
     <Footer
+      logo={
+        props?.fields?.data?.item?.logo?.jsonValue?.value &&
+        props.fields.data.item.logo.jsonValue.value.src &&
+        props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
+          <NextJssImage
+            field={props.fields.data.item.logo.jsonValue}
+            next={{
+              width: 200,
+              height: 55,
+            }}
+          />
+        ) : undefined
+      }
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       copyright={
         props.fields?.data?.item?.copyright?.value ? (
