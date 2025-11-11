@@ -634,6 +634,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
     transitionBackground: false,
     children: (
       <Footer
+        logo={undefined}
         buttons={
           <>
             <Button size={'small'} variation={'outline'}>

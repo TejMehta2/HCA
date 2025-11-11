@@ -9,6 +9,7 @@ import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Image from 'next/image';
 
 const mockProps: FooterProps = {
+  logo: undefined,
   buttons: (
     <>
       <a href="#">
