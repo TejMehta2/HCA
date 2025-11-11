@@ -10,6 +10,7 @@ export interface FooterColumn {
 export interface FooterProps {
   theme?: Theme;
   buttons: JSX.Element;
+  logo: any;
   columns: FooterColumn[];
   legals?: JSX.Element[];
   copyright?: JSX.Element;

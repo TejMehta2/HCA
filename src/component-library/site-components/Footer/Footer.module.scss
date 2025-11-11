@@ -77,7 +77,7 @@
 
   .logo-section {
     @include responsive-grid-span($default: 6, $breakpoint-l: 12);
-
+    margin-bottom: px-to-rem(20);
     @include media(screen-m) {
       display: flex;
       justify-content: space-between;
@@ -93,8 +93,6 @@
   }
 
   .logo {
-    margin-bottom: calc(#{$spacing-6} - #{px-to-rem(8)});
-
     svg {
       width: px-to-rem(195);
       height: px-to-rem(55);
