@@ -3,7 +3,6 @@ import {
   Placeholder,
   Text as JssText,
   useSitecoreContext,
-  Image,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
