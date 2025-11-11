@@ -153,7 +153,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       cards={cards}
     ></CardBlockCarousel>
   );

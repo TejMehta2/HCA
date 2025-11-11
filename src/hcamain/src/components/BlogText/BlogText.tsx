@@ -49,7 +49,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
   if (isContainerized) {
     return (
       <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       >
         <JssRichText field={props.fields?.Text} />
       </RichText>
@@ -60,7 +60,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <RichText>
         <JssRichText field={props.fields?.Text} />
