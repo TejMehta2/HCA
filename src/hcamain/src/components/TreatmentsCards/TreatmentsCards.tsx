@@ -128,7 +128,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.data?.item?.heading?.jsonValue?.value

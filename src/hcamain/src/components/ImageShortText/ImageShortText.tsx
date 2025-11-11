@@ -76,7 +76,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 

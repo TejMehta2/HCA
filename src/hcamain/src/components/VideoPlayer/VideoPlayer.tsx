@@ -69,7 +69,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value

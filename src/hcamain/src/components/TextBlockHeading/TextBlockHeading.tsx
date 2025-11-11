@@ -49,7 +49,7 @@ export const Default = (props: TextBlockHeadingProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <TextBlockHeader

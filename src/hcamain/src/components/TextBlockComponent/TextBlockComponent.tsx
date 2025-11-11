@@ -62,7 +62,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -127,7 +127,7 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value

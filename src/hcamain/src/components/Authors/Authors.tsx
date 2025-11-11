@@ -106,7 +106,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     componentTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   const isContainerized = props?.params?.Containerized === '1';
 

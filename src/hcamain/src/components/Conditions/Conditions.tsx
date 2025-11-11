@@ -139,7 +139,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const displayAllCards = item?.displayAllCards?.jsonValue?.value;
   const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;

@@ -159,7 +159,7 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
@@ -257,7 +257,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const faqSchema = getSchema(props.fields?.Questions);
   const { headingTag, subheadingTag } = getHeadingTags(

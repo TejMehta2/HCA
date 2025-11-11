@@ -84,8 +84,6 @@ interface WithImageProps extends ContentCardsProps {
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
-  console.log('props?.params', props?.params);
-
 
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
@@ -110,7 +108,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   );
 
   console.log('componentAnchorId content card', componentAnchorId);
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>

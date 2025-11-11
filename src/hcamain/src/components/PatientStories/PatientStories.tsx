@@ -75,6 +75,7 @@ const PatientStoriesDefaultComponent = (
 export const Carousel = (props: PatientStoriesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+  console.log('patient stories carousel', props);
 
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
@@ -86,7 +87,7 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <CarouselCards
@@ -180,6 +181,7 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
   }
+  console.log('patient stories', props);
 
   const tableOfContentsLinkTitle =
     props.fields?.data?.item?.title?.jsonValue?.value;
@@ -187,7 +189,7 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <SideScrollingCards

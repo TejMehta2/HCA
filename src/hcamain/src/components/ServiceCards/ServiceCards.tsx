@@ -111,7 +111,7 @@ export const Default = ({
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,

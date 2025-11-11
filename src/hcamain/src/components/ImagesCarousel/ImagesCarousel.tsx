@@ -72,7 +72,7 @@ export const Default = (props: EqualSizeProps): JSX.Element => {
     props?.params,
     'Gallery'
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || 'Gallery';
 
   return (
     <CarouselImages

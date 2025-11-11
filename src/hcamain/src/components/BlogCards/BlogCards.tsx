@@ -106,7 +106,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -242,7 +242,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     componentTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   return (
     <>

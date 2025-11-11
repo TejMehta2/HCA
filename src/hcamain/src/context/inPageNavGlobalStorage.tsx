@@ -13,15 +13,12 @@ class InPageNavGlobalStore extends EventEmitter {
   ): string {
     const navTitle =
       componentParams?.TableOfContentsLinkTitle || componentTitle;
-    console.log('navTitle', navTitle);
 
     if (!navTitle || componentParams?.ExcludeFromTableOfContents === '1') {
-      console.log('testing');
       return '';
     }
 
     const componentAnchorId = generateHtmlSafeId(navTitle);
-    console.log('componentAnchorId after geenrating', componentAnchorId);
 
     const navItem: NavigableComponent = {
       TableOfContentsLinkTitle: navTitle,
@@ -38,7 +35,6 @@ class InPageNavGlobalStore extends EventEmitter {
 
     this.list.push(navItem);
     this.emit('navigableComponentsListUpdated', this.list);
-    console.log('componentAnchorId', navTitle, componentAnchorId);
     return componentAnchorId;
   }
 

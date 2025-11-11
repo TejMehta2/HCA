@@ -251,7 +251,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -374,7 +374,8 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  console.log('tableOfContentTitle', tableOfContentTitle);
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -384,6 +385,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     props.fields?.data?.item?.heading?.jsonValue?.value
   );
+
   return (
     <CarouselCards
       id={componentAnchorId}
@@ -494,7 +496,7 @@ export const SliderWithLeftText = (
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <SideScrollingCards

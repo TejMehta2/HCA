@@ -67,7 +67,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const contactListItems: ContactItem[] = [];
 

@@ -263,7 +263,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
@@ -374,7 +374,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const locationsCards = data && returnCards(props, data);
 

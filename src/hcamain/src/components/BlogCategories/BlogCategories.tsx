@@ -55,7 +55,7 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   return (
     <ArticleCategories

@@ -106,7 +106,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const layoutPattern = getMasonryCardsLayoutPattern(
     props.fields?.data?.item?.pages?.PagesList?.length || 0
