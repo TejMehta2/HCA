@@ -93,8 +93,6 @@
   }
 
   .logo {
-    margin-bottom: calc(#{$spacing-6} - #{px-to-rem(8)});
-
     svg {
       width: px-to-rem(195);
       height: px-to-rem(55);
