@@ -206,7 +206,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.Title?.value
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
 
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
@@ -216,10 +216,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.data?.item?.heading?.jsonValue?.value
   );
+  console.log('test');
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <Text
           tag={headingTag}
@@ -283,6 +284,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
   const fields = rendering.fields?.data?.item;
+  console.log('fields');
 
   // Format props into entries, then query params
   const customFilters =
