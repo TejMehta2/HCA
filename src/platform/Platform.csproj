@@ -74,6 +74,7 @@
     <Content Include="App_Config\Include\Sitecore.LinkManager.config" />
     <Content Include="App_Config\Include\Sitecore.Thumbnails.config" />
     <Content Include="App_Config\Include\Foundation\HCA\JavaScriptServices\Sitecore.JavaScriptServices.ViewEngine.Http.config" />
+    <Content Include="App_Config\Include\Foundation\HCA\GraphQLServices\Sitecore.Services.GraphQL.config" />    
     <None Include="App_Config\Include\Sitecore.Media.config" />
     <Content Include="App_Data\Xdts\Web.config.xdt" />
     <None Include="Platform.wpp.targets" />
