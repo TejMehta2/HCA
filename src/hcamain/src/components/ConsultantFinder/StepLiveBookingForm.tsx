@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, FieldErrors } from 'react-hook-form';
