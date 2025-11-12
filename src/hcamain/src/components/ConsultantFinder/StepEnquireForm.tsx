@@ -103,6 +103,7 @@ interface Fields {
   API_C2_BookingEnquiry_LoadingMsg: Field<string>;
   API_C2_BookingEnquiry_Header: Field<string>;
   API_C2_BookingEnquiry_RecapchaKey: Field<string>;
+  AllowAlternateConsultantLabel: Field<string>;
 }
 
 type StepProps = {
@@ -174,6 +175,7 @@ export const Default = (props: StepProps): JSX.Element => {
       phone: z.boolean().optional(),
       post: z.boolean().optional(),
       recaptcha: z.string().min(1, { message: 'Required' }),
+      allowAlternateConsultant: z.boolean()
     })
     .refine(
       (data) => {
@@ -215,6 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
       phone: false,
       post: false,
       recaptcha: '',
+      allowAlternateConsultant: true
     },
     resolver: zodResolver(schema),
     mode: 'onChange',
@@ -270,9 +273,8 @@ export const Default = (props: StepProps): JSX.Element => {
           setCompletedFormId(dataToSend.hiddenFormInstance);
           setFinderFormPrevious(data.previousPatient);
           router.push(
-            `${
-              props?.fields?.NextLink?.value?.href ||
-              '/finder/step-enquire-form-confirmation'
+            `${props?.fields?.NextLink?.value?.href ||
+            '/finder/step-enquire-form-confirmation'
             }`
           );
         }
@@ -326,9 +328,8 @@ export const Default = (props: StepProps): JSX.Element => {
           setCompletedFormId(dataToSend.hiddenFormInstance);
           setFinderFormPrevious(data.previousPatient);
           router.push(
-            `${
-              props?.fields?.NextLink?.value?.href ||
-              '/finder/step-enquire-form-confirmation'
+            `${props?.fields?.NextLink?.value?.href ||
+            '/finder/step-enquire-form-confirmation'
             }`
           );
         }
@@ -422,10 +423,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`,
+                  }`,
               }}
             >
               <TextLink>
@@ -438,24 +438,22 @@ export const Default = (props: StepProps): JSX.Element => {
               </TextLink>
               <TextLink>
                 <Link
-                  href={`${
-                    props?.fields?.BreadcrumbHomePage?.value?.href ||
+                  href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
                     '/finder/step-intro'
-                  }`}
+                    }`}
                 >
                   {'Consultant Finder'}
                 </Link>
               </TextLink>
               <TextLink>
                 <Link
-                  href={`${
-                    props?.fields?.EnquireFormBreadcrumbsProfilePageLink?.value
-                      ?.href &&
+                  href={`${props?.fields?.EnquireFormBreadcrumbsProfilePageLink?.value
+                    ?.href &&
                     props?.fields?.EnquireFormBreadcrumbsProfilePageLink?.value?.href.replace(
                       /,-w-,/g,
                       ''
                     )
-                  }${slug}`}
+                    }${slug}`}
                 >
                   {consultantName}
                 </Link>
@@ -494,6 +492,19 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Text tag="h2" variation="body-medium-extra-large">
                     {`${props?.fields?.EnquireFormHeadline?.value} ${consultantName}`}
                   </Text>
+                </Container>
+                <Container marginBottom="spacing-6" marginTop="spacing-4">
+                  <Checkbox
+                    label={
+                      props?.fields
+                        ?.AllowAlternateConsultantLabel
+                        ?.value || 'I am happy booking with an alternate consultant if my selected consultant is not available'
+                    }
+                    name={'allowAlternateConsultant'}
+                    id={'allowAlternateConsultant'}
+                    register={register}
+                  // defaultChecked={true}
+                  />
                 </Container>
                 {practices.length > 0 && (
                   <Container marginBottom="spacing-6" marginTop="spacing-4">
@@ -862,15 +873,13 @@ export const Default = (props: StepProps): JSX.Element => {
                     <Button size={'small'} variation={'full-dark'}>
                       <button disabled={!isDirty || isSubmitting} type="submit">
                         {isSubmitting
-                          ? `${
-                              props?.fields
-                                ?.API_HCA_EnquireBookingForm_LoadingMsg
-                                ?.value || 'Submitting'
-                            }`
-                          : `${
-                              props?.fields?.EnquireFormBtnsSubmit?.value ||
-                              'Submit'
-                            }`}
+                          ? `${props?.fields
+                            ?.API_HCA_EnquireBookingForm_LoadingMsg
+                            ?.value || 'Submitting'
+                          }`
+                          : `${props?.fields?.EnquireFormBtnsSubmit?.value ||
+                          'Submit'
+                          }`}
                       </button>
                     </Button>
                   </Container>
@@ -888,10 +897,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 </EnquireNowBtns>
                 <Container marginBottom="spacing-8" marginTop="spacing-8">
                   <Text tag="p" variation="body-medium-extra-large">
-                    {`${
-                      props?.fields?.EnquireFormInfoTextSubmit?.value ||
+                    {`${props?.fields?.EnquireFormInfoTextSubmit?.value ||
                       'Once you have submitted your enquiry, you will receive a reply within 1 working day.'
-                    }`}
+                      }`}
                   </Text>
                 </Container>
               </form>
