@@ -13,6 +13,204 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetFooter($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ...ItemFragment
+        ... on Footer {
+          logo {
+            jsonValue
+          }
+    
+          cqcStatus {
+            targetItem {
+              ...ItemFragment
+              ... on CQC {
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                reportLink {
+                  jsonValue
+                }
+                status {
+                  targetItem {
+                    displayName
+                    ...ItemFragment
+                    ... on CQCStatus {
+                      cQCLogoDark {
+                        targetItem {
+                          ... on CQCSettings {
+                            logo {
+                              jsonValue
+                            }
+                          }
+                        }
+                      }
+                      cQCLogoLight {
+                        targetItem {
+                          ...ItemFragment
+                          ... on CQCSettings {
+                            logo {
+                              jsonValue
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+    
+          socialMediaProfilesGroup {
+            targetItem {
+              ...ItemFragment
+              ... on SocialMediaProfilesFolder {
+                profiles {
+                  targetItems {
+                    ...ItemFragment
+                    ... on SocialMediaProfile {
+                      profileUrl {
+                        value
+                      }
+                      displayName
+                      socialMediaProvider {
+                        targetItem {
+                          ...ItemFragment
+                          ... on SocialMediaProvider {
+                            icon: icon_41f62b60e9c24694b01dcd8f0e164351 {
+                              targetItem {
+                                ...ItemFragment
+                                ... on HCAIcon {
+                                  svgMarkup {
+                                    value
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+    
+          doctifyReviews {
+            targetItem {
+              ...ItemFragment
+              ... on DoctifyReviews {
+                doctifyLogoDark {
+                  targetItem {
+                    ...ItemFragment
+                    ... on DoctifySettings {
+                      logo {
+                        jsonValue
+                      }
+                    }
+                  }
+                }
+                doctifyLogoLight {
+                  targetItem {
+                    ...ItemFragment
+                    ... on DoctifySettings {
+                      logo {
+                        jsonValue
+                      }
+                    }
+                  }
+                }
+                reviews {
+                  value
+                }
+                stars {
+                  value
+                }
+                link {
+                  jsonValue
+                }
+              }
+            }
+          }
+    
+          bottomLineLinksFolder {
+            targetItem {
+              ...ItemFragment
+              ...NavigationLinksListFragment
+            }
+          }
+    
+          navigationColumnsFolders {
+            targetItems {
+              ...ItemFragment
+              ...NavigationLinksListFragment
+            }
+          }
+    
+          copyright {
+            value
+          }
+    
+          contact {
+            targetItem {
+              ...ItemFragment
+              ... on ContactUnit {
+                contactUnitName {
+                  value
+                }
+                telephoneNumber {
+                  targetItems {
+                    ...ItemFragment
+                    ... on TelephoneNumber {
+                      phoneNumber {
+                        value
+                      }
+                      phoneNumberLabel {
+                        value
+                      }
+                      internationPhoneNumber {
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    fragment ItemFragment on Item {
+      id
+      name
+    }
+    
+    fragment NavigationLinkFragment on NavigationLink {
+      displayName
+      link {
+        jsonValue
+      }
+    }
+    
+    fragment NavigationLinksListFragment on NavigationLinksList {
+      title {
+        value
+      }
+      links {
+        targetItems {
+          ...NavigationLinkFragment
+        }
+      }
+    }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Navigation/Footer
@@ -31,6 +229,9 @@ SharedFields:
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2bc37404-17ec-4dd5-aa0a-a807c5f4a74a"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -77,14 +278,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b5ad3928-c0a7-492f-bc19-0754d2f1e886"
+      Value: "ec2a5a2b-8a76-4a81-87f6-42642f3019dc"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T124503Z
+      Value: 20251110T202716Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

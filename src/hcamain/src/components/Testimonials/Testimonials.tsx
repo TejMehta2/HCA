@@ -122,7 +122,7 @@ export const Default = (props: TestimonialsProps): JSX.Element => {
   return (
     <CarouselTestimonials
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       subtitle={
         isExperienceEditor || props.fields?.Heading?.value ? (

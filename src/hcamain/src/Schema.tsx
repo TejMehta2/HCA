@@ -75,9 +75,8 @@ const Schema = (props: SchemaProps) => {
     };
     const pageType = getPageType(templateId);
 
-    const reviewFields =
-      (reviewComponent as IntroBlockProps)?.fields ||
-      (footer as FooterProps)?.fields;
+    const reviewFields = (reviewComponent as IntroBlockProps)?.fields;
+    const reviewFieldsFooter = (footer as FooterProps)?.fields;
     const heroFields = heroComponent?.fields;
     const locationHeroFields = locationHeroComponent?.fields?.data?.contextItem;
     const name =
@@ -88,14 +87,31 @@ const Schema = (props: SchemaProps) => {
 
     const conditionDescription = meta?.Text?.value;
 
-    const reviewCount = reviewFields?.DoctifyReviews?.fields?.Reviews?.value
+    const reviewCountIntroBlock = reviewFields?.DoctifyReviews?.fields?.Reviews
+      ?.value
       ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(
           /[+,]/g,
           ''
         )
-      : '';
-    const ratingValue =
-      reviewFields?.DoctifyReviews?.fields?.Stars?.value || '';
+      : null;
+
+    const reviewCountFooter = reviewFieldsFooter?.data?.item?.doctifyReviews
+      ?.targetItem?.reviews?.value
+      ? reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.reviews?.value.replace(
+          /[+,]/g,
+          ''
+        )
+      : null;
+
+    const ratingValueIntroBlock =
+      reviewFields?.DoctifyReviews?.fields?.Stars?.value || null;
+
+    const ratingValueFooter =
+      reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.stars
+        ?.value || null;
+
+    const ratingValue = ratingValueIntroBlock || ratingValueFooter || '';
+    const reviewCount = reviewCountIntroBlock || reviewCountFooter || '';
 
     // Construct aggregateRating only if ratingValue or reviewCount has a value
     const aggregateRating = (ratingValue || reviewCount) && {

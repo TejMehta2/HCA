@@ -73,6 +73,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const { showImage = true } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  console.log('props', props);
 
   if (!props.fields?.data?.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
@@ -91,7 +92,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
@@ -118,7 +119,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text

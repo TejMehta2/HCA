@@ -66,7 +66,7 @@ export const Default = (
   return (
     <CarouselReviews
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       rating={ratingAsNumber}
       reviewCount={
         <>

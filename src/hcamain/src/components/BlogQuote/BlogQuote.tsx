@@ -134,7 +134,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
     return (
       <RichText additionalStyles={props?.params?.styles}
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       >
         <figure>{quoteBlock}</figure>
       </RichText>
@@ -146,7 +146,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={alignment ? `quote-${alignment}` : 'quote'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
@@ -239,7 +239,7 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
     return (
       <RichText additionalStyles={props?.params?.styles}
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       >
         <figure>{quoteBlock}</figure>
       </RichText>
@@ -250,7 +250,7 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>

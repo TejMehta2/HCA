@@ -23,7 +23,7 @@ export const Default = (props: TextBlockComponentDuoProps): JSX.Element => {
   return (
     <DualCTABlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       content={
         <PlaceHolderWrapper>
