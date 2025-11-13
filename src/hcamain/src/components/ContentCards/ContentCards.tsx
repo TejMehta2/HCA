@@ -27,8 +27,8 @@ interface PagesFields {
   title?: { value?: string };
   text?: { value?: string };
   image?: { jsonValue: ImageField };
-  url?: { path?: string };
-  proxyurl?: { path?: string; text: string };
+  url?: { path?: string; url?: string };
+  proxyurl?: { jsonValue: LinkField; path?: string; text: string };
 }
 
 type CTAIconFields = {
@@ -108,7 +108,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   );
 
   console.log('componentAnchorId content card', componentAnchorId);
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -138,7 +139,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -189,9 +193,16 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => {
-          const cardCtaUrl = card?.proxyurl?.path
+          const cardCtaUrlLegacy = card?.proxyurl?.path
             ? card?.proxyurl?.path
             : card?.url?.path;
+
+          const cardCtaUrlV2 = card?.proxyurl?.jsonValue?.value?.href
+            ? card?.proxyurl?.jsonValue?.value?.href
+            : card?.url?.url;
+
+          //Next time you see this remove cardCtaUrlLegacy. Kept here to avoid breaking components during the release. HED-2287
+          const cardCtaUrl = cardCtaUrlV2 || cardCtaUrlLegacy;
 
           const cardCtaTextFromCard = card?.proxyurl?.path
             ? card?.proxyurl.text
@@ -206,7 +217,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               image={
                 showImage ? (
                   card.abstractImage?.jsonValue.value?.src &&
-                    card.abstractImage?.jsonValue.value?.class !==
+                  card.abstractImage?.jsonValue.value?.class !==
                     'scEmptyImage' ? (
                     <Image
                       src={card.abstractImage.jsonValue?.value?.src || ''}
@@ -252,7 +263,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 cardCtaUrl ? (
                   <a href={cardCtaUrl}>
                     {isExperienceEditor ||
-                      props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
+                    props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
                       <JssRichText
                         tag="div"
                         field={props.fields?.data?.item?.cTACardText?.jsonValue}
