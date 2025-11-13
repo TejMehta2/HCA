@@ -34,6 +34,9 @@ const securityHeaders = [
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  // https://nextjs.org/docs/messages/static-page-generation-timeout
+  // time in seconds, default 60
+  staticPageGenerationTimeout: 120,
   // Disable "X-Powered-By: Next.js" Response header
   poweredByHeader: false,
 
