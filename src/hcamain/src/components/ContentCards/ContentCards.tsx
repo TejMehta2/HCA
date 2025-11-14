@@ -107,7 +107,6 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  console.log('componentAnchorId content card', componentAnchorId);
   const tableOfContentTitle =
     props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
@@ -140,7 +139,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     <CardBlock
       id={componentAnchorId}
       {...(tableOfContentTitle &&
-      props?.params?.ExcludeFromTableOfContents !== '1'
+        props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       variation={`${numberOfCards}-columns`}
@@ -217,7 +216,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               image={
                 showImage ? (
                   card.abstractImage?.jsonValue.value?.src &&
-                  card.abstractImage?.jsonValue.value?.class !==
+                    card.abstractImage?.jsonValue.value?.class !==
                     'scEmptyImage' ? (
                     <Image
                       src={card.abstractImage.jsonValue?.value?.src || ''}
@@ -263,7 +262,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 cardCtaUrl ? (
                   <a href={cardCtaUrl}>
                     {isExperienceEditor ||
-                    props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
+                      props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
                       <JssRichText
                         tag="div"
                         field={props.fields?.data?.item?.cTACardText?.jsonValue}
