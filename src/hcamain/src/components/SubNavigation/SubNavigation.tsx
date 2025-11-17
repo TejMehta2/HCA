@@ -37,6 +37,8 @@ const SubNavigationDefaultComponent = (
 export const Default = (props: SubNavigationProps): JSX.Element => {
   const context = useSitecoreContext();
 
+  console.log('page', props);
+
   if (!props.fields?.data?.item)
     return <SubNavigationDefaultComponent {...props} />;
 
@@ -58,8 +60,9 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
     (item: NavigablePagesFields) =>
       !item.hideInSubNavigation?.boolValue &&
       item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
-        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+      contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
   );
+  console.log('navigablePages', navigablePages);
 
   if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;
 
@@ -91,7 +94,6 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
 export function getFirstNonEmptyTitle(
   page: NavigablePagesFields
 ): string | undefined {
-  console.log('page', page);
   return (
     page.navigationTitle?.value ||
     page.abstractTitle?.value ||
