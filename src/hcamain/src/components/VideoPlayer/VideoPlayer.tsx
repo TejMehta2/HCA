@@ -138,7 +138,7 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
-
+  console.log('props', props);
   const tableOfContentsLinkTitle = props?.fields?.Title?.value;
   const componentAnchorId = inPageNavGlobalStore.addItem(
     props?.params,
