@@ -144,9 +144,12 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
-    <figure id={componentAnchorId}>
+    <figure
+      id={componentAnchorId}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}>
       {props.fields?.VideoUrl?.value ? (
         <VideoPlayer
           videoUrl={props.fields?.VideoUrl?.value}
@@ -181,6 +184,7 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -188,6 +192,7 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
   return (
     <VideoBlock
       id={componentAnchorId}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       variation="side-by-side"
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
