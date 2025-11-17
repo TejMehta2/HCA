@@ -375,7 +375,6 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
-  console.log('tableOfContentTitle', tableOfContentTitle);
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
