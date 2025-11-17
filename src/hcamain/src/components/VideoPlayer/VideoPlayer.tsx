@@ -152,7 +152,8 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     <figure
       id={componentAnchorId}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
-      {...(tableOfContentTitle ? { 'data-subnav-link-title': componentAnchorId } : {})}>
+      {...(tableOfContentTitle ? { 'data-subnav-link-title': tableOfContentTitle } : {})}
+      {...(tableOfContentTitle ? { 'data-subnav-link-id': componentAnchorId } : {})}>
       {props.fields?.VideoUrl?.value ? (
         <VideoPlayer
           videoUrl={props.fields?.VideoUrl?.value}
