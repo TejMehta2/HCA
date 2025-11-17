@@ -159,7 +159,7 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
@@ -181,7 +181,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
       <AccordionsBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
@@ -257,7 +257,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const faqSchema = getSchema(props.fields?.Questions);
   const { headingTag, subheadingTag } = getHeadingTags(
@@ -274,7 +274,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
         id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={

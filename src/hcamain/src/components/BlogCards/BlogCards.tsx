@@ -106,7 +106,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -115,7 +115,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       title={
         <Text
           tag={headingTag}
@@ -242,13 +242,13 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     componentTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   return (
     <>
       <DynamicCardBlogBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}

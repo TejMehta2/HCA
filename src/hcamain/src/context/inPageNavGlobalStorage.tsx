@@ -14,7 +14,7 @@ class InPageNavGlobalStore extends EventEmitter {
     const navTitle =
       componentParams?.TableOfContentsLinkTitle || componentTitle;
 
-    if (!navTitle || componentParams?.ExcludeFromTableOfContents) {
+    if (!navTitle || componentParams?.ExcludeFromTableOfContents === '1') {
       return '';
     }
 

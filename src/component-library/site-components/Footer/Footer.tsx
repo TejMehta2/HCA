@@ -8,6 +8,7 @@ import Text from '../../foundation/Text/Text';
 
 const Footer = (props: FooterProps): JSX.Element => {
   const {
+    logo,
     columns,
     legals,
     buttons,
@@ -29,7 +30,7 @@ const Footer = (props: FooterProps): JSX.Element => {
             <div className={styles['logo-section']}>
               <a className={styles.logo} href="/">
                 <span className="sr-only">Home</span>
-                <LogoIcon />
+                {logo || <LogoIcon />}
               </a>
 
               {contact?.phoneNumber && (

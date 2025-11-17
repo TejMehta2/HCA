@@ -84,7 +84,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         contentVariation="image"
         imageKeepAspectRatio={keepAspectRatio}
         id={componentAnchorId}
-        {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       >
         <figure>
           <NextJssImage

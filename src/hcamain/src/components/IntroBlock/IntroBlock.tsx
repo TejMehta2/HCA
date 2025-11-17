@@ -114,7 +114,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const phKey = `intro-block-${props.params?.DynamicPlaceholderId}`;
 
@@ -145,7 +145,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && !props?.params?.ExcludeFromTableOfContents
+      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       imageAlignment={imageAlignment}

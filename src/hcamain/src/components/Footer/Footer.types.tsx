@@ -1,85 +1,75 @@
-import { Navigation } from '.GeneratedTypeScriptModel/Project.HCA.model';
 import {
   Item,
   LinkField,
   TextField,
   ComponentRendering,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { Fields as CQCFields } from 'components/CQCRating/CQCRating.types';
-import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
+import { FieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
+import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
 import Params from 'src/types/params';
 
 // We extend generated types from Leprechaun, and overwrite types which are not specific enough for integration, mostly generic Sitecore Item
 // We mostly cast them as optional, because we are unsure
-export type Link = Item & {
-  fields?: {
-    Link?: LinkField & {
+export type Link = {
+  link?: {
+    jsonValue: LinkField & {
       value?: string;
     };
   };
 };
 export type Profile = Item & {
-  fields?: {
-    ProfileUrl?: TextField & {
-      value?: string;
-    };
-    SocialMediaProvider?: Item & {
-      fields?: {
-        Icon?: unknown; // THINK - renders as ID string in props, why
+  profileUrl?: TextField & {
+    value?: string;
+  };
+  socialMediaProvider?: Item & {
+    icon?: {
+      targetItem?: {
+        svgMarkup?: TextField;
       };
     };
   };
 };
 export type SocialMediaProfilesGroup = Item & {
-  fields?: {
-    Profiles?: Profile[];
-  };
+  profiles?: { targetItems: Profile[] };
 };
 export type NavigationColumnsFolder = Item & {
-  fields?: {
-    Links?: Link[];
-    Title?: TextField;
-  };
-};
-export type BottomLineLinksFolder = Item & {
-  fields?: {
-    Links?: Link[];
-  };
-};
-export type Fields = Navigation.Footer['fields'] & {
-  BottomLineLinksFolder?: BottomLineLinksFolder;
-  NavigationColumnsFolders?: NavigationColumnsFolder[];
-  SocialMediaProfilesGroup?: SocialMediaProfilesGroup;
-  DoctifyReviews?: DoctifyReviewsFields;
-  CqcStatus?: { fields?: CQCFields };
-  Copyright?: TextField;
-  Contact?: ContactUnit;
+  links?: { targetItems: Link[] };
+  title?: TextField;
 };
 
-export type FooterProps = Navigation.Footer & {
+export interface Fields {
+  data?: {
+    item?: {
+      id: string;
+      bottomLineLinksFolder?: { targetItem: NavigationColumnsFolder };
+      navigationColumnsFolders?: { targetItems: NavigationColumnsFolder[] };
+      socialMediaProfilesGroup?: { targetItem: SocialMediaProfilesGroup };
+      doctifyReviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
+      cqcStatus?: { targetItem?: FieldsGraphQl };
+      copyright?: TextField;
+      contact?: { targetItem: ContactUnit };
+      logo?: { jsonValue: ImageField };
+    };
+  };
+}
+
+export interface FooterProps {
   params?: Params;
-  rendering?: ComponentRendering & { params?: Params };
   fields?: Fields;
-};
+  rendering?: ComponentRendering & { params?: Params };
+}
 
 export interface ContactUnit {
   name: string;
-  fields: ContactFields;
-}
-
-export interface ContactFields {
-  ContactUnitName: StringValueField;
-  TelephoneNumber: TelephoneNumberItem[];
+  contactUnitName: StringValueField;
+  telephoneNumber: { targetItems: TelephoneNumberItem[] };
 }
 
 export interface TelephoneNumberItem {
-  fields: TelephoneNumberFields;
-}
-
-export interface TelephoneNumberFields {
-  InternationPhoneNumber: StringValueField;
-  PhoneNumber: StringValueField;
-  PhoneNumberLabel: StringValueField;
+  internationPhoneNumber: StringValueField;
+  phoneNumber: StringValueField;
+  phoneNumberLabel: StringValueField;
 }
 
 export interface StringValueField {
