@@ -91,6 +91,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
 export function getFirstNonEmptyTitle(
   page: NavigablePagesFields
 ): string | undefined {
+  console.log('page', page);
   return (
     page.navigationTitle?.value ||
     page.abstractTitle?.value ||
