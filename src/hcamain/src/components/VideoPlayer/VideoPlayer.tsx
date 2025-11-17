@@ -145,6 +145,7 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  console.log('noHeader', props);
 
   return (
     <figure

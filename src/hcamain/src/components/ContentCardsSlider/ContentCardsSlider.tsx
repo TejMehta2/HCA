@@ -73,7 +73,6 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const { showImage = true } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
-  console.log('props', props);
 
   if (!props.fields?.data?.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
