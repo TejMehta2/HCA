@@ -512,3 +512,35 @@ export const Hero: StoryObj<typeof ImageAndTextBlock> = {
     ),
   },
 };
+
+export const SmallLogoCentered: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'Palace-White',
+    imageKeepAspectRatio: true,
+    imageVerticalAlignment: 'center',
+    imageWidth: 'narrow',
+    image: (
+      <Image src="/cqc-large.png" alt="CQC logo" width="456" height="144" />
+    ),
+
+    header: (
+      <Text tag="h2" variation="display-5">
+        The independent regulator of health and social care in England
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size="large" variation="full">
+          <a href="#">
+            <span>
+              View the <strong>report</strong>
+            </span>
+            <span>
+              <Icons iconName={'iconExternal'} />
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
+  },
+};

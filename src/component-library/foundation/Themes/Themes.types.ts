@@ -17,8 +17,9 @@ export type Theme =
   | 'N-HCA-Denim-5'
   | 'O-HCA-Teal-20'
   | 'Palace-White'
-  | 'Palace-Navy-Blue'
+  | 'Palace-Grey'
   | 'Palace-Beige'
+  | 'Palace-Red'
   | 'Chelsea-White'
   | 'Chelsea-Navy-Blue'
   | 'Chelsea-Beige';

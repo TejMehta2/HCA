@@ -457,10 +457,10 @@
   --reviews-stars: #{$teal-100};
 
   @include apply-tag-palace-white;
-  @include apply-cta-palace-full(#{$white},
+  @include apply-cta-palace-full-red(#{$white},
     #{$navy-blue-100},
     #{$navy-blue-100});
-  @include apply-cta-palace-outline(#{$white},
+  @include apply-cta-palace-outline-red(#{$white},
     #{$navy-blue-100},
     #{$navy-blue-100});
   @include apply-tabs(#{$palace-red-20});
@@ -477,33 +477,33 @@
   --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
-@mixin apply-theme-palace-navy-blue {
+@mixin apply-theme-palace-grey {
   @include apply-shared-theme-dark;
 
-  --background: #{$navy-blue-100};
-  --card-background: #{$navy-blue-80};
-  --doctify-full-star: #{$palace-red-40};
+  --background: #{$grey-100};
+  --card-background: #{$grey-90};
+  --doctify-full-star: #{$teal-100};
   --doctify-empty-star: #{$white};
-  --quote-tag-background: #{$navy-blue-80};
-  --quote-tag-background-hover: #{$navy-blue-90};
-  --table-color: #{$navy-blue-80};
+  --quote-tag-background: #{$grey-90};
+  --quote-tag-background-hover: #{$grey-80};
+  --table-color: #{$grey-80};
   --reviews-stars: #{$teal-100};
+  --text-date: #{$white};
 
-  @include apply-tag-palace-navy-blue;
-  @include apply-tabs($navy-blue-80, $white);
-  @include apply-pagination-navy-blue-70;
+  @include apply-tag-palace-grey;
+  @include apply-tabs($grey-80, $white);
+  @include apply-pagination-grey;
   @include apply-controls-palace;
-  @include apply-cta-palace-full(#{$navy-blue-100}, #{$white}, #{$white});
-  @include apply-cta-palace-outline(#{$navy-blue-100}, #{$white}, #{$white});
-  @include apply-pagination-palace-navy-blue;
+  @include apply-cta-palace-full-red(#{$palace-red-100}, #{$white}, #{$white});
+  @include apply-cta-palace-outline-red(#{$palace-red-100}, #{$white}, #{$white});
   @include apply-cta-carousel-palace-light;
 
-  --filter-button-1: #{$navy-blue-80};
-  --filter-button-2: #{$navy-blue-70};
+  --filter-button-1: #{$grey-90};
+  --filter-button-2: #{$grey-80};
   --filter-button-3: #{$navy-blue-40};
   --compare-tag-color-1: #{$goldenrod-100};
   --compare-tag-text-color-1: #{$navy-blue-100};
-  --compare-tag-color-2: #{$navy-blue-90};
+  --compare-tag-color-2: #{$grey-90};
   --compare-tag-text-color-2: #{$white};
 }
 
@@ -521,10 +521,10 @@
   --table-color: #{$white};
   --reviews-stars: #{$teal-100};
 
-  @include apply-cta-palace-full(#{$tangerine-20},
+  @include apply-cta-palace-full-red(#{$tangerine-20},
     #{$navy-blue-100},
     #{$navy-blue-100});
-  @include apply-cta-palace-outline(#{$tangerine-20},
+  @include apply-cta-palace-outline-red(#{$tangerine-20},
     #{$navy-blue-100},
     #{$navy-blue-100});
 
@@ -541,6 +541,37 @@
   --compare-tag-text-color-1: #{$white};
   --compare-tag-color-2: #{$tangerine-70};
   --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
+@mixin apply-theme-palace-red {
+  @include apply-shared-theme-dark;
+
+  --background: #{$palace-red-100};
+  --card-background: #{$palace-red-80};
+  --doctify-full-star: #{$teal-100};
+  --doctify-empty-star: #{$white};
+  --quote-tag-background: #{$palace-red-80};
+  --quote-tag-background-hover: #{$palace-red-90};
+  --table-color: #{$palace-red-80};
+  --reviews-stars: #{$teal-100};
+  --text-date: #{$white};
+
+  @include apply-tag-palace-red;
+  @include apply-tabs($palace-red-80, $white);
+  @include apply-pagination-palace-red;
+  @include apply-controls-palace;
+  @include apply-cta-palace-full(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-palace-outline(#{$palace-red-100}, #{$white}, #{$white});
+  @include apply-cta-carousel-dark;
+  @include apply-cqc-palace-red;
+
+  --filter-button-1: #{$palace-red-80};
+  --filter-button-2: #{$palace-red-60};
+  --filter-button-3: #{$palace-red-40};
+  --compare-tag-color-1: #{$palace-red-20};
+  --compare-tag-text-color-1: #{$navy-blue-100};
+  --compare-tag-color-2: #{$navy-blue-70};
+  --compare-tag-text-color-2: #{$white};
 }
 
 @mixin apply-theme-chelsea-white {

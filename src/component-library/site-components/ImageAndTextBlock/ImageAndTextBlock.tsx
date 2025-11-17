@@ -11,6 +11,8 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     subheader,
     ctas,
     imageAlignment = 'left',
+    imageVerticalAlignment = 'top',
+    imageWidth = 'standard',
     imageKeepAspectRatio = false,
     length = 'short',
     theme,
@@ -21,7 +23,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     contentVariation,
     noOverflownHidden,
     id,
-    tableOfContentTitle
+    tableOfContentTitle,
   } = props;
 
   return (
@@ -37,13 +39,15 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
           <div
             className={[
               styles['container'],
+              styles[length],
               styles[`image-${imageAlignment}`],
+              styles[`image-${imageVerticalAlignment}`],
+              styles[`image-${imageWidth}`],
             ].join(' ')}
           >
             <div
               className={[
                 styles['image'],
-                styles[length],
                 cfVariation ? styles['hide-on-mobile-cf'] : '',
                 hideImageOnMobile ? styles['hide-on-mobile'] : '',
                 imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',

@@ -15,6 +15,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     withButtons,
     customBtn,
     customBtnDesktop,
+    gridLayout,
   } = props;
 
   const containerClasses = classNames(styles.container, {
@@ -27,6 +28,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     [styles['with-buttons']]: withButtons,
     [styles['custom-btn']]: customBtn,
     [styles['custom-btn-desktop']]: customBtnDesktop,
+    [styles['grid-layout']]: gridLayout,
   });
 
   return <div className={containerClasses}>{children}</div>;

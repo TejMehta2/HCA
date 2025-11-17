@@ -361,14 +361,17 @@ export const ThemeNDenim5: StoryObj<typeof Themes> = {
 export const ThemeOTeal20: StoryObj<typeof Themes> = {
   args: { theme: 'O-HCA-Teal-20' },
 };
-export const ThemePlaceWhite: StoryObj<typeof Themes> = {
+export const ThemePalaceWhite: StoryObj<typeof Themes> = {
   args: { theme: 'Palace-White' },
 };
-export const ThemePlaceNavyBlue: StoryObj<typeof Themes> = {
-  args: { theme: 'Palace-Navy-Blue' },
+export const ThemePalaceGrey: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Grey' },
 };
-export const ThemePlaceBeige: StoryObj<typeof Themes> = {
+export const ThemePalaceBeige: StoryObj<typeof Themes> = {
   args: { theme: 'Palace-Beige' },
+};
+export const ThemePalaceRed: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Red' },
 };
 export const ThemeChelseaWhite: StoryObj<typeof Themes> = {
   args: { theme: 'Chelsea-White' },

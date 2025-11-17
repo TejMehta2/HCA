@@ -13,6 +13,16 @@
     }
   }
 
+  &.grid-layout {
+    @include responsive-container;
+    @include responsive-grid;
+
+    div {
+      @include responsive-grid-span($default: 6, $breakpoint-l: 8);
+      @include responsive-grid-start($default: 1, $breakpoint-l: 3);
+    }
+  }
+
   // width
   &.width-50 {
     div {
@@ -122,6 +132,10 @@
     margin-top: $spacing-8;
   }
 
+  &.margin-top-spacing-11 {
+    margin-top: $spacing-11;
+  }
+
   // bottom
   &.margin-bottom-spacing-2 {
     margin-bottom: $spacing-2;
@@ -141,5 +155,9 @@
 
   &.margin-bottom-spacing-8 {
     margin-bottom: $spacing-8;
+  }
+
+  &.margin-bottom-spacing-11 {
+    margin-bottom: $spacing-11;
   }
 }
