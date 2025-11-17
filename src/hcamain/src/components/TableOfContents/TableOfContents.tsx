@@ -10,6 +10,7 @@ import router from 'next/router';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>([]);
+  console.log('props tbc', props);
 
   useEffect(() => {
     const handleRouteChange = () => {

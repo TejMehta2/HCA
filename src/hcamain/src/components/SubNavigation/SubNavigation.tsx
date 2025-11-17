@@ -38,11 +38,8 @@ const SubNavigationDefaultComponent = (
 export const Default = (props: SubNavigationProps): JSX.Element => {
   const context = useSitecoreContext();
 
-  console.log('page', props);
-
   if (!props.fields?.data?.item)
     return <SubNavigationDefaultComponent {...props} />;
-
   const contextPage = context.sitecoreContext?.route as PageRouteData;
   const datasource = props.fields.data.item;
 
@@ -63,7 +60,6 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
       item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
       contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
   );
-  console.log('navigablePages', navigablePages);
 
   if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;
 
