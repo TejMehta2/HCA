@@ -107,6 +107,7 @@ export const Default = (props: FooterProps): JSX.Element => {
     <Footer
       logo={
         props?.fields?.data?.item?.logo?.jsonValue?.value &&
+        props.fields.data.item.logo.jsonValue.value["class"] !== 'scEmptyImage' &&
         props.fields.data.item.logo.jsonValue.value.src &&
         props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
           <NextJssImage

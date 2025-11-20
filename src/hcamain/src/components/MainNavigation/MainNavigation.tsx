@@ -149,6 +149,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         tabs={tabs}
         logo={
           props?.fields?.data?.item?.logo?.jsonValue?.value &&
+          props.fields.data.item.logo.jsonValue.value["class"] !== 'scEmptyImage' &&
           props.fields.data.item.logo.jsonValue.value.src &&
           props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
             <Image
@@ -159,6 +160,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         }
         darkLogo={
           props?.fields?.data?.item?.darkLogo?.jsonValue?.value &&
+          props.fields.data.item.darkLogo.jsonValue.value["class"] !== 'scEmptyImage' &&
           props.fields.data.item.darkLogo.jsonValue.value.src &&
           props.fields.data.item.darkLogo.jsonValue.value.src.trim() !== '' ? (
             <Image
