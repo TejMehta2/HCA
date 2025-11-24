@@ -61,7 +61,9 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
     props?.fields?.data?.item?.locations?.PagesList &&
     props?.fields?.data?.item?.locations?.PagesList.length
   ) {
-    cards = props?.fields?.data?.item?.locations?.PagesList.map(
+    cards = props?.fields?.data?.item?.locations?.PagesList?.filter(
+      (p) => p && Object.keys(p).length > 0
+    ).map(
       (
         {
           abstractTitle,
