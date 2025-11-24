@@ -461,6 +461,11 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: LocationCardsProps
 ) => {
+  // Skip locations search if locations were picked manually in the datasource
+  if (rendering.fields?.data?.item?.locations) {
+    return { Locations: [] };
+  }
+
   const fields = rendering.fields?.data?.item;
 
   // Format props into entries, then query params
