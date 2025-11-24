@@ -140,7 +140,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           ctas={{
             button1: (
-              <a href={url.path}>
+              <a href={url?.path}>
                 <JssRichText field={linkText} />
               </a>
             ),
