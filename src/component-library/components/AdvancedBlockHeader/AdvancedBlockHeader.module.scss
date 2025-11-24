@@ -4,6 +4,7 @@
 .wrapper {
   padding-top: var(--theme-collapse-padding-top, $spacing-13);
   color: var(--text);
+  background-color: var(--background);
 
   >*:first-child {
     margin-top: 0;
