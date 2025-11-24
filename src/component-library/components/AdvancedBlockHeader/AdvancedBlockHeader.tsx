@@ -10,7 +10,7 @@ const AdvancedBlockHeader = (props: AdvancedBlockHeaderProps): JSX.Element => {
     ctas,
     children,
     paddingSize = 'large',
-    contentVariation,
+    contentVariation
   } = props;
   return (
     <div

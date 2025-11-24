@@ -95,6 +95,8 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
     >
       {(
         <AdvancedBlockHeader
+          contentVariation='centered'
+          paddingSize='small-mobile'
           subtitle={
             (props.fields.Heading?.value || isExperienceEditor) && (
               <Text tag={subheadingTag} variation="subheading-1">
