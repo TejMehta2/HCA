@@ -16,7 +16,7 @@ const ProfilePageHeader = (props: ProfilePageHeaderProps): JSX.Element => {
         )}
         <div className={styles.details}>
           <div className={styles.speciality}>
-            <Text tag="h2" variation="display-4">
+            <Text tag="h1" variation="display-4">
               {props.name}
             </Text>
             {props.topSpecialty !== '' && (
