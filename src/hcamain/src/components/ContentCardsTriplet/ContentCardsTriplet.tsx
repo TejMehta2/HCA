@@ -16,6 +16,9 @@ import IconCtaBlock, {
   IconCtaBlockChild,
 } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import getHeadingTags from 'lib/getHeadingTags';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type CTAIconFields = {
   fields?: {
@@ -36,6 +39,9 @@ interface CardFields {
 
 interface Fields {
   Cards?: CardFields[];
+  Heading?: Field<string>;
+  Title: Field<string>;
+  Text?: Field<string>;
 }
 
 type ContentCardsTripletProps = {
@@ -76,12 +82,49 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
+
   return (
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
+      {(
+        <AdvancedBlockHeader
+          subtitle={
+            (props.fields.Heading?.value || isExperienceEditor) && (
+              <Text tag={subheadingTag} variation="subheading-1">
+                <JssText field={props.fields?.Heading} />
+              </Text>
+            )
+          }
+          title={
+            (props.fields.Title?.value || isExperienceEditor) && (
+              <Text
+                tag={headingTag}
+                variation={props.params?.HeadingSize || 'display-3'}
+              >
+                <JssText field={props.fields?.Title} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields.Text?.value || isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <RichText>
+                  <JssRichText field={props.fields?.Text} />
+                </RichText>
+              </Text>
+            )
+          }
+        >
+        </AdvancedBlockHeader>
+      )}
+
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
           return (
@@ -107,10 +150,14 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 )
               }
               copy={
-                card?.fields?.Text || isExperienceEditor ? (
-                  <Text variation="body-large">
-                    <JssRichText tag="div" field={card.fields.Text} />
-                  </Text>
+                (card?.fields?.Text || isExperienceEditor) ? (
+                  <>
+                    {card?.fields?.Text && (
+                      <Text variation="body-large">
+                        <JssRichText tag="div" field={card.fields.Text} />
+                      </Text>
+                    )}
+                  </>
                 ) : (
                   <></>
                 )

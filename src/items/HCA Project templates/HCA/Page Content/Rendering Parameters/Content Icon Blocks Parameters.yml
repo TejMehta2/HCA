@@ -1,26 +1,32 @@
 ﻿---
-ID: "abb73d94-91ac-4994-848d-ce9f0050cc15"
-Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
+ID: "d62f2030-7162-4d02-b9a9-dab212759b9d"
+Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Content Cards Triplet
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Icon Blocks Parameters
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/window_dialog.png
+  Value: sxa/16x16/promo.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: |
+    {4247AAD4-EBDE-4994-998F-E067A51B1FE4}
+    {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
     {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
-    {E5FCCB05-625A-48C1-9BDA-5535D2A3A0D2}
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+    {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
+    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
+    {39263096-45D2-439E-83BB-194F4DA3C828}
+    {ACF7C5BC-AD93-4783-98A9-2F906B8DD7C0}
+    {305283C0-51FC-4A1C-9903-D8E236495716}
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Value: 0
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "e4bef4c2-6456-4a1a-bf26-0b0bd0e846e2"
+  Value: "6b858e8c-33b7-4e89-b579-0b371bc669cb"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{CF44A650-29EF-495F-AC04-7750B031E0E9}"
+  Value: "{B9F23A3B-A5BB-4BC3-8555-9F255A6A08A3}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -52,30 +58,26 @@ Languages:
       Hint: __Updated
       Value: 20231114T034000Z
 - Language: en
-  Fields:
-  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
-    Hint: __Display name
-    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20111213T133000Z
+      Value: 20211012T120926Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\admin
+        sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "41b70de7-a0e5-4772-99db-a992c196cbd6"
+      Value: "06bd3681-bcc1-4c82-b953-e39df507ec4b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.fletcher@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251118T161836Z
+      Value: 20251118T165633Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
