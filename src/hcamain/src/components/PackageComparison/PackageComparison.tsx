@@ -236,11 +236,6 @@ function mapPricingVariants(
         £<JssText field={item?.price?.jsonValue} />
       </>
     ),
-    // period: (item?.period?.jsonValue || isExperienceEditor) && (
-    //   <>
-    //     / <JssText field={item.period?.jsonValue} />
-    //   </>
-    // ),
     period:
       ((item?.period?.jsonValue?.value &&
         item.period.jsonValue.value.trim() !== '') ||
