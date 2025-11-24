@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Text as JssText,
@@ -122,7 +121,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           image={
             abstractImage?.jsonValue?.value?.src ||
-              image?.jsonValue?.value?.src ? (
+            image?.jsonValue?.value?.src ? (
               abstractImage?.jsonValue?.value?.src ? (
                 <Image
                   src={abstractImage?.jsonValue?.value?.src || ''}
@@ -265,11 +264,12 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
-      props?.fields?.data?.item?.locations?.PagesList.length
+    props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
@@ -280,7 +280,10 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -376,13 +379,14 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const locationsCards = data && returnCards(props, data);
 
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
-      props?.fields?.data?.item?.locations?.PagesList.length
+    props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
   const { headingTag, subheadingTag } = getHeadingTags(
@@ -392,7 +396,10 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <>
@@ -478,8 +485,8 @@ export const getStaticProps: GetStaticComponentProps = async (
         item.filterValueString?.value
           ? item.filterValueString.value
           : item.filterValueGuid?.targetItem?.id
-            .replaceAll(/[{},\-]/g, '')
-            .toLowerCase(),
+              .replaceAll(/[{},\-]/g, '')
+              .toLowerCase(),
         ,
       ])) ||
     [];
@@ -487,21 +494,21 @@ export const getStaticProps: GetStaticComponentProps = async (
   const contextSearchParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchParams || {})
-      .filter(([, nestedValue]) => nestedValue.value !== '')
-      .map(([key, nestedValue]) => [
-        key,
-        nestedValue?.value &&
-        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-      ]);
+        .filter(([, nestedValue]) => nestedValue.value !== '')
+        .map(([key, nestedValue]) => [
+          key,
+          nestedValue?.value &&
+            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]);
 
   const contextSearchIdParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchIdParams || {})
-      .filter(([, value]) => value !== '')
-      .map(([key, value]) => [
-        key,
-        value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-      ]); // clean up bad ID characters
+        .filter(([, value]) => value !== '')
+        .map(([key, value]) => [
+          key,
+          value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]); // clean up bad ID characters
 
   const params = [
     ['verticalKey', 'healthcare_facilities'],
