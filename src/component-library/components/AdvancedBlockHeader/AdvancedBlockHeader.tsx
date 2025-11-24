@@ -1,7 +1,6 @@
 import React from 'react';
 import { AdvancedBlockHeaderProps } from './AdvancedBlockHeader.types';
 import styles from './AdvancedBlockHeader.module.scss';
-import Themes from '../../foundation/Themes/Themes';
 
 const AdvancedBlockHeader = (props: AdvancedBlockHeaderProps): JSX.Element => {
   const {
