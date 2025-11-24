@@ -5,11 +5,11 @@
   padding-top: var(--theme-collapse-padding-top, $spacing-13);
   color: var(--text);
 
-  > *:first-child {
+  >*:first-child {
     margin-top: 0;
   }
 
-  > *:last-child {
+  >*:last-child {
     margin-bottom: 0;
   }
 
@@ -27,6 +27,18 @@
 
   &.none {
     padding: 0;
+  }
+
+  &.small-mobile {
+    padding-left: $spacing-14;
+    padding-right: $spacing-14;
+    padding-bottom: $spacing-7;
+
+    @include media(screen-l) {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
   }
 
   &.half-width {
@@ -85,22 +97,18 @@
   .title,
   .subtitle {
     @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 4);
-    @include responsive-grid-span(
-      $default: 6,
+    @include responsive-grid-span($default: 6,
       $breakpoint-m: 4,
-      $breakpoint-l: 6
-    );
+      $breakpoint-l: 6);
 
     max-width: 100%;
   }
 
   .body {
     @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 5);
-    @include responsive-grid-span(
-      $default: 6,
+    @include responsive-grid-span($default: 6,
       $breakpoint-m: 4,
-      $breakpoint-l: 4
-    );
+      $breakpoint-l: 4);
 
     margin-top: $spacing-2;
     max-width: 100%;
