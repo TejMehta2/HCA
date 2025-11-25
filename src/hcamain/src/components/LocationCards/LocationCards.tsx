@@ -471,7 +471,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   rendering: LocationCardsProps
 ) => {
   // Skip locations search if locations were picked manually in the datasource
-  if (rendering.fields?.data?.item?.locations) {
+  if ((rendering.fields?.data?.item?.locations?.PagesList?.length ?? 0) > 0) {
     return { Locations: [] };
   }
 
