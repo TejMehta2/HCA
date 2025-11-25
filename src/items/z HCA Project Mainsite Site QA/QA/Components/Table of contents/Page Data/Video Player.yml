@@ -1,0 +1,42 @@
+﻿---
+ID: "944d7a53-6358-4a22-8893-232f9ae3df6f"
+Parent: "5b50d5f6-876a-4b38-99a7-43dae0c355a7"
+Template: "46bf57e7-393b-4cb0-9353-05a2b5c5b0dc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Video Player"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0156953c-f5cf-4607-8ed0-f359933bb6e9"
+      Hint: Heading
+      Value: Youtube Video
+    - ID: "088dce2e-3f62-40fd-98c8-25d836a56800"
+      Hint: VideoUrl
+      Value: "https://www.youtube.com/embed/JBwrg4g5ns8?si=mPdwQQ074RNxmEuS"
+    - ID: "106785df-228f-4701-989c-c766ab17e68f"
+      Hint: VideoThumbnail
+      Value: |
+        <image mediaid="{A469EE32-144B-49AD-84DE-0358FCACE25C}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240225T221228Z
+    - ID: "2b019843-e0a4-45c6-b186-0b45d2510463"
+      Hint: Platform
+      Value: "{2082ED90-69BA-4DD3-AD1B-EC3F2FEF3333}"
+    - ID: "35bf8477-61e1-415b-b51a-7f1caa14a80e"
+      Hint: Text
+      Value: "The Headache and Facial Pain Service at HCA Healthcare UK offers a dedicated team of expert consultant neurologists and neurosurgeons with state-of-the-art diagnostics for some of the very best support and interventions that London and the UK has to offer."
+    - ID: "65113539-e4b8-4fba-a596-8a0f31d8d432"
+      Hint: Title
+      Value: Headache and Facial Pain Service
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6ff1842c-117a-4f09-ac91-d2c0e2183454"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240403T151803Z
