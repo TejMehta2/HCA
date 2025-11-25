@@ -25,7 +25,6 @@ import Container from '@component-library/foundation/Containers/Container';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
