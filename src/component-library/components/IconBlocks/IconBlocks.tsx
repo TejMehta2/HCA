@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconBlocksProps } from './IconBlocksProps.types';
 import styles from './IconBlocks.module.scss';
-import Icons from '../../foundation/Icons/Icons';
 import Themes from '../../foundation/Themes/Themes';
 
 const IconBlocks = (props: IconBlocksProps): JSX.Element => {
