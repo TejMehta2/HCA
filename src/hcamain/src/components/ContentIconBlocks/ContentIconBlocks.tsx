@@ -11,7 +11,7 @@ import {
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
-import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
+import IconBlocksProps from '@component-library/components/IconBlocks/IconBlocks';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
 
@@ -118,7 +118,7 @@ export const Default = (props: ContentIconBlocksProps): JSX.Element => {
   );
 
   return (
-    <CardBlockCarousel
+    <IconBlocksProps
       title={
         <>
           <Text
@@ -155,6 +155,6 @@ export const Default = (props: ContentIconBlocksProps): JSX.Element => {
       id={componentAnchorId}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
       cards={cards}
-    ></CardBlockCarousel>
+    ></IconBlocksProps>
   );
 };
