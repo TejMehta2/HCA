@@ -65,7 +65,6 @@ const ContentIconBlocksDefaultComponent = (
 };
 
 export const Default = (props: ContentIconBlocksProps): JSX.Element => {
-  console.log('ContentIconBlocksProps', props);
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
