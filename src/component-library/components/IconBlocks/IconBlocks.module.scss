@@ -1,0 +1,91 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    color: var(--text);
+    padding: $spacing-13 $spacing-4;
+
+    @include media(screen-m) {
+        gap: px-to-rem(20);
+    }
+
+    @include media(screen-l) {
+        padding: $spacing-13 px-to-rem(80);
+        flex-direction: row;
+        gap: px-to-rem(111);
+    }
+}
+
+.intro {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subtitle {
+    margin-bottom: $spacing-2;
+
+    @include media(screen-l) {
+        margin-bottom: $spacing-2;
+    }
+}
+
+.title {
+    margin-bottom: $spacing-5;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include media(screen-m) {
+        flex: 1;
+        display: grid;
+        row-gap: px-to-rem(20);
+        column-gap: px-to-rem(40);
+    }
+
+    @include media(screen-l) {
+        row-gap: px-to-rem(40);
+        column-gap: px-to-rem(80);
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: $spacing-4;
+
+    &:not(:last-child) {
+        margin-bottom: px-to-rem(40);
+    }
+
+    &:first-child {
+        margin-top: px-to-rem(40);
+    }
+
+    @include media(screen-s) {
+        margin-top: 0;
+    }
+
+    @include media(screen-m) {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &-title {
+        margin-bottom: px-to-rem(6);
+    }
+}
+
+
+.icon {
+    min-width: px-to-rem(49);
+}
