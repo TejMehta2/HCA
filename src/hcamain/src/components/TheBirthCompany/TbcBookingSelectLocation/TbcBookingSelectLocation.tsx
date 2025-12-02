@@ -15,11 +15,9 @@ import {
   LinkField,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
-import Container from '@component-library/foundation/Containers/Container';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -143,6 +141,15 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       });
   }, [router, router.isReady, paramScanId, configurationId]);
 
+  const chosenLocationHandler = (locationId: string) => {
+    setSelectedLocation(locationId);
+    nextPageParams.set('locationId', locationId);
+
+    router.push(
+      `${props?.fields?.NextLink?.value?.href}?${nextPageParams.toString()}`
+    );
+  };
+
   if (props.fields) {
     return (
       <div
@@ -215,14 +222,14 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                         </Text>
                       }
                       handleClick={() => {
-                        setSelectedLocation(location.id);
+                        chosenLocationHandler(location.id);
                       }}
                     >
                       {location.nearestAvailability && (
                         <span>
                           <Icons iconName="iconClock" />
                           <Text variation="body-small" tag="p">
-                            Available Sat 21 Oct 2023
+                            {location.nearestAvailability}
                           </Text>
                         </span>
                       )}
@@ -236,31 +243,15 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href
-                      }?${searchParams.toString()}`}
+                    href={`${
+                      props?.fields?.BackLink?.value?.href
+                    }?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
                 </TextButton>
               </div>
-              <Container>
-                <Button size={'small'} variation={'full-dark'}>
-                  <button
-                    disabled={selectedLocation.length === 0 ? true : false}
-                    onClick={() =>
-                      router.push(
-                        `${props?.fields?.NextLink?.value?.href
-                        }?${nextPageParams.toString()}`
-                      )
-                    }
-                  >
-                    <span>
-                      {props?.fields?.NextLink?.value?.text || 'Next'}
-                    </span>
-                  </button>
-                </Button>
-              </Container>
             </Navigation>
           </>
         )}
