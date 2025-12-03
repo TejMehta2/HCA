@@ -1,6 +1,6 @@
 import { FilterOption } from 'src/types/searchProps';
 
-const formatId = (id?: string) => id?.toLowerCase()?.replaceAll('-', '');
+const formatId = (id?: string) => id?.toLowerCase()?.replace(/[-{}]/g, '');
 
 const unpackFilterOption = ({ fields }: FilterOption) => {
   const { Filter, FilterValueGuid, FilterValueString, DisplayName } = fields;
