@@ -5,7 +5,7 @@ const formatId = (id?: string) => id?.toLowerCase()?.replaceAll('-', '');
 const unpackFilterOption = ({ fields }: FilterOption) => {
   const { Filter, FilterValueGuid, FilterValueString, DisplayName } = fields;
   const key = Filter?.value || '';
-  const value = formatId(FilterValueGuid?.id) || FilterValueString.value || '';
+  const value = formatId(FilterValueGuid?.id) || formatId(FilterValueGuid?.value?.value) || FilterValueString.value || '';
   return {
     id: `${key}-${value}`,
     key,
