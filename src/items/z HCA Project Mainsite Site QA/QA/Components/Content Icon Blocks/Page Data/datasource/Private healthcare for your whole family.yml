@@ -1,0 +1,51 @@
+﻿---
+ID: "0922e7e3-37b6-4873-badf-c56637d41489"
+Parent: "d7773c7c-0703-4965-9e86-b0103c120b82"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Icon Blocks/Page Data/datasource/Private healthcare for your whole family"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: Private healthcare for your whole family
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241128T113649Z
+    - ID: "29e9202e-0a97-4b8d-b58d-5d3033ec6d7e"
+      Hint: PrimaryCTA
+      Value: 
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: "<p>Our priority is your health. That&rsquo;s why with us, your private healthcare will even cover pre-existing conditions, and at an additional cost your whole family can benefit from excellent medical care.</p>"
+    - ID: "39c57176-ec2a-48d2-a67f-3b37fa503d3f"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/514b123e796447468ce3646edf818f6f?v=9024685f" dam-id="PBL_M_tWS2mK-Pz1HfQEAg" width="1000" height="667" alt="Smiling girl having an appointment with her mother at pediatricians 1535569562.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231606/thumbnail" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "58d9ed4d-188b-4898-9361-a254ff5b096d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{EBAE1C78-E9F1-42C0-B818-45E45573A463}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250424T133540Z

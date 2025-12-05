@@ -79,13 +79,16 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     options
   );
 
-  const paramsMap = new Map(combinedParams); // Express as Map to make keys unique
-  paramsMap.delete('autocomplete');
-  const params = [...paramsMap.entries()].map(
-    (entry) => `${entry[0]}=${encodeURIComponent(entry[1])}` // encode to accommodate query breaking symbols e.g. &, = in values
-  ); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = `${baseUrl}${searchPath}${query}`; // compose API url
+  const searchParamsObj = new URLSearchParams();
+
+  combinedParams.forEach(([key, value]) => {
+    if (key !== 'autocomplete' && value !== undefined) {
+      searchParamsObj.append(key, value);
+    }
+  });
+
+  const query = `?${searchParamsObj.toString()}`;
+  const url = `${baseUrl}${searchPath}${query}`;
 
   const { data, error, isLoading } = useSWR<ResponseT>(
     url,

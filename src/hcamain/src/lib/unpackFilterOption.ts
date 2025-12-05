@@ -1,11 +1,15 @@
 import { FilterOption } from 'src/types/searchProps';
 
-const formatId = (id?: string) => id?.toLowerCase()?.replaceAll('-', '');
+const formatId = (id?: string) => id?.toLowerCase()?.replace(/[-{}]/g, '');
 
 const unpackFilterOption = ({ fields }: FilterOption) => {
   const { Filter, FilterValueGuid, FilterValueString, DisplayName } = fields;
   const key = Filter?.value || '';
-  const value = formatId(FilterValueGuid?.id) || FilterValueString.value || '';
+  const value =
+    formatId(FilterValueGuid?.id) ||
+    formatId(FilterValueGuid?.value) ||
+    FilterValueString.value ||
+    '';
   return {
     id: `${key}-${value}`,
     key,

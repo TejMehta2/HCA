@@ -1,0 +1,27 @@
+﻿---
+ID: "b9f23a3b-a5bb-4bc3-8555-9f255a6a08a3"
+Parent: "d62f2030-7162-4d02-b9a9-dab212759b9d"
+Template: "d62f2030-7162-4d02-b9a9-dab212759b9d"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Icon Blocks Parameters/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f32703e0-2c8b-40fe-8452-5f3ced583c5c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.fletcher@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251118T165633Z

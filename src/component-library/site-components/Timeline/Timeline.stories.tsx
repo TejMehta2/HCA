@@ -59,8 +59,8 @@ export const Default: StoryObj<typeof Timeline> = {
               they&apos;ll arrange any imaging or diagnostic tests – often on
               the same day.
               <ul>
-                <li>Jump</li>
-                <li>Today</li>
+                <li>A cognitive test and neurological exam to check which stage of Alzheimer’s disease you’re in</li>
+                <li>A cognitive test and neurological exam to check which stage of Alzheimer’s</li>
                 <li>Jump</li>
               </ul>
             </Text>
