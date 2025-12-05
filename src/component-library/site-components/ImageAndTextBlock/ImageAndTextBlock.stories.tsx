@@ -517,6 +517,7 @@ export const SmallLogoCentered: StoryObj<typeof ImageAndTextBlock> = {
   args: {
     theme: 'Palace-White',
     imageKeepAspectRatio: true,
+    imageNoStretch: true,
     imageVerticalAlignment: 'center',
     imageWidth: 'narrow',
     image: (

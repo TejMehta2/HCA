@@ -42,6 +42,14 @@
   }
 }
 
+.image-no-stretch {
+  justify-content: center;
+
+  img {
+    width: max-content;
+  }
+}
+
 .keep-aspect-ratio {
   img {
     object-fit: contain;

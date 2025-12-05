@@ -13,6 +13,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     imageAlignment = 'left',
     imageVerticalAlignment = 'top',
     imageWidth = 'standard',
+    imageNoStretch,
     imageKeepAspectRatio = false,
     length = 'short',
     theme,
@@ -51,6 +52,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                 cfVariation ? styles['hide-on-mobile-cf'] : '',
                 hideImageOnMobile ? styles['hide-on-mobile'] : '',
                 imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
+                imageNoStretch ? styles['image-no-stretch'] : '',
               ].join(' ')}
               data-animate="s"
             >
