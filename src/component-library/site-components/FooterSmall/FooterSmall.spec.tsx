@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: FooterSmallProps = {
-  theme: 'Palace-Navy-Blue',
+  theme: 'Palace-Red',
   logo: <Image src="/palace-gate-white.svg" alt="" width="209" height="34" />,
   ctas: [
     <a href="#">Privacy Policy</a>,
