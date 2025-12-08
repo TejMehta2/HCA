@@ -42,11 +42,11 @@ SharedFields:
           cQCStatus {
             targetItem {
               ... on CQC {
-                title {
-                  jsonValue
+                title {              
+                  value
                 }
-                text {
-                  jsonValue
+                text {             
+                  value
                 }
                 reportLink {
                   jsonValue
@@ -55,10 +55,10 @@ SharedFields:
                   targetItem {
                     ... on CQCStatus {
                       title {
-                        jsonValue
+                        value
                       }
-                      icon_f7469f76595c49ccb0cc66a5e3d33383 {
-                        jsonValue
+                      icon: icon_f7469f76595c49ccb0cc66a5e3d33383 {
+                        value
                       }
                       cQCLogoLight {
                         targetItem {
@@ -81,10 +81,10 @@ SharedFields:
             targetItem {
               ... on DoctifyReviews {
                 stars {
-                  jsonValue
+                  value
                 }
                 reviews {
-                  jsonValue
+                  value
                 }
                 link {
                   jsonValue
@@ -169,7 +169,7 @@ SharedFields:
     <image mediaid="{59396AEC-9D86-4D58-98CA-703F757E4A02}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "38a11512-6044-45ac-94b7-bbd7f354564f"
+  Value: "79e9ef66-419f-40f9-acef-1aa1e394c357"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -216,14 +216,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d3f998c8-1487-4611-8331-1e52bf5245ac"
+      Value: "181876af-7b5f-469c-9fbf-1158699e0cff"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251208T195216Z
+      Value: 20251208T214516Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
