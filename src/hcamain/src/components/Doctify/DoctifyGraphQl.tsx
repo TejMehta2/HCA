@@ -58,12 +58,12 @@ export const Default = (props: DoctifyPropsGraphQl): JSX.Element => {
         link={doctifyLink}
         rating={
           isExperienceEditor ? (
-            <JssText field={reviews?.targetItem?.stars?.jsonValue} />
+            <JssText field={reviews?.targetItem?.stars} />
           ) : (
-            reviews?.targetItem?.stars?.jsonValue?.value || <></>
+            reviews?.targetItem?.stars?.value || <></>
           )
         }
-        reviews={<JssText field={reviews?.targetItem?.reviews?.jsonValue} />}
+        reviews={<JssText field={reviews?.targetItem?.reviews} />}
         logo={{
           dark: <JssImage field={darkLogo} width="83" height="21" />,
           light: <JssImage field={lightLogo} width="83" height="21" />,

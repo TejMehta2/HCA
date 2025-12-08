@@ -12,9 +12,8 @@ export type logoFieldGraphQl = {
 
 export type CQSStatusFieldsGraphQl = Item & {
   displayName?: string;
-  title?: { jsonValue: Field<string> };
-  icon?: { jsonValue: Field<string> };
-  logo?: { jsonValue: ImageField };
+  title?: Field<string>;
+  icon?: Field<string>;
   cQCLogoLight?: {
     targetItem?: logoFieldGraphQl;
   };
@@ -26,8 +25,8 @@ export type CQSStatusFieldsGraphQl = Item & {
 export interface CQCFieldsGraphQl {
   status?: { targetItem: CQSStatusFieldsGraphQl };
   reportLink?: { jsonValue: LinkField };
-  text?: { jsonValue: Field<string> };
-  title?: { jsonValue: Field<string> };
+  text?: Field<string>;
+  title?: Field<string>;
 }
 
 export type CQCRatingProps = {

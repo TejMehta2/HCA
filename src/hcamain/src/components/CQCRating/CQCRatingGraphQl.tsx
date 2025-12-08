@@ -50,8 +50,8 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   return (
     <div className={`component ${props.params?.styles}`} component-name="cqc">
       <CQCBlock
-        title={datamodel?.title?.jsonValue?.value}
-        text={datamodel?.text?.jsonValue?.value}
+        title={datamodel?.title?.value}
+        text={datamodel?.text?.value}
         link={ratingLink}
         length={length}
         rating={hideRating ? undefined : defaultRating}
