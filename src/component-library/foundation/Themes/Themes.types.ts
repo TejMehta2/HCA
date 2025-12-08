@@ -21,7 +21,8 @@ export type Theme =
   | 'Palace-Beige'
   | 'Chelsea-White'
   | 'Chelsea-Navy-Blue'
-  | 'Chelsea-Beige';
+  | 'Chelsea-Beige'
+  | 'LBI';
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;

@@ -645,6 +645,32 @@
   --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
+@mixin apply-theme-lbi {
+  @include apply-shared-theme-light;
+
+  --background: #{$goldenrod-20};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$tangerine-100};
+  --quote-tag-background-hover: #{$orange-100};
+  --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
+
+  @include apply-tag-goldenrod;
+  @include apply-tabs($tangerine-100);
+  @include apply-pagination-tangerine;
+  @include apply-controls-medium;
+
+  --filter-button-1: #{$goldenrod-60};
+  --filter-button-2: #{$goldenrod-100};
+  --filter-button-3: #{$navy-blue-70};
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
 @mixin theme-mode($light, $dark) {
   :where([data-theme-mode='light']) {
     @content (light);
