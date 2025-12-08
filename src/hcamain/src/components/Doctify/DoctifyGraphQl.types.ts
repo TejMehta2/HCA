@@ -6,13 +6,13 @@ import {
 import Params from 'src/types/params';
 
 export interface DoctifyLogoFieldsGraphQl {
-  text?: Field<string>;
+  text?: { jsonValue: Field<string> };
   logo: { jsonValue?: ImageField; value?: string };
 }
 
 export interface DoctifyReviewsFieldsGraphQl {
-  stars?: Field<string>;
-  reviews?: Field<string>;
+  stars?: { jsonValue: Field<string> };
+  reviews?: { jsonValue: Field<string> };
   doctifyLogoLight?: { targetItem: DoctifyLogoFieldsGraphQl };
   doctifyLogoDark?: { targetItem: DoctifyLogoFieldsGraphQl };
   link?: { jsonValue?: LinkField };
