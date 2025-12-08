@@ -87,28 +87,29 @@ const Schema = (props: SchemaProps) => {
 
     const conditionDescription = meta?.Text?.value;
 
-    const reviewCountIntroBlock = reviewFields?.DoctifyReviews?.fields?.Reviews
-      ?.value
-      ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(
+    const reviewCountIntroBlock = reviewFields?.data?.item?.doctifyReviews
+      ?.targetItem?.reviews?.jsonValue?.value
+      ? reviewFields?.data?.item?.doctifyReviews?.targetItem?.reviews?.jsonValue?.value.replace(
           /[+,]/g,
           ''
         )
       : null;
 
     const reviewCountFooter = reviewFieldsFooter?.data?.item?.doctifyReviews
-      ?.targetItem?.reviews?.value
-      ? reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.reviews?.value.replace(
+      ?.targetItem?.reviews?.jsonValue?.value
+      ? reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.reviews?.jsonValue?.value.replace(
           /[+,]/g,
           ''
         )
       : null;
 
     const ratingValueIntroBlock =
-      reviewFields?.DoctifyReviews?.fields?.Stars?.value || null;
+      reviewFields?.data?.item?.doctifyReviews?.targetItem?.stars?.jsonValue
+        ?.value || null;
 
     const ratingValueFooter =
       reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.stars
-        ?.value || null;
+        ?.jsonValue?.value || null;
 
     const ratingValue = ratingValueIntroBlock || ratingValueFooter || '';
     const reviewCount = reviewCountIntroBlock || reviewCountFooter || '';
