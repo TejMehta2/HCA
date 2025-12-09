@@ -52,9 +52,6 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     ...(searchParams.entries() as Iterable<[string, string]>),
   ];
 
-  console.log('baselineParams', baselineParams);
-  console.log('combinedParams', combinedParams);
-
   // Apply near param from geolocation middleware cookie
   if (
     typeof window !== 'undefined' &&
@@ -97,7 +94,6 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   );
 
   const searchParamsObj = new URLSearchParams();
-  console.log('combinedParams', combinedParams);
 
   combinedParams.forEach(([key, value]) => {
     if (key !== 'autocomplete' && value !== undefined) {
@@ -107,7 +103,6 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
 
   const query = `?${searchParamsObj.toString()}`;
   const url = `${baseUrl}${searchPath}${query}`;
-  console.log('url', url);
 
   const { data, error, isLoading } = useSWR<ResponseT>(
     url,
@@ -164,7 +159,6 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
       handleChange((params) => {
         setInputAsAutocomplete(name, params);
         resetPagination(name, params);
-        console.log('params', params);
         return params;
       });
     },
