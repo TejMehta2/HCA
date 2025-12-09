@@ -122,7 +122,7 @@ export const Default = (props: ContentIconBlocksProps): JSX.Element => {
       title={
         <>
           <Text
-            variation={props.params?.HeadingSize || 'display-2'}
+            variation={props.params?.HeadingSize || 'display-3'}
             tag={headingTag}
           >
             <JssText field={props.fields?.Title} />

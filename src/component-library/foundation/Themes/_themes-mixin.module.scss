@@ -645,6 +645,62 @@
   --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
+@mixin apply-theme-lbi {
+  @include apply-shared-theme-light;
+
+  --background: #{$goldenrod-20};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$purple-100};
+  --quote-tag-background-hover: #{$purple-120};
+  --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
+
+  @include apply-cta-lbi;
+  @include apply-cta-lbi-outline($goldenrod-20, $navy-blue-100, $navy-blue-100);
+
+  @include apply-tag-lbi;
+  @include apply-tabs($purple-100);
+  @include apply-pagination-lbi;
+  @include apply-controls-medium;
+
+  --filter-button-1: #{$goldenrod-60};
+  --filter-button-2: #{$goldenrod-100};
+  --filter-button-3: #{$navy-blue-70};
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$purple-100};
+  --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
+@mixin apply-theme-lbi-dark {
+  --background: #{$goldenrod-120};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$purple-100};
+  --quote-tag-background-hover: #{$purple-120};
+  --table-color: #{$white};
+  --reviews-stars: #{$teal-100};
+
+  @include apply-cta-lbi;
+  @include apply-cta-lbi-outline($goldenrod-120, $navy-blue-100, $navy-blue-100);
+
+  @include apply-tag-lbi;
+  @include apply-tabs($purple-100);
+  @include apply-pagination-lbi;
+  @include apply-controls-medium;
+
+  --filter-button-1: #{$goldenrod-60};
+  --filter-button-2: #{$goldenrod-100};
+  --filter-button-3: #{$navy-blue-70};
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$purple-100};
+  --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
 @mixin theme-mode($light, $dark) {
   :where([data-theme-mode='light']) {
     @content (light);

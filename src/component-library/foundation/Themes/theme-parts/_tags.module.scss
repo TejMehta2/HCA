@@ -8,6 +8,7 @@
   --tag-focus-background: #{$fern-60};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-navy-blue-70 {
   --tag-background: #{$navy-blue-70};
   --tag-text: #{$white};
@@ -16,6 +17,7 @@
   --tag-focus-background: #{$navy-blue-100};
   --tag-focus-outline: #{$fern-40};
 }
+
 @mixin apply-tag-orange-40 {
   --tag-background: #{$orange-40};
   --tag-text: #{$navy-blue-100};
@@ -24,6 +26,7 @@
   --tag-focus-background: #{$orange-80};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-orange-60 {
   --tag-background: #{$orange-60};
   --tag-text: #{$navy-blue-100};
@@ -32,6 +35,7 @@
   --tag-focus-background: #{$orange-60};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-white {
   --tag-background: #{$white};
   --tag-text: #{$navy-blue-100};
@@ -40,6 +44,7 @@
   --tag-focus-background: #{$goldenrod-100};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-teal-20 {
   --tag-background: #{$teal-20};
   --tag-text: #{$navy-blue-100};
@@ -48,6 +53,7 @@
   --tag-focus-background: #{$teal-40};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-teal-10 {
   --tag-background: #{$teal-10};
   --tag-text: #{$navy-blue-100};
@@ -56,6 +62,7 @@
   --tag-focus-background: #{$teal-40};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-secondary-teal-20 {
   --tag-secondary-background: #{$teal-20};
   --tag-secondary-text: #{$navy-blue-100};
@@ -64,6 +71,7 @@
   --tag-secondary-focus-background: #{$teal-40};
   --tag-secondary-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-tag-secondary-navy-blue-80 {
   --tag-secondary-background: #{$navy-blue-80};
   --tag-secondary-text: #{$white};
@@ -125,6 +133,15 @@
   --tag-hover-background: #{$tangerine-100};
   --tag-active-background: #{$tangerine-100};
   --tag-focus-background: #{$goldenrod-100};
+  --tag-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-tag-lbi {
+  --tag-background: #{$purple-100};
+  --tag-text: #{$navy-blue-100};
+  --tag-hover-background: #{$purple-120};
+  --tag-active-background: #{$purple-100};
+  --tag-focus-background: #{$purple-100};
   --tag-focus-outline: #{$navy-blue-100};
 }
 
