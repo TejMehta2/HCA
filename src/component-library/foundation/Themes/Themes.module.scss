@@ -9,7 +9,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
   F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
   J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
   N-HCA-Denim-5, O-HCA-Teal-20, Palace-White, Palace-Navy-Blue, Palace-Beige,
-  Chelsea-White, Chelsea-Navy-Blue, Chelsea-Beige, LBI;
+  Chelsea-White, Chelsea-Navy-Blue, Chelsea-Beige, LBI, LBI-Dark;
 
 @each $theme in $themeOptions {
   .#{$theme}:is([data-theme='#{$theme}']):not(.no-collapse)+ :is([data-theme='#{$theme}'], :has([data-theme='#{$theme}'])) {
@@ -109,6 +109,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
   @include apply-theme-lbi;
 }
 
+.LBI-Dark {
+  @include apply-theme-lbi-dark;
+}
+
 .master-A-HCA-White,
 .master-B-HCA-Navy-Blue,
 .master-C-HCA-Denim,
@@ -154,6 +158,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
     &>.Chelsea-White,
     &>.Chelsea-Navy-Blue,
     &>.LBI,
+    &>.LBI-Dark,
     &>.Chelsea-Beige {
       --background: #{transparent};
       --text: #{unset};
@@ -185,5 +190,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
     Chelsea-White: dark;
     Chelsea-Navy-Blue: light;
     Chelsea-Beige: dark;
+    LBI: light;
+    LBI-Dark: dark;
   }
 }
