@@ -15,7 +15,136 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: 
+  Value: |
+    query GetIntroBlock($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on IntroBlock {
+          
+          ...CtaBaseFragment
+    
+          headline {
+            jsonValue
+          }
+          title {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
+          image {
+            jsonValue
+          }
+          counters {
+            targetItems {
+              ...ScoresFragment
+            }
+          }
+          cQCStatus {
+            targetItem {
+              ... on CQC {
+                title {              
+                  value
+                }
+                text {             
+                  value
+                }
+                reportLink {
+                  jsonValue
+                }
+                status {
+                  targetItem {
+                    ... on CQCStatus {
+                      title {
+                        value
+                      }
+                      icon: icon_f7469f76595c49ccb0cc66a5e3d33383 {
+                        value
+                      }
+                      cQCLogoLight {
+                        targetItem {
+                          ...CQCSettingsFragment
+                        }
+                      }
+                      cQCLogoDark {
+                        targetItem {
+                          ...CQCSettingsFragment
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+    
+          doctifyReviews {
+            targetItem {
+              ... on DoctifyReviews {
+                stars {
+                  value
+                }
+                reviews {
+                  value
+                }
+                link {
+                  jsonValue
+                }
+                doctifyLogoLight {
+                  targetItem {
+                    ...DoctifySettingsFragment
+                  }
+                }
+                doctifyLogoLight {
+                  targetItem {
+                    ...DoctifySettingsFragment
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    fragment CtaBaseFragment on _CTABase {
+      cTAIcon {
+        targetItem {
+          ... on HCAIcon {
+            svgMarkup {
+              value
+            }
+          }
+        }
+      }
+      cTALink {
+        jsonValue
+      }
+    }
+    
+    fragment ScoresFragment on Scores {
+      number {
+        jsonValue
+      }
+      text {
+        jsonValue
+      }
+    }
+    
+    fragment CQCSettingsFragment on CQCSettings {
+      logo {
+        jsonValue
+      }
+    }
+    
+    fragment DoctifySettingsFragment on DoctifySettings {
+      text {
+        jsonValue
+      }
+      logo {
+        jsonValue
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Intro Block
@@ -38,6 +167,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{59396AEC-9D86-4D58-98CA-703F757E4A02}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "79e9ef66-419f-40f9-acef-1aa1e394c357"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -84,14 +216,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8d8f091a-8b49-4744-844d-d75acbbb0960"
+      Value: "181876af-7b5f-469c-9fbf-1158699e0cff"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172333Z
+      Value: 20251208T214516Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

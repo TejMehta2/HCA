@@ -8,13 +8,22 @@ import {
 import Doctify from '@component-library/components/Doctify/Doctify';
 import { DoctifyPropsGraphQl } from './DoctifyGraphQl.types';
 
-const DoctifyDefaultComponent = (props: DoctifyPropsGraphQl): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Doctify no datasource</span>
+const DoctifyDefaultComponent = (props: DoctifyPropsGraphQl): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Doctify. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: DoctifyPropsGraphQl): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
