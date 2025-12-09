@@ -5,7 +5,7 @@ import {
   ComponentRendering,
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { FieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
+import { CQCFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
 import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
 import Params from 'src/types/params';
 
@@ -46,7 +46,7 @@ export interface Fields {
       navigationColumnsFolders?: { targetItems: NavigationColumnsFolder[] };
       socialMediaProfilesGroup?: { targetItem: SocialMediaProfilesGroup };
       doctifyReviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
-      cqcStatus?: { targetItem?: FieldsGraphQl };
+      cqcStatus?: { targetItem?: CQCFieldsGraphQl };
       copyright?: TextField;
       contact?: { targetItem: ContactUnit };
       logo?: { jsonValue: ImageField };

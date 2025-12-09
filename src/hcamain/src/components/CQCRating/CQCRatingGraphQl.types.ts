@@ -14,7 +14,6 @@ export type CQSStatusFieldsGraphQl = Item & {
   displayName?: string;
   title?: Field<string>;
   icon?: Field<string>;
-  logo?: ImageField;
   cQCLogoLight?: {
     targetItem?: logoFieldGraphQl;
   };
@@ -23,9 +22,9 @@ export type CQSStatusFieldsGraphQl = Item & {
   };
 };
 
-export interface FieldsGraphQl {
+export interface CQCFieldsGraphQl {
   status?: { targetItem: CQSStatusFieldsGraphQl };
-  reportLink?: { jsonValue?: LinkField };
+  reportLink?: { jsonValue: LinkField };
   text?: Field<string>;
   title?: Field<string>;
 }
@@ -34,7 +33,7 @@ export type CQCRatingProps = {
   params?: Params;
   fields?: {
     data?: {
-      item?: FieldsGraphQl;
+      item?: CQCFieldsGraphQl;
     };
   };
   hideRating?: boolean;
