@@ -31,11 +31,10 @@ import Image from 'next/image';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
 import Filters from '@component-library/site-components/Filters/Filters';
-import getBaselineParams from 'lib/getBaselineParams';
 import { unpackFilterOptionJson } from 'lib/unpackFilterOption';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import { ApiSearchProps } from 'src/types/searchProps';
+import { ApiSearchPropsJson } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
@@ -43,6 +42,7 @@ import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import getHeadingTags from 'lib/getHeadingTags';
+import getBaselineParamsJson from 'lib/getBaselineParamsJson';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -69,7 +69,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
+    getBaselineParamsJson(props);
   const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
 
   // Hooks
@@ -191,7 +191,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             >
               <Filters
                 submitOnClose={true}
-                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonText={
+                  <JssText field={fields?.data?.item?.filterOptionsText} />
+                }
                 buttonIcon={
                   <SitecoreSvg>
                     {
@@ -511,9 +513,9 @@ export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: ApiSearchProps
+  rendering: ApiSearchPropsJson
 ) => {
-  const { baselineParams } = getBaselineParams(rendering);
+  const { baselineParams } = getBaselineParamsJson(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url

@@ -1,6 +1,6 @@
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import { ApiSearchProps } from 'src/types/searchProps';
+import { ApiSearchPropsJson } from 'src/types/searchProps';
 
 export interface SearchResponse {
   meta: Meta;
@@ -107,7 +107,6 @@ export interface Fields {
   resultsPerPage?: Field<number>;
   searchBy?: { targetItems: FilterOption[] };
   filterBy?: { targetItems: FilterOption[] };
-
   gridViewIcon?: HCAIconFields;
   gridViewText?: Field<string>;
   mapViewIcon?: HCAIconFields;
@@ -115,7 +114,7 @@ export interface Fields {
   getDirectionsText?: Field<string>;
 }
 
-export type LocationsSearchProps = ApiSearchProps & {
+export type LocationsSearchProps = ApiSearchPropsJson & {
   params?: Params;
   fields?: {
     data?: {

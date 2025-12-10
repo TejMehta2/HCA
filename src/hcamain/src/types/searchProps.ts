@@ -122,6 +122,11 @@ export interface FilterCategory {
   };
 }
 
+export interface FilterCategoryJson {
+  header: Field<string>;
+  filters: { targetItems: FilterOptionJson[] };
+}
+
 export interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
@@ -146,3 +151,37 @@ export type ApiSearchProps = {
   fields?: Fields;
   fallbackData?: ApiResponse;
 };
+
+export interface ApiSearchPropsJson {
+  heading?: { jsonValue: Field<string> };
+  title?: { jsonValue: Field<string> };
+  text?: { jsonValue: Field<string> };
+  searchPlaceholder?: Field<string>;
+  filterOptionsIcon?: HCAIconFields;
+  filterOptionsText?: Field<string>;
+  filterOptions?: { targetItems: FilterCategoryJson[] };
+  sortOptionsIcon?: HCAIconFields;
+  sortOptionsText?: Field<string>;
+  sortOptions?: { targetItems: FilterOptionJson[] };
+  searchResultsText?: Field<string>;
+  searchResultsTextWithInput?: Field<string>;
+  resultsPerPage?: Field<number>;
+  searchBy?: { targetItems: FilterOptionJson[] };
+  filterBy?: { targetItems: FilterOptionJson[] };
+  gridViewIcon?: HCAIconFields;
+  gridViewText?: Field<string>;
+  mapViewIcon?: HCAIconFields;
+  mapViewText?: Field<string>;
+  getDirectionsText?: Field<string>;
+  cTACardText?: Field<string>;
+}
+
+export interface ApiSearchPropsJson {
+  params?: Params;
+  fields?: {
+    data?: {
+      item?: ApiSearchPropsJson;
+    };
+  };
+  fallbackData?: ApiResponse;
+}
