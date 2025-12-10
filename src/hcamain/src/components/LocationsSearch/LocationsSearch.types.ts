@@ -73,59 +73,55 @@ export interface AutocompleteResponseResult {
 }
 
 export type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
+  targetItem: {
+    svgMarkup?: Field<string>;
   };
 };
 
 export interface FilterOption {
-  displayName: string;
-  fields: {
-    DisplayName?: Field<string>;
-    Filter?: Field<string>; // e.g. { value: 'locationId' }
-    FilterValueGuid?: Field<string> & {
-      id: string;
-    };
-    FilterValueString: Field<string>; // e.g. { value: 'Birmingham' }
-  };
+  displayName?: Field<string>;
+  filter?: Field<string>; // e.g. { value: 'locationId' }
+  filterValueGuid?: { targetItem: { id: string } };
+  filterValueString?: Field<string>; // e.g. { value: 'Birmingham' }
 }
 
 export interface FilterCategory {
-  displayName: string;
-  fields: {
-    Header: Field<string>;
-    Filters: FilterOption[];
-  };
+  header: Field<string>;
+  filters: { targetItems: FilterOption[] };
 }
 
 export interface Fields {
-  CTACardText?: Field<string>;
-  Heading?: Field<string>;
-  Title?: Field<string>;
-  Text?: Field<string>;
-  SearchPlaceholder?: Field<string>;
-  FilterOptionsIcon?: HCAIconFields;
-  FilterOptionsText?: Field<string>;
-  FilterOptions?: FilterCategory[];
-  SortOptionsIcon?: HCAIconFields;
-  SortOptionsText?: Field<string>;
-  SortOptions?: FilterOption[];
-  SearchResultsText?: Field<string>;
-  SearchResultsTextWithInput?: Field<string>;
-  ResultsPerPage?: Field<number>;
-  SearchBy?: FilterOption[];
-  FilterBy?: FilterOption[];
+  cTACardText?: Field<string>;
+  heading?: { jsonValue: Field<string> };
+  title?: { jsonValue: Field<string> };
+  text?: { jsonValue: Field<string> };
+  searchPlaceholder?: Field<string>;
+  filterOptionsIcon?: HCAIconFields;
+  filterOptionsText?: Field<string>;
+  filterOptions?: { targetItems: FilterCategory[] };
+  sortOptionsIcon?: HCAIconFields;
+  sortOptionsText?: Field<string>;
+  sortOptions?: { targetItems: FilterOption[] };
+  searchResultsText?: Field<string>;
+  searchResultsTextWithInput?: Field<string>;
+  resultsPerPage?: Field<number>;
+  searchBy?: { targetItems: FilterOption[] };
+  filterBy?: { targetItems: FilterOption[] };
 
-  GridViewIcon?: HCAIconFields;
-  GridViewText?: Field<string>;
-  MapViewIcon?: HCAIconFields;
-  MapViewText?: Field<string>;
-  GetDirectionsText?: Field<string>;
+  gridViewIcon?: HCAIconFields;
+  gridViewText?: Field<string>;
+  mapViewIcon?: HCAIconFields;
+  mapViewText?: Field<string>;
+  getDirectionsText?: Field<string>;
 }
 
 export type LocationsSearchProps = ApiSearchProps & {
   params?: Params;
-  fields?: Fields;
+  fields?: {
+    data?: {
+      item?: Fields;
+    };
+  };
   rendering?: {
     uid?: string;
   };

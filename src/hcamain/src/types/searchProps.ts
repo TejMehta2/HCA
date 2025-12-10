@@ -96,18 +96,10 @@ export interface FilterOption {
 }
 
 export interface FilterOptionJson {
-  displayName?: {
-    value: Field<string>;
-  };
-  filter?: {
-    value: Field<string>;
-  };
-  filterValueGuid?: {
-    value: string;
-  };
-  filterValueString?: {
-    value: Field<string>;
-  };
+  displayName?: Field<string>;
+  filter?: Field<string>;
+  filterValueGuid?: { targetItem: { id: string } };
+  filterValueString?: Field<string>;
 }
 
 export interface YextFacetJson {
