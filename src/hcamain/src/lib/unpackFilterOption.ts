@@ -6,8 +6,7 @@ const unpackFilterOption = ({ fields }: FilterOption) => {
   const { Filter, FilterValueGuid, FilterValueString, DisplayName } = fields;
   const key = Filter?.value || '';
   const value =
-    formatId(FilterValueGuid?.id) ||
-    formatId(FilterValueGuid?.value) ||
+    formatId(FilterValueGuid) ||   
     FilterValueString.value ||
     '';
   return {

@@ -88,9 +88,7 @@ export interface FilterOption {
   fields: {
     DisplayName?: Field<string>;
     Filter?: Field<string>; // e.g. { value: 'locationId' }
-    FilterValueGuid?: Field<string> & {
-      id: string;
-    };
+    FilterValueGuid?: string;
     FilterValueString: Field<string>; // e.g. { value: 'Birmingham' }
   };
 }
@@ -105,9 +103,7 @@ export interface FilterOptionJson {
   filterValueGuid?: {
     value: string;
   };
-  filterValueString?: {
-    value: Field<string>;
-  };
+  filterValueString?: string;
 }
 
 export interface YextFacetJson {

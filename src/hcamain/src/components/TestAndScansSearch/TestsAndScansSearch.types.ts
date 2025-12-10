@@ -87,9 +87,7 @@ export interface FilterOption {
   fields: {
     DisplayName?: Field<string>;
     Filter?: Field<string>; // e.g. { value: 'locationId' }
-    FilterValueGuid?: Field<string> & {
-      id: string;
-    };
+    FilterValueGuid?: string;
     FilterValueString: Field<string>; // e.g. { value: 'Birmingham' }
   };
 }
