@@ -1,17 +1,29 @@
 import React from 'react';
-import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Image as JssImage,
+  useSitecoreContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import { CQCBlockProps } from '@component-library/components/CQCBlock/CQCBlock.types';
 import { CQCRatingProps } from './CQCRatingGraphQl.types';
 
-const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CQC Rating no datasource</span>
+const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          CQC Ratings. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: CQCRatingProps): JSX.Element => {
   const datamodel = props?.fields?.data?.item;

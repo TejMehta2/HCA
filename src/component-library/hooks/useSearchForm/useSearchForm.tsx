@@ -36,7 +36,21 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   const router = useRouter();
   const pathname = usePathname();
 
-  const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
+  // const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
+
+  const urlHasOffset = searchParams.has('offset');
+  const urlHasLimit = searchParams.has('limit');
+
+  const combinedParams: [string, string][] = [
+    // Start with baseline, but drop offset/limit if they are present in the URL
+    ...baselineParams.filter(([key]) => {
+      if (key === 'offset' && urlHasOffset) return false;
+      if (key === 'limit' && urlHasLimit) return false;
+      return true;
+    }),
+    // Then add everything from the URL
+    ...(searchParams.entries() as Iterable<[string, string]>),
+  ];
 
   // Apply near param from geolocation middleware cookie
   if (
@@ -79,13 +93,16 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     options
   );
 
-  const paramsMap = new Map(combinedParams); // Express as Map to make keys unique
-  paramsMap.delete('autocomplete');
-  const params = [...paramsMap.entries()].map(
-    (entry) => `${entry[0]}=${encodeURIComponent(entry[1])}` // encode to accommodate query breaking symbols e.g. &, = in values
-  ); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = `${baseUrl}${searchPath}${query}`; // compose API url
+  const searchParamsObj = new URLSearchParams();
+
+  combinedParams.forEach(([key, value]) => {
+    if (key !== 'autocomplete' && value !== undefined) {
+      searchParamsObj.append(key, value);
+    }
+  });
+
+  const query = `?${searchParamsObj.toString()}`;
+  const url = `${baseUrl}${searchPath}${query}`;
 
   const { data, error, isLoading } = useSWR<ResponseT>(
     url,

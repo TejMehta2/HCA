@@ -1,0 +1,47 @@
+﻿---
+ID: "66ebee8c-ddc4-485b-8a6f-a9bf969a480e"
+Parent: "d7773c7c-0703-4965-9e86-b0103c120b82"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Icon Blocks/Page Data/datasource/Access to a private GP 3"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: Access to a private GP
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241128T121822Z
+    - ID: "29e9202e-0a97-4b8d-b58d-5d3033ec6d7e"
+      Hint: PrimaryCTA
+      Value: 
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: <p>See a private GP as often as you need to. We&rsquo;ll give you the time you need to talk it through during your appointment, for your peace of mind and ours at a minimal cost.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f1bb2953-cab9-482b-a948-c88d79a3974b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{5DD8A5E0-07CC-40AF-8272-255D05AFEABC}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250424T133912Z

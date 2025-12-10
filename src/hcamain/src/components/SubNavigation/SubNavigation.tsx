@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint react/jsx-key: 0 */
 import React from 'react';
 import {
@@ -39,7 +40,6 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
 
   if (!props.fields?.data?.item)
     return <SubNavigationDefaultComponent {...props} />;
-
   const contextPage = context.sitecoreContext?.route as PageRouteData;
   const datasource = props.fields.data.item;
 
@@ -58,7 +58,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
     (item: NavigablePagesFields) =>
       !item.hideInSubNavigation?.boolValue &&
       item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
-        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+      contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
   );
 
   if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;

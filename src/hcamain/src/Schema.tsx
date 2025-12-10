@@ -87,9 +87,9 @@ const Schema = (props: SchemaProps) => {
 
     const conditionDescription = meta?.Text?.value;
 
-    const reviewCountIntroBlock = reviewFields?.DoctifyReviews?.fields?.Reviews
-      ?.value
-      ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(
+    const reviewCountIntroBlock = reviewFields?.data?.item?.doctifyReviews
+      ?.targetItem?.reviews?.value
+      ? reviewFields?.data?.item?.doctifyReviews?.targetItem?.reviews?.value.replace(
           /[+,]/g,
           ''
         )
@@ -104,7 +104,8 @@ const Schema = (props: SchemaProps) => {
       : null;
 
     const ratingValueIntroBlock =
-      reviewFields?.DoctifyReviews?.fields?.Stars?.value || null;
+      reviewFields?.data?.item?.doctifyReviews?.targetItem?.stars?.value ||
+      null;
 
     const ratingValueFooter =
       reviewFieldsFooter?.data?.item?.doctifyReviews?.targetItem?.stars

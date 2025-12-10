@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -13,11 +12,8 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-
-import { Default as Doctify } from '../Doctify/Doctify';
-import { Default as CQCRating } from '../CQCRating/CQCRating';
-import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
-import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
+import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
+import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
@@ -25,6 +21,8 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
+import { CQCFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -36,46 +34,44 @@ const DynamicHomepageIntroBlock = dynamic(
   }
 );
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
-};
-export type logoField = {
-  Logo?: ImageField;
-};
-
 interface CountersFields {
-  fields?: {
-    Number?: Field<string>;
-    Text?: Field<string>;
+  number?: {
+    jsonValue: Field<string>;
   };
-}
-
-interface CQCFields {
-  fields?: {
-    Title?: Field<string>;
-    Text?: Field<string>;
-    ReportLink?: LinkField | { url: string };
-    Status?: CQSStatusFields;
+  text?: {
+    jsonValue: Field<string>;
   };
 }
 
 interface Fields {
-  Title?: Field<string>;
-  Headline?: Field<string>;
-  Text?: Field<string>;
-  Image?: ImageField;
-  CTAIcon?: HCAIconFields;
-  CTALink: LinkField;
-  Counters?: CountersFields[];
-  CQCStatus?: CQCFields;
-  DoctifyReviews?: DoctifyReviewsFields;
+  title?: {
+    jsonValue: Field<string>;
+  };
+  headline?: {
+    jsonValue: Field<string>;
+  };
+  text?: {
+    jsonValue: Field<string>;
+  };
+  image?: { jsonValue: ImageField };
+  cTAIcon?: {
+    targetItem: {
+      svgMarkup?: Field<string>;
+    };
+  };
+  cTALink: { jsonValue: LinkField };
+  counters?: { targetItems: CountersFields[] };
+  cQCStatus?: { targetItem: CQCFieldsGraphQl };
+  doctifyReviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
 }
 
 export type IntroBlockProps = {
   params?: Params;
-  fields?: Fields;
+  fields?: {
+    data?: {
+      item?: Fields;
+    };
+  };
   rendering?: ComponentRendering;
 };
 
@@ -105,47 +101,53 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
-  if (!props.fields) {
+  const datasource = props?.fields?.data?.item;
+
+  if (!datasource) {
     return <IntroBlockDefaultComponent {...props} />;
   }
 
-  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const tableOfContentsLinkTitle = datasource?.title?.jsonValue?.value;
   const componentAnchorId = inPageNavGlobalStore.addItem(
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const phKey = `intro-block-${props.params?.DynamicPlaceholderId}`;
 
   const cta = isExperienceEditor ? (
-    <JssLink field={props.fields?.CTALink}></JssLink>
-  ) : props.fields?.CTALink && props.fields?.CTALink?.value?.text ? (
-    <JssLink field={props.fields?.CTALink}>
+    <JssLink field={datasource?.cTALink?.jsonValue}></JssLink>
+  ) : datasource?.cTALink?.jsonValue &&
+    datasource?.cTALink?.jsonValue?.value?.text ? (
+    <JssLink field={datasource?.cTALink?.jsonValue}>
       <SitecoreSvg>
-        {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+        {datasource?.cTAIcon?.targetItem?.svgMarkup?.value}
       </SitecoreSvg>
 
       <JssRichText
         field={{
-          value: props.fields?.CTALink?.value?.text,
+          value: datasource?.cTALink?.jsonValue?.value?.text,
         }}
       />
     </JssLink>
   ) : undefined;
-  const stats = props.fields?.Counters?.map((counters) => ({
-    value: <JSSText field={counters.fields?.Number} />,
-    label: <JSSText field={counters.fields?.Text} />,
+  const stats = datasource?.counters?.targetItems?.map((counters) => ({
+    value: <JSSText field={counters.number?.jsonValue} />,
+    label: <JSSText field={counters.text?.jsonValue} />,
   }));
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
-    props.fields?.Headline?.value
+    datasource?.headline?.jsonValue?.value
   );
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1'
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       imageAlignment={imageAlignment}
@@ -156,20 +158,20 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           tag={headingTag}
           variation={props.params?.HeadingSize || 'display-3'}
         >
-          <JssRichText tag="span" field={props.fields?.Title} />
+          <JssRichText tag="span" field={datasource?.title?.jsonValue} />
         </Text>
       }
       subtitle={
-        props.fields?.Headline?.value ? (
+        datasource?.headline?.jsonValue.value ? (
           <Text tag={subheadingTag} variation={'subheading-2'}>
-            <JSSText field={props.fields?.Headline} />
+            <JSSText field={datasource?.headline?.jsonValue} />
           </Text>
         ) : undefined
       }
       copy={
         <Text tag="div" variation="body-large">
           <RichText>
-            <JssRichText field={props.fields?.Text} />
+            <JssRichText field={datasource?.text?.jsonValue} />
           </RichText>
         </Text>
       }
@@ -177,7 +179,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       cta={cta || <></>}
       image={
         <NextJssImage
-          field={props.fields?.Image}
+          field={datasource?.image?.jsonValue}
           editable={false}
           next={{
             width: 800,
@@ -187,23 +189,27 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         />
       }
       cqc={
-        props.fields?.CQCStatus ? (
+        datasource?.cQCStatus?.targetItem ? (
           <CQCRating
             length="short"
             hideRating={true}
-            {...props.fields?.CQCStatus}
+            fields={{
+              data: { item: datasource?.cQCStatus?.targetItem },
+            }}
           />
         ) : (
           <></>
         )
       }
       doctify={
-        props.fields?.DoctifyReviews?.fields ? (
+        datasource?.doctifyReviews?.targetItem ? (
           <Doctify
             alignment="left"
             params={props.params}
             key={2}
-            fields={{ Reviews: props.fields?.DoctifyReviews }}
+            fields={{
+              data: { item: { Reviews: datasource?.doctifyReviews } },
+            }}
           />
         ) : (
           <></>

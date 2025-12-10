@@ -47,9 +47,11 @@
 
 .children {
   --label-size: #{px-to-rem(50)};
+
   @include media(screen-l) {
     --label-size: #{px-to-rem(100)};
   }
+
   @include responsive-grid-span(6, 4, 5, 5);
   @include responsive-grid-start(1, 2, 7, 7);
 
@@ -67,10 +69,15 @@
     pointer-events: none;
   }
 
-  ul {
+  ul:not(.tick) {
     list-style: disc;
-    list-style-position: inside;
-    padding-left: 0;
+    padding-left: px-to-rem(32);
+    margin: 0;
+    margin: $spacing-4 0 0;
+
+    li {
+      margin-bottom: px-to-rem(12);
+    }
   }
 
   .step {
@@ -80,6 +87,7 @@
     display: grid;
     grid-template-columns: var(--label-size) 1fr;
     gap: px-to-rem(17);
+
     @include media(screen-l) {
       padding-bottom: $spacing-13;
       gap: px-to-rem(41);
@@ -102,6 +110,7 @@
       left: calc(var(--label-size) / 2 - px-to-rem(1));
       top: calc(3 * var(--label-size));
       height: calc(100% - 3 * var(--label-size));
+
       @include media(screen-l) {
         top: calc(2 * var(--label-size));
         height: calc(100% - 2 * var(--label-size));

@@ -39,7 +39,6 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
   if (!props?.fields?.data?.item) {
     return <CareersSearchBlockDefaultComponent {...props} />;
   }
-  console.log('props.fields.data.item', props.fields.data.item);
 
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>

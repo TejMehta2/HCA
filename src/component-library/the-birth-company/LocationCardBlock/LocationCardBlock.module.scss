@@ -5,6 +5,7 @@
   background-color: var(--background);
   color: var(--text);
   margin-top: $spacing-7;
+  margin-bottom: px-to-rem(112); /* This stops the content getting hidden behind the navigation at the bottom of the page */
 
   @include responsive-container;
   @include responsive-grid;

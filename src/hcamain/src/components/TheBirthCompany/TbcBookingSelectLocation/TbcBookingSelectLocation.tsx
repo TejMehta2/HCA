@@ -14,16 +14,15 @@ import {
   Field,
   LinkField,
   useSitecoreContext,
+  Placeholder,
+  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
-import Container from '@component-library/foundation/Containers/Container';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
@@ -34,6 +33,7 @@ import {
   TheBirthCompanyContextProvider,
 } from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 interface Fields {
   HCALogo: ImageField;
@@ -57,6 +57,7 @@ interface Fields {
 type StepProps = {
   params: { [key: string]: string };
   fields: Fields;
+  rendering?: ComponentRendering;
 };
 
 interface LocationFields {
@@ -95,6 +96,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
   const { selectedLocation, setSelectedLocation } = useContext(
     TheBirthCompanyContext
   );
+  const phKey = `booking-location-step-${props.params?.DynamicPlaceholderId}`;
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [locations, setLocations] = useState<LocationFields[]>([]);
@@ -143,6 +145,15 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       });
   }, [router, router.isReady, paramScanId, configurationId]);
 
+  const chosenLocationHandler = (locationId: string) => {
+    setSelectedLocation(locationId);
+    nextPageParams.set('locationId', locationId);
+
+    router.push(
+      `${props?.fields?.NextLink?.value?.href}?${nextPageParams.toString()}`
+    );
+  };
+
   if (props.fields) {
     return (
       <div
@@ -170,35 +181,24 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
             {!loading && !error && (
               <LocationCardBlock
                 cta={
-                  props?.fields?.CantFindPhoneNumber?.value && (
-                    <CantFind
-                      contentVariation="the-birth-company"
-                      title={
-                        <Text tag="p" variation="body-medium-large">
-                          {props?.fields?.CantFindBannerText?.value}
-                        </Text>
-                      }
-                    >
-                      <TextButton>
-                        <a
-                          href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
-                            /\s/g,
-                            ''
-                          )}`}
-                        >
-                          <SitecoreSvg>
-                            {
-                              props?.fields?.CantFindIcon?.fields?.SvgMarkup
-                                ?.value
-                            }
-                          </SitecoreSvg>
-                          <span>
-                            {props?.fields?.CantFindPhoneNumber?.value}
-                          </span>
-                        </a>
-                      </TextButton>
-                    </CantFind>
-                  )
+                  <>
+                    {props?.fields?.CantFindBannerText?.value && (
+                      <CantFind
+                        contentVariation="the-birth-company"
+                        title={
+                          <Text tag="p" variation="body-medium-large">
+                            {props?.fields?.CantFindBannerText?.value}
+                          </Text>
+                        }
+                      ></CantFind>
+                    )}
+
+                    {props.rendering && (
+                      <PlaceHolderWrapper>
+                        <Placeholder name={phKey} rendering={props.rendering} />
+                      </PlaceHolderWrapper>
+                    )}
+                  </>
                 }
               >
                 <>
@@ -215,14 +215,14 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                         </Text>
                       }
                       handleClick={() => {
-                        setSelectedLocation(location.id);
+                        chosenLocationHandler(location.id);
                       }}
                     >
                       {location.nearestAvailability && (
                         <span>
                           <Icons iconName="iconClock" />
                           <Text variation="body-small" tag="p">
-                            Available Sat 21 Oct 2023
+                            {location.nearestAvailability}
                           </Text>
                         </span>
                       )}
@@ -236,31 +236,15 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href
-                      }?${searchParams.toString()}`}
+                    href={`${
+                      props?.fields?.BackLink?.value?.href
+                    }?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
                 </TextButton>
               </div>
-              <Container>
-                <Button size={'small'} variation={'full-dark'}>
-                  <button
-                    disabled={selectedLocation.length === 0 ? true : false}
-                    onClick={() =>
-                      router.push(
-                        `${props?.fields?.NextLink?.value?.href
-                        }?${nextPageParams.toString()}`
-                      )
-                    }
-                  >
-                    <span>
-                      {props?.fields?.NextLink?.value?.text || 'Next'}
-                    </span>
-                  </button>
-                </Button>
-              </Container>
             </Navigation>
           </>
         )}
