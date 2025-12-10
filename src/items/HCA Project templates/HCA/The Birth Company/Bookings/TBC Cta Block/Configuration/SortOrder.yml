@@ -6,13 +6,13 @@ Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/TBC Cta Block/C
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Number
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "6f731682-e7ce-4cb0-96f9-784cf25231ac"
+  Value: "691255ab-bf8e-4aa7-8436-19230c5cc2a0"
 Languages:
 - Language: en
   Fields:
@@ -38,11 +38,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c2b315c3-5a9f-415d-867f-f15648f52747"
+      Value: "426b2bf6-27b8-4e80-9ab9-5611e5debcbf"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251126T124223Z
+      Value: 20251210T234245Z
