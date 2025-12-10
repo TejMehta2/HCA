@@ -84,3 +84,5 @@ src/component-library/node_modules
 *.tsbuildinfo
 
 src/z.HCA.HCAMain.z.site.qa.module.json
+/src/hcamain/.env.local.alina
+/src/undefined/component-library
