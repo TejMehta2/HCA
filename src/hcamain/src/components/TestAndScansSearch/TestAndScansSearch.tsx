@@ -95,6 +95,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
     title: category?.fields.Header?.value || category?.displayName || '',
     fields: category.fields?.Filters?.map((option) => {
       const { id, key, value, displayName } = unpackFilterOption(option);
+
       return {
         id,
         value,
@@ -177,7 +178,6 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                 props?.fields?.SortOptions?.map((option) => {
                   const { id, key, value, displayName } =
                     unpackFilterOption(option);
-
                   return {
                     id,
                     value,
