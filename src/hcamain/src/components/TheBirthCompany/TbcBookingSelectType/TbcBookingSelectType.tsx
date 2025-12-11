@@ -143,7 +143,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       cta = (
         <>
           <Text variation="body-bold-small" tag="p">
-            Call to book below:
+            Enquire Now:
           </Text>
           <TextButton>
             <a href={`tel:${appointmentType.link.url}`}>

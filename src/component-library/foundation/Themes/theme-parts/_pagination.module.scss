@@ -143,3 +143,9 @@
   --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$chelsea-gold-100};
 }
+
+@mixin apply-pagination-lbi {
+  --pagination: #{$purple-100};
+  --pagination-hover: #{$purple-120};
+  --pagination-arrow-hover: #{$purple-120};
+}

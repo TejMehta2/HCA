@@ -44,7 +44,7 @@
     grid-template-columns: repeat(2, 1fr);
 
     @include media(screen-m) {
-        flex: 1;
+        flex: 2;
         display: grid;
         row-gap: px-to-rem(20);
         column-gap: px-to-rem(40);

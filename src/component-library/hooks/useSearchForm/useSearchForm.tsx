@@ -36,7 +36,21 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   const router = useRouter();
   const pathname = usePathname();
 
-  const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
+  // const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
+
+  const urlHasOffset = searchParams.has('offset');
+  const urlHasLimit = searchParams.has('limit');
+
+  const combinedParams: [string, string][] = [
+    // Start with baseline, but drop offset/limit if they are present in the URL
+    ...baselineParams.filter(([key]) => {
+      if (key === 'offset' && urlHasOffset) return false;
+      if (key === 'limit' && urlHasLimit) return false;
+      return true;
+    }),
+    // Then add everything from the URL
+    ...(searchParams.entries() as Iterable<[string, string]>),
+  ];
 
   // Apply near param from geolocation middleware cookie
   if (

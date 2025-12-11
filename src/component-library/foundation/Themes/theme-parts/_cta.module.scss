@@ -27,6 +27,7 @@
   --cta-full-focus-border: #{$navy-blue-40};
   --cta-full-focus-outline: #{$teal-100};
 }
+
 @mixin apply-cta-full-light {
   // Base
   --cta-full-background: #{$teal-100};
@@ -51,6 +52,7 @@
   // Focus
   --cta-full-focus-outline: #{$teal-100};
 }
+
 @mixin apply-cta-full-light-blue {
   // Base
   --cta-full-background: #{$teal-5};
@@ -59,9 +61,7 @@
 
   // Hover
   --cta-full-hover-background: #{$teal-10};
-  --background: var(
-    --cta-full-hover-background
-  ); // Override theme functionality for this button
+  --background: var(--cta-full-hover-background); // Override theme functionality for this button
 
   --cta-full-hover-border: #{$teal-10};
 
@@ -77,6 +77,7 @@
   --cta-full-focus-outline: #{$navy-blue-100};
   --cta-full-focus-border: #{$teal-5};
 }
+
 @mixin apply-cta-outline-dark {
   // Base
   --cta-outline-background: transparent;
@@ -101,6 +102,7 @@
   // Focus
   --cta-outline-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-cta-outline-light {
   // Base
   --cta-outline-background: transparent;
@@ -125,6 +127,7 @@
   // Focus
   --cta-outline-focus-outline: #{$white};
 }
+
 @mixin apply-cta-social-light {
   // Base
   --cta-social-background: #{$navy-blue-100};
@@ -141,6 +144,7 @@
   --cta-social-focus-border: #{$navy-blue-9};
   --cta-social-focus-outline: #{$white};
 }
+
 @mixin apply-cta-social-dark {
   // Base
   --cta-social-background: #{$white};
@@ -157,6 +161,7 @@
   --cta-social-focus-border: #{$navy-blue-9};
   --cta-social-focus-outline: #{$navy-blue-100};
 }
+
 @mixin apply-cta-carousel-dark {
   // Base
   --cta-carousel-background: #{$navy-blue-100};
@@ -179,6 +184,7 @@
   // Focus
   --cta-carousel-focus-outline: #{$teal-100};
 }
+
 @mixin apply-cta-carousel-light {
   // Base
   --cta-carousel-background: #{$teal-100};
@@ -479,4 +485,36 @@
 
   // Focus
   --cta-carousel-focus-outline: #{$white};
+}
+
+@mixin apply-cta-lbi {
+  // Base
+  --cta-full-background: #{$purple-100};
+  --cta-full-text: #{$navy-blue-100};
+  --cta-full-border: #{$purple-100};
+}
+
+@mixin apply-cta-lbi-outline($background, $border, $text) {
+  // Base
+  --cta-outline-background: #{$background};
+  --cta-outline-text: #{$text};
+  --cta-outline-border: #{$border};
+
+  // Hover
+  --cta-outline-hover-background: #{$purple-100};
+  --cta-outline-hover-text: #{$text};
+  --cta-outline-hover-border: #{$border};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$navy-blue-70};
+  --cta-outline-disabled-border: #{$navy-blue-70};
+
+  // Active
+  --cta-outline-active-background: #{$purple-100};
+  --cta-outline-active-text: #{$white};
+  --cta-outline-active-border: #{$purple-100};
+
+  // Focus
+  --cta-outline-focus-outline: #{$navy-blue-100};
 }
