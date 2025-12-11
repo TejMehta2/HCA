@@ -16,7 +16,11 @@
   @include responsive-grid;
 
   width: 100%;
-  gap: 0;
+  row-gap: 0;
+}
+
+.image-center {
+  align-items: center;
 }
 
 .image {
@@ -35,6 +39,14 @@
     height: 100%;
     border-radius: $radius-medium;
     object-fit: cover;
+  }
+}
+
+.image-no-stretch {
+  justify-content: center;
+
+  img {
+    width: max-content;
   }
 }
 
@@ -80,21 +92,35 @@
 }
 
 .long {
-  img {
-    aspect-ratio: 358/588;
-    object-fit: cover;
+  .image {
+    img {
+      aspect-ratio: 358/488;
+      object-fit: cover;
 
-    @include media(screen-m) {
-      aspect-ratio: 770/588;
-    }
+      @include media(screen-m) {
+        aspect-ratio: 770/588;
+      }
 
-    @include media(screen-l) {
-      aspect-ratio: 458/715;
-    }
+      @include media(screen-l) {
+        aspect-ratio: 458/715;
+      }
 
-    @include media(screen-xl) {
-      aspect-ratio: 534/834;
+      @include media(screen-xl) {
+        aspect-ratio: 534/834;
+      }
     }
+  }
+}
+
+.long,
+.image-narrow {
+  .image {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+  }
+
+  .content {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 7);
   }
 }
 
@@ -107,11 +133,14 @@
   padding-bottom: $spacing-2;
 }
 
+.children + div .ctas {
+  padding-top: $spacing-7;
+}
+
 .ctas {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: $spacing-7;
   gap: px-to-rem(8) 0;
 
   @include media(screen-m) {
@@ -146,6 +175,13 @@
 
     & > div:last-of-type {
       @include responsive-grid-start($default: 1, $breakpoint-l: 1);
+    }
+
+    &.long,
+    &.image-narrow {
+      & > div:first-of-type {
+        @include responsive-grid-start($default: 1, $breakpoint-l: 8);
+      }
     }
   }
 }

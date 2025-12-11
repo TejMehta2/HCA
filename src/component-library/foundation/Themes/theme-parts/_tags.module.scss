@@ -163,12 +163,12 @@
   --tag-focus-outline: #{$navy-blue-100};
 }
 
-@mixin apply-tag-palace-navy-blue {
-  --tag-background: #{$navy-blue-70};
+@mixin apply-tag-palace-grey {
+  --tag-background: #{$grey-80};
   --tag-text: #{$white};
-  --tag-hover-background: #{$navy-blue-70};
-  --tag-active-background: #{navy-blue-70};
-  --tag-focus-background: #{$navy-blue-100};
+  --tag-hover-background: #{$grey-60};
+  --tag-active-background: #{grey-60};
+  --tag-focus-background: #{$grey-60};
   --tag-focus-outline: #{$white};
   --tag-secondary-background: #{$palace-red-20};
   --tag-secondary-hover-background: #{$palace-red-40};
@@ -181,6 +181,20 @@
   --tag-active-background: #{$orange-60};
   --tag-focus-background: #{$orange-40};
   --tag-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-tag-palace-red {
+  --tag-background: #{$palace-red-90};
+  --tag-text: #{$white};
+  --tag-hover-background: #{$palace-red-60};
+  --tag-active-background: #{palace-red-60};
+  --tag-focus-background: #{$palace-red-60};
+  --tag-focus-outline: #{$white};
+  --tag-secondary-background: #{$palace-red-20};
+  --tag-secondary-hover-background: #{$palace-red-40};
+  --tag-secondary-active-background: #{$palace-red-40};
+  --tag-secondary-focus-background: #{$palace-red-40};
+  --tag-secondary-text: #{$palace-red-100};
 }
 
 @mixin apply-tag-chelsea-white {

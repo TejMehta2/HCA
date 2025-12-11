@@ -9,7 +9,7 @@ export interface HomepageIntroBlockProps {
   cta: JSX.Element;
   image: JSX.Element;
   cqc: JSX.Element;
-  doctify: JSX.Element;
+  doctify?: JSX.Element;
   children?: JSX.Element;
   id?: string;
   imageKeepAspectRatio?: boolean;

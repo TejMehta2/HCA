@@ -11,4 +11,5 @@ export default interface ConatinerProps {
   withButtons?: boolean;
   customBtn?: boolean;
   customBtnDesktop?: boolean;
+  gridLayout?: boolean;
 }

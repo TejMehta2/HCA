@@ -108,6 +108,18 @@
   --pagination-arrow-hover: #{$palace-red-20};
 }
 
+@mixin apply-pagination-grey {
+  --pagination: #{$grey-90};
+  --pagination-hover: #{$palace-red-20};
+  --pagination-arrow-hover: #{$palace-red-20};
+}
+
+@mixin apply-pagination-palace-red {
+  --pagination: #{$palace-red-80};
+  --pagination-hover: #{$palace-red-20};
+  --pagination-arrow-hover: #{$palace-red-20};
+}
+
 @mixin apply-pagination-orange-100 {
   --pagination: #{$orange-100};
   --pagination-hover: #{$navy-blue-100};

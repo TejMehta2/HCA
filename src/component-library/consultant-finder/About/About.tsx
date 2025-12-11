@@ -6,11 +6,13 @@ import Text from '../../foundation/Text/Text';
 const About = (props: AboutProps): JSX.Element => {
   return (
     <div className={styles.about}>
-      <div className={styles.headline}>
-        <Text tag="h2" variation="heading-1">
-          {props.title}
-        </Text>
-      </div>
+      {props.title && (
+        <div className={styles.headline}>
+          <Text tag="h2" variation="heading-1">
+            {props.title}
+          </Text>
+        </div>
+      )}
       <div
         className={styles.description}
         dangerouslySetInnerHTML={{ __html: props.description }}

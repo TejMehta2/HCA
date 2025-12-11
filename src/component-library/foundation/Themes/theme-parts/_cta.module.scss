@@ -245,6 +245,31 @@
 
 @mixin apply-cta-palace-full($hover-background, $hover-border, $hover-text) {
   // Base
+  --cta-full-background: #{$navy-blue-100};
+  --cta-full-text: #{$white};
+  --cta-full-border: #{$navy-blue-100};
+
+  // Hover
+  --cta-full-hover-background: #{$hover-background};
+  --cta-full-hover-text: #{$hover-text};
+  --cta-full-hover-border: #{$hover-border};
+
+  // Disabled
+  --cta-full-disabled-background: #{$navy-blue-40};
+  --cta-full-disabled-text: #{$white};
+  --cta-full-disabled-border: #{$navy-blue-40};
+
+  // Active
+  --cta-full-active-background: #{$white};
+  --cta-full-active-text: #{$navy-blue-100};
+  --cta-full-active-border: #{$navy-blue-100};
+
+  // Focus
+  --cta-full-focus-outline: #{$palace-red-20};
+}
+
+@mixin apply-cta-palace-full-red($hover-background, $hover-border, $hover-text) {
+  // Base
   --cta-full-background: #{$palace-red-100};
   --cta-full-text: #{$white};
   --cta-full-border: #{$palace-red-100};
@@ -262,7 +287,7 @@
   // Active
   --cta-full-active-background: #{$white};
   --cta-full-active-text: #{$navy-blue-100};
-  --cta-full-active-border: #{$navy-blue-100};
+  --cta-full-active-border: #{$palace-red-100};
 
   // Focus
   --cta-full-focus-outline: #{$palace-red-20};
@@ -275,9 +300,9 @@
   --cta-outline-border: #{$border};
 
   // Hover
-  --cta-outline-hover-background: #{$palace-red-100};
+  --cta-outline-hover-background: #{$navy-blue-100};
   --cta-outline-hover-text: #{$white};
-  --cta-outline-hover-border: #{$palace-red-100};
+  --cta-outline-hover-border: #{$navy-blue-100};
 
   // Disabled
   --cta-outline-disabled-background: #{$white};
@@ -285,12 +310,37 @@
   --cta-outline-disabled-border: #{$navy-blue-70};
 
   // Active
+  --cta-outline-active-background: #{$navy-blue-80};
+  --cta-outline-active-text: #{$white};
+  --cta-outline-active-border: #{$navy-blue-80};
+
+  // Focus
+  --cta-outline-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-cta-palace-outline-red($background, $border, $text) {
+  // Base
+  --cta-outline-background: #{$background};
+  --cta-outline-text: #{$text};
+  --cta-outline-border: #{$border};
+
+  // Hover
+  --cta-outline-hover-background: #{$palace-red-100};
+  --cta-outline-hover-text: #{$white};
+  --cta-outline-hover-border: #{$palace-red-100};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$palace-red-80};
+  --cta-outline-disabled-border: #{$palace-red-80};
+
+  // Active
   --cta-outline-active-background: #{$palace-red-80};
   --cta-outline-active-text: #{$white};
   --cta-outline-active-border: #{$palace-red-80};
 
   // Focus
-  --cta-outline-focus-outline: #{$navy-blue-100};
+  --cta-outline-focus-outline: #{$palace-red-100};
 }
 
 @mixin apply-cta-carousel-palace-dark {
