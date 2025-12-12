@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 export const FertilityCalculatorContext = createContext();
-const parse = require('html-react-parser');
+const parse = ()=>{return};// require('html-react-parser');
 
 export const FertilityCalculatorProvider = ({ children }) => {
     const [value, setValue] = useState({ optage: '', optblasto: '', optfsh: '', optamh: '', optattmpt: '' });

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
+//import { motion, AnimatePresence } from "framer-motion";
 import Stats from './Stats';
 import FormContainer from './FormContainer';
 import Births from './Births';

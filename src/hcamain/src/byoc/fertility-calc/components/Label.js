@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import InfoText from './InfoText';
-const parse = require('html-react-parser');
+const parse = ()=>{return};//  require('html-react-parser');
 
 
 export default function Label({ headerTitle, helpText, id, isLabel, rightAligned }) {
