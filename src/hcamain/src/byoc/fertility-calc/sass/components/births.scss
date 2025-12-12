@@ -1,0 +1,108 @@
+.births {
+    text-align: left;
+
+    .label-title {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        padding-bottom: $hcauk-spacing-10;
+        border-bottom: 1px solid $hcauk-green-light-200;
+
+        button {
+            margin-left: $hcauk-spacing-10;
+
+            span {
+                pointer-events: none;
+                svg {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    &__stats {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: 1px solid $hcauk-grey-100;
+        padding-bottom: $hcauk-spacing-32;
+        margin-bottom: $hcauk-spacing-32;
+
+        @include breakpoint(md-above) {
+            flex-direction: row;
+        }
+
+        &-column {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex: 1;
+            margin: 0;
+
+            @include breakpoint(md-above) {
+                flex-direction: column;
+                margin-left: $hcauk-spacing-40;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            
+            &-results-number {
+                font-weight: bold;
+                margin-right: $hcauk-spacing-24;
+
+                @include breakpoint(md-above) {
+                    margin-right: 0;
+                }
+            }
+
+            &-title {
+                font-size: 14px;
+                margin-bottom: $hcauk-spacing-16;
+                margin-top: $hcauk-spacing-16;
+            }
+
+            &-results-percentage {
+                font-weight: bold;
+                color: $hcauk-green-light-100;
+                margin-left: auto;
+            }
+
+        }
+
+        &-column-results {
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 16px;
+            margin-top: 16px;
+
+            @include breakpoint(md-above) {
+                width: inherit;
+                justify-content: space-between;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__embryo-transf {
+        display: flex;
+        padding-bottom: $hcauk-spacing-32;
+        margin-bottom: $hcauk-spacing-32;
+        border-bottom: 1px solid $hcauk-grey-100;
+
+        &-label {
+            margin-right: $hcauk-spacing-32;
+            font-size: 14px;
+        }
+
+        &-result {
+            font-weight: bold;
+            color: $hcauk-green-light-100;
+        }
+    }
+
+}
