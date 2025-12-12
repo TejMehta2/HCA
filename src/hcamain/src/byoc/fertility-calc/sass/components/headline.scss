@@ -1,0 +1,29 @@
+.headline {
+    text-align: left;
+    border-bottom: 1px solid $hcauk-grey-100;
+    padding-bottom: $hcauk-spacing-32;
+    margin-bottom: $hcauk-spacing-32;
+
+    h2 {
+        font-size: 36px;
+        color: $hcauk-dark-blue;
+        margin: 0;
+        margin-bottom: $hcauk-spacing-24;
+
+        @include breakpoint(md-above) {
+            font-size: 50px;
+        }
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 18px;
+        color: $hcauk-dark-blue;
+        margin:0;
+
+        @include breakpoint(md-above) {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}
