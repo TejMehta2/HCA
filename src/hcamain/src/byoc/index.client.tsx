@@ -36,17 +36,20 @@ export default ClientsideComponent;
  */
 
 // Clientside-only component
-import './ExampleClientsideComponent';
+//import './ExampleClientsideComponent';
 
 // Component that can be rendered both on client and server
-import './ExampleHybridComponent';
+//import './ExampleHybridComponent';
 
 // Component that has separate implementation for clientside
-import './ExampleSwappedComponent.client';
+//import './ExampleSwappedComponent.client';
 
 // Serverside component that contains another clientside component
-import './ExampleAugmentedComponent';
+//import './ExampleAugmentedComponent';
 
 /************* HCA ********************/
 // root of the IVF pricing calculator app
 import './ivf-pricer/IVFApp';
+// root of the fertility calculator app
+import './fertility-calc/FCalcApp';
+/************* End HCA ********************/
