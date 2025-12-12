@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import uuid from 'react-uuid';
-import { motion, AnimatePresence } from "framer-motion";
+//import { motion, AnimatePresence } from "framer-motion";
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
 import Label from './Label';
 

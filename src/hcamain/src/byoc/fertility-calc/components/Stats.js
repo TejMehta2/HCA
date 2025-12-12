@@ -1,7 +1,7 @@
 
 import { useContext } from 'react';
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
-import { motion, AnimatePresence } from "framer-motion";
+//import { motion, AnimatePresence } from "framer-motion";
 import Label from './Label';
 
 export default function Stats() {
