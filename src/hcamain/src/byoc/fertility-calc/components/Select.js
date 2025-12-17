@@ -39,7 +39,7 @@ export default function Select() {
     return (
         <form>
             {
-                selectMenus.length > 0 &&
+                selectMenus?.length > 0 &&
                 <div className="selectors-container">
                     {selectMenus.map((select, i) => (
                         <div className="select" key={uuid()}>
@@ -113,17 +113,17 @@ export default function Select() {
                                 <div className="overlay__loader">
                                     <div className="overlay__loader-text">{loadingText}</div>
                                     <div className="overlay__loader-container">
-                                        <AnimatePresence>
+                                        {/*<AnimatePresence>
                                             <motion.div
                                                 style={{ overflow: "hidden" }}
                                                 initial={{ width: 0 }}
                                                 animate={{ width: percent }}
                                                 exit={{ width: 0 }}
                                                 transition={{ duration: 1 }}
-                                            >
+                                            >*/}
                                                 <div className="overlay__loader-progress-bar"></div>
-                                            </motion.div>
-                                        </AnimatePresence>
+                                            {/*</motion.div>
+                                        </AnimatePresence>*/}
                                     </div>
                                 </div>
                             </div>

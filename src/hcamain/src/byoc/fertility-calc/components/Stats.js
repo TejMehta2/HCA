@@ -50,17 +50,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage">{treatmentCyclePregancyRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                    {/*<AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: treatmentCyclePregancyRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        >*/}
                                             <div className="card__rate-data"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</motion.div>
+                                    </AnimatePresence>*/}
                                 </div>
                             </div>
 
@@ -70,17 +70,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage card__rate-percentage--green">{treatmentCycleBirthRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                    {/*<AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: treatmentCycleBirthRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        >*/}
                                             <div className="card__rate-data card__rate-data--green"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</div></motion.div>
+                                    </AnimatePresence>  */}
                                 </div>
                             </div>
                         </div>
@@ -99,17 +99,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage">{eggCollectionPregancyRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                   {/* <AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: eggCollectionPregancyRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        > */}
                                             <div className="card__rate-data"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</motion.div>
+                                    </AnimatePresence>*/}
                                 </div>
                             </div>
 
@@ -119,17 +119,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage card__rate-percentage--green">{eggCollectionBirthRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                    {/*<AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: eggCollectionBirthRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        >*/}
                                             <div className="card__rate-data card__rate-data--green"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</motion.div>
+                                    </AnimatePresence>*/}
                                 </div>
                             </div>
                         </div>
@@ -149,17 +149,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage">{embrioTransferPregnancyRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                    {/*<AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: embrioTransferPregnancyRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        >*/}
                                             <div className="card__rate-data"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</motion.div>
+                                    </AnimatePresence>*/}
                                 </div>
                             </div>
 
@@ -169,17 +169,17 @@ export default function Stats() {
                                     <div className="card__rate-percentage card__rate-percentage--green">{embrioTransferBirthRate}</div>
                                 </div>
                                 <div className="card__rate-data-container">
-                                    <AnimatePresence>
+                                    {/*<AnimatePresence>
                                         <motion.div
                                             style={{ overflow: "hidden" }}
                                             initial={{ width: 0 }}
                                             animate={{ width: embrioTransferBirthRate }}
                                             exit={{ width: 0 }}
                                             transition={{ duration: 1 }}
-                                        >
+                                        >*/}
                                             <div className="card__rate-data card__rate-data--green"></div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        {/*</motion.div>
+                                    </AnimatePresence>*/}
                                 </div>
                             </div>
                         </div>
