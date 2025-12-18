@@ -24,7 +24,8 @@ export type Theme =
   | 'Chelsea-Navy-Blue'
   | 'Chelsea-Beige'
   | 'LBI'
-  | 'LBI-Dark';
+  | 'LBI-Dark'
+  | 'LBI-White';
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;
