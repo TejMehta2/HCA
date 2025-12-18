@@ -385,3 +385,9 @@ export const ThemeChelseaBeige: StoryObj<typeof Themes> = {
 export const ThemeLBI: StoryObj<typeof Themes> = {
   args: { theme: 'LBI' },
 };
+export const ThemeLBIDark: StoryObj<typeof Themes> = {
+  args: { theme: 'LBI-Dark' },
+};
+export const ThemeLBIWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'LBI-White' },
+};
