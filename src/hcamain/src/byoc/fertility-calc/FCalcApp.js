@@ -8,6 +8,7 @@ import FertilityCalculatorContextProvider from './context/FertilityCalculatorCon
 import useSWR from 'swr';
 
 function FCalcApp() {
+  /* debug react load
   if (!window.React) {
     window.React = react__WEBPACK_IMPORTED_MODULE_1__;
   }
@@ -15,7 +16,7 @@ function FCalcApp() {
   if(!window.react) {
     window.react = react__WEBPACK_IMPORTED_MODULE_1__;
   }
-  //console.log('react loaded?', React ? true : false);
+  //console.log('react loaded?', React ? true : false);*/
   return (
     <div>
       <div className="fertility-calculator">
