@@ -1,7 +1,7 @@
+'use client';
 import { useState } from 'react';
+import parse from '../js/react-parser/react-parser.js';
 import InfoText from './InfoText';
-const parse = ()=>{return};//  require('html-react-parser');
-
 
 export default function Label({ headerTitle, helpText, id, isLabel, rightAligned }) {
     const [visible, setIsVisible] = useState(false);
