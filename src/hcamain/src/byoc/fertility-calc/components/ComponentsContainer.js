@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-//import { motion, AnimatePresence } from "framer-motion";
 import Stats from './Stats';
 import FormContainer from './FormContainer';
 import Births from './Births';
 import Headline from './Headline';
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
+import { motion, AnimatePresence } from '../js/framer-motion/framer-motion.js';
 
 export default function ComponentsContainer() {
   const {
@@ -36,17 +36,17 @@ export default function ComponentsContainer() {
           <div className="overlay__loader">
             <div className="overlay__loader-text">Loading...</div>
             <div className="overlay__loader-container">
-              {/*<AnimatePresence>
-                  <motion.main
-                    style={{ overflow: 'hidden' }}
-                    initial={{ width: 0 }}
-                    animate={{ width: percent }}
-                    exit={{ width: 0 }}
-                    transition={{ duration: 1 }}
-                  >*/}
-              <div className="overlay__loader-progress-bar"></div>
-              {/*</div></motion.main>
-                </AnimatePresence>*/}
+              <AnimatePresence>
+                <motion.main
+                  style={{ overflow: 'hidden' }}
+                  initial={{ width: 0 }}
+                  animate={{ width: percent }}
+                  exit={{ width: 0 }}
+                  transition={{ duration: 1 }}
+                >
+                  <div className="overlay__loader-progress-bar"></div>
+                </motion.main>
+              </AnimatePresence>
             </div>
           </div>
         </div>

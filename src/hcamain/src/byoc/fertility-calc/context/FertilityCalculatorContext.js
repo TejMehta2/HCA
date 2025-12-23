@@ -1,9 +1,7 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
+import parse from '../js/react-parser/react-parser.js';
 export const FertilityCalculatorContext = createContext();
-const parse = (input) => {
-  return input;
-}; // require('html-react-parser');
 
 // debug
 // http://localhost:3000/fertility-calculator/calc
@@ -549,10 +547,12 @@ const FertilityCalculatorContextProvider = ({ children }) => {
           setServerErrorMsg(resp.data.Error);
         } else if (resp.data && resp.data.length == 1) {
           setIsLoading(false);
-          document
-            .getElementById('fc__stats')
-            .scrollIntoView({ behavior: 'smooth' });
           displayRecordData(resp.data[0].Values);
+          if (document.getElementById('fc__stats')) {
+            document
+              .getElementById('fc__stats')
+              .scrollIntoView({ behavior: 'smooth' });
+          }
         } else {
           // results are all 0
           setIsLoading(false);
