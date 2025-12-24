@@ -8,6 +8,16 @@ code {
     font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace
 }
 
+.App {
+    color: #052342;
+    font-family: Brown-Std;
+    font-size: 16px;
+    margin: auto;
+    max-width: 900px;
+    padding: 30px;
+    text-align: center;
+}
+
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
     display: block
