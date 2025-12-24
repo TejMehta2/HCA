@@ -2,23 +2,13 @@
 import React from 'react';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import { useEffect, useState } from 'react';
-//import './App.scss';
 import ComponentsContainer from './components/ComponentsContainer';
 import FertilityCalculatorContextProvider from './context/FertilityCalculatorContext';
 import useSWR from 'swr';
 
 function FCalcApp() {
-  /* debug react load
-  if (!window.React) {
-    window.React = react__WEBPACK_IMPORTED_MODULE_1__;
-  }
-
-  if(!window.react) {
-    window.react = react__WEBPACK_IMPORTED_MODULE_1__;
-  }
-  //console.log('react loaded?', React ? true : false);*/
   return (
-    <div>
+    <div className="App">
       <div className="fertility-calculator">
         <FertilityCalculatorContextProvider suppressHydrationWarning>
           <ComponentsContainer />
