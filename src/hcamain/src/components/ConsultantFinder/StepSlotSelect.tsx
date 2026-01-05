@@ -115,6 +115,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
@@ -132,6 +133,10 @@ export const Default = (props: StepProps): JSX.Element => {
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
 
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
+
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
     setGmcNumber(gmcNumber.toString());
@@ -143,7 +148,7 @@ export const Default = (props: StepProps): JSX.Element => {
     // if selected location and appointment type is missing then redirect to appointment type
     if (selectedLocation === '' && selectedTypeOfAppointment === '') {
       router.push(
-        `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+        `/finder/step-terms-and-conditions?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -168,6 +173,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     slug={slug}
                     gmcNumber={gmcNumber}
                     reviewsTotal={reviewsTotal}
+                    name={name}
                   ></ProgressBar>
                 }
               ></HeaderLDB>
@@ -211,7 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <div>
                   <TextButton>
                     <Link
-                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                     >
                       <Icons iconName="iconArrowSmallLeft" />
                       <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -221,9 +227,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 {selectedDate !== '' && selectedTime !== '' && (
                   <Text tag="p" variation="body-medium-extra-large">
                     {isBookableContent &&
-                      `${
-                        props?.fields?.AppointmentSelectedText?.value ||
-                        'Appointment selected on'
+                      `${props?.fields?.AppointmentSelectedText?.value ||
+                      'Appointment selected on'
                       } ${selectedDate} at ${selectedTime}`}
                     {!isBookableContent &&
                       props?.fields?.KeyShortNoticeText?.value}
@@ -240,7 +245,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         }
                         onClick={() =>
                           router.push(
-                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                           )
                         }
                       >

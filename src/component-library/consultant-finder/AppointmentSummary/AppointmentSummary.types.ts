@@ -11,6 +11,7 @@ export interface AppointmentSummaryProps {
   dateTitle: string;
   dateText: string;
   slug: string;
+  name?: string;
   gmcNumber: string | number | null;
   reviewsTotal: number | null;
   isFollowUpAppointment: string;

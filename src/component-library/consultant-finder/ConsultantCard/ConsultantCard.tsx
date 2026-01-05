@@ -142,11 +142,10 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               backgroundColour="green"
               icon={null}
               isShortInfo={true}
-              shortText={`${
-                props.nextAppointmentTitle || 'Next appointment on'
-              } ${formatDateShort(
-                props?.firstAppointment?.follow_appointment
-              )}`}
+              shortText={`${props.nextAppointmentTitle || 'Next appointment on'
+                } ${formatDateShort(
+                  props?.firstAppointment?.follow_appointment
+                )}`}
             />
             <div className={styles.info}>
               <Text tag="p" variation="body-small">
@@ -166,7 +165,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.enquireNowLink}?slug=${props.slug}&reviewsTotal=${props.reviewsTotal}`}
+                href={`${props.enquireNowLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&reviewsTotal=${props.reviewsTotal}`}
               >
                 <span>{props.enquireNowCTAText}</span>
               </Link>
@@ -181,7 +180,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.bookOnlineLink}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}`}
+                href={`${props.bookOnlineLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}`}
               >
                 <span>{props.bookNowCTAText}</span>
               </Link>

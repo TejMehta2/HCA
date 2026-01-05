@@ -69,6 +69,7 @@ export const Default = (props: StepProps): JSX.Element => {
   //console.log('step location', props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const baseURL_C2 =
@@ -91,6 +92,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
+
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
 
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
@@ -146,6 +151,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   slug={slug}
                   gmcNumber={gmcNumber}
                   reviewsTotal={reviewsTotal}
+                  name={name}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -203,7 +209,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -216,10 +222,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
-                        `${
-                          props?.fields?.NextLink?.value?.href ||
-                          '/finder/step-slot-select'
-                        }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                        `${props?.fields?.NextLink?.value?.href ||
+                        '/finder/step-slot-select'
+                        }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                       )
                     }
                   >

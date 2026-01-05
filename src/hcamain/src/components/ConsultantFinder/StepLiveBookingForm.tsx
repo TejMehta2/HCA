@@ -147,6 +147,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [loadingData, setLoadingData] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [name, setName] = useState<string>('');
 
   const {
     selectedLocationName,
@@ -600,6 +601,11 @@ export const Default = (props: StepProps): JSX.Element => {
       setSlug(slugURL.toString());
       getConsultantData(slugURL.toString());
     }
+
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
+
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
     setGmcNumber(gmcNumber.toString());
@@ -608,7 +614,6 @@ export const Default = (props: StepProps): JSX.Element => {
     const reviewsTotal = router?.query?.reviewsTotal || null;
     setReviewsTotal(Number(reviewsTotal));
 
-    console.log('location', selectedLocationName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -714,6 +719,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   slug={slug}
                   gmcNumber={gmcNumber}
                   reviewsTotal={reviewsTotal}
+                  name={name}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -795,6 +801,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.LiveBookingFormStepSlotSelect?.value
                         ?.href || '/finder/step-slot-select'
                     }
+                    name={name}
                   />
                 </Container>
                 {/* About you */}
@@ -1492,6 +1499,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.LiveBookingFormStepSlotSelect?.value?.href ||
                     '/finder/step-slot-select'
                   }
+                  name={name}
                 />
                 <NeedHelp
                   headline={
