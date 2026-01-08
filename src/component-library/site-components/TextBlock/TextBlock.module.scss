@@ -47,6 +47,10 @@
     margin-bottom: $spacing-2;
   }
 
+  .title{
+    color: var(--heading, var(--text));
+  }
+
   .title,
   .text {
     margin-bottom: $spacing-6;

@@ -13,7 +13,7 @@ const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
             {tag}
             {date}
           </div>
-          {title}
+          <div className={styles.title}>{title}</div>
           {bodyCopy && <div className={styles.copy}>{bodyCopy}</div>}
         </div>
       </div>
