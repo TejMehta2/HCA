@@ -17,7 +17,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
   useEffect(() => {
     const targetSections = wrapperRef?.current?.querySelectorAll(
-      ':scope > div:not([data-content="diamond"])'
+      ':scope > div:not([data-content="diamond"]):not([data-content="header-with-image"])'
     );
 
     const handleIntersection = () => {
