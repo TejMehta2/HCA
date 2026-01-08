@@ -77,7 +77,7 @@ function withKeywordIdIfNeeded(
   const params = new URLSearchParams(existingQs);
   params.set('keywordid', keywordId);
 
-  next.querystring = params.toString();  
+  next.querystring = params.toString();
   return resolveSitecoreLink(next);
 }
 
