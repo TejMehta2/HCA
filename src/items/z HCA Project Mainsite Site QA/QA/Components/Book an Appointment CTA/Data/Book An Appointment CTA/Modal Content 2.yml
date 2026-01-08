@@ -1,0 +1,77 @@
+﻿---
+ID: "c5f18525-ca10-4871-914d-cbf550370cdb"
+Parent: "e83f2ed4-eac3-4159-a57d-aad7c8e66a0a"
+Template: "175e0d25-53c5-4c6b-b6e7-62521e02db68"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Book an Appointment CTA/Data/Book An Appointment CTA/Modal Content 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "05db6403-e163-4b0d-8aa3-e29c8adb2345"
+      Hint: Title
+      Value: GP Services
+    - ID: "1832429f-ff7f-49c2-b955-649db94314b3"
+      Hint: SecondaryCTAIcon
+      Value: "{7FD0BC6A-36F1-4C10-A6C6-15F474DFAA07}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T205936Z
+    - ID: "2e4d8b1e-4114-465b-9dd1-3f2f498e03af"
+      Hint: QuaternaryCTAIcon
+      Value: "{22D06077-019D-4B36-80C4-E90A5BE88782}"
+    - ID: "42675da2-5ca6-4252-9542-54f362fc32c1"
+      Hint: TertiaryCTAIcon
+      Value: "{53BD34BD-A10D-4E5A-8C34-2798420ACC58}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7649f056-4f79-402f-aac9-bc812d7934de"
+      Hint: PrimaryCTAIcon
+      Value: Warning
+    - ID: "78bd7b51-1f95-4448-ad77-0d115d51afbe"
+      Hint: TertiaryCTA
+      Value: |
+        <link text="find" anchor="" linktype="internal" class="" title="" target="_blank" querystring="sortType=relevance&amp;lat=51.507217&amp;lon=-0.1275862&amp;distance=0&amp;limit=12&amp;offset=0" id="{D5B25A35-AEF9-4CE9-A318-31F4EF950AD9}" />
+    - ID: "8534ae81-6738-43eb-abc9-45baaa8d63fe"
+      Hint: QuaternaryCTAVariant
+      Value: "{474799B1-E9AE-486A-8D19-B588C7F49E3F}"
+    - ID: "872960fa-91ae-4c72-9df2-ea6cc530f183"
+      Hint: PrimaryCTA
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Download our &lt;b&gt;GP App&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2830f66f-2ee9-4b98-8607-008957e52c77"
+    - ID: "a499b7c3-a265-4549-a8e0-6bde27a0232e"
+      Hint: QuaternaryCTA
+      Value: |
+        <link text="more" anchor="" linktype="internal" class="" title="" target="_blank" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "b127ef4d-194e-4c08-b936-9e111d2a260e"
+      Hint: SecondaryCTA
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;GP services&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "b8f51c31-97a7-4212-832a-a3bc8a5f4ff1"
+      Hint: TertiaryCTAVariant
+      Value: "{991E4A8A-314B-4B71-8165-390CE006AB19}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "bbfd5812-b426-4455-9f7c-6b5fb5523763"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo.
+    - ID: "be2f33ee-a174-425c-897f-691382a7c685"
+      Hint: PrimaryCTAVariant
+      Value: "{991E4A8A-314B-4B71-8165-390CE006AB19}"
+    - ID: "c1596431-23aa-4c42-b080-613200260736"
+      Hint: SecondaryCTAVariant
+      Value: "{474799B1-E9AE-486A-8D19-B588C7F49E3F}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260108T153052Z
