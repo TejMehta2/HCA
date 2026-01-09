@@ -11,7 +11,7 @@ const PostFinderMakeBookingEnquiry = async (
 ): Promise<NextApiResponse | void> => {
   //console.log('req.body', req.body);
   const demographics = req.body as IFinderEnquiryFields; // demographics of the patient
-  console.log(demographics);
+  //console.log(demographics);
 
   let response: unknown = '';
 
