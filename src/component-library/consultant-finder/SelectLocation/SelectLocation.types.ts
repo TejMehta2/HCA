@@ -7,4 +7,6 @@ export interface SelectLocationProps {
   icon: ReactNode | JSX.Element;
   iconPhone: ReactNode | JSX.Element;
   noLocationsMsg: string;
+  viewOnMapText?: string;
+  nextLink: string;
 }

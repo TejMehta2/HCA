@@ -12,4 +12,5 @@ export default interface ConatinerProps {
   customBtn?: boolean;
   customBtnDesktop?: boolean;
   gridLayout?: boolean;
+  alignItems?: 'center-align';
 }

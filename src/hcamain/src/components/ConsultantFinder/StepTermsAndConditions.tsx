@@ -22,6 +22,7 @@ import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB'
 import Container from '@component-library/foundation/Containers/Container';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -115,7 +116,29 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <TermsConditionsCards>
+            <Headline
+              withConsultantName={true}
+              backLinkProfile={`${props?.fields?.BackLink?.value?.href &&
+                props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
+                }${slug}`}
+              backLink={props?.fields?.BackLink?.value?.href}
+              headingText={'A few important things to know before you book'}
+              backLinkText={props.fields.BackLink.value.text || 'Back'}
+            >
+            </Headline>
+            <TermsConditionsCards
+              acceptBtn={<Button variation="full-dark" size="large">
+                <Link
+                  href={`${props?.fields?.NextLink?.value?.href ||
+                    '/finder/step-appointment-type'
+                    }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                >
+                  <span>
+                    {props?.fields?.AcceptButtonText?.value || 'Accept'}
+                  </span>
+                </Link>
+              </Button>}
+            >
               <InfoBox
                 backgroundColour="turquoise"
                 icon={
@@ -165,7 +188,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 paddingLarge={true}
               />
             </TermsConditionsCards>
-            <Navigation hideTextMobile={true}>
+            <Navigation hideTextMobile={true} showOnMobile={true}>
               <div>
                 <TextButton>
                   <Link

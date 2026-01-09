@@ -9,5 +9,8 @@ export interface LocationCardProps {
   time: string;
   filteredTime: string;
   facilityCRMID: string;
+  lat?: string;
+  lon?: string;
   handleClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  viewOnMapText?: string;
 }

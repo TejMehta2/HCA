@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { SelectAppointmentTypeProps } from './SelectAppointmentType.types';
 import styles from './SelectAppointmentType.module.scss';
 import AppointmentTypeCard from '../AppointmentTypeCard/AppointmentTypeCard';
@@ -8,6 +9,7 @@ const SelectAppointmentType = (
   props: SelectAppointmentTypeProps
 ): JSX.Element => {
   const { setSelectedTypeOfAppointment } = useContext(ConsultantFinderContext);
+  const router = useRouter();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLDivElement;
@@ -19,6 +21,7 @@ const SelectAppointmentType = (
       //console.log('value', value);
       if (value) {
         setSelectedTypeOfAppointment(value);
+        router.push(props.nextLink);
       }
     }
   };

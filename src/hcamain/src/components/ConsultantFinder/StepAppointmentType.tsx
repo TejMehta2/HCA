@@ -117,11 +117,17 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <Headline>
-              <Text tag="h1" variation="heading-1">
-                {props?.fields?.BodyText?.value ||
-                  'Please choose a type of appointment'}
-              </Text>
+            <Headline
+              withConsultantName={true}
+              name={name}
+              slug={slug}
+              gmcNumber={gmcNumber}
+              reviewsTotal={reviewsTotal || 0}
+              backLink={props?.fields?.BackLink?.value?.href}
+              headingText={props?.fields?.BodyText?.value ||
+                'Please choose a type of appointment'}
+              backLinkText={props.fields.BackLink.value.text || 'Back'}
+            >
             </Headline>
             <SelectAppointmentType
               iconCard1={
@@ -158,8 +164,9 @@ export const Default = (props: StepProps): JSX.Element => {
                   field={props?.fields?.FollowUpAppointmentBodyText}
                 />
               }
+              nextLink={`${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`}
             />
-            <Navigation hideTextMobile={true}>
+            <Navigation hideTextMobile={true} showOnMobile={true}>
               <div>
                 <TextButton>
                   <Link

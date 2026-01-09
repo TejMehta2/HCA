@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { SelectLocationProps } from './SelectLocation.types';
 import LocationCard from '../LocationCardSlots/LocationCard';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
@@ -16,6 +17,8 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
     setLocationID,
   } = useContext(ConsultantFinderContext);
 
+  const router = useRouter();
+
   return (
     <div className={styles['select-location']}>
       {props.locations.length &&
@@ -24,6 +27,9 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
           <LocationCard
             key={index}
             facilityCRMID={item?.facilityCRMID}
+            viewOnMapText={props.viewOnMapText}
+            lat={item?.latitude || ''}
+            lon={item?.longitude || ''}
             icon={props.icon}
             iconPhone={props.iconPhone}
             title={item?.facilityFullName}
@@ -31,6 +37,9 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             time={item?.firstAppointmentSlotDateTime}
             filteredTime={item?.firstAppointmentSlotDateTimeFiltered}
             handleClick={() => {
+              router.push(
+                props.nextLink
+              )
               setSelectedLocation(item?.facilityCRMID || '');
               setSelectedLocationName(item?.facilityFullName || '');
               setLocationGUID(item?.facilityCRMID || '');

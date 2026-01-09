@@ -15,6 +15,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import axios from 'axios';
 import TextLink from '../../core-components/TextLink/TextLink';
+import Headline from '../Headline/Headline';
 
 const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const {
@@ -28,7 +29,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setSelectedDate,
     setSelectedTime,
     setStartTime,
-    setIsBookableContent,
+    setIsBookableContent
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
@@ -206,7 +207,10 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     } else {
       setIsBookableContent(false);
     }
+
+    props?.modalRef?.current?.showModal();
   };
+
 
   ///// bookable logic /////
   const isBookableDate = (date: any) => {
@@ -274,29 +278,18 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
 
   return (
     <div className={styles.slots}>
-      <div className={styles.top}>
-        <Text tag="h1" variation="heading-1">
-          {props.titleText}
-        </Text>
-        <div className={styles.location}>
-          <Text tag="h2" variation="body-medium-extra-large">
-            {selectedLocationName}
-          </Text>
-          {lat !== '' && lon !== '' && (
-            <div className={styles.map}>
-              <TextLink>
-                <a
-                  href={`https://maps.google.com/?q=${lat},${lon}`}
-                  target="_blank"
-                >
-                  <Icons iconName="iconPin" />
-                  <span>{props.viewMapText}</span>
-                </a>
-              </TextLink>
-            </div>
-          )}
-        </div>
-      </div>
+      <Headline
+        withConsultantName={true}
+        name={props.name}
+        slug={props.slug}
+        gmcNumber={props.gmcNumber}
+        backLink={props.backLinkHref}
+        backLinkText={props.backLinkText}
+        headingText={props.titleText}
+        slotsStep={true}
+        reviewsTotal={props.reviewsTotal}
+      >
+      </Headline>
       {/* {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
       {!loadingSlots && <div>Slots loaded</div>} */}
       <div className={styles['header-mobile']}>
@@ -391,11 +384,10 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                               <button
                                 data-button={'slot-btn'}
                                 key={slotIndex}
-                                className={`${
-                                  !isBookableDate(formattedDate)
-                                    ? `${styles['short-appointment']}`
-                                    : ''
-                                }`}
+                                className={`${!isBookableDate(formattedDate)
+                                  ? `${styles['short-appointment']}`
+                                  : ''
+                                  }`}
                                 onClick={(e) =>
                                   showSelection(
                                     e,

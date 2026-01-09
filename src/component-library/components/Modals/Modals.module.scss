@@ -77,9 +77,7 @@ body {
     transform: translateY(0);
 
     &.dragging {
-      transform: translateY(
-        var(--touch-position, 0)
-      ); // will short-circuit to zero when drag stops
+      transform: translateY(var(--touch-position, 0)); // will short-circuit to zero when drag stops
     }
   }
 }
@@ -92,7 +90,7 @@ body {
   @include media(screen-l) {
     transform: translate(100%, 0);
 
-    & > div:first-child {
+    &>div:first-child {
       border-radius: $radius-large 0 0 0;
       min-width: px-to-rem(364);
       top: px-to-rem(53);
@@ -108,7 +106,7 @@ body {
 
 .full {
   @include media(screen-l) {
-    & > div:first-child {
+    &>div:first-child {
       top: px-to-rem(87);
     }
   }
@@ -119,6 +117,7 @@ body {
   justify-content: center;
   pointer-events: none;
   padding: px-to-rem(7);
+
   @include media(screen-l) {
     display: none;
   }
@@ -129,6 +128,7 @@ body {
   top: px-to-rem(32);
   right: px-to-rem(37);
   display: none;
+
   @include media(screen-l) {
     display: block;
   }
@@ -172,4 +172,10 @@ body {
 
 .call {
   z-index: 1;
+}
+
+.center-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

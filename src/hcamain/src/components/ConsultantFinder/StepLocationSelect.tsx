@@ -41,6 +41,7 @@ interface Fields {
   CantFindPhoneNumber: Field<string>;
   CantFindIcon: any;
   HeadingText: Field<string>;
+  ViewMapText: Field<string>;
 }
 
 type StepProps = {
@@ -155,15 +156,26 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <Headline>
-              <Text tag="h1" variation="heading-1">
-                {props?.fields?.HeadingText?.value ||
-                  'Please select a location'}
-              </Text>
+            <Headline
+              withConsultantName={true}
+              name={name}
+              slug={slug}
+              gmcNumber={gmcNumber}
+              reviewsTotal={reviewsTotal || 0}
+              backLink={props?.fields?.BackLink?.value?.href}
+              headingText={props?.fields?.HeadingText?.value ||
+                'Please select a location'}
+              backLinkText={props.fields.BackLink.value.text || 'Back'}
+            >
             </Headline>
             {!loading && !error && (
               <SelectLocation
+                nextLink={`${props?.fields?.NextLink?.value?.href ||
+                  '/finder/step-slot-select'
+                  }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                 locations={locations}
+                viewOnMapText={props?.fields?.ViewMapText?.value ||
+                  'View location on Google Maps'}
                 noLocationsMsg={''}
                 icon={
                   <SitecoreSvg>
@@ -205,7 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 </TextButton>
               </CantFind>
             )}
-            <Navigation>
+            <Navigation showOnMobile={true}>
               <div>
                 <TextButton>
                   <Link
