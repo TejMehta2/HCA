@@ -1,6 +1,6 @@
 {
   "name": "HCA-Main",
-  "description": "Application utilizing Sitecore JavaScript Services and Next.js",
+  "description": "Application utilizing Sitecore JavaScript Services and Next.js ",
   "version": "21.6.0",
   "private": true,
   "scripts": {
