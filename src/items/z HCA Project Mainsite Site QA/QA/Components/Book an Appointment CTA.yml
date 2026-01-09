@@ -1,8 +1,8 @@
 ﻿---
 ID: "bbc1fed2-0983-4ffd-9ccc-0e231f83bd1d"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA35"
+Template: "b63580c4-4e8a-49e4-a7c8-0e09552fcfbc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Book an Appointment CTA"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -72,16 +72,19 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "86550f75-4b5d-4f03-bd83-759a0bb3489b"
+      Hint: DoctifyKeywordId
+      Value: 989
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bccd5c5f-e4a6-4e9e-9cd6-4125f608985a"
+      Value: "8477cde9-6a0e-4058-8545-b9707a4856f1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T102444Z
+      Value: 20260108T000014Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: EQTRHCA35
+      Value: Book an Appointment CTA

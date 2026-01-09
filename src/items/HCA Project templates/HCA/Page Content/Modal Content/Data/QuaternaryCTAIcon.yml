@@ -1,8 +1,8 @@
 ﻿---
-ID: "7649f056-4f79-402f-aac9-bc812d7934de"
+ID: "2e4d8b1e-4114-465b-9dd1-3f2f498e03af"
 Parent: "b70acecf-ec00-4a8b-9633-9a8feb1b3ec1"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Modal Content/Data/PrimaryCTAIcon
+Path: /sitecore/templates/Project/HCA/Page Content/Modal Content/Data/QuaternaryCTAIcon
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
@@ -12,10 +12,10 @@ SharedFields:
   Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 900
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "a08914fc-b72a-4df7-a7a2-af791a9dd3a1"
+  Value: "41e9af59-1b0b-4a61-8e8d-e35f2b77a369"
 Languages:
 - Language: en
   Versions:
@@ -23,18 +23,18 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240214T201105Z
+      Value: 20260107T233321Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9d3fe109-d930-46f6-94d3-a5b49c323203"
+      Value: "c68dd46f-ba90-4228-9c9c-654bbd78f13f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
