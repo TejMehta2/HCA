@@ -1,7 +1,8 @@
 'use client';
 import { useContext } from 'react';
 import uuid from 'react-uuid';
-import { motion, AnimatePresence } from "../js/framer-motion/framer-motion.js";
+//import { motion, AnimatePresence } from "../js/framer-motion/framer-motion.js";
+import { motion, AnimatePresence } from 'framer-motion';
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
 import Label from './Label';
 
