@@ -2,7 +2,7 @@
 ID: "3643ee2a-12d1-4a57-990f-fbfeff3a6efe"
 Parent: "bbc1fed2-0983-4ffd-9ccc-0e231f83bd1d"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA35/Data"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Book an Appointment CTA/Data"
 Languages:
 - Language: en
   Versions:
