@@ -83,18 +83,3 @@ packages/
 src/component-library/node_modules
 *.tsbuildinfo
 
-src/z.HCA.HCAMain.z.site.qa.module.json
-/src/hcamain/.env.local.alina
-/src/undefined/component-library
-src/z.HCA.HCAMain.z.site.qa.module.json
-/src/undefined/component-library
-/src/hcamain/src/temp/component-library
-/src/hcamain/src/temp/componentBuilder.ts
-/src/hcamain/src/temp/config.js
-/src/hcamain/src/temp/extract-path-plugins.ts
-/src/hcamain/src/temp/GraphQLIntrospectionResult.json
-/src/hcamain/src/temp/middleware-plugins.ts
-/src/hcamain/src/temp/next-config-plugins.js
-/src/hcamain/src/temp/page-props-factory-plugins.ts
-/src/hcamain/src/temp/site-resolver-plugins.ts
-/src/hcamain/src/temp/sitemap-fetcher-plugins.ts
