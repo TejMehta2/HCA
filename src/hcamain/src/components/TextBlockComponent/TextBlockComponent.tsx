@@ -7,6 +7,7 @@ import {
   useSitecoreContext,
   ComponentRendering,
   Placeholder,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
@@ -16,11 +17,14 @@ import Text from '@component-library/foundation/Text/Text';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import OffsetTextBlock from '@component-library/careers/OffsetTextBlock/OffsetTextBlock';
+import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;
+  Image?: ImageField;
 }
 
 type TextBlockComponentProps = {
@@ -62,7 +66,8 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || componentTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -72,12 +77,19 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params?.styles &&
     props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
+  const textWidth = (getPresentationParam(props?.params?.styles, 'textwidth') ??
+    'standard') as 'narrow' | 'standard' | undefined;
+
   return (
     <TextBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={centered ? 'centered' : undefined}
+      textWidth={textWidth}
       subheading={
         (props.fields?.Heading?.value || isExperienceEditor) && (
           <Text tag={subheadingTag} variation={'subheading-1'}>
@@ -104,6 +116,19 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
           </RichText>
         )
       }
+      image={
+        props.fields?.Image || isExperienceEditor ? (
+          <NextJssImage
+            field={props.fields?.Image}
+            next={{
+              width: '1512',
+              height: '814',
+              loading: 'eager',
+              priority: true,
+            }}
+          />
+        ) : undefined
+      }
       ctas={
         <PlaceHolderWrapper>
           <Placeholder name={phKey} rendering={props.rendering} />
@@ -127,7 +152,8 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || componentTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -135,7 +161,10 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
   return (
     <OffsetTextBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         (props.fields?.Heading?.value || isExperienceEditor) && (
