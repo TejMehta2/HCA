@@ -26,8 +26,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import getHeadingTags from 'lib/getHeadingTags';
 
-interface VariantCareersLatestVacanciesProps
-  extends CareersLatestVacanciesProps {
+interface VariantCareersLatestVacanciesProps extends CareersLatestVacanciesProps {
   variant?: 'carousel';
 }
 

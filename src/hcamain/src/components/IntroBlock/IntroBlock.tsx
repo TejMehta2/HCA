@@ -26,9 +26,7 @@ import { CQCFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
-    import(
-      '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock'
-    ),
+    import('@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock'),
   {
     ssr: true,
   }
