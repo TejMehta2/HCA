@@ -49,6 +49,10 @@
     gap: px-to-rem(32);
   }
 
+  .title {
+    color: var(--heading, var(--text));
+  }
+
   .body-text {
     color: var(--card-body-text);
   }

@@ -22,6 +22,7 @@
 
   .header {
     margin-top: px-to-rem(8);
+    color: var(--heading, var(--text));
   }
 
   .body-text {

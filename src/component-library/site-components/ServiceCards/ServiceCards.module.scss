@@ -21,6 +21,10 @@
   margin-bottom: $spacing-4;
 }
 
+.title {
+  color: var(--heading, var(--text));
+}
+
 .body-text,
 .cta {
   margin-top: $spacing-6;
