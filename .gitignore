@@ -83,3 +83,4 @@ packages/
 src/component-library/node_modules
 *.tsbuildinfo
 
+/src/hcamain/src/temp
