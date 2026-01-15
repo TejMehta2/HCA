@@ -27,9 +27,5 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "ts-node": "^10.9.1"
-  },
-  "dependencies": {
-    "framer-motion": "^12.23.26",
-    "html-react-parser": "^5.2.10"
   }
 }
