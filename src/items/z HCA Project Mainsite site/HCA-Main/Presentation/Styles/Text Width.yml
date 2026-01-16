@@ -1,8 +1,15 @@
 ﻿---
-ID: "482bd956-bf05-4a24-9fb3-ace2e32c2498"
-Parent: "8eb1aa7c-a828-4f98-8e42-3a1030b048fa"
-Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA67/Page Data"
+ID: "a5a9db2a-a866-431f-b154-4bca4f17220e"
+Parent: "a8e2221e-feb6-4a7e-aef7-7d011e40066c"
+Template: "c6dc7393-15bb-4cd7-b798-ab63e77ebac4"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Styles/Text Width"
+SharedFields:
+- ID: "62ca1c9e-71a4-465f-835e-55bda7bb270b"
+  Hint: Type
+  Value: "icon-button-group-radio"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "38206db4-922f-4032-bf4d-f3ebcf2f32c8"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240314T002343Z
+      Value: 20260115T164526Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9beeee18-b13b-4d01-8df3-b5eb3138ac0d"
+      Value: "c3c8f71e-0414-4b67-aeb1-57e06c582eb0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T002343Z
+      Value: 20260115T175448Z

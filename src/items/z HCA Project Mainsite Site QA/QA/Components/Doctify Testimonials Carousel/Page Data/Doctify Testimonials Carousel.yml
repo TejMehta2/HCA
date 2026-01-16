@@ -2,7 +2,7 @@
 ID: "bb3da09a-43ed-4baa-9eac-b29247ac21b5"
 Parent: "482bd956-bf05-4a24-9fb3-ace2e32c2498"
 Template: "3ed835be-c7a4-4f52-9e8a-f1de2fabc7c3"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA67/Page Data/Doctify Testimonials Carousel"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Doctify Testimonials Carousel/Page Data/Doctify Testimonials Carousel"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +21,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dcf6ee6c-1e63-45bd-808a-4f74ac4e9a94"
+      Value: "37cd5c31-a038-4072-9a31-5a0f20a1b00c"
     - ID: "9977d5cd-e77b-4490-b9f6-48cd55cf0ff5"
       Hint: Reviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
@@ -29,9 +29,13 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
+    - ID: "cd7cbda5-7135-4119-a75e-4c28bf59d0e9"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/1fb49e1027e147afbd8d5ea5fb1dba88?v=016452a2" dam-id="CaCScBNmKkK7nMb9J1tPrA" width="2500" height="1667" alt="2636" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/156693/thumbnail" />
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T002348Z
+      Value: 20260115T180332Z
     - ID: "f816dbdb-faef-4a84-924a-8f551ce45706"
       Hint: Testimonials
       Value: |

@@ -59,13 +59,13 @@ Languages:
               s:ph="/headless-main/text-block-component-1" />
             <r
               uid="{33EF1594-E6EB-4D62-A83B-6F230BC0C47B}"
-              s:par="DisableHeadersToggle&amp;HeadingTag=h2&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B1FEC5EDD-5489-43F1-8C19-A092206E130D%7D%7C%7B648C5366-4DBD-4FA1-AB76-2750671F5AB0%7D&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
+              s:par="DisableHeadersToggle&amp;HeadingTag=h2&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B1FEC5EDD-5489-43F1-8C19-A092206E130D%7D%7C%7B648C5366-4DBD-4FA1-AB76-2750671F5AB0%7D&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles=%7BC2CD33A8-7492-4A68-9158-9663BEE700BC%7D&amp;Theme=Alan-Black&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
             <r
               uid="{EB8CC534-60E7-49FB-88AF-C9540AE58CC7}"
               p:after="*[1=2]"
               s:ds="local:/Data/Text Block Component"
               s:id="{9D703CBE-D052-4D60-8F11-02452F651C71}"
-              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames&amp;Styles=%7B6541AE87-E15D-4F8C-9672-933EA9195DC6%7D&amp;Theme=L-HCA-Teal-5&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames&amp;Styles=%7B6541AE87-E15D-4F8C-9672-933EA9195DC6%7D%7C%7B51E6E41B-4FC8-4612-8AB8-9719A9FB2A4A%7D&amp;Theme=L-HCA-Teal-5&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
               s:ph="headless-main" />
           </d>
         </r>
@@ -85,14 +85,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c7582690-e241-44f3-bd91-fe5da64b1654"
+      Value: "c1210328-8cf5-4112-b998-062e12e004f4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250527T115736Z
+      Value: 20260115T174010Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Default
