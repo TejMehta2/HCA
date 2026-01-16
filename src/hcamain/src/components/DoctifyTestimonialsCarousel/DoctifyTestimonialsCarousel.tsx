@@ -94,7 +94,7 @@ export const Default = (
       }
       theme={props.params?.Theme || 'A-HCA-White'}
       image={
-        props.fields?.Image || isExperienceEditor ? (
+        props.fields?.Image?.value?.src || isExperienceEditor ? (
           <NextJssImage
             field={props.fields?.Image}
             next={{
