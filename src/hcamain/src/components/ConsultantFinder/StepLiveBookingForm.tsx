@@ -148,6 +148,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
 
   const {
     selectedLocationName,
@@ -595,6 +597,15 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
+
     // get slug from URL
     const slugURL = router?.query?.slug || null;
     if (slugURL) {
@@ -697,7 +708,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     router.push(
                       `${props?.fields?.LiveBookingFormStepAppointment?.value
                         ?.href || '/finder/step-appointment-type'
-                      }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                      }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                     )
                   }
                 >
@@ -742,7 +753,7 @@ export const Default = (props: StepProps): JSX.Element => {
                           router.push(
                             `${props?.fields?.LiveBookingFormStepSlotSelect
                               ?.value?.href || '/finder/step-slot-select'
-                            }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
+                            }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                           )
                         }
                       >
@@ -802,6 +813,8 @@ export const Default = (props: StepProps): JSX.Element => {
                         ?.href || '/finder/step-slot-select'
                     }
                     name={name}
+                    search={search}
+                    keywordId={keywordId}
                   />
                 </Container>
                 {/* About you */}
@@ -1500,6 +1513,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     '/finder/step-slot-select'
                   }
                   name={name}
+                  search={search}
+                  keywordId={keywordId}
                 />
                 <NeedHelp
                   headline={

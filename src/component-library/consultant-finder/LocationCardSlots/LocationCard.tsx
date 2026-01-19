@@ -35,9 +35,12 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
   //   console.log('The date and time are different');
   // }
 
+  const mapQuery = encodeURIComponent(`${props.title}, ${props.text}`);
+  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+
   return (
     <div
-      className={`${styles['location-card']} ${selectedLocation === props.facilityCRMID ? styles['selected'] : ''
+      className={`${styles['location-card']} ${props.isSelected === props.facilityCRMID ? styles['selected'] : ''
         }`}
       onClick={(e) => props.handleClick(e)}
       data-parent="parent"
@@ -77,8 +80,12 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
         <div className={styles.map}>
           <TextLink>
             <a
-              href={`https://maps.google.com/?q=${props.lat},${props.lon}`}
+              href={mapsHref}
               target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               <Icons iconName="iconPin" />
               <span>{props.viewOnMapText}</span>

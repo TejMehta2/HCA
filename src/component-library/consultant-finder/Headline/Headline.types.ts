@@ -12,4 +12,9 @@ export interface HeadlineProps {
   backLinkText?: string;
   headingText?: string;
   backLinkProfile?: string;
+  backLinkSimple?: string;
+  hasTitleName?: boolean;
+  resultsLink?: string;
+  search?: string;
+  keywordId?: string;
 }

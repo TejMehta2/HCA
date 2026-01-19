@@ -71,6 +71,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
@@ -84,6 +86,12 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
@@ -124,6 +132,8 @@ export const Default = (props: StepProps): JSX.Element => {
               backLink={props?.fields?.BackLink?.value?.href}
               headingText={'A few important things to know before you book'}
               backLinkText={props.fields.BackLink.value.text || 'Back'}
+              search={search}
+              keywordId={keywordId}
             >
             </Headline>
             <TermsConditionsCards
@@ -131,7 +141,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Link
                   href={`${props?.fields?.NextLink?.value?.href ||
                     '/finder/step-appointment-type'
-                    }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                    }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                 >
                   <span>
                     {props?.fields?.AcceptButtonText?.value || 'Accept'}
@@ -210,7 +220,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Link
                     href={`${props?.fields?.NextLink?.value?.href ||
                       '/finder/step-appointment-type'
-                      }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                      }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                   >
                     <span>
                       {props?.fields?.AcceptButtonText?.value || 'Accept'}

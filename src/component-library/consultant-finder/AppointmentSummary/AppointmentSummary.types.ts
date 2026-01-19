@@ -18,4 +18,6 @@ export interface AppointmentSummaryProps {
   isMobile?: boolean;
   liveBookingFormStepSlotSelect: any;
   liveBookingFormStepLocationSelect: any;
+  search?: string;
+  keywordId?: string;
 }

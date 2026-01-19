@@ -21,6 +21,8 @@ import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Icons from '@component-library/foundation/Icons/Icons';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Container from '@component-library/foundation/Containers/Container';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
+import { isMobile } from '@component-library/utility-functions/index';
 
 interface Fields {
   TitleText: Field<string>;
@@ -56,8 +58,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
-  const [search, setSearch] = useState('');
-  const [keywordId, setKewordId] = useState('');
   const {
     searchStringPayment,
     setSearchStringPayment,
@@ -65,6 +65,9 @@ export const Default = (props: StepProps): JSX.Element => {
     isSelfPayment,
     selectedInsurerPaymentStep,
   } = useContext(ConsultantFinderContext);
+  const [search, setSearch] = useState('');
+  const [showContinueBtn, setShowContinueBtn] = useState(!(searchStringPayment === '' && !isSelfPayment));
+  const [keywordId, setKewordId] = useState('');
   //console.log('payment', props);
 
   useEffect(() => {
@@ -93,6 +96,13 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
+            <Headline
+              withConsultantName={true}
+              backLinkProfile={props?.fields?.BackLink?.value?.href}
+              backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
+              hasTitleName={false}
+            >
+            </Headline>
             <ImageAndTextBlock
               noOverflownHidden={true}
               contentVariation={'hero-cf'}
@@ -117,6 +127,36 @@ export const Default = (props: StepProps): JSX.Element => {
                 <JssRichText field={props.fields.BodyText} />
               </Text>
               <form autoComplete="off">
+                <Container marginTop="spacing-4" marginBottom="spacing-4">
+                  <Text tag="h2" variation="heading-2">
+                    {props.fields.TitleText.value}
+                  </Text>
+                </Container>
+
+                <Checkbox
+                  id="1"
+                  label={props.fields.SelfPayCheckBoxText.value}
+                  name="selfpayment"
+                  value="selfpayment"
+                  checked={isSelfPayment}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    if (e.target.checked) {
+                      setSearchStringPayment('');
+                      setShowContinueBtn(false);
+                      if (!isMobile()) {
+                        router.push(
+                          `${props.fields.NextLink.value.href ||
+                          '/finder/step-locations'
+                          }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                            ? `&insurer=${'selfPay'}`
+                            : `&insurer=${selectedInsurerPaymentStep}`
+                          }`
+                        )
+                      }
+                    }
+                    setIsSelfPayment(e.target.checked);
+                  }}
+                ></Checkbox>
                 <SearchPayment
                   placeholder={
                     props?.fields?.SearchPlaceholderText?.value ||
@@ -147,30 +187,46 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.API_Insurance_LoadingMsg?.value ||
                     'Loading...'
                   }
+                  nextLink={`${props.fields.NextLink.value.href ||
+                    '/finder/step-locations'
+                    }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                      ? `&insurer=${'selfPay'}`
+                      : `&insurer=${selectedInsurerPaymentStep}`
+                    }`}
+                  setShowContinueBtn={setShowContinueBtn}
                 />
-
-                <Container marginTop="spacing-4" marginBottom="spacing-4">
-                  <Text tag="h2" variation="heading-2">
-                    {props.fields.TitleText.value}
-                  </Text>
-                </Container>
-
-                <Checkbox
-                  id="1"
-                  label={props.fields.SelfPayCheckBoxText.value}
-                  name="selfpayment"
-                  value="selfpayment"
-                  checked={isSelfPayment}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    if (e.target.checked) {
-                      setSearchStringPayment('');
-                    }
-                    setIsSelfPayment(e.target.checked);
-                  }}
-                ></Checkbox>
               </form>
+
+              {showContinueBtn && !isMobile() && (
+                <div style={{
+                  display:
+                    searchStringPayment === '' && !isSelfPayment
+                      ? 'none'
+                      : 'block',
+                }}>
+                  <Button size={'small'} variation={'full-dark'}>
+                    <button
+                      disabled={
+                        searchStringPayment === '' && !isSelfPayment ? true : false
+                      }
+                      onClick={() =>
+                        router.push(
+                          `${props.fields.NextLink.value.href ||
+                          '/finder/step-locations'
+                          }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                            ? `&insurer=${'selfPay'}`
+                            : `&insurer=${selectedInsurerPaymentStep}`
+                          }`
+                        )
+                      }
+                    >
+                      <span>Continue</span>
+                    </button>
+                  </Button>
+                </div>
+              )}
             </ImageAndTextBlock>
-            <Navigation>
+            <Navigation showOnMobile={true}>
               <TextButton>
                 <JssLink field={props.fields.BackLink}>
                   <Icons iconName="iconArrowSmallLeft" />
@@ -185,13 +241,11 @@ export const Default = (props: StepProps): JSX.Element => {
                   }
                   onClick={() =>
                     router.push(
-                      `${
-                        props.fields.NextLink.value.href ||
-                        '/finder/step-locations'
-                      }?keywordId=${keywordId}&searchString=${search}${
-                        isSelfPayment
-                          ? `&insurer=${'selfPay'}`
-                          : `&insurer=${selectedInsurerPaymentStep}`
+                      `${props.fields.NextLink.value.href ||
+                      '/finder/step-locations'
+                      }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                        ? `&insurer=${'selfPay'}`
+                        : `&insurer=${selectedInsurerPaymentStep}`
                       }`
                     )
                   }

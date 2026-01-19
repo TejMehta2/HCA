@@ -10,6 +10,7 @@ export default interface SearchProps {
   searchString?: string;
   setSearchString?: React.Dispatch<React.SetStateAction<string>>;
   setKeywordId?: React.Dispatch<React.SetStateAction<number>>;
+  setShowContinueBtn?: React.Dispatch<React.SetStateAction<boolean>>;
   searchIcon: any;
   searchIconResults?: any;
   conditionsTreatmentsList?: any;
@@ -23,4 +24,5 @@ export default interface SearchProps {
   insurersList?: any;
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
+  nextLink?: string;
 }

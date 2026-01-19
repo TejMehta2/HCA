@@ -42,6 +42,7 @@ interface Fields {
   CantFindIcon: any;
   HeadingText: Field<string>;
   ViewMapText: Field<string>;
+  ResultsLink: Field<string>;
 }
 
 type StepProps = {
@@ -71,8 +72,11 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
+  const [isSelected, setIsSelected] = useState('');
   const baseURL_C2 =
     props?.fields?.API_C2_GetConsultantDetails_BaseURL?.value ||
     'https:/api/C2/GetLDBConsultantDetails?';
@@ -89,6 +93,14 @@ export const Default = (props: StepProps): JSX.Element => {
     if (!router.isReady) {
       return;
     }
+
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
 
     // get slug from URL
     const slug = router?.query?.slug || '';
@@ -166,13 +178,23 @@ export const Default = (props: StepProps): JSX.Element => {
               headingText={props?.fields?.HeadingText?.value ||
                 'Please select a location'}
               backLinkText={props.fields.BackLink.value.text || 'Back'}
+              resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+              search={search}
+              keywordId={keywordId}
             >
             </Headline>
             {!loading && !error && (
               <SelectLocation
+                cantFindIcon={<SitecoreSvg>
+                  {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
+                </SitecoreSvg>}
+                cantFindTitle={<Text tag="p" variation="body-medium-large">
+                  {props?.fields?.CantFindBannerText?.value}
+                </Text>}
+                cantFindNumber={props?.fields?.CantFindPhoneNumber?.value}
                 nextLink={`${props?.fields?.NextLink?.value?.href ||
                   '/finder/step-slot-select'
-                  }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                  }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                 locations={locations}
                 viewOnMapText={props?.fields?.ViewMapText?.value ||
                   'View location on Google Maps'}
@@ -184,44 +206,20 @@ export const Default = (props: StepProps): JSX.Element => {
                 }
                 iconPhone={
                   <Icons iconName="iconPhone" />
-                  // <SitecoreSvg>
-                  //   {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
-                  // </SitecoreSvg>
                 }
+                isSelected={isSelected}
+                setIsSelected={setIsSelected}
               />
             )}
             {loading && <LoaderCF loadingMsg={'Loading...'} />}
             {!loading && error && (
               <div>There was an error, please try again</div>
             )}
-            {props?.fields?.CantFindPhoneNumber?.value && !loading && (
-              <CantFind
-                title={
-                  <Text tag="p" variation="body-medium-large">
-                    {props?.fields?.CantFindBannerText?.value}
-                  </Text>
-                }
-              >
-                <TextButton>
-                  <a
-                    href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
-                      /\s/g,
-                      ''
-                    )}`}
-                  >
-                    <SitecoreSvg>
-                      {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
-                    </SitecoreSvg>
-                    <span>{props?.fields?.CantFindPhoneNumber?.value}</span>
-                  </a>
-                </TextButton>
-              </CantFind>
-            )}
             <Navigation showOnMobile={true}>
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -231,12 +229,12 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
-                    disabled={selectedLocation.length === 0 ? true : false}
+                    disabled={isSelected === '' ? true : false}
                     onClick={() =>
                       router.push(
                         `${props?.fields?.NextLink?.value?.href ||
                         '/finder/step-slot-select'
-                        }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                        }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                       )
                     }
                   >

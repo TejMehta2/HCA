@@ -198,6 +198,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
+  const [URLparams, setURLparams] = useState('');
   const cardAvailableAppointmentLoadingText: string =
     props?.fields?.API_C2_FirstAppointment_LoadingMsg?.value;
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
@@ -499,6 +500,8 @@ export const Default = (props: StepProps): JSX.Element => {
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
     const requestURL: string = `${baseURL}?${URLprams}`;
+    console.log('URLprams', URLprams);
+    setURLparams(URLprams);
 
     if (URLprams.length === 0) {
       setLoading(false);
@@ -577,10 +580,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`,
+                  }`,
               }}
             >
               <TextLink>
@@ -590,10 +592,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <Link
-                href={`${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`}
+                  }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
@@ -657,7 +658,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LocationFilterOptions &&
                                 props?.fields?.LocationFilterOptions.length >
-                                  0 &&
+                                0 &&
                                 props?.fields?.LocationFilterOptions.map(
                                   (hospital: any, index: number) => (
                                     <Checkbox
@@ -835,7 +836,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LanguageFilterOptions &&
                                 props?.fields?.LanguageFilterOptions?.length >
-                                  0 && (
+                                0 && (
                                   <select
                                     name="language"
                                     value={selectedLanguage}
@@ -1060,6 +1061,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         'Appointments at'
                       }
                       doctifyPhoneSlugs={doctifyPhoneSlugs}
+                      URLprams={URLparams}
                     />
                   ))}
               </ConsultantFinderResults>

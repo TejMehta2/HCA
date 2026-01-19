@@ -1,24 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
-import { capitalizeFirstLetter } from '../../utility-functions/index';
+import { capitalizeFirstLetter, isMobile } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
   const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
     ConsultantFinderContext
   );
+  const router = useRouter();
 
   const handleClick = (name: string, id: number) => {
+    console.log('isMobile()', isMobile());
     props.setIsComponentVisible(false);
     setSelectedInsurerPaymentStep(id);
     setIsSelfPayment(false);
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
+      if (!isMobile() && props.nextLink) {
+        router.push(
+          props.nextLink
+        )
+      }
+      if (!isMobile() && props.setShowContinueBtn) {
+        props.setShowContinueBtn(false);
+      }
     }
   };
 

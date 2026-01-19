@@ -13,4 +13,5 @@ export interface LocationCardProps {
   lon?: string;
   handleClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   viewOnMapText?: string;
+  isSelected: string;
 }

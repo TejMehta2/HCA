@@ -18,7 +18,11 @@ const Headline = ({
   backLinkText,
   headingText,
   slotsStep,
-  backLinkProfile
+  backLinkProfile,
+  hasTitleName,
+  resultsLink,
+  search,
+  keywordId
 }: HeadlineProps): JSX.Element => {
 
   const backHref = backLinkProfile
@@ -48,14 +52,23 @@ const Headline = ({
           </Link>
         </TextButton>
       </div>
-      <div className={styles.heading}>
-        <Text tag="h1" variation="heading-1">
-          {headingText}
-        </Text>
-      </div>
       {
-        name &&
-        <ConsultantName name={name || ''} variation={slotsStep ? 'light' : 'dark'}></ConsultantName>
+        hasTitleName !== false &&
+        <div className={styles.heading}>
+          <Text tag="h1" variation="heading-1">
+            {headingText}
+          </Text>
+        </div>
+      }
+      {
+        name && hasTitleName !== false &&
+        <ConsultantName
+          name={name || ''}
+          variation={slotsStep ? 'light' : 'dark'}
+          resultsLink={resultsLink}
+          search={search}
+          keywordId={keywordId}
+        ></ConsultantName>
       }
     </div>
   );

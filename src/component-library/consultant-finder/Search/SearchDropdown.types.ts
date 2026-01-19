@@ -8,6 +8,7 @@ export default interface SearchDropdownProps {
   setKeywordId?: React.Dispatch<React.SetStateAction<number>>;
   setSearchString?: React.Dispatch<React.SetStateAction<string>>;
   setIsComponentVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowContinueBtn?: React.Dispatch<React.SetStateAction<boolean>>;
   resultsIcon: any;
   specialtyLabel?: string;
   conditionsProceduresLabel?: string;
@@ -19,4 +20,5 @@ export default interface SearchDropdownProps {
   insuranceProvidersFilterHeaderText?: string;
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
+  nextLink?: string;
 }

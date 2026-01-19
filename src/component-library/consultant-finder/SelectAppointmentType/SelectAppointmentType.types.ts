@@ -9,4 +9,6 @@ export interface SelectAppointmentTypeProps {
   textCard1: ReactNode | JSX.Element | string;
   textCard2: ReactNode | JSX.Element | string;
   nextLink: string;
+  isSelected: string;
+  setIsSelected: React.Dispatch<React.SetStateAction<string>>;
 }

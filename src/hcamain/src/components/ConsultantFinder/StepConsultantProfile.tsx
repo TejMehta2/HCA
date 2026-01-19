@@ -389,14 +389,6 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    // console.log(
-    //   'serverSideData?.IgnoreReviewsConsultant',
-    //   serverSideData?.IgnoreReviewsConsultant
-    // );
-    // console.log(
-    //   'serverSideData?.DoctifyPhoneNumberConsultant',
-    //   serverSideData?.DoctifyPhoneNumberConsultant
-    // );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
@@ -816,7 +808,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug
                               }&name=${encodeURIComponent(shortName)}&gmcNumber=${gmcNumber}&reviewsTotal=${serverSideData?.ProfileJson?.review
                                 ?.reviewsTotal || 0
-                              }`}
+                              }&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
                           >
                             <span>
                               {props.fields.BookOnlineButtonLink.value.text ||
@@ -929,7 +921,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   contentVariation="full-width"
                 >
                   <Link
-                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&name=${encodeURIComponent(shortName)}&gmcNumber=${gmcNumber}`}
+                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&name=${encodeURIComponent(shortName)}&gmcNumber=${gmcNumber}&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
                   >
                     <span>
                       {props.fields.BookOnlineButtonLink.value.text ||

@@ -5,6 +5,9 @@ import { SelectLocationProps } from './SelectLocation.types';
 import LocationCard from '../LocationCardSlots/LocationCard';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import styles from './SelectLocation.module.scss';
+import TextButton from '../../core-components/TextButton/TextButton';
+import Container from '../../foundation/Containers/Container';
+import { isMobile } from '../../utility-functions';
 
 const SelectLocation = (props: SelectLocationProps): JSX.Element => {
   const {
@@ -37,10 +40,13 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             time={item?.firstAppointmentSlotDateTime}
             filteredTime={item?.firstAppointmentSlotDateTimeFiltered}
             handleClick={() => {
-              router.push(
-                props.nextLink
-              )
+              if (!isMobile()) {
+                router.push(
+                  props.nextLink
+                )
+              }
               setSelectedLocation(item?.facilityCRMID || '');
+              props.setIsSelected(item?.facilityCRMID || '');
               setSelectedLocationName(item?.facilityFullName || '');
               setLocationGUID(item?.facilityCRMID || '');
               setFirstAppointmentDate(item?.firstAppointmentSlotDateTime || '');
@@ -48,11 +54,31 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
               setLon(item?.longitude || '');
               setLocationID(item?.facilityLocation || '');
             }}
+            isSelected={props.isSelected}
           />
         ))}
       {!props.locations.length && props.locations.length === 0 && (
         <div>No results</div>
       )}
+      {props.cantFindNumber &&
+        <Container marginTop='spacing-5' marginLeft='spacing-5' marginRight='spacing-5'>
+          {props.cantFindTitle}
+          <Container marginTop='spacing-4'>
+            <TextButton>
+              <a
+                href={`tel:${props.cantFindNumber.replace(
+                  /\s/g,
+                  ''
+                )}`}
+              >
+                {props.cantFindIcon}
+                <span>{props.cantFindNumber}</span>
+              </a>
+            </TextButton>
+          </Container>
+        </Container>
+      }
+
     </div>
   );
 };

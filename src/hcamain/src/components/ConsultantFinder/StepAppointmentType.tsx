@@ -11,7 +11,6 @@ import {
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
-import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
@@ -38,6 +37,7 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   BodyText: Field<string>;
+  ResultsLink: Field<string>;
 }
 
 type StepProps = {
@@ -62,8 +62,11 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
+  const [isSelected, setIsSelected] = useState('');
 
   useEffect(() => {
     window.scrollTo({
@@ -75,6 +78,12 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
@@ -126,7 +135,10 @@ export const Default = (props: StepProps): JSX.Element => {
               backLink={props?.fields?.BackLink?.value?.href}
               headingText={props?.fields?.BodyText?.value ||
                 'Please choose a type of appointment'}
-              backLinkText={props.fields.BackLink.value.text || 'Back'}
+              backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
+              resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+              search={search}
+              keywordId={keywordId}
             >
             </Headline>
             <SelectAppointmentType
@@ -164,13 +176,15 @@ export const Default = (props: StepProps): JSX.Element => {
                   field={props?.fields?.FollowUpAppointmentBodyText}
                 />
               }
-              nextLink={`${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`}
+              nextLink={`${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
+              isSelected={isSelected}
+              setIsSelected={setIsSelected}
             />
             <Navigation hideTextMobile={true} showOnMobile={true}>
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>
@@ -182,10 +196,10 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
-                    disabled={selectedTypeOfAppointment === '' ? true : false}
+                    disabled={isSelected ? false : true}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                       )
                     }
                   >

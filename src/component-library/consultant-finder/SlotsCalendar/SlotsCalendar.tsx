@@ -14,8 +14,8 @@ import LoaderCF from '../LoaderCF/LoaderCF';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import axios from 'axios';
-import TextLink from '../../core-components/TextLink/TextLink';
 import Headline from '../Headline/Headline';
+import { isMobile } from '../../utility-functions/index';
 
 const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const {
@@ -208,7 +208,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       setIsBookableContent(false);
     }
 
-    props?.modalRef?.current?.showModal();
+    if (!isMobile()) {
+      props?.modalRef?.current?.showModal();
+    }
   };
 
 
@@ -288,6 +290,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         headingText={props.titleText}
         slotsStep={true}
         reviewsTotal={props.reviewsTotal}
+        resultsLink={props.resultsLink || '/finder/step-consultant-cards'}
+        search={props.search}
+        keywordId={props.keywordId}
       >
       </Headline>
       {/* {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}

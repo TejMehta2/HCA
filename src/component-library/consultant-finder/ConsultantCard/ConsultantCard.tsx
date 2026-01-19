@@ -28,6 +28,9 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
+  console.log('topSpecialty', topSpecialty);
+  console.log('topSpecialty id', topSpecialty.id);
+
   // Callback function to handle datalayer phone reveal tracking
   function callRevealTrack(): void {
     dialogRef?.current?.showModal();
@@ -180,7 +183,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.bookOnlineLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}`}
+                href={`${props.bookOnlineLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
               >
                 <span>{props.bookNowCTAText}</span>
               </Link>

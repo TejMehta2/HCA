@@ -20,4 +20,7 @@ export interface SlotsCalendarProps {
   backLinkHref?: any;
   backLinkText?: string;
   modalRef: any;
+  resultsLink?: string;
+  search?: string;
+  keywordId?: string;
 }
