@@ -15,7 +15,7 @@ const CardPatientStories = (props: CardPatientStoriesProps): JSX.Element => {
       {image && <div className={styles.image}>{image}</div>}
       <div className={styles['card-info']}>
         <div className={styles.copy}>
-          {title}
+          <div className={styles.title}>{title}</div>
           {bodyCopy && <div className={styles['body-text']}>{bodyCopy}</div>}
         </div>
         <Button

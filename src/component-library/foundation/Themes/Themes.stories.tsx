@@ -100,7 +100,7 @@ const meta: Meta<typeof Themes> = {
             { icon: 'iconFlexible', label: 'Flexi' },
             { icon: 'iconCalendar', label: 'Annual' },
           ]}
-          callback={() => { }}
+          callback={() => {}}
         />
 
         <CQCBlock
@@ -361,14 +361,17 @@ export const ThemeNDenim5: StoryObj<typeof Themes> = {
 export const ThemeOTeal20: StoryObj<typeof Themes> = {
   args: { theme: 'O-HCA-Teal-20' },
 };
-export const ThemePlaceWhite: StoryObj<typeof Themes> = {
+export const ThemePalaceWhite: StoryObj<typeof Themes> = {
   args: { theme: 'Palace-White' },
 };
-export const ThemePlaceNavyBlue: StoryObj<typeof Themes> = {
-  args: { theme: 'Palace-Navy-Blue' },
+export const ThemePalaceGrey: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Grey' },
 };
-export const ThemePlaceBeige: StoryObj<typeof Themes> = {
+export const ThemePalaceBeige: StoryObj<typeof Themes> = {
   args: { theme: 'Palace-Beige' },
+};
+export const ThemePalaceRed: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Red' },
 };
 export const ThemeChelseaWhite: StoryObj<typeof Themes> = {
   args: { theme: 'Chelsea-White' },
@@ -381,4 +384,19 @@ export const ThemeChelseaBeige: StoryObj<typeof Themes> = {
 };
 export const ThemeLBI: StoryObj<typeof Themes> = {
   args: { theme: 'LBI' },
+};
+export const ThemeLBIDark: StoryObj<typeof Themes> = {
+  args: { theme: 'LBI-Dark' },
+};
+export const ThemeLBIWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'LBI-White' },
+};
+export const ThemeAlanBlack: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-Black' },
+};
+export const ThemeAlanWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-White' },
+};
+export const ThemeAlanLightGrey: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-Light-Grey' },
 };

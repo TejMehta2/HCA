@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderProfileStories from './HeaderProfile.stories';
+
+<Meta of={HeaderProfileStories} />
+
+# HeaderProfile
+
+## Description
+
+The HeaderProfile component is a header which can used on an individual doctor's profile page. It consists of an image, title, department, and cta
+
+It is intended to be used in the palace gate site
+
+It can be composed like this:
+
+```tsx
+<HeaderProfile
+  ctas={
+    <Button contentVariation="full-width" size="large" variation="full">
+      <a href="#">
+        <Icons iconName="iconPhone" />
+        <span>
+          Call us to <strong>book an appointment</strong>
+        </span>
+      </a>
+    </Button>
+  }
+  department={
+    <Text tag="p" variation="subheading-1">
+      General Practice (GP)
+    </Text>
+  }
+  image={
+    <MockedNextImage
+      alt="Dr May Abboudi"
+      height="214"
+      src="/placeholders/quote-block-author-full.png"
+      width="214"
+    />
+  }
+  theme="Palace-Beige"
+  title={
+    <Text tag="h1" variation="display-2">
+      Dr May Abboudi
+    </Text>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={HeaderProfileStories.Default} />
+<Controls of={HeaderProfileStories.Default} />

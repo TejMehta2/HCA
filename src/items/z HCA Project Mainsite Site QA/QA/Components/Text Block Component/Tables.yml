@@ -43,7 +43,7 @@ Languages:
               p:after="r[@uid='{2EA0B12C-CDEB-44F6-B1F2-B3CE9F675B97}']"
               s:ds="local:/Data/Text Block"
               s:id="{9D703CBE-D052-4D60-8F11-02452F651C71}"
-              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles=%7BC2CD33A8-7492-4A68-9158-9663BEE700BC%7D&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
             <r
               uid="{8372AC32-C6CA-4C11-8B61-20757F39BBE4}"
@@ -69,14 +69,14 @@ Languages:
       Value: "Text Block: Tables"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "822da049-c412-47cd-afbb-7ae178700478"
+      Value: "84b4a62a-fc9a-45ef-b0f8-f6c409d3d4dd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250505T173737Z
+      Value: 20260115T175213Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Tables

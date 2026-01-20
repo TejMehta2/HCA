@@ -7,6 +7,8 @@ export interface TextBlockProps {
   title?: ReactNode | JSX.Element;
   text?: ReactNode | JSX.Element;
   ctas?: ReactNode | JSX.Element;
+  image?: JSX.Element;
+  textWidth?: 'standard' | 'narrow';
   contentVariation?: 'centered';
   id?: string;
   tableOfContentTitle?: string;

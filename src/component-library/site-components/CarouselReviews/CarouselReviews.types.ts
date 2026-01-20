@@ -7,4 +7,5 @@ export interface CarouselReviewsProps {
   theme: Theme;
   id?: string;
   tableOfContentTitle?: string;
+  image?: JSX.Element;
 }

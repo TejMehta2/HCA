@@ -5,6 +5,7 @@ import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
+import Image from 'next/image';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof TextBlock> = {
@@ -132,4 +133,41 @@ export const Centered: StoryObj<typeof TextBlock> = {
       </>
     ),
   ],
+};
+
+export const BackgroundImage: StoryObj<typeof TextBlock> = {
+  args: {
+    theme: 'Alan-Black',
+    contentVariation: 'centered',
+    image: (
+      <Image
+        src="/placeholders/lab-technician.jpeg"
+        alt="lab technician"
+        width="1024"
+        height="683"
+      />
+    ),
+    textWidth: 'narrow',
+    title: <Text variation={'display-2'}>We&apos;re here to help</Text>,
+    subheading: (
+      <Text variation={'subheading-1'}>Ready to take the next step?</Text>
+    ),
+    text: (
+      <Text variation={'body-large'}>
+        If you have worrying symptoms you’d like to get checked, need a second
+        opinion or just want a free chat with one of our nurse specialists, get
+        in touch. Our friendly team will take care of the rest. 
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size={'large'} variation={'full'}>
+          <a href="#">
+            <Icons iconName="iconPhone" />
+            Call us today
+          </a>
+        </Button>
+      </>
+    ),
+  },
 };

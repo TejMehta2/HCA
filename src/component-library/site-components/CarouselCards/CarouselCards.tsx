@@ -16,7 +16,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     subtitle,
     id,
     cardsToDisplay = 3,
-    tableOfContentTitle
+    tableOfContentTitle,
   } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -84,7 +84,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
           {title && (
             <div className={styles['intro']} data-animate="s">
               {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
-              {title}
+              {title && <div className={styles.title}>{title}</div>}
               {bodyCopy && <div className={styles['copy']}>{bodyCopy}</div>}
             </div>
           )}
