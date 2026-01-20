@@ -13,7 +13,8 @@ export default async function (req: NextRequest, ev: NextFetchEvent) {
   if (
     pathname.startsWith('/finder') ||
     pathname.startsWith('/payment') ||
-    pathname.startsWith('/ivf-pricer')
+    pathname.startsWith('/ivf-pricer') ||
+    pathname.startsWith('/fertility-calculator')
   )
     return undefined;
   else return middleware(req, ev);

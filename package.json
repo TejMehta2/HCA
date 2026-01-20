@@ -27,7 +27,5 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "ts-node": "^10.9.1"
-  },
-  "dependencies": {
   }
 }

@@ -28,6 +28,10 @@
   }
 }
 
+.title {
+  color: var(--heading, var(--text));
+}
+
 .copy {
   margin-top: $spacing-5;
 }

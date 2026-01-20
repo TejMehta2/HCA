@@ -1,0 +1,30 @@
+﻿---
+ID: "f9903d05-6608-4083-8816-c22db5822c96"
+Parent: "e3d5b403-44e5-41e2-a499-6243d81c6b13"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Book an Appointment CTA/Data/Hero Banner With Search/CTA Button 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240104T225614Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c0793614-7c42-441b-af67-98a14c642bc6"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Book an &lt;b&gt;appointment&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240314T102615Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: 

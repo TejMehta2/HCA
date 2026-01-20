@@ -29,6 +29,7 @@
 }
 
 .title {
+  color: var(--heading, var(--text));
   @include media(screen-l) {
     margin-bottom: $spacing-2;
   }

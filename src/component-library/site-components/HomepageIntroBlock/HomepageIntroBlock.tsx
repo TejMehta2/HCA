@@ -58,13 +58,13 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             )}
             {children && (
               <div className={styles.children}>
-                <Themes theme="A-HCA-White">{children}</Themes>
+                <Themes theme={theme}>{children}</Themes>
               </div>
             )}
             {cta && (
               <div className={styles.cta}>
-                <Themes theme="A-HCA-White">
-                  <Button size={'large'} variation={'full-dark'}>
+                <Themes theme={theme}>
+                  <Button size={'large'} variation={'full'}>
                     {cta}
                   </Button>
                 </Themes>
@@ -81,15 +81,21 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <div className={styles.image}>{image}</div>
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>
-              <div className={styles.mobile}>{doctify}</div>
+              {doctify && <div className={styles.mobile}>{doctify}</div>}
               <div className={styles.tablet}>
                 <Themes
                   theme={
-                    ['Chelsea-Beige', 'Chelsea-Navy-Blue', 'Chelsea-White'].includes(theme)
+                    [
+                      'Chelsea-Beige',
+                      'Chelsea-Navy-Blue',
+                      'Chelsea-White',
+                    ].includes(theme)
                       ? theme
                       : 'B-HCA-Navy-Blue'
                   }
-                >{doctify}</Themes>
+                >
+                  {doctify && doctify}
+                </Themes>
               </div>
             </div>
           </div>

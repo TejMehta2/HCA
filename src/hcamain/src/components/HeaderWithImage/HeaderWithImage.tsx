@@ -16,6 +16,7 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
 
 interface Fields {
   data?: {
@@ -76,10 +77,14 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
   const titleLength =
     props.fields?.data?.contextItem?.title?.jsonValue?.value?.length;
 
+  const textWidth = (getPresentationParam(props?.params?.styles, 'textwidth') ??
+    'standard') as 'wide' | 'standard' | undefined;
+
   return (
     <HeaderWithImage
       contentVariation={props.contentVariation}
       theme={props.params?.Theme || 'D-HCA-Teal'}
+      textWidth={textWidth}
       title={
         <Text
           variation={

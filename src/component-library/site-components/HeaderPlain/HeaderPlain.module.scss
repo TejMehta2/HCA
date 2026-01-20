@@ -53,6 +53,7 @@
 .heading {
   display: flex;
   grid-row-start: 2;
+  color: var(--heading, var(--text));
 
   &:last-child {
     margin-bottom: 0;
