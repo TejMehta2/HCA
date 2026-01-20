@@ -75,7 +75,7 @@ function withKeywordIdIfNeeded(
   // Add keywordid to querystring (preserve existing querystring)
   const existingQs = (next.querystring ?? '').replace(/^\?/, '').trim();
   const params = new URLSearchParams(existingQs);
-  params.set('keywordid', keywordId);
+  params.set('keywordId', keywordId);
 
   next.querystring = params.toString();
   return resolveSitecoreLink(next);
