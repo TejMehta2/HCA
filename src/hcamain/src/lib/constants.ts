@@ -2,10 +2,10 @@
 export const SEARCH_SUGGESTIONS_MODAL_ID = 'search-suggestions-modal';
 
 // Exposes site base URL for e.g. Schema
-export const BASE_URL = 'https://hcahealthcare.co.uk';
+export const BASE_URL = 'https://www.hcahealthcare.co.uk';
 
 export const FINDER_PROFILE_ROOT_PATH =
-  process.env.FINDER_PROFILE_ROOT_PATH! || `finder/StepConsultantProfile`;
+  process.env.FINDER_PROFILE_ROOT_PATH! || `finder/stepconsultantprofile`;
 
 // Exposes the profile base for consultants
 export const FINDER_PROFILE_CANONICAL_BASE_URL = `${BASE_URL}/${FINDER_PROFILE_ROOT_PATH}`;
