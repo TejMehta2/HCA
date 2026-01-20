@@ -43,6 +43,14 @@ interface HeaderWithImageVariantProps extends HeaderWithImageProps {
   contentVariation?: 'fullWidthImage';
 }
 
+const darkThemes = [
+  'B-HCA-Navy-Blue',
+  'C-HCA-Denim',
+  'Palace-Grey',
+  'Chelsea-Navy-Blue',
+  'Alan-Black',
+] as const;
+
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
@@ -158,5 +166,16 @@ export const FullWidthImage = (
     return <HeaderWithImageDefaultComponent {...props} />;
   }
 
-  return <Default {...props} contentVariation="fullWidthImage" />;
+  //make sure fulwidthimage variant has one of dark themes, if not fallback to default dark theme
+  const nextProps: HeaderWithImageVariantProps = {
+    ...props,
+    params: {
+      ...props.params,
+      Theme: darkThemes.includes(props.params?.Theme as any)
+        ? props.params?.Theme
+        : 'B-HCA-Navy-Blue',
+    },
+  };
+
+  return <Default {...nextProps} contentVariation="fullWidthImage" />;
 };
