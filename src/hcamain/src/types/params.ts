@@ -17,6 +17,16 @@ export type Theme =
   | 'M-HCA-Goldenrod-20'
   | 'N-HCA-Denim-5';
 
+export const darkThemes = [
+  'B-HCA-Navy-Blue',
+  'C-HCA-Denim',
+  'Palace-Grey',
+  'Chelsea-Navy-Blue',
+  'Alan-Black',
+] as const;
+
+export type DarkTheme = (typeof darkThemes)[number];
+
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type HeadingSize =

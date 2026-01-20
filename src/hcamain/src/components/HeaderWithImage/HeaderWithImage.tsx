@@ -12,7 +12,7 @@ import HeaderWithImage, {
 } from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
-import Params from 'src/types/params';
+import Params, { DarkTheme, darkThemes } from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -42,14 +42,6 @@ export type HeaderWithImageProps = {
 interface HeaderWithImageVariantProps extends HeaderWithImageProps {
   contentVariation?: 'fullWidthImage';
 }
-
-const darkThemes = [
-  'B-HCA-Navy-Blue',
-  'C-HCA-Denim',
-  'Palace-Grey',
-  'Chelsea-Navy-Blue',
-  'Alan-Black',
-] as const;
 
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
@@ -171,7 +163,7 @@ export const FullWidthImage = (
     ...props,
     params: {
       ...props.params,
-      Theme: darkThemes.includes(props.params?.Theme as any)
+      Theme: darkThemes.includes(props.params?.Theme as DarkTheme)
         ? props.params?.Theme
         : 'B-HCA-Navy-Blue',
     },
