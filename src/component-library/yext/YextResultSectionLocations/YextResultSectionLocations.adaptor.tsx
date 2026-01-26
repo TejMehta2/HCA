@@ -45,6 +45,7 @@ const YextResultSectionLocationsAdaptor = (
       c_pageImage,
       googlePlaceId,
       c_uRL,
+      c_abstractTitle,
       c_pageTitle,
     } = result.rawData;
 
@@ -52,7 +53,7 @@ const YextResultSectionLocationsAdaptor = (
 
     const sitecoreImage = c_abstractImage || c_pageImage;
 
-    const resultTitle = c_pageTitle || name || '';
+    const resultTitle = c_abstractTitle || c_pageTitle || name || '';
 
     const displayImage =
       name && yextImage?.url
