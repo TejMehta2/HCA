@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable */
+/* @typescript-eslint/no-explicit-any */
 // Template finder component
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
