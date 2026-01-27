@@ -19,13 +19,10 @@ import { isMobile } from '../../utility-functions/index';
 
 const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const {
-    selectedLocationName,
     locationGUID,
     selectedTypeOfAppointment,
     consultantGUID,
     fristAppointmentDate,
-    lat,
-    lon,
     setSelectedDate,
     setSelectedTime,
     setStartTime,

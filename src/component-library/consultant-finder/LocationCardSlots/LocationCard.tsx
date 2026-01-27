@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { LocationCardProps } from './LocationCard.types';
 import Text from '../../foundation/Text/Text';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import styles from './LocationCard.module.scss';
 import { formatDateLong } from '../../utility-functions/index';
 import TextLink from '../../core-components/TextLink/TextLink';

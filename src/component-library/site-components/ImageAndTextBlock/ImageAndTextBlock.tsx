@@ -40,6 +40,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   // const [location, setLocation] = useState('London');
   const [saveLocation, setShowLocation] = useState(false);
+  console.log(saveLocation);
 
   return (
     <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
