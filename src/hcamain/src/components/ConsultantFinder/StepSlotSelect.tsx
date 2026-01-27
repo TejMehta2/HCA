@@ -30,7 +30,6 @@ import { getHolidays } from '../../lib/consultant-finder/API_HCA';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { GetServerSidePropsContext } from 'next';
 import Modals from '@component-library/components/Modals/Modals';
-import TextLink from '@component-library/core-components/TextLink/TextLink';
 
 interface Fields {
   HCALogo: ImageField;

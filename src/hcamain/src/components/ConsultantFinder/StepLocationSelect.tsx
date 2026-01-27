@@ -60,7 +60,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const {
-    selectedLocation,
     setSelectedTypeOfAppointment,
     setConsultantGUID,
     setHcaConsultantID,
