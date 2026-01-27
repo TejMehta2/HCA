@@ -70,12 +70,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const [showContinueBtn, setShowContinueBtn] = useState(!(searchStringPayment === '' && !isSelfPayment));
   const [keywordId, setKewordId] = useState('');
 
-  const readCookie = (name: string) => {
-    const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-    return m ? decodeURIComponent(m[1]) : null;
-  };
-  //console.log('payment', props);
-
   useEffect(() => {
     window.scrollTo({
       top: 0,

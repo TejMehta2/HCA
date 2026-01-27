@@ -33,8 +33,6 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [location, setLocation] = useState('London');
-  const [hydrated, setHydrated] = useState(false);
-  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
 
   // close the nav when clicking a link within
   const router = useRouter();
