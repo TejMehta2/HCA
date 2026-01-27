@@ -186,10 +186,19 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   layoutData,
   context
 ) => {
-  const { query } = context;
-  console.log(layoutData);
+  const { query, req } = context;
+
+  const transactionIdValue = query['transaction_id'];
+
+  // If no transaction_id, log full URL and skip request
+  if (!transactionIdValue) {
+    const fullUrl = `${req.headers.host}${req.url}`;
+    console.log('verifone payment failed:', fullUrl);
+    return;
+  }
+
   let response;
-  const transactionId = `transactionId=${query['transaction_id']}`;
+  const transactionId = `transactionId=${transactionIdValue}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
