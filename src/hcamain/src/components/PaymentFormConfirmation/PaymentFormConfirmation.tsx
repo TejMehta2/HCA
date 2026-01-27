@@ -194,7 +194,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   if (!transactionIdValue) {
     const fullUrl = `${req.headers.host}${req.url}`;
     console.log('verifone payment failed:', fullUrl);
-    return;
+    return {};
   }
 
   let response;
@@ -211,6 +211,6 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   } catch (error) {
     process.env.NODE_ENV === 'development' &&
       console.log(await response?.text?.());
-    return;
+    return {};
   }
 };
