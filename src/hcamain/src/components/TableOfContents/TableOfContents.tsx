@@ -38,8 +38,6 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
       };
       return item;
     });
-
-    console.log('[ToC] Final array:', tocComponents);
     setComponentsList(tocComponents);
   };
 

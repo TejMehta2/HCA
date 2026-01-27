@@ -124,7 +124,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <Headline
+            <Headline>
+              <Text tag="h1" variation="heading-1">
+                {'A few important things to know before you book'}
+              </Text>
+            </Headline>
+            {/* <Headline
               withConsultantName={true}
               backLinkProfile={`${props?.fields?.BackLink?.value?.href &&
                 props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
@@ -135,19 +140,9 @@ export const Default = (props: StepProps): JSX.Element => {
               search={search}
               keywordId={keywordId}
             >
-            </Headline>
+            </Headline> */}
             <TermsConditionsCards
-              acceptBtn={<Button variation="full-dark" size="large">
-                <Link
-                  href={`${props?.fields?.NextLink?.value?.href ||
-                    '/finder/step-appointment-type'
-                    }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
-                >
-                  <span>
-                    {props?.fields?.AcceptButtonText?.value || 'Accept'}
-                  </span>
-                </Link>
-              </Button>}
+              acceptBtn={null}
             >
               <InfoBox
                 backgroundColour="turquoise"
@@ -198,7 +193,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 paddingLarge={true}
               />
             </TermsConditionsCards>
-            <Navigation hideTextMobile={true} showOnMobile={true}>
+            <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
                   <Link

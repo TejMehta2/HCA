@@ -7,7 +7,9 @@ const ConsultantListHeaderTtitle = (
 ): JSX.Element => {
   const { children } = props;
   return (
-    <div className={styles['consultant-list-header-title']}>{children}</div>
+    <div
+      className={`${styles['consultant-list-header-title']}`}
+    >{children}</div>
   );
 };
 

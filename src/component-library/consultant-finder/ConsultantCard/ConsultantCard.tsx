@@ -28,9 +28,6 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
-  console.log('topSpecialty', topSpecialty);
-  console.log('topSpecialty id', topSpecialty.id);
-
   // Callback function to handle datalayer phone reveal tracking
   function callRevealTrack(): void {
     dialogRef?.current?.showModal();

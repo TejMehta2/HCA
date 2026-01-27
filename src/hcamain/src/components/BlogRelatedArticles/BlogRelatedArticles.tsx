@@ -216,7 +216,6 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.data?.item?.heading?.jsonValue?.value
   );
-  console.log('test');
   return (
     <CarouselCards
       id={componentAnchorId}
@@ -284,7 +283,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
   const fields = rendering.fields?.data?.item;
-  console.log('fields');
 
   // Format props into entries, then query params
   const customFilters =

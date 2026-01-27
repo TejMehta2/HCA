@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template finder component
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
@@ -46,6 +46,8 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import { GetServerSidePropsContext } from 'next';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
+import Button from '@component-library/core-components/Button/Button';
+import Modals from '@component-library/components/Modals/Modals';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -173,6 +175,8 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
+  console.log('filters hosiptal', props?.fields?.LocationFilterOptions);
+
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
@@ -199,6 +203,10 @@ export const Default = (props: StepProps): JSX.Element => {
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [URLparams, setURLparams] = useState('');
+  const [location, setLocation] = useState('London');
+  const [hydrated, setHydrated] = useState(false);
+  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const cardAvailableAppointmentLoadingText: string =
     props?.fields?.API_C2_FirstAppointment_LoadingMsg?.value;
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
@@ -240,6 +248,78 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
+
+  const hasFunctionalConsent = () => {
+    const groups = (window as any).OnetrustActiveGroups || "";
+    return groups.includes("C0003");
+  };
+
+  const readCookie = (name: string) => {
+    const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+    return m ? decodeURIComponent(m[1]) : null;
+  };
+
+  const setLocationCookie = (value: string) => {
+    document.cookie = `location=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
+  };
+
+  const deleteLocationCookie = () => {
+    document.cookie = "location=; path=/; max-age=0; SameSite=Lax";
+    document.cookie = "location=; max-age=0; SameSite=Lax";
+  };
+
+  // 1) Hydrate location from cookie (once)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const init = () => {
+      if (!hasFunctionalConsent()) {
+        deleteLocationCookie(); // optional
+        setHydrated(true);
+        setFunctionalConsentCookie(false);
+        return;
+      }
+
+      const saved = readCookie("location");
+      if (saved) setLocation(saved);
+      setFunctionalConsentCookie(true);
+      setHydrated(true);
+    };
+
+    init();
+    window.addEventListener("OneTrustGroupsUpdated", init);
+    return () => window.removeEventListener("OneTrustGroupsUpdated", init);
+  }, []);
+
+  // 2) Persist whenever location changes (only after hydration + only if consent)
+  useEffect(() => {
+    if (!hydrated) return;
+    if (typeof window === "undefined") return;
+    if (!hasFunctionalConsent()) return;
+
+    setLocationCookie(location);
+  }, [location, hydrated]);
+
+  // 3) If consent revoked later, delete the cookie
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const onConsentChange = () => {
+      if (!hasFunctionalConsent()) {
+        deleteLocationCookie();
+        setFunctionalConsentCookie(false);
+      }
+
+      if (hasFunctionalConsent()) {
+        console.log('location', location);
+        setLocationCookie(location);
+        setFunctionalConsentCookie(true);
+      }
+    };
+
+    window.addEventListener("OneTrustGroupsUpdated", onConsentChange);
+    return () => window.removeEventListener("OneTrustGroupsUpdated", onConsentChange);
+  }, []);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -356,6 +436,39 @@ export const Default = (props: StepProps): JSX.Element => {
     }
   };
 
+  const LOCATION_COORDS: Record<string, { lat: number; lon: number }> = {
+    London: { lat: 51.507217, lon: -0.1275862 },      // keep as-is
+    Manchester: { lat: 53.480759, lon: -2.242631 },
+    Birmingham: { lat: 52.486244, lon: -1.890401 },
+  };
+
+  // location
+  const applyLocationToSearch = (nextLocation: string) => {
+    const coords = LOCATION_COORDS[nextLocation] ?? LOCATION_COORDS.London;
+
+    // update UI immediately
+    setLocation(nextLocation);
+
+    // update URL params -> triggers your existing fetch effect (router.query dependency)
+    const { requestPath, offset, ...queryParams } = router.query;
+
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...queryParams,
+          lat: coords.lat,
+          lon: coords.lon,
+          distance: 30,
+          offset: 0, // reset pagination when changing region
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+
   // reset all filters
   const handleResetFilters = () => {
     const {
@@ -408,6 +521,8 @@ export const Default = (props: StepProps): JSX.Element => {
     if ('practice' in newQueryParams) {
       delete newQueryParams.practice;
     }
+
+    setLocation('London');
 
     // Update offset and sortBy to their default values
     newQueryParams.offset = 0;
@@ -500,7 +615,6 @@ export const Default = (props: StepProps): JSX.Element => {
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
     const requestURL: string = `${baseURL}?${URLprams}`;
-    console.log('URLprams', URLprams);
     setURLparams(URLprams);
 
     if (URLprams.length === 0) {
@@ -935,7 +1049,53 @@ export const Default = (props: StepProps): JSX.Element => {
                   {props?.fields?.TitleText?.value ||
                     `Let's get you to the right specialist`}
                 </Text>
+
+                <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
+                  <div style={{ 'marginRight': '10px' }}>
+                    <Text tag="h3" variation="body-medium">
+                      {`Showing consultants in ${location}`}
+                    </Text>
+                  </div>
+                  <TextButton theme="dark">
+                    <button
+                      onClick={() =>
+                        dialogRef?.current?.show()
+                      }
+                    >
+                      <Icons iconName="iconEdit" />
+                      {'Change region'}
+                    </button>
+                  </TextButton>
+                </div>
               </ConsultantListHeaderTtitle>
+              {/* show this if they dont have cookies accepted */}
+              {
+                !hasFunctionalConsentCookie &&
+                <div
+                  style={{
+                    display: 'flex',
+                    marginLeft: 'auto',
+                    marginRight: '104px',
+                    alignItems: 'center',
+                    justifyContent: 'right',
+                    backgroundColor: '#eff8f8',
+                    borderRadius: '8px',
+                    padding: '20px',
+                    width: 'fit-content',
+                    marginBottom: '20px',
+                  }}
+                >
+
+                  <div>
+                    <Text tag="h3" variation="body-medium">
+                      {`Save this location for next time? This requires functional cookies`}
+                    </Text>
+                  </div>
+                  <TextButton theme="dark">
+                    <a href="javascript:OneTrust.ToggleInfoDisplay()">Cookie settings</a>
+                  </TextButton>
+                </div>
+              }
 
               {loading && (
                 <LoaderCF
@@ -1097,6 +1257,73 @@ export const Default = (props: StepProps): JSX.Element => {
             </div>
           </>
         )}
+        <Modals ref={dialogRef} alignContent='center'>
+          {location !== 'London' &&
+            <Container marginRight="spacing-4" marginLeft="spacing-4">
+              <Button
+                size={'small'}
+                variation={'full-dark'}
+                contentVariation="full-width"
+              >
+                <button
+                  onClick={() => {
+                    dialogRef?.current?.close();
+                    applyLocationToSearch('London');
+                    // document.cookie = `location=${encodeURIComponent('London')}; path=/; max-age=31536000; SameSite=Lax`;
+                    setLocation('London');
+                  }
+                  }
+                >
+                  <span>{'London'}</span>
+                </button>
+              </Button>
+            </Container>
+          }
+          {
+            location !== "Manchester" &&
+            <Container marginRight="spacing-4" marginLeft="spacing-4">
+              <Button
+                size={'small'}
+                variation={'full-dark'}
+                contentVariation="full-width"
+              >
+                <button
+                  onClick={() => {
+                    dialogRef?.current?.close();
+                    applyLocationToSearch('Manchester');
+                    // document.cookie = `location=${encodeURIComponent('Manchester')}; path=/; max-age=31536000; SameSite=Lax`;
+                    setLocation('Manchester');
+                  }
+                  }
+                >
+                  <span>{'Manchester'}</span>
+                </button>
+              </Button>
+            </Container>
+          }
+          {
+            location !== 'Birmingham' &&
+            <Container marginRight="spacing-4" marginLeft="spacing-4">
+              <Button
+                size={'small'}
+                variation={'full-dark'}
+                contentVariation="full-width"
+              >
+                <button
+                  onClick={() => {
+                    dialogRef?.current?.close();
+                    applyLocationToSearch('Birmingham');
+                    // document.cookie = `location=${encodeURIComponent('Birmingham')}; path=/; max-age=31536000; SameSite=Lax`;
+                    setLocation('Birmingham')
+                  }
+                  }
+                >
+                  <span>{'Birmingham'}</span>
+                </button>
+              </Button>
+            </Container>
+          }
+        </Modals>
       </div>
     );
   }

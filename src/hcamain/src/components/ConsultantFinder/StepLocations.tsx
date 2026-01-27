@@ -18,11 +18,6 @@ import { ConsultantFinderContext } from '@component-library/context/consultantFi
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import Link from 'next/link';
-import Headline from '@component-library/consultant-finder/Headline/Headline';
-import Text from '@component-library/foundation/Text/Text';
-import StepLocationsWrapper from '@component-library/consultant-finder/StepLocationsWrapper/StepLocationsWrapper';
-import { isMobile } from '@component-library/utility-functions/index';
-import Container from '@component-library/foundation/Containers/Container';
 
 interface Fields {
   TitleText: Field<string>;
@@ -104,112 +99,63 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
-            <Headline
-              withConsultantName={true}
-              backLinkProfile={props?.fields?.BackLink?.value?.href}
-              backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
-              hasTitleName={false}
-            >
-            </Headline>
-            <StepLocationsWrapper>
-              <div>
-                <Text tag="h2" variation="subheading-2">
-                  {
-                    props?.fields?.HeadingText?.value || 'facilities & hospitals'
-                  }
-                </Text>
-                <Text tag="h1" variation="display-5">
-                  {props?.fields?.TitleText?.value || 'Preferred locations'}
-                </Text>
-                <Text tag="p" variation="body-large">
-                  {
-                    props?.fields?.BodyText?.value ||
-                    'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'
-                  }
-                </Text>
-                {
-                  !isMobile() &&
-                  <Container marginTop='spacing-4' marginBottom='spacing-4'>
-                    <Button size={'small'} variation={'full-dark'}>
-                      <button
-                        disabled={false}
-                        onClick={() =>
-                          router.push(
-                            `${props?.fields?.NextLink?.value?.href
-                            }?search=${search}&keywordId=${keywordId}&sortType=relevance${selectedLocations.length > 0
-                              ? `&practice=${selectedLocations.join(',')}&`
-                              : '&'
-                            }lat=51.507217&lon=-0.1275862&distance=0&limit=12${insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'
-                            }&offset=0`
-                          )
-                        }
-                      >
-                        <span>{`Show ${hospitals.length} locations`}</span>
-                      </button>
-                    </Button>
-                  </Container>
-                }
-              </div>
-              <div>
-                <LocationsTopSection
-                  hospitals={hospitals}
-                  setHospitals={setHospitals}
-                  postcodesFacilities={postcodes}
-                  locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value}
-                  array={array}
-                  setArray={setArray}
-                  slugs={slugs}
-                  subheadline={
-                    props?.fields?.HeadingText?.value || 'facilities & hospitals'
-                  }
-                  title={props?.fields?.TitleText?.value || 'Preferred locations'}
-                  text={
-                    props?.fields?.BodyText?.value ||
-                    'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'
-                  }
-                  searchPlaceholderText={
-                    props?.fields?.SearchPlaceholderText?.value ||
-                    'Enter postcode or place name'
-                  }
-                  removeAllLocationsButtonText={
-                    props?.fields?.RemoveAllLocationsButtonText?.value ||
-                    'Remove all locations'
-                  }
-                  selectAllLocationsButtonText={
-                    props?.fields?.SelectAllLocationsButtonText?.value ||
-                    'Add all locations'
-                  }
-                  setCalculate={setCalculate}
-                />
-                {calculate && <LoaderCF loadingMsg="Calculating distances..." />}
-                <LocationCardsWrapper>
-                  {hospitals.length > 0 &&
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    hospitals.map((hospital: any) => (
-                      <LocationCard
-                        key={hospital.id}
-                        name={hospital?.fields?.HCAName?.value || ''}
-                        addressLine1={hospital?.fields?.addressLine1?.value || ''}
-                        city={hospital?.fields?.cityOrCounty?.value || ''}
-                        postcode={hospital?.fields?.postCode?.value || ''}
-                        slug={hospital?.fields?.slug?.value || ''}
-                        array={array}
-                        setArray={setArray}
-                        distance={hospital?.distance || null}
-                        selectCardText={
-                          props?.fields?.SelectCardText?.value || 'Select'
-                        }
-                        removeCardText={
-                          props?.fields?.RemoveCardText?.value || 'Remove'
-                        }
-                        search={search}
-                        keywordId={keywordId}
-                        insurance={insurer}
-                      />
-                    ))}
-                </LocationCardsWrapper>
-              </div>
-            </StepLocationsWrapper>
+            <LocationsTopSection
+              hospitals={hospitals}
+              setHospitals={setHospitals}
+              postcodesFacilities={postcodes}
+              locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value}
+              array={array}
+              setArray={setArray}
+              slugs={slugs}
+              subheadline={
+                props?.fields?.HeadingText?.value || 'facilities & hospitals'
+              }
+              title={props?.fields?.TitleText?.value || 'Preferred locations'}
+              text={
+                props?.fields?.BodyText?.value ||
+                'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'
+              }
+              searchPlaceholderText={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Enter postcode or place name'
+              }
+              removeAllLocationsButtonText={
+                props?.fields?.RemoveAllLocationsButtonText?.value ||
+                'Remove all locations'
+              }
+              selectAllLocationsButtonText={
+                props?.fields?.SelectAllLocationsButtonText?.value ||
+                'Add all locations'
+              }
+              setCalculate={setCalculate}
+            />
+            {calculate && <LoaderCF loadingMsg="Calculating distances..." />}
+            <LocationCardsWrapper>
+              {hospitals.length > 0 &&
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                hospitals.map((hospital: any) => (
+                  <LocationCard
+                    key={hospital.id}
+                    name={hospital?.fields?.HCAName?.value || ''}
+                    addressLine1={hospital?.fields?.addressLine1?.value || ''}
+                    city={hospital?.fields?.cityOrCounty?.value || ''}
+                    postcode={hospital?.fields?.postCode?.value || ''}
+                    slug={hospital?.fields?.slug?.value || ''}
+                    array={array}
+                    setArray={setArray}
+                    distance={hospital?.distance || null}
+                    selectCardText={
+                      props?.fields?.SelectCardText?.value || 'Select'
+                    }
+                    removeCardText={
+                      props?.fields?.RemoveCardText?.value || 'Remove'
+                    }
+                    search={search}
+                    keywordId={keywordId}
+                    insurance={insurer}
+                  />
+                ))}
+            </LocationCardsWrapper>
             <Navigation>
               <TextButton>
                 <Link

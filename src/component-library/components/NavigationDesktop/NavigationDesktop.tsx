@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
@@ -16,6 +16,8 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Button from '../../core-components/Button/Button';
 import Container from '../../foundation/Containers/Container';
+import Icons from '../../foundation/Icons/Icons';
+import Modals from '../Modals/Modals';
 
 const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   const {
@@ -29,6 +31,10 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     logo,
     darkLogo
   } = props;
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [location, setLocation] = useState('London');
+  const [hydrated, setHydrated] = useState(false);
+  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
 
   // close the nav when clicking a link within
   const router = useRouter();
@@ -250,14 +256,92 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             </div>
           )}
           <div className={styles.main}>
-            <a
-              className={styles.logo}
-              href={homeUrl}
-              data-navigation-type="logoNavigation"
-            >
-              <span className="sr-only">Home</span>
-              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
-            </a>
+            <div>
+              <a
+                className={styles.logo}
+                href={homeUrl}
+                data-navigation-type="logoNavigation"
+              >
+                <span className="sr-only">Home</span>
+                {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
+              </a>
+              <TextButton theme="dark">
+                <button
+                  onClick={() =>
+                    dialogRef?.current?.show()
+                  }
+                >
+                  <Icons iconName="iconPin" />
+                  {location}
+                </button>
+              </TextButton>
+              <Modals ref={dialogRef} alignContent='center'>
+                <a href="javascript:OneTrust.ToggleInfoDisplay()">Save this location withCookie settings</a>
+                {location !== 'London' &&
+                  <Container marginRight="spacing-4" marginLeft="spacing-4">
+                    <Button
+                      size={'small'}
+                      variation={'full-dark'}
+                      contentVariation="full-width"
+                    >
+                      <button
+                        onClick={() => {
+                          dialogRef?.current?.close();
+                          // document.cookie = `location=${encodeURIComponent('London')}; path=/; max-age=31536000; SameSite=Lax`;
+                          setLocation('London');
+                        }
+                        }
+                      >
+                        <span>{'London'}</span>
+                      </button>
+                    </Button>
+                  </Container>
+                }
+                {
+                  location !== "Manchester" &&
+                  <Container marginRight="spacing-4" marginLeft="spacing-4">
+                    <Button
+                      size={'small'}
+                      variation={'full-dark'}
+                      contentVariation="full-width"
+                    >
+                      <button
+                        onClick={() => {
+                          dialogRef?.current?.close();
+                          // document.cookie = `location=${encodeURIComponent('Manchester')}; path=/; max-age=31536000; SameSite=Lax`;
+                          setLocation('Manchester');
+                        }
+                        }
+                      >
+                        <span>{'Manchester'}</span>
+                      </button>
+                    </Button>
+                  </Container>
+                }
+                {
+                  location !== 'Birmingham' &&
+                  <Container marginRight="spacing-4" marginLeft="spacing-4">
+                    <Button
+                      size={'small'}
+                      variation={'full-dark'}
+                      contentVariation="full-width"
+                    >
+                      <button
+                        onClick={() => {
+                          dialogRef?.current?.close();
+                          // document.cookie = `location=${encodeURIComponent('Birmingham')}; path=/; max-age=31536000; SameSite=Lax`;
+                          setLocation('Birmingham')
+                        }
+                        }
+                      >
+                        <span>{'Birmingham'}</span>
+                      </button>
+                    </Button>
+                  </Container>
+                }
+              </Modals>
+
+            </div>
             <ul className={styles.tabs}>
               {tabs.map((tab, tabIndex) => {
                 if (tab.hasChildren)
@@ -321,7 +405,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           </div>
         </div>
       </div>
-    </Themes>
+    </Themes >
   );
 };
 

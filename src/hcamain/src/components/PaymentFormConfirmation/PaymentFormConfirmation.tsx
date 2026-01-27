@@ -187,7 +187,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   context
 ) => {
   const { query } = context;
-  console.log(layoutData);
+  // console.log(layoutData);
   let response;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;

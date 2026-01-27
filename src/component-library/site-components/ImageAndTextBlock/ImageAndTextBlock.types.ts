@@ -29,4 +29,8 @@ export interface ImageAndTextBlockProps {
   noOverflownHidden?: boolean;
   id?: string;
   tableOfContentTitle?: string;
+  locationCookies?: any;
+  setLocation?: any;
+  hasFunctionalConsentCookie?: boolean;
+  showRegion?: boolean;
 }

@@ -16,4 +16,5 @@ export interface AccordionsProps {
   closeIcon?: IconName;
   id?: string;
   headingRef?: any;
+  isFilters?: boolean;
 }

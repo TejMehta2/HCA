@@ -8,7 +8,7 @@ import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
 
 const LocationCard = (props: LocationCardProps): JSX.Element => {
-  const { selectedLocation } = useContext(ConsultantFinderContext);
+  // const { selectedLocation } = useContext(ConsultantFinderContext);
 
   const slotDateTime: string | null = props.time || '';
   const filteredSlotDateTime: string | null = props.filteredTime || '';
