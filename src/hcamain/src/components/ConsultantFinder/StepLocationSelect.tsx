@@ -23,7 +23,6 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import SelectLocation from '@component-library/consultant-finder/SelectLocation/SelectLocation';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import axios from 'axios';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 
