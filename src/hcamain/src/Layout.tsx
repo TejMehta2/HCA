@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * This Layout is needed for Starter Kit.
  */
