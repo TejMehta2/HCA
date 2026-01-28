@@ -11,6 +11,7 @@ export interface FooterProps {
   theme?: Theme;
   buttons: JSX.Element;
   logo: any;
+  noLogo?: any;
   columns: FooterColumn[];
   legals?: JSX.Element[];
   copyright?: JSX.Element;

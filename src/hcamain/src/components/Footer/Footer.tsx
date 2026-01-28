@@ -62,10 +62,10 @@ export const Default = (props: FooterProps): JSX.Element => {
         <></>
       ),
       props.fields?.data?.item?.doctifyReviews?.targetItem &&
-      typeof window !== 'undefined' &&
-      window.location.href.indexOf(
-        process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-      ) === -1 ? (
+        typeof window !== 'undefined' &&
+        window.location.href.indexOf(
+          process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+        ) === -1 ? (
         <Doctify
           params={props.params}
           key={2}
@@ -105,12 +105,13 @@ export const Default = (props: FooterProps): JSX.Element => {
 
   return (
     <Footer
+      noLogo={props?.params?.NoLogo === '1'}
       logo={
         props?.fields?.data?.item?.logo?.jsonValue?.value &&
-        props.fields.data.item.logo.jsonValue.value['class'] !==
+          props.fields.data.item.logo.jsonValue.value['class'] !==
           'scEmptyImage' &&
-        props.fields.data.item.logo.jsonValue.value.src &&
-        props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
+          props.fields.data.item.logo.jsonValue.value.src &&
+          props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
           <NextJssImage
             editable={false}
             field={props.fields.data.item.logo.jsonValue}
