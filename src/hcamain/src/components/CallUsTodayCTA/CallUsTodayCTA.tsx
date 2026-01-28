@@ -12,6 +12,7 @@ import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatti
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ButtonVariationUnionTypes } from 'temp/component-library/core-components/Button/Button.types';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -32,7 +33,9 @@ interface Fields {
 }
 
 type CallUsTodayCTAProps = {
-  params?: Params;
+  params?: Params & {
+    BtnVariant?: string;
+  };
   fields?: Fields;
 };
 
@@ -90,9 +93,11 @@ export const Default = (props: DefaultProps): JSX.Element => {
     });
   });
 
+  const btnvariant = props.params?.BtnVariant || 'outline'
+
   return (
     <>
-      <Button size="large" variation="outline">
+      <Button size="large" variation={btnvariant.toLocaleLowerCase() as ButtonVariationUnionTypes}>
         <button onClick={() => dialogRef?.current?.showModal()}>
           {props.fields?.data?.item?.cTAText?.jsonValue && (
             <>
