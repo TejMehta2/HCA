@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { FooterProps } from './Footer.types';
 import styles from './Footer.module.scss';
