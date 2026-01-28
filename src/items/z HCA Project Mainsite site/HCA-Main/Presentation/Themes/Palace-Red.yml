@@ -1,8 +1,8 @@
 ﻿---
-ID: "10b3e54d-6e00-413e-9da6-5ff0fc0766f3"
+ID: "4eeacf3b-b4de-46b3-85c6-45de11b82d5d"
 Parent: "db2e4a4f-e2e9-4caf-b908-0d41e5f45e6e"
 Template: "fc5333c3-fdd8-4831-b992-6962fb1ee907"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation/Themes/Palace-Navy-Blue"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Themes/Palace-Red"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250515T094032Z
+      Value: 20260122T183659Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3dc5dac3-1432-4e66-bcc7-76ea63d68792"
+      Value: "4f90c105-d98f-4093-9be8-a55745eb31b0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250515T094032Z
+      Value: 20260122T183659Z
