@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { FooterProps } from './Footer.types';
 import styles from './Footer.module.scss';
@@ -36,7 +37,6 @@ const Footer = (props: FooterProps): JSX.Element => {
                   {logo || <LogoIcon />}
                 </a>
               }
-
               {contact?.phoneNumber && (
                 <div className={styles.phone}>
                   <Text tag="span" variation="body-extra-large">
