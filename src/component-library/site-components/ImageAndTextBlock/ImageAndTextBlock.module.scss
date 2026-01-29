@@ -148,8 +148,7 @@
     align-self: self-start;
   }
 
-  div:not( :has([class^='Accordion']),
-    :has(a[class^='Doctify_link'])) {
+  div:not( :has([class^='Accordion'])) {
 
     a,
     button {
