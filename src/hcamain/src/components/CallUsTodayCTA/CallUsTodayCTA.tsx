@@ -93,11 +93,14 @@ export const Default = (props: DefaultProps): JSX.Element => {
     });
   });
 
-  const btnvariant = props.params?.BtnVariant || 'outline'
+  const btnvariant = props.params?.BtnVariant || 'outline';
 
   return (
     <>
-      <Button size="large" variation={btnvariant.toLocaleLowerCase() as ButtonVariationUnionTypes}>
+      <Button
+        size="large"
+        variation={btnvariant.toLocaleLowerCase() as ButtonVariationUnionTypes}
+      >
         <button onClick={() => dialogRef?.current?.showModal()}>
           {props.fields?.data?.item?.cTAText?.jsonValue && (
             <>
