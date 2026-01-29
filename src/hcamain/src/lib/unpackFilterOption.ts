@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FilterOption } from 'src/types/searchProps';
 
 type SitecoreIdLike = string | { id?: string } | null | undefined;
