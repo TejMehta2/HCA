@@ -3,7 +3,6 @@ import {
   Field,
   Text as JssText,
   LinkField,
-  Link as JssLink,
   RichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
