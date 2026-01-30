@@ -179,7 +179,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         }
         copy1={
           props.fields?.ModalContent?.[0] && (
-            <Text variation={'body-large'}>
+            <Text variation={'body-large'} tag='div'>
               <RichText field={props.fields?.ModalContent?.[0]?.fields?.Text} />
             </Text>
           )
@@ -228,7 +228,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         }
         copy2={
           props.fields?.ModalContent?.[1] && (
-            <Text variation={'body-large'}>
+            <Text variation={'body-large'} tag='div'>
               <JssText field={props.fields?.ModalContent?.[1]?.fields?.Text} />
             </Text>
           )
