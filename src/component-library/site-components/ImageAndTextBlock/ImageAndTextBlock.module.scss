@@ -63,16 +63,12 @@
   @include responsive-grid-start($default: 1, $breakpoint-l: 8);
 
   &.content-cf {
-    @include responsive-grid-span(
-      $default: 6,
+    @include responsive-grid-span($default: 6,
       $breakpoint-l: 10,
-      $breakpoint-xl: 5
-    );
-    @include responsive-grid-start(
-      $default: 1,
+      $breakpoint-xl: 5);
+    @include responsive-grid-start($default: 1,
       $breakpoint-l: 1,
-      $breakpoint-xl: 8
-    );
+      $breakpoint-xl: 8);
   }
 
   color: var(--text);
@@ -137,7 +133,7 @@
   padding-bottom: $spacing-2;
 }
 
-.children + div .ctas {
+.children+div .ctas {
   padding-top: $spacing-7;
 }
 
@@ -152,7 +148,8 @@
     align-self: self-start;
   }
 
-  div:not(:has([class^='Accordion'])) {
+  div:not( :has([class^='Accordion'])) {
+
     a,
     button {
       width: 100%;
@@ -170,20 +167,20 @@
   @include media(screen-l) {
     grid-row: 2;
 
-    & > div:first-of-type {
+    &>div:first-of-type {
       @include responsive-grid-start($default: 1, $breakpoint-l: 7);
 
       grid-row: 1;
       padding: 0;
     }
 
-    & > div:last-of-type {
+    &>div:last-of-type {
       @include responsive-grid-start($default: 1, $breakpoint-l: 1);
     }
 
     &.long,
     &.image-narrow {
-      & > div:first-of-type {
+      &>div:first-of-type {
         @include responsive-grid-start($default: 1, $breakpoint-l: 8);
       }
     }
@@ -251,7 +248,7 @@
     flex-direction: column;
     gap: $spacing-5;
 
-    & > div {
+    &>div {
       display: flex;
       flex-direction: column;
       gap: $spacing-1;
