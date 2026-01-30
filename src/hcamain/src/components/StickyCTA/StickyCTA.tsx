@@ -13,6 +13,7 @@ import Params from 'src/types/params';
 import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
 import withKeywordIdIfNeeded from 'lib/doctify-integration/withKeywordIdIfNeeded';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
+import Link from 'next/link';
 
 type HCAIconFields = {
   fields?: {
@@ -205,14 +206,14 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <a href={href} target={link.value.target}>
+                    <Link href={href} target={link.value.target}>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.fields?.SvgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
-                    </a>
+                    </Link>
                   </Button>
                 );
               })}
@@ -254,14 +255,14 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <a href={href} target={link.value.target}>
+                    <Link href={href} target={link.value.target}>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.fields?.SvgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
-                    </a>
+                    </Link>
                   </Button>
                 );
               })}
