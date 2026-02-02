@@ -11,7 +11,7 @@ import ModalAppointment from '@component-library/components/ModalAppointment/Mod
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
-import withKeywordIdIfNeeded from 'lib/doctify-integration/withKeywordIdIfNeeded';
+import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
 
 type HCAIconFields = {
   fields?: {
