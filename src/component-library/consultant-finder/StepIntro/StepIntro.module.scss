@@ -1,0 +1,16 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.step-intro {
+    background-color: $navy-blue-100;
+    padding: $spacing-14;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+}

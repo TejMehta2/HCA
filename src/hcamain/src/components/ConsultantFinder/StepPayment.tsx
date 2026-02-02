@@ -65,6 +65,7 @@ export const Default = (props: StepProps): JSX.Element => {
     setIsSelfPayment,
     isSelfPayment,
     selectedInsurerPaymentStep,
+    searchStringLocations
   } = useContext(ConsultantFinderContext);
   const [search, setSearch] = useState('');
   const [showContinueBtn, setShowContinueBtn] = useState(!(searchStringPayment === '' && !isSelfPayment));
@@ -145,14 +146,21 @@ export const Default = (props: StepProps): JSX.Element => {
                       setSearchStringPayment('');
                       setShowContinueBtn(false);
                       if (!isMobile()) {
-                        router.push(
-                          `${props.fields.NextLink.value.href ||
-                          '/finder/step-locations'
-                          }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                            ? `&insurer=${'selfPay'}`
-                            : `&insurer=${selectedInsurerPaymentStep}`
-                          }`
-                        )
+                        if (searchStringLocations === 'Birmingham') {
+                          router.push(
+                            `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`
+                          )
+                        }
+                        else {
+                          router.push(
+                            `${props.fields.NextLink.value.href ||
+                            '/finder/step-locations'
+                            }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                              ? `&insurer=${'selfPay'}`
+                              : `&insurer=${selectedInsurerPaymentStep}`
+                            }`
+                          )
+                        }
                       }
                     }
                     setIsSelfPayment(e.target.checked);

@@ -64,7 +64,11 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         cta={
           props?.fields?.CTAText?.value && (
             <Button size="large" variation="full">
-              <button onClick={() => dialogRef?.current?.showModal()}>
+              <button onClick={() => {
+                dialogRef?.current?.showModal();
+                console.log(dialogRef);
+              }
+              }>
                 <>
                   <span
                     dangerouslySetInnerHTML={{
@@ -112,35 +116,35 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
             <>
               {props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA?.value
                 ?.text && (
-                <Button
-                  size={'large'}
-                  contentVariation={'full-width'}
-                  variation={'full'}
-                >
-                  <JssLink
-                    field={props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA}
-                    onClick={() => dialogRef?.current?.close()}
+                  <Button
+                    size={'large'}
+                    contentVariation={'full-width'}
+                    variation={'full'}
                   >
-                    <>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            props?.fields?.ModalContent?.[0]?.fields
-                              ?.PrimaryCTAIcon?.fields?.SvgMarkup?.value || '',
-                        }}
-                      ></span>
-                      <RichText
-                        tag="span"
-                        field={{
-                          value:
-                            props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA
-                              .value?.text,
-                        }}
-                      />
-                    </>
-                  </JssLink>
-                </Button>
-              )}
+                    <JssLink
+                      field={props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA}
+                      onClick={() => dialogRef?.current?.close()}
+                    >
+                      <>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props?.fields?.ModalContent?.[0]?.fields
+                                ?.PrimaryCTAIcon?.fields?.SvgMarkup?.value || '',
+                          }}
+                        ></span>
+                        <RichText
+                          tag="span"
+                          field={{
+                            value:
+                              props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA
+                                .value?.text,
+                          }}
+                        />
+                      </>
+                    </JssLink>
+                  </Button>
+                )}
 
               {props.fields?.ModalContent?.[0] &&
                 props.fields?.ModalContent?.[0]?.fields?.SecondaryCTA?.value
@@ -196,64 +200,64 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
             <>
               {props.fields?.ModalContent?.[1]?.fields?.PrimaryCTA?.value
                 ?.text && (
-                <Button
-                  size={'large'}
-                  contentVariation={'full-width'}
-                  variation={'full'}
-                >
-                  <JssLink
-                    field={props.fields?.ModalContent?.[1]?.fields?.PrimaryCTA}
+                  <Button
+                    size={'large'}
+                    contentVariation={'full-width'}
+                    variation={'full'}
                   >
-                    <>
+                    <JssLink
+                      field={props.fields?.ModalContent?.[1]?.fields?.PrimaryCTA}
+                    >
+                      <>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props.fields?.ModalContent?.[1]?.fields
+                                ?.PrimaryCTAIcon?.fields?.SvgMarkup?.value || '',
+                          }}
+                        ></span>
+                        <RichText
+                          tag="span"
+                          field={{
+                            value:
+                              props.fields?.ModalContent?.[1]?.fields?.PrimaryCTA
+                                .value?.text,
+                          }}
+                        />
+                      </>
+                    </JssLink>
+                  </Button>
+                )}
+              {props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA?.value
+                ?.text && (
+                  <Button
+                    size={'large'}
+                    contentVariation={'full-width'}
+                    variation={'outline'}
+                  >
+                    <JssLink
+                      field={
+                        props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA
+                      }
+                    >
                       <span
                         dangerouslySetInnerHTML={{
                           __html:
                             props.fields?.ModalContent?.[1]?.fields
-                              ?.PrimaryCTAIcon?.fields?.SvgMarkup?.value || '',
+                              ?.SecondaryCTAIcon?.fields?.SvgMarkup?.value || '',
                         }}
                       ></span>
                       <RichText
                         tag="span"
                         field={{
                           value:
-                            props.fields?.ModalContent?.[1]?.fields?.PrimaryCTA
-                              .value?.text,
+                            props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA
+                              ?.value?.text,
                         }}
                       />
-                    </>
-                  </JssLink>
-                </Button>
-              )}
-              {props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA?.value
-                ?.text && (
-                <Button
-                  size={'large'}
-                  contentVariation={'full-width'}
-                  variation={'outline'}
-                >
-                  <JssLink
-                    field={
-                      props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA
-                    }
-                  >
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          props.fields?.ModalContent?.[1]?.fields
-                            ?.SecondaryCTAIcon?.fields?.SvgMarkup?.value || '',
-                      }}
-                    ></span>
-                    <RichText
-                      tag="span"
-                      field={{
-                        value:
-                          props.fields?.ModalContent?.[1]?.fields?.SecondaryCTA
-                            ?.value?.text,
-                      }}
-                    />
-                  </JssLink>
-                </Button>
-              )}
+                    </JssLink>
+                  </Button>
+                )}
             </>
           )
         }

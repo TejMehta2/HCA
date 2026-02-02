@@ -11,13 +11,14 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Search from '@component-library/consultant-finder/Search/Search';
-import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
+import SearchAll from '@component-library/consultant-finder/Search/SearchAll';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Container from '@component-library/foundation/Containers/Container';
+import StepIntro from '@component-library/consultant-finder/StepIntro/StepIntro';
+import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 
 interface Fields {
   QuickSearchLink: LinkField;
@@ -30,6 +31,7 @@ interface Fields {
   API_Autocomplete_NoResultsMsg: Field<string>;
   ConditionsTreatmentsFilterHeaderText: Field<string>;
   SpecialitiesFilterHeaderText: Field<string>;
+  SpecialistsFilterHeaderText: Field<string>;
   HeadingText: Field<string>;
   FindConsultantHeaderText: Field<string>;
   TitleText: Field<string>;
@@ -40,6 +42,7 @@ interface Fields {
   BackLink: LinkField;
   SearchIcon: any;
   ConditionsTreatmentsList: any;
+  PopularConsultantsList: any;
   SpecialitiesList: any;
 }
 
@@ -59,80 +62,233 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const id = props.params.RenderingIdentifier;
-  const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
+  const { searchString, setSearchString, setKeywordId, keywordId, searchStringLocations, setSearchStringLocations } = useContext(
     ConsultantFinderContext
   );
   const [location, setLocation] = useState('London');
-
-  // const readCookie = (name: string) => {
-  //   if (typeof document === "undefined") return null;
-  //   const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-  //   return m ? decodeURIComponent(m[1]) : null;
-  // };
-
-  // const setLocationCookie = (value: string) => {
-  //   document.cookie = `location=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
-  // };
-
-  // const deleteLocationCookie = () => {
-  //   // delete with the SAME attributes you used to set it
-  //   document.cookie = "location=; path=/; max-age=0; SameSite=Lax";
-
-  //   // also try deleting without path (covers a common “duplicate cookie” case)
-  //   document.cookie = "location=; max-age=0; SameSite=Lax";
-  // };
-
-  // useEffect(() => {
-  //   if (typeof window === "undefined") return;
-  //   const groups = (window as any).OnetrustActiveGroups || "";
-  //   const hasFunctionalConsent = groups.includes("C0003");
-  //   console.log('hasFunctionalConsent', hasFunctionalConsent);
-
-  //   if (hasFunctionalConsent) {
-  //     const saved = readCookie("location");
-  //     console.log('saved', saved);
-  //     if (saved) setLocation(saved);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (typeof window === "undefined") return;
-
-  //   const handleConsentChange = () => {
-  //     const groups = (window as any).OnetrustActiveGroups || "";
-  //     const hasFunctionalConsent = groups.includes("C0003");
-  //     console.log('hasFunctionalConsent', hasFunctionalConsent);
-
-  //     console.log("BEFORE:", { cookie: readCookie("location"), all: document.cookie });
-
-  //     if (!hasFunctionalConsent) {
-  //       deleteLocationCookie();
-  //       console.log("AFTER DELETE:", { cookie: readCookie("location"), all: document.cookie });
-  //       setTimeout(() => {
-  //         console.log("NEXT TICK AFTER DELETE:", { cookie: readCookie("location"), all: document.cookie });
-  //       }, 0);
-  //       return;
-  //     }
-
-  //     if (location) {
-  //       setLocationCookie(location);
-  //       setLocation(readCookie("location"));
-  //       console.log("AFTER SET:", { cookie: readCookie("location"), all: document.cookie });
-  //       setTimeout(() => {
-  //         console.log("NEXT TICK AFTER SET:", { cookie: readCookie("location"), all: document.cookie });
-  //       }, 0);
-  //     }
-  //   };
-
-  //   handleConsentChange();
-  //   window.addEventListener("OneTrustGroupsUpdated", handleConsentChange);
-  //   return () => window.removeEventListener("OneTrustGroupsUpdated", handleConsentChange);
-  // }, [location]);
 
   // const [location, setLocation] = useState<string>("London");
   const [hydrated, setHydrated] = useState(false);
   const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
   const [searchConsultant, setSearchConsultant] = useState(false);
+
+
+  const popularSearch = [
+    {
+      "id": "776af934-062e-47ca-b015-6b9e63e2920c",
+      "url": "/finder/data/popularsearchesconsultants/mr-andrew-goldberg",
+      "name": "mr-andrew-goldberg",
+      "displayName": "mr-andrew-goldberg",
+      "fields": {
+        "firstName": {
+          "value": "Andrew"
+        },
+        "id": {
+          "value": 6254
+        },
+        "lastName": {
+          "value": "Goldberg OBE"
+        },
+        "slug": {
+          "value": "mr-andrew-goldberg"
+        },
+        "specialty": {
+          "value": "Orthopaedic Surgery"
+        },
+        "suffix": {
+          "value": "MD MBBS FRCS FRCSI FRCS(Tr&Orth)"
+        },
+        "title": {
+          "value": "Mr"
+        },
+        "Key": {
+          "value": "mr-andrew-goldberg"
+        },
+        "Order": {
+          "value": 1
+        },
+        "Type": {
+          "value": "Consultant"
+        },
+        "Value": {
+          "value": "Mr Andrew Goldberg OBE"
+        }
+      }
+    },
+    {
+      "id": "27ddeea3-0636-4332-9541-07b4c9f740c5",
+      "url": "/finder/data/popularsearchesconsultants/mr-sam-singh",
+      "name": "mr-sam-singh",
+      "displayName": "mr-sam-singh",
+      "fields": {
+        "firstName": {
+          "value": "Sam"
+        },
+        "id": {
+          "value": 7384
+        },
+        "lastName": {
+          "value": "Singh"
+        },
+        "slug": {
+          "value": "mr-sam-singh"
+        },
+        "specialty": {
+          "value": "Orthopaedic Surgery"
+        },
+        "suffix": {
+          "value": "MA MRCS FRCS(Orth)"
+        },
+        "title": {
+          "value": "Mr"
+        },
+        "Key": {
+          "value": "mr-sam-singh"
+        },
+        "Order": {
+          "value": 2
+        },
+        "Type": {
+          "value": "Consultant"
+        },
+        "Value": {
+          "value": "Mr Sam Singh"
+        }
+      }
+    },
+    {
+      "id": "53ce99ec-f8e2-4672-afcf-6b47191b957f",
+      "url": "/finder/data/popularsearchesconsultants/mr-christian-brown",
+      "name": "mr-christian-brown",
+      "displayName": "mr-christian-brown",
+      "fields": {
+        "firstName": {
+          "value": "Christian"
+        },
+        "id": {
+          "value": 262
+        },
+        "lastName": {
+          "value": "Brown"
+        },
+        "slug": {
+          "value": "mr-christian-brown"
+        },
+        "specialty": {
+          "value": "Urology"
+        },
+        "suffix": {
+          "value": "BSc MD FRCS (Urol)"
+        },
+        "title": {
+          "value": "Mr"
+        },
+        "Key": {
+          "value": "mr-christian-brown"
+        },
+        "Order": {
+          "value": 3
+        },
+        "Type": {
+          "value": "Consultant"
+        },
+        "Value": {
+          "value": "Mr Christian Brown"
+        }
+      }
+    },
+    {
+      "id": "c812cbe2-ad49-4ba3-bd5e-d9d8a5434844",
+      "url": "/finder/data/popularsearchesconsultants/dr-ajai-seth",
+      "name": "dr-ajai-seth",
+      "displayName": "dr-ajai-seth",
+      "fields": {
+        "firstName": {
+          "value": "Ajai"
+        },
+        "id": {
+          "value": 2988
+        },
+        "lastName": {
+          "value": "Seth"
+        },
+        "slug": {
+          "value": "dr-ajai-seth"
+        },
+        "specialty": {
+          "value": "Sports & Exercise Medicine"
+        },
+        "suffix": {
+          "value": "MBBS BSc MSc MRCS MRCGP FFSEM"
+        },
+        "title": {
+          "value": "Dr"
+        },
+        "Key": {
+          "value": "dr-ajai-seth"
+        },
+        "Order": {
+          "value": 4
+        },
+        "Type": {
+          "value": "Consultant"
+        },
+        "Value": {
+          "value": "Dr Ajai Seth"
+        }
+      }
+    },
+    {
+      "id": "7ea6a97e-8544-4895-8a33-f94e9ae14be9",
+      "url": "/finder/data/popularsearchesconsultants/dr-nisith-sheth",
+      "name": "dr-nisith-sheth",
+      "displayName": "dr-nisith-sheth",
+      "fields": {
+        "firstName": {
+          "value": "Nisith"
+        },
+        "id": {
+          "value": 3870
+        },
+        "lastName": {
+          "value": "Sheth"
+        },
+        "slug": {
+          "value": "dr-nisith-sheth"
+        },
+        "specialty": {
+          "value": "Dermatology"
+        },
+        "suffix": {
+          "value": "MBBS, FRCP(UK), CCST(Derm)"
+        },
+        "title": {
+          "value": "Dr"
+        },
+        "Key": {
+          "value": "dr-nisith-sheth"
+        },
+        "Order": {
+          "value": 5
+        },
+        "Type": {
+          "value": "Consultant"
+        },
+        "Value": {
+          "value": "Dr Nisith Sheth"
+        }
+      }
+    }
+  ]
+
+  const mappedDoctors = popularSearch.map(item => ({
+    id: item.fields.id.value,
+    firstName: item.fields.firstName.value,
+    lastName: item.fields.lastName.value,
+    slug: item.fields.slug.value
+  }));
+
+  console.log('mappedDoctors', mappedDoctors);
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || "";
@@ -167,7 +323,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
       const saved = readCookie("location");
       if (saved) setLocation(saved);
+      console.log('saved', saved);
       setFunctionalConsentCookie(true);
+      setSearchStringLocations(saved || 'Anywhere');
       setHydrated(true);
     };
 
@@ -182,8 +340,8 @@ export const Default = (props: StepProps): JSX.Element => {
     if (typeof window === "undefined") return;
     if (!hasFunctionalConsent()) return;
 
-    setLocationCookie(location);
-  }, [location, hydrated]);
+    setLocationCookie(searchStringLocations);
+  }, [searchStringLocations, hydrated]);
 
   // 3) If consent revoked later, delete the cookie
   useEffect(() => {
@@ -206,10 +364,18 @@ export const Default = (props: StepProps): JSX.Element => {
     return () => window.removeEventListener("OneTrustGroupsUpdated", onConsentChange);
   }, []);
 
-  const handleClickQuickSearch = () => {
+  const handleClickQuickSearch = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
 
     const locationConfig: Record<string, { lat: number; lon: number; distance: number }> = {
+      Anywhere: {
+        lat: 51.507217,
+        lon: -0.1275862,
+        distance: 0
+      },
       London: {
         lat: 51.507217,
         lon: -0.1275862,
@@ -227,7 +393,7 @@ export const Default = (props: StepProps): JSX.Element => {
       },
     };
 
-    const selectedLocation = location ?? "London";
+    const selectedLocation = searchStringLocations ?? "London";
 
     const { lat, lon, distance } =
       locationConfig[selectedLocation] || locationConfig.London;
@@ -245,7 +411,9 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
 
-  const handleClickAdvanceSearch = () => {
+  const handleClickAdvanceSearch = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
     router.push({
       pathname: props.fields.AdvancedSearchLink.value.href,
       query: { keywordId: keywordId, searchString: searchString },
@@ -255,149 +423,92 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        <a href="javascript:OneTrust.ToggleInfoDisplay()">x</a>
-        <ImageAndTextBlock
-          contentVariation={'hero-cf'}
-          locationCookies={location ?? 'London'}
-          showRegion={true}
-          hasFunctionalConsentCookie={hasFunctionalConsentCookie}
-          setLocation={setLocation}
-          noOverflownHidden={true}
-          theme="A-HCA-White"
-          imageAlignment="left"
-          length="short"
-          cfVariation={true}
-          subheader={
-            <Text tag="h3" variation="subheading-1">
-              <JssRichText field={props.fields.HeadingText} />
-            </Text>
-          }
-          header={
-            <Text tag="h2" variation="display-2">
-              <JssRichText field={props.fields.TitleText} />
-            </Text>
-          }
-          image={<JssImage field={props.fields.CardImage} />}
-        >
-          <Text tag="div" variation="body-large">
-            <JssRichText field={props.fields.BodyText} />
-          </Text>
-
-
-
-
-          {
-            !searchConsultant &&
-            <form autoComplete="off">
-              <Search
-                placeholder={
-                  props?.fields?.SearchPlaceholderText?.value ||
-                  'Type in a service, condition, treatment...'
-                }
-                doctifyBaseURL={
-                  props?.fields?.API_Autocomplete_BaseURL?.value ||
-                  'https://api.doctify.com/api/hca/search/autocomplete?search'
-                }
+        <a href="javascript:OneTrust.ToggleInfoDisplay()">Activate functional cookies</a>
+        <StepIntro
+          search={
+            <><SearchAll
+              placeholder={props?.fields?.SearchPlaceholderText?.value ||
+                'Type in a service, condition, treatment...'}
+              doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/search/autocomplete?search'}
+              limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+              noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                'No matches found, please try typing something else.'}
+              specialistsLabel={props?.fields?.SpecialistsFilterHeaderText?.value ||
+                'Specialists'}
+              specialtyLabel={props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                'Specialties'}
+              conditionsProceduresLabel={props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
+                'Conditions/ Procedures'}
+              setKeywordId={setKeywordId}
+              searchString={searchString}
+              setSearchString={setSearchString}
+              searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
+              conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
+              specialistsList={mappedDoctors}
+              specialitiesList={props?.fields?.SpecialitiesList || []}
+              popularConsultantsList={props?.fields?.PopularConsultantsList || []}
+              loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                'Loading...'} />
+              <SearchLocation
+                placeholder={props?.fields?.SearchPlaceholderText?.value ||
+                  'Type in a service, condition, treatment...'}
+                doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
+                  'https://api.doctify.com/api/hca/search/autocomplete?search'}
                 limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-                noResultsMsg={
-                  props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                  'No matches found, please try typing something else.'
-                }
-                specialtyLabel={
-                  props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                  'Specialties'
-                }
-                conditionsProceduresLabel={
-                  props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
-                  'Conditions/ Procedures'
-                }
+                noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                  'No matches found, please try typing something else.'}
+                specialistsLabel={props?.fields?.SpecialistsFilterHeaderText?.value ||
+                  'Specialists'}
+                specialtyLabel={props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                  'Specialties'}
+                conditionsProceduresLabel={props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
+                  'Conditions/ Procedures'}
                 setKeywordId={setKeywordId}
-                searchString={searchString}
-                setSearchString={setSearchString}
-                searchIcon={
-                  props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
-                }
-                conditionsTreatmentsList={
-                  props?.fields?.ConditionsTreatmentsList || []
-                }
+                searchString={searchStringLocations}
+                setSearchString={setSearchStringLocations}
+                searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
+                conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
+                specialistsList={mappedDoctors}
                 specialitiesList={props?.fields?.SpecialitiesList || []}
-                loadingText={
-                  props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                  'Loading...'
-                }
-              />
-            </form>
+                popularConsultantsList={props?.fields?.PopularConsultantsList || []}
+                loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                  'Loading...'} /></>
           }
+        >
           {
-            !searchConsultant &&
-            <div>
-              <Container
-                marginBottom="spacing-4"
-                displayFlex="displayFlex"
-                withButtons={true}
-                customBtnDesktop={true}
+            !hasFunctionalConsentCookie &&
+            <div
+              style={{
+                color: "#ffffff",
+                padding: "9px 24px",
+                background: "#21304A",
+                textAlign: "center",
+                marginBottom: "40px",
+                display: "inline-block",
+                borderRadius: "8px"
+              }}
+            >
+              Save this location for next time?{" "}
+              <a
+                href="#"
+                onClick={() => {
+                  // @ts-ignore – OneTrust is loaded globally
+                  OneTrust.ToggleInfoDisplay();
+                }}
+                style={{
+                  color: "#ffffff",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }}
               >
-                <Button
-                  size={'small'}
-                  variation={'full-dark'}
-                  contentVariation="full-width"
-                >
-                  <button
-                    disabled={keywordId === 0 ? true : false}
-                    onClick={handleClickQuickSearch}
-                  >
-                    <Icons iconName="iconSearch" />
-                    <span>{props.fields.QuickSearchLink.value.text}</span>
-                  </button>
-                </Button>
-
-                <Button
-                  size={'small'}
-                  variation={'outline-dark'}
-                  contentVariation="full-width"
-                >
-                  <button
-                    disabled={keywordId === 0 ? true : false}
-                    onClick={handleClickAdvanceSearch}
-                  >
-                    <Icons iconName="iconAdvanced" />
-                    <span>{props.fields.AdvancedSearchLink.value.text}</span>
-                  </button>
-                </Button>
-              </Container>
-
-              <Container marginBottom="spacing-2">
-                <Text tag="h2" variation="heading-2">
-                  {props.fields.FindConsultantHeaderText.value}
-                </Text>
-              </Container>
-              {/* 
-              <TextButton theme="dark">
-                <button
-                  onClick={() =>
-                    router.push({
-                      pathname: props.fields.SearchByConsultantLink.value.href,
-                      query: { keywordId: keywordId, searchString: searchString },
-                    })
-                  }
-                >
-                  {props.fields.SearchByConsultantLink.value.text}
-                  <Icons iconName="iconArrowSmallRight" />
-                </button>
-              </TextButton> */}
-              <TextButton theme="dark">
-                <button
-                  onClick={() =>
-                    setSearchConsultant(true)
-                  }
-                >
-                  <Icons iconName="iconEdit" />
-                  {'Search consultant'}
-                </button>
-              </TextButton>
+                Activate functional cookies
+              </a>
             </div>
           }
-          {/* <Container
+
+
+          <Container
             marginBottom="spacing-4"
             displayFlex="displayFlex"
             withButtons={true}
@@ -405,11 +516,11 @@ export const Default = (props: StepProps): JSX.Element => {
           >
             <Button
               size={'small'}
-              variation={'full-dark'}
+              variation={'full-light'}
               contentVariation="full-width"
             >
               <button
-                disabled={keywordId === 0 ? true : false}
+                // disabled={keywordId === 0 ? true : false}
                 onClick={handleClickQuickSearch}
               >
                 <Icons iconName="iconSearch" />
@@ -419,11 +530,11 @@ export const Default = (props: StepProps): JSX.Element => {
 
             <Button
               size={'small'}
-              variation={'outline-dark'}
+              variation={'outline-light'}
               contentVariation="full-width"
             >
               <button
-                disabled={keywordId === 0 ? true : false}
+                // disabled={keywordId === 0 ? true : false}
                 onClick={handleClickAdvanceSearch}
               >
                 <Icons iconName="iconAdvanced" />
@@ -432,83 +543,8 @@ export const Default = (props: StepProps): JSX.Element => {
             </Button>
           </Container>
 
-          <Container marginBottom="spacing-2">
-            <Text tag="h2" variation="heading-2">
-              {props.fields.FindConsultantHeaderText.value}
-            </Text>
-          </Container>
 
-          <TextButton theme="dark">
-            <button
-              onClick={() =>
-                router.push({
-                  pathname: props.fields.SearchByConsultantLink.value.href,
-                  query: { keywordId: keywordId, searchString: searchString },
-                })
-              }
-            >
-              {props.fields.SearchByConsultantLink.value.text}
-              <Icons iconName="iconArrowSmallRight" />
-            </button>
-          </TextButton> */}
-
-          {
-            searchConsultant &&
-            <form autoComplete="off">
-              <Search
-                placeholder={
-
-                  'Search for a consultant'
-                }
-                doctifyBaseURL={
-                  props?.fields?.API_Autocomplete_BaseURL?.value ||
-                  'https://api.doctify.com/api/hca/search/autocomplete?search'
-                }
-                limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-                noResultsMsg={
-                  props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                  'No matches found, please try typing something else.'
-                }
-                specialtyLabel={
-                  props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                  'Specialties'
-                }
-                conditionsProceduresLabel={
-                  'Search Consultant'
-                }
-                setKeywordId={setKeywordId}
-                searchString={searchString}
-                setSearchString={setSearchString}
-                searchIcon={
-                  props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
-                }
-                conditionsTreatmentsList={
-                  props?.fields?.ConditionsTreatmentsList || []
-                }
-                specialitiesList={props?.fields?.SpecialitiesList || []}
-                loadingText={
-                  props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                  'Loading...'
-                }
-              />
-
-
-
-              <TextButton theme="dark">
-                <button
-                  onClick={() =>
-                    setSearchConsultant(false)
-                  }
-                >
-                  <Icons iconName="iconEdit" />
-                  {'Search consultant by condition, treatment, specialty'}
-                </button>
-              </TextButton>
-
-            </form>
-
-          }
-        </ImageAndTextBlock>
+        </StepIntro>
       </div>
     );
   }

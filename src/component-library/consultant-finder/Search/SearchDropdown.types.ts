@@ -21,4 +21,5 @@ export default interface SearchDropdownProps {
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
   nextLink?: string;
+  dataSpecialists?: any;
 }

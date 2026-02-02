@@ -25,4 +25,6 @@ export default interface SearchProps {
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
   nextLink?: string;
+  specialistsLabel?: string;
+  specialistsList?: any;
 }
