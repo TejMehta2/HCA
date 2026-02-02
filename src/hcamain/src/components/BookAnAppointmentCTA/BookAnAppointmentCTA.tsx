@@ -5,15 +5,13 @@ import {
   LinkField,
   RichText,
   useSitecoreContext,
-  LinkFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-import { resolveSitecoreLink } from 'lib/utility-functions/resolveSitecoreLink';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
+import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
 
 type HCAIconFields = {
   fields?: {
@@ -55,32 +53,6 @@ type RouteFields = {
   DoctifyKeywordId?: Field<string>;
 };
 
-type LinkFieldValueWithId = LinkFieldValue & { id?: string };
-
-function withKeywordIdIfNeeded(
-  linkField?: LinkField,
-  keywordId?: string
-): string {
-  const v = linkField?.value as LinkFieldValueWithId | undefined;
-  if (!v?.href) return '';
-
-  const id = generateHtmlSafeId(v.id || undefined);
-  if (id !== generateHtmlSafeId(process.env.FINDER_CONSULTANTCARDS_PAGE_ID))
-    return resolveSitecoreLink(v);
-  if (!keywordId) return resolveSitecoreLink(v);
-
-  // Cloning props
-  const next: LinkFieldValue = { ...v };
-
-  // Add keywordid to querystring (preserve existing querystring)
-  const existingQs = (next.querystring ?? '').replace(/^\?/, '').trim();
-  const params = new URLSearchParams(existingQs);
-  params.set('keywordId', keywordId);
-
-  next.querystring = params.toString();
-  return resolveSitecoreLink(next);
-}
-
 const BookAnAppointmentCTADefaultComponent = (
   props: BookAnAppointmentCTAProps
 ): JSX.Element => {
@@ -99,6 +71,7 @@ const BookAnAppointmentCTADefaultComponent = (
   }
   return <></>;
 };
+
 export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { sitecoreContext } = useSitecoreContext();
@@ -110,6 +83,8 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
   if (!props.fields) {
     return <BookAnAppointmentCTADefaultComponent {...props} />;
   }
+
+  if (!props.fields?.ModalContent) return <></>;
 
   const firstModal = props.fields?.ModalContent?.[0]?.fields;
   const secondModal = props.fields?.ModalContent?.[1]?.fields;
@@ -159,8 +134,6 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
       buttonVariation: secondModal?.QuaternaryCTAVariant?.name ?? 'outline',
     },
   ];
-
-  if (!props.fields?.ModalContent) return <></>;
 
   return (
     <>

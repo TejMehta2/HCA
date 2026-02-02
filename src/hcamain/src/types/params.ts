@@ -51,5 +51,6 @@ interface Params {
   TableOfContentsLinkTitle?: string;
   DisableHeadersToggle?: '1' | '0'; // Appears only on images in IntroBlock and ImageAndTextBlock
   HeadingBeforeTitle?: '1' | '0';
+  NoLogo?: '1' | '0';
 }
 export default Params;
