@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef } from 'react';
 import {
   Field,
@@ -11,8 +12,9 @@ import ModalAppointment from '@component-library/components/ModalAppointment/Mod
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
-import withKeywordIdIfNeeded from 'lib/doctify-integration/withKeywordIdIfNeeded';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
+import Link from 'next/link';
+import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
 
 type HCAIconFields = {
   fields?: {
@@ -141,7 +143,13 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         cta={
           props?.fields?.CTAText?.value && (
             <Button size="large" variation="full">
-              <button onClick={() => dialogRef?.current?.showModal()}>
+              <button onClick={() => {
+                dialogRef?.current?.showModal();
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}>
                 <>
                   <span
                     dangerouslySetInnerHTML={{
@@ -179,7 +187,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         }
         copy1={
           props.fields?.ModalContent?.[0] && (
-            <Text variation={'body-large'}>
+            <Text variation={'body-large'} tag="div">
               <RichText field={props.fields?.ModalContent?.[0]?.fields?.Text} />
             </Text>
           )
@@ -205,14 +213,14 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <a href={href} target={link.value.target}>
+                    <Link href={href} target={link.value.target}>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.fields?.SvgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
-                    </a>
+                    </Link>
                   </Button>
                 );
               })}
@@ -228,7 +236,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         }
         copy2={
           props.fields?.ModalContent?.[1] && (
-            <Text variation={'body-large'}>
+            <Text variation={'body-large'} tag="div">
               <JssText field={props.fields?.ModalContent?.[1]?.fields?.Text} />
             </Text>
           )
@@ -254,14 +262,14 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <a href={href} target={link.value.target}>
+                    <Link href={href} target={link.value.target}>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.fields?.SvgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
-                    </a>
+                    </Link>
                   </Button>
                 );
               })}
