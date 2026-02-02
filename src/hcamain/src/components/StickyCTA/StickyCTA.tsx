@@ -143,7 +143,6 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
           props?.fields?.CTAText?.value && (
             <Button size="large" variation="full">
               <button onClick={() => {
-                console.log('test');
                 dialogRef?.current?.showModal();
                 window.scrollTo({
                   top: 0,
