@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef } from 'react';
 import {
   Field,
@@ -141,7 +142,13 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         cta={
           props?.fields?.CTAText?.value && (
             <Button size="large" variation="full">
-              <button onClick={() => dialogRef?.current?.showModal()}>
+              <button onClick={() => {
+                dialogRef?.current?.showModal();
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}>
                 <>
                   <span
                     dangerouslySetInnerHTML={{
