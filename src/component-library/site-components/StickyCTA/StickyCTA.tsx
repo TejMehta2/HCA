@@ -11,6 +11,10 @@ const StickyCTA = (props: StickyCTAProps): JSX.Element => {
   const stickyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     //  Hide the component until the user has started scrolling
     const handleScroll = () => {
       if (window.scrollY >= window.innerHeight) {
