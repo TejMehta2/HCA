@@ -45,7 +45,7 @@
 .title {
   display: flex;
   gap: px-to-rem(8);
-  color: $navy-blue-80;
+  // color: $navy-blue-80;
 }
 
 .icon {
@@ -63,6 +63,10 @@
       display: none;
     }
 
+    // .title {
+    //   color: $white;
+    // }
+
     .dark-logo {
       display: block;
     }
@@ -76,6 +80,10 @@
     .light-logo {
       display: block;
     }
+
+    // .title {
+    //   color: $navy-blue-80;
+    // }
 
     .dark-logo {
       display: none;
