@@ -335,7 +335,11 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             image={
                               cardImageSrc !== undefined ? (
                                 <Image
-                                  src={upsertQuerystringParam(cardImageSrc || '', 't', 'w750')}
+                                  src={upsertQuerystringParam(
+                                    cardImageSrc || '',
+                                    't',
+                                    'w750'
+                                  )}
                                   alt=""
                                   width="363"
                                   height="243"
