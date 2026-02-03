@@ -457,16 +457,12 @@
   --reviews-stars: #{$teal-100};
 
   @include apply-tag-palace-white;
-  @include apply-cta-palace-full-red(
-    #{$white},
+  @include apply-cta-palace-full-red(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-palace-outline-red(
-    #{$white},
+    #{$navy-blue-100});
+  @include apply-cta-palace-outline-red(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$palace-red-20});
   @include apply-pagination-palace-white;
   @include apply-controls-palace;
@@ -499,11 +495,9 @@
   @include apply-pagination-grey;
   @include apply-controls-palace;
   @include apply-cta-palace-full-red(#{$palace-red-100}, #{$white}, #{$white});
-  @include apply-cta-palace-outline-red(
-    #{$palace-red-100},
+  @include apply-cta-palace-outline-red(#{$palace-red-100},
     #{$white},
-    #{$white}
-  );
+    #{$white});
   @include apply-cta-carousel-palace-light;
 
   --filter-button-1: #{$grey-90};
@@ -529,16 +523,12 @@
   --table-color: #{$white};
   --reviews-stars: #{$teal-100};
 
-  @include apply-cta-palace-full-red(
-    #{$tangerine-20},
+  @include apply-cta-palace-full-red(#{$tangerine-20},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-palace-outline-red(
-    #{$tangerine-20},
+    #{$navy-blue-100});
+  @include apply-cta-palace-outline-red(#{$tangerine-20},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
 
   @include apply-tag-palace-beige;
   @include apply-tabs(#{$orange-100});
@@ -601,16 +591,12 @@
   --reviews-stars: #{$chelsea-gold-100};
 
   @include apply-tag-chelsea-white;
-  @include apply-cta-chelsea-full(
-    #{$white},
+  @include apply-cta-chelsea-full(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-chelsea-outline(
-    #{$chelsea-gold-100},
+    #{$navy-blue-100});
+  @include apply-cta-chelsea-outline(#{$chelsea-gold-100},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$chelsea-gold-80});
   @include apply-pagination-chelsea-gold-80;
   @include apply-controls-chelsea;
@@ -670,16 +656,12 @@
   --table-color: #{$chelsea-gold-20};
   --reviews-stars: #{$chelsea-gold-100};
 
-  @include apply-cta-chelsea-full(
-    #{$white},
+  @include apply-cta-chelsea-full(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-chelsea-outline(
-    #{$chelsea-gold-100},
+    #{$navy-blue-100});
+  @include apply-cta-chelsea-outline(#{$chelsea-gold-100},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
 
   @include apply-tag-chelsea-beige;
   @include apply-tabs(#{$chelsea-gold-80});
@@ -715,7 +697,9 @@
   @include apply-tabs($purple-100);
   @include apply-pagination-lbi;
   @include apply-controls-medium;
+  @include apply-cqc-light;
 
+  --cqc-outline: #{$navy-blue-30};
   --filter-button-1: #{$goldenrod-60};
   --filter-button-2: #{$goldenrod-100};
   --filter-button-3: #{$navy-blue-70};
@@ -739,7 +723,7 @@
 
   @include apply-cta-lbi;
   @include apply-cta-lbi-outline($goldenrod-20, $navy-blue-100, $navy-blue-100);
-
+  @include apply-cqc-dark;
   @include apply-tag-lbi;
   @include apply-tabs($purple-100);
   @include apply-pagination-lbi;
@@ -755,6 +739,7 @@
 }
 
 @mixin apply-theme-lbi-dark {
+  @include apply-shared-theme-light;
   --background: #{$goldenrod-120};
   --card-background: #{$white};
   --doctify-empty-star: #{$navy-blue-50};
@@ -765,17 +750,16 @@
   --reviews-stars: #{$teal-100};
 
   @include apply-cta-lbi;
-  @include apply-cta-lbi-outline(
-    $goldenrod-120,
+  @include apply-cta-lbi-outline($goldenrod-120,
     $navy-blue-100,
-    $navy-blue-100
-  );
-
+    $navy-blue-100 );
   @include apply-tag-lbi;
   @include apply-tabs($purple-100);
   @include apply-pagination-lbi;
   @include apply-controls-medium;
+  @include apply-cqc-light;
 
+  --cqc-outline: #{$navy-blue-30};
   --filter-button-1: #{$goldenrod-60};
   --filter-button-2: #{$goldenrod-100};
   --filter-button-3: #{$navy-blue-70};
@@ -833,16 +817,12 @@
   --highlight-color: #{$pink-50};
 
   @include apply-tag-alan-white;
-  @include apply-cta-alan-full(
+  @include apply-cta-alan-full(#{$navy-blue-100},
     #{$navy-blue-100},
+    #{$navy-blue-100});
+  @include apply-cta-alan-outline(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-alan-outline(
-    #{$white},
-    #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$pink-20});
   @include apply-pagination-alan-white;
   @include apply-controls-alan;
@@ -874,16 +854,12 @@
   --highlight-color: #{$pink-50};
 
   @include apply-tag-alan-white;
-  @include apply-cta-alan-full(
+  @include apply-cta-alan-full(#{$navy-blue-100},
     #{$navy-blue-100},
+    #{$navy-blue-100});
+  @include apply-cta-alan-outline(#{$white},
     #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
-  @include apply-cta-alan-outline(
-    #{$white},
-    #{$navy-blue-100},
-    #{$navy-blue-100}
-  );
+    #{$navy-blue-100});
   @include apply-tabs(#{$pink-20});
   @include apply-pagination-alan-white;
   @include apply-controls-alan;
