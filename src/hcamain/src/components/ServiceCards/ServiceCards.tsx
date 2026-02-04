@@ -207,16 +207,16 @@ export const Default = ({
                     (service?.abstractImage.jsonValue?.value?.alt as string) ||
                     ''
                   }
-                  width="313"
-                  height="317"
+                  width="500"
+                  height="666"
                 />
               ) : (
                 <Image
                   quality={90}
                   src={service?.image?.jsonValue?.value?.src || ''}
                   alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
-                  width="313"
-                  height="317"
+                  width="500"
+                  height="666"
                 />
               )}
               <Text tag="div" variation="display-6">
