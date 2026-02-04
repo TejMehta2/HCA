@@ -3,17 +3,14 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  LinkField,
   Text as JssText,
   ComponentRendering,
   Placeholder,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
-import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
-import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
-import { Default as Doctify } from '../Doctify/Doctify';
-import { Default as CQCRating } from '../CQCRating/CQCRating';
+import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
+import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import Params from 'src/types/params';
 import HeaderLocation from '@component-library/site-components/HeaderLocation/HeaderLocation';
@@ -22,15 +19,8 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-
-interface CQCFields {
-  fields?: {
-    Title?: Field<string>;
-    Text?: Field<string>;
-    ReportLink?: LinkField;
-    Status?: CQSStatusFields;
-  };
-}
+import { CQSStatusFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
+import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
 
 interface Fields {
   data?: {
@@ -42,8 +32,8 @@ interface Fields {
       addressLine2?: { jsonValue?: Field<string> };
       postCode?: { jsonValue?: Field<string> };
       getDirections?: { jsonValue?: Field<string> };
-      doctifyReviews?: DoctifyReviewsFields;
-      cQCRating?: CQCFields;
+      doctifyReviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
+      cQCRating?: { targetItem: CQSStatusFieldsGraphQl };
       contactUnits?: {
         contactUnitList?: ContactUnitFields[];
       };
@@ -59,13 +49,7 @@ export type HeroLocationDetailsProps = {
 
 const HeroLocationDetailsDefaultComponent = (
   props: HeroLocationDetailsProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">HeroLocationDetails no datasource</span>
-    </div>
-  </div>
-);
+): JSX.Element => <div className={`component ${props.params?.styles}`}></div>;
 
 export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -104,13 +88,17 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         </Text>
       }
       doctify={
-        props.fields?.data?.contextItem?.doctifyReviews?.fields ? (
+        props.fields?.data?.contextItem?.doctifyReviews?.targetItem ? (
           <Doctify
             alignment="left"
             params={props.params}
             key={2}
             fields={{
-              Reviews: props.fields?.data?.contextItem?.doctifyReviews,
+              data: {
+                item: {
+                  Reviews: props.fields?.data?.contextItem?.doctifyReviews,
+                },
+              },
             }}
           />
         ) : undefined
@@ -121,46 +109,46 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           <Text variation="body-large" tag="span">
             {(props.fields?.data?.contextItem?.addressLine1?.jsonValue?.value ||
               isExperienceEditor) && (
-                <>
-                  <JssText
-                    field={
-                      props.fields?.data?.contextItem?.addressLine1?.jsonValue
-                    }
-                  />
-                  <br />
-                </>
-              )}
+              <>
+                <JssText
+                  field={
+                    props.fields?.data?.contextItem?.addressLine1?.jsonValue
+                  }
+                />
+                <br />
+              </>
+            )}
 
             {(props.fields?.data?.contextItem?.addressLine2?.jsonValue?.value ||
               isExperienceEditor) && (
-                <>
-                  <JssText
-                    field={
-                      props.fields?.data?.contextItem?.addressLine2?.jsonValue
-                    }
-                  />
-                  <br />
-                </>
-              )}
+              <>
+                <JssText
+                  field={
+                    props.fields?.data?.contextItem?.addressLine2?.jsonValue
+                  }
+                />
+                <br />
+              </>
+            )}
 
             {(props.fields?.data?.contextItem?.city?.jsonValue?.value ||
               isExperienceEditor) && (
-                <>
-                  <JssText
-                    field={props.fields?.data?.contextItem?.city?.jsonValue}
-                  />
-                  <br />
-                </>
-              )}
+              <>
+                <JssText
+                  field={props.fields?.data?.contextItem?.city?.jsonValue}
+                />
+                <br />
+              </>
+            )}
 
             {(props.fields?.data?.contextItem?.postCode?.jsonValue?.value ||
               isExperienceEditor) && (
-                <>
-                  <JssText
-                    field={props.fields?.data?.contextItem?.postCode?.jsonValue}
-                  />
-                </>
-              )}
+              <>
+                <JssText
+                  field={props.fields?.data?.contextItem?.postCode?.jsonValue}
+                />
+              </>
+            )}
           </Text>
         ),
 
@@ -183,13 +171,13 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       open={
         availabilityString
           ? {
-            icon: <Icons iconName="iconClock"></Icons>,
-            text: (
-              <Text variation="body-large" tag="span">
-                {availabilityString}
-              </Text>
-            ),
-          }
+              icon: <Icons iconName="iconClock"></Icons>,
+              text: (
+                <Text variation="body-large" tag="span">
+                  {availabilityString}
+                </Text>
+              ),
+            }
           : undefined
       }
       ctas={
@@ -212,10 +200,14 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'A-HCA-White'}
       cqc={
-        props.fields?.data?.contextItem?.cQCRating?.fields ? (
+        props.fields?.data?.contextItem?.cQCRating?.targetItem ? (
           <CQCRating
             length="short"
-            {...props.fields?.data?.contextItem?.cQCRating}
+            fields={{
+              data: {
+                item: props.fields?.data?.contextItem?.cQCRating?.targetItem,
+              },
+            }}
           />
         ) : undefined
       }
