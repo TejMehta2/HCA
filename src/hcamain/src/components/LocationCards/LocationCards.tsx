@@ -25,6 +25,7 @@ import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -124,7 +125,11 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
             image?.jsonValue?.value?.src ? (
               abstractImage?.jsonValue?.value?.src ? (
                 <Image
-                  src={abstractImage?.jsonValue?.value?.src || ''}
+                  src={upsertQuerystringParam(
+                    abstractImage?.jsonValue?.value?.src || '',
+                    't',
+                    'w750'
+                  )}
                   alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
                   width="560"
                   height="420"
@@ -132,7 +137,11 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
                 />
               ) : (
                 <Image
-                  src={image?.jsonValue?.value?.src || ''}
+                  src={upsertQuerystringParam(
+                    image?.jsonValue?.value?.src || '',
+                    't',
+                    'w750'
+                  )}
                   alt={(image?.jsonValue?.value?.alt as string) || ''}
                   width="560"
                   height="420"
