@@ -342,8 +342,8 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                   )}
                                   alt=""
                                   quality={90}
-                                  width="363"
-                                  height="243"
+                                  width="560"
+                                  height="420"
                                 />
                               ) : undefined
                             }
