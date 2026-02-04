@@ -128,6 +128,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
                   alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
                   width="363"
                   height="176"
+                  quality={90}
                 />
               ) : (
                 <Image
@@ -135,6 +136,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
                   alt={(image?.jsonValue?.value?.alt as string) || ''}
                   width="363"
                   height="176"
+                  quality={90}
                 />
               )
             ) : undefined
@@ -208,6 +210,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               image={
                 cardImageSrc !== undefined ? (
                   <Image
+                    quality={90}
                     src={cardImageSrc}
                     alt={title}
                     width="500"

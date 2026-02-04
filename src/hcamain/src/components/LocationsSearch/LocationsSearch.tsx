@@ -341,6 +341,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                     'w750'
                                   )}
                                   alt=""
+                                  quality={90}
                                   width="363"
                                   height="243"
                                 />
