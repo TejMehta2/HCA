@@ -19,7 +19,7 @@ SharedFields:
     query GetHeroLocationDetails($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
         ... on LocationPage {
-          title: field(name: "Title") {
+          title {
             jsonValue
           }
           image {
@@ -41,44 +41,40 @@ SharedFields:
             jsonValue
           }
           doctifyReviews {
-            fields: targetItem {
+            targetItem {
               ... on DoctifyReviews {
-                Stars: field(name: "Stars") {
+                reviews {
                   value
                 }
-                Reviews: field(name: "Reviews") {
+                stars {
                   value
                 }
-                DoctifyLogoLight: field(name: "DoctifyLogoLight") {
+                link {
+                  jsonValue
+                }
+                doctifyLogoLight {
                   ...DoctifyLogoFields
                 }
-                DoctifyLogoDark: field(name: "DoctifyLogoDark") {
+                doctifyLogoDark {
                   ...DoctifyLogoFields
-                }
-                Link: field(name: "Link") {
-                 ... on LinkField {
-                    url
-                  }
                 }
               }
             }
           }
           cQCRating {
-            fields: targetItem {
+            targetItem {
               ... on CQC {
-                Status: field(name: "Status") {
+                status {
                   ...CQCStatusFields
                 }
-                Title: field(name: "Title") {
+                title {
                   value
                 }
-                ReportLink: field(name: "ReportLink") {
-                  ... on LinkField {
-                    url
-                  }
-                }
-                Text: field(name: "Text") {
+                text {
                   value
+                }
+                reportLink {
+                  jsonValue
                 }
               }
             }
@@ -93,43 +89,42 @@ SharedFields:
     }
     
     fragment DoctifyLogoFields on LookupField {
-      fields: targetItem {
+      targetItem {
         ... on DoctifySettings {
-          Text: field(name: "Text") {
+          text {
             value
           }
-          Logo: field(name: "Logo") {
-            fields: jsonValue
+          logo {
+            jsonValue
           }
         }
       }
     }
     
     fragment CQCStatusFields on LookupField {
-      fields: targetItem {
+      targetItem {
+        displayName
         ... on CQCStatus {
-          displayName
-          Title: field(name: "Title") {
+          title {
             value
           }
-          Icon: field(name: "Icon") {
-            value
+          cQCLogoDark {
+            targetItem {
+              ... on CQCSettings {
+                logo {
+                  jsonValue
+                }
+              }
+            }
           }
-          CQCLogoLight: field(name: "CQCLogoLight") {
-            ...CQCLogoFields
-          }
-          CQCLogoDark: field(name: "CQCLogoDark") {
-            ...CQCLogoFields
-          }
-        }
-      }
-    }
-    
-    fragment CQCLogoFields on LookupField {
-      fields: targetItem {
-        ... on CQCSettings {
-          Logo: field(name: "Logo") {
-            fields: jsonValue
+          cQCLogoLight {
+            targetItem {
+              ... on CQCSettings {
+                logo {
+                  jsonValue
+                }
+              }
+            }
           }
         }
       }
@@ -219,6 +214,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{E70B81B5-504B-40BC-B008-6A4695F9A027}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "ad8077ab-e857-483f-9377-0e5cb11a2916"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -268,14 +266,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f642316d-5216-4e75-a3f5-0a6d480fc98b"
+      Value: "2d21e656-d826-4544-8c1b-69d76b9b1688"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172314Z
+      Value: 20260203T175955Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

@@ -43,6 +43,7 @@ import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -334,10 +335,15 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             image={
                               cardImageSrc !== undefined ? (
                                 <Image
-                                  src={cardImageSrc}
+                                  src={upsertQuerystringParam(
+                                    cardImageSrc || '',
+                                    't',
+                                    'w750'
+                                  )}
                                   alt=""
-                                  width="363"
-                                  height="243"
+                                  quality={90}
+                                  width="560"
+                                  height="420"
                                 />
                               ) : undefined
                             }
