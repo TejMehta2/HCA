@@ -70,6 +70,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
                 openIcon="iconChevronDown"
                 closeIcon="iconChevronUp"
                 accordions={filters}
+                isFilters={true}
               ></Accordions>
             </div>
           )}

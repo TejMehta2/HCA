@@ -9,6 +9,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
     openIcon = 'iconPlus',
     closeIcon = 'iconMinus',
     id,
+    isFilters
   } = props;
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -16,22 +17,25 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
   const onShow = (index: number) => {
     if (activeIndex !== index) {
       setActiveIndex(index);
-      setTimeout(() => {
-        const heading = document.getElementById(`accordion-heading-${index}-${accordionContentId}`);
-        const stickyHeader = document.getElementById('header');
-        if (heading) {
-          let headerHeight = 0;
-          if (stickyHeader) {
-            headerHeight = stickyHeader.offsetHeight;
+
+      if (isFilters) {
+        setTimeout(() => {
+          const heading = document.getElementById(`accordion-heading-${index}-${accordionContentId}`);
+          const stickyHeader = document.getElementById('header');
+          if (heading) {
+            let headerHeight = 0;
+            if (stickyHeader) {
+              headerHeight = stickyHeader.offsetHeight;
+            }
+            const headingTop =
+              heading.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: headingTop - headerHeight - 10, // 10px optional spacing
+              behavior: 'smooth',
+            });
           }
-          const headingTop =
-            heading.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: headingTop - headerHeight - 10, // 10px optional spacing
-            behavior: 'smooth',
-          });
-        }
-      }, 100);
+        }, 100);
+      }
     } else {
       setActiveIndex(null);
     }
