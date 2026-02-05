@@ -19,6 +19,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -139,7 +140,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     <CardBlock
       id={componentAnchorId}
       {...(tableOfContentTitle &&
-        props?.params?.ExcludeFromTableOfContents !== '1'
+      props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       variation={`${numberOfCards}-columns`}
@@ -216,23 +217,33 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               image={
                 showImage ? (
                   card.abstractImage?.jsonValue.value?.src &&
-                    card.abstractImage?.jsonValue.value?.class !==
+                  card.abstractImage?.jsonValue.value?.class !==
                     'scEmptyImage' ? (
                     <Image
-                      src={card.abstractImage.jsonValue?.value?.src || ''}
+                      src={upsertQuerystringParam(
+                        card.abstractImage.jsonValue?.value?.src || '',
+                        't',
+                        'w750'
+                      )}
                       alt={
                         (card.abstractImage.jsonValue?.value?.alt as string) ||
                         ''
                       }
-                      width="773"
-                      height="268"
+                      width="560"
+                      height="420"
+                      quality={90}
                     />
                   ) : card.image?.jsonValue?.value?.src ? (
                     <Image
-                      src={card.image?.jsonValue?.value?.src || ''}
+                      src={upsertQuerystringParam(
+                        card.image?.jsonValue?.value?.src || '',
+                        't',
+                        'w750'
+                      )}
                       alt={(card.image?.jsonValue?.value?.alt as string) || ''}
-                      width="773"
-                      height="268"
+                      width="560"
+                      height="420"
+                      quality={90}
                     />
                   ) : undefined
                 ) : undefined
@@ -262,7 +273,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 cardCtaUrl ? (
                   <a href={cardCtaUrl}>
                     {isExperienceEditor ||
-                      props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
+                    props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
                       <JssRichText
                         tag="div"
                         field={props.fields?.data?.item?.cTACardText?.jsonValue}
