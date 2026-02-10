@@ -145,10 +145,6 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
             <Button size="large" variation="full">
               <button onClick={() => {
                 dialogRef?.current?.showModal();
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
               }}>
                 <>
                   <span
