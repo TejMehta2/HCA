@@ -6,4 +6,5 @@ export interface HeaderBlogDetailsProps {
   date: JSX.Element;
   title: JSX.Element;
   bodyCopy?: JSX.Element;
+  hasMultipleColumns?: boolean;
 }

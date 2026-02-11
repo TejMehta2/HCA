@@ -4,7 +4,8 @@ import styles from './HeaderBlogDetails.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
-  const { theme, tag, date, title, bodyCopy } = props;
+  const { theme, tag, date, title, bodyCopy, hasMultipleColumns } = props;
+  console.log(`multiple columns: ${hasMultipleColumns}`);
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>

@@ -1,10 +1,23 @@
-import React from 'react';
+'use client';
+
+import React, { createContext, useContext } from 'react';
 import {
   ComponentParams,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
+import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
+
+// Create context for passing hasMultipleColumns to nested components
+const ColumnSplitterContext = createContext<{
+  hasMultipleColumns: boolean;
+} | null>(null);
+
+export const useColumnSplitterContext = () => {
+  const context = useContext(ColumnSplitterContext);
+  return context;
+};
 
 interface ComponentProps {
   rendering: ComponentRendering & { params: ComponentParams };
@@ -36,28 +49,37 @@ export const Default = (props: ComponentProps): JSX.Element => {
 
   const enabledPlaceholders = props.params.EnabledPlaceholders.split(',');
   const id = props.params.RenderingIdentifier;
+  const hasMultipleColumns = enabledPlaceholders.length > 1;
 
   return (
-    <RichTextElement
-      id={id ? id : undefined}
-      additionalStyles={[
-        'grid',
-        props.params.GridParameters,
-        props.params.Styles,
-      ]}
-    >
-      {enabledPlaceholders.map((ph, index) => {
-        const phKey = `column-${ph}-{*}`;
-        const phStyles = `${columnWidths[+ph - 1]} ${
-          columnStyles[+ph - 1] ?? ''
-        }`.trimEnd();
+    <ColumnSplitterContext.Provider value={{ hasMultipleColumns }}>
+      <ContainerWrapper>
+        <RichTextElement
+          id={id ? id : undefined}
+          additionalStyles={[
+            'grid',
+            props.params.GridParameters,
+            props.params.Styles,
+          ]}
+        >
+          {enabledPlaceholders.map((ph, index) => {
+            const phKey = `column-${ph}-{*}`;
+            const phStyles = `${columnWidths[+ph - 1]} ${
+              columnStyles[+ph - 1] ?? ''
+            }`.trimEnd();
 
-        return (
-          <RichTextElement key={index} additionalStyles={phStyles}>
-            <Placeholder key={index} name={phKey} rendering={props.rendering} />
-          </RichTextElement>
-        );
-      })}
-    </RichTextElement>
+            return (
+              <RichTextElement key={index} additionalStyles={phStyles}>
+                <Placeholder
+                  key={index}
+                  name={phKey}
+                  rendering={props.rendering}
+                />
+              </RichTextElement>
+            );
+          })}
+        </RichTextElement>
+      </ContainerWrapper>
+    </ColumnSplitterContext.Provider>
   );
 };
