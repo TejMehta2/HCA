@@ -1,15 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { HeaderBlogDetailsProps } from './HeaderBlogDetails.types';
 import styles from './HeaderBlogDetails.module.scss';
 import Themes from '../../foundation/Themes/Themes';
+import { useColumnSplitterContext } from '../../../hcamain/src/components/ColumnSplitter';
 
 const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
-  const { theme, tag, date, title, bodyCopy, hasMultipleColumns } = props;
-  console.log(`multiple columns: ${hasMultipleColumns}`);
+  const { theme, tag, date, title, bodyCopy } = props;
+  const columnContext = useColumnSplitterContext();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [hasMultipleColumns, setHasMultipleColumns] = useState(false);
+
+  useEffect(() => {
+    // Try context first (from ColumnSplitter)
+    if (columnContext?.hasMultipleColumns !== undefined) {
+      setHasMultipleColumns(columnContext.hasMultipleColumns);
+      return;
+    }
+
+    // Fallback: find closest ancestor with data attribute
+    if (wrapperRef.current) {
+      const container = wrapperRef.current.closest(
+        '[data-has-multiple-columns]'
+      );
+      if (container) {
+        const value = container.getAttribute('data-has-multiple-columns');
+        setHasMultipleColumns(value === 'true');
+        return;
+      }
+    }
+
+    // Additional fallback: try querySelector with a small delay (in case DOM isn't ready)
+    const timeoutId = setTimeout(() => {
+      const container = document.querySelector('[data-has-multiple-columns]');
+      if (container) {
+        const value = container.getAttribute('data-has-multiple-columns');
+        setHasMultipleColumns(value === 'true');
+      }
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [columnContext]);
+
+  // Debug logging (remove after testing)
+  if (typeof window !== 'undefined') {
+    console.log('HeaderBlogDetails - columnContext:', columnContext);
+    console.log('HeaderBlogDetails - hasMultipleColumns:', hasMultipleColumns);
+  }
+
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
+      <div className={styles.wrapper} ref={wrapperRef}>
+        <div className={`${hasMultipleColumns ? '' : styles.container}`}>
           <div className={styles.info}>
             {tag}
             {date}
