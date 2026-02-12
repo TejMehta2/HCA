@@ -3,17 +3,12 @@ import styles from './ContainerWrapper.module.scss';
 
 interface ContainerWrapper {
   children: ReactNode | JSX.Element;
-  [key: string]: unknown;
 }
 
 const ContainerWrapper = (props: ContainerWrapper): JSX.Element => {
-  const { children, ...restProps } = props;
+  const { children } = props;
 
-  return (
-    <div className={styles.container} {...restProps}>
-      {children}
-    </div>
-  );
+  return <div className={styles.container}>{children}</div>;
 };
 
 export default ContainerWrapper;

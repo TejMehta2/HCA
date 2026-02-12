@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React from 'react';
 import {
   ComponentParams,
   ComponentRendering,
@@ -6,16 +6,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
-
-// Create context for passing hasMultipleColumns to nested components
-const ColumnSplitterContext = createContext<{
-  hasMultipleColumns: boolean;
-} | null>(null);
-
-export const useColumnSplitterContext = () => {
-  const context = useContext(ColumnSplitterContext);
-  return context;
-};
+import { ColumnSplitterContext } from '@component-library/context/columnSplitterContext';
 
 interface ComponentProps {
   rendering: ComponentRendering & { params: ComponentParams };
@@ -57,7 +48,7 @@ export const Default = (props: ComponentProps): JSX.Element => {
 
   return (
     <ColumnSplitterContext.Provider value={{ hasMultipleColumns }}>
-      <ContainerWrapper data-has-multiple-columns={hasMultipleColumns}>
+      <ContainerWrapper>
         <RichTextElement
           id={id ? id : undefined}
           additionalStyles={[
