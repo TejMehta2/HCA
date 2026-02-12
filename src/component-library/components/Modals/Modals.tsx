@@ -103,7 +103,7 @@ const Modals = (
     onTouchEnd: touchEndHandler,
   };
 
-  const spreadProps = isAndroidDevice() ? touchHandlers : {};
+  const spreadProps = touchHandlers;
 
   return (
     <dialog
