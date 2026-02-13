@@ -49,6 +49,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Button from '@component-library/core-components/Button/Button';
 import Modals from '@component-library/components/Modals/Modals';
+import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -184,7 +185,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
   // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
-  const { searchString, setSearchString, setKeywordId } = useContext(
+  const { searchString, setSearchString, setKeywordId, searchStringLocations, setSearchStringLocations } = useContext(
     ConsultantFinderContext
   );
   const id = props.params.RenderingIdentifier;
@@ -524,10 +525,13 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     setLocation('London');
+    setSearchStringLocations('Anywhere');
 
     // Update offset and sortBy to their default values
     newQueryParams.offset = 0;
     newQueryParams.sortType = 'relevance';
+    newQueryParams.lat = '51.507217';
+    newQueryParams.lon = '-0.1275862';
 
     router.push(
       {
@@ -1052,25 +1056,34 @@ export const Default = (props: StepProps): JSX.Element => {
                 </Text>
 
                 <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
-                  <div style={{ 'marginRight': '10px' }}>
-                    <Text tag="h3" variation="body-medium">
-                      {`Showing consultants in ${location}`}
-                    </Text>
-                  </div>
-                  <TextButton theme="dark">
-                    <button
-                      onClick={() =>
-                        dialogRef?.current?.show()
-                      }
-                    >
-                      <Icons iconName="iconEdit" />
-                      {'Change region'}
-                    </button>
-                  </TextButton>
+                  <SearchLocation
+                    isStepIntro={false}
+                    isStepCards={true}
+                    applyLocationToSearch={applyLocationToSearch}
+                    placeholder={props?.fields?.SearchPlaceholderText?.value ||
+                      'Type in a service, condition, treatment...'}
+                    doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
+                      'https://api.doctify.com/api/hca/search/autocomplete?search'}
+                    limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+                    noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                      'No matches found, please try typing something else.'}
+
+                    specialtyLabel={props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                      'Specialties'}
+                    conditionsProceduresLabel={props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
+                      'Conditions/ Procedures'}
+                    setKeywordId={setKeywordId}
+                    searchString={searchStringLocations}
+                    setSearchString={setSearchStringLocations}
+                    searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
+                    conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
+                    specialitiesList={props?.fields?.SpecialitiesList || []}
+                    loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                      'Loading...'} />
                 </div>
               </ConsultantListHeaderTtitle>
               {/* show this if they dont have cookies accepted */}
-              {
+              {/* {
                 !hasFunctionalConsentCookie &&
                 <div
                   style={{
@@ -1096,7 +1109,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     <a href="javascript:OneTrust.ToggleInfoDisplay()">Cookie settings</a>
                   </TextButton>
                 </div>
-              }
+              } */}
 
               {loading && (
                 <LoaderCF

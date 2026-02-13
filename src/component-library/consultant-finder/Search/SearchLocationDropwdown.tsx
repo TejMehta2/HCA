@@ -9,6 +9,7 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSearchStringConsultantName, setSearchStringLocations, searchStringLocations } = useContext(ConsultantFinderContext);
+  console.log(props.isStepIntro);
   const locationConfig = [
     {
       location: 'Anywhere',
@@ -36,8 +37,6 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
     },
   ];
 
-
-
   const handleClick = (location: string) => {
     console.log('location', searchStringLocations);
     // console.log(setSearchStringLocations);
@@ -48,11 +47,18 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
 
     // setSearchStringConsultantName('');
     props.setIsComponentVisible(false);
+
+    console.log('is step cards?', props.isStepCards);
+    if (props.isStepCards) {
+      props.applyLocationToSearch(location);
+    }
   };
 
   return (
-    <div className={styles['consultant-finder-search-dropdown']}>
-
+    <div
+      className={`${styles['consultant-finder-search-dropdown']} ${!props.isStepIntro ? styles.secondary : ''
+        }`}
+    >
       <div className={styles['consultant-finder-search-dropdown-results']}>
         <div className={styles['consultant-finder-search-dropdown-col']}>
           <div className={styles['consultant-finder-search-dropdown-header']}>

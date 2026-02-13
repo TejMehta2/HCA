@@ -24,6 +24,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Container from '@component-library/foundation/Containers/Container';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import { isMobile } from '@component-library/utility-functions/index';
+import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 interface Fields {
   TitleText: Field<string>;
@@ -71,6 +72,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [showContinueBtn, setShowContinueBtn] = useState(!(searchStringPayment === '' && !isSelfPayment));
   const [keywordId, setKewordId] = useState('');
 
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -88,6 +90,9 @@ export const Default = (props: StepProps): JSX.Element => {
     // get searchString from URL
     const searchStringQuery = router?.query?.searchString || '';
     setSearch(searchStringQuery.toString());
+
+    setIsSelfPayment(false);
+    setSearchStringPayment('');
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
@@ -123,7 +128,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <JssRichText field={props.fields.TitleText} />
                 </Text>
               }
-              image={<JssImage field={props.fields.CardImage} />}
+              image={null}
             >
               <Text tag="div" variation="body-large">
                 <JssRichText field={props.fields.BodyText} />
@@ -144,7 +149,6 @@ export const Default = (props: StepProps): JSX.Element => {
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (e.target.checked) {
                       setSearchStringPayment('');
-                      setShowContinueBtn(false);
                       if (!isMobile()) {
                         if (searchStringLocations === 'Birmingham') {
                           router.push(
@@ -206,7 +210,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 />
               </form>
 
-              {showContinueBtn && !isMobile() && (
+              {/* {showContinueBtn && !isMobile() && (
                 <div style={{
                   display:
                     searchStringPayment === '' && !isSelfPayment
@@ -233,7 +237,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     </button>
                   </Button>
                 </div>
-              )}
+              )} */}
             </ImageAndTextBlock>
             <Navigation showOnMobile={true}>
               <TextButton>
@@ -262,6 +266,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <span>{props.fields.NextLink.value.text}</span>
                 </button>
               </Button>
+
             </Navigation>
           </>
         )}

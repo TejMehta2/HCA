@@ -19,6 +19,9 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Container from '@component-library/foundation/Containers/Container';
 import StepIntro from '@component-library/consultant-finder/StepIntro/StepIntro';
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
+import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
+import PopularSearchesBox from '@component-library/consultant-finder/PopularSearchesBox/PopularSearchesBox';
+import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 interface Fields {
   QuickSearchLink: LinkField;
@@ -370,6 +373,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
     const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
 
+    // to do MH
     const locationConfig: Record<string, { lat: number; lon: number; distance: number }> = {
       Anywhere: {
         lat: 51.507217,
@@ -410,6 +414,15 @@ export const Default = (props: StepProps): JSX.Element => {
     );
   };
 
+  // to do MH
+  const popularSearches = [
+    { label: "Cardiology", href: "#" },
+    { label: "Dermatology", href: "#" },
+    { label: "Knee pain", href: "#" },
+    { label: "MRI scan", href: "#" },
+    { label: "Private GP", href: "#" },
+  ];
+
 
   const handleClickAdvanceSearch = (e: any) => {
     e.preventDefault();
@@ -425,6 +438,18 @@ export const Default = (props: StepProps): JSX.Element => {
       <div id={id ? id : undefined}>
         <a href="javascript:OneTrust.ToggleInfoDisplay()">Activate functional cookies</a>
         <StepIntro
+          headline={
+            <><Text tag="h2" variation="subheading-1">
+              {/* // to do MH */}
+              {'Over 1,250 consultants across the UK'}
+            </Text><Text tag="h1" variation="display-1">
+                {/* // to do MH */}
+                {'Find a consultant'}
+              </Text><Text tag="p" variation="body-large">
+                {/* // to do MH */}
+                {'Search by consultant name, specialty, or condition — we’ll help you find the right specialist quickly.'}
+              </Text></>
+          }
           search={
             <><SearchAll
               placeholder={props?.fields?.SearchPlaceholderText?.value ||
@@ -451,6 +476,7 @@ export const Default = (props: StepProps): JSX.Element => {
               loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                 'Loading...'} />
               <SearchLocation
+                isStepIntro={true}
                 placeholder={props?.fields?.SearchPlaceholderText?.value ||
                   'Type in a service, condition, treatment...'}
                 doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
@@ -473,77 +499,53 @@ export const Default = (props: StepProps): JSX.Element => {
                 specialitiesList={props?.fields?.SpecialitiesList || []}
                 popularConsultantsList={props?.fields?.PopularConsultantsList || []}
                 loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                  'Loading...'} /></>
+                  'Loading...'} />
+            </>
+          }
+          buttons={
+            <>
+              <Themes theme={'A-HCA-White'}>
+
+                <Button
+                  size={'small'}
+                  variation={'full-light'}
+                  contentVariation="full-width"
+                >
+                  <button
+                    disabled={keywordId === 0 ? true : false}
+                    onClick={handleClickQuickSearch}
+                  >
+                    <Icons iconName="iconSearch" />
+                    <span>{props.fields.QuickSearchLink.value.text}</span>
+                  </button>
+                </Button>
+              </Themes>
+              <Button
+                size={'small'}
+                variation={'outline-light'}
+                contentVariation="full-width"
+              >
+                <button
+                  disabled={keywordId === 0 ? true : false}
+                  onClick={handleClickAdvanceSearch}
+                >
+                  <Icons iconName="iconAdvanced" />
+                  <span>{props.fields.AdvancedSearchLink.value.text}</span>
+                </button>
+              </Button></>
+          }
+          popularSearch={
+            <PopularSearchesBox
+              popularSearches={popularSearches}
+              // to do MH
+              popularSearchesTtitle={'Popular searches'}
+            ></PopularSearchesBox>
           }
         >
           {
             !hasFunctionalConsentCookie &&
-            <div
-              style={{
-                color: "#ffffff",
-                padding: "9px 24px",
-                background: "#21304A",
-                textAlign: "center",
-                marginBottom: "40px",
-                display: "inline-block",
-                borderRadius: "8px"
-              }}
-            >
-              Save this location for next time?{" "}
-              <a
-                href="#"
-                onClick={() => {
-                  // @ts-ignore – OneTrust is loaded globally
-                  OneTrust.ToggleInfoDisplay();
-                }}
-                style={{
-                  color: "#ffffff",
-                  textDecoration: "underline",
-                  cursor: "pointer",
-                }}
-              >
-                Activate functional cookies
-              </a>
-            </div>
+            <FunctionalCookiesBox></FunctionalCookiesBox>
           }
-
-
-          <Container
-            marginBottom="spacing-4"
-            displayFlex="displayFlex"
-            withButtons={true}
-            customBtnDesktop={true}
-          >
-            <Button
-              size={'small'}
-              variation={'full-light'}
-              contentVariation="full-width"
-            >
-              <button
-                // disabled={keywordId === 0 ? true : false}
-                onClick={handleClickQuickSearch}
-              >
-                <Icons iconName="iconSearch" />
-                <span>{props.fields.QuickSearchLink.value.text}</span>
-              </button>
-            </Button>
-
-            <Button
-              size={'small'}
-              variation={'outline-light'}
-              contentVariation="full-width"
-            >
-              <button
-                // disabled={keywordId === 0 ? true : false}
-                onClick={handleClickAdvanceSearch}
-              >
-                <Icons iconName="iconAdvanced" />
-                <span>{props.fields.AdvancedSearchLink.value.text}</span>
-              </button>
-            </Button>
-          </Container>
-
-
         </StepIntro>
       </div>
     );

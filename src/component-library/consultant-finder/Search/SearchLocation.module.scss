@@ -2,8 +2,17 @@
 @use '../../utilities/index.module' as *;
 
 .consultant-finder-search {
-  width: 20%;
-  margin: $spacing-6 0 $spacing-6 0;
+  width: 100%;
+  margin: 0 0 $spacing-6 0;
+
+  @include media(screen-l) {
+    width: 30%;
+    margin: $spacing-6 0 $spacing-6 0;
+  }
+
+  &.secondary {
+    width: 100%;
+  }
 
   &-searchbar {
     position: relative;
@@ -18,19 +27,38 @@
   input {
     appearance: none;
     border: 1px solid $navy-blue-100;
-    // border-radius: $radius-large;
-    border-top-right-radius: $radius-large;
     border-bottom-right-radius: $radius-large;
+    border-bottom-left-radius: $radius-large;
     width: 100%;
     padding: $spacing-5 $spacing-7 $spacing-5 $spacing-9;
     color: $navy-blue-100;
     background-color: $white;
     @include apply-body-medium-large;
+
+    @include media(screen-l) {
+      border-top-right-radius: $radius-large;
+      border-bottom-left-radius: 0;
+      padding: $spacing-5 $spacing-7 $spacing-5 $spacing-8;
+    }
+  }
+
+  &.secondary {
+    input {
+      background-color: $teal-5;
+      border-radius: $radius-large;
+    }
   }
 
   &-close-btn {
     position: absolute;
+    display: flex;
+    justify-content: center;
     right: $spacing-5;
     top: $spacing-5;
+    transition: transform 0.25s ease;
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
   }
 }

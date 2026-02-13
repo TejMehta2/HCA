@@ -22,4 +22,7 @@ export default interface SearchDropdownProps {
   loadingText: string;
   nextLink?: string;
   dataSpecialists?: any;
+  isStepIntro?: boolean;
+  isStepCards?: boolean;
+  applyLocationToSearch?: any;
 }

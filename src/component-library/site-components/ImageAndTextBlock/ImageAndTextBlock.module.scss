@@ -258,6 +258,25 @@
   }
 }
 
+.hide-on-desktop {
+  @include media(screen-l) {
+    display: none;
+  }
+}
+
+.no-desktop-image {
+  .content {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 1);
+  }
+
+  // If you're using the CF variant, ensure it also becomes full width.
+  .content.content-cf {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 1);
+  }
+}
+
 .hide-on-mobile-cf {
   display: none;
 

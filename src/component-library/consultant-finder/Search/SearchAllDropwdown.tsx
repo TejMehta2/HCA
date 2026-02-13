@@ -22,15 +22,15 @@ const SearchAllDdropdown = (props: SearchDropdownProps): JSX.Element => {
   // console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
+    props.setIsComponentVisible(false);
+
     if (props.setSearchString) {
       props.setSearchString(name);
     }
     if (props.setKeywordId) {
       props.setKeywordId(id);
     }
-
     setSearchStringConsultantName('');
-    props.setIsComponentVisible(false);
   };
 
   return (

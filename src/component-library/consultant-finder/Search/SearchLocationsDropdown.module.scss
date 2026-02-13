@@ -14,6 +14,10 @@
   text-align: left;
   z-index: 1001;
 
+  &.secondary {
+    background-color: $teal-5;
+  }
+
   &-results {
     display: flex;
     flex-direction: column;

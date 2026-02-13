@@ -1,0 +1,28 @@
+import React from 'react';
+import styles from './FunctionalCookiesBox.module.scss';
+import Text from '../../foundation/Text/Text';
+import TextButton from '../../core-components/TextButton/TextButton';
+
+const FunctionalCookiesBox = (): JSX.Element => {
+
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.content}>
+                <div className={styles.text}>
+                    <Text tag="p" variation="body-medium">
+                        {`Save this location for next time?`}
+                    </Text>
+                </div>
+                <TextButton theme="light">
+                    <a href="javascript:OneTrust.ToggleInfoDisplay()">
+                        <Text tag="p" variation="body-bold-medium">
+                            {`Activate functional cookies`}
+                        </Text>
+                    </a>
+                </TextButton>
+            </div>
+        </div>
+    );
+};
+
+export default FunctionalCookiesBox;

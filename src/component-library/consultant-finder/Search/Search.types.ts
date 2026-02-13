@@ -27,4 +27,7 @@ export default interface SearchProps {
   nextLink?: string;
   specialistsLabel?: string;
   specialistsList?: any;
+  isStepIntro?: boolean;
+  isStepCards?: boolean;
+  applyLocationToSearch?: any;
 }

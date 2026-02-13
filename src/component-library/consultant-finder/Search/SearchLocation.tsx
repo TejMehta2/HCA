@@ -24,12 +24,6 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
 
-
-
-
-
-
-
   const handleClose = (e) => {
     // if (props.setSearchString) {
     //   props.setSearchString('');
@@ -39,13 +33,14 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     e.stopPropagation();
 
     // setSearchStringConsultantName('');
-    setIsComponentVisible(true);
+    // setIsComponentVisible(true);
+    setIsComponentVisible((prev) => !prev);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.target.value);
+    // console.log(e.target);
     // setLoading(true);
     setIsComponentVisible(true);
     // const userInput = encodeURIComponent(e.target.value);
@@ -68,18 +63,19 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     // if (props.setKeywordId) {
     //   props.setKeywordId(0);
     // }
-
-
   };
 
   const handleOnClick: MouseEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e);
   };
 
   return (
-    <div className={styles['consultant-finder-search']}>
+    <div
+      className={`${styles['consultant-finder-search']} ${!props.isStepIntro ? styles.secondary : ''
+        }`}
+    >
+
       <div ref={ref} className={styles['consultant-finder-search-searchbar']}>
         <label htmlFor={searchId}>
           <input
@@ -93,6 +89,9 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
         </label>
         {isComponentVisible && (
           <SearchLocationDdropdown
+            isStepIntro={props?.isStepIntro}
+            isStepCards={props?.isStepCards}
+            applyLocationToSearch={props?.applyLocationToSearch}
             dataSpecialists={dataSpecialists}
             data={data}
             loading={loading}
@@ -119,11 +118,15 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
           {/* {!props.searchIcon && <Icons iconName="iconPin" />} */}
           <Icons iconName="iconPin" />
         </span>
-        <div className={styles['consultant-finder-search-close-btn']}>
+        <div
+          className={`${styles['consultant-finder-search-close-btn']} ${isComponentVisible ? styles['is-open'] : ''
+            }`}
+        >
           {/* {props.searchString !== '' && ( */}
           <TextLink>
             <button onClick={handleClose}>
-              <Icons iconName="iconArrowDropdown" />
+              {/* <Icons iconName="iconArrowDropdown" /> */}
+              <Icons iconName="iconChevronDown" />
             </button>
           </TextLink>
           {/* )} */}
