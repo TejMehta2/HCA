@@ -15,6 +15,10 @@ import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
 import Link from 'next/link';
 import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
+import {
+  SITECORE_TEMPLATE_IDS,
+  templateIdEqualTo,
+} from 'lib/sitecore/templateIds';
 
 type HCAIconFields = {
   fields?: {
@@ -55,6 +59,7 @@ type StickyCTAProps = {
 
 type RouteFields = {
   DoctifyKeywordId?: Field<string>;
+  DoctifyPractice?: Field<string>;
 };
 
 const StickyCTADefaultComponent = (props: StickyCTAProps): JSX.Element => {
@@ -81,6 +86,24 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
   // context Item (route) item fields:
   const routeFields = sitecoreContext?.route?.fields as RouteFields | undefined;
   const contextDoctifyKeywordId = routeFields?.DoctifyKeywordId?.value;
+  const contextDoctifyPracticeId = routeFields?.DoctifyPractice?.value;
+  const contextTempalteId = sitecoreContext?.route?.templateId;
+
+  const isLocationPage = templateIdEqualTo(
+    contextTempalteId,
+    SITECORE_TEMPLATE_IDS.LocationPage
+  );
+
+  const keywordIdExistsInTheModel =
+    routeFields !== undefined ? 'DoctifyKeywordId' in routeFields : false;
+
+  const keywordIdIsEmpty =
+    contextDoctifyKeywordId === '' || contextDoctifyKeywordId == undefined;
+
+  //check if we're on the page that could be mapped to doctify, but mapping was not done.
+  const doctifyMappingMissing = isLocationPage
+    ? contextDoctifyPracticeId === '' || contextDoctifyPracticeId === undefined
+    : keywordIdExistsInTheModel && keywordIdIsEmpty;
 
   if (!props.fields) {
     return <StickyCTADefaultComponent {...props} />;
@@ -143,9 +166,11 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         cta={
           props?.fields?.CTAText?.value && (
             <Button size="large" variation="full">
-              <button onClick={() => {
-                dialogRef?.current?.showModal();
-              }}>
+              <button
+                onClick={() => {
+                  dialogRef?.current?.showModal();
+                }}
+              >
                 <>
                   <span
                     dangerouslySetInnerHTML={{
@@ -192,13 +217,28 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
           props.fields?.ModalContent?.[0] && (
             <>
               {items.map(({ link, icon, buttonVariation }, idx) => {
-                const text = link?.value?.text;
-                if (!text) return null;
+                if (!link?.value?.text) return null;
 
-                const href = withKeywordIdIfNeeded(
-                  link,
-                  contextDoctifyKeywordId
-                );
+                const optionalCta =
+                  (link?.value?.class || '').indexOf('optional') != -1;
+
+                if (optionalCta && doctifyMappingMissing) {
+                  return;
+                }
+
+                const { href, text } = isLocationPage
+                  ? withKeywordIdIfNeeded(
+                      link,
+                      contextDoctifyPracticeId,
+                      'practice',
+                      doctifyMappingMissing
+                    )
+                  : withKeywordIdIfNeeded(
+                      link,
+                      contextDoctifyKeywordId,
+                      'keywordId',
+                      doctifyMappingMissing
+                    );
 
                 return (
                   <Button
@@ -209,7 +249,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link href={href} target={link.value.target}>
+                    <Link href={href} target={link?.value?.target}>
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.fields?.SvgMarkup?.value || '',
@@ -241,13 +281,28 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
           props.fields?.ModalContent?.[1] && (
             <>
               {items1.map(({ link, icon, buttonVariation }, idx) => {
-                const text = link?.value?.text;
-                if (!text) return null;
+                if (!link?.value?.text) return null;
 
-                const href = withKeywordIdIfNeeded(
-                  link,
-                  contextDoctifyKeywordId
-                );
+                const optionalCta =
+                  (link?.value?.class || '').indexOf('optional') != -1;
+
+                if (optionalCta && doctifyMappingMissing) {
+                  return;
+                }
+
+                const { href, text } = isLocationPage
+                  ? withKeywordIdIfNeeded(
+                      link,
+                      contextDoctifyPracticeId,
+                      'practice',
+                      doctifyMappingMissing
+                    )
+                  : withKeywordIdIfNeeded(
+                      link,
+                      contextDoctifyKeywordId,
+                      'keywordId',
+                      doctifyMappingMissing
+                    );
 
                 return (
                   <Button
