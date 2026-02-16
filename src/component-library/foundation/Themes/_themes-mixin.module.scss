@@ -15,6 +15,7 @@
   --field-error-colour: #{$red-60};
   --reviews-stars: #{$teal-100};
   --breadcrumbs-background: #{$navy-blue-100};
+  --breadcrumbs-links: #{$white};
 
   @include apply-cta-full-light;
   @include apply-cta-social-light;
@@ -39,6 +40,7 @@
   --field-error-colour: #{$red-100};
   --reviews-stars: #{$teal-100};
   --breadcrumbs-background: #{$navy-blue-100};
+  --breadcrumbs-links: #{$white};
 
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
@@ -591,6 +593,8 @@
   --quote-tag-background-hover: #{$chelsea-gold-100};
   --table-color: #{$chelsea-gold-20};
   --reviews-stars: #{$chelsea-gold-100};
+  --breadcrumbs-background: #{$tangerine-20};
+  --breadcrumbs-links: #{$navy-blue-100};
 
   @include apply-tag-chelsea-white;
   @include apply-cta-chelsea-full(#{$white},
