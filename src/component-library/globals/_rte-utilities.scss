@@ -14,6 +14,39 @@
   }
 }
 
+.circled-list {
+  list-style: none;
+  counter-reset: step;
+  padding-left: 0;
+  margin: 0;
+  row-gap: var(--spacing-5);
+}
+
+.circled-list li {
+  counter-increment: step;
+  display: flex;
+  align-items: center;
+  column-gap: px-to-rem(12);
+  @include apply-body-medium;
+}
+
+.circled-list li::before {
+  content: counter(step);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: px-to-rem(32);
+  height: px-to-rem(32);
+  min-width: px-to-rem(32);
+  border-radius: 50%;
+  background-color: $teal-100;
+  color: var(--text);
+
+  @include media(screen-m) {
+    align-items: center;
+  }
+}
+
 /* Utility classes to override specific imported HTML */
 
 .vacancy-rte {
