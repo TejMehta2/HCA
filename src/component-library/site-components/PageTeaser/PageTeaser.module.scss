@@ -1,0 +1,73 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: $radius-medium;
+  align-items: center;
+  padding: $spacing-7 $spacing-8;
+  gap: $spacing-7;
+  flex-direction: column;
+
+  @include media(screen-m) {
+    flex-direction: row;
+  }
+
+  img {
+    height: px-to-rem(144);
+    width: px-to-rem(144);
+    object-fit: cover;
+    transition: 0.6s ease;
+    border-radius: 50%;
+  }
+
+  .keep-aspect-ratio {
+    img {
+      object-fit: contain;
+      aspect-ratio: unset;
+      height: max-content;
+    }
+  }
+
+  &:hover {
+    & img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.image {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: px-to-rem(16);
+
+  & a {
+    width: 100%;
+    justify-content: center;
+
+    & span {
+      margin: auto;
+    }
+
+    @include media(screen-l) {
+      width: fit-content;
+    }
+  }
+}
+
+.copy {
+  & > :last-child {
+    margin-top: $spacing-3;
+  }
+}
