@@ -128,7 +128,7 @@ const Form = () => {
     // reset/ hide fields, hide summary when no cycle selection
     if (e.target.value === '') {
       setIsCalculating(false);
-    } else if (e.target.value === 'EggFreezing') {
+    } else if (e.target.value.startsWith('EggFreezing')) {
       // if egg freezing, show:
       // protocol
       // stimulation drug
@@ -182,7 +182,7 @@ const Form = () => {
   const handleChangeProtocolType = (e) => {
     setProtocolType(e.target.value);
     // console.log(e.target.value);
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         stimulationDrug.length > 0 &&
@@ -230,7 +230,7 @@ const Form = () => {
     // console.log(e.target.value);
     setStimulationDrug(e.target.value);
 
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         startingDose.length > 0 &&
@@ -298,7 +298,7 @@ const Form = () => {
       setStartingDose2('');
     }
 
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         stimulationDrug.length > 0 &&
@@ -400,6 +400,7 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
+    debugger;
     e.preventDefault();
     setIsCalculating(true);
 
