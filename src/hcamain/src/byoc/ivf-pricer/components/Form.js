@@ -400,7 +400,6 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-    debugger;
     e.preventDefault();
     setIsCalculating(true);
 
