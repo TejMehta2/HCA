@@ -459,8 +459,7 @@
   --quote-tag-background-hover: #{$palace-red-60};
   --table-color: #{$palace-red-05};
   --reviews-stars: #{$teal-100};
-  --breadcrumbs-background: #{$palace-red-05};
-  --breadcrumbs-links: #{$navy-blue-100};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-tag-palace-white;
   @include apply-cta-palace-full-red(#{$white},
@@ -495,7 +494,7 @@
   --table-color: #{$grey-80};
   --reviews-stars: #{$teal-100};
   --text-date: #{$white};
-  --breadcrumbs-background: #{$grey-100};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-tag-palace-grey;
   @include apply-tabs($grey-80, $white);
@@ -529,8 +528,7 @@
   --quote-tag-color: $navy-blue-100;
   --table-color: #{$white};
   --reviews-stars: #{$teal-100};
-  --breadcrumbs-background: #{$tangerine-20};
-  --breadcrumbs-links: #{$navy-blue-100};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-cta-palace-full-red(#{$tangerine-20},
     #{$navy-blue-100},
@@ -566,7 +564,7 @@
   --table-color: #{$palace-red-80};
   --reviews-stars: #{$teal-100};
   --text-date: #{$white};
-  --breadcrumbs-background: #{$palace-red-80};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-tag-palace-red;
   @include apply-tabs($palace-red-80, $white);
