@@ -1,5 +1,9 @@
 import React from 'react';
-import JumpToLinks, { JumpToAnchor, JumpToLink } from './JumpToLinks';
+import JumpToLinks, {
+  JumpToAnchor,
+  JumpToLink,
+  JumpToTextLink,
+} from './JumpToLinks';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
@@ -131,6 +135,62 @@ export const Anchors: StoryObj<typeof JumpToLinks> = {
       <Themes theme="A-HCA-White">
         <Story />
       </Themes>
+    ),
+  ],
+};
+
+export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
+  args: {
+    variation: 'stacked',
+    isSticky: true,
+    heading: <Text variation="body-bold-large">Jump To</Text>,
+    children: (
+      <>
+        <JumpToTextLink>
+          <a href="#">
+            <span>PCI at at HCA UK</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>Your patient journey</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>Facilities</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>Locations</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>Choose your consultant</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>FAQ</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#">
+            <span>Patient Stories</span>
+          </a>
+        </JumpToTextLink>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ height: 1000 }}>
+        <Themes theme="A-HCA-White">
+          <Story />
+        </Themes>
+      </div>
     ),
   ],
 };

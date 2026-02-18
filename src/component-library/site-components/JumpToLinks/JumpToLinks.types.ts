@@ -7,4 +7,6 @@ export interface JumpToLinkProps {
 export interface JumpToLinksProps {
   heading: ReactNode | JSX.Element;
   children?: ReactNode | JSX.Element;
+  variation: string;
+  isSticky?: boolean;
 }

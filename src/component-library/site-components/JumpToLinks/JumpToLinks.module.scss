@@ -67,3 +67,26 @@
     align-items: flex-start;
   }
 }
+
+.stacked {
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    border-bottom: 0;
+  }
+
+  .heading {
+    text-transform: uppercase;
+    border-bottom: solid px-to-rem(1) $navy-blue-20;
+    margin-bottom: $spacing-4;
+    padding-bottom: $spacing-4;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
