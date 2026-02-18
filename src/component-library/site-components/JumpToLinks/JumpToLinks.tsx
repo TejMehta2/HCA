@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { JumpToLinkProps, JumpToLinksProps } from './JumpToLinks.types';
 import styles from './JumpToLinks.module.scss';
 import Button from '../../core-components/Button/Button';
@@ -42,6 +42,16 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
   const rootRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  const setHighlighted = useCallback((anchor: HTMLAnchorElement) => {
+    if (!rootRef.current) return;
+    const allAnchors = rootRef.current.querySelectorAll('a');
+    allAnchors.forEach((a) => a.classList.remove(styles.highlighted));
+    const matching = rootRef.current.querySelectorAll(
+      `a[href="${anchor.getAttribute('href')}"]`
+    );
+    matching.forEach((a) => a.classList.add(styles.highlighted));
+  }, []);
+
   useEffect(() => {
     if (!isSticky || !rootRef.current) return;
     const themeWrapper = rootRef.current.closest(
@@ -54,6 +64,81 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
       themeWrapper.style.height = previousHeight;
     };
   }, [isSticky]);
+
+  useEffect(() => {
+    if (!rootRef.current) return;
+    const anchors = Array.from(
+      rootRef.current.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    );
+
+    if (!anchors.length) return;
+
+    const uniqueHrefs = [
+      ...new Set(anchors.map((a) => a.getAttribute('href'))),
+    ];
+    const sections = uniqueHrefs
+      .map((href) => document.querySelector(href!))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!sections.length) return;
+
+    setHighlighted(anchors[0]);
+
+    let clickCooldown: ReturnType<typeof setTimeout> | null = null;
+
+    const handleClick = (e: Event) => {
+      const anchor = (e.currentTarget as HTMLElement).closest('a');
+      if (anchor) {
+        setHighlighted(anchor);
+        if (clickCooldown) clearTimeout(clickCooldown);
+        clickCooldown = setTimeout(() => {
+          clickCooldown = null;
+        }, 800);
+      }
+    };
+    anchors.forEach((a) => a.addEventListener('click', handleClick));
+
+    const visibleSections = new Map<string, IntersectionObserverEntry>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.set(entry.target.id, entry);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+
+        if (!visibleSections.size || clickCooldown) return;
+
+        let topSection: string | null = null;
+        let topOffset = Infinity;
+        visibleSections.forEach((entry, id) => {
+          if (entry.boundingClientRect.top < topOffset) {
+            topOffset = entry.boundingClientRect.top;
+            topSection = id;
+          }
+        });
+
+        if (topSection) {
+          const match = anchors.find(
+            (a) => a.getAttribute('href') === `#${topSection}`
+          );
+          if (match) setHighlighted(match);
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px -60% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+      if (clickCooldown) clearTimeout(clickCooldown);
+      anchors.forEach((a) => a.removeEventListener('click', handleClick));
+    };
+  }, [children, setHighlighted]);
 
   return (
     <div

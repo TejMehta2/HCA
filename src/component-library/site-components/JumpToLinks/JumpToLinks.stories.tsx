@@ -148,38 +148,28 @@ export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
     children: (
       <>
         <JumpToTextLink>
+          <a href="#intro">
+            <span>Introduction</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
           <a href="#link1">
-            <span>PCI at at HCA UK</span>
+            <span>Link 1</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
           <a href="#link2">
-            <span>Your patient journey</span>
+            <span>Link 2</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
           <a href="#link3">
-            <span>Facilities</span>
+            <span>Link 3</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
           <a href="#link4">
-            <span>Locations</span>
-          </a>
-        </JumpToTextLink>
-        <JumpToTextLink>
-          <a href="#">
-            <span>Choose your consultant</span>
-          </a>
-        </JumpToTextLink>
-        <JumpToTextLink>
-          <a href="#">
-            <span>FAQ</span>
-          </a>
-        </JumpToTextLink>
-        <JumpToTextLink>
-          <a href="#">
-            <span>Patient Stories</span>
+            <span>link 4</span>
           </a>
         </JumpToTextLink>
       </>
@@ -187,19 +177,21 @@ export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ minHeight: 3000, display: 'grid', grid: 'auto / 2fr 1fr' }}>
+      <div style={{ minHeight: 4000, display: 'grid', grid: 'auto / 2fr 1fr' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ height: 600, background: 'lightblue' }}>intro</div>
-          <div id="link1" style={{ height: 400, background: 'lightpink' }}>
+          <div id="intro" style={{ height: 600, background: 'lightblue' }}>
+            intro
+          </div>
+          <div id="link1" style={{ height: 500, background: 'lightpink' }}>
             Link 1
           </div>
-          <div id="link2" style={{ height: 400, background: 'lightgray' }}>
+          <div id="link2" style={{ height: 600, background: 'lightgray' }}>
             Link 2
           </div>
-          <div id="link3" style={{ height: 400, background: 'lightgreen' }}>
+          <div id="link3" style={{ height: 700, background: 'lightgreen' }}>
             Link 3
           </div>
-          <div id="link4" style={{ height: 400, background: 'lightblue' }}>
+          <div id="link4" style={{ height: 500, background: 'lightblue' }}>
             Link 4
           </div>
         </div>
