@@ -9,4 +9,5 @@ export interface QuoteBlockProps {
     tag?: ReactNode | JSX.Element | string;
   };
   title?: ReactNode | JSX.Element | string;
+  wrapper?: boolean;
 }
