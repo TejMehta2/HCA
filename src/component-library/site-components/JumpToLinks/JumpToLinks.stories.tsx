@@ -143,26 +143,27 @@ export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
   args: {
     variation: 'stacked',
     isSticky: true,
+    mobileHeading: 'On this page',
     heading: <Text variation="body-bold-large">Jump To</Text>,
     children: (
       <>
         <JumpToTextLink>
-          <a href="#">
+          <a href="#link1">
             <span>PCI at at HCA UK</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
-          <a href="#">
+          <a href="#link2">
             <span>Your patient journey</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
-          <a href="#">
+          <a href="#link3">
             <span>Facilities</span>
           </a>
         </JumpToTextLink>
         <JumpToTextLink>
-          <a href="#">
+          <a href="#link4">
             <span>Locations</span>
           </a>
         </JumpToTextLink>
@@ -186,10 +187,27 @@ export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ height: 1000 }}>
-        <Themes theme="A-HCA-White">
-          <Story />
-        </Themes>
+      <div style={{ minHeight: 3000, display: 'grid', grid: 'auto / 2fr 1fr' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ height: 600, background: 'lightblue' }}>intro</div>
+          <div id="link1" style={{ height: 400, background: 'lightpink' }}>
+            Link 1
+          </div>
+          <div id="link2" style={{ height: 400, background: 'lightgray' }}>
+            Link 2
+          </div>
+          <div id="link3" style={{ height: 400, background: 'lightgreen' }}>
+            Link 3
+          </div>
+          <div id="link4" style={{ height: 400, background: 'lightblue' }}>
+            Link 4
+          </div>
+        </div>
+        <div style={{ height: '100%' }}>
+          <Themes theme="A-HCA-White">
+            <Story />
+          </Themes>
+        </div>
       </div>
     ),
   ],

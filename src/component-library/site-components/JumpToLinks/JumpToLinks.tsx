@@ -3,6 +3,8 @@ import { JumpToLinkProps, JumpToLinksProps } from './JumpToLinks.types';
 import styles from './JumpToLinks.module.scss';
 import Button from '../../core-components/Button/Button';
 import TextLink from '../../core-components/TextLink/TextLink';
+import Modals from '../../components/Modals/Modals';
+import Icons from '../../foundation/Icons/Icons';
 
 export const JumpToLink = (props: JumpToLinkProps): JSX.Element => {
   const { children } = props;
@@ -30,8 +32,15 @@ export const JumpToAnchor = (props: JumpToLinkProps): JSX.Element => {
 };
 
 const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
-  const { children, heading, variation, isSticky } = props;
+  const {
+    children,
+    heading,
+    variation,
+    isSticky,
+    mobileHeading = 'On this page',
+  } = props;
   const rootRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     if (!isSticky || !rootRef.current) return;
@@ -57,9 +66,36 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
         .filter(Boolean)
         .join(' ')}
     >
-      <div className={styles.container}>
-        {heading && <div className={styles.heading}>{heading}</div>}
-        {children && <ul className={styles.children}>{children}</ul>}
+      {mobileHeading && (
+        <>
+          <button
+            type="button"
+            className={styles.mobileTrigger}
+            onClick={() => dialogRef.current?.showModal()}
+          >
+            <span>{mobileHeading}</span>
+            <Icons iconName="iconChevronDown" />
+          </button>
+          <Modals ref={dialogRef} variation="full">
+            <div className={styles.container}>
+              {heading && <div className={styles.heading}>{heading}</div>}
+              {children && (
+                <ul
+                  className={styles.children}
+                  onClick={() => dialogRef.current?.close()}
+                >
+                  {children}
+                </ul>
+              )}
+            </div>
+          </Modals>
+        </>
+      )}
+      <div className={styles.desktopContent}>
+        <div className={styles.container}>
+          {heading && <div className={styles.heading}>{heading}</div>}
+          {children && <ul className={styles.children}>{children}</ul>}
+        </div>
       </div>
     </div>
   );

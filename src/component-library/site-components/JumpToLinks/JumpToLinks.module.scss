@@ -72,6 +72,11 @@
   ul {
     display: flex;
     flex-direction: column;
+    gap: $spacing-4;
+
+    li a.highlighted {
+      background-color: var(--table-color);
+    }
   }
 
   .container {
@@ -89,4 +94,35 @@
 .sticky {
   position: sticky;
   top: 0;
+}
+
+.mobileTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-4 $spacing-5;
+  background: var(--background, #{$navy-blue-90});
+  color: var(--text, #{$white});
+  border: solid px-to-rem(1) $navy-blue-10;
+  border-radius: $radius-large;
+  cursor: pointer;
+  @include apply-body-medium-medium;
+
+  svg {
+    width: px-to-rem(20);
+    height: px-to-rem(20);
+  }
+
+  @include media(screen-m) {
+    display: none;
+  }
+}
+
+.desktopContent {
+  display: none;
+
+  @include media(screen-m) {
+    display: block;
+  }
 }

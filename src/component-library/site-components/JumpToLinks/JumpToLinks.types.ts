@@ -9,4 +9,5 @@ export interface JumpToLinksProps {
   children?: ReactNode | JSX.Element;
   variation: string;
   isSticky?: boolean;
+  mobileHeading?: string;
 }
