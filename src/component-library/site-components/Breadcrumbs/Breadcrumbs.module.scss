@@ -47,7 +47,7 @@
         display: inline-block;
         width: px-to-rem(1);
         height: px-to-rem(14);
-        background: $white;
+        background: var(--breadcrumbs-links);
         margin: 0 px-to-rem(12);
       }
     }
