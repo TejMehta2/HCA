@@ -564,7 +564,7 @@
   --table-color: #{$palace-red-80};
   --reviews-stars: #{$teal-100};
   --text-date: #{$white};
-  --breadcrumbs-background: #{$palace-red-100};
+  --breadcrumbs-background: #{$grey-100};
 
   @include apply-tag-palace-red;
   @include apply-tabs($palace-red-80, $white);
