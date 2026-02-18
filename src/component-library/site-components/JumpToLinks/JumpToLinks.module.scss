@@ -113,9 +113,12 @@
   background: var(--background, #{$navy-blue-90});
   color: var(--text, #{$white});
   border: solid px-to-rem(1) $navy-blue-10;
+  outline: solid px-to-rem(1) $navy-blue-10;
+  outline-offset: px-to-rem(8);
   border-radius: $radius-large;
   cursor: pointer;
   @include apply-body-medium-medium;
+  background-color: var(--table-color);
 
   svg {
     width: px-to-rem(20);

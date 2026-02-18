@@ -69,7 +69,7 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
     if (!rootRef.current) return;
     const anchors = Array.from(
       rootRef.current.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
-    );
+    ).filter((a) => a.getAttribute('href') !== '#');
 
     if (!anchors.length) return;
 

@@ -182,7 +182,7 @@ export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
           <div id="intro" style={{ height: 600, background: 'lightblue' }}>
             intro
           </div>
-          <div id="link1" style={{ height: 500, background: 'lightpink' }}>
+          <div id="link1" style={{ height: 600, background: 'lightpink' }}>
             Link 1
           </div>
           <div id="link2" style={{ height: 600, background: 'lightgray' }}>
