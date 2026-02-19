@@ -119,6 +119,7 @@
   cursor: pointer;
   @include apply-body-medium-medium;
   background-color: var(--table-color);
+  margin: $spacing-2 0;
 
   svg {
     width: px-to-rem(20);
