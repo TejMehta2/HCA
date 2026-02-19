@@ -1,5 +1,7 @@
-import { DoctifyMappedSitecoreItem, DoctifyMappedSitecoreItemWithAncestors } from "src/types/doctify/doctifyMappingTypes";
-
+import {
+  DoctifyMappedSitecoreItem,
+  DoctifyMappedSitecoreItemWithAncestors,
+} from 'src/types/doctify/doctifyMappingTypes';
 
 export const DOCTIFY_FIELDS = {
   Practice: 'doctifyPractice',

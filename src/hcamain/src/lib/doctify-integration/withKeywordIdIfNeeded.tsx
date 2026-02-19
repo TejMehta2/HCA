@@ -31,9 +31,7 @@ export const withKeywordIdIfNeeded = (
   );
 
   //hack alert: modify only CTAs with dynamicfinder css class
-  const hasDynamicClassFlag =
-  (v?.class || '').indexOf('dynamicfinder') !=
-  -1;
+  const hasDynamicClassFlag = (v?.class || '').indexOf('dynamicfinder') != -1;
 
   // If link is NOT the consultant cards page, just resolve it as-is
   if (id !== targetPageId || !hasDynamicClassFlag) {
