@@ -214,14 +214,12 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                   ? withKeywordIdIfNeeded(
                       link,
                       contextDoctifyPracticeId,
-                      'practice',
-                      doctifyMappingMissing
+                      'practice'
                     )
                   : withKeywordIdIfNeeded(
                       link,
                       contextDoctifyKeywordId,
-                      'keywordId',
-                      doctifyMappingMissing
+                      'keywordId'
                     );
 
                 return (
@@ -278,14 +276,12 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                   ? withKeywordIdIfNeeded(
                       link,
                       contextDoctifyPracticeId,
-                      'practice',
-                      doctifyMappingMissing
+                      'practice'                      
                     )
                   : withKeywordIdIfNeeded(
                       link,
                       contextDoctifyKeywordId,
-                      'keywordId',
-                      doctifyMappingMissing
+                      'keywordId'                      
                     );
 
                 return (
