@@ -11,7 +11,7 @@ import {
 import Accordions from '@component-library/components/Accordions/Accordions';
 import Params from 'src/types/params';
 import { AccordionsProps } from '@component-library/components/Accordions/Accordions.types';
-import Head from 'next/head';
+//import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Button from '@component-library/core-components/Button/Button';
@@ -40,14 +40,14 @@ type FAQProps = {
   fields?: Fields;
 };
 
-type FAQSchema = {
-  '@type': string;
-  name: string | undefined;
-  acceptedAnswer: {
-    '@type': string;
-    text: string | undefined;
-  };
-}[];
+// type FAQSchema = {
+//   '@type': string;
+//   name: string | undefined;
+//   acceptedAnswer: {
+//     '@type': string;
+//     text: string | undefined;
+//   };
+// }[];
 
 const getAccordions = (
   questions: QuestionFields[],
@@ -98,26 +98,26 @@ const getAccordions = (
   return { accordions };
 };
 
-const getSchema = (questions: QuestionFields[]) => {
-  const questionSchema: FAQSchema = [];
-  for (const accordion of questions) {
-    questionSchema.push({
-      '@type': 'Question',
-      name: accordion.fields?.Question?.value,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: accordion.fields?.Answer?.value,
-      },
-    });
-  }
+// const getSchema = (questions: QuestionFields[]) => {
+//   const questionSchema: FAQSchema = [];
+//   for (const accordion of questions) {
+//     questionSchema.push({
+//       '@type': 'Question',
+//       name: accordion.fields?.Question?.value,
+//       acceptedAnswer: {
+//         '@type': 'Answer',
+//         text: accordion.fields?.Answer?.value,
+//       },
+//     });
+//   }
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questionSchema,
-  };
-  return faqSchema;
-};
+//   const faqSchema = {
+//     '@context': 'https://schema.org',
+//     '@type': 'FAQPage',
+//     mainEntity: questionSchema,
+//   };
+//   return faqSchema;
+// };
 
 const AccordionsDefaultComponent = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -145,17 +145,17 @@ export const Default = (props: FAQProps): JSX.Element => {
   }
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
-  const faqSchema = getSchema(props.fields?.Questions);
+  // const faqSchema = getSchema(props.fields?.Questions);
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           key="faqs"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-      </Head>
+      </Head> */}
       <Themes theme={props.params?.Theme || 'A-HCA-White'}>
         <Accordions accordions={accordions.accordions} />
       </Themes>

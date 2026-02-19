@@ -6,4 +6,6 @@ export interface HeaderBlogDetailsProps {
   date: JSX.Element;
   title: JSX.Element;
   bodyCopy?: JSX.Element;
+  authors?: JSX.Element | JSX.Element[];
+  lastChecked?: JSX.Element;
 }
