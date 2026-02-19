@@ -4,7 +4,7 @@ import styles from './HeaderBlogDetails.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
-  const { theme, tag, date, title, bodyCopy } = props;
+  const { theme, tag, date, title, bodyCopy, authors, lastChecked } = props;
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
@@ -12,9 +12,16 @@ const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
           <div className={styles.info}>
             {tag}
             {date}
+            {lastChecked && (
+              <span className={styles.checked}>
+                <span className={styles.separator}></span> Last checked &nbsp;
+                {lastChecked}
+              </span>
+            )}
           </div>
           <div className={styles.title}>{title}</div>
           {bodyCopy && <div className={styles.copy}>{bodyCopy}</div>}
+          {authors && <div className={styles.authors}>{authors}</div>}
         </div>
       </div>
     </Themes>
