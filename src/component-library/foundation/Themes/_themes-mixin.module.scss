@@ -14,6 +14,8 @@
   --field-active-outline: #{$white};
   --field-error-colour: #{$red-60};
   --reviews-stars: #{$teal-100};
+  --breadcrumbs-background: #{$navy-blue-100};
+  --breadcrumbs-links: #{$white};
 
   @include apply-cta-full-light;
   @include apply-cta-social-light;
@@ -37,6 +39,8 @@
   --field-active-outline: #{$navy-blue-100};
   --field-error-colour: #{$red-100};
   --reviews-stars: #{$teal-100};
+  --breadcrumbs-background: #{$navy-blue-100};
+  --breadcrumbs-links: #{$white};
 
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
@@ -455,6 +459,7 @@
   --quote-tag-background-hover: #{$palace-red-60};
   --table-color: #{$palace-red-05};
   --reviews-stars: #{$teal-100};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-tag-palace-white;
   @include apply-cta-palace-full-red(#{$white},
@@ -489,6 +494,7 @@
   --table-color: #{$grey-80};
   --reviews-stars: #{$teal-100};
   --text-date: #{$white};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-tag-palace-grey;
   @include apply-tabs($grey-80, $white);
@@ -522,6 +528,7 @@
   --quote-tag-color: $navy-blue-100;
   --table-color: #{$white};
   --reviews-stars: #{$teal-100};
+  --breadcrumbs-background: #{$palace-red-100};
 
   @include apply-cta-palace-full-red(#{$tangerine-20},
     #{$navy-blue-100},
@@ -557,6 +564,7 @@
   --table-color: #{$palace-red-80};
   --reviews-stars: #{$teal-100};
   --text-date: #{$white};
+  --breadcrumbs-background: #{$grey-100};
 
   @include apply-tag-palace-red;
   @include apply-tabs($palace-red-80, $white);
@@ -589,6 +597,8 @@
   --quote-tag-background-hover: #{$chelsea-gold-100};
   --table-color: #{$chelsea-gold-20};
   --reviews-stars: #{$chelsea-gold-100};
+  --breadcrumbs-background: #{$tangerine-20};
+  --breadcrumbs-links: #{$navy-blue-100};
 
   @include apply-tag-chelsea-white;
   @include apply-cta-chelsea-full(#{$white},
@@ -782,6 +792,7 @@
   --table-color: #{$black-80};
   --reviews-stars: #{$teal-100};
   --highlight-color: #{$pink-50};
+  --breadcrumbs-background: #{$black-100};
 
   @include apply-tag-alan-black;
   @include apply-cta-alan-full(#{$navy-blue-100}, #{$white}, #{$white});
@@ -835,6 +846,7 @@
   --compare-tag-text-color-1: #{$white};
   --compare-tag-color-2: #{$tangerine-70};
   --compare-tag-text-color-2: #{$navy-blue-100};
+  --breadcrumbs-background: #{$black-100};
 }
 
 @mixin apply-theme-alan-light-grey {
@@ -852,6 +864,7 @@
   --table-color: #{$white};
   --reviews-stars: #{$teal-100};
   --highlight-color: #{$pink-50};
+  --breadcrumbs-background: #{$black-100};
 
   @include apply-tag-alan-white;
   @include apply-cta-alan-full(#{$navy-blue-100},

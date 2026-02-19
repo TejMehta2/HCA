@@ -22,6 +22,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: $spacing-4;
+  color: var(--text-date);
 
   & time {
     @include apply-body-medium;
@@ -34,4 +35,29 @@
 
 .copy {
   margin-top: $spacing-5;
+}
+
+.authors {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  margin-top: $spacing-5;
+
+  @include media(screen-m) {
+    flex-direction: row;
+  }
+}
+
+.checked {
+  display: flex;
+  align-items: center;
+  @include apply-body-medium;
+
+  .separator {
+    display: flex;
+    margin-right: $spacing-4;
+    width: px-to-rem(1);
+    height: px-to-rem(20);
+    background-color: var(--text-date);
+  }
 }

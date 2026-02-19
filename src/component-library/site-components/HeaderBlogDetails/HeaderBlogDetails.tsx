@@ -5,7 +5,7 @@ import Themes from '../../foundation/Themes/Themes';
 import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
-  const { theme, tag, date, title, bodyCopy } = props;
+  const { theme, tag, date, title, bodyCopy, authors, lastChecked } = props;
   const columnContext = useColumnSplitterContext();
   const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
 
@@ -16,9 +16,16 @@ const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
           <div className={styles.info}>
             {tag}
             {date}
+            {lastChecked && (
+              <span className={styles.checked}>
+                <span className={styles.separator}></span> Last checked &nbsp;
+                {lastChecked}
+              </span>
+            )}
           </div>
           <div className={styles.title}>{title}</div>
           {bodyCopy && <div className={styles.copy}>{bodyCopy}</div>}
+          {authors && <div className={styles.authors}>{authors}</div>}
         </div>
       </div>
     </Themes>

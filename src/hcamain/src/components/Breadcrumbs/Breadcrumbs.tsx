@@ -123,6 +123,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
         />
       </Head>
       <Breadcrumbs
+        theme={props.params?.Theme || 'A-HCA-White'}
         backCta={{
           link: combinedList[1].url?.url,
           text: combinedList[1].displayName,

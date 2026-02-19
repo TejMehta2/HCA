@@ -7,4 +7,6 @@ export interface HeaderBlogDetailsProps {
   title: JSX.Element;
   bodyCopy?: JSX.Element;
   hasMultipleColumns?: boolean;
+  authors?: JSX.Element | JSX.Element[];
+  lastChecked?: JSX.Element;
 }
