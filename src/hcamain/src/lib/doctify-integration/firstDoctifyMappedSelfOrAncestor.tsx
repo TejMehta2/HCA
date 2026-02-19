@@ -45,7 +45,7 @@ export function firstDoctifyMappedSelfOrAncestor(
   const fromContext = check(contextItem);
   if (fromContext) return fromContext;
 
-  // 2) ancestors (closest first, as in your JSON)
+  // 2) ancestors
   for (const a of contextItem.ancestors ?? []) {
     const hit = check(a);
     if (hit) return hit;
