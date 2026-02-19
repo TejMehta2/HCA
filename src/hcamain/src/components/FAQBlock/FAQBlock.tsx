@@ -15,7 +15,7 @@ import Button from '@component-library/core-components/Button/Button';
 import Params from 'src/types/params';
 import { Accordions } from '@component-library/components/Accordions/Accordions.types';
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
-import Head from 'next/head';
+//import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -49,14 +49,14 @@ type FAQProps = {
   fields?: Fields;
 };
 
-type FAQSchema = {
-  '@type': string;
-  name: string | undefined;
-  acceptedAnswer: {
-    '@type': string;
-    text: string | undefined;
-  };
-}[];
+// type FAQSchema = {
+//   '@type': string;
+//   name: string | undefined;
+//   acceptedAnswer: {
+//     '@type': string;
+//     text: string | undefined;
+//   };
+// }[];
 
 const getAccordions = (
   questions: QuestionFields[],
@@ -107,26 +107,26 @@ const getAccordions = (
   return { accordions };
 };
 
-const getSchema = (questions: QuestionFields[]) => {
-  const questionSchema: FAQSchema = [];
-  for (const accordion of questions) {
-    questionSchema.push({
-      '@type': 'Question',
-      name: accordion.fields?.Question?.value,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: accordion.fields?.Answer?.value,
-      },
-    });
-  }
+// const getSchema = (questions: QuestionFields[]) => {
+//   const questionSchema: FAQSchema = [];
+//   for (const accordion of questions) {
+//     questionSchema.push({
+//       '@type': 'Question',
+//       name: accordion.fields?.Question?.value,
+//       acceptedAnswer: {
+//         '@type': 'Answer',
+//         text: accordion.fields?.Answer?.value,
+//       },
+//     });
+//   }
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questionSchema,
-  };
-  return faqSchema;
-};
+//   const faqSchema = {
+//     '@context': 'https://schema.org',
+//     '@type': 'FAQPage',
+//     mainEntity: questionSchema,
+//   };
+//   return faqSchema;
+// };
 
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -159,11 +159,12 @@ export const Default = (props: FAQProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
-  const faqSchema = getSchema(props.fields?.Questions);
+  // const faqSchema = getSchema(props.fields?.Questions);
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -171,17 +172,20 @@ export const Default = (props: FAQProps): JSX.Element => {
   );
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           key="faqs"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-      </Head>
+      </Head> */}
 
       <AccordionsBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
@@ -257,24 +261,28 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
-  const faqSchema = getSchema(props.fields?.Questions);
+  //const faqSchema = getSchema(props.fields?.Questions);
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
   );
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           key="faqs"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-      </Head>
+      </Head> */}
       <AccordionsBlockSideBySide
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
         id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
