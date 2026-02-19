@@ -11,9 +11,8 @@ export type KeywordLinkResult = {
 
 export const withKeywordIdIfNeeded = (
   linkField?: LinkField,
-  keywordId?: string,
-  paramName: string = 'keywordId',
-  fallbackToStaticLink: boolean = false
+  keywordId?: string | undefined,
+  paramName: string = 'keywordId'
 ): KeywordLinkResult => {
   const STATIC_FALLBACK: KeywordLinkResult = {
     href: '/finder/step-intro',
@@ -31,25 +30,22 @@ export const withKeywordIdIfNeeded = (
       '{27B3FA77-28E9-419E-B7D0-6159A3ED3E24}'
   );
 
+  //hack alert: modify only CTAs with dynamicfinder css class
+  const hasDynamicClassFlag =
+  (v?.class || '').indexOf('dynamicfinder') !=
+  -1;
+
   // If link is NOT the consultant cards page, just resolve it as-is
-  if (id !== targetPageId) {
+  if (id !== targetPageId || !hasDynamicClassFlag) {
     return {
       href: resolveSitecoreLink(v),
       text: resolvedText,
     };
   }
 
-  // If doctify mapping should exits, but it's not - return static link to Finder intro
-  if (fallbackToStaticLink) {
-    return STATIC_FALLBACK;
-  }
-
-  // No doctify mapping ie regular content page - resolve as-is
+  // If doctify mapping is missing - return static link to Finder intro
   if (!keywordId) {
-    return {
-      href: resolveSitecoreLink(v),
-      text: resolvedText,
-    };
+    return STATIC_FALLBACK;
   }
 
   // Clone props and inject keywordId into querystring (preserve existing qs)

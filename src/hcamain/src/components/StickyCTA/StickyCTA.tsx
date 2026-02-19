@@ -17,49 +17,43 @@ import Link from 'next/link';
 import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
 import {
   SITECORE_TEMPLATE_IDS,
+  TemplateId,
   templateIdEqualTo,
 } from 'lib/sitecore/templateIds';
+import { svgIconFieldsTargetItem } from 'src/types/svgIconFields.GraphQL';
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
-};
+import { DoctifyMappedSitecoreItemWithAncestors } from 'src/types/doctify/doctifyMappingTypes';
+import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
 
 type ModalContentFields = {
-  fields?: {
-    Title?: Field<string>;
-    Text?: Field<string>;
-    PrimaryCTAIcon?: HCAIconFields;
-    PrimaryCTA?: LinkField;
-    PrimaryCTAVariant?: { name: string };
-    SecondaryCTAIcon?: HCAIconFields;
-    SecondaryCTA?: LinkField;
-    SecondaryCTAVariant?: { name: string };
-    TertiaryCTAIcon?: HCAIconFields;
-    TertiaryCTA?: LinkField;
-    TertiaryCTAVariant?: { name: string };
-    QuaternaryCTAIcon?: HCAIconFields;
-    QuaternaryCTA?: LinkField;
-    QuaternaryCTAVariant?: { name: string };
-  };
+  title?: Field<string>;
+  text?: Field<string>;
+  primaryCTAIcon?: svgIconFieldsTargetItem;
+  primaryCTA?: { jsonValue: LinkField };
+  primaryCTAVariant?: { name: string };
+  secondaryCTAIcon?: svgIconFieldsTargetItem;
+  secondaryCTA?: { jsonValue: LinkField };
+  secondaryCTAVariant?: { name: string };
+  tertiaryCTAIcon?: svgIconFieldsTargetItem;
+  tertiaryCTA?: { jsonValue: LinkField };
+  tertiaryCTAVariant?: { name: string };
+  quaternaryCTAIcon?: svgIconFieldsTargetItem;
+  quaternaryCTA?: { jsonValue: LinkField };
+  quaternaryCTAVariant?: { name: string };
 };
 
 interface Fields {
-  CTAIcon?: HCAIconFields;
-  CTAText?: Field<string>;
-  DesktopCaption?: Field<string>;
-  ModalContent?: ModalContentFields[];
+  cTAIcon?: svgIconFieldsTargetItem;
+  cTAText?: { jsonValue?: Field<string> };
+  desktopCaption?: { jsonValue?: Field<string> };
+  modalContent?: { targetItems: ModalContentFields[] };
 }
 
 type StickyCTAProps = {
   params?: Params;
-  fields?: Fields;
-};
-
-type RouteFields = {
-  DoctifyKeywordId?: Field<string>;
-  DoctifyPractice?: Field<string>;
+  fields?: {
+    data: { item: Fields; contextItem: DoctifyMappedSitecoreItemWithAncestors };
+  };
 };
 
 const StickyCTADefaultComponent = (props: StickyCTAProps): JSX.Element => {
@@ -81,82 +75,83 @@ const StickyCTADefaultComponent = (props: StickyCTAProps): JSX.Element => {
 
 export const Default = (props: StickyCTAProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { sitecoreContext } = useSitecoreContext();
 
-  // context Item (route) item fields:
-  const routeFields = sitecoreContext?.route?.fields as RouteFields | undefined;
-  const contextDoctifyKeywordId = routeFields?.DoctifyKeywordId?.value;
-  const contextDoctifyPracticeId = routeFields?.DoctifyPractice?.value;
-  const contextTempalteId = sitecoreContext?.route?.templateId;
+  //mapped doctify id - keywordId or practice, depending on page type.
+  let doctifyId = undefined;
 
-  const isLocationPage = templateIdEqualTo(
-    contextTempalteId,
-    SITECORE_TEMPLATE_IDS.LocationPage
+  //finding any first location page within context page or it's ancestors.
+  const locationPageOrFirstParentLocation = firstSelfOrAncestorByTemplate(
+    SITECORE_TEMPLATE_IDS.LocationPage,
+    props?.fields?.data?.contextItem
   );
 
-  const keywordIdExistsInTheModel =
-    routeFields !== undefined ? 'DoctifyKeywordId' in routeFields : false;
+  //If there is a result, it means we're in Locations tree where we don't want to inherit doctifyPractice from parent location
+  if (locationPageOrFirstParentLocation) {
+    doctifyId = locationPageOrFirstParentLocation.doctifyPractice?.value;
+  } else {
+    //find first page mapped with doctify within context item or it's ancestors
+    const firstMappedAncestor = firstDoctifyMappedSelfOrAncestor(
+      props?.fields?.data?.contextItem
+    );
 
-  const keywordIdIsEmpty =
-    contextDoctifyKeywordId === '' || contextDoctifyKeywordId == undefined;
-
-  //check if we're on the page that could be mapped to doctify, but mapping was not done.
-  const doctifyMappingMissing = isLocationPage
-    ? contextDoctifyPracticeId === '' || contextDoctifyPracticeId === undefined
-    : keywordIdExistsInTheModel && keywordIdIsEmpty;
+    //if there was a result with doctifyKeywordId use it
+    if (firstMappedAncestor?.type == 'doctifyKeywordId') {
+      doctifyId = firstMappedAncestor.value;
+    }
+  }
 
   if (!props.fields) {
     return <StickyCTADefaultComponent {...props} />;
   }
 
-  if (!props.fields?.ModalContent) return <></>;
+  if (!props.fields?.data?.item?.modalContent?.targetItems) return <></>;
 
-  const firstModal = props.fields?.ModalContent?.[0]?.fields;
-  const secondModal = props.fields?.ModalContent?.[1]?.fields;
+  const firstModal = props.fields?.data?.item?.modalContent?.targetItems[0];
+  const secondModal = props.fields?.data?.item?.modalContent?.targetItems[1];
 
   const items = [
     {
-      link: firstModal?.PrimaryCTA,
-      icon: firstModal?.PrimaryCTAIcon,
-      buttonVariation: firstModal?.PrimaryCTAVariant?.name ?? 'full',
+      link: firstModal?.primaryCTA,
+      icon: firstModal?.primaryCTAIcon,
+      buttonVariation: firstModal?.primaryCTAVariant?.name ?? 'full',
     },
     {
-      link: firstModal?.SecondaryCTA,
-      icon: firstModal?.SecondaryCTAIcon,
-      buttonVariation: firstModal?.SecondaryCTAVariant?.name ?? 'outline',
+      link: firstModal?.secondaryCTA,
+      icon: firstModal?.secondaryCTAIcon,
+      buttonVariation: firstModal?.secondaryCTAVariant?.name ?? 'outline',
     },
     {
-      link: firstModal?.TertiaryCTA,
-      icon: firstModal?.TertiaryCTAIcon,
-      buttonVariation: firstModal?.TertiaryCTAVariant?.name ?? 'outline',
+      link: firstModal?.tertiaryCTA,
+      icon: firstModal?.tertiaryCTAIcon,
+      buttonVariation: firstModal?.tertiaryCTAVariant?.name ?? 'outline',
     },
     {
-      link: firstModal?.QuaternaryCTA,
-      icon: firstModal?.QuaternaryCTAIcon,
-      buttonVariation: firstModal?.QuaternaryCTAVariant?.name ?? 'outline',
+      link: firstModal?.quaternaryCTA,
+      icon: firstModal?.quaternaryCTAIcon,
+      buttonVariation: firstModal?.quaternaryCTAVariant?.name ?? 'outline',
     },
   ];
 
   const items1 = [
     {
-      link: secondModal?.PrimaryCTA,
-      icon: secondModal?.PrimaryCTAIcon,
-      buttonVariation: secondModal?.PrimaryCTAVariant?.name ?? 'full',
+      link: secondModal?.primaryCTA,
+      icon: secondModal?.primaryCTAIcon,
+      buttonVariation: secondModal?.primaryCTAVariant?.name ?? 'full',
     },
     {
-      link: secondModal?.SecondaryCTA,
-      icon: secondModal?.SecondaryCTAIcon,
-      buttonVariation: secondModal?.SecondaryCTAVariant?.name ?? 'outline',
+      link: secondModal?.secondaryCTA,
+      icon: secondModal?.secondaryCTAIcon,
+      buttonVariation: secondModal?.secondaryCTAVariant?.name ?? 'outline',
     },
     {
-      link: secondModal?.TertiaryCTA,
-      icon: secondModal?.TertiaryCTAIcon,
-      buttonVariation: secondModal?.TertiaryCTAVariant?.name ?? 'outline',
+      link: secondModal?.tertiaryCTA,
+      icon: secondModal?.tertiaryCTAIcon,
+      buttonVariation: secondModal?.tertiaryCTAVariant?.name ?? 'outline',
     },
     {
-      link: secondModal?.QuaternaryCTA,
-      icon: secondModal?.QuaternaryCTAIcon,
-      buttonVariation: secondModal?.QuaternaryCTAVariant?.name ?? 'outline',
+      link: secondModal?.quaternaryCTA,
+      icon: secondModal?.quaternaryCTAIcon,
+      buttonVariation: secondModal?.quaternaryCTAVariant?.name ?? 'outline',
     },
   ];
 
@@ -164,7 +159,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
     <>
       <StickyCTA
         cta={
-          props?.fields?.CTAText?.value && (
+          props?.fields?.data?.item?.cTAText?.jsonValue && (
             <Button size="large" variation="full">
               <button
                 onClick={() => {
@@ -175,14 +170,13 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                   <span
                     dangerouslySetInnerHTML={{
                       __html:
-                        props?.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                        props?.fields?.data?.item?.cTAIcon?.targetItem
+                          ?.svgMarkup?.value || '',
                     }}
                   ></span>
                   <RichText
                     tag="span"
-                    field={{
-                      value: props?.fields?.CTAText.value,
-                    }}
+                    field={props?.fields?.data?.item?.cTAText?.jsonValue}
                   />
                 </>
               </button>
@@ -190,9 +184,11 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
           )
         }
       >
-        {props.fields.DesktopCaption?.value && (
+        {props.fields.data?.item?.desktopCaption?.jsonValue && (
           <Text variation="heading-1">
-            {props.fields.DesktopCaption?.value}
+            <JssText
+              field={props.fields.data?.item?.desktopCaption?.jsonValue}
+            />
           </Text>
         )}
       </StickyCTA>
@@ -200,44 +196,41 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
       <ModalAppointment
         ref={dialogRef}
         title1={
-          props.fields?.ModalContent?.[0] && (
+          firstModal && (
             <Text variation={'display-4'} tag="h2">
-              <JssText field={props.fields?.ModalContent?.[0]?.fields?.Title} />
+              <JssText field={firstModal.title} />
             </Text>
           )
         }
         copy1={
-          props.fields?.ModalContent?.[0] && (
+          firstModal && (
             <Text variation={'body-large'} tag="div">
-              <RichText field={props.fields?.ModalContent?.[0]?.fields?.Text} />
+              <RichText field={firstModal?.text} />
             </Text>
           )
         }
         cta1={
-          props.fields?.ModalContent?.[0] && (
+          firstModal && (
             <>
               {items.map(({ link, icon, buttonVariation }, idx) => {
-                if (!link?.value?.text) return null;
+                if (!link?.jsonValue.value.text) return null;
 
                 const optionalCta =
-                  (link?.value?.class || '').indexOf('optional') != -1;
+                  (link?.jsonValue.value?.class || '').indexOf(
+                    'optionalfinder'
+                  ) != -1;
 
-                if (optionalCta && doctifyMappingMissing) {
+                //hack alert: if here is no doctifyId and CTA has optionalfinder css class - don't render it.
+                if (optionalCta && !doctifyId) {
                   return;
                 }
 
-                const { href, text } = isLocationPage
-                  ? withKeywordIdIfNeeded(
-                      link,
-                      contextDoctifyPracticeId,
-                      'practice',
-                      doctifyMappingMissing
-                    )
+                const { href, text } = locationPageOrFirstParentLocation
+                  ? withKeywordIdIfNeeded(link.jsonValue, doctifyId, 'practice')
                   : withKeywordIdIfNeeded(
-                      link,
-                      contextDoctifyKeywordId,
-                      'keywordId',
-                      doctifyMappingMissing
+                      link.jsonValue,
+                      doctifyId,
+                      'keywordId'
                     );
 
                 return (
@@ -249,10 +242,10 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link href={href} target={link?.value?.target}>
+                    <Link href={href} target={link?.jsonValue?.value?.target}>
                       <span
                         dangerouslySetInnerHTML={{
-                          __html: icon?.fields?.SvgMarkup?.value || '',
+                          __html: icon?.targetItem?.svgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
@@ -264,44 +257,45 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
           )
         }
         title2={
-          props.fields?.ModalContent?.[1] && (
+          secondModal && (
             <Text variation={'display-4'} tag="h2">
-              <JssText field={props.fields?.ModalContent?.[1]?.fields?.Title} />
+              <JssText field={secondModal?.title} />
             </Text>
           )
         }
         copy2={
-          props.fields?.ModalContent?.[1] && (
+          secondModal && (
             <Text variation={'body-large'} tag="div">
-              <JssText field={props.fields?.ModalContent?.[1]?.fields?.Text} />
+              <JssText field={secondModal?.text} />
             </Text>
           )
         }
         cta2={
-          props.fields?.ModalContent?.[1] && (
+          secondModal && (
             <>
               {items1.map(({ link, icon, buttonVariation }, idx) => {
-                if (!link?.value?.text) return null;
+                if (!link?.jsonValue?.value?.text) return null;
 
                 const optionalCta =
-                  (link?.value?.class || '').indexOf('optional') != -1;
+                  (link?.jsonValue?.value?.class || '').indexOf(
+                    'optionalfinder'
+                  ) != -1;
 
-                if (optionalCta && doctifyMappingMissing) {
+                //hack alert: if here is no doctifyId and CTA has optionalfinder css class - don't render it.
+                if (optionalCta && !doctifyId) {
                   return;
                 }
 
-                const { href, text } = isLocationPage
+                const { href, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(
-                      link,
-                      contextDoctifyPracticeId,
-                      'practice',
-                      doctifyMappingMissing
+                      link?.jsonValue,
+                      doctifyId,
+                      'practice'
                     )
                   : withKeywordIdIfNeeded(
-                      link,
-                      contextDoctifyKeywordId,
-                      'keywordId',
-                      doctifyMappingMissing
+                      link?.jsonValue,
+                      doctifyId,
+                      'keywordId'
                     );
 
                 return (
@@ -313,10 +307,10 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link href={href} target={link.value.target}>
+                    <Link href={href} target={link.jsonValue?.value?.target}>
                       <span
                         dangerouslySetInnerHTML={{
-                          __html: icon?.fields?.SvgMarkup?.value || '',
+                          __html: icon?.targetItem?.svgMarkup?.value || '',
                         }}
                       />
                       <RichText tag="span" field={{ value: text }} />
@@ -330,4 +324,25 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
       />
     </>
   );
+
+  function firstSelfOrAncestorByTemplate(
+    template: TemplateId,
+    contextItem: DoctifyMappedSitecoreItemWithAncestors | undefined
+  ) {
+    if (!contextItem) return undefined;
+
+    let isLocationPageOrSubPage = templateIdEqualTo(
+      contextItem.template.id,
+      template
+    );
+
+    if (isLocationPageOrSubPage) return contextItem;
+
+    for (const a of props?.fields?.data?.contextItem.ancestors ?? []) {
+      if (templateIdEqualTo(a.template.id, template)) {
+        return a;
+      }
+    }
+    return undefined;
+  }
 };
