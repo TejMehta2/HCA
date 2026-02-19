@@ -276,12 +276,12 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                   ? withKeywordIdIfNeeded(
                       link,
                       contextDoctifyPracticeId,
-                      'practice'                      
+                      'practice'
                     )
                   : withKeywordIdIfNeeded(
                       link,
                       contextDoctifyKeywordId,
-                      'keywordId'                      
+                      'keywordId'
                     );
 
                 return (
