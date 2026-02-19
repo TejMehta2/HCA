@@ -40,12 +40,6 @@ export const Default = (props: ComponentProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const hasMultipleColumns = enabledPlaceholders.length > 1;
 
-  // Debug logging (remove after testing)
-  if (typeof window !== 'undefined') {
-    console.log('ColumnSplitter - hasMultipleColumns:', hasMultipleColumns);
-    console.log('ColumnSplitter - enabledPlaceholders:', enabledPlaceholders);
-  }
-
   return (
     <ColumnSplitterContext.Provider value={{ hasMultipleColumns }}>
       <ContainerWrapper>
