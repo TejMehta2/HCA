@@ -93,22 +93,26 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
     {
       link: firstModal?.primaryCTA,
       icon: firstModal?.primaryCTAIcon,
-      buttonVariation: firstModal?.primaryCTAVariant?.name ?? 'full',
+      buttonVariation:
+        firstModal?.primaryCTAVariant?.targetItem?.name ?? 'full',
     },
     {
       link: firstModal?.secondaryCTA,
       icon: firstModal?.secondaryCTAIcon,
-      buttonVariation: firstModal?.secondaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        firstModal?.secondaryCTAVariant?.targetItem?.name ?? 'outline',
     },
     {
       link: firstModal?.tertiaryCTA,
       icon: firstModal?.tertiaryCTAIcon,
-      buttonVariation: firstModal?.tertiaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        firstModal?.tertiaryCTAVariant?.targetItem?.name ?? 'outline',
     },
     {
       link: firstModal?.quaternaryCTA,
       icon: firstModal?.quaternaryCTAIcon,
-      buttonVariation: firstModal?.quaternaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        firstModal?.quaternaryCTAVariant?.targetItem?.name ?? 'outline',
     },
   ];
 
@@ -116,22 +120,26 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
     {
       link: secondModal?.primaryCTA,
       icon: secondModal?.primaryCTAIcon,
-      buttonVariation: secondModal?.primaryCTAVariant?.name ?? 'full',
+      buttonVariation:
+        secondModal?.primaryCTAVariant?.targetItem?.name ?? 'full',
     },
     {
       link: secondModal?.secondaryCTA,
       icon: secondModal?.secondaryCTAIcon,
-      buttonVariation: secondModal?.secondaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        secondModal?.secondaryCTAVariant?.targetItem?.name ?? 'outline',
     },
     {
       link: secondModal?.tertiaryCTA,
       icon: secondModal?.tertiaryCTAIcon,
-      buttonVariation: secondModal?.tertiaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        secondModal?.tertiaryCTAVariant?.targetItem?.name ?? 'outline',
     },
     {
       link: secondModal?.quaternaryCTA,
       icon: secondModal?.quaternaryCTAIcon,
-      buttonVariation: secondModal?.quaternaryCTAVariant?.name ?? 'outline',
+      buttonVariation:
+        secondModal?.quaternaryCTAVariant?.targetItem?.name ?? 'outline',
     },
   ];
 

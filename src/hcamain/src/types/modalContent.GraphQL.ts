@@ -6,14 +6,14 @@ export type ModalContentFields = {
   text?: Field<string>;
   primaryCTAIcon?: svgIconFieldsTargetItem;
   primaryCTA?: { jsonValue: LinkField };
-  primaryCTAVariant?: { name: string };
+  primaryCTAVariant?: { targetItem?: { name: string } };
   secondaryCTAIcon?: svgIconFieldsTargetItem;
   secondaryCTA?: { jsonValue: LinkField };
-  secondaryCTAVariant?: { name: string };
+  secondaryCTAVariant?: { targetItem?: { name: string } };
   tertiaryCTAIcon?: svgIconFieldsTargetItem;
   tertiaryCTA?: { jsonValue: LinkField };
-  tertiaryCTAVariant?: { name: string };
+  tertiaryCTAVariant?: { targetItem?: { name: string } };
   quaternaryCTAIcon?: svgIconFieldsTargetItem;
   quaternaryCTA?: { jsonValue: LinkField };
-  quaternaryCTAVariant?: { name: string };
+  quaternaryCTAVariant?: { targetItem?: { name: string } };
 };
