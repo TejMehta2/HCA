@@ -87,6 +87,10 @@
         background-color: var(--table-color);
       }
     }
+
+    .anchor a.highlighted {
+      background-color: $tangerine-30;
+    }
   }
 
   .container {

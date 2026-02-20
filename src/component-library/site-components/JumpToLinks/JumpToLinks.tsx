@@ -24,7 +24,7 @@ export const JumpToTextLink = (props: JumpToLinkProps): JSX.Element => {
 export const JumpToAnchor = (props: JumpToLinkProps): JSX.Element => {
   const { children } = props;
   return (
-    <li>
+    <li className={styles.anchor}>
       <Button size={'small'} variation={'jump-to'}>
         {children}
       </Button>
