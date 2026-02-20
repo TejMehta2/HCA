@@ -34,13 +34,15 @@
   }
 }
 
-.container {
+.container-all {
   border-bottom: solid px-to-rem(1) $navy-blue-5;
-  @include responsive-container;
-
   padding-top: var(--theme-collapse-padding-top, #{$spacing-7});
   padding-bottom: $spacing-7;
   margin-bottom: $spacing-7;
+}
+
+.container {
+  @include responsive-container;
 }
 
 .wrapper {

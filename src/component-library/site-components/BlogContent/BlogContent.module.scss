@@ -4,6 +4,8 @@
 .wrapper {
   background: var(--background);
   color: var(--text);
+  padding-top: var(--theme-collapse-padding-top, $spacing-12);
+  padding-bottom: $spacing-12;
 }
 
 .container {
@@ -11,8 +13,6 @@
   @include responsive-grid;
 
   row-gap: 0;
-  padding-top: var(--theme-collapse-padding-top, $spacing-12);
-  padding-bottom: $spacing-12;
 
   .grid {
     @include responsive-grid-span(6, 6, 8, 8);

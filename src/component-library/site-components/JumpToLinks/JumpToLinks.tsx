@@ -5,6 +5,7 @@ import Button from '../../core-components/Button/Button';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Modals from '../../components/Modals/Modals';
 import Icons from '../../foundation/Icons/Icons';
+import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 export const JumpToLink = (props: JumpToLinkProps): JSX.Element => {
   const { children } = props;
@@ -32,6 +33,8 @@ export const JumpToAnchor = (props: JumpToLinkProps): JSX.Element => {
 };
 
 const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
+  const columnContext = useColumnSplitterContext();
+  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
   const {
     children,
     heading,
@@ -177,7 +180,9 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
         </>
       )}
       <div className={styles.desktopContent}>
-        <div className={styles.container}>
+        <div
+          className={`${styles['container-all']} ${hasMultipleColumns ? '' : styles.container}`}
+        >
           {heading && <div className={styles.heading}>{heading}</div>}
           {children && <ul className={styles.children}>{children}</ul>}
         </div>
