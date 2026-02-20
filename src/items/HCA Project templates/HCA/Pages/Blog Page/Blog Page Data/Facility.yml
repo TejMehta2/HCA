@@ -1,15 +1,18 @@
 ﻿---
-ID: "e1b9a21b-a32e-429b-bbe5-047b323fd263"
+ID: "9c55a6c5-8a74-47f7-8987-c21c447fafe1"
 Parent: "6337ebde-b017-466a-b95c-4c6016c1d7f6"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Pages/Blog Page/Data/Date
+Path: /sitecore/templates/Project/HCA/Pages/Blog Page/Blog Page Data/Facility
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Location Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Datetime
+  Value: Multilist with Search
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 700
 Languages:
 - Language: en
   Versions:
@@ -17,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231103T152608Z
+      Value: 20240409T064356Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5412b89f-9f98-4101-b6de-54df2ef34c55"
+      Value: "236d8fde-b63f-40e8-85d0-2a74721d50e2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231117T095257Z
+      Value: 20260220T172433Z
