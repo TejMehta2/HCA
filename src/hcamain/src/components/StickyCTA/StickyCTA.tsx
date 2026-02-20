@@ -1,9 +1,7 @@
-/* eslint-disable */
 import React, { useRef } from 'react';
 import {
   Field,
   Text as JssText,
-  LinkField,
   RichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -15,32 +13,13 @@ import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
 import { ButtonVariationUnionTypes } from '@component-library/core-components/Button/Button.types';
 import Link from 'next/link';
 import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
-import {
-  SITECORE_TEMPLATE_IDS,
-  TemplateId,
-  templateIdEqualTo,
-} from 'lib/sitecore/templateIds';
+import { SITECORE_TEMPLATE_IDS } from 'lib/sitecore/templateIds';
 import { svgIconFieldsTargetItem } from 'src/types/svgIconFields.GraphQL';
 
 import { DoctifyMappedSitecoreItemWithAncestors } from 'src/types/doctify/doctifyMappingTypes';
 import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
-
-type ModalContentFields = {
-  title?: Field<string>;
-  text?: Field<string>;
-  primaryCTAIcon?: svgIconFieldsTargetItem;
-  primaryCTA?: { jsonValue: LinkField };
-  primaryCTAVariant?: { name: string };
-  secondaryCTAIcon?: svgIconFieldsTargetItem;
-  secondaryCTA?: { jsonValue: LinkField };
-  secondaryCTAVariant?: { name: string };
-  tertiaryCTAIcon?: svgIconFieldsTargetItem;
-  tertiaryCTA?: { jsonValue: LinkField };
-  tertiaryCTAVariant?: { name: string };
-  quaternaryCTAIcon?: svgIconFieldsTargetItem;
-  quaternaryCTA?: { jsonValue: LinkField };
-  quaternaryCTAVariant?: { name: string };
-};
+import { ModalContentFields } from 'src/types/modalContent.GraphQL';
+import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
 
 interface Fields {
   cTAIcon?: svgIconFieldsTargetItem;
@@ -324,25 +303,4 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
       />
     </>
   );
-
-  function firstSelfOrAncestorByTemplate(
-    template: TemplateId,
-    contextItem: DoctifyMappedSitecoreItemWithAncestors | undefined
-  ) {
-    if (!contextItem) return undefined;
-
-    let isLocationPageOrSubPage = templateIdEqualTo(
-      contextItem.template.id,
-      template
-    );
-
-    if (isLocationPageOrSubPage) return contextItem;
-
-    for (const a of props?.fields?.data?.contextItem.ancestors ?? []) {
-      if (templateIdEqualTo(a.template.id, template)) {
-        return a;
-      }
-    }
-    return undefined;
-  }
 };
