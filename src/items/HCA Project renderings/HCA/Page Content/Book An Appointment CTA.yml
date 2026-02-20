@@ -13,6 +13,128 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetBookAnAppointment(
+      $datasource: String!
+      $contextItem: String!
+      $language: String!
+    ) {
+      contextItem: item(path: $contextItem, language: $language) {
+        ...DoctifyMappedItemFragment
+        ancestors(hasLayout: true) {
+          ...DoctifyMappedItemFragment
+        }
+      }
+      item(path: $datasource, language: $language) {
+        ... on BookAnAppointmentCTA { 
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTAText {
+            jsonValue
+          }
+    
+          modalContent {
+            targetItems {
+              ... on ModalContent {
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                primaryCTA {
+                  jsonValue
+                }
+                primaryCTAVariant {
+                  ...VariantFragment
+                }
+                primaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                secondaryCTA {
+                  jsonValue
+                }
+                secondaryCTAVariant {
+                  ...VariantFragment
+                }
+                secondaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                tertiaryCTA {
+                  jsonValue
+                }
+                tertiaryCTAVariant {
+                  ...VariantFragment
+                }
+                tertiaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                quaternaryCTA {
+                  jsonValue
+                }
+                quaternaryCTAVariant {
+                  ...VariantFragment
+                }
+                quaternaryCTAIcon {
+                  ...IconFragment
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    fragment VariantFragment on LookupField {
+      targetItem {
+        ... on Item {
+          name
+        }
+      }
+    }
+    
+    fragment IconFragment on LookupField {
+      targetItem {
+        ... on HCAIcon {
+          svgMarkup {
+            value
+          }
+        }
+      }
+    }
+    
+    fragment DoctifyMappedItemFragment on Item {
+      id
+      name
+      path
+      template {
+        name
+        id
+      }
+      ... on _DoctifyPracticeMapping {
+        doctifyPractice {
+          value
+        }
+      }
+      ... on _DoctifyKeywordIdMapping {
+        doctifyKeywordId {
+          value
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Book An Appointment CTA
@@ -35,6 +157,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{305384C4-3E2E-4A88-86BE-108D4446743C}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "317f3502-4a59-4272-a3e7-a4846c624d09"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -81,14 +206,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a82d4c48-b720-442a-ab1c-9511d84de89d"
+      Value: "c7ededad-aa65-4e22-8f89-8a34dee9f70b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172124Z
+      Value: 20260220T091639Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
