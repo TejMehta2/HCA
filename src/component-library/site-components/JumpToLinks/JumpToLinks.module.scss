@@ -87,6 +87,10 @@
         background-color: var(--table-color);
       }
     }
+
+    .anchor a.highlighted {
+      background-color: $tangerine-30;
+    }
   }
 
   .container {
@@ -112,7 +116,6 @@
   justify-content: space-between;
   width: 100%;
   padding: $spacing-4 $spacing-5;
-  background: var(--background, #{$navy-blue-90});
   color: var(--text, #{$white});
   border: solid px-to-rem(1) $navy-blue-10;
   outline: solid px-to-rem(1) $navy-blue-10;
@@ -121,7 +124,8 @@
   cursor: pointer;
   @include apply-body-medium-medium;
   background-color: var(--table-color);
-  margin: $spacing-2 0;
+  margin: $spacing-2;
+  max-width: calc(100% - $spacing-4);
 
   svg {
     width: px-to-rem(20);
