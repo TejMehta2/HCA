@@ -7,7 +7,7 @@ export function firstSelfOrAncestorByTemplate(
 ) {
   if (!contextItem) return undefined;
 
-  let isLocationPageOrSubPage = templateIdEqualTo(
+  const isLocationPageOrSubPage = templateIdEqualTo(
     contextItem.template.id,
     template
   );
