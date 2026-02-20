@@ -59,30 +59,30 @@ export const Default = (
 
   const hasNoDatasource = !props.fields;
 
-  if (props.variant === 'stacked') {   
+  if (props.variant === 'stacked') {
     return (
-        <JumpToLinks
-          variation={props.variant}
-          isSticky={true}         
-          heading={
-            hasNoDatasource ? (
-              <Text variation="body-bold-large">Jump to</Text>
-            ) : (
-              <Text variation="body-bold-large">
-                <JssText field={props.fields?.Title} />
-              </Text>
-            )
-          }
-        >
-          {components.length > 0 &&
-            components.map((item, index) => (
-              <JumpToTextLink key={index}>
-                <a href={'#' + item.Id}>
-                  <span>{item.TableOfContentsLinkTitle}</span>
-                </a>
-              </JumpToTextLink>
-            ))}
-        </JumpToLinks>
+      <JumpToLinks
+        variation={props.variant}
+        isSticky={true}
+        heading={
+          hasNoDatasource ? (
+            <Text variation="body-bold-large">Jump to</Text>
+          ) : (
+            <Text variation="body-bold-large">
+              <JssText field={props.fields?.Title} />
+            </Text>
+          )
+        }
+      >
+        {components.length > 0 &&
+          components.map((item, index) => (
+            <JumpToTextLink key={index}>
+              <a href={'#' + item.Id}>
+                <span>{item.TableOfContentsLinkTitle}</span>
+              </a>
+            </JumpToTextLink>
+          ))}
+      </JumpToLinks>
     );
   } else {
     return (
