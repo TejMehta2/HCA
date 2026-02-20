@@ -14,7 +14,8 @@
   }
 }
 
-.circled-list {
+/* Styles a ul and li with circle background */
+.circle {
   list-style: none;
   counter-reset: step;
   padding-left: 0;
@@ -22,7 +23,7 @@
   row-gap: var(--spacing-5);
 }
 
-.circled-list li {
+.circle li {
   counter-increment: step;
   display: flex;
   align-items: center;
@@ -30,7 +31,7 @@
   @include apply-body-medium;
 }
 
-.circled-list li::before {
+.circle li::before {
   content: counter(step);
   display: flex;
   align-items: flex-start;

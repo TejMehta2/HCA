@@ -129,7 +129,7 @@ export const Default: StoryObj<typeof RichText> = {
             cillum mollit officia tempor.
           </li>
         </ol>
-        <ol className="circled-list">
+        <ol className="circle">
           <li>
             Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
             cillum mollit officia tempor in ad non consequat esse.&nbsp;
