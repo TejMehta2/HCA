@@ -182,7 +182,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
                     </Text>
                   }
                   copy={
-                    <Text variation="body-large">
+                    <Text variation="body-large" tag='div'>
                       {card.abstractText?.value ? (
                         <JssRichText tag="div" field={card.abstractText} />
                       ) : (
