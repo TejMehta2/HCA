@@ -22,7 +22,7 @@ const PopularSearchesBox = (props: PopularSearchesBoxProps): JSX.Element => {
                         <React.Fragment key={`${item?.label ?? 'item'}-${index}`}>
                             <TextLink>
                                 <Link
-                                    href={`/finder/step-consultant-cards?search=Dermatology&keywordId=2924&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`}
+                                    href={item.href}
                                     className={styles.links}
                                 >
                                     {item.label}

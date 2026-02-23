@@ -199,34 +199,11 @@ export const Default = (props: StepProps): JSX.Element => {
       window.removeEventListener('OneTrustGroupsUpdated', onConsentChange);
   }, []);
 
-
-
   const handleClickQuickSearch = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
 
     const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
-    // const locations = props?.fields?.LocationsList || [];
-    // const locationConfig = locations.map(
-    //   (item: {
-    //     fields: {
-    //       name: { value: any };
-    //       distance: { value: any };
-    //       lat: { value: any };
-    //       lon: { value: any };
-    //     };
-    //   }) => ({
-    //     [item.fields.name.value]: {
-    //       distance: item.fields.distance.value,
-    //       lat: item.fields.lat.value,
-    //       lon: item.fields.lon.value,
-    //     },
-    //   })
-    // );
-    // const selectedLocation = searchStringLocations ?? 'London';
-
-    // const { lat, lon, distance } =
-    //   locationConfig[selectedLocation] || locationConfig.London;
 
     router.push(
       `${baseURLResults}?search=${searchString}` +
@@ -260,9 +237,9 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        <a href="javascript:OneTrust.ToggleInfoDisplay()">
+        {/* <a href="javascript:OneTrust.ToggleInfoDisplay()">
           Activate functional cookies
-        </a>
+        </a> */}
         <StepIntro
           headline={
             <>
