@@ -1,13 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import { ImageAndTextBlockProps } from './ImageAndTextBlock.types';
 import styles from './ImageAndTextBlock.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
-import Modals from '../../components/Modals/Modals';
-import Button from '../../core-components/Button/Button';
-import Container from '../../foundation/Containers/Container';
 
 const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   const {
@@ -26,21 +23,17 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     ratings,
     iconList,
     hideImageOnMobile,
-    hideImageOnDesktop, // ✅ NEW
+    hideImageOnDesktop,
     cfVariation,
     contentVariation,
     noOverflownHidden,
     id,
     tableOfContentTitle,
     locationCookies,
-    setLocation,
-    hasFunctionalConsentCookie,
     showRegion
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [saveLocation, setShowLocation] = useState(false);
-
   const hasImage = Boolean(image);
 
   // If there is no image at all, avoid applying image-right desktop reordering rules.
@@ -66,7 +59,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               styles[`image-${effectiveImageAlignment}`],
               styles[`image-${imageVerticalAlignment}`],
               styles[`image-${imageWidth}`],
-              forceMobileLikeDesktopLayout ? styles['no-desktop-image'] : '', // ✅ NEW
+              forceMobileLikeDesktopLayout ? styles['no-desktop-image'] : '',
             ].join(' ')}
           >
             {hasImage && (
@@ -75,7 +68,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                   styles.image,
                   cfVariation ? styles['hide-on-mobile-cf'] : '',
                   hideImageOnMobile ? styles['hide-on-mobile'] : '',
-                  hideImageOnDesktop ? styles['hide-on-desktop'] : '', // ✅ NEW
+                  hideImageOnDesktop ? styles['hide-on-desktop'] : '',
                   imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
                   imageNoStretch ? styles['image-no-stretch'] : '',
                 ].join(' ')}
@@ -111,20 +104,6 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                   </TextButton>
                 </div>
               )}
-
-              {showRegion && !hasFunctionalConsentCookie && (
-                <div className={styles['save-location']}>
-                  <div className={styles['save-content']}>
-                    <Text tag="h3" variation="body-medium">
-                      {`Save this location for next time? This requires functional cookies`}
-                    </Text>
-                  </div>
-                  <TextButton theme="dark">
-                    <a href="javascript:OneTrust.ToggleInfoDisplay()">Cookie settings</a>
-                  </TextButton>
-                </div>
-              )}
-
               <div className={styles.header}>{header}</div>
               {children && <div className={styles.children}>{children}</div>}
 
@@ -150,56 +129,6 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
           </div>
         </div>
       </div>
-
-      <Modals ref={dialogRef} alignContent="center">
-        {props.locationCookies !== 'London' && (
-          <Container marginRight="spacing-4" marginLeft="spacing-4">
-            <Button size="small" variation="full-dark" contentVariation="full-width">
-              <button
-                onClick={() => {
-                  dialogRef?.current?.close();
-                  setShowLocation(true);
-                  setLocation('London');
-                }}
-              >
-                <span>{'London'}</span>
-              </button>
-            </Button>
-          </Container>
-        )}
-
-        {props.locationCookies !== 'Manchester' && (
-          <Container marginRight="spacing-4" marginLeft="spacing-4">
-            <Button size="small" variation="full-dark" contentVariation="full-width">
-              <button
-                onClick={() => {
-                  dialogRef?.current?.close();
-                  setShowLocation(true);
-                  setLocation('Manchester');
-                }}
-              >
-                <span>{'Manchester'}</span>
-              </button>
-            </Button>
-          </Container>
-        )}
-
-        {props.locationCookies !== 'Birmingham' && (
-          <Container marginRight="spacing-4" marginLeft="spacing-4">
-            <Button size="small" variation="full-dark" contentVariation="full-width">
-              <button
-                onClick={() => {
-                  dialogRef?.current?.close();
-                  setShowLocation(true);
-                  setLocation('Birmingham');
-                }}
-              >
-                <span>{'Birmingham'}</span>
-              </button>
-            </Button>
-          </Container>
-        )}
-      </Modals>
     </Themes>
   );
 };

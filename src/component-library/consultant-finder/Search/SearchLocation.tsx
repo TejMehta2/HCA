@@ -1,34 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { MouseEventHandler, useId, useState, useContext } from 'react';
-import axios from 'axios';
 import styles from './SearchLocation.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
-let cancelToken: any;
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import TextLink from '../../core-components/TextLink/TextLink';
-import { transformFields } from '../../utility-functions/index';
 import SearchLocationDdropdown from './SearchLocationDropwdown';
 
 const SearchLocation = (props: SearchProps): JSX.Element => {
-  const { setSearchStringConsultantName, setConsultantSlug, searchStringLocations, setSearchStringLocations, selectedLocationConsultants, setSelectedLocationConsultants } = useContext(
+  const { setSearchStringLocations, setSelectedLocationConsultants } = useContext(
     ConsultantFinderContext
   );
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   const [data, setData] = useState([]);
-  const [dataSpecialists, setDataSpecialists] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+  const [dataSpecialists] = useState([]);
+  const [loading] = useState(true);
+  const [error] = useState(false);
+  const [noResults] = useState(false);
   const searchId = useId();
-
-  console.log(props.locationList);
 
   const matchLocations = (userValue: string, locations: any[]) => {
     const query = userValue.toLowerCase().trim();
-
 
     // empty => show all
     if (!query) return locations;
@@ -39,8 +33,7 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     );
   };
 
-
-  const handleClose = (e) => {
+  const handleClose = (e: { preventDefault: () => void; stopPropagation: () => void; }) => {
     e.preventDefault();
     e.stopPropagation();
     setData(props.locationList);
@@ -51,8 +44,6 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     e.preventDefault();
     e.stopPropagation();
     setSelectedLocationConsultants('Anywhere');
-
-    console.log('click');
     const value = e.target.value;
 
     const matches: any = matchLocations(value, props.locationList);
@@ -67,7 +58,6 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
   };
 
   const handleOnClick: MouseEventHandler<HTMLInputElement> = (e) => {
-    console.log('click');
     e.preventDefault();
     e.stopPropagation();
   };

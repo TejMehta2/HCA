@@ -32,4 +32,5 @@ export default interface SearchProps {
   isStepCards?: boolean;
   applyLocationToSearch?: any;
   search?: any;
+  labelLocationsResults?: string;
 }

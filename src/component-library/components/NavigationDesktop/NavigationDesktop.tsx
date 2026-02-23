@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
@@ -16,8 +16,6 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Button from '../../core-components/Button/Button';
 import Container from '../../foundation/Containers/Container';
-import Icons from '../../foundation/Icons/Icons';
-import Modals from '../Modals/Modals';
 
 const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   const {
@@ -31,8 +29,6 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     logo,
     darkLogo
   } = props;
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const [location, setLocation] = useState('London');
 
   // close the nav when clicking a link within
   const router = useRouter();

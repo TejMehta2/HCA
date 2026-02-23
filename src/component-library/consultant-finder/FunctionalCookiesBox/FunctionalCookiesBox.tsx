@@ -11,13 +11,13 @@ const FunctionalCookiesBox = (props: FunctionalCookiesBoxProps): JSX.Element => 
             <div className={styles.content}>
                 <div className={styles.text}>
                     <Text tag="p" variation="body-medium">
-                        {`Save this location for next time?`}
+                        {props.title || `Save this location for next time?`}
                     </Text>
                 </div>
                 <TextButton theme="light">
                     <a href="javascript:OneTrust.ToggleInfoDisplay()">
                         <Text tag="p" variation="body-bold-medium">
-                            {`Activate functional cookies`}
+                            {props.label || `Activate functional cookies`}
                         </Text>
                     </a>
                 </TextButton>

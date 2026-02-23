@@ -358,6 +358,8 @@ export const Default = (props: StepProps): JSX.Element => {
                   props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                   'Loading...'
                 }
+                // MH to do
+                labelLocationsResults={'LOCATIONS'}
               />
             </>
           }

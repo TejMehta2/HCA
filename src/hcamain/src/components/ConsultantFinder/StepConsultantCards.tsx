@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template finder component
 
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
@@ -30,7 +30,6 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import {
-  checkIfConsultantIsNoReviews,
   getActiveLiveDiaryConsultantSlugs,
   getDoctifyPhoneNumberConsultantSlugs,
   getIgnoreReviewsConsultantSlugs,
@@ -49,8 +48,6 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import { GetServerSidePropsContext } from 'next';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
-import Button from '@component-library/core-components/Button/Button';
-import Modals from '@component-library/components/Modals/Modals';
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 
 interface Fields {
@@ -220,10 +217,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [URLparams, setURLparams] = useState('');
-  const [location, setLocation] = useState('London');
   const [hydrated, setHydrated] = useState(false);
   const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const cardAvailableAppointmentLoadingText: string =
     props?.fields?.API_C2_FirstAppointment_LoadingMsg?.value;
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
@@ -231,6 +226,8 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
+
+  console.log(hasFunctionalConsentCookie);
 
   // hospitals
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1090,7 +1087,10 @@ export const Default = (props: StepProps): JSX.Element => {
                     conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
                     specialitiesList={props?.fields?.SpecialitiesList || []}
                     loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                      'Loading...'} />
+                      'Loading...'}
+                    // MH to do
+                    labelLocationsResults={'LOCATIONS'}
+                  />
                 }
               >
               </ConsultantListHeaderTtitle>

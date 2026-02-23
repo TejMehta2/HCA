@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './PopularSearchesBox.module.scss';
 import Text from '../../foundation/Text/Text';
-import TextButton from '../../core-components/TextButton/TextButton';
 import { PopularSearchesBoxProps } from './PopularSearchesBox.types';
 import TextLink from '../../core-components/TextLink/TextLink';
 
