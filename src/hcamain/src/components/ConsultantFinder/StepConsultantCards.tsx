@@ -89,6 +89,7 @@ interface Fields {
   ResetAllText: Field<string>;
   ResetAllIcon: any;
   API_DoctifySearch_NoResultsMsg: Field<string>;
+  API_DoctifySearch_NoResultsMsgLocations: Field<string>;
   API_DoctifySearch_LoadingMsg: Field<string>;
   API_DoctifySearch_Limit: Field<string>;
   API_DoctifySearch_DefaultParams: Field<string>;
@@ -181,7 +182,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   // MH to do
-  //  Please add the popular locations on props 
+  //  Please add the search locations on props 
   // the labels for cookies component
   {/* MH to do labels for cookies */ }
   //  <FunctionalCookiesBox
@@ -1133,14 +1134,14 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
               {!loading && !error && results.length === 0 && (
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
-                  <Text tag="p" variation="body-small">
-                    {props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
-                      'No results'}
-                  </Text>
                   {/* MH to do */}
                   {/* if location is other than london or anywhere and e get no results */}
                   {/* we need another no results message for this case */}
                   {/* no results, select another location?  */}
+                  <Text tag="p" variation="body-small">
+                    {selectedLocationConsultants === 'London' || selectedLocationConsultants === 'Anywhere' ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
+                      'No results' : props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value || 'No results, please select another location'}
+                  </Text>
                 </Container>
               )}
               <ConsultantFinderResults>
