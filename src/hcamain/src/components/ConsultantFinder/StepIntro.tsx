@@ -342,7 +342,7 @@ export const Default = (props: StepProps): JSX.Element => {
           }
           buttons={
             <>
-              <Themes theme={'A-HCA-White'}>
+              <Themes theme={'B-HCA-Navy-Blue'}>
                 <Button
                   size={'small'}
                   variation={'full-light'}
