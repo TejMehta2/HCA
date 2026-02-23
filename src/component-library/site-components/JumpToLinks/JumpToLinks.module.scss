@@ -107,7 +107,7 @@
 
 .sticky {
   position: sticky;
-  top: 0;
+  top: px-to-rem(70);
 }
 
 .mobileTrigger {
