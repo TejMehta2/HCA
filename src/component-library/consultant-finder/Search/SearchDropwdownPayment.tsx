@@ -10,7 +10,7 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import { capitalizeFirstLetter, isMobile } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
+  const { setIsSelfPayment, setSelectedInsurerPaymentStep, keywordId, searchStringLocations } = useContext(
     ConsultantFinderContext
   );
   const router = useRouter();
@@ -23,9 +23,14 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
       if (!isMobile() && props.nextLink) {
-        router.push(
-          props.nextLink
-        )
+        if (searchStringLocations === 'Birmingham') {
+          router.push(
+            `/finder/step-consultant-cards?search=${props.search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0&insurer=${id}`)
+        } else {
+          router.push(
+            `${props.nextLink}&insurer=${id}`
+          )
+        }
       }
       if (!isMobile() && props.setShowContinueBtn) {
         props.setShowContinueBtn(false);

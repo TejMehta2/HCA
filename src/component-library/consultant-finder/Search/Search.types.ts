@@ -18,6 +18,7 @@ export default interface SearchProps {
   searchStringConsultantName?: string;
   setSearchStringConsultantName?: React.Dispatch<React.SetStateAction<string>>;
   popularConsultantsList?: any;
+  locationList?: any;
   searchStringPayment?: string;
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
@@ -30,4 +31,5 @@ export default interface SearchProps {
   isStepIntro?: boolean;
   isStepCards?: boolean;
   applyLocationToSearch?: any;
+  search?: any;
 }

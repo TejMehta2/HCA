@@ -30,8 +30,10 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import {
+  checkIfConsultantIsNoReviews,
   getActiveLiveDiaryConsultantSlugs,
   getDoctifyPhoneNumberConsultantSlugs,
+  getIgnoreReviewsConsultantSlugs,
 } from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
@@ -126,6 +128,7 @@ interface ServerSideProps {
   Insurers: any;
   LiveDiaryConsultantsSlugs: string[];
   DoctifyPhoneConsultantsSlugs: string[];
+  NoReviewsConsultants: any;
 }
 
 /**
@@ -139,6 +142,8 @@ interface ServerSideProps {
   _layoutData,
   _context
 ) => {
+  const ignoreConsutantReviews = await getIgnoreReviewsConsultantSlugs();
+  console.log('test', ignoreConsutantReviews);
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
   const consultantsSlugsDoctifyPhone =
@@ -148,6 +153,7 @@ interface ServerSideProps {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
     DoctifyPhoneConsultantsSlugs: consultantsSlugsDoctifyPhone,
+    NoReviewsConsultants: ignoreConsutantReviews
   };
 
   return returnProps;
@@ -172,20 +178,29 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  // console.log('consultant cards', props);
+  console.log('consultant cards', props);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
 
-  console.log('filters hosiptal', props?.fields?.LocationFilterOptions);
+  // MH to do
+  //  Please add the popular locations on props 
+  // the labels for cookies component
+  {/* MH to do labels for cookies */ }
+  //  <FunctionalCookiesBox
+  //  title={'Save this location for next time?'}
+  //  label={'Activate functional cookies'}>
+  // </FunctionalCookiesBox>
+  // no results: 
 
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
+  // const ignoreReviewsConsultantsSlugs: any  = serverSideData?.NoReviewsConsultants;
   // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
-  const { searchString, setSearchString, setKeywordId, searchStringLocations, setSearchStringLocations } = useContext(
+  const { searchString, setSearchString, setKeywordId, searchStringLocations, setSearchStringLocations, selectedLocationConsultants, setSelectedLocationConsultants } = useContext(
     ConsultantFinderContext
   );
   const id = props.params.RenderingIdentifier;
@@ -283,7 +298,7 @@ export const Default = (props: StepProps): JSX.Element => {
       }
 
       const saved = readCookie("location");
-      if (saved) setLocation(saved);
+      if (saved) setSelectedLocationConsultants(saved);
       setFunctionalConsentCookie(true);
       setHydrated(true);
     };
@@ -299,8 +314,8 @@ export const Default = (props: StepProps): JSX.Element => {
     if (typeof window === "undefined") return;
     if (!hasFunctionalConsent()) return;
 
-    setLocationCookie(location);
-  }, [location, hydrated]);
+    setLocationCookie(selectedLocationConsultants);
+  }, [selectedLocationConsultants, hydrated]);
 
   // 3) If consent revoked later, delete the cookie
   useEffect(() => {
@@ -313,8 +328,7 @@ export const Default = (props: StepProps): JSX.Element => {
       }
 
       if (hasFunctionalConsent()) {
-        console.log('location', location);
-        setLocationCookie(location);
+        setLocationCookie(selectedLocationConsultants);
         setFunctionalConsentCookie(true);
       }
     };
@@ -449,7 +463,7 @@ export const Default = (props: StepProps): JSX.Element => {
     const coords = LOCATION_COORDS[nextLocation] ?? LOCATION_COORDS.London;
 
     // update UI immediately
-    setLocation(nextLocation);
+    setSelectedLocationConsultants(nextLocation);
 
     // update URL params -> triggers your existing fetch effect (router.query dependency)
     const { requestPath, offset, ...queryParams } = router.query;
@@ -524,7 +538,7 @@ export const Default = (props: StepProps): JSX.Element => {
       delete newQueryParams.practice;
     }
 
-    setLocation('London');
+    setSelectedLocationConsultants('London');
     setSearchStringLocations('Anywhere');
 
     // Update offset and sortBy to their default values
@@ -1049,13 +1063,14 @@ export const Default = (props: StepProps): JSX.Element => {
                   </ConsultantListHeaderFilters>
                 </Themes>
               </ConsultantListHeader>
-              <ConsultantListHeaderTtitle>
-                <Text tag="h1" variation="display-5">
-                  {props?.fields?.TitleText?.value ||
-                    `Let's get you to the right specialist`}
-                </Text>
-
-                <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
+              <ConsultantListHeaderTtitle
+                title={
+                  <Text tag="h1" variation="display-5">
+                    {props?.fields?.TitleText?.value ||
+                      `Let's get you to the right specialist`}
+                  </Text>
+                }
+                locationSearch={
                   <SearchLocation
                     isStepIntro={false}
                     isStepCards={true}
@@ -1067,20 +1082,17 @@ export const Default = (props: StepProps): JSX.Element => {
                     limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
                     noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
                       'No matches found, please try typing something else.'}
-
-                    specialtyLabel={props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                      'Specialties'}
-                    conditionsProceduresLabel={props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
-                      'Conditions/ Procedures'}
                     setKeywordId={setKeywordId}
                     searchString={searchStringLocations}
+                    locationList={[]}
                     setSearchString={setSearchStringLocations}
                     searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
                     conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
                     specialitiesList={props?.fields?.SpecialitiesList || []}
                     loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                       'Loading...'} />
-                </div>
+                }
+              >
               </ConsultantListHeaderTtitle>
               {/* show this if they dont have cookies accepted */}
               {/* {
@@ -1125,6 +1137,10 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
                       'No results'}
                   </Text>
+                  {/* MH to do */}
+                  {/* if location is other than london or anywhere and e get no results */}
+                  {/* we need another no results message for this case */}
+                  {/* no results, select another location?  */}
                 </Container>
               )}
               <ConsultantFinderResults>
@@ -1134,6 +1150,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   results.map((consultant: any) => (
                     <ConsultantCard
                       key={consultant?.id}
+                      ignoreReviewsConsultantsList={serverSideData?.NoReviewsConsultants || []}
                       profilePhoto={
                         consultant?.images?.logo ||
                         props?.fields?.ProfileImagePlaceholderImage?.value
@@ -1271,73 +1288,6 @@ export const Default = (props: StepProps): JSX.Element => {
             </div>
           </>
         )}
-        <Modals ref={dialogRef} alignContent='center'>
-          {location !== 'London' &&
-            <Container marginRight="spacing-4" marginLeft="spacing-4">
-              <Button
-                size={'small'}
-                variation={'full-dark'}
-                contentVariation="full-width"
-              >
-                <button
-                  onClick={() => {
-                    dialogRef?.current?.close();
-                    applyLocationToSearch('London');
-                    // document.cookie = `location=${encodeURIComponent('London')}; path=/; max-age=31536000; SameSite=Lax`;
-                    setLocation('London');
-                  }
-                  }
-                >
-                  <span>{'London'}</span>
-                </button>
-              </Button>
-            </Container>
-          }
-          {
-            location !== "Manchester" &&
-            <Container marginRight="spacing-4" marginLeft="spacing-4">
-              <Button
-                size={'small'}
-                variation={'full-dark'}
-                contentVariation="full-width"
-              >
-                <button
-                  onClick={() => {
-                    dialogRef?.current?.close();
-                    applyLocationToSearch('Manchester');
-                    // document.cookie = `location=${encodeURIComponent('Manchester')}; path=/; max-age=31536000; SameSite=Lax`;
-                    setLocation('Manchester');
-                  }
-                  }
-                >
-                  <span>{'Manchester'}</span>
-                </button>
-              </Button>
-            </Container>
-          }
-          {
-            location !== 'Birmingham' &&
-            <Container marginRight="spacing-4" marginLeft="spacing-4">
-              <Button
-                size={'small'}
-                variation={'full-dark'}
-                contentVariation="full-width"
-              >
-                <button
-                  onClick={() => {
-                    dialogRef?.current?.close();
-                    applyLocationToSearch('Birmingham');
-                    // document.cookie = `location=${encodeURIComponent('Birmingham')}; path=/; max-age=31536000; SameSite=Lax`;
-                    setLocation('Birmingham')
-                  }
-                  }
-                >
-                  <span>{'Birmingham'}</span>
-                </button>
-              </Button>
-            </Container>
-          }
-        </Modals>
       </div>
     );
   }

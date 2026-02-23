@@ -8,8 +8,9 @@ import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
-  const { setSearchStringConsultantName, setSearchStringLocations, searchStringLocations } = useContext(ConsultantFinderContext);
-  console.log(props.isStepIntro);
+  const { setSearchStringConsultantName, setSearchStringLocations, searchStringLocations, setSelectedLocationConsultants } = useContext(ConsultantFinderContext);
+  console.log(props.data);
+
   const locationConfig = [
     {
       location: 'Anywhere',
@@ -44,11 +45,11 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
     if (props.setSearchString) {
       props.setSearchString(location);
     }
+    setSelectedLocationConsultants(location);
 
     // setSearchStringConsultantName('');
     props.setIsComponentVisible(false);
 
-    console.log('is step cards?', props.isStepCards);
     if (props.isStepCards) {
       props.applyLocationToSearch(location);
     }
@@ -67,13 +68,13 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
             </Text>
           </div>
           <ul>
-            {locationConfig.length > 0 &&
-              locationConfig.map((item: any, index) => (
+            {props.data.length > 0 &&
+              props.data.map((item: any, index: any) => (
                 <li
                   key={index}
                   aria-label="option"
                   onClick={() => {
-                    handleClick(item.location);
+                    handleClick(item.name);
                   }}
                 >
                   <span
@@ -81,21 +82,30 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
                       styles['consultant-finder-search-dropdown-icon']
                     }
                   >
-                    {/* {props.resultsIcon && (
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: props.resultsIcon,
-                          }}
-                        ></span>
-                      )}
-                      {!props.resultsIcon && <Icons iconName="iconSearch" />} */}
                     <Icons iconName="iconPin" />
                   </span>
                   <Text tag="p" variation="body-medium">
-                    {item.location}
+                    {item.name}
                   </Text>
                 </li>
               ))}
+            {
+              props.data.length === 0 &&
+              <li
+                aria-label="option"
+              >
+                <span
+                  className={
+                    styles['consultant-finder-search-dropdown-icon']
+                  }
+                >
+                  <Icons iconName="iconPin" />
+                </span>
+                <Text tag="p" variation="body-medium">
+                  {props.noResultsMsg}
+                </Text>
+              </li>
+            }
           </ul>
         </div>
       </div>

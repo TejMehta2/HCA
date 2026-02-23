@@ -63,6 +63,8 @@ interface ConsultantFinderContextType {
   setFinderFormPrevious: React.Dispatch<React.SetStateAction<string>>;
   completedFormId: string;
   setCompletedFormId: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocationConsultants: string;
+  setSelectedLocationConsultants: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -130,6 +132,8 @@ export const ConsultantFinderContext =
     setCompletedFormId: () => { },
     searchStringLocations: '',
     setSearchStringLocations: () => { },
+    selectedLocationConsultants: '',
+    setSelectedLocationConsultants: () => { },
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -172,6 +176,7 @@ export const ConsultantFinderContextProvider = ({
   const [finderFormPrevious, setFinderFormPrevious] = useState<string>('');
   const [completedFormId, setCompletedFormId] = useState<string>('');
   const [searchStringLocations, setSearchStringLocations] = useState<string>('Anywhere');
+  const [selectedLocationConsultants, setSelectedLocationConsultants] = useState<string>('Anywhere');
   return (
     <ConsultantFinderContext.Provider
       value={{
@@ -236,7 +241,9 @@ export const ConsultantFinderContextProvider = ({
         completedFormId,
         setCompletedFormId,
         searchStringLocations,
-        setSearchStringLocations
+        setSearchStringLocations,
+        selectedLocationConsultants,
+        setSelectedLocationConsultants
       }}
     >
       {children}

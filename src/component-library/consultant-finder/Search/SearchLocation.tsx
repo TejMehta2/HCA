@@ -12,7 +12,7 @@ import { transformFields } from '../../utility-functions/index';
 import SearchLocationDdropdown from './SearchLocationDropwdown';
 
 const SearchLocation = (props: SearchProps): JSX.Element => {
-  const { setSearchStringConsultantName, setConsultantSlug, searchStringLocations, setSearchStringLocations } = useContext(
+  const { setSearchStringConsultantName, setConsultantSlug, searchStringLocations, setSearchStringLocations, selectedLocationConsultants, setSelectedLocationConsultants } = useContext(
     ConsultantFinderContext
   );
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -24,48 +24,50 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
 
-  const handleClose = (e) => {
-    // if (props.setSearchString) {
-    //   props.setSearchString('');
-    // }
+  console.log(props.locationList);
 
+  const matchLocations = (userValue: string, locations: any[]) => {
+    const query = userValue.toLowerCase().trim();
+
+
+    // empty => show all
+    if (!query) return locations;
+
+    // prefix match ONLY (prevents "contains letter" matching)
+    return locations.filter((item) =>
+      (item.name ?? '').toLowerCase().startsWith(query)
+    );
+  };
+
+
+  const handleClose = (e) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // setSearchStringConsultantName('');
-    // setIsComponentVisible(true);
+    setData(props.locationList);
     setIsComponentVisible((prev) => !prev);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    // console.log(e.target);
-    // setLoading(true);
+    setSelectedLocationConsultants('Anywhere');
+
+    console.log('click');
+    const value = e.target.value;
+
+    const matches: any = matchLocations(value, props.locationList);
+    console.log('location list', props.locationList);
+    console.log('matches', matches);
+    setData(matches);
     setIsComponentVisible(true);
-    // const userInput = encodeURIComponent(e.target.value);
-    // const URL = `${props.doctifyBaseURL}=${userInput}&limit=${props.limit}`;
-
-    // if (typeof cancelToken != typeof undefined) {
-    //   cancelToken.cancel('Operation canceled due to new request.');
-    // }
-
-    // // Save the cancel token for the current request
-    // cancelToken = axios.CancelToken.source();
-
-    // setSearchStringConsultantName('');
-    // setConsultantSlug('');
 
     if (props.setSearchString) {
       props.setSearchString(e.target.value);
     }
-
-    // if (props.setKeywordId) {
-    //   props.setKeywordId(0);
-    // }
   };
 
   const handleOnClick: MouseEventHandler<HTMLInputElement> = (e) => {
+    console.log('click');
     e.preventDefault();
     e.stopPropagation();
   };

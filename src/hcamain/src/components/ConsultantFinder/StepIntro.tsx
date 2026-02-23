@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 import {
-  Image as JssImage,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
@@ -15,8 +13,6 @@ import SearchAll from '@component-library/consultant-finder/Search/SearchAll';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
-import TextButton from '@component-library/core-components/TextButton/TextButton';
-import Container from '@component-library/foundation/Containers/Container';
 import StepIntro from '@component-library/consultant-finder/StepIntro/StepIntro';
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
@@ -77,16 +73,13 @@ export const Default = (props: StepProps): JSX.Element => {
     keywordId,
     searchStringLocations,
     setSearchStringLocations,
+    selectedLocationConsultants,
+    setSelectedLocationConsultants
   } = useContext(ConsultantFinderContext);
   const [location, setLocation] = useState('London');
-
-  // const [location, setLocation] = useState<string>("London");
   const [hydrated, setHydrated] = useState(false);
   const [hasFunctionalConsentCookie, setFunctionalConsentCookie] =
     useState(false);
-  //const [searchConsultant, setSearchConsultant] = useState(false);
-
-  //console.log('step intro: props.fields', props.fields);
 
   const popularSearch = props?.fields?.PopularConsultantsList;
 
@@ -106,7 +99,31 @@ export const Default = (props: StepProps): JSX.Element => {
     })
   );
 
-  console.log('mappedDoctors', mappedDoctors);
+  const locations = props?.fields?.LocationsList || [];
+  const locationConfig = locations.map(
+    (item: any) => (
+      {
+        name: item.fields.name.value,
+        distance: item.fields.distance.value,
+        lat: item.fields.lat.value,
+        lon: item.fields.lon.value,
+      })
+  );
+
+  const selectedLocation = selectedLocationConsultants ?? 'Anywhere';
+
+  const selectedLocationConfig =
+    locationConfig.find(
+      (loc: { name: string; }) => loc.name === selectedLocation
+    ) ||
+    locationConfig.find(
+      (loc: { name: string; }) => loc.name === 'Anywhere'
+    );
+
+  const { lat, lon, distance } = selectedLocationConfig ?? {};
+  console.log('locations', locations);
+  console.log('locationConfig', locationConfig);
+  console.log(lat, lon, distance);
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -141,8 +158,8 @@ export const Default = (props: StepProps): JSX.Element => {
 
       const saved = readCookie('location');
       if (saved) setLocation(saved);
-      console.log('saved', saved);
       setFunctionalConsentCookie(true);
+      setSelectedLocationConsultants(saved || 'Anywhere');
       setSearchStringLocations(saved || 'Anywhere');
       setHydrated(true);
     };
@@ -172,7 +189,6 @@ export const Default = (props: StepProps): JSX.Element => {
       }
 
       if (hasFunctionalConsent()) {
-        console.log('location', location);
         setLocationCookie(location);
         setFunctionalConsentCookie(true);
       }
@@ -183,43 +199,44 @@ export const Default = (props: StepProps): JSX.Element => {
       window.removeEventListener('OneTrustGroupsUpdated', onConsentChange);
   }, []);
 
+
+
   const handleClickQuickSearch = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
 
     const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
-    const locations = props?.fields?.LocationsList || [];
-    const locationConfig = locations.map(
-      (item: {
-        fields: {
-          name: { value: any };
-          distance: { value: any };
-          lat: { value: any };
-          lon: { value: any };
-        };
-      }) => ({
-        [item.fields.name.value]: {
-          distance: item.fields.distance.value,
-          lat: item.fields.lat.value,
-          lon: item.fields.lon.value,
-        },
-      })
-    );
+    // const locations = props?.fields?.LocationsList || [];
+    // const locationConfig = locations.map(
+    //   (item: {
+    //     fields: {
+    //       name: { value: any };
+    //       distance: { value: any };
+    //       lat: { value: any };
+    //       lon: { value: any };
+    //     };
+    //   }) => ({
+    //     [item.fields.name.value]: {
+    //       distance: item.fields.distance.value,
+    //       lat: item.fields.lat.value,
+    //       lon: item.fields.lon.value,
+    //     },
+    //   })
+    // );
+    // const selectedLocation = searchStringLocations ?? 'London';
 
-    const selectedLocation = searchStringLocations ?? 'London';
-
-    const { lat, lon, distance } =
-      locationConfig[selectedLocation] || locationConfig.London;
+    // const { lat, lon, distance } =
+    //   locationConfig[selectedLocation] || locationConfig.London;
 
     router.push(
       `${baseURLResults}?search=${searchString}` +
-        `&keywordId=${keywordId}` +
-        `&sortType=relevance` +
-        `&lat=${lat}` +
-        `&lon=${lon}` +
-        `&distance=${distance}` +
-        `&limit=12` +
-        `&offset=0`
+      `&keywordId=${keywordId}` +
+      `&sortType=relevance` +
+      `&lat=${lat}` +
+      `&lon=${lon}` +
+      `&distance=${distance}` +
+      `&limit=12` +
+      `&offset=0`
     );
   };
 
@@ -328,31 +345,14 @@ export const Default = (props: StepProps): JSX.Element => {
                   props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
                   'No matches found, please try typing something else.'
                 }
-                specialistsLabel={
-                  props?.fields?.SpecialistsFilterHeaderText?.value ||
-                  'Specialists'
-                }
-                specialtyLabel={
-                  props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                  'Specialties'
-                }
-                conditionsProceduresLabel={
-                  props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
-                  'Conditions/ Procedures'
-                }
                 setKeywordId={setKeywordId}
                 searchString={searchStringLocations}
                 setSearchString={setSearchStringLocations}
                 searchIcon={
                   props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
                 }
-                conditionsTreatmentsList={
-                  props?.fields?.ConditionsTreatmentsList || []
-                }
-                specialistsList={mappedDoctors}
-                specialitiesList={props?.fields?.SpecialitiesList || []}
-                popularConsultantsList={
-                  props?.fields?.PopularConsultantsList || []
+                locationList={
+                  locationConfig || []
                 }
                 loadingText={
                   props?.fields?.API_Autocomplete_LoadingMsg?.value ||
@@ -400,8 +400,12 @@ export const Default = (props: StepProps): JSX.Element => {
             ></PopularSearchesBox>
           }
         >
+          {/* MH to do labels for cookies */}
           {!hasFunctionalConsentCookie && (
-            <FunctionalCookiesBox></FunctionalCookiesBox>
+            <FunctionalCookiesBox
+              title={'Save this location for next time?'}
+              label={'Activate functional cookies'}>
+            </FunctionalCookiesBox>
           )}
         </StepIntro>
       </div>

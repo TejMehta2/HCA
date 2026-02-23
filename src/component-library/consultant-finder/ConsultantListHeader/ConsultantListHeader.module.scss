@@ -79,3 +79,22 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.has-location-search {
+  flex-direction: column;
+  align-items: center;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+}
+
+.location-search {
+  display: flex;
+  align-items: center;
+  margin-top: $spacing-2;
+
+  @include media(screen-l) {
+    margin-top: 0;
+  }
+}

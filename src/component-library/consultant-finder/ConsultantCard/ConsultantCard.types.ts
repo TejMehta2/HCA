@@ -39,4 +39,5 @@ export interface ConsultantCardProps {
   phoneNumberDisplay: string;
   doctifyPhoneSlugs: string[];
   URLprams?: string;
+  ignoreReviewsConsultantsList?: any;
 }

@@ -158,6 +158,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
             loadingText={props.loadingText}
             nextLink={props.nextLink}
             setShowContinueBtn={props.setShowContinueBtn}
+            search={props.search}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

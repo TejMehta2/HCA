@@ -25,4 +25,5 @@ export default interface SearchDropdownProps {
   isStepIntro?: boolean;
   isStepCards?: boolean;
   applyLocationToSearch?: any;
+  search?: any;
 }

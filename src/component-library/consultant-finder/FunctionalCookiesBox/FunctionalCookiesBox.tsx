@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './FunctionalCookiesBox.module.scss';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
+import { FunctionalCookiesBoxProps } from './FunctionalCookiesBox.types';
 
-const FunctionalCookiesBox = (): JSX.Element => {
+const FunctionalCookiesBox = (props: FunctionalCookiesBoxProps): JSX.Element => {
 
     return (
         <div className={styles.wrapper}>

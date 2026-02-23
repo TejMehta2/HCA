@@ -148,6 +148,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   checked={isSelfPayment}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (e.target.checked) {
+                      setIsSelfPayment(e.target.checked);
                       setSearchStringPayment('');
                       if (!isMobile()) {
                         if (searchStringLocations === 'Birmingham') {
@@ -159,15 +160,12 @@ export const Default = (props: StepProps): JSX.Element => {
                           router.push(
                             `${props.fields.NextLink.value.href ||
                             '/finder/step-locations'
-                            }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                              ? `&insurer=${'selfPay'}`
-                              : `&insurer=${selectedInsurerPaymentStep}`
-                            }`
+                            }?keywordId=${keywordId}&searchString=${search}`
                           )
                         }
                       }
                     }
-                    setIsSelfPayment(e.target.checked);
+
                   }}
                 ></Checkbox>
                 <SearchPayment
@@ -202,42 +200,12 @@ export const Default = (props: StepProps): JSX.Element => {
                   }
                   nextLink={`${props.fields.NextLink.value.href ||
                     '/finder/step-locations'
-                    }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                      ? `&insurer=${'selfPay'}`
-                      : `&insurer=${selectedInsurerPaymentStep}`
-                    }`}
+                    }?keywordId=${keywordId}&searchString=${search}`}
                   setShowContinueBtn={setShowContinueBtn}
+                  search={search}
                 />
               </form>
 
-              {/* {showContinueBtn && !isMobile() && (
-                <div style={{
-                  display:
-                    searchStringPayment === '' && !isSelfPayment
-                      ? 'none'
-                      : 'block',
-                }}>
-                  <Button size={'small'} variation={'full-dark'}>
-                    <button
-                      disabled={
-                        searchStringPayment === '' && !isSelfPayment ? true : false
-                      }
-                      onClick={() =>
-                        router.push(
-                          `${props.fields.NextLink.value.href ||
-                          '/finder/step-locations'
-                          }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                            ? `&insurer=${'selfPay'}`
-                            : `&insurer=${selectedInsurerPaymentStep}`
-                          }`
-                        )
-                      }
-                    >
-                      <span>Continue</span>
-                    </button>
-                  </Button>
-                </div>
-              )} */}
             </ImageAndTextBlock>
             <Navigation showOnMobile={true}>
               <TextButton>
@@ -252,15 +220,25 @@ export const Default = (props: StepProps): JSX.Element => {
                   disabled={
                     searchStringPayment === '' && !isSelfPayment ? true : false
                   }
-                  onClick={() =>
-                    router.push(
-                      `${props.fields.NextLink.value.href ||
-                      '/finder/step-locations'
-                      }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                        ? `&insurer=${'selfPay'}`
-                        : `&insurer=${selectedInsurerPaymentStep}`
-                      }`
-                    )
+                  onClick={() => {
+                    if (searchStringLocations === 'Birmingham') {
+                      router.push(
+                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0${isSelfPayment
+                          ? ''
+                          : `&insurer=${selectedInsurerPaymentStep}`
+                        }`
+                      )
+                    } else {
+                      router.push(
+                        `${props.fields.NextLink.value.href ||
+                        '/finder/step-locations'
+                        }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                          ? ''
+                          : `&insurer=${selectedInsurerPaymentStep}`
+                        }`
+                      )
+                    }
+                  }
                   }
                 >
                   <span>{props.fields.NextLink.value.text}</span>

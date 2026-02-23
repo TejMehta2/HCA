@@ -6,7 +6,9 @@ const ConsultantListHeader = (
   props: ConsultantListHeaderProps
 ): JSX.Element => {
   const { children } = props;
-  return <div className={styles['consultant-list-header']}>{children}</div>;
+  return <div className={styles['consultant-list-header']}>
+    {children}
+  </div>;
 };
 
 export default ConsultantListHeader;

@@ -205,6 +205,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  console.log(props);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [firstAppointmentData, setFirstAppointmentData] = useState<any>();
   const [nextAptRequestToken, setNextAptRequestToken] =
@@ -563,11 +564,15 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.averageRating
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.averageRating || 0
                     }
                     reviewsText="Patients"
                     reviewsTotal={
-                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.reviewsTotal || 0
                     }
                     noReviewsMsg={
                       'This consultant does not have any reviews at the moment.'
@@ -853,7 +858,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 >
                   <Reviews
                     doctifyLogo={
-                      <JssImage field={props?.fields?.DoctifyLogoImage} />
+                      <JssImage field={props.fields.DoctifyLogoImage} />
                     }
                     doctifyText={
                       props?.fields?.DoctifyText?.value || 'Reviewed By'
@@ -861,11 +866,15 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.averageRating
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.averageRating || 0
                     }
                     reviewsText="Patients"
                     reviewsTotal={
-                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.reviewsTotal || 0
                     }
                     noReviewsMsg={
                       'This consultant does not have any reviews at the moment.'

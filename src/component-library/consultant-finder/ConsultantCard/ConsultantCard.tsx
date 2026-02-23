@@ -17,6 +17,8 @@ import MultiplePhoneNumbers from '../MultiplePhoneNumbers/MultiplePhoneNumbers';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const ignoreReviews = (props.ignoreReviewsConsultantsList ?? []).includes(props.slug);
+
   // get specialties
   const specialties = props.keywords.filter(
     (item: any) => item.keywordType === 'specialty'
@@ -81,8 +83,8 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
         </div>
         <div className={styles.reviews}>
           <Reviews
-            reviewsTotal={5}
-            reviewsCount={props.reviewsCount}
+            reviewsTotal={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
+            reviewsCount={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
             isConsultantProfileReviews={false}
             hasTooltip={false}
             tooltipContent={'tooltip'}
@@ -91,6 +93,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             hasDoctifyBranding={true}
           />
         </div>
+
         {props.hospitals && props.hospitals.length > 0 && (
           <div className={styles['list']}>
             <div className={styles['list-title']}>

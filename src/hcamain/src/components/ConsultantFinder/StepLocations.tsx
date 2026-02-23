@@ -176,8 +176,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }?search=${search}&keywordId=${keywordId}&sortType=relevance${selectedLocations.length > 0
                         ? `&practice=${selectedLocations.join(',')}&`
                         : '&'
-                      }lat=51.507217&lon=-0.1275862&distance=0&limit=12${insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'
-                      }&offset=0`
+                      }lat=51.507217&lon=-0.1275862&distance=0&limit=12&${insurer ? `insurer=${insurer}&` : ''}offset=0`
                     )
                   }
                 >
