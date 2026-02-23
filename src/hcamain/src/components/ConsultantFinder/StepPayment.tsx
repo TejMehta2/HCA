@@ -6,7 +6,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import {
-  Image as JssImage,
   Link as JssLink,
   RichText as JssRichText,
   ImageField,
@@ -24,7 +23,6 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Container from '@component-library/foundation/Containers/Container';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import { isMobile } from '@component-library/utility-functions/index';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 interface Fields {
   TitleText: Field<string>;
@@ -69,7 +67,6 @@ export const Default = (props: StepProps): JSX.Element => {
     searchStringLocations
   } = useContext(ConsultantFinderContext);
   const [search, setSearch] = useState('');
-  const [showContinueBtn, setShowContinueBtn] = useState(!(searchStringPayment === '' && !isSelfPayment));
   const [keywordId, setKewordId] = useState('');
 
 
@@ -201,7 +198,6 @@ export const Default = (props: StepProps): JSX.Element => {
                   nextLink={`${props.fields.NextLink.value.href ||
                     '/finder/step-locations'
                     }?keywordId=${keywordId}&searchString=${search}`}
-                  setShowContinueBtn={setShowContinueBtn}
                   search={search}
                 />
               </form>
