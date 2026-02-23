@@ -81,18 +81,21 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             )}
           </div>
         </div>
-        <div className={styles.reviews}>
-          <Reviews
-            reviewsTotal={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
-            reviewsCount={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
-            isConsultantProfileReviews={false}
-            hasTooltip={false}
-            tooltipContent={'tooltip'}
-            doctifyText={props.doctifyText}
-            doctifyLogo={props.doctifyLogo}
-            hasDoctifyBranding={true}
-          />
-        </div>
+        {
+          !ignoreReviews &&
+          <div className={styles.reviews}>
+            <Reviews
+              reviewsTotal={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
+              reviewsCount={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
+              isConsultantProfileReviews={false}
+              hasTooltip={false}
+              tooltipContent={'tooltip'}
+              doctifyText={props.doctifyText}
+              doctifyLogo={props.doctifyLogo}
+              hasDoctifyBranding={true}
+            />
+          </div>
+        }
 
         {props.hospitals && props.hospitals.length > 0 && (
           <div className={styles['list']}>
