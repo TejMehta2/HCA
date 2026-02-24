@@ -9,9 +9,8 @@ import TextLink from '../../core-components/TextLink/TextLink';
 import SearchLocationDdropdown from './SearchLocationDropwdown';
 
 const SearchLocation = (props: SearchProps): JSX.Element => {
-  const { setSearchStringLocations, setSelectedLocationConsultants } = useContext(
-    ConsultantFinderContext
-  );
+  const { setSearchStringLocations, setSelectedLocationConsultants } =
+    useContext(ConsultantFinderContext);
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   const [data, setData] = useState([]);
@@ -33,7 +32,10 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     );
   };
 
-  const handleClose = (e: { preventDefault: () => void; stopPropagation: () => void; }) => {
+  const handleClose = (e: {
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
     e.preventDefault();
     e.stopPropagation();
     setData(props.locationList);
@@ -64,10 +66,10 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
 
   return (
     <div
-      className={`${styles['consultant-finder-search']} ${!props.isStepIntro ? styles.secondary : ''
-        }`}
+      className={`${styles['consultant-finder-search']} ${
+        !props.isStepIntro ? styles.secondary : ''
+      }`}
     >
-
       <div ref={ref} className={styles['consultant-finder-search-searchbar']}>
         <label htmlFor={searchId}>
           <input
@@ -111,8 +113,9 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
           <Icons iconName="iconPin" />
         </span>
         <div
-          className={`${styles['consultant-finder-search-close-btn']} ${isComponentVisible ? styles['is-open'] : ''
-            }`}
+          className={`${styles['consultant-finder-search-close-btn']} ${
+            isComponentVisible ? styles['is-open'] : ''
+          }`}
         >
           {/* {props.searchString !== '' && ( */}
           <TextLink>

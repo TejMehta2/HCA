@@ -48,6 +48,9 @@ interface Fields {
   PopularSearchesList: any;
   LocationsList: any;
   SpecialitiesList: any;
+  FunctionalCookieSaveNextTimeTitle: Field<string>;
+  FunctionalCookieSaveNextTimeLabel: Field<string>;
+  LocationsResultsLabelText: Field<string>;
 }
 
 type StepProps = {
@@ -74,7 +77,7 @@ export const Default = (props: StepProps): JSX.Element => {
     searchStringLocations,
     setSearchStringLocations,
     selectedLocationConsultants,
-    setSelectedLocationConsultants
+    setSelectedLocationConsultants,
   } = useContext(ConsultantFinderContext);
   const [location, setLocation] = useState('London');
   const [hydrated, setHydrated] = useState(false);
@@ -100,30 +103,25 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const locations = props?.fields?.LocationsList || [];
-  const locationConfig = locations.map(
-    (item: any) => (
-      {
-        name: item.fields.name.value,
-        distance: item.fields.distance.value,
-        lat: item.fields.lat.value,
-        lon: item.fields.lon.value,
-      })
-  );
+  const locationConfig = locations.map((item: any) => ({
+    name: item.fields.name.value,
+    distance: item.fields.distance.value,
+    lat: item.fields.lat.value,
+    lon: item.fields.lon.value,
+  }));
 
   const selectedLocation = selectedLocationConsultants ?? 'Anywhere';
 
   const selectedLocationConfig =
     locationConfig.find(
-      (loc: { name: string; }) => loc.name === selectedLocation
+      (loc: { name: string }) => loc.name === selectedLocation
     ) ||
-    locationConfig.find(
-      (loc: { name: string; }) => loc.name === 'Anywhere'
-    );
+    locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
 
   const { lat, lon, distance } = selectedLocationConfig ?? {};
-  console.log('locations', locations);
-  console.log('locationConfig', locationConfig);
-  console.log(lat, lon, distance);
+  //console.log('locations', locations);
+  //console.log('locationConfig', locationConfig);
+  //console.log(lat, lon, distance);
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -207,13 +205,13 @@ export const Default = (props: StepProps): JSX.Element => {
 
     router.push(
       `${baseURLResults}?search=${searchString}` +
-      `&keywordId=${keywordId}` +
-      `&sortType=relevance` +
-      `&lat=${lat}` +
-      `&lon=${lon}` +
-      `&distance=${distance}` +
-      `&limit=12` +
-      `&offset=0`
+        `&keywordId=${keywordId}` +
+        `&sortType=relevance` +
+        `&lat=${lat}` +
+        `&lon=${lon}` +
+        `&distance=${distance}` +
+        `&limit=12` +
+        `&offset=0`
     );
   };
 
@@ -235,6 +233,8 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   if (props.fields) {
+    //console.log('props?.fields', props?.fields);
+
     return (
       <div id={id ? id : undefined}>
         {/* <a href="javascript:OneTrust.ToggleInfoDisplay()">
@@ -328,15 +328,15 @@ export const Default = (props: StepProps): JSX.Element => {
                 searchIcon={
                   props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
                 }
-                locationList={
-                  locationConfig || []
-                }
+                locationList={locationConfig || []}
                 loadingText={
                   props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                   'Loading...'
                 }
-                // MH to do
-                labelLocationsResults={'LOCATIONS'}
+                // MH done
+                labelLocationsResults={
+                  props?.fields?.LocationsResultsLabelText?.value || 'LOCATIONS'
+                }
               />
             </>
           }
@@ -375,16 +375,26 @@ export const Default = (props: StepProps): JSX.Element => {
           popularSearch={
             <PopularSearchesBox
               popularSearches={popularSearches}
-              popularSearchesTtitle={props.fields.PopularSearchesTitle?.value || 'Popular searches'}
+              popularSearchesTtitle={
+                props.fields.PopularSearchesTitle?.value || 'Popular searches'
+              }
             ></PopularSearchesBox>
           }
         >
-          {/* MH to do labels for cookies */}
+          // MH done // Please add the search locations on props //
+          console.log('props.fields?.LocationsList',
+          props.fields?.LocationsList); // the labels for cookies component
           {!hasFunctionalConsentCookie && (
             <FunctionalCookiesBox
-              title={'Save this location for next time?'}
-              label={'Activate functional cookies'}>
-            </FunctionalCookiesBox>
+              title={
+                props.fields?.FunctionalCookieSaveNextTimeTitle?.value ||
+                'Save this location for next time?'
+              }
+              label={
+                props.fields?.FunctionalCookieSaveNextTimeLabel?.value ||
+                'Activate functional cookies'
+              }
+            ></FunctionalCookiesBox>
           )}
         </StepIntro>
       </div>

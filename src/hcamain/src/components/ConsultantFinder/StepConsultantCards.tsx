@@ -115,6 +115,10 @@ interface Fields {
   BreadcrumbHomePage: LinkField;
   CallToBookModalTitle: Field<string>;
   DisplayNumber: Field<string>;
+  LocationsList: any;
+  FunctionalCookieSaveNextTimeTitle: Field<string>;
+  FunctionalCookieSaveNextTimeLabel: Field<string>;
+  LocationsResultsLabelText: Field<string>;
 }
 
 type StepProps = {
@@ -151,7 +155,7 @@ interface ServerSideProps {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
     DoctifyPhoneConsultantsSlugs: consultantsSlugsDoctifyPhone,
-    NoReviewsConsultants: ignoreConsutantReviews
+    NoReviewsConsultants: ignoreConsutantReviews,
   };
 
   return returnProps;
@@ -181,15 +185,26 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
-  // MH to do
-  //  Please add the search locations on props 
+  // MH done
+  //  Please add the search locations on props
+  console.log('props.fields?.LocationsList', props.fields?.LocationsList);
   // the labels for cookies component
-  {/* MH to do labels for cookies */ }
+  {
+    /* MH done labels for cookies */
+  }
+  console.log(
+    'props.fields?.',
+    props.fields?.FunctionalCookieSaveNextTimeTitle
+  );
+  console.log(
+    'props.fields?.',
+    props.fields?.FunctionalCookieSaveNextTimeLabel
+  );
   //  <FunctionalCookiesBox
   //  title={'Save this location for next time?'}
   //  label={'Activate functional cookies'}>
   // </FunctionalCookiesBox>
-  // no results: 
+  // no results:
 
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
@@ -198,9 +213,15 @@ export const Default = (props: StepProps): JSX.Element => {
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
   // const ignoreReviewsConsultantsSlugs: any  = serverSideData?.NoReviewsConsultants;
   // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
-  const { searchString, setSearchString, setKeywordId, searchStringLocations, setSearchStringLocations, selectedLocationConsultants, setSelectedLocationConsultants } = useContext(
-    ConsultantFinderContext
-  );
+  const {
+    searchString,
+    setSearchString,
+    setKeywordId,
+    searchStringLocations,
+    setSearchStringLocations,
+    selectedLocationConsultants,
+    setSelectedLocationConsultants,
+  } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -219,7 +240,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [URLparams, setURLparams] = useState('');
   const [hydrated, setHydrated] = useState(false);
-  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] = useState(false);
+  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] =
+    useState(false);
   const cardAvailableAppointmentLoadingText: string =
     props?.fields?.API_C2_FirstAppointment_LoadingMsg?.value;
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
@@ -265,8 +287,8 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const hasFunctionalConsent = () => {
-    const groups = (window as any).OnetrustActiveGroups || "";
-    return groups.includes("C0003");
+    const groups = (window as any).OnetrustActiveGroups || '';
+    return groups.includes('C0003');
   };
 
   const readCookie = (name: string) => {
@@ -279,13 +301,13 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const deleteLocationCookie = () => {
-    document.cookie = "location=; path=/; max-age=0; SameSite=Lax";
-    document.cookie = "location=; max-age=0; SameSite=Lax";
+    document.cookie = 'location=; path=/; max-age=0; SameSite=Lax';
+    document.cookie = 'location=; max-age=0; SameSite=Lax';
   };
 
   // 1) Hydrate location from cookie (once)
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === 'undefined') return;
 
     const init = () => {
       if (!hasFunctionalConsent()) {
@@ -295,21 +317,21 @@ export const Default = (props: StepProps): JSX.Element => {
         return;
       }
 
-      const saved = readCookie("location");
+      const saved = readCookie('location');
       if (saved) setSelectedLocationConsultants(saved);
       setFunctionalConsentCookie(true);
       setHydrated(true);
     };
 
     init();
-    window.addEventListener("OneTrustGroupsUpdated", init);
-    return () => window.removeEventListener("OneTrustGroupsUpdated", init);
+    window.addEventListener('OneTrustGroupsUpdated', init);
+    return () => window.removeEventListener('OneTrustGroupsUpdated', init);
   }, []);
 
   // 2) Persist whenever location changes (only after hydration + only if consent)
   useEffect(() => {
     if (!hydrated) return;
-    if (typeof window === "undefined") return;
+    if (typeof window === 'undefined') return;
     if (!hasFunctionalConsent()) return;
 
     setLocationCookie(selectedLocationConsultants);
@@ -317,7 +339,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   // 3) If consent revoked later, delete the cookie
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === 'undefined') return;
 
     const onConsentChange = () => {
       if (!hasFunctionalConsent()) {
@@ -331,8 +353,9 @@ export const Default = (props: StepProps): JSX.Element => {
       }
     };
 
-    window.addEventListener("OneTrustGroupsUpdated", onConsentChange);
-    return () => window.removeEventListener("OneTrustGroupsUpdated", onConsentChange);
+    window.addEventListener('OneTrustGroupsUpdated', onConsentChange);
+    return () =>
+      window.removeEventListener('OneTrustGroupsUpdated', onConsentChange);
   }, []);
 
   useEffect(() => {
@@ -451,7 +474,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const LOCATION_COORDS: Record<string, { lat: number; lon: number }> = {
-    London: { lat: 51.507217, lon: -0.1275862 },      // keep as-is
+    London: { lat: 51.507217, lon: -0.1275862 }, // keep as-is
     Manchester: { lat: 53.480759, lon: -2.242631 },
     Birmingham: { lat: 52.486244, lon: -1.890401 },
   };
@@ -481,7 +504,6 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
-
 
   // reset all filters
   const handleResetFilters = () => {
@@ -704,6 +726,14 @@ export const Default = (props: StepProps): JSX.Element => {
 
   //console.log('consultants:', results);
   if (props.fields) {
+    console.log('props?.fields', props?.fields);
+    /* MH done if location is other than london or anywhere and e get no results */
+    /* we need another no results message for this case */
+    /* no results, select another location?  */
+    console.log(
+      'props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value',
+      props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value
+    );
     return (
       <div id={id ? id : undefined}>
         {router.isReady && !pageNotFound && (
@@ -711,9 +741,10 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                  }`,
+                }`,
               }}
             >
               <TextLink>
@@ -723,9 +754,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <Link
-                href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
+                href={`${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                  }`}
+                }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
@@ -789,7 +821,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LocationFilterOptions &&
                                 props?.fields?.LocationFilterOptions.length >
-                                0 &&
+                                  0 &&
                                 props?.fields?.LocationFilterOptions.map(
                                   (hospital: any, index: number) => (
                                     <Checkbox
@@ -967,7 +999,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LanguageFilterOptions &&
                                 props?.fields?.LanguageFilterOptions?.length >
-                                0 && (
+                                  0 && (
                                   <select
                                     name="language"
                                     value={selectedLanguage}
@@ -1073,28 +1105,45 @@ export const Default = (props: StepProps): JSX.Element => {
                     isStepIntro={false}
                     isStepCards={true}
                     applyLocationToSearch={applyLocationToSearch}
-                    placeholder={props?.fields?.SearchPlaceholderText?.value ||
-                      'Type in a service, condition, treatment...'}
-                    doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
-                      'https://api.doctify.com/api/hca/search/autocomplete?search'}
-                    limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-                    noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                      'No matches found, please try typing something else.'}
+                    placeholder={
+                      props?.fields?.SearchPlaceholderText?.value ||
+                      'Type in a service, condition, treatment...'
+                    }
+                    doctifyBaseURL={
+                      props?.fields?.API_Autocomplete_BaseURL?.value ||
+                      'https://api.doctify.com/api/hca/search/autocomplete?search'
+                    }
+                    limit={
+                      Number(props?.fields?.API_Autocomplete_Limit?.value) || 20
+                    }
+                    noResultsMsg={
+                      props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                      'No matches found, please try typing something else.'
+                    }
                     setKeywordId={setKeywordId}
                     searchString={searchStringLocations}
                     locationList={[]}
                     setSearchString={setSearchStringLocations}
-                    searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
-                    conditionsTreatmentsList={props?.fields?.ConditionsTreatmentsList || []}
+                    searchIcon={
+                      props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
+                      null
+                    }
+                    conditionsTreatmentsList={
+                      props?.fields?.ConditionsTreatmentsList || []
+                    }
                     specialitiesList={props?.fields?.SpecialitiesList || []}
-                    loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                      'Loading...'}
-                    // MH to do
-                    labelLocationsResults={'LOCATIONS'}
+                    loadingText={
+                      props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                      'Loading...'
+                    }
+                    // MH done
+                    labelLocationsResults={
+                      props?.fields?.LocationsResultsLabelText?.value ||
+                      'LOCATIONS'
+                    }
                   />
                 }
-              >
-              </ConsultantListHeaderTtitle>
+              ></ConsultantListHeaderTtitle>
               {/* show this if they dont have cookies accepted */}
               {/* {
                 !hasFunctionalConsentCookie &&
@@ -1134,13 +1183,14 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
               {!loading && !error && results.length === 0 && (
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
-                  {/* MH to do */}
-                  {/* if location is other than london or anywhere and e get no results */}
-                  {/* we need another no results message for this case */}
-                  {/* no results, select another location?  */}
                   <Text tag="p" variation="body-small">
-                    {selectedLocationConsultants === 'London' || selectedLocationConsultants === 'Anywhere' ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
-                      'No results' : props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value || 'No results, please select another location'}
+                    {selectedLocationConsultants === 'London' ||
+                    selectedLocationConsultants === 'Anywhere'
+                      ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
+                        'No results'
+                      : props?.fields?.API_DoctifySearch_NoResultsMsgLocations
+                          ?.value ||
+                        'No results, please select another location'}
                   </Text>
                 </Container>
               )}
@@ -1151,7 +1201,9 @@ export const Default = (props: StepProps): JSX.Element => {
                   results.map((consultant: any) => (
                     <ConsultantCard
                       key={consultant?.id}
-                      ignoreReviewsConsultantsList={serverSideData?.NoReviewsConsultants || []}
+                      ignoreReviewsConsultantsList={
+                        serverSideData?.NoReviewsConsultants || []
+                      }
                       profilePhoto={
                         consultant?.images?.logo ||
                         props?.fields?.ProfileImagePlaceholderImage?.value
