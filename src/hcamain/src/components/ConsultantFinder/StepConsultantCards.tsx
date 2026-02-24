@@ -252,6 +252,47 @@ export const Default = (props: StepProps): JSX.Element => {
 
   console.log(hasFunctionalConsentCookie);
 
+  const locations = props?.fields?.LocationsList || [];
+  const locationConfig = locations.map((item: any) => ({
+    name: item.fields.name.value,
+    distance: item.fields.distance.value,
+    lat: item.fields.lat.value,
+    lon: item.fields.lon.value,
+  }));
+
+  // location
+  const applyLocationToSearch = (nextLocation: string) => {
+    const selectedLocationConfig =
+      locationConfig.find(
+        (loc: { name: string }) => loc.name === nextLocation
+      ) ||
+      locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
+
+    const { lat, lon, distance } = selectedLocationConfig ?? {};
+
+
+    // update UI immediately
+    setSelectedLocationConsultants(nextLocation);
+
+    // update URL params -> triggers your existing fetch effect (router.query dependency)
+    const { requestPath, offset, ...queryParams } = router.query;
+
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...queryParams,
+          lat: lat,
+          lon: lon,
+          distance: distance,
+          offset: 0, // reset pagination when changing region
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
   // hospitals
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const practice = e.target.value;
@@ -471,38 +512,6 @@ export const Default = (props: StepProps): JSX.Element => {
         { shallow: true }
       );
     }
-  };
-
-  const LOCATION_COORDS: Record<string, { lat: number; lon: number }> = {
-    London: { lat: 51.507217, lon: -0.1275862 }, // keep as-is
-    Manchester: { lat: 53.480759, lon: -2.242631 },
-    Birmingham: { lat: 52.486244, lon: -1.890401 },
-  };
-
-  // location
-  const applyLocationToSearch = (nextLocation: string) => {
-    const coords = LOCATION_COORDS[nextLocation] ?? LOCATION_COORDS.London;
-
-    // update UI immediately
-    setSelectedLocationConsultants(nextLocation);
-
-    // update URL params -> triggers your existing fetch effect (router.query dependency)
-    const { requestPath, offset, ...queryParams } = router.query;
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: {
-          ...queryParams,
-          lat: coords.lat,
-          lon: coords.lon,
-          distance: 30,
-          offset: 0, // reset pagination when changing region
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
   };
 
   // reset all filters
@@ -741,10 +750,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`,
+                  }`,
               }}
             >
               <TextLink>
@@ -754,10 +762,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <Link
-                href={`${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`}
+                  }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
@@ -821,7 +828,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LocationFilterOptions &&
                                 props?.fields?.LocationFilterOptions.length >
-                                  0 &&
+                                0 &&
                                 props?.fields?.LocationFilterOptions.map(
                                   (hospital: any, index: number) => (
                                     <Checkbox
@@ -999,7 +1006,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LanguageFilterOptions &&
                                 props?.fields?.LanguageFilterOptions?.length >
-                                  0 && (
+                                0 && (
                                   <select
                                     name="language"
                                     value={selectedLanguage}
@@ -1122,21 +1129,16 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                     setKeywordId={setKeywordId}
                     searchString={searchStringLocations}
-                    locationList={[]}
+                    locationList={locationConfig || []}
                     setSearchString={setSearchStringLocations}
                     searchIcon={
                       props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
                       null
                     }
-                    conditionsTreatmentsList={
-                      props?.fields?.ConditionsTreatmentsList || []
-                    }
-                    specialitiesList={props?.fields?.SpecialitiesList || []}
                     loadingText={
                       props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                       'Loading...'
                     }
-                    // MH done
                     labelLocationsResults={
                       props?.fields?.LocationsResultsLabelText?.value ||
                       'LOCATIONS'
@@ -1185,12 +1187,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
                   <Text tag="p" variation="body-small">
                     {selectedLocationConsultants === 'London' ||
-                    selectedLocationConsultants === 'Anywhere'
+                      selectedLocationConsultants === 'Anywhere'
                       ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
-                        'No results'
+                      'No results'
                       : props?.fields?.API_DoctifySearch_NoResultsMsgLocations
-                          ?.value ||
-                        'No results, please select another location'}
+                        ?.value ||
+                      'No results, please select another location'}
                   </Text>
                 </Container>
               )}
