@@ -148,7 +148,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       setIsSelfPayment(e.target.checked);
                       setSearchStringPayment('');
                       if (!isMobile()) {
-                        if (searchStringLocations === 'Birmingham') {
+                        if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
                           router.push(
                             `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`
                           )
@@ -217,7 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     searchStringPayment === '' && !isSelfPayment ? true : false
                   }
                   onClick={() => {
-                    if (searchStringLocations === 'Birmingham') {
+                    if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
                       router.push(
                         `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0${isSelfPayment
                           ? ''
