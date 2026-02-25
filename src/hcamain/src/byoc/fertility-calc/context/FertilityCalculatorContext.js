@@ -1,6 +1,7 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
-import parse from '../js/react-parser/react-parser.js';
+//import parse from '../js/react-parser/react-parser.js';
+import parse from 'html-react-parser';
 export const FertilityCalculatorContext = createContext();
 
 // debug

@@ -225,3 +225,31 @@
   --tag-focus-background: #{$chelsea-gold-80};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
+@mixin apply-tag-alan-black {
+  --tag-background: #{$white};
+  --tag-text: #{$navy-blue-120};
+  --tag-hover-background: #{$light-grey};
+  --tag-active-background: #{$pink-100};
+  --tag-focus-background: #{$pink-20};
+  --tag-focus-outline: #{$pink-100};
+  --tag-secondary-background: #{$black-100};
+  --tag-secondary-hover-background: #{$pink-100};
+  --tag-secondary-active-background: #{$pink-100};
+  --tag-secondary-focus-background: #{$pink-100};
+  --tag-secondary-text: #{$white};
+}
+
+@mixin apply-tag-alan-white {
+  --tag-background: #{$black-100};
+  --tag-text: #{$white};
+  --tag-hover-background: #{$pink-100};
+  --tag-active-background: #{$pink-100};
+  --tag-focus-background: #{$pink-20};
+  --tag-focus-outline: #{$pink-100};
+  --tag-secondary-background: #{$pink-20};
+  --tag-secondary-hover-background: #{$pink-50};
+  --tag-secondary-active-background: #{$pink-50};
+  --tag-secondary-focus-background: #{$pink-50};
+  --tag-secondary-text: #{$navy-blue-100};
+}

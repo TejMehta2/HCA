@@ -49,8 +49,6 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
     const value = e.target.value;
 
     const matches: any = matchLocations(value, props.locationList);
-    console.log('location list', props.locationList);
-    console.log('matches', matches);
     setData(matches);
     setIsComponentVisible(true);
 
@@ -66,9 +64,8 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
 
   return (
     <div
-      className={`${styles['consultant-finder-search']} ${
-        !props.isStepIntro ? styles.secondary : ''
-      }`}
+      className={`${styles['consultant-finder-search']} ${!props.isStepIntro ? styles.secondary : ''
+        }`}
     >
       <div ref={ref} className={styles['consultant-finder-search-searchbar']}>
         <label htmlFor={searchId}>
@@ -113,9 +110,8 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
           <Icons iconName="iconPin" />
         </span>
         <div
-          className={`${styles['consultant-finder-search-close-btn']} ${
-            isComponentVisible ? styles['is-open'] : ''
-          }`}
+          className={`${styles['consultant-finder-search-close-btn']} ${isComponentVisible ? styles['is-open'] : ''
+            }`}
         >
           {/* {props.searchString !== '' && ( */}
           <TextLink>

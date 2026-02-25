@@ -65,6 +65,7 @@
 .header {
   /* stylelint-disable unit-disallowed-list */
   margin-bottom: -1rem; // offset gap
+  color: var(--heading, var(--text));
 }
 
 .cta {

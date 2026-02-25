@@ -17,7 +17,7 @@ import StepIntro from '@component-library/consultant-finder/StepIntro/StepIntro'
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
 import PopularSearchesBox from '@component-library/consultant-finder/PopularSearchesBox/PopularSearchesBox';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   QuickSearchLink: LinkField;
@@ -119,9 +119,6 @@ export const Default = (props: StepProps): JSX.Element => {
     locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
 
   const { lat, lon, distance } = selectedLocationConfig ?? {};
-  //console.log('locations', locations);
-  //console.log('locationConfig', locationConfig);
-  //console.log(lat, lon, distance);
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -205,13 +202,13 @@ export const Default = (props: StepProps): JSX.Element => {
 
     router.push(
       `${baseURLResults}?search=${searchString}` +
-        `&keywordId=${keywordId}` +
-        `&sortType=relevance` +
-        `&lat=${lat}` +
-        `&lon=${lon}` +
-        `&distance=${distance}` +
-        `&limit=12` +
-        `&offset=0`
+      `&keywordId=${keywordId}` +
+      `&sortType=relevance` +
+      `&lat=${lat}` +
+      `&lon=${lon}` +
+      `&distance=${distance}` +
+      `&limit=12` +
+      `&offset=0`
     );
   };
 
@@ -333,7 +330,6 @@ export const Default = (props: StepProps): JSX.Element => {
                   props?.fields?.API_Autocomplete_LoadingMsg?.value ||
                   'Loading...'
                 }
-                // MH done
                 labelLocationsResults={
                   props?.fields?.LocationsResultsLabelText?.value || 'LOCATIONS'
                 }
@@ -381,9 +377,6 @@ export const Default = (props: StepProps): JSX.Element => {
             ></PopularSearchesBox>
           }
         >
-          // MH done // Please add the search locations on props //
-          console.log('props.fields?.LocationsList',
-          props.fields?.LocationsList); // the labels for cookies component
           {!hasFunctionalConsentCookie && (
             <FunctionalCookiesBox
               title={

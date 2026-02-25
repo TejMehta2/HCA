@@ -1,0 +1,23 @@
+﻿---
+ID: "939b9711-ab0d-4e7c-8733-f74e0845ff07"
+Parent: "a2890888-bef4-4309-b88b-9cb23c89f1ec"
+Template: "a2890888-bef4-4309-b88b-9cb23c89f1ec"
+Path: /sitecore/templates/Project/HCA/Pages/Campaign Page/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250214T153641Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2c26df40-898a-4cd1-b214-3b7410a610b9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260122T183928Z

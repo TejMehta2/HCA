@@ -18,9 +18,11 @@
   }
 
   .text-wrapper {
-    @include responsive-grid-span($default: 6,
+    @include responsive-grid-span(
+      $default: 6,
       $breakpoint-m: 5,
-      $breakpoint-l: 5);
+      $breakpoint-l: 5
+    );
 
     align-self: center;
   }
@@ -102,6 +104,7 @@
 
   .title {
     margin-bottom: $spacing-5;
+    color: var(--heading, var(--text));
   }
 
   .copy {
@@ -128,7 +131,7 @@
     }
 
     .stat {
-      >* {
+      > * {
         display: block;
       }
     }

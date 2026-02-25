@@ -10,6 +10,8 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
     title,
     text,
     ctas,
+    image,
+    textWidth = 'standard',
     contentVariation,
     tableOfContentTitle,
     id,
@@ -17,11 +19,13 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
   return (
     <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
+        {image && <div className={styles.image}>{image}</div>}
         <div className={styles.grid}>
           <div
             className={[
               styles.content,
               contentVariation === 'centered' ? styles.centered : '',
+              textWidth === 'narrow' ? styles['narrow-text'] : '',
             ].join(' ')}
           >
             {subheading && (

@@ -76,6 +76,10 @@
   flex-direction: column;
   justify-content: center;
 
+  .header {
+    color: var(--heading, var(--text));
+  }
+
   p {
     &:first-of-type {
       margin-top: 0;

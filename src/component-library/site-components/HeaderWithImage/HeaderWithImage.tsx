@@ -30,36 +30,44 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
     ratings,
     noMask = false,
     contentVariation,
+    textWidth,
   } = props;
   return (
-    <Themes theme={theme}>
-      <div
-        className={[
-          styles['hero-with-image'],
-          contentVariation === 'fullWidthImage' && styles['full-width-image'],
-        ].join(' ')}
-      >
-        <div className={styles.inner}>
-          <div className={styles.content}>
-            {subtitlePlacement === 'before' && subtitle && (
-              <div className={styles.subtitle}>{subtitle}</div>
-            )}
-            <div className={styles.title}>{title}</div>
-            {subtitlePlacement === 'after' && subtitle && (
-              <div className={styles.subtitle}>{subtitle}</div>
-            )}
-            <div className={styles.copy}>{copy}</div>
-            <Themes theme={theme}>
-              <div className={styles.ctas}>{ctas}</div>
-            </Themes>
+    <div data-content="header-with-image">
+      <Themes theme={theme}>
+        <div
+          className={[
+            styles['hero-with-image'],
+            contentVariation === 'fullWidthImage' && styles['full-width-image'],
+          ].join(' ')}
+        >
+          <div className={styles.inner}>
+            <div
+              className={[
+                styles.content,
+                textWidth === 'wide' && styles['wide-text'],
+              ].join(' ')}
+            >
+              {subtitlePlacement === 'before' && subtitle && (
+                <div className={styles.subtitle}>{subtitle}</div>
+              )}
+              <div className={styles.title}>{title}</div>
+              {subtitlePlacement === 'after' && subtitle && (
+                <div className={styles.subtitle}>{subtitle}</div>
+              )}
+              <div className={styles.copy}>{copy}</div>
+              <Themes theme={theme}>
+                <div className={styles.ctas}>{ctas}</div>
+              </Themes>
+            </div>
+            <div className={noMask ? styles['image-no-mask'] : styles.image}>
+              {image}
+            </div>
+            {ratings && <div className={styles.ratings}>{ratings}</div>}
           </div>
-          <div className={noMask ? styles['image-no-mask'] : styles.image}>
-            {image}
-          </div>
-          {ratings && <div className={styles.ratings}>{ratings}</div>}
         </div>
-      </div>
-    </Themes>
+      </Themes>
+    </div>
   );
 };
 

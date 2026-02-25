@@ -518,3 +518,100 @@
   // Focus
   --cta-outline-focus-outline: #{$navy-blue-100};
 }
+
+@mixin apply-cta-alan-full($hover-background, $hover-border, $hover-text) {
+  // Base
+  --cta-full-background: #{$pink-100};
+  --cta-full-text: #{$white};
+  --cta-full-border: #{$pink-100};
+
+  // Hover
+  --cta-full-hover-background: #{$hover-background};
+  --cta-full-hover-text: #{$hover-text};
+  --cta-full-hover-border: #{$hover-border};
+
+  // Disabled
+  --cta-full-disabled-background: #{$pink-20};
+  --cta-full-disabled-text: #{$white};
+  --cta-full-disabled-border: #{$pink-20};
+
+  // Active
+  --cta-full-active-background: #{$white};
+  --cta-full-active-text: #{$pink-100};
+  --cta-full-active-border: #{$pink-100};
+
+  // Focus
+  --cta-full-focus-outline: #{$pink-20};
+}
+
+@mixin apply-cta-alan-outline($background, $border, $text) {
+  // Base
+  --cta-outline-background: #{$background};
+  --cta-outline-text: #{$text};
+  --cta-outline-border: #{$border};
+
+  // Hover
+  --cta-outline-hover-background: #{$pink-100};
+  --cta-outline-hover-text: #{$white};
+  --cta-outline-hover-border: #{$pink-100};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$navy-blue-70};
+  --cta-outline-disabled-border: #{$navy-blue-70};
+
+  // Active
+  --cta-outline-active-background: #{$pink-80};
+  --cta-outline-active-text: #{$white};
+  --cta-outline-active-border: #{$pink-80};
+
+  // Focus
+  --cta-outline-focus-outline: #{$pink-100};
+}
+
+@mixin apply-cta-carousel-alan-dark {
+  // Base
+  --cta-carousel-background: #{$pink-100};
+  --cta-carousel-text: #{$white};
+  --cta-carousel-border: #{$pink-100};
+
+  // Hover
+  --cta-carousel-hover-text: #{$navy-blue-100};
+
+  // Disabled
+  --cta-carousel-disabled-background: #{$pink-20};
+  --cta-carousel-disabled-text: #{$navy-blue-100};
+  --cta-carousel-disabled-border: #{$pink-20};
+
+  // Active
+  --cta-carousel-active-background: #{$white};
+  --cta-carousel-active-text: #{$navy-blue-100};
+  --cta-carousel-active-border: #{$navy-blue-100};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-cta-carousel-alan-light {
+  // Base
+  --cta-carousel-background: #{$pink-100};
+  --cta-carousel-text: #{$white};
+  --cta-carousel-border: #{$pink-100};
+
+  // Hover
+  --cta-carousel-hover-text: #{$white};
+  --cta-carousel-hover-border: #{$white};
+
+  // Disabled
+  --cta-carousel-disabled-background: #{$pink-20};
+  --cta-carousel-disabled-text: #{$navy-blue-100};
+  --cta-carousel-disabled-border: #{$pink-20};
+
+  // Active
+  --cta-carousel-active-background: #{$white};
+  --cta-carousel-active-text: #{$navy-blue-100};
+  --cta-carousel-active-border: #{$navy-blue-100};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$navy-blue-100};
+}

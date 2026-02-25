@@ -45,11 +45,15 @@ const YextResultSectionLocationsAdaptor = (
       c_pageImage,
       googlePlaceId,
       c_uRL,
+      c_abstractTitle,
+      c_pageTitle,
     } = result.rawData;
 
     const yextImage = c_heroImage;
 
     const sitecoreImage = c_abstractImage || c_pageImage;
+
+    const resultTitle = c_abstractTitle || c_pageTitle || name || '';
 
     const displayImage =
       name && yextImage?.url
@@ -94,7 +98,7 @@ const YextResultSectionLocationsAdaptor = (
       image: displayImage ? <Image {...displayImage} /> : undefined,
       title: (
         <Text variation="heading-1">
-          {c_uRL ? <a href={c_uRL}>{name}</a> : name}
+          {c_uRL ? <a href={c_uRL}>{resultTitle}</a> : resultTitle}
         </Text>
       ),
       distance: (

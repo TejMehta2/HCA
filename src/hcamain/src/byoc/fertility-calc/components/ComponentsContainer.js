@@ -4,7 +4,8 @@ import FormContainer from './FormContainer';
 import Births from './Births';
 import Headline from './Headline';
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
-import { motion, AnimatePresence } from '../js/framer-motion/framer-motion.js';
+//import { motion, AnimatePresence } from '../js/framer-motion/framer-motion.js';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ComponentsContainer() {
   const {

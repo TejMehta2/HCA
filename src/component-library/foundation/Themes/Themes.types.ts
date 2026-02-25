@@ -25,7 +25,10 @@ export type Theme =
   | 'Chelsea-Beige'
   | 'LBI'
   | 'LBI-Dark'
-  | 'LBI-White';
+  | 'LBI-White'
+  | 'Alan-Black'
+  | 'Alan-White'
+  | 'Alan-Light-Grey';
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;

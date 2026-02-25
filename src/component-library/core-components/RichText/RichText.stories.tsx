@@ -103,6 +103,58 @@ export const Default: StoryObj<typeof RichText> = {
             cillum mollit officia tempor.
           </li>
         </ul>
+        <ol>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+        </ol>
+        <ol className="circle">
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor in ad non consequat esse.&nbsp;
+          </li>
+          <li>
+            Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+            cillum mollit officia tempor.
+          </li>
+        </ol>
         <a href="#">Lorem ipsum</a>
         <table>
           <thead>

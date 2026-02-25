@@ -12,10 +12,11 @@ import HeaderWithImage, {
 } from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
-import Params from 'src/types/params';
+import Params, { DarkTheme, darkThemes } from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
 
 interface Fields {
   data?: {
@@ -76,10 +77,14 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
   const titleLength =
     props.fields?.data?.contextItem?.title?.jsonValue?.value?.length;
 
+  const textWidth = (getPresentationParam(props?.params?.styles, 'textwidth') ??
+    'standard') as 'wide' | 'standard' | undefined;
+
   return (
     <HeaderWithImage
       contentVariation={props.contentVariation}
       theme={props.params?.Theme || 'D-HCA-Teal'}
+      textWidth={textWidth}
       title={
         <Text
           variation={
@@ -153,5 +158,16 @@ export const FullWidthImage = (
     return <HeaderWithImageDefaultComponent {...props} />;
   }
 
-  return <Default {...props} contentVariation="fullWidthImage" />;
+  //make sure fulwidthimage variant has one of dark themes, if not fallback to default dark theme
+  const nextProps: HeaderWithImageVariantProps = {
+    ...props,
+    params: {
+      ...props.params,
+      Theme: darkThemes.includes(props.params?.Theme as DarkTheme)
+        ? props.params?.Theme
+        : 'B-HCA-Navy-Blue',
+    },
+  };
+
+  return <Default {...nextProps} contentVariation="fullWidthImage" />;
 };

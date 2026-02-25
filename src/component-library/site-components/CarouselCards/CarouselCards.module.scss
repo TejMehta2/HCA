@@ -89,6 +89,10 @@
   }
 }
 
+.title {
+  color: var(--heading, var(--text));
+}
+
 .copy {
   padding-top: $spacing-5;
 }

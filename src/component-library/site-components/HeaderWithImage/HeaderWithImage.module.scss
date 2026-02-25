@@ -78,6 +78,10 @@
   align-self: center;
 }
 
+.wide-text {
+  @include responsive-grid-span(6, 6, 7, 7);
+}
+
 .subtitle {
   &:nth-child(1) {
     margin-bottom: $spacing-3;
@@ -104,9 +108,6 @@
 }
 
 .full-width-image {
-  // should always use the dark theme, but cannot be applied in the JSX as it interferes with the ScrollTransition component
-  @include apply-theme-b-navy;
-
   border-radius: 0;
   align-items: flex-end;
 
