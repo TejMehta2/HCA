@@ -76,6 +76,10 @@
   flex-direction: column;
   justify-content: center;
 
+  .header {
+    color: var(--heading, var(--text));
+  }
+
   p {
     &:first-of-type {
       margin-top: 0;
@@ -299,6 +303,8 @@
       padding: $spacing-9 0;
     }
   }
+
+  <<<<<<< HEAD
 }
 
 .location {
@@ -314,4 +320,5 @@
   background-color: $teal-5;
   padding: $spacing-4;
   border-radius: $radius-medium;
+  =======>>>>>>>dev
 }

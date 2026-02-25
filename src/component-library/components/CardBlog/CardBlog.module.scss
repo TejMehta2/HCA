@@ -7,12 +7,14 @@
   &.default {
     color: var(--text);
     background-color: var(--card-background);
+    --heading-color: var(--heading, var(--text));
   }
 
   &.feature {
     color: var(--card-secondary-text);
     background-color: var(--card-secondary-background);
-
+    
+    --heading-color: var(--card-secondary-text);
     --tag-background: var(--tag-secondary-background);
     --tag-text: var(--tag-secondary-text);
     --tag-hover-text: var(--tag-secondary-hover-text);
@@ -60,7 +62,7 @@
   h5,
   h6 {
     a {
-      color: inherit;
+      color: var(--heading-color);
       text-decoration: none;
 
       &:hover {

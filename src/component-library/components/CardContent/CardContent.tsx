@@ -19,7 +19,7 @@ const CardContent = (props: CardContentProps): JSX.Element => {
       )}
       <div className={styles['card-info']}>
         <div className={styles.copy}>
-          {title}
+          <div className={styles.title}>{title}</div>
           {bodyCopy && <div className={styles['body-text']}>{bodyCopy}</div>}
         </div>
         {link && (

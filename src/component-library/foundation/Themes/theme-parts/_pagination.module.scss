@@ -149,3 +149,15 @@
   --pagination-hover: #{$purple-120};
   --pagination-arrow-hover: #{$purple-120};
 }
+
+@mixin apply-pagination-alan-black {
+  --pagination: #{$black-80};
+  --pagination-hover: #{$pink-50};
+  --pagination-arrow-hover: #{$pink-50};
+}
+
+@mixin apply-pagination-alan-white {
+  --pagination: #{$pink-20};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$pink-50};
+}

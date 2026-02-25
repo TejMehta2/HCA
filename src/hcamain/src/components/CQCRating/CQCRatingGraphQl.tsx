@@ -33,8 +33,8 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   }
   const { hideRating = false, length = 'long' } = props;
 
-  const defaultRating = datamodel?.status?.targetItem
-    ?.displayName as CQCBlockProps['rating'];
+  const defaultRating = datamodel?.status?.targetItem?.title
+    ?.value as CQCBlockProps['rating'];
 
   const ratingLink = datamodel?.reportLink?.jsonValue?.value?.href ? (
     <a href={datamodel?.reportLink?.jsonValue?.value?.href}></a>

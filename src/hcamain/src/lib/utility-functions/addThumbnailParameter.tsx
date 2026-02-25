@@ -11,3 +11,22 @@ export const addThumbnailParameter = (image?: string) => {
     return image;
   }
 };
+
+export const upsertQuerystringParam = (
+  url: string,
+  queryStringParamName: string,
+  paramValue: string
+): string => {
+  try {
+    if (!url) return url;
+    const parsedUrl = new URL(url);
+
+    // Replaces existing param or adds a new one
+    parsedUrl.searchParams.set(queryStringParamName, paramValue);
+
+    return parsedUrl.toString();
+  } catch (err) {
+    process.env.NODE_ENV === 'development' && console.error(err);
+    return url;
+  }
+};

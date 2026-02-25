@@ -1,0 +1,40 @@
+﻿---
+ID: "e3d5b403-44e5-41e2-a499-6243d81c6b13"
+Parent: "3643ee2a-12d1-4a57-990f-fbfeff3a6efe"
+Template: "29a4beda-f21c-4046-bdf1-a5c240e5600b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Book an Appointment CTA/Data/Hero Banner With Search"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1de0fca7-3911-40da-978b-d47f369505ac"
+      Hint: CTAHeading
+      Value: Get started
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240205T190205Z
+    - ID: "2f3126f4-1894-4e15-a6db-d8c2e89cfb6e"
+      Hint: SearchPlaceholder
+      Value: "How can we help you?"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "683bbbba-fd98-4f03-b889-a3bddc01e2fe"
+      Hint: SearchIcon
+      Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6b6dd263-4836-4c25-a540-214309a4ce9f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240212T101328Z

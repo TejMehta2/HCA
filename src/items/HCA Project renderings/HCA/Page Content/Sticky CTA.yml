@@ -10,6 +10,131 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetStickyCta(
+      $datasource: String!
+      $contextItem: String!
+      $language: String!
+    ) {
+      contextItem: item(path: $contextItem, language: $language) {
+        ...DoctifyMappedItemFragment
+        ancestors(hasLayout: true) {
+          ...DoctifyMappedItemFragment
+        }
+      }
+      item(path: $datasource, language: $language) {
+        ... on StickyCTA {
+          desktopCaption {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTAText {
+            jsonValue
+          }
+    
+          modalContent {
+            targetItems {
+              ... on ModalContent {
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                primaryCTA {
+                  jsonValue
+                }
+                primaryCTAVariant {
+                  ...VariantFragment
+                }
+                primaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                secondaryCTA {
+                  jsonValue
+                }
+                secondaryCTAVariant {
+                  ...VariantFragment
+                }
+                secondaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                tertiaryCTA {
+                  jsonValue
+                }
+                tertiaryCTAVariant {
+                  ...VariantFragment
+                }
+                tertiaryCTAIcon {
+                  ...IconFragment
+                }
+    
+                quaternaryCTA {
+                  jsonValue
+                }
+                quaternaryCTAVariant {
+                  ...VariantFragment
+                }
+                quaternaryCTAIcon {
+                  ...IconFragment
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    fragment VariantFragment on LookupField {
+      targetItem {
+        ... on Item {
+          name
+        }
+      }
+    }
+    
+    fragment IconFragment on LookupField {
+      targetItem {
+        ... on HCAIcon {
+          svgMarkup {
+            value
+          }
+        }
+      }
+    }
+    
+    fragment DoctifyMappedItemFragment on Item {
+      id
+      name
+      path
+      template {
+        name
+        id
+      }
+      ... on _DoctifyPracticeMapping {
+        doctifyPractice {
+          value
+        }
+      }
+      ... on _DoctifyKeywordIdMapping {
+        doctifyKeywordId {
+          value
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Sticky CTA
@@ -32,6 +157,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{0DEDB672-FE5F-477C-8D35-AF08C382B5A9}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "7d81872e-ee0b-4b8a-9457-3c6b960c9c98"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -78,14 +206,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5222eb89-2713-4fdb-bacd-8f4d14673bd7"
+      Value: "991b5ca0-545e-4831-b603-d6c63181940a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172447Z
+      Value: 20260218T102733Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

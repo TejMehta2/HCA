@@ -6,9 +6,35 @@
   background: var(--background);
   padding-top: var(--theme-collapse-padding-top, $spacing-13);
   padding-bottom: $spacing-13;
+  position: relative;
+}
+
+/* Optional background image */
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 60%);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .grid {
+  position: relative;
+  z-index: 1;
   @include responsive-container;
   @include responsive-grid;
 }
@@ -19,6 +45,10 @@
 
   .subheading {
     margin-bottom: $spacing-2;
+  }
+
+  .title{
+    color: var(--heading, var(--text));
   }
 
   .title,
@@ -40,6 +70,11 @@
     flex-direction: column;
     gap: $spacing-2;
   }
+}
+
+.narrow-text {
+  @include responsive-grid-start(1, 2, 4, 4);
+  @include responsive-grid-span(6, 4, 6, 6);
 }
 
 .centered {

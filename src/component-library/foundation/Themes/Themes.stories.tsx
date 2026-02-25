@@ -100,7 +100,7 @@ const meta: Meta<typeof Themes> = {
             { icon: 'iconFlexible', label: 'Flexi' },
             { icon: 'iconCalendar', label: 'Annual' },
           ]}
-          callback={() => { }}
+          callback={() => {}}
         />
 
         <CQCBlock
@@ -390,4 +390,13 @@ export const ThemeLBIDark: StoryObj<typeof Themes> = {
 };
 export const ThemeLBIWhite: StoryObj<typeof Themes> = {
   args: { theme: 'LBI-White' },
+};
+export const ThemeAlanBlack: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-Black' },
+};
+export const ThemeAlanWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-White' },
+};
+export const ThemeAlanLightGrey: StoryObj<typeof Themes> = {
+  args: { theme: 'Alan-Light-Grey' },
 };
