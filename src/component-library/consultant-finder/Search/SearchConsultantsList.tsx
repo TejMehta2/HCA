@@ -49,7 +49,6 @@ const Search = (props: SearchProps): JSX.Element => {
   // remove search and keywordId from URL
   const removeSearchKeywordIdQueries = () => {
     const { search, keywordId, ...queryParams } = router.query;
-    console.log(search, keywordId);
 
     queryParams.offset = '0';
 

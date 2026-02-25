@@ -147,6 +147,9 @@ export const Default = (props: StepProps): JSX.Element => {
   const [loadingData, setLoadingData] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
 
   const {
     selectedLocationName,
@@ -594,12 +597,26 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
+
     // get slug from URL
     const slugURL = router?.query?.slug || null;
     if (slugURL) {
       setSlug(slugURL.toString());
       getConsultantData(slugURL.toString());
     }
+
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
+
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
     setGmcNumber(gmcNumber.toString());
@@ -608,7 +625,6 @@ export const Default = (props: StepProps): JSX.Element => {
     const reviewsTotal = router?.query?.reviewsTotal || null;
     setReviewsTotal(Number(reviewsTotal));
 
-    console.log('location', selectedLocationName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -692,7 +708,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     router.push(
                       `${props?.fields?.LiveBookingFormStepAppointment?.value
                         ?.href || '/finder/step-appointment-type'
-                      }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                      }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                     )
                   }
                 >
@@ -714,6 +730,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   slug={slug}
                   gmcNumber={gmcNumber}
                   reviewsTotal={reviewsTotal}
+                  name={name}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -736,7 +753,7 @@ export const Default = (props: StepProps): JSX.Element => {
                           router.push(
                             `${props?.fields?.LiveBookingFormStepSlotSelect
                               ?.value?.href || '/finder/step-slot-select'
-                            }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
+                            }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                           )
                         }
                       >
@@ -795,6 +812,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.LiveBookingFormStepSlotSelect?.value
                         ?.href || '/finder/step-slot-select'
                     }
+                    name={name}
+                    search={search}
+                    keywordId={keywordId}
                   />
                 </Container>
                 {/* About you */}
@@ -1492,6 +1512,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.LiveBookingFormStepSlotSelect?.value?.href ||
                     '/finder/step-slot-select'
                   }
+                  name={name}
+                  search={search}
+                  keywordId={keywordId}
                 />
                 <NeedHelp
                   headline={

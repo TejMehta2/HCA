@@ -8,7 +8,7 @@
 .wrapper {
   @include responsive-container;
 
-  padding-top: var(--theme-collapse-padding-top, #{$spacing-13});
+
   padding-bottom: $spacing-13;
 }
 
@@ -148,7 +148,7 @@
     align-self: self-start;
   }
 
-  div:not( :has([class^='Accordion'])) {
+  div:not(:has([class^='Accordion'])) {
 
     a,
     button {
@@ -262,6 +262,25 @@
   }
 }
 
+.hide-on-desktop {
+  @include media(screen-l) {
+    display: none;
+  }
+}
+
+.no-desktop-image {
+  .content {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 1);
+  }
+
+  // If you're using the CF variant, ensure it also becomes full width.
+  .content.content-cf {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 1);
+  }
+}
+
 .hide-on-mobile-cf {
   display: none;
 
@@ -284,4 +303,19 @@
       padding: $spacing-9 0;
     }
   }
+}
+
+.location {
+  display: flex;
+}
+
+.text {
+  margin-right: $spacing-1;
+}
+
+.save-location {
+  margin-top: $spacing-2;
+  background-color: $teal-5;
+  padding: $spacing-4;
+  border-radius: $radius-medium;
 }

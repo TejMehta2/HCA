@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
@@ -171,15 +172,11 @@ export const Default = (props: StepProps): JSX.Element => {
                   disabled={false}
                   onClick={() =>
                     router.push(
-                      `${
-                        props?.fields?.NextLink?.value?.href
-                      }?search=${search}&keywordId=${keywordId}&sortType=relevance${
-                        selectedLocations.length > 0
-                          ? `&practice=${selectedLocations.join(',')}&`
-                          : '&'
-                      }lat=51.507217&lon=-0.1275862&distance=0&limit=12${
-                        insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'
-                      }&offset=0`
+                      `${props?.fields?.NextLink?.value?.href
+                      }?search=${search}&keywordId=${keywordId}&sortType=relevance${selectedLocations.length > 0
+                        ? `&practice=${selectedLocations.join(',')}&`
+                        : '&'
+                      }lat=51.507217&lon=-0.1275862&distance=0&limit=12&${insurer ? `insurer=${insurer}&` : ''}offset=0`
                     )
                   }
                 >

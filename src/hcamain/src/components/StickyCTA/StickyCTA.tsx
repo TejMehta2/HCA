@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef } from 'react';
 import {
   Field,
@@ -215,10 +216,10 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                 const { href, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(link.jsonValue, doctifyId, 'practice')
                   : withKeywordIdIfNeeded(
-                      link.jsonValue,
-                      doctifyId,
-                      'keywordId'
-                    );
+                    link.jsonValue,
+                    doctifyId,
+                    'keywordId'
+                  );
 
                 return (
                   <Button
@@ -275,15 +276,15 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
 
                 const { href, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(
-                      link?.jsonValue,
-                      doctifyId,
-                      'practice'
-                    )
+                    link?.jsonValue,
+                    doctifyId,
+                    'practice'
+                  )
                   : withKeywordIdIfNeeded(
-                      link?.jsonValue,
-                      doctifyId,
-                      'keywordId'
-                    );
+                    link?.jsonValue,
+                    doctifyId,
+                    'keywordId'
+                  );
 
                 return (
                   <Button

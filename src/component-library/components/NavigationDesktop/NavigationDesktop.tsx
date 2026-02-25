@@ -250,14 +250,16 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             </div>
           )}
           <div className={styles.main}>
-            <a
-              className={styles.logo}
-              href={homeUrl}
-              data-navigation-type="logoNavigation"
-            >
-              <span className="sr-only">Home</span>
-              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
-            </a>
+            <div>
+              <a
+                className={styles.logo}
+                href={homeUrl}
+                data-navigation-type="logoNavigation"
+              >
+                <span className="sr-only">Home</span>
+                {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
+              </a>
+            </div>
             <ul className={styles.tabs}>
               {tabs.map((tab, tabIndex) => {
                 if (tab.hasChildren)
@@ -321,7 +323,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           </div>
         </div>
       </div>
-    </Themes>
+    </Themes >
   );
 };
 

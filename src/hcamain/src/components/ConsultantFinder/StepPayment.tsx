@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
@@ -5,7 +6,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import {
-  Image as JssImage,
   Link as JssLink,
   RichText as JssRichText,
   ImageField,
@@ -21,6 +21,8 @@ import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Icons from '@component-library/foundation/Icons/Icons';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Container from '@component-library/foundation/Containers/Container';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
+import { isMobile } from '@component-library/utility-functions/index';
 
 interface Fields {
   TitleText: Field<string>;
@@ -56,16 +58,17 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
-  const [search, setSearch] = useState('');
-  const [keywordId, setKewordId] = useState('');
   const {
     searchStringPayment,
     setSearchStringPayment,
     setIsSelfPayment,
     isSelfPayment,
     selectedInsurerPaymentStep,
+    searchStringLocations
   } = useContext(ConsultantFinderContext);
-  //console.log('payment', props);
+  const [search, setSearch] = useState('');
+  const [keywordId, setKewordId] = useState('');
+
 
   useEffect(() => {
     window.scrollTo({
@@ -85,6 +88,9 @@ export const Default = (props: StepProps): JSX.Element => {
     const searchStringQuery = router?.query?.searchString || '';
     setSearch(searchStringQuery.toString());
 
+    setIsSelfPayment(false);
+    setSearchStringPayment('');
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -93,10 +99,18 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
+            <Headline
+              withConsultantName={true}
+              backLinkProfile={props?.fields?.BackLink?.value?.href}
+              backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
+              hasTitleName={false}
+            >
+            </Headline>
             <ImageAndTextBlock
               noOverflownHidden={true}
               contentVariation={'hero-cf'}
               cfVariation={true}
+              showRegion={false}
               theme="A-HCA-White"
               imageAlignment="left"
               length="short"
@@ -111,12 +125,46 @@ export const Default = (props: StepProps): JSX.Element => {
                   <JssRichText field={props.fields.TitleText} />
                 </Text>
               }
-              image={<JssImage field={props.fields.CardImage} />}
+              image={null}
             >
               <Text tag="div" variation="body-large">
                 <JssRichText field={props.fields.BodyText} />
               </Text>
               <form autoComplete="off">
+                <Container marginTop="spacing-4" marginBottom="spacing-4">
+                  <Text tag="h2" variation="heading-2">
+                    {props.fields.TitleText.value}
+                  </Text>
+                </Container>
+
+                <Checkbox
+                  id="1"
+                  label={props.fields.SelfPayCheckBoxText.value}
+                  name="selfpayment"
+                  value="selfpayment"
+                  checked={isSelfPayment}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    if (e.target.checked) {
+                      setIsSelfPayment(e.target.checked);
+                      setSearchStringPayment('');
+                      if (!isMobile()) {
+                        if (searchStringLocations === 'Birmingham') {
+                          router.push(
+                            `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`
+                          )
+                        }
+                        else {
+                          router.push(
+                            `${props.fields.NextLink.value.href ||
+                            '/finder/step-locations'
+                            }?keywordId=${keywordId}&searchString=${search}`
+                          )
+                        }
+                      }
+                    }
+
+                  }}
+                ></Checkbox>
                 <SearchPayment
                   placeholder={
                     props?.fields?.SearchPlaceholderText?.value ||
@@ -147,30 +195,15 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.API_Insurance_LoadingMsg?.value ||
                     'Loading...'
                   }
+                  nextLink={`${props.fields.NextLink.value.href ||
+                    '/finder/step-locations'
+                    }?keywordId=${keywordId}&searchString=${search}`}
+                  search={search}
                 />
-
-                <Container marginTop="spacing-4" marginBottom="spacing-4">
-                  <Text tag="h2" variation="heading-2">
-                    {props.fields.TitleText.value}
-                  </Text>
-                </Container>
-
-                <Checkbox
-                  id="1"
-                  label={props.fields.SelfPayCheckBoxText.value}
-                  name="selfpayment"
-                  value="selfpayment"
-                  checked={isSelfPayment}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    if (e.target.checked) {
-                      setSearchStringPayment('');
-                    }
-                    setIsSelfPayment(e.target.checked);
-                  }}
-                ></Checkbox>
               </form>
+
             </ImageAndTextBlock>
-            <Navigation>
+            <Navigation showOnMobile={true}>
               <TextButton>
                 <JssLink field={props.fields.BackLink}>
                   <Icons iconName="iconArrowSmallLeft" />
@@ -183,22 +216,31 @@ export const Default = (props: StepProps): JSX.Element => {
                   disabled={
                     searchStringPayment === '' && !isSelfPayment ? true : false
                   }
-                  onClick={() =>
-                    router.push(
-                      `${
-                        props.fields.NextLink.value.href ||
-                        '/finder/step-locations'
-                      }?keywordId=${keywordId}&searchString=${search}${
-                        isSelfPayment
-                          ? `&insurer=${'selfPay'}`
+                  onClick={() => {
+                    if (searchStringLocations === 'Birmingham') {
+                      router.push(
+                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0${isSelfPayment
+                          ? ''
                           : `&insurer=${selectedInsurerPaymentStep}`
-                      }`
-                    )
+                        }`
+                      )
+                    } else {
+                      router.push(
+                        `${props.fields.NextLink.value.href ||
+                        '/finder/step-locations'
+                        }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
+                          ? ''
+                          : `&insurer=${selectedInsurerPaymentStep}`
+                        }`
+                      )
+                    }
+                  }
                   }
                 >
                   <span>{props.fields.NextLink.value.text}</span>
                 </button>
               </Button>
+
             </Navigation>
           </>
         )}

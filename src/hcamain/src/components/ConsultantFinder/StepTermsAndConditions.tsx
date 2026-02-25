@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
@@ -22,6 +23,7 @@ import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB'
 import Container from '@component-library/foundation/Containers/Container';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -69,6 +71,9 @@ export const Default = (props: StepProps): JSX.Element => {
   //console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
@@ -82,9 +87,18 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
     setGmcNumber(gmcNumber.toString());
@@ -107,10 +121,30 @@ export const Default = (props: StepProps): JSX.Element => {
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
                   reviewsTotal={reviewsTotal}
+                  name={name}
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <TermsConditionsCards>
+            <Headline>
+              <Text tag="h1" variation="heading-1">
+                {'A few important things to know before you book'}
+              </Text>
+            </Headline>
+            {/* <Headline
+              withConsultantName={true}
+              backLinkProfile={`${props?.fields?.BackLink?.value?.href &&
+                props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
+                }${slug}`}
+              backLink={props?.fields?.BackLink?.value?.href}
+              headingText={'A few important things to know before you book'}
+              backLinkText={props.fields.BackLink.value.text || 'Back'}
+              search={search}
+              keywordId={keywordId}
+            >
+            </Headline> */}
+            <TermsConditionsCards
+              acceptBtn={null}
+            >
               <InfoBox
                 backgroundColour="turquoise"
                 icon={
@@ -164,10 +198,9 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${
-                      props?.fields?.BackLink?.value?.href &&
+                    href={`${props?.fields?.BackLink?.value?.href &&
                       props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
-                    }${slug}`}
+                      }${slug}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -181,10 +214,9 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container customBtn={true}>
                 <Button variation="full-dark" size="large">
                   <Link
-                    href={`${
-                      props?.fields?.NextLink?.value?.href ||
+                    href={`${props?.fields?.NextLink?.value?.href ||
                       '/finder/step-appointment-type'
-                    }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                      }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                   >
                     <span>
                       {props?.fields?.AcceptButtonText?.value || 'Accept'}

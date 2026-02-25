@@ -56,9 +56,8 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
     <div className={styles.reviews} data-testid="reviews-component">
       {props.isConsultantProfileReviews && (
         <div
-          className={`${styles['reviews-header']} ${
-            props.reviewsTotal === 0 ? styles['reviews-header-no-reviews'] : ''
-          }`}
+          className={`${styles['reviews-header']} ${props.reviewsTotal === 0 ? styles['reviews-header-no-reviews'] : ''
+            }`}
         >
           <Text tag="h2" variation="subheading-2">
             {props.titleText}
@@ -72,15 +71,13 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
       )}
 
       <div
-        className={`${styles['reviews-container']} ${
-          !props.isConsultantProfileReviews &&
+        className={`${styles['reviews-container']} ${!props.isConsultantProfileReviews &&
           styles['reviews-container-profile']
-        }`}
+          }`}
       >
         <div
-          className={`${styles['reviews-stars']} ${
-            !props.isConsultantProfileReviews && styles['reviews-stars-profile']
-          }`}
+          className={`${styles['reviews-stars']} ${!props.isConsultantProfileReviews && styles['reviews-stars-profile']
+            }`}
         >
           {stars.map((star, index) => (
             <span key={index}>{star}</span>

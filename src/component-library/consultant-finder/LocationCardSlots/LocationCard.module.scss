@@ -42,4 +42,12 @@
       color: $navy-blue-60;
     }
   }
+
+  .map {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: $spacing-3;
+    margin-top: $spacing-3;
+    border-top: 1px solid $navy-blue-10;
+  }
 }

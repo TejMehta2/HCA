@@ -1,24 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
-import { capitalizeFirstLetter } from '../../utility-functions/index';
+import { capitalizeFirstLetter, isMobile } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
+  const { setIsSelfPayment, setSelectedInsurerPaymentStep, keywordId, searchStringLocations } = useContext(
     ConsultantFinderContext
   );
+  const router = useRouter();
 
   const handleClick = (name: string, id: number) => {
+    console.log('isMobile()', isMobile());
     props.setIsComponentVisible(false);
     setSelectedInsurerPaymentStep(id);
     setIsSelfPayment(false);
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
+      if (!isMobile() && props.nextLink) {
+        if (searchStringLocations === 'Birmingham') {
+          router.push(
+            `/finder/step-consultant-cards?search=${props.search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0&insurer=${id}`)
+        } else {
+          router.push(
+            `${props.nextLink}&insurer=${id}`
+          )
+        }
+      }
+      if (!isMobile() && props.setShowContinueBtn) {
+        props.setShowContinueBtn(false);
+      }
     }
   };
 

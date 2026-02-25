@@ -1,0 +1,80 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-finder-search-dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border: 1px solid $navy-blue-100;
+  border-radius: $radius-large;
+  margin-top: $spacing-2;
+  padding: $spacing-5 $spacing-6;
+  position: absolute;
+  text-align: left;
+  z-index: 1001;
+
+  &.secondary {
+    background-color: $teal-5;
+  }
+
+  &-results {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+  }
+
+  &-icon {
+    margin-right: $spacing-3;
+  }
+
+  &-col {
+    width: 100%;
+    margin-bottom: $spacing-6;
+
+    &--full-width {
+      width: 100%;
+    }
+
+    @include media(screen-l) {
+      width: 100%;
+    }
+  }
+
+  &-header {
+    margin-bottom: $spacing-3;
+  }
+
+  &-loader {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .specialty {
+    h4 {
+      color: #4b596f;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    li {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: $spacing-3;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

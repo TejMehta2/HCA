@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template finder component
@@ -31,6 +32,7 @@ import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcru
 import {
   getActiveLiveDiaryConsultantSlugs,
   getDoctifyPhoneNumberConsultantSlugs,
+  getIgnoreReviewsConsultantSlugs,
 } from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
@@ -46,6 +48,8 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import { GetServerSidePropsContext } from 'next';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
+import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
+import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -86,6 +90,7 @@ interface Fields {
   ResetAllText: Field<string>;
   ResetAllIcon: any;
   API_DoctifySearch_NoResultsMsg: Field<string>;
+  API_DoctifySearch_NoResultsMsgLocations: Field<string>;
   API_DoctifySearch_LoadingMsg: Field<string>;
   API_DoctifySearch_Limit: Field<string>;
   API_DoctifySearch_DefaultParams: Field<string>;
@@ -111,6 +116,10 @@ interface Fields {
   BreadcrumbHomePage: LinkField;
   CallToBookModalTitle: Field<string>;
   DisplayNumber: Field<string>;
+  LocationsList: any;
+  FunctionalCookieSaveNextTimeTitle: Field<string>;
+  FunctionalCookieSaveNextTimeLabel: Field<string>;
+  LocationsResultsLabelText: Field<string>;
 }
 
 type StepProps = {
@@ -122,6 +131,7 @@ interface ServerSideProps {
   Insurers: any;
   LiveDiaryConsultantsSlugs: string[];
   DoctifyPhoneConsultantsSlugs: string[];
+  NoReviewsConsultants: any;
 }
 
 /**
@@ -135,6 +145,8 @@ interface ServerSideProps {
   _layoutData,
   _context
 ) => {
+  const ignoreConsutantReviews = await getIgnoreReviewsConsultantSlugs();
+  console.log('test', ignoreConsutantReviews);
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
   const consultantsSlugsDoctifyPhone =
@@ -144,6 +156,7 @@ interface ServerSideProps {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
     DoctifyPhoneConsultantsSlugs: consultantsSlugsDoctifyPhone,
+    NoReviewsConsultants: ignoreConsutantReviews,
   };
 
   return returnProps;
@@ -168,7 +181,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  // console.log('consultant cards', props);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -178,10 +190,17 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
+  // const ignoreReviewsConsultantsSlugs: any  = serverSideData?.NoReviewsConsultants;
   // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
-  const { searchString, setSearchString, setKeywordId } = useContext(
-    ConsultantFinderContext
-  );
+  const {
+    searchString,
+    setSearchString,
+    setKeywordId,
+    searchStringLocations,
+    setSearchStringLocations,
+    selectedLocationConsultants,
+    setSelectedLocationConsultants,
+  } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -198,6 +217,10 @@ export const Default = (props: StepProps): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
+  const [URLparams, setURLparams] = useState('');
+  const [hydrated, setHydrated] = useState(false);
+  const [hasFunctionalConsentCookie, setFunctionalConsentCookie] =
+    useState(false);
   const cardAvailableAppointmentLoadingText: string =
     props?.fields?.API_C2_FirstAppointment_LoadingMsg?.value;
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
@@ -205,6 +228,47 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
+
+  const locations = props?.fields?.LocationsList || [];
+  const locationConfig = locations.map((item: any) => ({
+    name: item.fields.name.value,
+    distance: item.fields.distance.value,
+    lat: item.fields.lat.value,
+    lon: item.fields.lon.value,
+  }));
+
+  // location
+  const applyLocationToSearch = (nextLocation: string) => {
+    const selectedLocationConfig =
+      locationConfig.find(
+        (loc: { name: string }) => loc.name === nextLocation
+      ) ||
+      locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
+
+    const { lat, lon, distance } = selectedLocationConfig ?? {};
+
+
+    // update UI immediately
+    setSelectedLocationConsultants(nextLocation);
+
+    // update URL params -> triggers your existing fetch effect (router.query dependency)
+    const { requestPath, offset, ...queryParams } = router.query;
+
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...queryParams,
+          lat: lat,
+          lon: lon,
+          distance: distance,
+          offset: 0, // reset pagination when changing region
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
 
   // hospitals
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -239,6 +303,78 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
+
+  const hasFunctionalConsent = () => {
+    const groups = (window as any).OnetrustActiveGroups || '';
+    return groups.includes('C0003');
+  };
+
+  const readCookie = (name: string) => {
+    const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+    return m ? decodeURIComponent(m[1]) : null;
+  };
+
+  const setLocationCookie = (value: string) => {
+    document.cookie = `location=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
+  };
+
+  const deleteLocationCookie = () => {
+    document.cookie = 'location=; path=/; max-age=0; SameSite=Lax';
+    document.cookie = 'location=; max-age=0; SameSite=Lax';
+  };
+
+  // 1) Hydrate location from cookie (once)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const init = () => {
+      if (!hasFunctionalConsent()) {
+        deleteLocationCookie(); // optional
+        setHydrated(true);
+        setFunctionalConsentCookie(false);
+        return;
+      }
+
+      const saved = readCookie('location');
+      if (saved) setSelectedLocationConsultants(saved);
+      setFunctionalConsentCookie(true);
+      setHydrated(true);
+    };
+
+    init();
+    window.addEventListener('OneTrustGroupsUpdated', init);
+    return () => window.removeEventListener('OneTrustGroupsUpdated', init);
+  }, []);
+
+  // 2) Persist whenever location changes (only after hydration + only if consent)
+  useEffect(() => {
+    if (!hydrated) return;
+    if (typeof window === 'undefined') return;
+    if (!hasFunctionalConsent()) return;
+
+    setLocationCookie(selectedLocationConsultants);
+  }, [selectedLocationConsultants, hydrated]);
+
+  // 3) If consent revoked later, delete the cookie
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const onConsentChange = () => {
+      if (!hasFunctionalConsent()) {
+        deleteLocationCookie();
+        setFunctionalConsentCookie(false);
+      }
+
+      if (hasFunctionalConsent()) {
+        setLocationCookie(selectedLocationConsultants);
+        setFunctionalConsentCookie(true);
+      }
+    };
+
+    window.addEventListener('OneTrustGroupsUpdated', onConsentChange);
+    return () =>
+      window.removeEventListener('OneTrustGroupsUpdated', onConsentChange);
+  }, []);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -408,9 +544,14 @@ export const Default = (props: StepProps): JSX.Element => {
       delete newQueryParams.practice;
     }
 
+    setSelectedLocationConsultants('London');
+    setSearchStringLocations('Anywhere');
+
     // Update offset and sortBy to their default values
     newQueryParams.offset = 0;
     newQueryParams.sortType = 'relevance';
+    newQueryParams.lat = '51.507217';
+    newQueryParams.lon = '-0.1275862';
 
     router.push(
       {
@@ -499,6 +640,7 @@ export const Default = (props: StepProps): JSX.Element => {
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
     const requestURL: string = `${baseURL}?${URLprams}`;
+    setURLparams(URLprams);
 
     if (URLprams.length === 0) {
       setLoading(false);
@@ -560,15 +702,6 @@ export const Default = (props: StepProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query]);
 
-  // if (
-  //   !serverSideData ||
-  //   !serverSideData.Insurers ||
-  //   !serverSideData.LiveDiaryConsultantsSlugs
-  // ) {
-  //   return <div>Data is missing, please retry later</div>;
-  // }
-
-  //console.log('consultants:', results);
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
@@ -577,10 +710,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`,
+                  }`,
               }}
             >
               <TextLink>
@@ -590,10 +722,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <Link
-                href={`${
-                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                }`}
+                  }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
@@ -657,7 +788,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LocationFilterOptions &&
                                 props?.fields?.LocationFilterOptions.length >
-                                  0 &&
+                                0 &&
                                 props?.fields?.LocationFilterOptions.map(
                                   (hospital: any, index: number) => (
                                     <Checkbox
@@ -835,7 +966,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LanguageFilterOptions &&
                                 props?.fields?.LanguageFilterOptions?.length >
-                                  0 && (
+                                0 && (
                                   <select
                                     name="language"
                                     value={selectedLanguage}
@@ -929,13 +1060,45 @@ export const Default = (props: StepProps): JSX.Element => {
                   </ConsultantListHeaderFilters>
                 </Themes>
               </ConsultantListHeader>
-              <ConsultantListHeaderTtitle>
-                <Text tag="h1" variation="display-5">
-                  {props?.fields?.TitleText?.value ||
-                    `Let's get you to the right specialist`}
-                </Text>
-              </ConsultantListHeaderTtitle>
-
+              <ConsultantListHeaderTtitle
+                title={
+                  <Text tag="h1" variation="display-5">
+                    {props?.fields?.TitleText?.value ||
+                      `Let's get you to the right specialist`}
+                  </Text>
+                }
+                locationSearch={
+                  <><SearchLocation
+                    isStepIntro={false}
+                    isStepCards={true}
+                    applyLocationToSearch={applyLocationToSearch}
+                    placeholder={props?.fields?.SearchPlaceholderText?.value ||
+                      'Type in a service, condition, treatment...'}
+                    doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
+                      'https://api.doctify.com/api/hca/search/autocomplete?search'}
+                    limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+                    noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                      'No matches found, please try typing something else.'}
+                    setKeywordId={setKeywordId}
+                    searchString={searchStringLocations}
+                    locationList={locationConfig || []}
+                    setSearchString={setSearchStringLocations}
+                    searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
+                      null}
+                    loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                      'Loading...'}
+                    labelLocationsResults={props?.fields?.LocationsResultsLabelText?.value ||
+                      'LOCATIONS'} />
+                    {
+                      !hasFunctionalConsentCookie &&
+                      <FunctionalCookiesBox
+                        title={props.fields?.FunctionalCookieSaveNextTimeTitle?.value || 'Save this location for next time?'}
+                        label={props.fields?.FunctionalCookieSaveNextTimeLabel?.value || 'Activate functional cookies'}>
+                      </FunctionalCookiesBox>
+                    }
+                  </>
+                }
+              ></ConsultantListHeaderTtitle>
               {loading && (
                 <LoaderCF
                   loadingMsg={
@@ -947,8 +1110,13 @@ export const Default = (props: StepProps): JSX.Element => {
               {!loading && !error && results.length === 0 && (
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
                   <Text tag="p" variation="body-small">
-                    {props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
-                      'No results'}
+                    {selectedLocationConsultants === 'London' ||
+                      selectedLocationConsultants === 'Anywhere'
+                      ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
+                      'No results'
+                      : props?.fields?.API_DoctifySearch_NoResultsMsgLocations
+                        ?.value ||
+                      'No results, please select another location'}
                   </Text>
                 </Container>
               )}
@@ -959,6 +1127,9 @@ export const Default = (props: StepProps): JSX.Element => {
                   results.map((consultant: any) => (
                     <ConsultantCard
                       key={consultant?.id}
+                      ignoreReviewsConsultantsList={
+                        serverSideData?.NoReviewsConsultants || []
+                      }
                       profilePhoto={
                         consultant?.images?.logo ||
                         props?.fields?.ProfileImagePlaceholderImage?.value
@@ -1060,6 +1231,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         'Appointments at'
                       }
                       doctifyPhoneSlugs={doctifyPhoneSlugs}
+                      URLprams={URLparams}
                     />
                   ))}
               </ConsultantFinderResults>

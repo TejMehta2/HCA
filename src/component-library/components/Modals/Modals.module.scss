@@ -72,6 +72,10 @@ body {
   dialog[open] & {
     transition: transform 0.3s ease-out;
     transform: translateY(0);
+
+    &.dragging {
+      transform: translateY(var(--touch-position, 0)); // will short-circuit to zero when drag stops
+    }
   }
 }
 
@@ -169,4 +173,10 @@ dialog[open] .draggable.dragging {
 
 .call {
   z-index: 1;
+}
+
+.center-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
