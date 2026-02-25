@@ -7,20 +7,12 @@ import Icons from '../../foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
-  const { searchStringLocations, setSelectedLocationConsultants } = useContext(ConsultantFinderContext);
-  console.log(props.data);
-
-
+  const { setSelectedLocationConsultants } = useContext(ConsultantFinderContext);
   const handleClick = (location: string) => {
-    console.log('location', searchStringLocations);
-    // console.log(setSearchStringLocations);
-    // console.log(props.setSearchString);
     if (props.setSearchString) {
       props.setSearchString(location);
     }
     setSelectedLocationConsultants(location);
-
-    // setSearchStringConsultantName('');
     props.setIsComponentVisible(false);
 
     if (props.isStepCards) {

@@ -49,6 +49,7 @@ import { GetServerSidePropsContext } from 'next';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
+import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -180,31 +181,9 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('consultant cards', props);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-
-  // MH done
-  //  Please add the search locations on props
-  console.log('props.fields?.LocationsList', props.fields?.LocationsList);
-  // the labels for cookies component
-  {
-    /* MH done labels for cookies */
-  }
-  console.log(
-    'props.fields?.',
-    props.fields?.FunctionalCookieSaveNextTimeTitle
-  );
-  console.log(
-    'props.fields?.',
-    props.fields?.FunctionalCookieSaveNextTimeLabel
-  );
-  //  <FunctionalCookiesBox
-  //  title={'Save this location for next time?'}
-  //  label={'Activate functional cookies'}>
-  // </FunctionalCookiesBox>
-  // no results:
 
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
@@ -249,8 +228,6 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
-
-  console.log(hasFunctionalConsentCookie);
 
   const locations = props?.fields?.LocationsList || [];
   const locationConfig = locations.map((item: any) => ({
@@ -725,24 +702,7 @@ export const Default = (props: StepProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query]);
 
-  // if (
-  //   !serverSideData ||
-  //   !serverSideData.Insurers ||
-  //   !serverSideData.LiveDiaryConsultantsSlugs
-  // ) {
-  //   return <div>Data is missing, please retry later</div>;
-  // }
-
-  //console.log('consultants:', results);
   if (props.fields) {
-    console.log('props?.fields', props?.fields);
-    /* MH done if location is other than london or anywhere and e get no results */
-    /* we need another no results message for this case */
-    /* no results, select another location?  */
-    console.log(
-      'props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value',
-      props?.fields?.API_DoctifySearch_NoResultsMsgLocations?.value
-    );
     return (
       <div id={id ? id : undefined}>
         {router.isReady && !pageNotFound && (
@@ -1108,73 +1068,37 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Text>
                 }
                 locationSearch={
-                  <SearchLocation
+                  <><SearchLocation
                     isStepIntro={false}
                     isStepCards={true}
                     applyLocationToSearch={applyLocationToSearch}
-                    placeholder={
-                      props?.fields?.SearchPlaceholderText?.value ||
-                      'Type in a service, condition, treatment...'
-                    }
-                    doctifyBaseURL={
-                      props?.fields?.API_Autocomplete_BaseURL?.value ||
-                      'https://api.doctify.com/api/hca/search/autocomplete?search'
-                    }
-                    limit={
-                      Number(props?.fields?.API_Autocomplete_Limit?.value) || 20
-                    }
-                    noResultsMsg={
-                      props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                      'No matches found, please try typing something else.'
-                    }
+                    placeholder={props?.fields?.SearchPlaceholderText?.value ||
+                      'Type in a service, condition, treatment...'}
+                    doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
+                      'https://api.doctify.com/api/hca/search/autocomplete?search'}
+                    limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+                    noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                      'No matches found, please try typing something else.'}
                     setKeywordId={setKeywordId}
                     searchString={searchStringLocations}
                     locationList={locationConfig || []}
                     setSearchString={setSearchStringLocations}
-                    searchIcon={
-                      props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
-                      null
+                    searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
+                      null}
+                    loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                      'Loading...'}
+                    labelLocationsResults={props?.fields?.LocationsResultsLabelText?.value ||
+                      'LOCATIONS'} />
+                    {
+                      !hasFunctionalConsentCookie &&
+                      <FunctionalCookiesBox
+                        title={props.fields?.FunctionalCookieSaveNextTimeTitle?.value || 'Save this location for next time?'}
+                        label={props.fields?.FunctionalCookieSaveNextTimeLabel?.value || 'Activate functional cookies'}>
+                      </FunctionalCookiesBox>
                     }
-                    loadingText={
-                      props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                      'Loading...'
-                    }
-                    labelLocationsResults={
-                      props?.fields?.LocationsResultsLabelText?.value ||
-                      'LOCATIONS'
-                    }
-                  />
+                  </>
                 }
               ></ConsultantListHeaderTtitle>
-              {/* show this if they dont have cookies accepted */}
-              {/* {
-                !hasFunctionalConsentCookie &&
-                <div
-                  style={{
-                    display: 'flex',
-                    marginLeft: 'auto',
-                    marginRight: '104px',
-                    alignItems: 'center',
-                    justifyContent: 'right',
-                    backgroundColor: '#eff8f8',
-                    borderRadius: '8px',
-                    padding: '20px',
-                    width: 'fit-content',
-                    marginBottom: '20px',
-                  }}
-                >
-
-                  <div>
-                    <Text tag="h3" variation="body-medium">
-                      {`Save this location for next time? This requires functional cookies`}
-                    </Text>
-                  </div>
-                  <TextButton theme="dark">
-                    <a href="javascript:OneTrust.ToggleInfoDisplay()">Cookie settings</a>
-                  </TextButton>
-                </div>
-              } */}
-
               {loading && (
                 <LoaderCF
                   loadingMsg={

@@ -18,7 +18,7 @@ import Timeline, {
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
+import Themes from '@component-library/foundation/Themes/Themes';
 interface PagesFields {
   abstractTitle?: { value?: string };
   abstractText?: { value?: string };
