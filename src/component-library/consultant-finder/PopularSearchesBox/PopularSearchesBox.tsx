@@ -7,7 +7,6 @@ import TextLink from '../../core-components/TextLink/TextLink';
 
 const PopularSearchesBox = (props: PopularSearchesBoxProps): JSX.Element => {
     const { popularSearches, popularSearchesTtitle } = props;
-    console.log('popularSearches', popularSearches);
 
     return (
         <div className={styles.wrapper} aria-label="Popular searches">

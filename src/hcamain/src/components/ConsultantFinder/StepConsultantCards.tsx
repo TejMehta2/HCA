@@ -323,58 +323,50 @@ export const Default = (props: StepProps): JSX.Element => {
     document.cookie = 'location=; max-age=0; SameSite=Lax';
   };
 
-  // 1) Hydrate location from cookie (once)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const init = () => {
-      if (!hasFunctionalConsent()) {
-        deleteLocationCookie(); // optional
-        setHydrated(true);
-        setFunctionalConsentCookie(false);
-        return;
-      }
-
-      const saved = readCookie('location');
-      if (saved) setSelectedLocationConsultants(saved);
-      setFunctionalConsentCookie(true);
-      setHydrated(true);
-    };
-
-    init();
-    window.addEventListener('OneTrustGroupsUpdated', init);
-    return () => window.removeEventListener('OneTrustGroupsUpdated', init);
-  }, []);
-
-  // 2) Persist whenever location changes (only after hydration + only if consent)
+  // Persist whenever location changes (only after hydration + only if consent)
   useEffect(() => {
     if (!hydrated) return;
     if (typeof window === 'undefined') return;
     if (!hasFunctionalConsent()) return;
-
+    console.log('selectedLocationConsultants', selectedLocationConsultants)
     setLocationCookie(selectedLocationConsultants);
-  }, [selectedLocationConsultants, hydrated]);
+  }, [hydrated, selectedLocationConsultants]);
 
-  // 3) If consent revoked later, delete the cookie
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const onConsentChange = () => {
-      if (!hasFunctionalConsent()) {
+    const syncWithConsent = () => {
+      const consent = hasFunctionalConsent();
+
+      if (!consent) {
         deleteLocationCookie();
         setFunctionalConsentCookie(false);
+        setHydrated(true);
+        return;
       }
 
-      if (hasFunctionalConsent()) {
-        setLocationCookie(selectedLocationConsultants);
-        setFunctionalConsentCookie(true);
+      // consent = true
+      setFunctionalConsentCookie(true);
+
+      const saved = readCookie('location');
+
+      if (saved) {
+        // hydrate from cookie only if it exists
+        setSelectedLocationConsultants(saved);
+        setSearchStringLocations(saved);
+      } else {
+        // no cookie yet -> persist current selection instead of forcing Anywhere
+        setLocationCookie(selectedLocationConsultants || 'Anywhere');
       }
+
+      setHydrated(true);
     };
 
-    window.addEventListener('OneTrustGroupsUpdated', onConsentChange);
-    return () =>
-      window.removeEventListener('OneTrustGroupsUpdated', onConsentChange);
-  }, []);
+    syncWithConsent();
+    window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
+    return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
+    // include searchStringLocations so the handler sees latest selection
+  }, [selectedLocationConsultants]);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);

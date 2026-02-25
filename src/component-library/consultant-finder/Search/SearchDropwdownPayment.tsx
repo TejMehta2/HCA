@@ -23,7 +23,7 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
       if (!isMobile() && props.nextLink) {
-        if (searchStringLocations === 'Birmingham') {
+        if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
           router.push(
             `/finder/step-consultant-cards?search=${props.search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0&insurer=${id}`)
         } else {
