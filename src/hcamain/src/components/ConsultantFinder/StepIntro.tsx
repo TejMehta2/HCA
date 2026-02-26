@@ -225,9 +225,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
     return (
       <div id={id ? id : undefined}>
-        <a href="javascript:OneTrust.ToggleInfoDisplay()">
-          Activate functional cookies
-        </a>
+        {/* <a href="javascript:OneTrust.ToggleInfoDisplay()">
+          .
+        </a> */}
         <StepIntro
           headline={
             <>
