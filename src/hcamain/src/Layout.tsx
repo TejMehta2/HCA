@@ -3,7 +3,6 @@
  * This Layout is needed for Starter Kit.
  */
 import React, { useRef, useEffect } from 'react';
-import Script from 'next/script';
 import Head from 'next/head';
 import {
   Placeholder,
@@ -98,22 +97,6 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   return (
     <>
       <Scripts />
-
-      {/* OneTrust Cookies Consent Notice */}
-      <Script
-        src="https://cdn-ukwest.onetrust.com/scripttemplates/otSDKStub.js"
-        strategy="beforeInteractive"
-        type="text/javascript"
-        charSet="UTF-8"
-        data-domain-script="93edbf87-7898-49eb-8d4e-21c66bab104c-test"
-      />
-
-      <Script
-        id="onetrust-wrapper"
-        strategy="beforeInteractive"
-      >
-        {`function OptanonWrapper() { }`}
-      </Script>
       <Head>
         {browserTitle && <title>{browserTitle}</title>}
         <link
