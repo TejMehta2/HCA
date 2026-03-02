@@ -51,7 +51,14 @@
 }
 
 .heading {
+  padding-top: $spacing-4;
   margin-bottom: $spacing-3;
+  text-align: center;
+
+  @include media(screen-m) {
+    padding-top: 0;
+    text-align: left;
+  }
 }
 
 .children {
@@ -98,10 +105,13 @@
   }
 
   .heading {
-    text-transform: uppercase;
     border-bottom: solid px-to-rem(1) $navy-blue-20;
     margin-bottom: $spacing-4;
     padding-bottom: $spacing-4;
+
+    @include media(screen-m) {
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -124,7 +134,7 @@
   cursor: pointer;
   @include apply-body-medium-medium;
   background-color: var(--table-color);
-  margin: $spacing-2;
+  margin: calc($spacing-2 + px-to-rem(2));
   max-width: calc(100% - $spacing-4);
 
   svg {

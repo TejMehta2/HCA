@@ -76,7 +76,8 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   );
 
   const authors = MapAuthorsToBlockQuotes(
-    props?.fields?.data?.contextItem?.authors?.targetItems
+    props?.fields?.data?.contextItem?.authors?.targetItems,
+    false
   );
 
   return (
