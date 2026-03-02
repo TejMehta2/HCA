@@ -78,6 +78,12 @@
 }
 
 .stacked {
+  padding-top: $spacing-12;
+
+  @include media(screen-m) {
+    padding-top: 0;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -116,8 +122,10 @@
 }
 
 .sticky {
-  position: sticky;
-  top: px-to-rem(70);
+  @include media(screen-m) {
+    position: sticky;
+    top: px-to-rem(70);
+  }
 }
 
 .mobileTrigger {
