@@ -16,16 +16,40 @@ SharedFields:
     query GetBlogDetailsHeader($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
         name
-        title: field(name: "Title") {
-          jsonValue
-        }
-        text: field(name: "Text") {
-          jsonValue
-        }
-        date: field(name: "Date") {
-          jsonValue
-        }
         ... on BlogPage {
+          title {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
+          date {
+            jsonValue
+          }
+          lastChecked {
+            jsonValue
+          }
+          authors {
+            targetItems {
+              ... on Author {
+                name: name_dea163319c354ac99a6e81b11f81867a {
+                  jsonValue
+                }
+                position {
+                  jsonValue
+                }
+                avatar {
+                  jsonValue
+                }
+                link {
+                  jsonValue
+                }
+                positionLink {
+                  jsonValue
+                }
+              }
+            }
+          }
           articleType {
             targetItem {
               ... on Tag {
@@ -72,6 +96,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{EE365810-D70A-45E5-876F-D40AF22E0DBB}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "1a549b8f-cf09-441a-b119-eb3774714d54"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -121,14 +148,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eb98affd-56c6-449b-b571-bf44d16ee68a"
+      Value: "e2822dfd-ce60-463e-8a0f-c2956df954a3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240529T214532Z
+      Value: 20260220T174922Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
