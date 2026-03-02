@@ -205,7 +205,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log(props);
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [firstAppointmentData, setFirstAppointmentData] = useState<any>();
   const [nextAptRequestToken, setNextAptRequestToken] =

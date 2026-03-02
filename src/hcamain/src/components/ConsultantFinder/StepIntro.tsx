@@ -145,7 +145,6 @@ export const Default = (props: StepProps): JSX.Element => {
     if (!hydrated) return;
     if (typeof window === 'undefined') return;
     if (!hasFunctionalConsent()) return;
-    console.log('selectedLocationConsultants', selectedLocationConsultants)
     setLocationCookie(selectedLocationConsultants);
   }, [hydrated, selectedLocationConsultants]);
 
