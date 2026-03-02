@@ -10,16 +10,12 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchAllDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const router = useRouter();
-  console.log('test');
   const { setSearchStringConsultantName } = useContext(ConsultantFinderContext);
   const specialists = props.dataSpecialists;
-  console.log('specialists', specialists);
   const specialties =
     props?.data?.filter((item: any) => item.type === 'specialty') || [];
-  // console.log('specialties', specialties);
   const conditionsProcedures =
     props?.data?.filter((item: any) => item.type !== 'specialty') || [];
-  // console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
     props.setIsComponentVisible(false);

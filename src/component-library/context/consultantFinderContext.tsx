@@ -35,6 +35,8 @@ interface ConsultantFinderContextType {
   setLat: React.Dispatch<React.SetStateAction<string>>;
   lon: string;
   setLon: React.Dispatch<React.SetStateAction<string>>;
+  distance: number;
+  setDistance: React.Dispatch<React.SetStateAction<number>>;
   selectedDate: string;
   setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
   selectedTime: string;
@@ -76,6 +78,8 @@ export const ConsultantFinderContext =
     setSearchString: () => { },
     keywordId: 0,
     setKeywordId: () => { },
+    distance: 0,
+    setDistance: () => { },
     consultantSlug: '',
     setConsultantSlug: () => { },
     searchStringConsultantName: '',
@@ -133,7 +137,7 @@ export const ConsultantFinderContext =
     searchStringLocations: '',
     setSearchStringLocations: () => { },
     selectedLocationConsultants: '',
-    setSelectedLocationConsultants: () => { },
+    setSelectedLocationConsultants: () => { }
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -177,6 +181,7 @@ export const ConsultantFinderContextProvider = ({
   const [completedFormId, setCompletedFormId] = useState<string>('');
   const [searchStringLocations, setSearchStringLocations] = useState<string>('Anywhere');
   const [selectedLocationConsultants, setSelectedLocationConsultants] = useState<string>('Anywhere');
+  const [distance, setDistance] = useState<number>(0);
   return (
     <ConsultantFinderContext.Provider
       value={{
@@ -208,6 +213,8 @@ export const ConsultantFinderContextProvider = ({
         setLat,
         lon,
         setLon,
+        distance,
+        setDistance,
         selectedDate,
         setSelectedDate,
         selectedTime,
@@ -243,7 +250,7 @@ export const ConsultantFinderContextProvider = ({
         searchStringLocations,
         setSearchStringLocations,
         selectedLocationConsultants,
-        setSelectedLocationConsultants
+        setSelectedLocationConsultants,
       }}
     >
       {children}

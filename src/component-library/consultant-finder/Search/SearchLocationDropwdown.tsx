@@ -7,8 +7,11 @@ import Icons from '../../foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
-  const { setSelectedLocationConsultants } = useContext(ConsultantFinderContext);
-  const handleClick = (location: string) => {
+  const { setSelectedLocationConsultants, setLat, setLon, setDistance } = useContext(ConsultantFinderContext);
+  const handleClick = (location: string, lat: any, lon: any, distance: number) => {
+    setLat(lat);
+    setLon(lon);
+    setDistance(distance);
     if (props.setSearchString) {
       props.setSearchString(location);
     }
@@ -38,10 +41,8 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
                 <li
                   key={index}
                   aria-label="option"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    handleClick(item.name);
+                  onClick={() => {
+                    handleClick(item.name, item.latitude, item.longitude, item.distance);
                   }}
                 >
                   <span

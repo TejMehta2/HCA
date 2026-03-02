@@ -77,7 +77,7 @@ export const Default = (props: StepProps): JSX.Element => {
     searchStringLocations,
     setSearchStringLocations,
     selectedLocationConsultants,
-    setSelectedLocationConsultants,
+    setSelectedLocationConsultants
   } = useContext(ConsultantFinderContext);
   // const [location, setLocation] = useState('London');
   const [hydrated, setHydrated] = useState(false);
@@ -106,8 +106,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const locationConfig = locations.map((item: any) => ({
     name: item.fields.name.value,
     distance: item.fields.distance.value,
-    lat: item.fields.lat.value,
-    lon: item.fields.lon.value,
+    latitude: item.fields.lat.value,
+    longitude: item.fields.lon.value,
   }));
 
   const selectedLocation = selectedLocationConsultants ?? 'Anywhere';
@@ -118,7 +118,10 @@ export const Default = (props: StepProps): JSX.Element => {
     ) ||
     locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
 
-  const { lat, lon, distance } = selectedLocationConfig ?? {};
+  const { latitude, longitude, distance } = selectedLocationConfig ?? {};
+
+  const isOneTrustAvailable = () =>
+    typeof window !== 'undefined' && typeof (window as any).OneTrust !== 'undefined';
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -194,8 +197,8 @@ export const Default = (props: StepProps): JSX.Element => {
       `${baseURLResults}?search=${searchString}` +
       `&keywordId=${keywordId}` +
       `&sortType=relevance` +
-      `&lat=${lat}` +
-      `&lon=${lon}` +
+      `&lat=${latitude}` +
+      `&lon=${longitude}` +
       `&distance=${distance}` +
       `&limit=12` +
       `&offset=0`
@@ -367,7 +370,7 @@ export const Default = (props: StepProps): JSX.Element => {
             ></PopularSearchesBox>
           }
         >
-          {!hasFunctionalConsentCookie && (
+          {!hasFunctionalConsentCookie && isOneTrustAvailable() && (
             <FunctionalCookiesBox
               title={
                 props.fields?.FunctionalCookieSaveNextTimeTitle?.value ||

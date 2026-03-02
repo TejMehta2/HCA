@@ -64,11 +64,13 @@ export const Default = (props: StepProps): JSX.Element => {
     setIsSelfPayment,
     isSelfPayment,
     selectedInsurerPaymentStep,
-    searchStringLocations
+    searchStringLocations,
+    lat,
+    lon,
+    distance
   } = useContext(ConsultantFinderContext);
   const [search, setSearch] = useState('');
   const [keywordId, setKewordId] = useState('');
-
 
   useEffect(() => {
     window.scrollTo({
@@ -150,7 +152,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       if (!isMobile()) {
                         if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
                           router.push(
-                            `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`
+                            `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=${lat || '51.507217'}&lon=${lon || '-0.1275862'}&distance=${distance || 0}&limit=12&offset=0`
                           )
                         }
                         else {
@@ -219,7 +221,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   onClick={() => {
                     if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
                       router.push(
-                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0${isSelfPayment
+                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=${lat || '51.507217'}&lon=${lon || '-0.1275862'}&distance=${distance || 0}&limit=12&offset=0${isSelfPayment
                           ? ''
                           : `&insurer=${selectedInsurerPaymentStep}`
                         }`
