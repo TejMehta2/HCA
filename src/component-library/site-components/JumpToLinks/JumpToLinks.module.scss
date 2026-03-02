@@ -51,7 +51,14 @@
 }
 
 .heading {
+  padding-top: $spacing-4;
   margin-bottom: $spacing-3;
+  text-align: center;
+
+  @include media(screen-m) {
+    padding-top: 0;
+    text-align: left;
+  }
 }
 
 .children {
@@ -71,6 +78,12 @@
 }
 
 .stacked {
+  padding-top: $spacing-12;
+
+  @include media(screen-m) {
+    padding-top: 0;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -98,16 +111,21 @@
   }
 
   .heading {
-    text-transform: uppercase;
     border-bottom: solid px-to-rem(1) $navy-blue-20;
     margin-bottom: $spacing-4;
     padding-bottom: $spacing-4;
+
+    @include media(screen-m) {
+      text-transform: uppercase;
+    }
   }
 }
 
 .sticky {
-  position: sticky;
-  top: px-to-rem(70);
+  @include media(screen-m) {
+    position: sticky;
+    top: px-to-rem(70);
+  }
 }
 
 .mobileTrigger {
@@ -124,7 +142,7 @@
   cursor: pointer;
   @include apply-body-medium-medium;
   background-color: var(--table-color);
-  margin: $spacing-2;
+  margin: calc($spacing-2 + px-to-rem(2));
   max-width: calc(100% - $spacing-4);
 
   svg {

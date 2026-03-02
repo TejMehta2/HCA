@@ -4,7 +4,10 @@ import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { AuthorFields } from 'src/types/authorFields.GraphQL';
 
-export function MapAuthorsToBlockQuotes(props: AuthorFields[] | undefined) {
+export function MapAuthorsToBlockQuotes(
+  props: AuthorFields[] | undefined,
+  wrapper?: boolean
+) {
   if (!props) return undefined;
 
   return props.map((author, index) => {
@@ -48,6 +51,12 @@ export function MapAuthorsToBlockQuotes(props: AuthorFields[] | undefined) {
       </span>
     );
 
-    return <QuoteBlock key={`author-${index}`} author={{ name, image, tag }} />;
+    return (
+      <QuoteBlock
+        key={`author-${index}`}
+        author={{ name, image, tag }}
+        wrapper={wrapper}
+      />
+    );
   });
 }
