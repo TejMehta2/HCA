@@ -38,7 +38,9 @@ const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
                 <li
                   key={index}
                   aria-label="option"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     handleClick(item.name);
                   }}
                 >

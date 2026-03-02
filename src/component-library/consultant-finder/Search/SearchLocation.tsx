@@ -76,6 +76,7 @@ const SearchLocation = (props: SearchProps): JSX.Element => {
             onChange={handleChange}
             onClick={handleOnClick}
             value={props.searchString}
+            readOnly
           />
         </label>
         {isComponentVisible && (
