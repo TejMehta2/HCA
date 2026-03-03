@@ -48,6 +48,8 @@
 .wrapper {
   background: var(--background, #{$navy-blue-90});
   color: var(--text, #{$white});
+  padding-top: $spacing-7;
+  padding-bottom: $spacing-7;
 }
 
 .heading {
@@ -78,7 +80,7 @@
 }
 
 .stacked {
-  padding-top: $spacing-12;
+  padding: $spacing-12 0 0;
 
   @include media(screen-m) {
     padding-top: 0;
@@ -97,7 +99,7 @@
       padding: $spacing-2;
 
       &.highlighted {
-        background-color: var(--table-color);
+        background-color: $teal-5;
       }
     }
 
@@ -127,6 +129,18 @@
     top: px-to-rem(70);
   }
 }
+.mobileTriggerWrapper {
+  display: flex;
+  width: 100%;
+  background-color: $white;
+  border: solid px-to-rem(1) $navy-blue-10;
+  padding: px-to-rem(8);
+  border-radius: $radius-large;
+
+  @include media(screen-m) {
+    display: none;
+  }
+}
 
 .mobileTrigger {
   display: flex;
@@ -134,16 +148,13 @@
   justify-content: space-between;
   width: 100%;
   padding: $spacing-4 $spacing-5;
-  color: var(--text, #{$white});
+  color: $navy-blue-100;
   border: solid px-to-rem(1) $navy-blue-10;
-  outline: solid px-to-rem(1) $navy-blue-10;
-  outline-offset: px-to-rem(8);
   border-radius: $radius-large;
   cursor: pointer;
   @include apply-body-medium-medium;
-  background-color: var(--table-color);
-  margin: calc($spacing-2 + px-to-rem(2));
-  max-width: calc(100% - $spacing-4);
+  background-color: $teal-5;
+  width: 100%;
 
   svg {
     width: px-to-rem(20);
