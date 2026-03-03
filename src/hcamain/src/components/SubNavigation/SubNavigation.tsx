@@ -58,7 +58,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
     (item: NavigablePagesFields) =>
       !item.hideInSubNavigation?.boolValue &&
       item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
-      contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
   );
 
   if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;
@@ -69,6 +69,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <JumpToLinks
+        mobileHeading={props.fields?.data?.item?.title?.jsonValue?.value}
         heading={
           <Text variation="body-medium-medium">
             <JssText field={props.fields?.data?.item?.title?.jsonValue} />
