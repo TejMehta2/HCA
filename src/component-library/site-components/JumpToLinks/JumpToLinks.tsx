@@ -156,14 +156,18 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
     >
       {mobileHeading && (
         <>
-          <button
-            type="button"
-            className={styles.mobileTrigger}
-            onClick={() => dialogRef.current?.showModal()}
-          >
-            <span>{mobileHeading}</span>
-            <Icons iconName="iconChevronDown" />
-          </button>
+          <div className={!hasMultipleColumns ? styles.container : undefined}>
+            <div className={styles.mobileTriggerWrapper}>
+              <button
+                type="button"
+                className={styles.mobileTrigger}
+                onClick={() => dialogRef.current?.showModal()}
+              >
+                <span>{mobileHeading}</span>
+                <Icons iconName="iconChevronDown" />
+              </button>
+            </div>
+          </div>
           <Modals ref={dialogRef} variation="full">
             <div className={styles.container}>
               {heading && <div className={styles.heading}>{heading}</div>}
