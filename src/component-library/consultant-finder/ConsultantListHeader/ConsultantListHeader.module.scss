@@ -3,8 +3,6 @@
 
 .consultant-list-header {
   display: flex;
-
-  // justify-content: flex-start;
   align-items: center;
   margin: $spacing-2 $spacing-14;
   flex-direction: column;
@@ -81,11 +79,22 @@
 }
 
 .has-location-search {
+  margin: 0 $spacing-14 $spacing-7 $spacing-14;
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    margin-top: $spacing-4;
+    margin-bottom: $spacing-4;
+  }
+
   @include media(screen-l) {
     flex-direction: row;
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 }
 

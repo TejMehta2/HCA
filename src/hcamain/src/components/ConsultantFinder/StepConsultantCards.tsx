@@ -304,6 +304,9 @@ export const Default = (props: StepProps): JSX.Element => {
     );
   };
 
+  const isOneTrustAvailable = () =>
+    typeof window !== 'undefined' && typeof (window as any).OneTrust !== 'undefined';
+
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
     return groups.includes('C0003');
@@ -1082,7 +1085,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     labelLocationsResults={props?.fields?.LocationsResultsLabelText?.value ||
                       'LOCATIONS'} />
                     {
-                      !hasFunctionalConsentCookie &&
+                      !hasFunctionalConsentCookie && isOneTrustAvailable() &&
                       <FunctionalCookiesBox
                         title={props.fields?.FunctionalCookieSaveNextTimeTitle?.value || 'Save this location for next time?'}
                         label={props.fields?.FunctionalCookieSaveNextTimeLabel?.value || 'Activate functional cookies'}>
