@@ -459,15 +459,16 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Script
                   id="onetrust-sdk"
                   src={oneTrust.src}
-                  strategy="afterInteractive"
                   data-domain-script={oneTrust.domainScript}
+                  type="text/javascript"
+                  charSet="UTF-8"
                 />
                 <Script
                   id="onetrust-wrapper"
-                  strategy="afterInteractive"
                   dangerouslySetInnerHTML={{
                     __html: "function OptanonWrapper(){};",
                   }}
+                  type="text/javascript"
                 />
               </>
             )}
