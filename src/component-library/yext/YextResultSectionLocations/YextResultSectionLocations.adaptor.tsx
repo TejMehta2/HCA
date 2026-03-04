@@ -183,7 +183,7 @@ const YextResultSectionLocationsAdaptor = (
   });
 
   const args = {
-    apiKey: 'AIzaSyCJu0aTsRYKOQVPsETLeTvI84jxDZjRGAg',
+    apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
     center: {
       lat: 51.5072,
       lng: 0.1276,

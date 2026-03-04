@@ -16,7 +16,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof YextCustomMap> = {
   args: {
-    apiKey: 'AIzaSyCJu0aTsRYKOQVPsETLeTvI84jxDZjRGAg',
+    apiKey: process.env.STORYBOOK_GOOGLE_MAPS_API_KEY || '',
     center: {
       lat: 51.5072,
       lng: 0.1276,
