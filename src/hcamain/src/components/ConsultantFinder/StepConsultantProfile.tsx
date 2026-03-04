@@ -62,6 +62,7 @@ import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
 import router from 'next/router';
+import Script from 'next/script';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -213,6 +214,29 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
+
+  function extractOneTrustConfig(html: string | undefined) {
+    if (!html) return null;
+
+    // Grab the otSDKStub.js src
+    const srcMatch = html.match(/src="([^"]*otSDKStub\.js[^"]*)"/i);
+
+    // Grab the data-domain-script value
+    const domainMatch = html.match(/data-domain-script="([^"]+)"/i);
+
+    if (!srcMatch || !domainMatch) return null;
+
+    return {
+      src: srcMatch[1],
+      domainScript: domainMatch[1],
+    };
+  }
+
+  const cookieHtml = process.env.NEXT_PUBLIC_LOAD_COOKIES;
+  const oneTrust = extractOneTrustConfig(cookieHtml);
+
+  console.log('loadCookies', cookieHtml);
+  console.log('oneTrust', oneTrust);
 
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
@@ -430,6 +454,23 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
+            {oneTrust && (
+              <>
+                <Script
+                  id="onetrust-sdk"
+                  src={oneTrust.src}
+                  strategy="afterInteractive"
+                  data-domain-script={oneTrust.domainScript}
+                />
+                <Script
+                  id="onetrust-wrapper"
+                  strategy="afterInteractive"
+                  dangerouslySetInnerHTML={{
+                    __html: "function OptanonWrapper(){};",
+                  }}
+                />
+              </>
+            )}
             {/* top section */}
             <div>
               <Breadcrumbs
