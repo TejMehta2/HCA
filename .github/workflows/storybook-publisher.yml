@@ -24,16 +24,16 @@ jobs:
 
       - name: Print npm version
         run: npm -v
-        
+
       - name: Install dependencies
         run: npm ci
 
       - name: Publish storybook to Chromatic
         run: npm run component-library:storybook:publish
+        env:
+          STORYBOOK_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
       - name: Disable workflow
         run: gh workflow disable "Storybook Publisher"
-        env:          
-          STORYBOOK_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
