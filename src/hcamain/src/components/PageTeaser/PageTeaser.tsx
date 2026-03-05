@@ -11,6 +11,7 @@ import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from 'next/image';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 import PageTeaser from '@component-library/site-components/PageTeaser/PageTeaser';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -64,64 +65,67 @@ export const Default = (props: PageTeaserProps): JSX.Element => {
     : targetPage?.url?.url;
 
   return (
-    <PageTeaser
-      image={
-        targetPage.abstractImage?.jsonValue.value?.src &&
-        targetPage.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
-          <Image
-            src={upsertQuerystringParam(
-              targetPage.abstractImage.jsonValue?.value?.src || '',
-              't',
-              'c200'
+    <Themes theme={props.params?.Theme || 'L-HCA-Teal-5'}>
+      <PageTeaser
+        image={
+          targetPage.abstractImage?.jsonValue.value?.src &&
+          targetPage.abstractImage?.jsonValue.value?.class !==
+            'scEmptyImage' ? (
+            <Image
+              src={upsertQuerystringParam(
+                targetPage.abstractImage.jsonValue?.value?.src || '',
+                't',
+                'c200'
+              )}
+              alt={
+                (targetPage.abstractImage.jsonValue?.value?.alt as string) || ''
+              }
+              width="150"
+              height="150"
+              quality={90}
+            />
+          ) : targetPage.image?.jsonValue?.value?.src ? (
+            <Image
+              src={upsertQuerystringParam(
+                targetPage.image?.jsonValue?.value?.src || '',
+                't',
+                'c200'
+              )}
+              alt={(targetPage.image?.jsonValue?.value?.alt as string) || ''}
+              width="150"
+              height="150"
+              quality={90}
+            />
+          ) : undefined
+        }
+        title={
+          <Text tag="h3" variation="heading-2">
+            {targetPage.abstractTitle?.value ? (
+              <JssText field={targetPage.abstractTitle} />
+            ) : (
+              <JssText field={targetPage.title} />
             )}
-            alt={
-              (targetPage.abstractImage.jsonValue?.value?.alt as string) || ''
-            }
-            width="150"
-            height="150"
-            quality={90}
-          />
-        ) : targetPage.image?.jsonValue?.value?.src ? (
-          <Image
-            src={upsertQuerystringParam(
-              targetPage.image?.jsonValue?.value?.src || '',
-              't',
-              'c200'
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="div" variation="body-large">
+            {targetPage.abstractText?.value ? (
+              <JssRichText tag="div" field={targetPage.abstractText} />
+            ) : (
+              <JssRichText tag="div" field={targetPage.text} />
             )}
-            alt={(targetPage.image?.jsonValue?.value?.alt as string) || ''}
-            width="150"
-            height="150"
-            quality={90}
-          />
-        ) : undefined
-      }
-      title={
-        <Text tag="h3" variation="heading-2">
-          {targetPage.abstractTitle?.value ? (
-            <JssText field={targetPage.abstractTitle} />
+          </Text>
+        }
+        link={
+          cardCtaUrl ? (
+            <a href={cardCtaUrl}>
+              <Text tag="span">Learn more</Text>
+            </a>
           ) : (
-            <JssText field={targetPage.title} />
-          )}
-        </Text>
-      }
-      bodyCopy={
-        <Text tag="div" variation="body-large">
-          {targetPage.abstractText?.value ? (
-            <JssRichText tag="div" field={targetPage.abstractText} />
-          ) : (
-            <JssRichText tag="div" field={targetPage.text} />
-          )}
-        </Text>
-      }
-      link={
-        cardCtaUrl ? (
-          <a href={cardCtaUrl}>
-            <Text tag="span">Learn more</Text>
-          </a>
-        ) : (
-          <></>
-        )
-      }
-    />
+            <></>
+          )
+        }
+      />
+    </Themes>
   );
 };
