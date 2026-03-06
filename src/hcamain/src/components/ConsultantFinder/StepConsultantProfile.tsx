@@ -62,7 +62,7 @@ import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
 import router from 'next/router';
-import Script from 'next/script';
+// import Script from 'next/script';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -454,25 +454,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
-            {oneTrust && (
-              <>
-                <Script
-                  id="onetrust-sdk"
-                  src={oneTrust.src}
-                  data-domain-script={oneTrust.domainScript}
-                  type="text/javascript"
-                  charSet="UTF-8"
-                />
-                <Script
-                  id="onetrust-wrapper"
-                  dangerouslySetInnerHTML={{
-                    __html: "function OptanonWrapper(){};",
-                  }}
-                  type="text/javascript"
-                />
-              </>
-            )}
-            {/* top section */}
             <div>
               <Breadcrumbs
                 backCta={{

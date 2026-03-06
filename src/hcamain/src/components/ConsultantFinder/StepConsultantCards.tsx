@@ -252,7 +252,7 @@ export const Default = (props: StepProps): JSX.Element => {
     setSelectedLocationConsultants(nextLocation);
 
     // update URL params -> triggers your existing fetch effect (router.query dependency)
-    const { requestPath, offset, ...queryParams } = router.query;
+    const { requestPath, offset, location, ...queryParams } = router.query;
 
     router.push(
       {
@@ -338,10 +338,6 @@ export const Default = (props: StepProps): JSX.Element => {
     if (typeof window === 'undefined') return;
     if (!router.isReady) return;
 
-    // If URL has location, don't hydrate from cookie here.
-    // Let the "results" useEffect handle location from URL.
-    if (router.query.location) return;
-
     const syncWithConsent = () => {
       const consent = hasFunctionalConsent();
 
@@ -354,6 +350,10 @@ export const Default = (props: StepProps): JSX.Element => {
 
       // consent = true
       setFunctionalConsentCookie(true);
+
+      // If URL has location, don't hydrate from cookie here.
+      // Let the "results" useEffect handle location from URL.
+      if (router.query.location) return;
 
       const saved = readCookie('location');
       const locationParam = router.query.location;
@@ -378,7 +378,7 @@ export const Default = (props: StepProps): JSX.Element => {
     window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
     return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
     // include searchStringLocations so the handler sees latest selection
-  }, [router.isReady, selectedLocationConsultants]);
+  }, [router.isReady]);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -588,17 +588,38 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     // location
-    const locationQuery = router.query.location;
-    console.log('locationQuery', locationQuery);
-    let locationFormatted: React.SetStateAction<string>;
+    const locationQuery = router.query.location?.toString();
+    const latQuery = router.query.lat?.toString();
+    const lonQuery = router.query.lon?.toString();
+    const distanceQuery = router.query.distance?.toString();
+
     if (locationQuery) {
-      locationFormatted =
+      const locationFormatted =
         locationQuery.length > 0
-          ? locationQuery.toString().charAt(0).toUpperCase() + locationQuery.slice(1)
+          ? locationQuery.charAt(0).toUpperCase() + locationQuery.slice(1).toLowerCase()
           : 'Anywhere';
+
       setSelectedLocationConsultants(locationFormatted);
       setSearchStringLocations(locationFormatted);
-      console.log(locationFormatted);
+    } else if (latQuery && lonQuery) {
+      const matchedLocation =
+        locationConfig.find(
+          (loc: any) =>
+            String(loc.lat) === latQuery &&
+            String(loc.lon) === lonQuery &&
+            String(loc.distance) === distanceQuery
+        ) ||
+        locationConfig.find(
+          (loc: any) =>
+            String(loc.lat) === latQuery &&
+            String(loc.lon) === lonQuery
+        );
+
+      if (matchedLocation) {
+        console.log('matchedLocation', matchedLocation);
+        setSelectedLocationConsultants(matchedLocation.name);
+        setSearchStringLocations(matchedLocation.name);
+      }
     }
 
     // offset
