@@ -1,0 +1,33 @@
+﻿---
+ID: "c273a06c-d518-4fbf-9f1b-6e7392d0e983"
+Parent: "766da7e9-2efe-4132-a387-6b257a08fdc8"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Blogs/Treated by Dr John Smith"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260305T204835Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ab3b69fa-afcc-4b91-bbbe-28bd66639d99"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: Nisi do amet mollit ea. Ullamco id Lorem minim aliqua labore sit culpa consectetur quis magna duis. Commodo irure proident commodo in consectetur esse aliquip.
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260305T205342Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Treated by Dr John Smith
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/2fd2240f8dc7463f86e5a5157225b861?v=6c7a0c57" dam-id="4BZqoXPpJ0iZX-LN38RXjw" width="1000" height="1000" alt="1827" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/155339/thumbnail" />

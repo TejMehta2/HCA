@@ -1,0 +1,36 @@
+﻿---
+ID: "db29791a-9d5c-48d4-9812-9e249d71dacf"
+Parent: "6a372eba-ff78-46fd-861b-ac86bc3608b0"
+Template: "6a372eba-ff78-46fd-861b-ac86bc3608b0"
+Path: /sitecore/templates/Project/HCA/Page Content/Page Proxy Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {6A372EBA-FF78-46FD-861B-AC86BC3608B0}
+    {A1D640E8-B025-43B5-80DB-C45C2F82227B}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "73b87bf0-6340-4458-97e0-60c34a7a55c4"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b43b6739-be56-4b46-af86-b16327d97ab4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260305T171437Z
