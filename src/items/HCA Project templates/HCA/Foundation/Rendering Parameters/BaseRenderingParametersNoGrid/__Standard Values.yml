@@ -1,0 +1,27 @@
+﻿---
+ID: "33adf44f-ae2d-4f46-9809-db56523bbbeb"
+Parent: "b4a3648a-cf29-4239-a925-b6990e8cdece"
+Template: "b4a3648a-cf29-4239-a925-b6990e8cdece"
+Path: /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/BaseRenderingParametersNoGrid/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210520T085436Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7f54fbff-03c9-43df-bdfb-f1ab47b3597b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260305T221030Z
