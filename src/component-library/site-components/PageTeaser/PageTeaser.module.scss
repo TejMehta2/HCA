@@ -1,6 +1,12 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+.wrapper {
+  :global([data-theme]):last-child > & {
+    padding-bottom: $spacing-12;
+  }
+}
+
 .card {
   width: 100%;
   height: 100%;
