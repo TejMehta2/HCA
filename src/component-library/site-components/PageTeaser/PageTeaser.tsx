@@ -6,7 +6,7 @@ import TextButton from '../../core-components/TextButton/TextButton';
 const PageTeaser = (props: PageTeaserProps): JSX.Element => {
   const { image, title, bodyCopy, link, imageKeepAspectRatio = false } = props;
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} page-teaser`}>
       <div className={styles.card}>
         {image && (
           <div
