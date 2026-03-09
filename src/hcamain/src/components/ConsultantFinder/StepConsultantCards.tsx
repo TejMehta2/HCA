@@ -146,7 +146,6 @@ interface ServerSideProps {
   _context
 ) => {
   const ignoreConsutantReviews = await getIgnoreReviewsConsultantSlugs();
-  console.log('test', ignoreConsutantReviews);
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
   const consultantsSlugsDoctifyPhone =
@@ -246,7 +245,6 @@ export const Default = (props: StepProps): JSX.Element => {
       locationConfig.find((loc: { name: string }) => loc.name === 'Anywhere');
 
     const { lat, lon, distance } = selectedLocationConfig ?? {};
-    console.log('locationConfig', locationConfig);
 
     // update UI immediately
     setSelectedLocationConsultants(nextLocation);
@@ -616,7 +614,6 @@ export const Default = (props: StepProps): JSX.Element => {
         );
 
       if (matchedLocation) {
-        console.log('matchedLocation', matchedLocation);
         setSelectedLocationConsultants(matchedLocation.name);
         setSearchStringLocations(matchedLocation.name);
       }
@@ -691,7 +688,6 @@ export const Default = (props: StepProps): JSX.Element => {
 
     // if location exists -> override lat/lon from config
     if (location) {
-      console.log(location);
       const locationFormatted =
         location.charAt(0).toUpperCase() + location.slice(1).toLowerCase();
 
@@ -699,14 +695,10 @@ export const Default = (props: StepProps): JSX.Element => {
         (loc: any) => loc.name === locationFormatted
       );
 
-      console.log('locationConfig', locationConfig);
-      console.log('selectedLocation', selectedLocation);
-
       if (selectedLocation) {
         lat = selectedLocation.lat;
         lon = selectedLocation.lon;
         distance = selectedLocation.distance;
-        console.log('lat', lat, 'lon', lon, 'distance', distance);
       }
     }
 
@@ -718,8 +710,6 @@ export const Default = (props: StepProps): JSX.Element => {
       ...(lon && { lon }),
       ...(distance && { distance }),
     }).toString();
-
-    console.log('URLprams call', URLprams);
 
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||

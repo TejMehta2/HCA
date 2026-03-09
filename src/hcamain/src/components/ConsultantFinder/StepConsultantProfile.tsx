@@ -232,11 +232,7 @@ export const Default = (props: StepProps): JSX.Element => {
     };
   }
 
-  const cookieHtml = process.env.NEXT_PUBLIC_LOAD_COOKIES;
-  const oneTrust = extractOneTrustConfig(cookieHtml);
-
-  console.log('loadCookies', cookieHtml);
-  console.log('oneTrust', oneTrust);
+  // const cookieHtml = process.env.NEXT_PUBLIC_LOAD_COOKIES;
 
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
@@ -495,7 +491,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Themes theme={'A-HCA-White'}>
                   <Tabs
                     callback={(label) => {
-                      //console.log(label);
                       handleTabClick(label);
                     }}
                     tabs={[
@@ -545,7 +540,6 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Themes theme={'A-HCA-White'}>
                     <Tabs
                       callback={(label) => {
-                        //console.log(label);
                         handleTabClick(label);
                       }}
                       tabs={[
