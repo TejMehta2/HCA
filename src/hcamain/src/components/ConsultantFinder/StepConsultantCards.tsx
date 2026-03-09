@@ -146,7 +146,6 @@ interface ServerSideProps {
   _context
 ) => {
   const ignoreConsutantReviews = await getIgnoreReviewsConsultantSlugs();
-  console.log('test', ignoreConsutantReviews);
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
   const consultantsSlugsDoctifyPhone =
@@ -247,12 +246,11 @@ export const Default = (props: StepProps): JSX.Element => {
 
     const { lat, lon, distance } = selectedLocationConfig ?? {};
 
-
     // update UI immediately
     setSelectedLocationConsultants(nextLocation);
 
     // update URL params -> triggers your existing fetch effect (router.query dependency)
-    const { requestPath, offset, ...queryParams } = router.query;
+    const { requestPath, offset, location, ...queryParams } = router.query;
 
     router.push(
       {
@@ -331,12 +329,12 @@ export const Default = (props: StepProps): JSX.Element => {
     if (!hydrated) return;
     if (typeof window === 'undefined') return;
     if (!hasFunctionalConsent()) return;
-    console.log('selectedLocationConsultants', selectedLocationConsultants)
     setLocationCookie(selectedLocationConsultants);
   }, [hydrated, selectedLocationConsultants]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (!router.isReady) return;
 
     const syncWithConsent = () => {
       const consent = hasFunctionalConsent();
@@ -351,7 +349,16 @@ export const Default = (props: StepProps): JSX.Element => {
       // consent = true
       setFunctionalConsentCookie(true);
 
+      // If URL has location, don't hydrate from cookie here.
+      // Let the "results" useEffect handle location from URL.
+      if (router.query.location) return;
+
       const saved = readCookie('location');
+      const locationParam = router.query.location;
+      if (locationParam) {
+        setSelectedLocationConsultants(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
+        setSearchStringLocations(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
+      }
 
       if (saved) {
         // hydrate from cookie only if it exists
@@ -369,7 +376,7 @@ export const Default = (props: StepProps): JSX.Element => {
     window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
     return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
     // include searchStringLocations so the handler sees latest selection
-  }, [selectedLocationConsultants]);
+  }, [router.isReady]);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -499,6 +506,8 @@ export const Default = (props: StepProps): JSX.Element => {
       requestPath,
       search,
       keywordId,
+      location,
+      distance,
       ...queryParams
     } = router.query;
 
@@ -539,14 +548,20 @@ export const Default = (props: StepProps): JSX.Element => {
       delete newQueryParams.practice;
     }
 
-    setSelectedLocationConsultants('London');
-    setSearchStringLocations('Anywhere');
+    // Remove location if it exists
+    if ('location' in newQueryParams) {
+      delete newQueryParams.location;
+    }
 
     // Update offset and sortBy to their default values
     newQueryParams.offset = 0;
     newQueryParams.sortType = 'relevance';
     newQueryParams.lat = '51.507217';
     newQueryParams.lon = '-0.1275862';
+    newQueryParams.distance = 0;
+
+    setSelectedLocationConsultants('Anywhere');
+    setSearchStringLocations('Anywhere');
 
     router.push(
       {
@@ -570,10 +585,45 @@ export const Default = (props: StepProps): JSX.Element => {
       return; // Exit early if router is not ready
     }
 
+    // location
+    const locationQuery = router.query.location?.toString();
+    const latQuery = router.query.lat?.toString();
+    const lonQuery = router.query.lon?.toString();
+    const distanceQuery = router.query.distance?.toString();
+
+    if (locationQuery) {
+      const locationFormatted =
+        locationQuery.length > 0
+          ? locationQuery.charAt(0).toUpperCase() + locationQuery.slice(1).toLowerCase()
+          : 'Anywhere';
+
+      setSelectedLocationConsultants(locationFormatted);
+      setSearchStringLocations(locationFormatted);
+    } else if (latQuery && lonQuery) {
+      const matchedLocation =
+        locationConfig.find(
+          (loc: any) =>
+            String(loc.lat) === latQuery &&
+            String(loc.lon) === lonQuery &&
+            String(loc.distance) === distanceQuery
+        ) ||
+        locationConfig.find(
+          (loc: any) =>
+            String(loc.lat) === latQuery &&
+            String(loc.lon) === lonQuery
+        );
+
+      if (matchedLocation) {
+        setSelectedLocationConsultants(matchedLocation.name);
+        setSearchStringLocations(matchedLocation.name);
+      }
+    }
+
     // offset
     const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
     setOffset(initialOffset);
 
+    // practice
     const practiceQuery = router.query.practice;
     const videoPractice = router.query.videoConsultation;
     if (practiceQuery) {
@@ -630,10 +680,41 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     setLoading(true);
-    const URLprams = searchParams.toString();
+
+    // destructure params from URL
+    const params = Object.fromEntries(searchParams.entries());
+
+    let { lat, lon, location, distance, ...rest } = params;
+
+    // if location exists -> override lat/lon from config
+    if (location) {
+      const locationFormatted =
+        location.charAt(0).toUpperCase() + location.slice(1).toLowerCase();
+
+      const selectedLocation = locationConfig.find(
+        (loc: any) => loc.name === locationFormatted
+      );
+
+      if (selectedLocation) {
+        lat = selectedLocation.lat;
+        lon = selectedLocation.lon;
+        distance = selectedLocation.distance;
+      }
+    }
+
+    // build final query params
+    const URLprams = new URLSearchParams({
+      ...rest,
+      ...(location && { location }),
+      ...(lat && { lat }),
+      ...(lon && { lon }),
+      ...(distance && { distance }),
+    }).toString();
+
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
+
     const requestURL: string = `${baseURL}?${URLprams}`;
     setURLparams(URLprams);
 

@@ -7,8 +7,7 @@
 
 .wrapper {
   @include responsive-container;
-
-
+  padding-top: var(--theme-collapse-padding-top, #{$spacing-13});
   padding-bottom: $spacing-13;
 }
 
