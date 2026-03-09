@@ -80,6 +80,20 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
     }
   }
 
+  const handleModalNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    target?: string
+  ) => {
+    if (target === '_blank') {
+      return;
+    }
+
+    e.preventDefault();
+    dialogRef.current?.close();
+    window.location.href = href;
+  };
+
   if (!props.fields) {
     return <StickyCTADefaultComponent {...props} />;
   }
@@ -230,7 +244,17 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link href={href} target={link?.jsonValue?.value?.target}>
+                    <Link
+                      href={href}
+                      target={link?.jsonValue?.value?.target}
+                      onClick={(e) =>
+                        handleModalNavigation(
+                          e,
+                          href,
+                          link?.jsonValue?.value?.target
+                        )
+                      }
+                    >
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.targetItem?.svgMarkup?.value || '',
@@ -295,7 +319,17 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link href={href} target={link.jsonValue?.value?.target}>
+                    <Link
+                      href={href}
+                      target={link.jsonValue?.value?.target}
+                      onClick={(e) =>
+                        handleModalNavigation(
+                          e,
+                          href,
+                          link?.jsonValue?.value?.target
+                        )
+                      }
+                    >
                       <span
                         dangerouslySetInnerHTML={{
                           __html: icon?.targetItem?.svgMarkup?.value || '',
