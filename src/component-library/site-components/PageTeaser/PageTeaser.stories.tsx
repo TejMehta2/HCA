@@ -33,7 +33,7 @@ export const Default: StoryObj<typeof PageTeaser> = {
       </Text>
     ),
     bodyCopy: (
-      <Text tag="p" variation="body-large">
+      <Text tag="div" variation="body-large">
         Nisi do amet mollit ea. Ullamco id Lorem minim aliqua labore sit culpa
         consectetur quis magna duis. Commodo irure proident commodo in
         consectetur esse aliquip.

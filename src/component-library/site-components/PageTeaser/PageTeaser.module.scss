@@ -1,6 +1,18 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+.wrapper {
+  // Add padding between adjacent page teasers regardless of theme
+  :global(:has(> .page-teaser) + *) > & {
+    padding-top: $spacing-12;
+  }
+
+  // This is to add padding to the bottom of the last page teaser in a container
+  :global([data-theme]):last-child > & {
+    padding-bottom: $spacing-12;
+  }
+}
+
 .card {
   width: 100%;
   height: 100%;
