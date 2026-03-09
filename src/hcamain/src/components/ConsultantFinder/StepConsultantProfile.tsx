@@ -215,22 +215,22 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
-  function extractOneTrustConfig(html: string | undefined) {
-    if (!html) return null;
+  // function extractOneTrustConfig(html: string | undefined) {
+  //   if (!html) return null;
 
-    // Grab the otSDKStub.js src
-    const srcMatch = html.match(/src="([^"]*otSDKStub\.js[^"]*)"/i);
+  //   // Grab the otSDKStub.js src
+  //   const srcMatch = html.match(/src="([^"]*otSDKStub\.js[^"]*)"/i);
 
-    // Grab the data-domain-script value
-    const domainMatch = html.match(/data-domain-script="([^"]+)"/i);
+  //   // Grab the data-domain-script value
+  //   const domainMatch = html.match(/data-domain-script="([^"]+)"/i);
 
-    if (!srcMatch || !domainMatch) return null;
+  //   if (!srcMatch || !domainMatch) return null;
 
-    return {
-      src: srcMatch[1],
-      domainScript: domainMatch[1],
-    };
-  }
+  //   return {
+  //     src: srcMatch[1],
+  //     domainScript: domainMatch[1],
+  //   };
+  // }
 
   // const cookieHtml = process.env.NEXT_PUBLIC_LOAD_COOKIES;
 
