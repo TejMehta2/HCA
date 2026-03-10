@@ -32,7 +32,7 @@ export const JumpToAnchor = (props: JumpToLinkProps): JSX.Element => {
   );
 };
 
-const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
+const JumpToLinks = (props: JumpToLinksProps): JSX.Element | null => {
   const columnContext = useColumnSplitterContext();
   const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
   const {
@@ -44,6 +44,8 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
   } = props;
   const rootRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const hasChildren = React.Children.toArray(children).length > 0;
 
   const setHighlighted = useCallback((anchor: HTMLAnchorElement) => {
     if (!rootRef.current) return;
@@ -142,6 +144,8 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element => {
       anchors.forEach((a) => a.removeEventListener('click', handleClick));
     };
   }, [children, setHighlighted]);
+
+  if (!hasChildren) return null;
 
   return (
     <div

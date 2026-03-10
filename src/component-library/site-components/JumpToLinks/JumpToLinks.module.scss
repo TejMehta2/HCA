@@ -87,6 +87,7 @@
   }
 
   @include media(screen-l) {
+    padding-top: $spacing-10;
     padding-bottom: $spacing-7;
   }
 
@@ -118,6 +119,10 @@
 
   .container-all {
     margin-bottom: 0;
+
+    @include media(screen-l) {
+      padding-top: 0;
+    }
   }
 
   .heading {
