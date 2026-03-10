@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   cost: {
     width: '15%',
-    textAlign: 'left',
+    textAlign: 'right',
     color: '#04183D',
     fontFamily: 'Brown-Std',
     fontSize: 9,
@@ -283,7 +283,7 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
           <Text style={styles.label}>{props.pdfTableItem1Heading}</Text>
           <Text style={styles.selection}>{props.cycleTypeVal}</Text>
-          <Text style={styles.cost}>£{props.cycleTypeCost}</Text>
+          <Text style={styles.cost}>£{props.cycleTypeCost.toFixed(2)}</Text>
           <Text style={styles.description}>{props.cycleNotes}</Text>
         </View>
 
@@ -291,7 +291,7 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
           <Text style={styles.label}>{props.pdfTableItem3Heading}</Text>
           <Text style={styles.selection}>{props.blastocystCulture}</Text>
-          <Text style={styles.cost}>£{props.blastocystCultureCost}</Text>
+          <Text style={styles.cost}>£{props.blastocystCultureCost.toFixed(2)}</Text>
           <Text style={styles.description}>{props.blastocystCultureNotes}</Text>
         </View>
 
@@ -299,7 +299,7 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
           <Text style={styles.label}>{props.pdfTableItem2Heading}</Text>
           <Text style={styles.selection}>{props.protocolType}</Text>
-          <Text style={styles.cost}>£{props.protocolTypeCost}</Text>
+          <Text style={styles.cost}>£{props.protocolTypeCost.toFixed(2)}</Text>
           <Text style={styles.description}>{props.protocolNotes}</Text>
         </View>
 
@@ -307,7 +307,7 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
           <Text style={styles.label}>{props.pdfTableItem4Heading}</Text>
           <Text style={styles.selection}>{adjuvantsSelection}</Text>
-          <Text style={styles.cost}>£{props.adjuvantsCost}</Text>
+          <Text style={styles.cost}>£{props.adjuvantsCost.toFixed(2)}</Text>
           <Text style={styles.description}>{props.adjuvantsNotes}</Text>
         </View>
 
@@ -363,11 +363,10 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
             <Text style={styles.label}>{props.pdfTableItem5Heading}</Text>
             <Text style={styles.selection}>{props.selectedDrugValue}</Text>
-            <Text style={styles.cost}>£{props.drug1Cost}</Text>
+            <Text style={styles.cost}>£{props.drug1Cost.toFixed(2)}</Text>
             <Text style={styles.description}>
               {props.selectedDrugNotes +
-                '\n\n' +
-                props.cycleTypeAdditionalDrugNotes}
+                (props.cycleTypeAdditionalDrugNotes ? props.cycleTypeAdditionalDrugNotes : '') }
             </Text>
         </View>
 
@@ -376,7 +375,7 @@ const PdfDoc = (props) => {
           <View style={styles.row}>
             <Text style={styles.label}>{props.pdfTableItem5Heading + ' 2'}</Text>
             <Text style={styles.selection}>{props.selectedDrugValue2}</Text>
-            <Text style={styles.cost}>£{props.drug2Cost}</Text>
+            <Text style={styles.cost}>£{props.drug2Cost.toFixed(2)}</Text>
             <Text style={styles.description}>
             </Text>
   {/*           <Text style={styles.description}>
