@@ -291,7 +291,9 @@ const PdfDoc = (props) => {
         <View style={styles.row}>
           <Text style={styles.label}>{props.pdfTableItem3Heading}</Text>
           <Text style={styles.selection}>{props.blastocystCulture}</Text>
-          <Text style={styles.cost}>£{props.blastocystCultureCost.toFixed(2)}</Text>
+          <Text style={styles.cost}>
+            £{props.blastocystCultureCost.toFixed(2)}
+          </Text>
           <Text style={styles.description}>{props.blastocystCultureNotes}</Text>
         </View>
 
@@ -361,30 +363,33 @@ const PdfDoc = (props) => {
 
         {/* Cycle Drugs row */}
         <View style={styles.row}>
-            <Text style={styles.label}>{props.pdfTableItem5Heading}</Text>
-            <Text style={styles.selection}>{props.selectedDrugValue}</Text>
-            <Text style={styles.cost}>£{props.drug1Cost.toFixed(2)}</Text>
-            <Text style={styles.description}>
-              {props.selectedDrugNotes +
-                (props.cycleTypeAdditionalDrugNotes ? props.cycleTypeAdditionalDrugNotes : '') }
-            </Text>
+          <Text style={styles.label}>{props.pdfTableItem5Heading}</Text>
+          <Text style={styles.selection}>{props.selectedDrugValue}</Text>
+          <Text style={styles.cost}>£{props.drug1Cost.toFixed(2)}</Text>
+          <Text style={styles.description}>
+            {props.selectedDrugNotes +
+              (props.cycleTypeAdditionalDrugNotes
+                ? props.cycleTypeAdditionalDrugNotes
+                : '')}
+          </Text>
         </View>
 
         {/* Cycle Drugs 2 row */}
-        {props.drug2Cost > 0 && 
+        {props.drug2Cost > 0 && (
           <View style={styles.row}>
-            <Text style={styles.label}>{props.pdfTableItem5Heading + ' 2'}</Text>
+            <Text style={styles.label}>
+              {props.pdfTableItem5Heading + ' 2'}
+            </Text>
             <Text style={styles.selection}>{props.selectedDrugValue2}</Text>
             <Text style={styles.cost}>£{props.drug2Cost.toFixed(2)}</Text>
-            <Text style={styles.description}>
-            </Text>
-  {/*           <Text style={styles.description}>
+            <Text style={styles.description}></Text>
+            {/*           <Text style={styles.description}>
               {props.selectedDrugNotes2 +
                 '\n\n' +
                 props.cycleTypeAdditionalDrugNotes2}
             </Text> */}
           </View>
-        }
+        )}
 
         {/* Total */}
         <View style={styles.total}>
@@ -434,11 +439,7 @@ const PdfDoc = (props) => {
         )}
         {/* Access fertility advert */}
         {props.hcaLogo !== null && (
-          <Image
-            style={styles.logo}
-            src={props.accessFertilityAd}
-            alt="HCA"
-          />
+          <Image style={styles.logo} src={props.accessFertilityAd} alt="HCA" />
         )}
         {/* Page number */}
         <Text
