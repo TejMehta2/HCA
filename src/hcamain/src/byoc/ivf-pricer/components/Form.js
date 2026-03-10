@@ -511,16 +511,24 @@ const Form = () => {
     );
     setSelectedDrugValue(selectedDrugValue);
     setSelectedDrugValue2(selectedDrugValue2);
+    /*
+    console.log('cycle price', cyclePrice);
+    console.log('cycle price 2', cyclePrice2);
+    console.log('cycle type cost', cycleTypeCostCalc);
+    console.log('protocol type cost', protocolTypeCostCalc);
+    console.log('blastocyst culture cost', blastocystCultureCostCalc);
+    console.log('adjuvants cost', adjuvantsCostCalc);
+    console.log('additional protocol drug cost', additionalProtocolDrugCost);*/
 
     let totalCalculation =
-      cyclePrice +
-      cyclePrice2 +
+      ((cyclePrice + additionalProtocolDrugCost) * medicationMultiplier) +
+      (cyclePrice2 * medicationMultiplier) +
       cycleTypeCostCalc +
       protocolTypeCostCalc +
       blastocystCultureCostCalc +
-      adjuvantsCostCalc +
-      additionalProtocolDrugCost;
+      adjuvantsCostCalc;
     setTotalCost(totalCalculation.toFixed(2));
+    //console.log('total calculation', totalCalculation);
 
     // cycle type notes
     let cycleTypeNotes = '';
