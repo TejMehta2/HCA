@@ -53,6 +53,14 @@
     }
   }
 
+  &.no-back-cta {
+    display: none;
+
+    @include media(screen-l) {
+      display: flex;
+    }
+  }
+
   .breadcrumb-back {
     @include media(screen-l) {
       display: none;

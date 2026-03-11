@@ -10,7 +10,7 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
   return (
     <Themes theme={theme || 'A-HCA-White'}>
       <div
-        className={styles.wrapper}
+        className={`${styles.wrapper} ${!backCta?.link ? styles['no-back-cta'] : ''}`}
         data-event="navigationClick"
         data-navigation-type="breadcrumbDesktop"
       >

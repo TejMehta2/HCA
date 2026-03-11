@@ -93,13 +93,28 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element | null => {
 
     const handleClick = (e: Event) => {
       const anchor = (e.currentTarget as HTMLElement).closest('a');
-      if (anchor) {
-        setHighlighted(anchor);
-        if (clickCooldown) clearTimeout(clickCooldown);
-        clickCooldown = setTimeout(() => {
-          clickCooldown = null;
-        }, 800);
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const headerOffset = window.innerWidth > 1135 ? 110 : 78;
+          const top =
+            target.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top, behavior: 'smooth' });
+          history.pushState(null, '', href);
+        }
       }
+
+      setHighlighted(anchor);
+
+      //  clickCooldown prevents the IntersectionObserver from overriding the highlighted jump link while the page is still scrolling after a click.
+      if (clickCooldown) clearTimeout(clickCooldown);
+      clickCooldown = setTimeout(() => {
+        clickCooldown = null;
+      }, 800);
     };
     anchors.forEach((a) => a.addEventListener('click', handleClick));
 
