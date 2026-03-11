@@ -7,4 +7,5 @@ export interface AppointmentTypeCardProps {
   text: ReactNode | JSX.Element | string;
   isFollowUpAppointment: string;
   handleClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  isSelected: string;
 }

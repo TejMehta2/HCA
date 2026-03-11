@@ -19,6 +19,7 @@ const Modals = (
     variation = 'full',
     contentVariation,
     id,
+    alignContent
   } = props;
   const {
     draggable,
@@ -135,7 +136,12 @@ const Modals = (
             <SvgHandle />
           </div>
           <CloseButton />
-          <div className={content}>{children}</div>
+          <div
+            className={[
+              content,
+              alignContent === 'center' ? styles['center-align'] : '',
+            ].join(' ')}
+          >{children}</div>
         </div>
       </div>
     </dialog>

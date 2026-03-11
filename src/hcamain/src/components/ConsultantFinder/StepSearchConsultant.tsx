@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
@@ -67,6 +68,8 @@ export const Default = (props: StepProps): JSX.Element => {
   } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   // console.log('search consultant by name', props);
+  console.log('props?.fields?.PopularConsultantsList ', props?.fields?.PopularConsultantsList);
+  console.log(props.fields.NextLink);
 
   if (props.fields) {
     return (
@@ -149,9 +152,8 @@ export const Default = (props: StepProps): JSX.Element => {
               disabled={consultantSlug === '' ? true : false}
               onClick={() =>
                 router.push(
-                  `${
-                    props?.fields?.NextLink?.value?.href &&
-                    props?.fields?.NextLink?.value?.href.replace(/,-w-,/g, '')
+                  `${props?.fields?.NextLink?.value?.href &&
+                  props?.fields?.NextLink?.value?.href.replace(/,-w-,/g, '')
                   }${consultantSlug}` || ''
                 )
               }

@@ -15,6 +15,13 @@ SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: "{5F5254C2-11C3-49E1-A197-3034D6784FE6}"
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{622AB1D5-FE93-4881-86D0-26F41DA10491}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "a1fc266b-b618-4bf0-a50f-6faaff2e5d15"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
   Value: "{CFDCF9D6-5F2D-42A7-BA60-0B30A790732F}"
@@ -36,11 +43,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b1ecfebf-1a83-40ba-8cb4-b06fcac6520d"
+      Value: "0fe8813c-9ee6-4e8e-85e2-977af1cc999e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T211649Z
+      Value: 20251127T190350Z

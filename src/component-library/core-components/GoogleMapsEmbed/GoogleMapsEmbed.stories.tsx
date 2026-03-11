@@ -39,7 +39,7 @@ const DemoGoogleMapsEmbed = () => {
   const mapMemo = useMemo(
     () => (
       <GoogleMapsEmbed
-        apiKey="AIzaSyCJu0aTsRYKOQVPsETLeTvI84jxDZjRGAg"
+        apiKey={process.env.STORYBOOK_GOOGLE_MAPS_API_KEY || ''}
         center={{
           lat: 51.5072,
           lng: 0.1276,

@@ -10,21 +10,21 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const ProgressBar = (props: ProgressBarProps): JSX.Element => {
   const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);
-  const { steps, currentPage } = props;
+  const { steps, currentPage, name = '' } = props;
+
   return (
     <div className={styles['progress-bar']}>
       {steps.map((step: any, index: number) => (
         <Fragment key={index}>
           <div className={styles.step}>
             <div
-              className={`${styles['step-number']} ${
-                step?.fields?.Selected?.value
-                  ? styles['step-number--selected']
-                  : ''
-              }`}
+              className={`${styles['step-number']} ${step?.fields?.Selected?.value
+                ? styles['step-number--selected']
+                : ''
+                }`}
             >
               {step?.fields?.Selected?.value &&
-              currentPage !== step?.fields?.Order?.value ? (
+                currentPage !== step?.fields?.Order?.value ? (
                 <Icons iconName="iconCheckSmall" />
               ) : (
                 ((currentPage === step?.fields?.Order?.value &&
@@ -40,16 +40,16 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
               {(!step?.fields?.Selected?.value ||
                 currentPage === step?.fields?.Order?.value ||
                 currentPage === steps.length) && (
-                <Text tag="p" variation="body-medium-small">
-                  {step?.fields?.StepText?.value}
-                </Text>
-              )}
+                  <Text tag="p" variation="body-medium-small">
+                    {step?.fields?.StepText?.value}
+                  </Text>
+                )}
               {step?.fields?.Selected?.value &&
                 currentPage !== step?.fields?.Order?.value &&
                 currentPage !== steps.length && (
                   <TextLink>
                     <Link
-                      href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${props.reviewsTotal}`}
+                      href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}&name=${encodeURIComponent(name)}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${props.reviewsTotal}`}
                     >
                       <Text tag="span" variation="body-medium-small">
                         {step?.fields?.StepText?.value}

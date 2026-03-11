@@ -4,6 +4,7 @@ import {
   RichText,
   LinkField,
   Text as JSSText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDetails/HeaderBlogDetails';
 import Params from 'src/types/params';
@@ -12,6 +13,9 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import { AuthorFields } from 'src/types/authorFields.GraphQL';
+import { isSitecoreDateSet } from 'lib/utility-functions/isSitecoreDateSet';
+import { MapAuthorsToBlockQuotes } from 'components/Authors/Authors.mapping.GraphQL';
 
 type ArticleTypeFields = {
   id?: string;
@@ -24,6 +28,8 @@ interface Fields {
       title?: { jsonValue?: Field<string> };
       text?: { jsonValue?: Field<string> };
       date?: { jsonValue?: Field<string> };
+      lastChecked?: { jsonValue?: Field<string> };
+      authors?: { targetItems?: AuthorFields[] };
       articleType?: { targetItem?: ArticleTypeFields };
     };
     settings?: {
@@ -50,6 +56,8 @@ const BlogDetailsHeaderDefaultComponent = (
 };
 
 export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   const queryString = 'articleTypeId';
   const currentArticleId =
     props.fields?.data?.contextItem?.articleType?.targetItem?.id?.toString();
@@ -58,6 +66,19 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
+
+  const dateSet = isSitecoreDateSet(
+    props.fields?.data?.contextItem?.date?.jsonValue?.value
+  );
+
+  const lastCheckedSet = isSitecoreDateSet(
+    props.fields?.data?.contextItem?.lastChecked?.jsonValue?.value
+  );
+
+  const authors = MapAuthorsToBlockQuotes(
+    props?.fields?.data?.contextItem?.authors?.targetItems,
+    false
+  );
 
   return (
     <HeaderBlogDetails
@@ -87,8 +108,18 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
           <></>
         )
       }
+      authors={authors}
+      lastChecked={
+        lastCheckedSet || isExperienceEditor ? (
+          <JssDate
+            field={props.fields?.data?.contextItem?.lastChecked?.jsonValue}
+          />
+        ) : undefined
+      }
       date={
-        <JssDate field={props.fields?.data?.contextItem?.date?.jsonValue} />
+        dateSet || isExperienceEditor ? (
+          <JssDate field={props.fields?.data?.contextItem?.date?.jsonValue} />
+        ) : undefined
       }
       title={
         <Text

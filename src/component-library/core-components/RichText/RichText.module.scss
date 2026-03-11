@@ -177,6 +177,20 @@
     }
   }
 
+  @for $i from 0 through 12 {
+    > .order-#{$i} {
+      order: #{$i};
+    }
+  }
+
+  > .order-first {
+    order: -1;
+  }
+
+  > .order-last {
+    order: 13;
+  }
+
   @for $cols from 1 through 12 {
     @include media(screen-m) {
       > .col-md-#{$cols} {
@@ -185,6 +199,24 @@
       > .offset-md-#{$cols} {
         grid-column-start: #{$cols + 1};
       }
+    }
+  }
+
+  @for $i from 0 through 12 {
+    @include media(screen-m) {
+      > .order-md-#{$i} {
+        order: #{$i};
+      }
+    }
+  }
+
+  @include media(screen-m) {
+    > .order-md-first {
+      order: -1;
+    }
+
+    > .order-md-last {
+      order: 13;
     }
   }
 
@@ -199,6 +231,24 @@
     }
   }
 
+  @for $i from 0 through 12 {
+    @include media(screen-l) {
+      > .order-lg-#{$i} {
+        order: #{$i};
+      }
+    }
+  }
+
+  @include media(screen-l) {
+    > .order-lg-first {
+      order: -1;
+    }
+
+    > .order-lg-last {
+      order: 13;
+    }
+  }
+
   @for $cols from 1 through 12 {
     @include media(screen-xl) {
       > .col-xl-#{$cols} {
@@ -209,6 +259,24 @@
       > .offset-xl-#{$cols} {
         grid-column-start: #{$cols + 1};
       }
+    }
+  }
+
+  @for $i from 0 through 12 {
+    @include media(screen-xl) {
+      > .order-xl-#{$i} {
+        order: #{$i};
+      }
+    }
+  }
+
+  @include media(screen-xl) {
+    > .order-xl-first {
+      order: -1;
+    }
+
+    > .order-xl-last {
+      order: 13;
     }
   }
 }

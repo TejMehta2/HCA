@@ -38,4 +38,6 @@ export interface ConsultantCardProps {
   callToBookModalTitle: string;
   phoneNumberDisplay: string;
   doctifyPhoneSlugs: string[];
+  URLprams?: string;
+  ignoreReviewsConsultantsList?: any;
 }

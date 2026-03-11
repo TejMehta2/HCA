@@ -199,3 +199,13 @@ export const generateHtmlSafeId = (title: string | undefined) => {
 
   return safeId || ''; // Fallback if the result is empty.
 };
+
+// check if device is mobile
+export const isMobile = (breakpoint = 992): boolean => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
+};
+

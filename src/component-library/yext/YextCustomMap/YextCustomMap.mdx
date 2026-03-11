@@ -17,7 +17,7 @@ It can be composed like this:
 
 ``` tsx
 <YextCustomMapStories
-  apiKey={'AIzaSyCJu0aTsRYKOQVPsETLeTvI84jxDZjRGAg'}
+  apiKey={process.env.STORYBOOK_GOOGLE_MAPS_API_KEY || ''}
   center={
     {
       lat: 51.5072,

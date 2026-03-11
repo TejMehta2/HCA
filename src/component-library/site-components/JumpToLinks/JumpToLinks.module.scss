@@ -34,22 +34,33 @@
   }
 }
 
-.container {
+.container-all {
   border-bottom: solid px-to-rem(1) $navy-blue-5;
-  @include responsive-container;
-
   padding-top: var(--theme-collapse-padding-top, #{$spacing-7});
   padding-bottom: $spacing-7;
   margin-bottom: $spacing-7;
 }
 
+.container {
+  @include responsive-container;
+}
+
 .wrapper {
   background: var(--background, #{$navy-blue-90});
   color: var(--text, #{$white});
+  padding-top: $spacing-7;
+  padding-bottom: $spacing-7;
 }
 
 .heading {
+  padding-top: $spacing-4;
   margin-bottom: $spacing-3;
+  text-align: center;
+
+  @include media(screen-m) {
+    padding-top: 0;
+    text-align: left;
+  }
 }
 
 .children {
@@ -65,5 +76,109 @@
 
   &:has(.link) {
     align-items: flex-start;
+  }
+}
+
+.stacked {
+  padding: $spacing-12 0 0;
+
+  @include media(screen-l) {
+    padding-top: $spacing-10;
+    padding-bottom: $spacing-7;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+
+    li > * {
+      width: 100%;
+    }
+
+    a {
+      padding: $spacing-2;
+
+      &.highlighted {
+        background-color: $teal-5;
+      }
+    }
+
+    .anchor a.highlighted {
+      background-color: $tangerine-30;
+    }
+  }
+
+  .container {
+    border-bottom: 0;
+  }
+
+  .container-all {
+    margin-bottom: 0;
+
+    @include media(screen-l) {
+      padding-top: 0;
+    }
+  }
+
+  .heading {
+    border-bottom: solid px-to-rem(1) $navy-blue-20;
+    margin-bottom: $spacing-4;
+    padding-bottom: $spacing-4;
+
+    @include media(screen-m) {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.sticky {
+  @include media(screen-m) {
+    position: sticky;
+    top: px-to-rem(70);
+  }
+}
+.mobileTriggerWrapper {
+  display: flex;
+  width: 100%;
+  background-color: $white;
+  border: solid px-to-rem(1) $navy-blue-10;
+  padding: px-to-rem(8);
+  border-radius: $radius-large;
+
+  @include media(screen-m) {
+    display: none;
+  }
+}
+
+.mobileTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-4 $spacing-5;
+  color: $navy-blue-100;
+  border: solid px-to-rem(1) $navy-blue-10;
+  border-radius: $radius-large;
+  cursor: pointer;
+  @include apply-body-medium-medium;
+  background-color: $teal-5;
+  width: 100%;
+
+  svg {
+    width: px-to-rem(20);
+    height: px-to-rem(20);
+  }
+
+  @include media(screen-m) {
+    display: none;
+  }
+}
+
+.desktopContent {
+  display: none;
+
+  @include media(screen-m) {
+    display: block;
   }
 }

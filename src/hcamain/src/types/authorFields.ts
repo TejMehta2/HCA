@@ -10,5 +10,6 @@ export interface AuthorFields {
     Position?: Field<string>;
     Avatar?: ImageField;
     Link?: LinkField;
+    PositionLink?: LinkField;
   };
 }

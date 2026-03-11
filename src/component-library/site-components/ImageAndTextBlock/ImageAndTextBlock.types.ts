@@ -24,9 +24,14 @@ export interface ImageAndTextBlockProps {
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
   iconList?: iconList;
   hideImageOnMobile?: boolean;
+  hideImageOnDesktop?: boolean;
   cfVariation?: boolean;
   contentVariation?: 'pricing' | 'hero' | 'hero-cf';
   noOverflownHidden?: boolean;
   id?: string;
   tableOfContentTitle?: string;
+  locationCookies?: any;
+  setLocation?: any;
+  hasFunctionalConsentCookie?: boolean;
+  showRegion?: boolean;
 }

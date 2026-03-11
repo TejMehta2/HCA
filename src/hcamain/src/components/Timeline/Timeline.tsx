@@ -18,7 +18,7 @@ import Timeline, {
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
+import Themes from '@component-library/foundation/Themes/Themes';
 interface PagesFields {
   abstractTitle?: { value?: string };
   abstractText?: { value?: string };
@@ -182,7 +182,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
                     </Text>
                   }
                   copy={
-                    <Text variation="body-large">
+                    <Text variation="body-large" tag='div'>
                       {card.abstractText?.value ? (
                         <JssRichText tag="div" field={card.abstractText} />
                       ) : (
