@@ -6,9 +6,9 @@ import Link from 'next/link';
 import Themes from '../../foundation/Themes/Themes';
 
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
-  const { theme, backCta, children } = props;
+  const { theme, collapse = true, backCta, children } = props;
   return (
-    <Themes theme={theme || 'A-HCA-White'}>
+    <Themes theme={theme || 'A-HCA-White'} collapse={collapse}>
       <div
         className={`${styles.wrapper} ${!backCta?.link ? styles['no-back-cta'] : ''}`}
         data-event="navigationClick"
