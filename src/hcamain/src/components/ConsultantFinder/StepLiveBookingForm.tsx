@@ -150,6 +150,11 @@ export const Default = (props: StepProps): JSX.Element => {
   const [name, setName] = useState<string>('');
   const [search, setSearch] = useState<string>('');
   const [keywordId, setKeywordId] = useState<string>('');
+  const hcaInsurance = {
+    id: '999999',
+    name: 'HCA Healthcare UK',
+    website: 'https://www.hcahealthcare.co.uk/',
+  };
 
   const {
     selectedLocationName,
@@ -193,10 +198,14 @@ export const Default = (props: StepProps): JSX.Element => {
           message: 'Invalid phone number',
         }),
       gender: z.string().trim().min(1, { message: 'Required' }),
-      dateOfBirth: z.string().min(1, { message: 'Required' })
+      dateOfBirth: z
+        .string()
+        .min(1, { message: 'Required' })
         .refine(
           (val) => {
-            const isPortland = selectedLocationName.toLowerCase().includes('portland');
+            const isPortland = selectedLocationName
+              .toLowerCase()
+              .includes('portland');
             // If location includes Portland, skip age check
             if (isPortland) return true;
             // min age
@@ -216,10 +225,11 @@ export const Default = (props: StepProps): JSX.Element => {
             return dateOfBirth <= minDateOfBirth;
           },
           {
-            message: `${props?.fields?.LiveBookingFormDateOfBirthErrors[0]?.fields?.Msg
-              ?.value ||
+            message: `${
+              props?.fields?.LiveBookingFormDateOfBirthErrors[0]?.fields?.Msg
+                ?.value ||
               'Our online live diary booking service is not available for bookings for patients under the age of 18 years old or if you require an oncology specialist. For this please call us on 020 3993 4232'
-              }`,
+            }`,
           }
         ),
       address1: z.string().trim().min(1, { message: 'Required' }),
@@ -532,8 +542,9 @@ export const Default = (props: StepProps): JSX.Element => {
           setReviewsTotal(reviewsTotal);
 
           router.push(
-            `${props?.fields?.NextLink?.value?.href ||
-            '/finder/step-live-booking-confirmation'
+            `${
+              props?.fields?.NextLink?.value?.href ||
+              '/finder/step-live-booking-confirmation'
             }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
           );
         }
@@ -575,7 +586,6 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
       .then((resp) => {
-        // console.log(resp?.data?.insurers);
         setErrorData(false);
         setLoadingData(false);
         setInsurersLDB(resp?.data?.insurers || []);
@@ -596,7 +606,6 @@ export const Default = (props: StepProps): JSX.Element => {
     if (!router.isReady) {
       return;
     }
-
 
     // get search from URL
     const searchURL = router?.query?.search || '';
@@ -632,6 +641,13 @@ export const Default = (props: StepProps): JSX.Element => {
     // console.log('user', watchFormChanges.user);
     // console.log('payment', watchFormChanges.payment);
     // remove values from hidden fields if not used anymore
+    if(watchFormChanges.user === 'patient' || watchFormChanges.user === 'medicalsecretary') {
+      // https://hcauk-digital.atlassian.net/browse/HED-2496
+      // drop hca entry unless on the insurer user type as this is only for insurers but we want to keep the list clean for patients and medical secretaries
+      if (insurersLDB) {
+        setInsurersLDB(insurersLDB.filter((insurer: any) => insurer.name !== 'HCA Healthcare UK'));
+      }
+    }
     if (watchFormChanges.user === 'insurer') {
       setValue('payment', '');
       setValue('contactDetails', false);
@@ -656,6 +672,17 @@ export const Default = (props: StepProps): JSX.Element => {
       }
       if (errors?.representativePhone) {
         clearErrors('representativePhone');
+      }
+      if (insurersLDB) {
+        // https://hcauk-digital.atlassian.net/browse/HED-2496
+        // add hca entry back in if not there as this is needed for insurers but we want to keep the list clean for patients and medical secretaries
+        const hasHCAInsurance = insurersLDB.some(
+          (insurer: any) => insurer.name === 'HCA Healthcare UK'
+        );
+        if (!hasHCAInsurance) {
+          insurersLDB.unshift(hcaInsurance);
+          setInsurersLDB(insurersLDB);
+        }
       }
     }
     if (watchFormChanges.payment === 'self-pay') {
@@ -706,8 +733,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 <button
                   onClick={() =>
                     router.push(
-                      `${props?.fields?.LiveBookingFormStepAppointment?.value
-                        ?.href || '/finder/step-appointment-type'
+                      `${
+                        props?.fields?.LiveBookingFormStepAppointment?.value
+                          ?.href || '/finder/step-appointment-type'
                       }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                     )
                   }
@@ -751,8 +779,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       <button
                         onClick={() =>
                           router.push(
-                            `${props?.fields?.LiveBookingFormStepSlotSelect
-                              ?.value?.href || '/finder/step-slot-select'
+                            `${
+                              props?.fields?.LiveBookingFormStepSlotSelect
+                                ?.value?.href || '/finder/step-slot-select'
                             }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                           )
                         }
@@ -851,88 +880,88 @@ export const Default = (props: StepProps): JSX.Element => {
                     {/* Payment */}
                     {(watchFormChanges.user === 'patient' ||
                       watchFormChanges.user === 'medicalsecretary') && (
-                        <Container marginBottom="spacing-6" marginTop="spacing-2">
-                          {props?.fields
-                            ?.LiveBookingFormAboutAppointmentOptions &&
-                            props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
-                              (item: any) => (
-                                <RadioButton
-                                  key={item.id}
-                                  label={item?.fields?.Label?.value || ''}
-                                  name={'payment'}
-                                  value={item?.fields?.Value?.value}
-                                  register={register}
-                                />
-                              )
-                            )}
-                          {errors?.payment && (
-                            <ErrorMessage
-                              errorMessage={errors?.payment?.message}
-                            />
+                      <Container marginBottom="spacing-6" marginTop="spacing-2">
+                        {props?.fields
+                          ?.LiveBookingFormAboutAppointmentOptions &&
+                          props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
+                            (item: any) => (
+                              <RadioButton
+                                key={item.id}
+                                label={item?.fields?.Label?.value || ''}
+                                name={'payment'}
+                                value={item?.fields?.Value?.value}
+                                register={register}
+                              />
+                            )
                           )}
-                        </Container>
-                      )}
+                        {errors?.payment && (
+                          <ErrorMessage
+                            errorMessage={errors?.payment?.message}
+                          />
+                        )}
+                      </Container>
+                    )}
 
                     {/* Payment fields mandatory/visible if payment is insurance or user is insurer */}
                     {(watchFormChanges.user === 'insurer' ||
                       watchFormChanges.payment === 'insurance') && (
-                        <>
-                          {!loadingData &&
-                            !errorData &&
-                            insurersLDB.length > 0 && (
-                              <SelectField
-                                id={'insuranceProvider'}
-                                name={'insuranceProvider'}
-                                label={
-                                  props?.fields?.LiveBookingFormInsuranceLabel
-                                    ?.value || 'Insurance company'
-                                }
-                                addDefaultValue={true}
-                                defaultValueLabel={'Please select'}
-                                required={true}
-                                isError={errors?.insuranceProvider ? true : false}
-                                errorMessage={errors?.insuranceProvider?.message}
-                                options={insurersLDB.map((insurer: any) => (
-                                  <option key={insurer.id} value={insurer.name}>
-                                    {insurer.name}
-                                  </option>
-                                ))}
-                                register={register}
-                              />
-                            )}
-                          <TextField
-                            id={'insurancePolicyNumber'}
-                            label={
-                              props?.fields?.LiveBookingFormInsuranceNumberLabel
-                                ?.value || ''
-                            }
-                            name={'insurancePolicyNumber'}
-                            required={true}
-                            register={register}
-                            setValue={setValue}
-                            isError={errors?.insurancePolicyNumber ? true : false}
-                            errorMessage={errors?.insurancePolicyNumber?.message}
-                          />
-                          <TextField
-                            id={'insuranceAuthorisationCode'}
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormPatientAuthorisationCodeLabel
-                                ?.value || ''
-                            }
-                            name={'insuranceAuthorisationCode'}
-                            required={false}
-                            register={register}
-                            setValue={setValue}
-                            isError={
-                              errors?.insuranceAuthorisationCode ? true : false
-                            }
-                            errorMessage={
-                              errors?.insuranceAuthorisationCode?.message
-                            }
-                          />
-                        </>
-                      )}
+                      <>
+                        {!loadingData &&
+                          !errorData &&
+                          insurersLDB.length > 0 && (
+                            <SelectField
+                              id={'insuranceProvider'}
+                              name={'insuranceProvider'}
+                              label={
+                                props?.fields?.LiveBookingFormInsuranceLabel
+                                  ?.value || 'Insurance company'
+                              }
+                              addDefaultValue={true}
+                              defaultValueLabel={'Please select'}
+                              required={true}
+                              isError={errors?.insuranceProvider ? true : false}
+                              errorMessage={errors?.insuranceProvider?.message}
+                              options={insurersLDB.map((insurer: any) => (
+                                <option key={insurer.id} value={insurer.name}>
+                                  {insurer.name}
+                                </option>
+                              ))}
+                              register={register}
+                            />
+                          )}
+                        <TextField
+                          id={'insurancePolicyNumber'}
+                          label={
+                            props?.fields?.LiveBookingFormInsuranceNumberLabel
+                              ?.value || ''
+                          }
+                          name={'insurancePolicyNumber'}
+                          required={true}
+                          register={register}
+                          setValue={setValue}
+                          isError={errors?.insurancePolicyNumber ? true : false}
+                          errorMessage={errors?.insurancePolicyNumber?.message}
+                        />
+                        <TextField
+                          id={'insuranceAuthorisationCode'}
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormPatientAuthorisationCodeLabel
+                              ?.value || ''
+                          }
+                          name={'insuranceAuthorisationCode'}
+                          required={false}
+                          register={register}
+                          setValue={setValue}
+                          isError={
+                            errors?.insuranceAuthorisationCode ? true : false
+                          }
+                          errorMessage={
+                            errors?.insuranceAuthorisationCode?.message
+                          }
+                        />
+                      </>
+                    )}
 
                     {/* Reason for appointment */}
                     <Textarea
@@ -976,31 +1005,31 @@ export const Default = (props: StepProps): JSX.Element => {
                       </Text>
                       {props?.fields
                         ?.LiveBookingFormPreviouslyBeenWithHCAOptions && (
-                          <SelectField
-                            id={'previouslyBeenWithHCA'}
-                            name={'previouslyBeenWithHCA'}
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormPreviouslyBeenWithHCALabel
-                                ?.value ||
-                              'Has the Patient previously been with HCA?'
-                            }
-                            required={true}
-                            isError={errors?.previouslyBeenWithHCA ? true : false}
-                            errorMessage={errors?.previouslyBeenWithHCA?.message}
-                            options={props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions.map(
-                              (option: any) => (
-                                <option
-                                  key={option.id}
-                                  value={option?.fields?.Value?.value}
-                                >
-                                  {option?.fields?.Label?.value}
-                                </option>
-                              )
-                            )}
-                            register={register}
-                          />
-                        )}
+                        <SelectField
+                          id={'previouslyBeenWithHCA'}
+                          name={'previouslyBeenWithHCA'}
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormPreviouslyBeenWithHCALabel
+                              ?.value ||
+                            'Has the Patient previously been with HCA?'
+                          }
+                          required={true}
+                          isError={errors?.previouslyBeenWithHCA ? true : false}
+                          errorMessage={errors?.previouslyBeenWithHCA?.message}
+                          options={props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions.map(
+                            (option: any) => (
+                              <option
+                                key={option.id}
+                                value={option?.fields?.Value?.value}
+                              >
+                                {option?.fields?.Label?.value}
+                              </option>
+                            )
+                          )}
+                          register={register}
+                        />
+                      )}
                       {watchFormChanges.previouslyBeenWithHCA === 'Yes' && (
                         <>
                           <Text tag="h2" variation="body-medium-large">
@@ -1236,219 +1265,219 @@ export const Default = (props: StepProps): JSX.Element => {
                       )}
                       {(watchFormChanges.contactDetails ||
                         watchFormChanges.user === 'insurer') && (
-                          <>
-                            {watchFormChanges.user !== 'insurer' && (
-                              <TextField
-                                id={'representativeRelationToPatient'}
-                                label={
-                                  props?.fields
-                                    ?.LiveBookingFormRepresentativeRelationToPatientLabel
-                                    ?.value || 'Relation to the patient'
-                                }
-                                name={'representativeRelationToPatient'}
-                                // placeholder={
-                                //   props?.fields
-                                //     ?.LiveBookingFormRepresentativeRelationToPatientPlaceholder
-                                //     ?.value || ''
-                                // }
-                                required={
-                                  watchFormChanges.user === 'insurer'
-                                    ? false
-                                    : true
-                                }
-                                register={register}
-                                setValue={setValue}
-                                isError={
-                                  errors?.representativeRelationToPatient
-                                    ? true
-                                    : false
-                                }
-                                errorMessage={
-                                  errors?.representativeRelationToPatient?.message
-                                }
-                              />
+                        <>
+                          {watchFormChanges.user !== 'insurer' && (
+                            <TextField
+                              id={'representativeRelationToPatient'}
+                              label={
+                                props?.fields
+                                  ?.LiveBookingFormRepresentativeRelationToPatientLabel
+                                  ?.value || 'Relation to the patient'
+                              }
+                              name={'representativeRelationToPatient'}
+                              // placeholder={
+                              //   props?.fields
+                              //     ?.LiveBookingFormRepresentativeRelationToPatientPlaceholder
+                              //     ?.value || ''
+                              // }
+                              required={
+                                watchFormChanges.user === 'insurer'
+                                  ? false
+                                  : true
+                              }
+                              register={register}
+                              setValue={setValue}
+                              isError={
+                                errors?.representativeRelationToPatient
+                                  ? true
+                                  : false
+                              }
+                              errorMessage={
+                                errors?.representativeRelationToPatient?.message
+                              }
+                            />
+                          )}
+                          <SelectField
+                            id={'representativeTitle'}
+                            name={'representativeTitle'}
+                            label={
+                              props?.fields
+                                ?.LiveBookingFormRepresentativeTitleLabel
+                                ?.value || 'Title'
+                            }
+                            required={
+                              watchFormChanges.user === 'insurer' ? false : true
+                            }
+                            isError={errors?.representativeTitle ? true : false}
+                            errorMessage={errors?.representativeTitle?.message}
+                            options={props?.fields?.LiveBookingFormRepresentativeTitleOptions.map(
+                              (option: any) => (
+                                <option
+                                  key={option.id}
+                                  value={option?.fields?.Value?.value}
+                                >
+                                  {option?.fields?.Label?.value}
+                                </option>
+                              )
                             )}
-                            <SelectField
-                              id={'representativeTitle'}
-                              name={'representativeTitle'}
-                              label={
-                                props?.fields
-                                  ?.LiveBookingFormRepresentativeTitleLabel
-                                  ?.value || 'Title'
-                              }
-                              required={
-                                watchFormChanges.user === 'insurer' ? false : true
-                              }
-                              isError={errors?.representativeTitle ? true : false}
-                              errorMessage={errors?.representativeTitle?.message}
-                              options={props?.fields?.LiveBookingFormRepresentativeTitleOptions.map(
-                                (option: any) => (
-                                  <option
-                                    key={option.id}
-                                    value={option?.fields?.Value?.value}
-                                  >
-                                    {option?.fields?.Label?.value}
-                                  </option>
-                                )
-                              )}
-                              register={register}
-                            />
-                            <TextField
-                              id={'representativeFirstName'}
-                              label={
-                                props?.fields
-                                  ?.LiveBookingFormRepresentativeFirstNameLabel
-                                  ?.value || 'First Name'
-                              }
-                              name={'representativeFirstName'}
-                              // placeholder={
-                              //   props?.fields
-                              //     ?.LiveBookingFormRepresentativeFirstNamePlaceholder
-                              //     ?.value || ''
-                              // }
-                              required={
-                                watchFormChanges.user === 'insurer' ? false : true
-                              }
-                              register={register}
-                              setValue={setValue}
-                              isError={
-                                errors?.representativeFirstName ? true : false
-                              }
-                              errorMessage={
-                                errors?.representativeFirstName?.message
-                              }
-                            />
-                            <TextField
-                              id={'representativeLastName'}
-                              label={
-                                props?.fields
-                                  ?.LiveBookingFormRepresentativeLastNameLabel
-                                  ?.value || 'Last Name'
-                              }
-                              name={'representativeLastName'}
-                              // placeholder={
-                              //   props?.fields
-                              //     ?.LiveBookingFormRepresentativeLastNamePlaceholder
-                              //     ?.value || ''
-                              // }
-                              required={
-                                watchFormChanges.user === 'insurer' ? false : true
-                              }
-                              register={register}
-                              setValue={setValue}
-                              isError={
-                                errors?.representativeLastName ? true : false
-                              }
-                              errorMessage={
-                                errors?.representativeLastName?.message
-                              }
-                            />
-                            <TextField
-                              id={'representativeEmail'}
-                              label={
-                                props?.fields
-                                  ?.LiveBookingFormRepresentativeEmailLabel
-                                  ?.value || 'Email'
-                              }
-                              name={'representativeEmail'}
-                              type={'email'}
-                              // placeholder={
-                              //   props?.fields
-                              //     ?.LiveBookingFormRepresentativeEmailPlaceholder
-                              //     ?.value || ''
-                              // }
-                              required={
-                                watchFormChanges.user === 'insurer' ? false : true
-                              }
-                              register={register}
-                              setValue={setValue}
-                              isError={errors?.representativeEmail ? true : false}
-                              errorMessage={errors?.representativeEmail?.message}
-                            />
-                            <TextField
-                              id={'representativePhone'}
-                              label={
-                                props?.fields
-                                  ?.LiveBookingFormRepresentativePhoneLabel
-                                  ?.value || 'Phone'
-                              }
-                              name={'representativePhone'}
-                              // placeholder={
-                              //   props?.fields
-                              //     ?.LiveBookingFormRepresentativePhonePlaceholder
-                              //     ?.value || ''
-                              // }
-                              required={
-                                watchFormChanges.user === 'insurer' ? false : true
-                              }
-                              register={register}
-                              setValue={setValue}
-                              isError={errors?.representativePhone ? true : false}
-                              errorMessage={errors?.representativePhone?.message}
-                            />
-                          </>
-                        )}
+                            register={register}
+                          />
+                          <TextField
+                            id={'representativeFirstName'}
+                            label={
+                              props?.fields
+                                ?.LiveBookingFormRepresentativeFirstNameLabel
+                                ?.value || 'First Name'
+                            }
+                            name={'representativeFirstName'}
+                            // placeholder={
+                            //   props?.fields
+                            //     ?.LiveBookingFormRepresentativeFirstNamePlaceholder
+                            //     ?.value || ''
+                            // }
+                            required={
+                              watchFormChanges.user === 'insurer' ? false : true
+                            }
+                            register={register}
+                            setValue={setValue}
+                            isError={
+                              errors?.representativeFirstName ? true : false
+                            }
+                            errorMessage={
+                              errors?.representativeFirstName?.message
+                            }
+                          />
+                          <TextField
+                            id={'representativeLastName'}
+                            label={
+                              props?.fields
+                                ?.LiveBookingFormRepresentativeLastNameLabel
+                                ?.value || 'Last Name'
+                            }
+                            name={'representativeLastName'}
+                            // placeholder={
+                            //   props?.fields
+                            //     ?.LiveBookingFormRepresentativeLastNamePlaceholder
+                            //     ?.value || ''
+                            // }
+                            required={
+                              watchFormChanges.user === 'insurer' ? false : true
+                            }
+                            register={register}
+                            setValue={setValue}
+                            isError={
+                              errors?.representativeLastName ? true : false
+                            }
+                            errorMessage={
+                              errors?.representativeLastName?.message
+                            }
+                          />
+                          <TextField
+                            id={'representativeEmail'}
+                            label={
+                              props?.fields
+                                ?.LiveBookingFormRepresentativeEmailLabel
+                                ?.value || 'Email'
+                            }
+                            name={'representativeEmail'}
+                            type={'email'}
+                            // placeholder={
+                            //   props?.fields
+                            //     ?.LiveBookingFormRepresentativeEmailPlaceholder
+                            //     ?.value || ''
+                            // }
+                            required={
+                              watchFormChanges.user === 'insurer' ? false : true
+                            }
+                            register={register}
+                            setValue={setValue}
+                            isError={errors?.representativeEmail ? true : false}
+                            errorMessage={errors?.representativeEmail?.message}
+                          />
+                          <TextField
+                            id={'representativePhone'}
+                            label={
+                              props?.fields
+                                ?.LiveBookingFormRepresentativePhoneLabel
+                                ?.value || 'Phone'
+                            }
+                            name={'representativePhone'}
+                            // placeholder={
+                            //   props?.fields
+                            //     ?.LiveBookingFormRepresentativePhonePlaceholder
+                            //     ?.value || ''
+                            // }
+                            required={
+                              watchFormChanges.user === 'insurer' ? false : true
+                            }
+                            register={register}
+                            setValue={setValue}
+                            isError={errors?.representativePhone ? true : false}
+                            errorMessage={errors?.representativePhone?.message}
+                          />
+                        </>
+                      )}
                     </Container>
                     {/* Marketing preferences */}
                     {/* hide if insurer */}
                     {(watchFormChanges.user === 'patient' ||
                       watchFormChanges.user === 'medicalsecretary') && (
-                        <MarketingPreferences
-                          headline={
+                      <MarketingPreferences
+                        headline={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesHeadline?.value
+                        }
+                        text={
+                          <JssRichText
+                            field={
+                              props.fields
+                                .LiveBookingFormMarketingPreferencesText
+                            }
+                          />
+                        }
+                      >
+                        <Checkbox
+                          label={
                             props?.fields
-                              ?.LiveBookingFormMarketingPreferencesHeadline?.value
+                              ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                              ?.value || ''
                           }
-                          text={
-                            <JssRichText
-                              field={
-                                props.fields
-                                  .LiveBookingFormMarketingPreferencesText
-                              }
-                            />
+                          name={'marketingPreferenceEmail'}
+                          id={'marketingPreferenceEmail'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                              ?.value || ''
                           }
-                        >
-                          <Checkbox
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
-                                ?.value || ''
-                            }
-                            name={'marketingPreferenceEmail'}
-                            id={'marketingPreferenceEmail'}
-                            register={register}
-                          />
-                          <Checkbox
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
-                                ?.value || ''
-                            }
-                            name={'marketingPreferencePhone'}
-                            id={'marketingPreferencePhone'}
-                            register={register}
-                          />
-                          <Checkbox
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
-                                ?.value || ''
-                            }
-                            name={'marketingPreferenceSMS'}
-                            id={'marketingPreferenceSMS'}
-                            register={register}
-                          />
-                          <Checkbox
-                            label={
-                              props?.fields
-                                ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
-                                ?.value || ''
-                            }
-                            name={'marketingPreferencePost'}
-                            id={'marketingPreferencePost'}
-                            register={register}
-                          />
-                        </MarketingPreferences>
-                      )}
+                          name={'marketingPreferencePhone'}
+                          id={'marketingPreferencePhone'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferenceSMS'}
+                          id={'marketingPreferenceSMS'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferencePost'}
+                          id={'marketingPreferencePost'}
+                          register={register}
+                        />
+                      </MarketingPreferences>
+                    )}
                     <Container marginBottom="spacing-6">
                       <ReCAPTCHA
                         sitekey={
