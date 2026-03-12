@@ -14,6 +14,10 @@ $breakpoints: (
   @return null;
 }
 
+$cq-medium: 37.5rem;
+$cq-large: 55rem;
+$cq-xlarge: 90rem;
+
 @mixin media($breakpoint, $direction: min) {
   $breakpoint-value: get-breakpoint($breakpoint);
 

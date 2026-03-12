@@ -101,14 +101,14 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           </Text>
         }
         header={
-          <>
+          props.fields?.Title?.value ? (
             <Text
               tag={headingTag}
               variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssRichText tag="span" field={props.fields?.Title} />
             </Text>
-          </>
+          ) : undefined
         }
         image={
           <NextJssImage

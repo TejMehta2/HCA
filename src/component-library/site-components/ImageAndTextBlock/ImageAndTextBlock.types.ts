@@ -9,7 +9,7 @@ export type iconList = {
 }[];
 
 export interface ImageAndTextBlockProps {
-  header: ReactNode | JSX.Element;
+  header?: ReactNode | JSX.Element;
   image: ReactNode | JSX.Element;
   children: ReactNode | JSX.Element;
   subheader?: ReactNode | JSX.Element;
