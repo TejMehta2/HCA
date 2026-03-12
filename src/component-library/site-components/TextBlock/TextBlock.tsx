@@ -2,6 +2,7 @@ import React from 'react';
 import { TextBlockProps } from './TextBlock.types';
 import styles from './TextBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';
+import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 const TextBlock = (props: TextBlockProps): JSX.Element => {
   const {
@@ -16,11 +17,15 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
     tableOfContentTitle,
     id,
   } = props;
+
+  const columnContext = useColumnSplitterContext();
+  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
+
   return (
     <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles.wrapper}>
         {image && <div className={styles.image}>{image}</div>}
-        <div className={styles.grid}>
+        <div className={`${hasMultipleColumns ? '' : styles.grid}`}>
           <div
             className={[
               styles.content,

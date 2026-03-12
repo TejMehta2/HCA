@@ -124,6 +124,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
       </Head>
       <Breadcrumbs
         theme={props.params?.Theme || 'A-HCA-White'}
+        collapse={true}
         backCta={{
           link: combinedList[1].url?.url,
           text: combinedList[1].displayName,
