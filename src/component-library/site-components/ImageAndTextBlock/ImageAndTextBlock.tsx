@@ -5,6 +5,7 @@ import styles from './ImageAndTextBlock.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
+import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   const {
@@ -30,10 +31,12 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     id,
     tableOfContentTitle,
     locationCookies,
-    showRegion
+    showRegion,
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const columnContext = useColumnSplitterContext();
+  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
   const hasImage = Boolean(image);
 
   // If there is no image at all, avoid applying image-right desktop reordering rules.
@@ -48,6 +51,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
         <div
           className={[
             styles.wrapper,
+            hasMultipleColumns ? styles['use-container-queries'] : '',
             iconList ? styles['icon-list-wrapper'] : '',
             contentVariation ? styles[contentVariation] : '',
           ].join(' ')}
@@ -85,9 +89,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               ].join(' ')}
               data-animate="l"
             >
-              {subheader && (
-                <div className={styles.subheader}>{subheader}</div>
-              )}
+              {subheader && <div className={styles.subheader}>{subheader}</div>}
 
               {showRegion && (
                 <div className={styles.location}>
@@ -104,7 +106,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                   </TextButton>
                 </div>
               )}
-              <div className={styles.header}>{header}</div>
+              {header && <div className={styles.header}>{header}</div>}
               {children && <div className={styles.children}>{children}</div>}
 
               {ctas && (
