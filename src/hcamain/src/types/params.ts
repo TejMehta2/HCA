@@ -52,5 +52,6 @@ interface Params {
   DisableHeadersToggle?: '1' | '0'; // Appears only on images in IntroBlock and ImageAndTextBlock
   HeadingBeforeTitle?: '1' | '0';
   NoLogo?: '1' | '0';
+  ExtractH2Links?: '1' | '0'; //Used on Blog Text to extrat Table of contents links directly from content
 }
 export default Params;
