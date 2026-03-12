@@ -116,8 +116,8 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
           {props.fields?.data?.contextItem?.category?.targetItems?.map(
             (categoryItem, index) =>
               categoryItem?.name ? (
-                <Themes theme="M-HCA-Goldenrod-20">
-                  <Tags contentVariation="quote" key={categoryItem.id ?? index}>
+                <Themes theme="M-HCA-Goldenrod-20" key={index}>
+                  <Tags contentVariation="quote">
                     <Link
                       href={
                         props.fields?.data?.settings?.blogSearchResultsBaseUrl
