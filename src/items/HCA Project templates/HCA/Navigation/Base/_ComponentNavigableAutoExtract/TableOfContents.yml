@@ -1,27 +1,16 @@
 ﻿---
-ID: "64f4deaf-3fef-4e18-898d-d47bc3643b5f"
-Parent: "adb4efc9-eaba-43bd-afb5-62bf6d566f40"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigable/Content In-Page Navigation/TableOfContentsLinkTitle"
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
+ID: "99133ece-688c-4986-be56-c363b108609b"
+Parent: "d7f5c869-a4c0-4f54-980c-4ac59bd6bdce"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigableAutoExtract/TableOfContents
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Table of contents link title
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20241128T165314Z
+      Value: 20241128T165202Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "794d532f-fb4c-440b-9da9-9f9fdfeabb95"
+      Value: "c51c5842-60ba-4b3f-b159-38f6af4d646b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T165352Z
+      Value: 20260312T131325Z
