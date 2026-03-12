@@ -16,6 +16,7 @@ export const generateHtmlSafeId = (title: string | undefined) => {
   const safeId = source
     .trim()
     .toLowerCase()
+    .replace(/^\d+/, '')         // REMOVE numbers from the very start
     .replace(/[^a-z0-9\s-]/g, '') // Remove invalid characters.
     .replace(/\s+/g, '-') // Replace spaces with hyphens.
     .replace(/^-+|-+$/g, ''); // Trim leading/trailing hyphens.
