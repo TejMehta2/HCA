@@ -2,7 +2,7 @@
 ID: "adb4efc9-eaba-43bd-afb5-62bf6d566f40"
 Parent: "acf7c5bc-ad93-4783-98a9-2f906b8dd7c0"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: "/sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigable/Content In-Page Navigation"
+Path: /sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigable/TableOfContents
 Languages:
 - Language: en
   Versions:
@@ -21,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "71721395-7db4-47be-b2a1-3a33050e028f"
+      Value: "4fbac6df-cb2c-4b72-bab1-3e141462da52"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T165314Z
+      Value: 20260312T131206Z
