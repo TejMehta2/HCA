@@ -40,13 +40,6 @@ export const Default = (props: BlogTextProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
-  if (!props.fields) {
-    return <BlogTextDefaultComponent {...props} />;
-  }
-
-  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
-
   // Update H2 tag in the Rich Text field value if not in Editing mode
   const processedField = useMemo(() => {
     const rawValue = props.fields?.Text?.value;
@@ -54,9 +47,9 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     if (
       isExperienceEditor ||
       !rawValue ||
-      props.params?.ExtractH2Links !== '1'
+      props?.params?.ExtractH2Links !== '1'
     ) {
-      return props.fields?.Text;
+      return props?.fields?.Text;
     }
 
     const transformedValue = rawValue.replace(
@@ -70,10 +63,17 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     );
 
     return {
-      ...props.fields?.Text,
+      ...props?.fields?.Text,
       value: transformedValue,
     };
-  }, [props.fields?.Text, isExperienceEditor]);
+  }, [props?.fields?.Text, props?.params?.ExtractH2Links, isExperienceEditor]);
+
+  if (!props.fields) {
+    return <BlogTextDefaultComponent {...props} />;
+  }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
   return (
     <BlogContent
