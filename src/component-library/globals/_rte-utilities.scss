@@ -24,17 +24,21 @@
 }
 
 .circle li {
+  align-items: flex-start;
   counter-increment: step;
   display: flex;
-  align-items: center;
   column-gap: px-to-rem(12);
   @include apply-body-medium;
+
+  @include media(screen-l) {
+    align-items: center;
+  }
 }
 
 .circle li::before {
   content: counter(step);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: px-to-rem(32);
   height: px-to-rem(32);
@@ -42,10 +46,6 @@
   border-radius: 50%;
   background-color: $teal-100;
   color: var(--text);
-
-  @include media(screen-m) {
-    align-items: center;
-  }
 }
 
 /* Utility classes to override specific imported HTML */
