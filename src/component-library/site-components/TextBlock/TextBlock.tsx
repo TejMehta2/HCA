@@ -23,7 +23,9 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
 
   return (
     <Themes id={id} theme={theme} tableOfContentTitle={tableOfContentTitle}>
-      <div className={styles.wrapper}>
+      <div
+        className={`${hasMultipleColumns ? [styles.wrapper, styles['wrapper-rounded']].join(' ') : styles.wrapper}`}
+      >
         {image && <div className={styles.image}>{image}</div>}
         <div className={`${hasMultipleColumns ? '' : styles.grid}`}>
           <div
