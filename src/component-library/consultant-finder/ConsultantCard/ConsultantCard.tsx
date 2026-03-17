@@ -86,7 +86,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           <div className={styles.reviews}>
             <Reviews
               reviewsTotal={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
-              reviewsCount={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
+              reviewsCount={ignoreReviews ? 0 : (props.reviewsCount || 0)}
               isConsultantProfileReviews={false}
               hasTooltip={false}
               tooltipContent={'tooltip'}
