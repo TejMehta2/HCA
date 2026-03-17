@@ -5,8 +5,13 @@ import styles from './TermsConditionsCards.module.scss';
 const TermsConditionsCards = (
   props: TermsConditionsCardsProps
 ): JSX.Element => {
-  const { children } = props;
-  return <div className={styles.terms}>{children}</div>;
+  const { children, acceptBtn } = props;
+  return (
+    <div className={styles['terms-wrapper']}>
+      <div className={styles.terms}>{children}</div>
+      <div className={styles.accept}>{acceptBtn}</div>
+    </div>
+  )
 };
 
 export default TermsConditionsCards;

@@ -1,6 +1,10 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+.terms-wrapper {
+  margin: $spacing-7 0;
+}
+
 .terms {
   @include responsive-container;
   @include responsive-grid;
@@ -8,11 +12,23 @@
   margin-top: $spacing-8;
   margin-bottom: px-to-rem(100);
 
-  > div {
-    @include responsive-grid-span(
-      $default: 6,
+  @include media(screen-l) {
+    margin-bottom: $spacing-6;
+  }
+
+  >div {
+    @include responsive-grid-span($default: 6,
       $breakpoint-m: 6,
-      $breakpoint-l: 6
-    );
+      $breakpoint-l: 6);
+  }
+}
+
+.accept {
+  display: none;
+
+  @include media(screen-l) {
+    display: flex;
+    margin: 0 $spacing-14;
+    justify-content: flex-end;
   }
 }

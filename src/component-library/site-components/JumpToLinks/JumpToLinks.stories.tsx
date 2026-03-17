@@ -1,5 +1,9 @@
 import React from 'react';
-import JumpToLinks, { JumpToAnchor, JumpToLink } from './JumpToLinks';
+import JumpToLinks, {
+  JumpToAnchor,
+  JumpToLink,
+  JumpToTextLink,
+} from './JumpToLinks';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
@@ -131,6 +135,72 @@ export const Anchors: StoryObj<typeof JumpToLinks> = {
       <Themes theme="A-HCA-White">
         <Story />
       </Themes>
+    ),
+  ],
+};
+
+export const TextLinkAnchors: StoryObj<typeof JumpToLinks> = {
+  args: {
+    variation: 'stacked',
+    isSticky: true,
+    mobileHeading: 'On this page',
+    heading: <Text variation="body-bold-large">Jump To</Text>,
+    children: (
+      <>
+        <JumpToTextLink>
+          <a href="#intro">
+            <span>Introduction</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#link1">
+            <span>Link 1</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#link2">
+            <span>Link 2</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#link3">
+            <span>Link 3</span>
+          </a>
+        </JumpToTextLink>
+        <JumpToTextLink>
+          <a href="#link4">
+            <span>link 4</span>
+          </a>
+        </JumpToTextLink>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: 4000, display: 'grid', grid: 'auto / 2fr 1fr' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div id="intro" style={{ height: 600, background: 'lightblue' }}>
+            intro
+          </div>
+          <div id="link1" style={{ height: 600, background: 'lightpink' }}>
+            Link 1
+          </div>
+          <div id="link2" style={{ height: 600, background: 'lightgray' }}>
+            Link 2
+          </div>
+          <div id="link3" style={{ height: 700, background: 'lightgreen' }}>
+            Link 3
+          </div>
+          <div id="link4" style={{ height: 500, background: 'lightblue' }}>
+            Link 4
+          </div>
+        </div>
+        <div style={{ height: '100%' }}>
+          <Themes theme="A-HCA-White">
+            <Story />
+          </Themes>
+        </div>
+      </div>
     ),
   ],
 };

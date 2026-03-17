@@ -13,4 +13,14 @@ export interface SlotsCalendarProps {
   viewMapText: string;
   chooseTimeHeading: string;
   shortNoticeIcon: any;
+  slug?: any;
+  gmcNumber?: any;
+  reviewsTotal?: any;
+  name?: string;
+  backLinkHref?: any;
+  backLinkText?: string;
+  modalRef: any;
+  resultsLink?: string;
+  search?: string;
+  keywordId?: string;
 }

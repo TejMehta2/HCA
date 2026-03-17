@@ -13,6 +13,8 @@ interface ConsultantFinderContextType {
   setSearchStringConsultantName: React.Dispatch<React.SetStateAction<string>>;
   searchStringPayment: string;
   setSearchStringPayment: React.Dispatch<React.SetStateAction<string>>;
+  searchStringLocations: string;
+  setSearchStringLocations: React.Dispatch<React.SetStateAction<string>>;
   isSelfPayment: boolean;
   setIsSelfPayment: React.Dispatch<React.SetStateAction<boolean>>;
   selectedTypeOfAppointment: string;
@@ -33,6 +35,8 @@ interface ConsultantFinderContextType {
   setLat: React.Dispatch<React.SetStateAction<string>>;
   lon: string;
   setLon: React.Dispatch<React.SetStateAction<string>>;
+  distance: number;
+  setDistance: React.Dispatch<React.SetStateAction<number>>;
   selectedDate: string;
   setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
   selectedTime: string;
@@ -61,71 +65,79 @@ interface ConsultantFinderContextType {
   setFinderFormPrevious: React.Dispatch<React.SetStateAction<string>>;
   completedFormId: string;
   setCompletedFormId: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocationConsultants: string;
+  setSelectedLocationConsultants: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
   createContext<ConsultantFinderContextType>({
     message: '',
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setMessage: () => {},
+    setMessage: () => { },
     searchString: '',
-    setSearchString: () => {},
+    setSearchString: () => { },
     keywordId: 0,
-    setKeywordId: () => {},
+    setKeywordId: () => { },
+    distance: 0,
+    setDistance: () => { },
     consultantSlug: '',
-    setConsultantSlug: () => {},
+    setConsultantSlug: () => { },
     searchStringConsultantName: '',
-    setSearchStringConsultantName: () => {},
+    setSearchStringConsultantName: () => { },
     searchStringPayment: '',
-    setSearchStringPayment: () => {},
+    setSearchStringPayment: () => { },
     isSelfPayment: false,
-    setIsSelfPayment: () => {},
+    setIsSelfPayment: () => { },
     selectedTypeOfAppointment: '',
-    setSelectedTypeOfAppointment: () => {},
+    setSelectedTypeOfAppointment: () => { },
     selectedLocation: '',
-    setSelectedLocation: () => {},
+    setSelectedLocation: () => { },
     fristAppointmentDate: '',
-    setFirstAppointmentDate: () => {},
+    setFirstAppointmentDate: () => { },
     consultantGUID: '',
-    setConsultantGUID: () => {},
+    setConsultantGUID: () => { },
     locationGUID: '',
-    setLocationGUID: () => {},
+    setLocationGUID: () => { },
     lon: '',
-    setLon: () => {},
+    setLon: () => { },
     lat: '',
-    setLat: () => {},
+    setLat: () => { },
     selectedDate: '',
-    setSelectedDate: () => {},
+    setSelectedDate: () => { },
     selectedTime: '',
-    setSelectedTime: () => {},
+    setSelectedTime: () => { },
     selectedLocationName: '',
-    setSelectedLocationName: () => {},
+    setSelectedLocationName: () => { },
     isBookableContent: true,
-    setIsBookableContent: () => {},
+    setIsBookableContent: () => { },
     hcaConsultantID: '',
-    setHcaConsultantID: () => {},
+    setHcaConsultantID: () => { },
     locationID: '',
-    setLocationID: () => {},
+    setLocationID: () => { },
     startTime: '',
-    setStartTime: () => {},
+    setStartTime: () => { },
     consultantName: '',
-    setConsultantName: () => {},
+    setConsultantName: () => { },
     consultantMainSpecialty: '',
-    setConsultantMainSpecialty: () => {},
+    setConsultantMainSpecialty: () => { },
     patientName: '',
-    setPatientName: () => {},
+    setPatientName: () => { },
     selectedLocations: [],
-    setSelectedLocations: () => {},
+    setSelectedLocations: () => { },
     selectedInsurerPaymentStep: null,
-    setSelectedInsurerPaymentStep: () => {},
+    setSelectedInsurerPaymentStep: () => { },
     consultantReviews: '',
-    setConsultantReviews: () => {},
+    setConsultantReviews: () => { },
     finderFormPayor: '',
-    setFinderFormPayor: () => {},
+    setFinderFormPayor: () => { },
     finderFormPrevious: '',
-    setFinderFormPrevious: () => {},
+    setFinderFormPrevious: () => { },
     completedFormId: '',
-    setCompletedFormId: () => {},
+    setCompletedFormId: () => { },
+    searchStringLocations: '',
+    setSearchStringLocations: () => { },
+    selectedLocationConsultants: '',
+    setSelectedLocationConsultants: () => { }
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -167,7 +179,9 @@ export const ConsultantFinderContextProvider = ({
   const [finderFormPayor, setFinderFormPayor] = useState<string>('');
   const [finderFormPrevious, setFinderFormPrevious] = useState<string>('');
   const [completedFormId, setCompletedFormId] = useState<string>('');
-
+  const [searchStringLocations, setSearchStringLocations] = useState<string>('Anywhere');
+  const [selectedLocationConsultants, setSelectedLocationConsultants] = useState<string>('Anywhere');
+  const [distance, setDistance] = useState<number>(0);
   return (
     <ConsultantFinderContext.Provider
       value={{
@@ -199,6 +213,8 @@ export const ConsultantFinderContextProvider = ({
         setLat,
         lon,
         setLon,
+        distance,
+        setDistance,
         selectedDate,
         setSelectedDate,
         selectedTime,
@@ -231,6 +247,10 @@ export const ConsultantFinderContextProvider = ({
         setFinderFormPrevious,
         completedFormId,
         setCompletedFormId,
+        searchStringLocations,
+        setSearchStringLocations,
+        selectedLocationConsultants,
+        setSelectedLocationConsultants,
       }}
     >
       {children}

@@ -106,7 +106,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log('value input', e.target.value);
+    console.log('value input', e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
@@ -156,6 +156,9 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
               props.insuranceProvidersFilterHeaderText
             }
             loadingText={props.loadingText}
+            nextLink={props.nextLink}
+            setShowContinueBtn={props.setShowContinueBtn}
+            search={props.search}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

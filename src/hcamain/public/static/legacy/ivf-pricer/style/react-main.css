@@ -753,6 +753,7 @@ table {
 }
 
 .ivf-calculator-summary-box-costs-col--total {
+    font-size: 16px;
     padding: 30px 0
 }
 
@@ -778,7 +779,7 @@ table {
 
 @media (min-width:992px) {
     .ivf-calculator-summary-box-costs-col-total {
-        font-size: 28px;
+        font-size: 22px;
         line-height: 34px
     }
 }
