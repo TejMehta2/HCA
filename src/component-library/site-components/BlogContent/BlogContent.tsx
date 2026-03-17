@@ -19,7 +19,10 @@ const BlogContent = (props: BlogContentProps): JSX.Element => {
 
   return (
     <Themes theme={theme} tableOfContentTitle={tableOfContentTitle}>
-      <div className={styles.wrapper} id={id}>
+      <div
+        className={`${hasMultipleColumns ? [styles.wrapper, styles['wrapper-rounded']].join(' ') : styles.wrapper}`}
+        id={id}
+      >
         <div
           className={`${hasMultipleColumns ? '' : styles.container} ${
             contentVariation ? styles[contentVariation + '-block'] : ''

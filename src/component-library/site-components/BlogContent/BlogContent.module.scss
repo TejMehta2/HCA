@@ -8,6 +8,12 @@
   padding-bottom: $spacing-12;
 }
 
+.wrapper-rounded {
+  img {
+    border-radius: $radius-medium;
+  }
+}
+
 .container {
   @include responsive-container;
   @include responsive-grid;
