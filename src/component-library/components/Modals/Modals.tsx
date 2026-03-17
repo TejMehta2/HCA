@@ -34,9 +34,28 @@ const Modals = (
 
   const { t } = useI18n() || { t: (args: unknown) => args };
 
-  // const Overlay = () => (
-  //   <div className={overlay} aria-hidden="true" />
-  // );
+  const Overlay = () => (
+    <button
+      data-focus-anchor="true"
+      type="button"
+      aria-hidden="true"
+      tabIndex={-1}
+      style={{
+        position: 'absolute',
+        width: '1px',
+        height: '1px',
+        padding: 0,
+        margin: 0,
+        border: 0,
+        overflow: 'hidden',
+        clipPath: 'inset(50%)',
+        whiteSpace: 'nowrap',
+        pointerEvents: 'none',
+      }}
+    >
+      focus anchor
+    </button>
+  );
 
   const CloseButton = () => (
     <div className={close}>
@@ -113,28 +132,7 @@ const Modals = (
         }
       }}
     >
-      {/* <Overlay /> */}
-
-      <button
-        data-focus-anchor="true"
-        type="button"
-        aria-hidden="true"
-        tabIndex={-1}
-        style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          padding: 0,
-          margin: 0,
-          border: 0,
-          overflow: 'hidden',
-          clipPath: 'inset(50%)',
-          whiteSpace: 'nowrap',
-          pointerEvents: 'none',
-        }}
-      >
-        focus anchor
-      </button>
+      <Overlay />
 
       <div
         className={[
