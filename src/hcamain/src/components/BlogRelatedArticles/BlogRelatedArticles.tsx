@@ -76,11 +76,6 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
       (card, index) => {
-        const formattedArticleId =
-          card.articleType?.targetItem?.id &&
-          card.articleType?.targetItem?.id
-            .replaceAll(/[{},\-]/g, '')
-            .toLowerCase();
         return (
           <CardBlog key={index}>
             {card.abstractImage?.jsonValue?.value?.src ? (
@@ -130,11 +125,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             <div>
               {!!card.articleType && (
                 <Tags>
-                  <a
-                    href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}
-                  >
-                    <JssText field={card.articleType?.targetItem?.title} />
-                  </a>
+                  <JssText
+                    tag="span"
+                    field={card.articleType?.targetItem?.title}
+                  />
                 </Tags>
               )}
             </div>
@@ -206,11 +200,16 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.Title?.value
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
 
-  const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
-    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
-    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+  const href = props.fields?.data?.item?.cTALink?.jsonValue?.value?.href;
+
+  const viewAllCta = href
+    ? props.fields?.data?.item?.articles?.ArticlesList?.length
+      ? href
+      : `${href}${ctaQuery}`
+    : undefined;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -219,7 +218,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       title={
         <Text
           tag={headingTag}
@@ -302,7 +304,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     .map(([key, nestedValue]) => [
       key,
       nestedValue?.value &&
-      nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
     ]);
 
   const contextSearchIdParams = Object.entries(

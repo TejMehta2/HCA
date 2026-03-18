@@ -106,7 +106,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -115,7 +116,10 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       title={
         <Text
           tag={headingTag}
@@ -172,7 +176,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         return (
           <CardBlog key={card.id}>
             {card.abstractImage?.jsonValue.value?.src &&
-              card.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
+            card.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
               <Image
                 src={card.abstractImage?.jsonValue?.value?.src || ''}
                 alt={
@@ -216,7 +220,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
                       {card.articleType.targetItem.title?.value}
                     </a>
                   ) : (
-                    <> {card.articleType.targetItem.title?.value}</>
+                    <span>{card.articleType.targetItem.title?.value}</span>
                   )}
                 </Tags>
               )}
@@ -242,13 +246,17 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     componentTitle
   );
 
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   return (
     <>
       <DynamicCardBlogBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}
@@ -291,8 +299,8 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               variation={isFeature ? 'feature' : 'default'}
             >
               {isFeature &&
-                card.abstractImage?.jsonValue?.value?.src &&
-                card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
+              card.abstractImage?.jsonValue?.value?.src &&
+              card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
                 <Image
                   src={card.abstractImage?.jsonValue?.value?.src || ''}
                   alt={
