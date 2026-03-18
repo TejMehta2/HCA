@@ -238,7 +238,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     primaryImageUrl,
                     url,
                     date,
-                    typeId,
                     typeName,
                   } = data;
 
@@ -267,7 +266,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                       <div>
                         {!!typeName && (
                           <Tags>
-                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                            <span>{typeName}</span>
                           </Tags>
                         )}
                       </div>
