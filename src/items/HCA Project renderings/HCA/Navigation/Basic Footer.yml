@@ -1,4 +1,4 @@
----
+﻿---
 ID: "fee5403d-f7e8-423f-bb3b-125dd86ae1fc"
 Parent: "7fb4a828-9c62-4c05-96c5-703552426004"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
@@ -19,38 +19,38 @@ SharedFields:
           logo {
             jsonValue
           }
-
+    
           linksFolder {
             targetItem {
               ...NavigationLinksListFragment
             }
           }
-
+    
           copyright {
             value
           }
         }
       }
     }
-
+    
     fragment NavigationLinksListFragment on NavigationLinksList {
       title {
         value
       }
-
+    
       links {
         targetItems {
           ...NavigationLinkFragment
         }
       }
     }
-
+    
     fragment NavigationLinkFragment on NavigationLink {
       link {
         jsonValue
       }
     }
-
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Navigation/Basic Footer
@@ -59,7 +59,7 @@ SharedFields:
   Value: 0
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value:
+  Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{503D54F1-5C01-4B79-AB6F-C1CD48F48AED}"
@@ -68,7 +68,10 @@ SharedFields:
   Value: "query:$site/*[@@name='Data']/*[@@templatename='Basic Footer Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Basic Footer Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
-  Value:
+  Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8d8d9c8c-3321-461b-b2cf-35e02e37315c"
 Languages:
 - Language: en
   Versions:
@@ -87,11 +90,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fee5403d-f7e8-423f-bb3b-125dd86ae1fc"
+      Value: "469d48cb-1e3c-4b52-a779-6ef784127482"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260312T000000Z
+      Value: 20260319T212156Z
