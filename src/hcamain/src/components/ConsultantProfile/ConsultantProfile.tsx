@@ -53,7 +53,9 @@ export const Default = (props: ConsultantProfileProps): JSX.Element => {
   const buttonSize: ButtonProps['size'] = 'large';
 
   return (
-    <div className={`component consultant-profile ${props.params?.styles || ''}`}>
+    <div
+      className={`component consultant-profile ${props.params?.styles || ''}`}
+    >
       <div className="component-content">
         {props.fields?.Profile && (
           <ProfilePageSection>
