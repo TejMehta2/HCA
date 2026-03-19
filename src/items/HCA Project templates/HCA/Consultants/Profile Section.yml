@@ -1,4 +1,4 @@
----
+﻿---
 ID: "c8614e39-3d62-4a84-9c6e-286692054711"
 Parent: "49bac547-99dc-4c14-a4eb-3255c2996223"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
@@ -9,7 +9,10 @@ SharedFields:
   Value: Office/32x32/elements_tree.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-C817C50D9CB0}"
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "957406ec-4850-4ddf-8912-e761a44f3d5b"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
   Value: "{3B636381-B7EF-4B4C-ADB8-E08D77258B46}"
@@ -31,11 +34,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c8614e39-3d62-4a84-9c6e-286692054711"
+      Value: "e5ff2e2c-1aa8-418a-8310-4f512c536d3f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260312T000000Z
+      Value: 20260319T221634Z

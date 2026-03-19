@@ -1,4 +1,4 @@
----
+﻿---
 ID: "837158a3-9575-47de-aa2f-00500d26f3d4"
 Parent: "7bfcaa48-b14e-45df-9c72-d01460580782"
 Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
@@ -10,6 +10,9 @@ SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 500
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "84c7e32a-4997-4e53-b53f-fc2c8ce8a5af"
 - ID: "e391b526-d0c5-439d-803e-17512eae6222"
   Hint: Allowed Controls
   Value: |

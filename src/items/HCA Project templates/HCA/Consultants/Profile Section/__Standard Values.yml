@@ -1,4 +1,4 @@
----
+﻿---
 ID: "3b636381-b7ef-4b4c-adb8-e08d77258b46"
 Parent: "c8614e39-3d62-4a84-9c6e-286692054711"
 Template: "c8614e39-3d62-4a84-9c6e-286692054711"
@@ -8,24 +8,29 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "00f82130-2640-4b94-b4f1-16ce7d6e2269"
+      Hint: Title
+      Value: $name
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20260312T000000Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\Admin
+    - ID: "4c346442-e859-4efd-89b2-44aedf467d21"
+      Hint: __Valid to
+      Value: 
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3b636381-b7ef-4b4c-adb8-e08d77258b46"
+      Value: "ab567d0c-a561-44bd-b41c-e35f053dddb9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c8f93afe-bfd4-4e8f-9c61-152559854661"
+      Hint: __Valid from
+      Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260312T000000Z
+      Value: 20260319T222004Z

@@ -1,4 +1,4 @@
----
+﻿---
 ID: "2343f39e-150c-4583-8967-c593bcf1b76a"
 Parent: "0e7c5fce-6972-4590-adba-6c4365ba77f3"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
@@ -7,13 +7,12 @@ SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
   Value: ConsultantHeader
+- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
+  Hint: Placeholders
+  Value: "{837158A3-9575-47DE-AA2F-00500D26F3D4}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
-- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
-  Hint: Placeholders
-  Value: |
-    {837158A3-9575-47DE-AA2F-00500D26F3D4}
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
@@ -32,22 +31,25 @@ SharedFields:
     }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value:
+  Value: 
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value:
+  Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{D4706420-3DF1-4009-8C25-9C306D91BD1E}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value:
+  Value: 
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
-  Value:
+  Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "81d0b94a-005d-4a97-9564-bc65c9c409f7"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true

@@ -1,4 +1,4 @@
----
+﻿---
 ID: "e0b26262-d889-43df-9e94-2f797ea6321a"
 Parent: "49bac547-99dc-4c14-a4eb-3255c2996223"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
@@ -6,10 +6,13 @@ Path: /sitecore/templates/Project/HCA/Consultants/Consultant Profile
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/address_card.png
+  Value: office/32x32/document_pulse.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-C817C50D9CB0}"
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "1648f344-9bcf-40af-a3bf-c77063bcb9b9"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
   Value: "{41338B50-A5D8-4A33-A8E2-D1F8E25ACA1F}"
@@ -31,11 +34,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e0b26262-d889-43df-9e94-2f797ea6321a"
+      Value: "752ad749-82c8-4078-8d97-23fbbec31f08"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260312T000000Z
+      Value: 20260319T221419Z

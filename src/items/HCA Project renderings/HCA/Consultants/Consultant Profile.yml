@@ -1,4 +1,4 @@
----
+﻿---
 ID: "c9d30732-200f-4bdc-b588-75380b7942ae"
 Parent: "0e7c5fce-6972-4590-adba-6c4365ba77f3"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
@@ -7,13 +7,12 @@ SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
   Value: ConsultantProfile
+- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
+  Hint: Placeholders
+  Value: "{837158A3-9575-47DE-AA2F-00500D26F3D4}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
-- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
-  Hint: Placeholders
-  Value: |
-    {837158A3-9575-47DE-AA2F-00500D26F3D4}
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Consultants/Consultant Profile
@@ -22,7 +21,7 @@ SharedFields:
   Value: 0
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value:
+  Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{D4706420-3DF1-4009-8C25-9C306D91BD1E}"
@@ -31,7 +30,10 @@ SharedFields:
   Value: "query:./*[@@templatename='Page Data']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
-  Value:
+  Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "d7fe4e69-9fda-4768-9cf9-4263419579e5"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
