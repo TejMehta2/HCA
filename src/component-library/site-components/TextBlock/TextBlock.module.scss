@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.wrapper-rounded {
+  border-radius: $radius-medium;
+}
+
 /* Optional background image */
 .image {
   position: absolute;
@@ -47,7 +51,7 @@
     margin-bottom: $spacing-2;
   }
 
-  .title{
+  .title {
     color: var(--heading, var(--text));
   }
 

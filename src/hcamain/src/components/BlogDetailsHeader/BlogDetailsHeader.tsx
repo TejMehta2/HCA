@@ -16,6 +16,8 @@ import { getDynamicTitleStyle } from '@component-library/site-components/HeaderP
 import { AuthorFields } from 'src/types/authorFields.GraphQL';
 import { isSitecoreDateSet } from 'lib/utility-functions/isSitecoreDateSet';
 import { MapAuthorsToBlockQuotes } from 'components/Authors/Authors.mapping.GraphQL';
+import Themes from '@component-library/foundation/Themes/Themes';
+import { normalizeId } from 'lib/sitecore/templateIds';
 
 type ArticleTypeFields = {
   id?: string;
@@ -31,6 +33,12 @@ interface Fields {
       lastChecked?: { jsonValue?: Field<string> };
       authors?: { targetItems?: AuthorFields[] };
       articleType?: { targetItem?: ArticleTypeFields };
+      category?: {
+        targetItems?: {
+          id: string;
+          name: string;
+        }[];
+      };
     };
     settings?: {
       blogSearchResultsBaseUrl?: { jsonValue?: LinkField };
@@ -61,8 +69,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   const queryString = 'articleTypeId';
   const currentArticleId =
     props.fields?.data?.contextItem?.articleType?.targetItem?.id?.toString();
-  const formattedCurrentArticleId =
-    currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
+  const formattedCurrentArticleId = normalizeId(currentArticleId);
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
@@ -84,29 +91,48 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
     <HeaderBlogDetails
       theme={props.params?.Theme || 'A-HCA-White'}
       tag={
-        props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
-          <Tags contentVariation="quote">
-            <Link
-              href={
-                props.fields?.data?.settings?.blogSearchResultsBaseUrl
-                  ?.jsonValue?.value.href +
-                '?' +
-                queryString +
-                '=' +
-                formattedCurrentArticleId
-              }
-            >
-              <JSSText
-                field={
-                  props.fields?.data?.contextItem?.articleType?.targetItem
-                    ?.title
+        <>
+          {props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
+            <Tags contentVariation="quote">
+              <Link
+                href={
+                  props.fields?.data?.settings?.blogSearchResultsBaseUrl
+                    ?.jsonValue?.value.href +
+                  '?' +
+                  queryString +
+                  '=' +
+                  formattedCurrentArticleId
                 }
-              />
-            </Link>
-          </Tags>
-        ) : (
-          <></>
-        )
+              >
+                <JSSText
+                  field={
+                    props.fields?.data?.contextItem?.articleType?.targetItem
+                      ?.title
+                  }
+                />
+              </Link>
+            </Tags>
+          ) : null}
+          {props.fields?.data?.contextItem?.category?.targetItems?.map(
+            (categoryItem, index) =>
+              categoryItem?.name ? (
+                <Themes theme="M-HCA-Goldenrod-20" key={index}>
+                  <Tags contentVariation="quote">
+                    <Link
+                      href={
+                        props.fields?.data?.settings?.blogSearchResultsBaseUrl
+                          ?.jsonValue?.value.href +
+                        '?serviceLineId=' +
+                        normalizeId(categoryItem.id ?? '')
+                      }
+                    >
+                      <span>{categoryItem.name}</span>
+                    </Link>
+                  </Tags>
+                </Themes>
+              ) : null
+          )}
+        </>
       }
       authors={authors}
       lastChecked={
