@@ -4,11 +4,14 @@ import {
   Placeholder,
   ComponentRendering,
   ImageField,
+  Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
-import ProfilePageHeader from '@component-library/consultant-finder/ProfilePageHeader/ProfilePageHeader';
+import HeaderProfile from '@component-library/site-components/HeaderProfile/HeaderProfile';
+import Text from '@component-library/foundation/Text/Text';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   data?: {
@@ -51,33 +54,38 @@ export const Default = (props: ConsultantHeaderProps): JSX.Element => {
   }
 
   const buttonSize: ButtonProps['size'] = 'large';
-  const name =
-    props.fields?.data?.contextItem?.title?.jsonValue?.value || '';
-  const topSpecialty =
-    props.fields?.data?.contextItem?.heading?.jsonValue?.value || '';
-  const image =
-    props.fields?.data?.contextItem?.image?.jsonValue?.value?.src || null;
 
   return (
-    <div className={`component consultant-header ${props.params?.styles || ''}`}>
-      <div className="component-content">
-        <ProfilePageHeader
-          name={name}
-          topSpecialty={topSpecialty}
-          image={image}
-          infoBoxText=""
-          overallExperienceYears={0}
-          overallExperienceYearsText=""
-        >
-          {props.rendering && (
-            <Placeholder
-              name={phKey}
-              rendering={props.rendering}
-              size={buttonSize}
-            />
-          )}
-        </ProfilePageHeader>
-      </div>
-    </div>
+    <HeaderProfile
+      ctas={
+        props.rendering && (
+          <Placeholder
+            name={phKey}
+            rendering={props.rendering}
+            size={buttonSize}
+          />
+        )
+      }
+      department={
+        <Text tag="p" variation="subheading-1">
+          <JssText
+            field={props.fields?.data?.contextItem?.heading?.jsonValue}
+          />
+        </Text>
+      }
+      image={
+        <NextJssImage
+          editable={false}
+          field={props.fields?.data?.contextItem?.image?.jsonValue}
+          next={{ width: 214, height: 214, quality: 90 }}
+        />
+      }
+      theme={props.params?.Theme || 'Palace-Beige'}
+      title={
+        <Text tag="h1" variation="display-2">
+          <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
+        </Text>
+      }
+    />
   );
 };
