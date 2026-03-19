@@ -7,8 +7,10 @@ import {
   Text as JssText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Params from 'src/types/params';
+import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
 
 interface NavigationLink {
   link?: { jsonValue?: LinkField };
@@ -56,44 +58,38 @@ export const Default = (props: BasicFooterProps): JSX.Element => {
   }
 
   return (
-    <div className={`component basic-footer ${props.params?.styles || ''}`}>
-      <div className="component-content">
-        {props.fields?.data?.item?.logo?.jsonValue?.value?.src &&
+    <FooterSmall
+      copyright={
+        props.fields?.data?.item?.copyright?.value ? (
+          <Text tag="small" variation="body-small">
+            <JssText field={props.fields?.data?.item?.copyright} />
+          </Text>
+        ) : undefined
+      }
+      ctas={
+        props.fields?.data?.item?.linksFolder?.targetItem?.links?.targetItems
+          ?.filter((link) => link?.link?.jsonValue)
+          ?.map((link, index) => {
+            if (!link?.link?.jsonValue) return <></>;
+
+            return <JssLink key={index} field={link.link.jsonValue} />;
+          }) || []
+      }
+      logo={
+        (props.fields?.data?.item?.logo?.jsonValue?.value?.src &&
           props.fields.data.item.logo.jsonValue.value['class'] !==
             'scEmptyImage' && (
             <div className="basic-footer__logo">
               <NextJssImage
                 editable={false}
                 field={props.fields.data.item.logo.jsonValue}
-                next={{ width: 200, height: 55 }}
+                next={{ width: 209, height: 34 }}
               />
             </div>
-          )}
-        {props.fields?.data?.item?.linksFolder?.targetItem?.links?.targetItems &&
-          props.fields.data.item.linksFolder.targetItem.links.targetItems
-            .length > 0 && (
-            <nav className="basic-footer__links">
-              {props.fields.data.item.linksFolder.targetItem.links.targetItems.map(
-                (link, index) =>
-                  link?.link?.jsonValue ? (
-                    <JssLink
-                      key={index}
-                      field={link.link.jsonValue}
-                      editable={false}
-                    />
-                  ) : null
-              )}
-            </nav>
-          )}
-        {props.fields?.data?.item?.copyright?.value && (
-          <div className="basic-footer__copyright">
-            <JssText
-              field={props.fields.data.item.copyright}
-              editable={false}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+          )) ||
+        undefined
+      }
+      theme={props.params?.Theme || 'Palace-Red'}
+    />
   );
 };
