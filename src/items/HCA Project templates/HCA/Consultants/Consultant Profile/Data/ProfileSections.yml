@@ -2,7 +2,7 @@
 ID: "e94fd7f4-162b-40c2-a0de-1ea570381ff3"
 Parent: "2bd812fc-8853-46e1-940b-ed0ef23096b7"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Consultants/Consultant Profile/Data/Profile Sections
+Path: /sitecore/templates/Project/HCA/Consultants/Consultant Profile/Data/ProfileSections
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
@@ -18,6 +18,13 @@ SharedFields:
   Value: "af1d22c5-83f3-440a-a624-2df87fbcd8b2"
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Profile Sections
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "9dc6af4b-5ac5-4d43-9ce8-c2a415bcc492"
   Versions:
   - Version: 1
     Fields:
@@ -34,11 +41,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b79613d0-4988-407e-a73a-d38f4cd5cb49"
+      Value: "59fb53c5-ef72-4cc4-9d63-97dde0a0758a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260319T222203Z
+      Value: 20260319T225327Z
