@@ -352,7 +352,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                         {card.articleType.targetItem.title?.value}
                       </a>
                     ) : (
-                      <> {card.articleType.targetItem.title?.value}</>
+                      <span>{card.articleType.targetItem.title?.value}</span>
                     )}
                   </Tags>
                 )}
