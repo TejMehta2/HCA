@@ -24,7 +24,7 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{D4706420-3DF1-4009-8C25-9C306D91BD1E}"
+  Value: "{F9C3AEB7-0EC7-46A9-92AE-185393D913FF}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
   Value: "query:./*[@@templatename='Page Data']"
@@ -33,7 +33,7 @@ SharedFields:
   Value: 
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "b5b29ed4-a336-44b2-b392-a865d299d3d3"
+  Value: "c44b47fa-54d9-4179-91e6-06382da34c5d"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -56,11 +56,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "98826749-ee89-401e-a940-4f1b40fb5c45"
+      Value: "b68eda77-e229-44c1-8515-e4672c925f74"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260320T115455Z
+      Value: 20260320T125536Z
