@@ -58,6 +58,11 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "1b58d065-fe74-43e3-ba20-54c9588b3011"
+      Hint: AllowedOnTemplates
+      Value: |
+        {FDA8B60D-97E2-4EBF-81E0-49645A77FFBF}
+        {0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20260312T000000Z
@@ -67,11 +72,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2343f39e-150c-4583-8967-c593bcf1b76a"
+      Value: "3fac1546-aba4-4a1d-aa7a-bca93178e888"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260312T000000Z
+      Value: 20260320T115428Z

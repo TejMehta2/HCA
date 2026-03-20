@@ -1,0 +1,49 @@
+﻿---
+ID: "246d1ece-445a-48d3-9069-763423a1a508"
+Parent: "872fc1cc-d31e-4771-9a06-32511cd23ea1"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: /sitecore/layout/Placeholder Settings/Project/HCA/Consultants/Consultant Profile
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "consultant-profile-{*}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "e5d93191-1780-497f-ae8c-ecc574a812a3"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: |
+    {04A5E56B-66DF-461C-961C-36B35F181976}
+    {E2ACB40C-B73B-4BE1-8B5C-4498D9920248}
+    {DA8BBECE-7AE8-4E3A-ACCD-511225BFB247}
+    {81FB8D66-F173-45D5-B89B-0164FC6063AD}
+    {803BDD47-FD30-4D14-8A1E-B433395827F1}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260312T000000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9a94a162-cbb2-4712-b62d-240785dee3e0"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260320T115314Z

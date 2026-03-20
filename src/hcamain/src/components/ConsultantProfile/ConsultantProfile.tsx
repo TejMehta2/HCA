@@ -12,6 +12,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import ProfilePageSection from '@component-library/consultant-finder/ProfilePageSection/ProfilePageSection';
 import dataStyles from '@component-library/consultant-finder/DataComponentSimple/DataComponentSimple.module.scss';
 import aboutStyles from '@component-library/consultant-finder/About/About.module.scss';
+import Container from '@component-library/foundation/Containers/Container';
 
 interface ProfileSection {
   fields?: {
@@ -44,7 +45,7 @@ const ConsultantProfileDefaultComponent = (
 );
 
 export const Default = (props: ConsultantProfileProps): JSX.Element => {
-  const phKey = `consultant-header-${props.params?.DynamicPlaceholderId}`;
+  const phKey = `consultant-profile-${props.params?.DynamicPlaceholderId}`;
 
   if (!props.fields) {
     return <ConsultantProfileDefaultComponent {...props} />;
@@ -52,52 +53,54 @@ export const Default = (props: ConsultantProfileProps): JSX.Element => {
 
   const buttonSize: ButtonProps['size'] = 'large';
 
+  const args = {
+    marginTop: 'spacing-7',
+    marginBottom: 'spacing-11',
+    gridLayout: true,
+  };
+
   return (
-    <div
-      className={`component consultant-profile ${props.params?.styles || ''}`}
-    >
-      <div className="component-content">
-        {props.fields?.Profile && (
-          <ProfilePageSection>
-            <div className={aboutStyles.about}>
-              <div className={aboutStyles.description}>
-                <RichText>
-                  <JssRichText field={props.fields.Profile} />
-                </RichText>
-              </div>
+    <Container {...args}>
+      {props.fields?.Profile && (
+        <ProfilePageSection>
+          <div className={aboutStyles.about}>
+            <div className={aboutStyles.description}>
+              <RichText>
+                <JssRichText field={props.fields.Profile} />
+              </RichText>
+            </div>
+          </div>
+        </ProfilePageSection>
+      )}
+      {props.fields?.ProfileSections &&
+        props.fields.ProfileSections.length > 0 &&
+        props.fields.ProfileSections.map((section, index) => (
+          <ProfilePageSection key={index}>
+            <div className={dataStyles.data}>
+              {section?.fields?.Title?.value && (
+                <div className={dataStyles.title}>
+                  <Text variation="subheading-1" tag="h3">
+                    {section.fields.Title.value}
+                  </Text>
+                </div>
+              )}
+              {section?.fields?.Description && (
+                <div className={dataStyles.items}>
+                  <RichText>
+                    <JssRichText field={section.fields.Description} />
+                  </RichText>
+                </div>
+              )}
             </div>
           </ProfilePageSection>
-        )}
-        {props.fields?.ProfileSections &&
-          props.fields.ProfileSections.length > 0 &&
-          props.fields.ProfileSections.map((section, index) => (
-            <ProfilePageSection key={index}>
-              <div className={dataStyles.data}>
-                {section?.fields?.Title?.value && (
-                  <div className={dataStyles.title}>
-                    <Text variation="subheading-1" tag="h3">
-                      {section.fields.Title.value}
-                    </Text>
-                  </div>
-                )}
-                {section?.fields?.Description && (
-                  <div className={dataStyles.items}>
-                    <RichText>
-                      <JssRichText field={section.fields.Description} />
-                    </RichText>
-                  </div>
-                )}
-              </div>
-            </ProfilePageSection>
-          ))}
-        {props.rendering && (
-          <Placeholder
-            name={phKey}
-            rendering={props.rendering}
-            size={buttonSize}
-          />
-        )}
-      </div>
-    </div>
+        ))}
+      {props.rendering && (
+        <Placeholder
+          name={phKey}
+          rendering={props.rendering}
+          size={buttonSize}
+        />
+      )}
+    </Container>
   );
 };
