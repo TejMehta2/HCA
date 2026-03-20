@@ -116,6 +116,11 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     fields?.Heading?.value,
     'h1'
   );
+
+  const hasFilters = filterCategories?.some(
+    (category) => category.fields && category.fields.length > 0
+  );
+
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
@@ -156,26 +161,28 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   )
             }
           >
-            <Filters
-              buttonText={<JssText field={fields?.FilterOptionsText} />}
-              buttonIcon={
-                <SitecoreSvg>
-                  {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              resultsCount={resultsCount}
-              filters={filterCategories?.map((category) => ({
-                title: category.title,
-                contentVariation: 'filters',
-                children: (
-                  <Checkboxes>
-                    {category.fields?.map((props) => {
-                      return <Checkbox {...props} key={props.id} />;
-                    })}
-                  </Checkboxes>
-                ),
-              }))}
-            />
+            {hasFilters && (
+              <Filters
+                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                resultsCount={resultsCount}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+            )}
           </SearchBar>
           <SearchFilterList
             filters={activeFilters || []}
@@ -231,7 +238,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     primaryImageUrl,
                     url,
                     date,
-                    typeId,
                     typeName,
                   } = data;
 
@@ -260,7 +266,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                       <div>
                         {!!typeName && (
                           <Tags>
-                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                            <span>{typeName}</span>
                           </Tags>
                         )}
                       </div>
