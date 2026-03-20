@@ -9,6 +9,7 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 const SearchLocationDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSelectedLocationConsultants, setLat, setLon, setDistance } = useContext(ConsultantFinderContext);
   const handleClick = (location: string, lat: any, lon: any, distance: number) => {
+    console.log('location dropdown', location, lat, lon, distance);
     setLat(lat);
     setLon(lon);
     setDistance(distance);

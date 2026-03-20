@@ -227,9 +227,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
     return (
       <div id={id ? id : undefined}>
-        {/* <a href="javascript:OneTrust.ToggleInfoDisplay()">
+        <a href="javascript:OneTrust.ToggleInfoDisplay()">
           .
-        </a> */}
+        </a>
         <StepIntro
           headline={
             <>
