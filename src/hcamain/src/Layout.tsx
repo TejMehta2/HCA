@@ -95,6 +95,12 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     MetaTitle?.value || titleStripped || routeData.displayName
   }`;
 
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+  console.log(
+    'process.env.NEXT_PUBLIC_LOAD_COOKIES',
+    process.env.NEXT_PUBLIC_LOAD_COOKIES
+  );
+
   return (
     <>
       <Scripts />
@@ -156,7 +162,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
       </Head>
-      {process.env.NODE_ENV !== 'production' &&
+      {process.env.NODE_ENV === 'development' &&
         process.env.NEXT_PUBLIC_LOAD_COOKIES && (
           <head
             dangerouslySetInnerHTML={{
