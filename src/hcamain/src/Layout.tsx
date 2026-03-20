@@ -3,7 +3,6 @@
  * This Layout is needed for Starter Kit.
  */
 import React, { useRef, useEffect } from 'react';
-import Script from 'next/script';
 import Head from 'next/head';
 import {
   Placeholder,
