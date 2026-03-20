@@ -311,13 +311,11 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const readCookie = (name: string) => {
-    console.log('cookie exists', name);
     const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
     return m ? decodeURIComponent(m[1]) : null;
   };
 
   const setLocationCookie = (value: string) => {
-    console.log('location cookie set', value);
     document.cookie = `location=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
   };
 
@@ -331,15 +329,11 @@ export const Default = (props: StepProps): JSX.Element => {
   useEffect(() => {
     if (!hydrated) return;
     if (typeof window === 'undefined') return;
-    console.log('test', 1);
     if (!hasFunctionalConsent()) return;
-    console.log('selected cookie');
     setLocationCookie(selectedLocationConsultants);
-    console.log('selected cookie 2');
   }, [hydrated, selectedLocationConsultants]);
 
   useEffect(() => {
-    console.log('test');
     if (typeof window === 'undefined') return;
     if (!router.isReady) return;
 
@@ -347,7 +341,6 @@ export const Default = (props: StepProps): JSX.Element => {
       const consent = hasFunctionalConsent();
 
       if (!consent) {
-        console.log('no consent stop');
         return;
       }
 
@@ -359,7 +352,6 @@ export const Default = (props: StepProps): JSX.Element => {
       if (router.query.location) return;
 
       const saved = readCookie('location');
-      console.log('cookie value on page load', saved);
       const locationParam = router.query.location;
       if (locationParam) {
         setSelectedLocationConsultants(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
@@ -372,7 +364,6 @@ export const Default = (props: StepProps): JSX.Element => {
         setSearchStringLocations(saved);
       } else {
         // no cookie yet -> persist current selection instead of forcing Anywhere
-        console.log('selectedLocationConsultants', selectedLocationConsultants);
         setLocationCookie(selectedLocationConsultants || 'Anywhere');
       }
 
@@ -717,7 +708,6 @@ export const Default = (props: StepProps): JSX.Element => {
       ...(lon && { lon }),
       ...(distance && { distance }),
     }).toString();
-    console.log('URLprams', URLprams);
 
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
