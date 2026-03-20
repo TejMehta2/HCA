@@ -156,14 +156,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
       </Head>
-      {process.env.NODE_ENV !== 'production' &&
-        process.env.NEXT_PUBLIC_LOAD_COOKIES && (
-          <head
-            dangerouslySetInnerHTML={{
-              __html: process.env.NEXT_PUBLIC_LOAD_COOKIES,
-            }}
-          />
-        )}
+      {process.env.NEXT_PUBLIC_LOAD_COOKIES && (
+        <head
+          dangerouslySetInnerHTML={{
+            __html: process.env.NEXT_PUBLIC_LOAD_COOKIES,
+          }}
+        />
+      )}
       <Schema layoutData={layoutData} />
 
       {/* root placeholder for the app, which we add components to using route data */}
