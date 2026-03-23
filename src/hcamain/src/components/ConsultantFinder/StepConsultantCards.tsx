@@ -319,10 +319,11 @@ export const Default = (props: StepProps): JSX.Element => {
     document.cookie = `location=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
   };
 
-  const deleteLocationCookie = () => {
-    document.cookie = 'location=; path=/; max-age=0; SameSite=Lax';
-    document.cookie = 'location=; max-age=0; SameSite=Lax';
-  };
+  // const deleteLocationCookie = () => {
+  //   console.log('delete cookie');
+  //   document.cookie = 'location=; path=/; max-age=0; SameSite=Lax';
+  //   document.cookie = 'location=; max-age=0; SameSite=Lax';
+  // };
 
   // Persist whenever location changes (only after hydration + only if consent)
   useEffect(() => {
@@ -340,9 +341,6 @@ export const Default = (props: StepProps): JSX.Element => {
       const consent = hasFunctionalConsent();
 
       if (!consent) {
-        deleteLocationCookie();
-        setFunctionalConsentCookie(false);
-        setHydrated(true);
         return;
       }
 
