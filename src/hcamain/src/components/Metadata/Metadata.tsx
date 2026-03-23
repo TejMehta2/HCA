@@ -4,6 +4,7 @@ import {
   Field,
   GetStaticComponentProps,
   ImageField,
+  LinkField,
   debug,
   useComponentProps,
   useSitecoreContext,
@@ -12,6 +13,7 @@ import Params from 'src/types/params';
 import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -31,6 +33,7 @@ export interface PageRouteMetadata {
     JsonLdSchema?: Field<string>;
     Specialties?: Speciality[];
     Date?: Field<string>;
+    CanonicalUrl?: LinkField;
   };
   itemId?: string;
   templateId?: string;
@@ -100,6 +103,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
     Text,
     HideFromWebsiteSearch,
     Date,
+    CanonicalUrl,
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
@@ -119,6 +123,8 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   const pageText = Text?.value ? removeTags(Text?.value) : '';
   const pageTitle = AbstractTitle?.value || Title.value;
+
+  const canonicalLink = getCanonical(CanonicalUrl?.value?.href, url);
 
   type SchemaPageType =
     | 'Homepage'
@@ -207,7 +213,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
           <meta property="og:image" content={image} key="og:image" />
         )}{' '}
         &&
-        {url && <link rel="canonical" href={url} />} &&
+        {canonicalLink && <link rel="canonical" href={canonicalLink} />} &&
         {description && <meta name="description" content={description} />} &&
         {follow && index && (
           <meta name="robots" content={`${follow}, ${index}`} key="robots" />
@@ -253,6 +259,15 @@ export const Default = (props: MetadataProps): JSX.Element => {
     );
   }
 };
+
+function getCanonical(canonicalUrl?: string | null, contextPageUrl?: string) {
+  if (!canonicalUrl) return contextPageUrl;
+
+  if (!isAbsoluteUrl(canonicalUrl))
+    canonicalUrl = `${process.env.BASE_URL}${canonicalUrl}`;
+
+  return canonicalUrl;
+}
 
 export const getStaticProps: GetStaticComponentProps = async (
   _: MetadataProps,
