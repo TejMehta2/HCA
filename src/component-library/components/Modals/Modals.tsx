@@ -4,7 +4,6 @@ import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
-// import isAndroidDevice from '../../utility-functions/isAndroidDevice';
 import { useI18n } from 'next-localization';
 
 // A toggle-able React Modal using the native HTML5 dialog element
@@ -21,11 +20,12 @@ const Modals = (
     id,
     alignContent
   } = props;
+
   const {
     draggable,
     dragging,
     wrapper,
-    overlay,
+    // overlay,
     modal,
     close,
     content,
@@ -35,16 +35,26 @@ const Modals = (
   const { t } = useI18n() || { t: (args: unknown) => args };
 
   const Overlay = () => (
-    <>
-      {/* Opaque overlay button for closing modal on background click */}
-      <button
-        type="button"
-        onClick={() => ref?.current?.close()}
-        className={overlay}
-      >
-        <span className="sr-only">Close</span>
-      </button>
-    </>
+    <button
+      data-focus-anchor="true"
+      type="button"
+      aria-hidden="true"
+      tabIndex={-1}
+      style={{
+        position: 'absolute',
+        width: '1px',
+        height: '1px',
+        padding: 0,
+        margin: 0,
+        border: 0,
+        overflow: 'hidden',
+        clipPath: 'inset(50%)',
+        whiteSpace: 'nowrap',
+        pointerEvents: 'none',
+      }}
+    >
+      focus anchor
+    </button>
   );
 
   const CloseButton = () => (
@@ -59,14 +69,11 @@ const Modals = (
   );
 
   // Swipe/touch logic
-  // Follows drag, and closes modal if downward swipe detected
-  // Otherwise pings back to modal open position
   const [touchStart, setTouchStart] = useState<number>(0);
   const [touchPosition, setTouchPosition] = useState<number>(0);
   const minSwipeDistance = 200;
+
   const getShouldEnableDrag = (event: TouchEvent) => {
-    // Avoid dragging when user trying to scroll down in scrollable content (e.g. filter list in content)
-    // We determine if element is scrollable, and scrolled to top based on rects
     const target = event.target as HTMLDivElement;
     if (!target?.parentElement) return;
     const { top: parentTop, height: parentHeight } =
@@ -74,26 +81,29 @@ const Modals = (
     const { top, height } = target.getBoundingClientRect();
     return height === parentHeight || top === parentTop;
   };
+
   const touchStartHandler = (event: TouchEvent) => {
     const shouldEnableDrag = getShouldEnableDrag(event);
     if (!shouldEnableDrag) return;
     setTouchPosition(event.targetTouches[0].clientY);
     setTouchStart(event.targetTouches[0].clientY);
   };
+
   const touchMoveHandler = (event: TouchEvent) => {
     const shouldEnableDrag = getShouldEnableDrag(event);
     if (!shouldEnableDrag || !touchStart) return;
     setTouchPosition(event.targetTouches[0].clientY);
   };
+
   const touchEndHandler = () => {
-    if (!touchStart || !touchPosition) return; // may be null if user was scrolling down content
+    if (!touchStart || !touchPosition) return;
     const distance = touchPosition - touchStart;
     const isDownSwipe = distance > minSwipeDistance;
+
     if (isDownSwipe) {
-      // Close the dialog
       ref?.current?.close();
     }
-    // Reset touch states
+
     setTouchPosition(0);
     setTouchStart(0);
   };
@@ -104,7 +114,7 @@ const Modals = (
     onTouchEnd: touchEndHandler,
   };
 
-  const spreadProps = touchHandlers;
+  const spreadProps = variation === 'right' ? {} : touchHandlers;
 
   return (
     <dialog
@@ -112,17 +122,26 @@ const Modals = (
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={[wrapper, contentVariation && styles[contentVariation]].join(
-        ' '
-      )}
+      tabIndex={-1}
+      className={[wrapper, contentVariation && styles[contentVariation]]
+        .filter(Boolean)
+        .join(' ')}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          ref?.current?.close();
+        }
+      }}
     >
       <Overlay />
+
       <div
         className={[
           styles[variation],
           draggable,
           touchStart ? dragging : '',
-        ].join(' ')}
+        ]
+          .filter(Boolean)
+          .join(' ')}
         style={{
           ['--touch-position' as string]: `${Math.max(
             0,
@@ -140,8 +159,12 @@ const Modals = (
             className={[
               content,
               alignContent === 'center' ? styles['center-align'] : '',
-            ].join(' ')}
-          >{children}</div>
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </dialog>

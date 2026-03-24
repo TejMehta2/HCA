@@ -3,7 +3,6 @@
  * This Layout is needed for Starter Kit.
  */
 import React, { useRef, useEffect } from 'react';
-// import Script from 'next/script';
 import Head from 'next/head';
 import {
   Placeholder,
@@ -92,8 +91,9 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
-  const browserTitle = `${MetaTitle?.value || titleStripped || routeData.displayName
-    }`;
+  const browserTitle = `${
+    MetaTitle?.value || titleStripped || routeData.displayName
+  }`;
 
   return (
     <>
@@ -156,6 +156,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
       </Head>
+      {process.env.NEXT_PUBLIC_LOAD_COOKIES && (
+        <head
+          dangerouslySetInnerHTML={{
+            __html: process.env.NEXT_PUBLIC_LOAD_COOKIES,
+          }}
+        />
+      )}
       <Schema layoutData={layoutData} />
 
       {/* root placeholder for the app, which we add components to using route data */}
