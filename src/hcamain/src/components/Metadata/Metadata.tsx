@@ -63,6 +63,11 @@ interface Speciality {
   url: string;
 }
 
+type UrlProps = {
+  baseUrl: string;
+  path: string;
+};
+
 const isValidDate = (dateStr: string): boolean => {
   const date = new Date(dateStr);
 
@@ -78,7 +83,12 @@ const MetadataDefaultComponent = (): JSX.Element => <></>;
 export const Default = (props: MetadataProps): JSX.Element => {
   // hooks
   const context = useSitecoreContext();
-  const url = useComponentProps<string>(props.rendering?.uid);
+
+  const componentPropsData = useComponentProps<UrlProps>(props.rendering?.uid);
+
+  const url = componentPropsData
+    ? `${componentPropsData.baseUrl}${componentPropsData.path}`
+    : undefined;
 
   const route = context.sitecoreContext?.route as PageRouteMetadata;
   const { fields } = route;
@@ -124,7 +134,11 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const pageText = Text?.value ? removeTags(Text?.value) : '';
   const pageTitle = AbstractTitle?.value || Title.value;
 
-  const canonicalLink = getCanonical(CanonicalUrl?.value?.href, url);
+  const canonicalLink = getCanonical(
+    CanonicalUrl?.value?.href,
+    url,
+    componentPropsData?.baseUrl
+  );
 
   type SchemaPageType =
     | 'Homepage'
@@ -260,11 +274,14 @@ export const Default = (props: MetadataProps): JSX.Element => {
   }
 };
 
-function getCanonical(canonicalUrl?: string | null, contextPageUrl?: string) {
+function getCanonical(
+  canonicalUrl?: string | null,
+  contextPageUrl?: string,
+  domain?: string
+) {
   if (!canonicalUrl) return contextPageUrl;
 
-  if (!isAbsoluteUrl(canonicalUrl))
-    canonicalUrl = `${process.env.BASE_URL}${canonicalUrl}`;
+  if (!isAbsoluteUrl(canonicalUrl)) canonicalUrl = `${domain}${canonicalUrl}`;
 
   return canonicalUrl;
 }
@@ -273,7 +290,11 @@ export const getStaticProps: GetStaticComponentProps = async (
   _: MetadataProps,
   layoutData
 ) => {
-  const path = layoutData?.sitecore?.context?.itemPath;
-  const url = `${process.env.BASE_URL}${path}`; // Todo check with BE if we can get the domain or full URL from Sitecore data
-  return url;
+  const path = layoutData?.sitecore?.context?.itemPath ?? '';
+  const baseUrl = process.env.BASE_URL ?? '';
+
+  return {
+    baseUrl,
+    path,
+  };
 };
