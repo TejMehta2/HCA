@@ -82,11 +82,13 @@ const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
   // hooks
-  const context = useSitecoreContext();  
-  
+  const context = useSitecoreContext();
+
   const componentPropsData = useComponentProps<UrlProps>(props.rendering?.uid);
-  
-  const url = componentPropsData ? `${componentPropsData.baseUrl}${componentPropsData.path}` : undefined;
+
+  const url = componentPropsData
+    ? `${componentPropsData.baseUrl}${componentPropsData.path}`
+    : undefined;
 
   const route = context.sitecoreContext?.route as PageRouteMetadata;
   const { fields } = route;
@@ -132,7 +134,11 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const pageText = Text?.value ? removeTags(Text?.value) : '';
   const pageTitle = AbstractTitle?.value || Title.value;
 
-  const canonicalLink = getCanonical(CanonicalUrl?.value?.href, url, componentPropsData?.baseUrl);
+  const canonicalLink = getCanonical(
+    CanonicalUrl?.value?.href,
+    url,
+    componentPropsData?.baseUrl
+  );
 
   type SchemaPageType =
     | 'Homepage'
@@ -268,11 +274,14 @@ export const Default = (props: MetadataProps): JSX.Element => {
   }
 };
 
-function getCanonical(canonicalUrl?: string | null, contextPageUrl?: string, domain?: string) {
+function getCanonical(
+  canonicalUrl?: string | null,
+  contextPageUrl?: string,
+  domain?: string
+) {
   if (!canonicalUrl) return contextPageUrl;
 
-  if (!isAbsoluteUrl(canonicalUrl))
-    canonicalUrl = `${domain}${canonicalUrl}`;
+  if (!isAbsoluteUrl(canonicalUrl)) canonicalUrl = `${domain}${canonicalUrl}`;
 
   return canonicalUrl;
 }
