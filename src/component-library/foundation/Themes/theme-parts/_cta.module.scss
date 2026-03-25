@@ -440,6 +440,31 @@
   --cta-outline-focus-outline: #{$navy-blue-100};
 }
 
+@mixin apply-cta-chelsea-outline-gold($background, $border, $text) {
+  // Base
+  --cta-outline-background: #{$background};
+  --cta-outline-text: #{$text};
+  --cta-outline-border: #{$border};
+
+  // Hover
+  --cta-outline-hover-background: #{$chelsea-gold-80};
+  --cta-outline-hover-text: #{$text};
+  --cta-outline-hover-border: #{$navy-blue-100};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$navy-blue-70};
+  --cta-outline-disabled-border: #{$navy-blue-70};
+
+  // Active
+  --cta-outline-active-background: #{$chelsea-gold-80};
+  --cta-outline-active-text: #{$text};
+  --cta-outline-active-border: #{$navy-blue-100};
+
+  // Focus
+  --cta-outline-focus-outline: #{$navy-blue-100};
+}
+
 @mixin apply-cta-carousel-chelsea-dark {
   // Base
   --cta-carousel-background: #{$chelsea-gold-100};

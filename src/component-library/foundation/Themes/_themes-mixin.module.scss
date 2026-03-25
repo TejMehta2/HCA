@@ -688,6 +688,43 @@
   --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
+@mixin apply-theme-chelsea-gold {
+  @include apply-shared-theme-light;
+
+  --background: #{$chelsea-gold-100};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$chelsea-gold-150};
+  --doctify-text: #{$white};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$chelsea-gold-80};
+  --quote-tag-background-hover: #{$chelsea-gold-100};
+  --quote-tag-color: $navy-blue-100;
+  --table-color: #{$chelsea-gold-20};
+  --reviews-stars: #{$chelsea-gold-100};
+
+  @include apply-cta-chelsea-full(#{$white},
+    #{$navy-blue-100},
+    #{$navy-blue-100});
+  @include apply-cta-chelsea-outline-gold(#{$chelsea-gold-80},
+    #{$navy-blue-100},
+    #{$navy-blue-100});
+
+  @include apply-tag-chelsea-beige;
+  @include apply-tabs(#{$chelsea-gold-80});
+  @include apply-pagination-chelsea-gold-100;
+  @include apply-controls-chelsea;
+  @include apply-cta-carousel-chelsea-dark;
+
+  --filter-button-1: #{$chelsea-gold-80};
+  --filter-button-2: #{$chelsea-gold-60};
+  --filter-button-3: #{$navy-blue-70};
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$chelsea-gold-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
 @mixin apply-theme-lbi {
   @include apply-shared-theme-light;
 
