@@ -42,6 +42,7 @@
   grid-template-columns: 1fr;
   gap: $spacing-4;
   margin-top: $spacing-2;
+  width: fit-content;
 
   @include media(screen-m) {
     grid-template-columns: 1fr 1fr;

@@ -83,9 +83,42 @@ export const WithAuthors: StoryObj<typeof HeaderBlogDetails> = {
           tag: <a href="#">Consultant Obstetrician and Gynaecologist</a>,
         }}
       ></QuoteBlock>,
+
       <QuoteBlock
         wrapper={false}
         key={2}
+        author={{
+          name: 'Mahshid Nickkho-Amiry',
+          image: (
+            <Image
+              src="/placeholders/quote-block-author.png"
+              alt="author of quote"
+              width="70"
+              height="70"
+            />
+          ),
+          tag: <a href="#">Consultant Obstetrician and Gynaecologist</a>,
+        }}
+      ></QuoteBlock>,
+      <QuoteBlock
+        wrapper={false}
+        key={3}
+        author={{
+          name: 'Dr Nikolaos Papamichail',
+          image: (
+            <Image
+              src="/placeholders/quote-block-author.png"
+              alt="author of quote"
+              width="70"
+              height="70"
+            />
+          ),
+          tag: <a href="#">Consultant Cardiologist</a>,
+        }}
+      ></QuoteBlock>,
+      <QuoteBlock
+        wrapper={false}
+        key={4}
         author={{
           name: 'Dr Nikolaos Papamichail',
           image: (
