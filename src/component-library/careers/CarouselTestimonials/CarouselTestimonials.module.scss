@@ -150,29 +150,6 @@
     gap: $spacing-2;
   }
 
-  // .slide-image {
-  //   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
-  //   @include responsive-grid-start($default: 1, $breakpoint-l: 7);
-
-  //   margin-top: $spacing-7;
-
-  //   @include media(screen-l) {
-  //     margin-top: 0;
-  //   }
-
-  //   img {
-  //     width: 100%;
-  //     height: auto;
-  //     object-fit: cover;
-  //     aspect-ratio: 358/334;
-  //     border-radius: $radius-medium;
-
-  //     @include media(screen-l) {
-  //       aspect-ratio: 640/596;
-  //     }
-  //   }
-  // }
-
   .slide-image {
     @include responsive-grid-span($default: 6, $breakpoint-l: 6);
     @include responsive-grid-start($default: 1, $breakpoint-l: 7);
