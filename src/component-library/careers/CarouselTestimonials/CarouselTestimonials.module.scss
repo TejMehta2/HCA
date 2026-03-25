@@ -101,10 +101,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: conic-gradient(
-      var(--text) var(--carousel-degrees, 0deg),
-      rgb(from var(--text) r g b / 50%) 0deg
-    );
+    background: conic-gradient(var(--text) var(--carousel-degrees, 0deg),
+        rgb(from var(--text) r g b / 50%) 0deg);
   }
 
   .thumbnail-image {
@@ -143,9 +141,7 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-5;
-    margin-top: calc(
-      $spacing-6 + px-to-rem(73)
-    ); // includes height of the thumbnails as they use absolute positioning
+    margin-top: calc($spacing-6 + px-to-rem(73)); // includes height of the thumbnails as they use absolute positioning
   }
 
   .slide-name {
@@ -154,11 +150,37 @@
     gap: $spacing-2;
   }
 
+  // .slide-image {
+  //   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+  //   @include responsive-grid-start($default: 1, $breakpoint-l: 7);
+
+  //   margin-top: $spacing-7;
+
+  //   @include media(screen-l) {
+  //     margin-top: 0;
+  //   }
+
+  //   img {
+  //     width: 100%;
+  //     height: auto;
+  //     object-fit: cover;
+  //     aspect-ratio: 358/334;
+  //     border-radius: $radius-medium;
+
+  //     @include media(screen-l) {
+  //       aspect-ratio: 640/596;
+  //     }
+  //   }
+  // }
+
   .slide-image {
     @include responsive-grid-span($default: 6, $breakpoint-l: 6);
     @include responsive-grid-start($default: 1, $breakpoint-l: 7);
 
     margin-top: $spacing-7;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: $radius-medium;
 
     @include media(screen-l) {
       margin-top: 0;
@@ -166,14 +188,9 @@
 
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
-      aspect-ratio: 358/334;
-      border-radius: $radius-medium;
-
-      @include media(screen-l) {
-        aspect-ratio: 640/596;
-      }
+      display: block;
     }
   }
 }
