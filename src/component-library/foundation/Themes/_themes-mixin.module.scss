@@ -703,10 +703,10 @@
   --table-color: #{$chelsea-gold-20};
   --reviews-stars: #{$chelsea-gold-100};
 
-  @include apply-cta-chelsea-full(#{$white},
+  @include apply-cta-chelsea-full-gold(#{$navy-blue-100},
     #{$navy-blue-100},
     #{$navy-blue-100});
-  @include apply-cta-chelsea-outline-gold(#{$chelsea-gold-80},
+  @include apply-cta-chelsea-outline-gold(#{$chelsea-gold-100},
     #{$navy-blue-100},
     #{$navy-blue-100});
 
