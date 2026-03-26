@@ -63,7 +63,7 @@
     "@sitecore-jss/sitecore-jss-nextjs": "~21.6.0",
     "@sitecore/components": "^1.1.6",
     "@sitecore-cloudsdk/personalize": "^0.1.3",
-    "@vercel/edge-config": "^1.4.0",  
+    "@vercel/edge-config": "^1.4.0",      
     "@yext/search-headless-react": "^2.4.0",
     "@yext/search-ui-react": "^1.4.1",
     "axios": "^1.7.7",
