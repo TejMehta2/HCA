@@ -13,7 +13,11 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetLocationCards($datasource: String!, $contextItem: String!, $language: String!) {
+    query GetLocationCards(
+      $datasource: String!
+      $contextItem: String!
+      $language: String!
+    ) {
       item(path: $datasource, language: $language) {
         ... on LocationCards {
           heading {
@@ -39,39 +43,7 @@ SharedFields:
           }
           locations {
             PagesList: targetItems {
-              ... on LocationPage {
-                abstractTitle {
-                  value
-                }
-                abstractImage {
-                  jsonValue
-                }
-                title {
-                  value
-                }
-                image {
-                  jsonValue
-                }
-                city {
-                  value
-                }
-                addressLine1 {
-                  value
-                }
-                addressLine2 {
-                  value
-                }
-                postCode {
-                  value
-                }
-                getDirections {
-                  value
-                }
-                url {
-                  path: url
-                  url
-                }
-              }
+              ...LocationPageFragment
             }
           }
           filterOptions {
@@ -83,7 +55,7 @@ SharedFields:
                 filter {
                   value
                 }
-                filterValueString  {
+                filterValueString {
                   value
                 }
                 filterValueGuid {
@@ -119,7 +91,51 @@ SharedFields:
           conditionId: id
         }
       }
+      contextItem: item(path: $contextItem, language: $language) {
+        ... on _locationsSelector {
+          locations {
+            targetItems {
+              ...LocationPageFragment
+            }
+          }
+        }
+      }
     }
+    
+    fragment LocationPageFragment on LocationPage {
+      abstractTitle {
+        value
+      }
+      abstractImage {
+        jsonValue
+      }
+      title {
+        value
+      }
+      image {
+        jsonValue
+      }
+      city {
+        value
+      }
+      addressLine1 {
+        value
+      }
+      addressLine2 {
+        value
+      }
+      postCode {
+        value
+      }
+      getDirections {
+        value
+      }
+      url {
+        path: url
+        url
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Location Cards
@@ -144,7 +160,7 @@ SharedFields:
     <image mediaid="{71DA7EEE-94E4-477E-836E-D473E39C7D67}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "d1b6ee16-47f2-4d47-9d3e-27d6084e94cc"
+  Value: "8f22a71d-46c8-48eb-904d-d804ca15eed5"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -191,14 +207,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c5c51559-5d13-498b-b05c-4fb9c2d2a705"
+      Value: "1c251bb4-7970-4b09-af93-a1747e9d368a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250609T124017Z
+      Value: 20260325T182822Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
