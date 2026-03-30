@@ -100,7 +100,7 @@ const meta: Meta<typeof Themes> = {
             { icon: 'iconFlexible', label: 'Flexi' },
             { icon: 'iconCalendar', label: 'Annual' },
           ]}
-          callback={() => {}}
+          callback={() => { }}
         />
 
         <CQCBlock
@@ -381,6 +381,9 @@ export const ThemeChelseaNavyBlue: StoryObj<typeof Themes> = {
 };
 export const ThemeChelseaBeige: StoryObj<typeof Themes> = {
   args: { theme: 'Chelsea-Beige' },
+};
+export const ThemeChelseaGold: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-Gold' },
 };
 export const ThemeLBI: StoryObj<typeof Themes> = {
   args: { theme: 'LBI' },

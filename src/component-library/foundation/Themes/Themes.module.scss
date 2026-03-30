@@ -9,7 +9,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
   F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
   J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
   N-HCA-Denim-5, O-HCA-Teal-20, Palace-White, Palace-Grey, Palace-Beige,
-  Palace-Red, Chelsea-White, Chelsea-Navy-Blue, Chelsea-Beige, LBI, LBI-Dark,
+  Palace-Red, Chelsea-White, Chelsea-Navy-Blue, Chelsea-Beige, Chelsea-Gold, LBI, LBI-Dark,
   LBI-White, Alan-Black, Alan-White, Alan-Light-Grey;
 
 @each $theme in $themeOptions {
@@ -110,6 +110,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
   @include apply-theme-chelsea-beige;
 }
 
+.Chelsea-Gold {
+  @include apply-theme-chelsea-gold;
+}
+
 .LBI {
   @include apply-theme-lbi;
 }
@@ -157,6 +161,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
 .master-Chelsea-White,
 .master-Chelsea-Navy-Blue,
 .master-Chelsea-Beige,
+.master-Chelsea-Gold,
 .master-Alan-Black,
 .master-Alan-White,
 .master-Alan-Light-Grey {
@@ -183,6 +188,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
     &>.Palace-Red,
     &>.Chelsea-White,
     &>.Chelsea-Navy-Blue,
+    &>.Chelsea-Gold,
     &>.LBI,
     &>.LBI-Dark,
     &>.LBI-White,
@@ -221,6 +227,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
     Chelsea-White: dark;
     Chelsea-Navy-Blue: light;
     Chelsea-Beige: dark;
+    Chelsea-Gold: dark;
     LBI: dark;
     LBI-Dark: dark;
     LBI-White: light;
