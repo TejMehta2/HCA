@@ -23,6 +23,7 @@ export type Theme =
   | 'Chelsea-White'
   | 'Chelsea-Navy-Blue'
   | 'Chelsea-Beige'
+  | 'Chelsea-Gold'
   | 'LBI'
   | 'LBI-Dark'
   | 'LBI-White'
