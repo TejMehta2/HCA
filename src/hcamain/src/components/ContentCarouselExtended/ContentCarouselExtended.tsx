@@ -100,7 +100,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
           <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
         ) : undefined,
         title: hasTitle ? (
-          card.fields?.Title?.value
+          card?.fields?.Title?.value
         ) : undefined,
         bodyText: hasText ? (
           <Text variation="body-medium">
