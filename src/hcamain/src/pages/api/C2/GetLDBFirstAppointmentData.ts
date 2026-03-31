@@ -11,9 +11,9 @@ const GetLDBFirstAppointmentData = async (
   } = req;
 
   const response = await getLDBFirstAppointmentData(gmcNumber as string); // e.g. "4113571"
-  res.appendHeader('Cache-Control', 'max-age=60');
-  res.appendHeader('CDN-Cache-Control', 'max-age=180');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=360');
+  res.setHeader('Cache-Control', 'max-age=60');
+  res.setHeader('CDN-Cache-Control', 'max-age=180');
+  res.setHeader('Vercel-CDN-Cache-Control', 'max-age=360');
   return res.status(200).json(response);
 };
 
