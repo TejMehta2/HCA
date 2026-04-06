@@ -1,0 +1,41 @@
+﻿---
+ID: "1bad2ccd-f44e-4add-9884-b715c9376679"
+Parent: "6edb370e-5f59-4b86-817c-b9048a9e1e8d"
+Template: "b68157e4-eabb-42e7-8315-83971f071024"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Basic Footer/Data/footer"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "15e28a7f-754b-4392-98a8-4df795a45a12"
+      Hint: LinksFolder
+      Value: "{08BCD8EC-26A2-450E-936A-0DA650D2FA49}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260319T195507Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "716cd6f8-55db-4c95-a38e-409b9495de35"
+      Hint: Logo
+      Value: |
+        <image src="https://hcil-p-001.sitecorecontenthub.cloud/api/public/content/33e9ffb54e6b4a95ad64c089ce9a7dff?v=8f7a3ba2" dam-id="zCwU4Yv5TBaF-S3wZJQlHg" width="161" height="46" alt="Logo white.svg" dam-content-type="Image" thumbnailsrc="https://hcil-p-001.sitecorecontenthub.cloud/api/gateway/312308/thumbnail" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9e5994f3-76ef-4449-bf78-2dcda5f5474c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260319T211647Z
+    - ID: "ddbe4f14-d42e-43d9-9132-280be0dddec7"
+      Hint: Copyright
+      Value: © Palace Gate Practice 2025. All rights reserved.

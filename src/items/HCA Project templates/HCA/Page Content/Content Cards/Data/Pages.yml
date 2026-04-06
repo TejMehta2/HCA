@@ -6,13 +6,16 @@ Path: /sitecore/templates/Project/HCA/Page Content/Content Cards/Data/Pages
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Blog Page,Content Page,Condition Page,Diagnosis Page,Location Page,Patient Story Page,Specialty Page,Subspecialty Page,SupportService Page,Treatment Page,Page Proxy"
+  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Blog Page,Content Page,Condition Page,Diagnosis Page,Location Page,Patient Story Page,Specialty Page,Subspecialty Page,SupportService Page,Treatment Page,Page Proxy,Consultant Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: TreelistEx
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 200
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "b27edd27-a618-4a84-9f90-21e9c97b3c59"
 Languages:
 - Language: en
   Versions:
@@ -31,11 +34,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2d69e078-dd93-4201-8ec5-6c45178442c2"
+      Value: "ceab79db-cc09-4a4d-9f4a-88918625dc99"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240614T184120Z
+      Value: 20260320T120004Z
