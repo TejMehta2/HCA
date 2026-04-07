@@ -46,7 +46,7 @@
   flex-direction: column;
   flex: 1 1 100%;
   gap: $spacing-5;
-  padding: $spacing-5 $spacing-5 0 $spacing-5;
+  padding: $spacing-5 $spacing-5 $spacing-5 $spacing-5;
   overflow-y: auto;
 
   @include scrollbar;
