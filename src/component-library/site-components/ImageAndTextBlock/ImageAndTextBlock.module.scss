@@ -137,8 +137,12 @@
 
 .icon-list-wrapper {
   .image {
-    grid-row: 1;
+    grid-row: 2;
     padding: $spacing-13 0 0 0;
+
+    @include media(screen-l) {
+      grid-row: 1;
+    }
   }
 }
 
