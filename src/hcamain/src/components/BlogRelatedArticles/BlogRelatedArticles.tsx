@@ -28,6 +28,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -85,6 +86,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 next={{
                   width: 500,
                   height: 400,
+                  quality: 90,
                   sizes: '(max-width: 768px) 100vw, 30vw',
                 }}
               />
@@ -95,6 +97,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 next={{
                   width: 500,
                   height: 400,
+                  quality: 90,
                   sizes: '(max-width: 768px) 100vw, 30vw',
                 }}
               />
@@ -115,7 +118,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 </a>
               </Text>
             )}
-            <Text tag="span" variation="body-large">
+            <Text tag="div" variation="body-large">
               {card.abstractText?.value ? (
                 <JssRichText field={card.abstractText} />
               ) : (
@@ -163,7 +166,13 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         return (
           <CardBlog key={index}>
             {cardImageSrc !== undefined ? (
-              <Image src={cardImageSrc} alt={name} width="643" height="605" />
+              <Image
+                src={upsertQuerystringParam(cardImageSrc, 't', 'w750')}
+                alt={name}
+                width="643"
+                height="605"
+                quality={90}
+              />
             ) : undefined}
 
             <time>{formatDate(new Date(date))}</time>
