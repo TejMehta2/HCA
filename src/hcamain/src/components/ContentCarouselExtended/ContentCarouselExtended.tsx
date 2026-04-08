@@ -81,7 +81,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
   const cards =
     props.fields?.Cards?.map((card) => {
       const iconMarkup = card?.fields?.Icon?.fields?.SvgMarkup48?.value || '';
-      const hasTitle = card?.fields?.Title || isExperienceEditor;
+      const hasTitle = card?.fields?.Title?.value || isExperienceEditor;
       const hasText = card?.fields?.Text || isExperienceEditor;
 
       return {
@@ -100,9 +100,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
           <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
         ) : undefined,
         title: hasTitle ? (
-          <Text variation="heading-2">
-            <JssText field={card.fields?.Title} />
-          </Text>
+          card?.fields?.Title?.value
         ) : undefined,
         bodyText: hasText ? (
           <Text variation="body-medium">

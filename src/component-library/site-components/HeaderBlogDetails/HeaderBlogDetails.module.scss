@@ -34,17 +34,20 @@
 }
 
 .copy {
-  margin-top: $spacing-5;
+  margin-top: $spacing-2;
 }
 
 .authors {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: $spacing-4;
-  margin-top: $spacing-5;
+  margin-top: $spacing-2;
+  width: fit-content;
 
   @include media(screen-m) {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $spacing-6;
+    row-gap: $spacing-5;
   }
 }
 

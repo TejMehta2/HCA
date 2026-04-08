@@ -51,6 +51,11 @@ interface Fields {
       getDirectionsText?: { jsonValue?: Field<string> };
       numberOfCards?: { jsonValue?: Field<string> };
     };
+    contextItem?: {
+      locations?: {
+        targetItems?: LocationsFields[];
+      };
+    };
     contextItemSearchIdParams?: {
       treatmentId?: string;
       serviceLineId?: string;

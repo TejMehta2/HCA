@@ -1,0 +1,35 @@
+﻿---
+ID: "ca66bcaa-ab0d-45a8-a0b2-869a92137e6f"
+Parent: "08bcd8ec-26a2-450e-936a-0da650d2fa49"
+Template: "af067124-06b8-48f6-856e-25fa05fb3a01"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Basic Footer/Data/footer/Links/Terms and conditions"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260319T200154Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "89bbe383-1bb4-447d-b1e8-6ee4651ce127"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260319T200229Z
+    - ID: "e5346173-0fb0-45a3-8e04-2fcbe3820f74"
+      Hint: Link
+      Value: |
+        <link text="Terms &amp; Conditions" linktype="anchor" url="tandc" anchor="tandc" title="" class="" />

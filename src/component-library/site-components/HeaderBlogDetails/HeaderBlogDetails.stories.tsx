@@ -71,7 +71,7 @@ export const WithAuthors: StoryObj<typeof HeaderBlogDetails> = {
         wrapper={false}
         key={1}
         author={{
-          name: 'John Smith',
+          name: 'Mahshid Nickkho-Amiry',
           image: (
             <Image
               src="/placeholders/quote-block-author.png"
@@ -80,14 +80,15 @@ export const WithAuthors: StoryObj<typeof HeaderBlogDetails> = {
               height="70"
             />
           ),
-          tag: <a href="#">Orthopaedics Consultant</a>,
+          tag: <a href="#">Consultant Obstetrician and Gynaecologist</a>,
         }}
       ></QuoteBlock>,
+
       <QuoteBlock
         wrapper={false}
         key={2}
         author={{
-          name: 'John Smith',
+          name: 'Mahshid Nickkho-Amiry',
           image: (
             <Image
               src="/placeholders/quote-block-author.png"
@@ -96,7 +97,39 @@ export const WithAuthors: StoryObj<typeof HeaderBlogDetails> = {
               height="70"
             />
           ),
-          tag: <a href="#">Orthopaedics Consultant</a>,
+          tag: <a href="#">Consultant Obstetrician and Gynaecologist</a>,
+        }}
+      ></QuoteBlock>,
+      <QuoteBlock
+        wrapper={false}
+        key={3}
+        author={{
+          name: 'Dr Nikolaos Papamichail',
+          image: (
+            <Image
+              src="/placeholders/quote-block-author.png"
+              alt="author of quote"
+              width="70"
+              height="70"
+            />
+          ),
+          tag: <a href="#">Consultant Cardiologist</a>,
+        }}
+      ></QuoteBlock>,
+      <QuoteBlock
+        wrapper={false}
+        key={4}
+        author={{
+          name: 'Dr Nikolaos Papamichail',
+          image: (
+            <Image
+              src="/placeholders/quote-block-author.png"
+              alt="author of quote"
+              width="70"
+              height="70"
+            />
+          ),
+          tag: <a href="#">Consultant Cardiologist</a>,
         }}
       ></QuoteBlock>,
     ],

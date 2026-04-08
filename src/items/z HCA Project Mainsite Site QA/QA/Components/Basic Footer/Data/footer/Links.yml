@@ -1,0 +1,32 @@
+﻿---
+ID: "08bcd8ec-26a2-450e-936a-0da650d2fa49"
+Parent: "1bad2ccd-f44e-4add-9884-b715c9376679"
+Template: "a39b1b99-6608-4e03-94b2-f68f682aea02"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Basic Footer/Data/footer/Links"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260319T200001Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8f930fb2-5f4c-4e59-8155-5d86c2bdfa09"
+    - ID: "a541959d-74c3-488f-b625-76952888a8a2"
+      Hint: Title
+      Value: Links
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260319T200331Z
+    - ID: "ef9b6d78-b9e5-4bf2-81ec-876cefc411d2"
+      Hint: Links
+      Value: |
+        {204C5994-7DFF-457D-BA8E-FB9C69131690}
+        {CA66BCAA-AB0D-45A8-A0B2-869A92137E6F}
+        {CFF12A5F-07FD-4450-9EE5-8B91C35D9CF8}

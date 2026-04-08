@@ -11,9 +11,9 @@ const GetLDBFirstAppointmentDataAll = async (
     console.error('error - no request found for GetLDBFirstAppointmentDataAll');
   }
   const response = await getLDBFirstAppointmentDatas([], ''); // no params - get all
-  res.appendHeader('Cache-Control', 'max-age=3600');
-  res.appendHeader('CDN-Cache-Control', 'max-age=3600');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
+  res.setHeader('Cache-Control', 'max-age=3600');
+  res.setHeader('CDN-Cache-Control', 'max-age=3600');
+  res.setHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
   return res.status(200).json(response);
 };
 

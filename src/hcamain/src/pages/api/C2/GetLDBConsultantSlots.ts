@@ -37,9 +37,9 @@ console.log(
     (hCAConsultantId as string) ?? null, // GMC (deprecated use consultantGUID)
     (locationId as string) ?? null
   ); // Meditech Mnemonic (deprecated use locationGUID)
-  res.appendHeader('Cache-Control', 'max-age=10');
-  res.appendHeader('CDN-Cache-Control', 'max-age=60');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
+  res.setHeader('Cache-Control', 'max-age=10');
+  res.setHeader('CDN-Cache-Control', 'max-age=60');
+  res.setHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   return res.status(200).json(response);
 };
 
