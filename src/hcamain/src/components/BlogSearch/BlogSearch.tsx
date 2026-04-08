@@ -35,6 +35,7 @@ import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -251,10 +252,15 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     <CardBlog key={index}>
                       {cardImageSrc !== undefined ? (
                         <Image
-                          src={cardImageSrc}
+                          src={upsertQuerystringParam(
+                            cardImageSrc,
+                            't',
+                            'w750'
+                          )}
                           alt=""
-                          width="363"
-                          height="243"
+                          width="560"
+                          height="420"
+                          quality={90}
                         />
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
