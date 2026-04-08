@@ -25,8 +25,9 @@
   align-items: center;
 }
 
+// define explicit column placement even on small screens
 .image {
-  grid-column-end: span 6;
+  grid-column: 1 / -1; // full width on mobile (unchanged behavior)
   display: flex;
   position: relative;
   padding: 0 0 $spacing-13 0;
@@ -56,8 +57,7 @@
 }
 
 .content {
-  grid-column-end: span 6;
-  grid-column-start: 1;
+  grid-column: 1 / -1; // full width on mobile
   color: var(--text);
   display: flex;
   flex-direction: column;
@@ -78,140 +78,6 @@
   }
 }
 
-.long {
-  .image {
-    img {
-      aspect-ratio: 358/488;
-      object-fit: cover;
-    }
-  }
-}
-
-.long,
-.image-narrow {
-  .image {
-    grid-column-end: span 6;
-  }
-
-  .content {
-    grid-column-end: span 6;
-    grid-column-start: 1;
-  }
-}
-
-.header {
-  padding-bottom: $spacing-6;
-}
-
-.subheader {
-  display: flex;
-  padding-bottom: $spacing-2;
-}
-
-.children + div .ctas {
-  padding-top: $spacing-7;
-}
-
-.ctas {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: px-to-rem(8) 0;
-
-  div:not(:has([class^='Accordion'])) {
-    a,
-    button {
-      width: 100%;
-      text-align: center;
-      justify-content: center;
-    }
-  }
-}
-
-.ratings {
-  display: grid;
-  gap: px-to-rem(24) 0;
-  margin-top: px-to-rem(24);
-}
-
-.icon-list-wrapper {
-  .image {
-    grid-row: 2;
-    padding: $spacing-13 0 0 0;
-  }
-}
-
-.icon-list {
-  list-style-type: none;
-  padding: 0;
-  margin: px-to-rem(40) 0 0;
-  display: grid;
-  grid: auto / 1fr;
-  gap: $spacing-5;
-
-  li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0 $spacing-2;
-    @include apply-body-large;
-
-    span {
-      display: flex;
-    }
-  }
-}
-
-.pricing {
-  .children {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-5;
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-1;
-    }
-  }
-}
-
-.hide-on-mobile-cf {
-  display: none;
-}
-
-.hero {
-  &.wrapper {
-    padding: $spacing-9 0;
-  }
-}
-
-.hero-cf {
-  &.wrapper {
-    padding: $spacing-4 0 $spacing-9 0;
-
-    @include media(screen-xl) {
-      padding: $spacing-9 0;
-    }
-  }
-}
-
-.location {
-  display: flex;
-}
-
-.text {
-  margin-right: $spacing-1;
-}
-
-.save-location {
-  margin-top: $spacing-2;
-  background-color: $teal-5;
-  padding: $spacing-4;
-  border-radius: $radius-medium;
-}
-
-// ===== VIEWPORT-RESPONSIVE MODE (default, single-column context) =====
-
 .wrapper:not(.use-container-queries) {
   .container {
     @include media(screen-l) {
@@ -219,178 +85,67 @@
     }
   }
 
+  // explicitly place image + content side by side
   .image {
     @include media(screen-l) {
+      grid-column: 1 / span 6;
+      grid-row: 1; // ensure same row without relying on auto-placement
       padding: 0;
     }
   }
 
   .content {
     @include media(screen-l) {
-      grid-column-end: span 5;
-      grid-column-start: 8;
+      grid-column: 7 / span 6;
+      grid-row: 1; // align with image
     }
 
     &.content-cf {
       @include media(screen-l) {
-        grid-column-end: span 10;
-        grid-column-start: 1;
+        grid-column: 1 / span 10;
       }
 
       @include media(screen-xl) {
-        grid-column-end: span 5;
-        grid-column-start: 8;
+        grid-column: 7 / span 6;
       }
     }
   }
 
-  .long {
-    .image {
-      img {
-        @include media(screen-m) {
-          aspect-ratio: 770/588;
-        }
-
-        @include media(screen-l) {
-          aspect-ratio: 458/715;
-        }
-
-        @include media(screen-xl) {
-          aspect-ratio: 534/834;
-        }
-      }
-    }
-  }
-
+  // keep existing behavior for variants
   .long,
   .image-narrow {
     .image {
       @include media(screen-l) {
-        grid-column-end: span 5;
+        grid-column: 1 / span 5;
       }
     }
 
     .content {
       @include media(screen-l) {
-        grid-column-end: span 6;
-        grid-column-start: 7;
-      }
-    }
-  }
-
-  .ctas {
-    @include media(screen-m) {
-      min-width: px-to-rem(314);
-      align-self: self-start;
-    }
-
-    div:not(:has([class^='Accordion'])) {
-      a,
-      button {
-        @include media(screen-l) {
-          width: fit-content;
-        }
+        grid-column: 7 / span 6;
       }
     }
   }
 
   .image-right {
     @include media(screen-l) {
-      & > div:first-of-type {
-        grid-column-start: 7;
+      &>div:first-of-type {
+        grid-column: 7 / span 6;
         grid-row: 1;
         padding: 0;
       }
 
-      & > div:last-of-type {
-        grid-column-start: 1;
-      }
-
-      &.long,
-      &.image-narrow {
-        & > div:first-of-type {
-          grid-column-start: 8;
-        }
-      }
-    }
-  }
-
-  .icon-list-wrapper {
-    .image {
-      @include media(screen-m) {
+      &>div:last-of-type {
+        grid-column: 1 / span 6;
         grid-row: 1;
-        padding: 0 0 $spacing-13 0;
       }
-
-      @include media(screen-l) {
-        padding: 0;
-      }
-    }
-  }
-
-  .icon-list {
-    @include media(screen-m) {
-      grid: auto / 1fr 1fr;
-    }
-  }
-
-  .pricing {
-    .image {
-      @include media(screen-l) {
-        grid-column-end: span 5;
-      }
-    }
-
-    .content {
-      @include media(screen-l) {
-        grid-column-end: span 6;
-        grid-column-start: 7;
-      }
-    }
-  }
-
-  .hide-on-mobile {
-    @include media(screen-l, max) {
-      display: none;
-    }
-  }
-
-  .hide-on-desktop {
-    @include media(screen-l) {
-      display: none;
-    }
-  }
-
-  .no-desktop-image {
-    .content {
-      @include media(screen-l) {
-        grid-column-end: span 12;
-        grid-column-start: 1;
-      }
-    }
-
-    .content.content-cf {
-      @include media(screen-l) {
-        grid-column-end: span 12;
-        grid-column-start: 1;
-      }
-    }
-  }
-
-  .hide-on-mobile-cf {
-    @include media(screen-xl) {
-      display: block;
     }
   }
 }
 
-// ===== CONTAINER-RESPONSIVE MODE (multi-column context) =====
-
 .use-container-queries {
   container-type: inline-size;
   container-name: image-text-block;
-  margin-left: 0;
-  margin-right: 0;
 
   .container {
     @container image-text-block (min-width: #{$cq-large}) {
@@ -400,43 +155,25 @@
 
   .image {
     @container image-text-block (min-width: #{$cq-large}) {
+      grid-column: 1 / span 6;
+      grid-row: 1;
       padding: 0;
     }
   }
 
   .content {
     @container image-text-block (min-width: #{$cq-large}) {
-      grid-column-end: span 5;
-      grid-column-start: 8;
+      grid-column: 7 / span 6;
+      grid-row: 1;
     }
 
     &.content-cf {
       @container image-text-block (min-width: #{$cq-large}) {
-        grid-column-end: span 10;
-        grid-column-start: 1;
+        grid-column: 1 / span 10;
       }
 
       @container image-text-block (min-width: #{$cq-xlarge}) {
-        grid-column-end: span 5;
-        grid-column-start: 8;
-      }
-    }
-  }
-
-  .long {
-    .image {
-      img {
-        @container image-text-block (min-width: #{$cq-medium}) {
-          aspect-ratio: 770/588;
-        }
-
-        @container image-text-block (min-width: #{$cq-large}) {
-          aspect-ratio: 458/715;
-        }
-
-        @container image-text-block (min-width: #{$cq-xlarge}) {
-          aspect-ratio: 534/834;
-        }
+        grid-column: 7 / span 6;
       }
     }
   }
@@ -445,121 +182,28 @@
   .image-narrow {
     .image {
       @container image-text-block (min-width: #{$cq-large}) {
-        grid-column: 1 / 2;
+        grid-column: 1 / span 5;
       }
     }
 
     .content {
       @container image-text-block (min-width: #{$cq-large}) {
-        grid-column: 2 / 3;
-      }
-    }
-  }
-
-  .ctas {
-    @container image-text-block (min-width: #{$cq-medium}) {
-      min-width: px-to-rem(314);
-      align-self: self-start;
-    }
-
-    div:not(:has([class^='Accordion'])) {
-      a,
-      button {
-        @container image-text-block (min-width: #{$cq-large}) {
-          width: fit-content;
-        }
+        grid-column: 7 / span 6;
       }
     }
   }
 
   .image-right {
     @container image-text-block (min-width: #{$cq-large}) {
-      & > div:first-of-type {
-        grid-column-start: 7;
+      &>div:first-of-type {
+        grid-column: 7 / span 6;
         grid-row: 1;
-        padding: 0;
       }
 
-      & > div:last-of-type {
-        grid-column-start: 1;
-      }
-
-      &.long,
-      &.image-narrow {
-        & > div:first-of-type {
-          grid-column-start: 8;
-        }
-      }
-    }
-  }
-
-  .icon-list-wrapper {
-    .image {
-      @container image-text-block (min-width: #{$cq-medium}) {
+      &>div:last-of-type {
+        grid-column: 1 / span 6;
         grid-row: 1;
-        padding: 0 0 $spacing-13 0;
       }
-
-      @container image-text-block (min-width: #{$cq-large}) {
-        padding: 0;
-      }
-    }
-  }
-
-  .icon-list {
-    @container image-text-block (min-width: #{$cq-medium}) {
-      grid: auto / 1fr 1fr;
-    }
-  }
-
-  .pricing {
-    .image {
-      @container image-text-block (min-width: #{$cq-large}) {
-        grid-column-end: span 5;
-      }
-    }
-
-    .content {
-      @container image-text-block (min-width: #{$cq-large}) {
-        grid-column-end: span 6;
-        grid-column-start: 7;
-      }
-    }
-  }
-
-  .hide-on-mobile {
-    display: none;
-
-    @container image-text-block (min-width: #{$cq-large}) {
-      display: flex;
-    }
-  }
-
-  .hide-on-desktop {
-    @container image-text-block (min-width: #{$cq-large}) {
-      display: none;
-    }
-  }
-
-  .no-desktop-image {
-    .content {
-      @container image-text-block (min-width: #{$cq-large}) {
-        grid-column-end: span 12;
-        grid-column-start: 1;
-      }
-    }
-
-    .content.content-cf {
-      @container image-text-block (min-width: #{$cq-large}) {
-        grid-column-end: span 12;
-        grid-column-start: 1;
-      }
-    }
-  }
-
-  .hide-on-mobile-cf {
-    @container image-text-block (min-width: #{$cq-xlarge}) {
-      display: block;
     }
   }
 }
