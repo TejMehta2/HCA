@@ -5,6 +5,7 @@ import YextResultCardArticles from './YextResultCardArticles';
 import { CardProps } from '@yext/search-ui-react';
 import { Ce_patientStory } from '../../types/yext/articles';
 import Icons from '../../foundation/Icons/Icons';
+import { tidySearchDescription } from '../helpers/tidySearchDescription';
 
 const YextResultCardArticlesAdaptor = (
   props: CardProps<Ce_patientStory>
@@ -44,7 +45,7 @@ const YextResultCardArticlesAdaptor = (
   const resultTitle =
     c_nameRichText || c_abstractTitle || c_pageTitle || name || '';
 
-  const resultDescription = c_abstractText;
+  const resultDescription = tidySearchDescription(c_abstractText);
 
   const yextImage = c_servicesImage || c_primaryImage;
 
