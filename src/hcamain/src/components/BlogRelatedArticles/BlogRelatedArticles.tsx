@@ -144,6 +144,8 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           name,
           date,
           url,
+          abstractTitle,
+          abstractText,
           title,
           description,
           typeName,
@@ -170,11 +172,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                 variation="heading-2"
               >
-                <a href={`${url}`}>{title}</a>
+                <a href={`${url}`}>{abstractTitle ? abstractTitle : title}</a>
               </Text>
             )}
-            <Text tag="span" variation="body-large">
-              {description}
+            <Text tag="div" variation="body-large">
+              {abstractText ? abstractText : description}
             </Text>
 
             <div>
