@@ -7,6 +7,7 @@ import {
   RichText as JssRichText,
   useComponentProps,
   useSitecoreContext,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
@@ -25,6 +26,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
+import parse from 'html-react-parser';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -185,7 +187,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               </Text>
             )}
             <Text tag="div" variation="body-large">
-              {abstractText ? abstractText : description}
+              {parse(abstractText || description || '')}
             </Text>
 
             <div>
@@ -297,6 +299,11 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   const fields = rendering.fields?.data?.item;
 
+  debug.common(
+    'BlogRelatedArticlesProps: rendering.fields?.data',
+    rendering.fields?.data
+  );
+
   // Format props into entries, then query params
   const customFilters =
     (fields?.filterBy?.FilterByList &&
@@ -310,13 +317,13 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const contextSearchParams = Object.entries(
     rendering.fields?.data?.contextItemSearchParams || {}
-  )
-    .filter(([, nestedValue]) => nestedValue.value !== '')
-    .map(([key, nestedValue]) => [
-      key,
-      nestedValue?.value &&
-        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-    ]);
+  ).flatMap(([key, nestedValue]) =>
+    (nestedValue?.value || '')
+      .split('|')
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .map((value) => [key, value.replaceAll(/[{},\-]/g, '').toLowerCase()])
+  );
 
   const contextSearchIdParams = Object.entries(
     rendering.fields?.data?.contextItemSearchIdParams || {}
@@ -345,7 +352,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   try {
     const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
-
+    debug.common('yext fetch url', url.href);
     const response = await fetch(url.href);
     if (response.ok) {
       const data = await response.json();
