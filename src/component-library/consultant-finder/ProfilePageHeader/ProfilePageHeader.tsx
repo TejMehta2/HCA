@@ -11,7 +11,11 @@ const ProfilePageHeader = (props: ProfilePageHeaderProps): JSX.Element => {
       <div className={styles['profile-header-container']}>
         {props.image && (
           <div className={styles.image}>
-            <img src={props.image} alt="test" width="170" height="170" />
+            <img
+              src={props.image}
+              alt={`${props.name}${props.topSpecialty?.trim() ? `, ${props.topSpecialty.trim()}` : ''}`}
+              width="170" height="170"
+            />
           </div>
         )}
         <div className={styles.details}>
