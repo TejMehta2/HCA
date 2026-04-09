@@ -299,7 +299,10 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   const fields = rendering.fields?.data?.item;
 
-  debug.common("BlogRelatedArticlesProps: rendering.fields?.data", rendering.fields?.data);
+  debug.common(
+    'BlogRelatedArticlesProps: rendering.fields?.data',
+    rendering.fields?.data
+  );
 
   // Format props into entries, then query params
   const customFilters =
