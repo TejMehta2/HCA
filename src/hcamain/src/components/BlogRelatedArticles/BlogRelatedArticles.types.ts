@@ -89,6 +89,8 @@ export type BlogRelatedArticlesResult = {
 
 export type BlogRelatedArticles = {
   id: number;
+  abstractTitle: string;
+  abstractText: string;
   title: string;
   name: string;
   description: string;
