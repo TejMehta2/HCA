@@ -26,6 +26,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
+import parse from 'html-react-parser';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -186,7 +187,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               </Text>
             )}
             <Text tag="div" variation="body-large">
-              {abstractText ? abstractText : description}
+              {parse(abstractText || description || '')}
             </Text>
 
             <div>
