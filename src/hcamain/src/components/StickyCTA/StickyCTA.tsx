@@ -85,7 +85,11 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
     href: string,
     target?: string
   ) => {
-    if (target === '_blank') {
+    if (
+      target === '_blank' ||
+      href.includes('tel:') ||
+      href.includes('mailto:')
+    ) {
       return;
     }
 
