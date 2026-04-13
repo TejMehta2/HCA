@@ -6,7 +6,6 @@ import Button from '../../core-components/Button/Button';
 
 const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const { videoUrl, overlayImage } = props;
-  console.log('videoUrl', videoUrl);
 
   const [videoSrc, setVideoSrc] = useState(videoUrl);
   const [hideOverlay, sethideOverlay] = useState(false);
@@ -31,8 +30,6 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
     if (isYoutube) {
       url.searchParams.set('enablejsapi', '1');
     }
-    console.log('before', videoUrl)
-    console.log('after', url.toString());
 
     setVideoSrc(url.toString());
     sethideOverlay(true);
