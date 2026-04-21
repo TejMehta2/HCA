@@ -1,0 +1,40 @@
+﻿---
+ID: "ca199c4b-be12-44c9-858a-61ad24b3dd1f"
+Parent: "0914ecd9-1335-49fc-9652-cbd7b966ebc2"
+Template: "0914ecd9-1335-49fc-9652-cbd7b966ebc2"
+Path: /sitecore/templates/Project/HCA/Foundation/Location Proxy Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {B77DFB7A-E9CB-48D5-A5FC-88ADC680B3F5}
+    {0914ECD9-1335-49FC-9652-CBD7B966EBC2}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "651c30a2-8599-43e5-b10c-7c591ef0f985"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260421T181552Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7bf933a9-42f6-439b-b648-6b86a569cb12"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260421T181634Z
