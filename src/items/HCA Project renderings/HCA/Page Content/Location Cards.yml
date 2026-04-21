@@ -44,6 +44,7 @@ SharedFields:
           locations {
             PagesList: targetItems {
               ...LocationPageFragment
+              ...LocationProxyFragment
             }
           }
           filterOptions {
@@ -96,6 +97,7 @@ SharedFields:
           locations {
             targetItems {
               ...LocationPageFragment
+              ...LocationProxyFragment
             }
           }
         }
@@ -136,6 +138,35 @@ SharedFields:
       }
     }
     
+    fragment LocationProxyFragment on LocationProxy {
+      title {
+        value
+      }
+      image {
+        jsonValue
+      }
+      city {
+        value
+      }
+      addressLine1 {
+        value
+      }
+      addressLine2 {
+        value
+      }
+      postCode {
+        value
+      }
+      getDirections {
+        value
+      }
+      proxyurl: link {
+        ... on LinkField {
+          jsonValue
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Location Cards
@@ -160,7 +191,7 @@ SharedFields:
     <image mediaid="{71DA7EEE-94E4-477E-836E-D473E39C7D67}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "40c4ed50-39e5-4157-9e89-ec87f8a05375"
+  Value: "03d8f4ac-4693-49d6-b88f-1b541ffaf5de"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -207,14 +238,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "910fb7bc-2552-4c9d-ab0c-f03082a0dc11"
+      Value: "91a8920c-f885-49a4-8fe0-c8d1481df084"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260406T143457Z
+      Value: 20260421T190833Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
