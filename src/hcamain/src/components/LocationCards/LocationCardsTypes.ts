@@ -28,7 +28,8 @@ type LocationsFields = {
   addressLine2?: { value?: string };
   postCode?: { value?: string };
   getDirections?: { value?: string };
-  url: { path?: string };
+  url: { url?: string };
+  proxyurl?: { jsonValue: LinkField; path?: string; text: string };
 };
 
 interface Fields {
