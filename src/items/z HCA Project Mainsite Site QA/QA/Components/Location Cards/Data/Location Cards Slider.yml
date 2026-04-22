@@ -2,7 +2,7 @@
 ID: "2f22b9f7-c2bb-4626-a9b3-f3c2c11be295"
 Parent: "068edb6b-434c-4284-a1ad-28e7970a70ab"
 Template: "38ab0ea0-da28-4136-b857-77f863de1795"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Slider"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Location Cards/Data/Location Cards Slider"
 Languages:
 - Language: en
   Versions:
@@ -11,6 +11,9 @@ Languages:
     - ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
       Hint: FilterOptions
       Value: 
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: Curated List of locations
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240228T212004Z
@@ -20,6 +23,7 @@ Languages:
         {114F95BA-9012-4A8F-9507-426B2A948885}
         {0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}
         {8F20EEFF-201D-43AC-8D49-E1789D91392B}
+        {EBB42075-6066-426A-B9FA-BBA9F6B143E7}
     - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
@@ -28,7 +32,7 @@ Languages:
       Value: Get directions
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8791d121-694c-415e-ab8e-e0cf75ccaa5b"
+      Value: "a1ce01a9-dd89-4136-88a1-54b375ad362f"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -39,10 +43,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
       Value: Locations
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240326T091433Z
+      Value: 20260421T185305Z
+    - ID: "ec60c2d1-b6a4-4eae-a88d-ccb016b6b677"
+      Hint: NumberOfCards
+      Value: 12

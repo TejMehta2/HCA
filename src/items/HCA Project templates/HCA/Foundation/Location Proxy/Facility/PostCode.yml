@@ -1,21 +1,15 @@
 ﻿---
-ID: "50f18c4e-7dd1-4672-91b5-74dc61a1dade"
-Parent: "50ac1d5e-3aa2-4261-8f69-36c4cceaee24"
+ID: "66ea0120-1a94-4a9a-a85c-869c22e78745"
+Parent: "226840e4-6f2e-4695-a095-fc4d37d5ef56"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Location Cards/Data/Locations
+Path: /sitecore/templates/Project/HCA/Foundation/Location Proxy/Facility/PostCode
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']&Filter=_templatename:Location Page|_templatename:Location Proxy"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist with Search
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "71b2299d-639b-4b8a-999d-a6049bcda294"
+  Value: 275
 Languages:
 - Language: en
   Versions:
@@ -23,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240228T211350Z
+      Value: 20240224T124849Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -34,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "748090f2-3cf6-4307-98ff-6770b45065e4"
+      Value: "38d3531a-4bce-4661-a353-dbce88e96880"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T183015Z
+      Value: 20260421T181303Z
