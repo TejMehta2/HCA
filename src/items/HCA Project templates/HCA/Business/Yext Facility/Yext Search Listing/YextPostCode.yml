@@ -1,51 +1,51 @@
 ﻿---
-ID: "02045232-3721-4bfe-93ce-3e15316fcc55"
+ID: "ec1fad5a-6f71-4e99-96a6-7c1c24bb103e"
 Parent: "6a2fc4e6-fcf3-4a1e-955a-30d28a46c8f0"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext/YextDisplayAddress
+Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext Search Listing/YextPostCode
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 475
+  Value: 12
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "f60e46dc-6d88-4634-b4b7-6fd539df30ae"
+  Value: "cfbf0296-51c4-4431-a4df-e382997580f0"
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Yext Display Address
+    Value: Yext PostCode
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "3d361568-098a-4e22-8d9c-e5d7cb1cac16"
+    Value: "528d6400-f9aa-4431-a09d-d2daddbf8194"
   - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
     Hint: __Short description
-    Value: "Warning: This value is used on google listing"
+    Value: "Warning: This value is used on google listing. Must be a valid Postcode"
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260421T192915Z
+      Value: 20240224T124849Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1212cc8a-3f16-494c-b7d9-0fabb74f8c81"
+      Value: "37f0047e-1e50-45ad-91e7-7ef49b7d12df"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T193127Z
+      Value: 20260427T102251Z

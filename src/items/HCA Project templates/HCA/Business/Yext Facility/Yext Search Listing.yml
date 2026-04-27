@@ -2,7 +2,7 @@
 ID: "6a2fc4e6-fcf3-4a1e-955a-30d28a46c8f0"
 Parent: "c14259a6-e9be-4621-a488-d015be61684d"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext
+Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext Search Listing
 Languages:
 - Language: en
   Versions:
@@ -21,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "431b9d64-5425-46cb-bc77-3643a03f58ab"
+      Value: "402e6075-1d01-4592-955c-e129dae4ee47"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T192914Z
+      Value: 20260427T102251Z

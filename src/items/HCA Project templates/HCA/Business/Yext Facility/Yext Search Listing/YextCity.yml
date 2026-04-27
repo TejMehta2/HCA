@@ -1,27 +1,30 @@
 ﻿---
-ID: "b20ff7d2-58df-463f-8660-623a06fa1690"
+ID: "a9f93938-8f37-48d2-a980-3d3920bc7444"
 Parent: "6a2fc4e6-fcf3-4a1e-955a-30d28a46c8f0"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext/YextCounty
+Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext Search Listing/YextCity
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 375
+  Value: 18
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "e56d4590-6594-47a5-bb2c-68c20777cd23"
+  Value: "edbde821-f4d7-4e60-92de-24a8f739face"
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Yext County
+    Value: Yext City
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "b9dbeaf8-27c4-4891-a70c-2f25b687174e"
+    Value: "f7024dac-89c3-4b94-9129-29a319efde8b"
+  - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+    Hint: __Long description
+    Value: 
   - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
     Hint: __Short description
     Value: "Warning: This value is used on google listing"
@@ -30,7 +33,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260421T192631Z
+      Value: 20240118T221725Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -41,11 +44,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cfe3dd02-3be8-4ac7-a26e-3c1c826291b0"
+      Value: "4e11b787-470b-44b6-ab8a-1708cf5e5c38"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T193119Z
+      Value: 20260427T102251Z

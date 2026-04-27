@@ -6,16 +6,10 @@ Path: /sitecore/templates/Project/HCA/Business/Yext Facility
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {98EA1087-9FBA-4281-9C6E-A0335879D121}
-    {4DCBD05D-11C4-4F14-A0A3-DA168219D593}
-    {7C939055-87B4-4806-81C4-FEB962BD3E01}
-    {DDE07725-B365-4244-8D3C-4DFEA59A3C67}
-    {8353F008-2F21-4B23-A69F-3AA813B50DF5}
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "df391e3f-75ed-4a92-9afc-a9269802ce23"
+  Value: "c33f8425-741d-4012-9361-414aeb99f774"
 Languages:
 - Language: en
   Versions:
@@ -34,11 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cba90ecf-a705-4ab3-bd84-2470ddb2671f"
+      Value: "fccc201d-f9db-4a19-a13e-ff34a1787d04"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T191620Z
+      Value: 20260423T093709Z
