@@ -81,29 +81,31 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       (card, index) => {
         return (
           <CardBlog key={index}>
-            {card.abstractImage?.jsonValue?.value?.src ? (
-              <NextJssImage
-                field={card.abstractImage?.jsonValue}
-                editable={false}
-                next={{
-                  width: 500,
-                  height: 400,
-                  quality: 90,
-                  sizes: '(max-width: 768px) 100vw, 30vw',
-                }}
-              />
-            ) : (
-              <NextJssImage
-                field={card.image?.jsonValue}
-                editable={false}
-                next={{
-                  width: 500,
-                  height: 400,
-                  quality: 90,
-                  sizes: '(max-width: 768px) 100vw, 30vw',
-                }}
-              />
-            )}
+            <a href={card.url?.path}>
+              {card.abstractImage?.jsonValue?.value?.src ? (
+                <NextJssImage
+                  field={card.abstractImage?.jsonValue}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    quality: 90,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
+              ) : (
+                <NextJssImage
+                  field={card.image?.jsonValue}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    quality: 90,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
+              )}
+            </a>
 
             <JssDate field={card.date?.jsonValue} editable={false} />
             {(card.abstractTitle?.value || card.title?.value) && (
@@ -168,13 +170,15 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         return (
           <CardBlog key={index}>
             {cardImageSrc !== undefined ? (
-              <Image
-                src={upsertQuerystringParam(cardImageSrc, 't', 'w750')}
-                alt={name}
-                width="643"
-                height="605"
-                quality={90}
-              />
+              <a href={`${url}`}>
+                <Image
+                  src={upsertQuerystringParam(cardImageSrc, 't', 'w750')}
+                  alt={name}
+                  width="643"
+                  height="605"
+                  quality={90}
+                />
+              </a>
             ) : undefined}
 
             <time>{formatDate(new Date(date))}</time>
@@ -232,7 +236,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     <CarouselCards
       id={componentAnchorId}
       {...(tableOfContentTitle &&
-      props?.params?.ExcludeFromTableOfContents !== '1'
+        props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       title={
