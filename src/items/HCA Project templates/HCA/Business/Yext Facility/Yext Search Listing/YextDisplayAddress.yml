@@ -1,27 +1,27 @@
 ﻿---
-ID: "bf8ba183-111e-4c0d-8234-b333b4e1a8d3"
+ID: "02045232-3721-4bfe-93ce-3e15316fcc55"
 Parent: "6a2fc4e6-fcf3-4a1e-955a-30d28a46c8f0"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext/YextSubLocality
+Path: /sitecore/templates/Project/HCA/Business/Yext Facility/Yext Search Listing/YextDisplayAddress
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 575
+  Value: 100
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "b3c9fb0e-2e10-4720-880c-c983a48f209a"
+  Value: "f54d8b7b-3021-4204-b4d5-8db51a931479"
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: "Yext Sub-locality"
+    Value: Yext Display Address
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "4d75f7af-013c-43d1-8f8d-3ddf4a93c7be"
+    Value: "3d361568-098a-4e22-8d9c-e5d7cb1cac16"
   - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
     Hint: __Short description
     Value: "Warning: This value is used on google listing"
@@ -41,11 +41,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2fd137f1-9d68-483e-b200-55fa11f0a6c4"
+      Value: "3b59d6a1-ac80-40dc-8c00-569238b93ff0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T193137Z
+      Value: 20260427T102251Z
