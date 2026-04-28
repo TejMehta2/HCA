@@ -44,7 +44,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
         aria-controls={accordionContentId}
         type="button"
       >
-        {title}
+        <h3>{title}</h3>
         <span className={styles.toggle}>
           <Icons iconName={closeIcon}></Icons>
           <Icons iconName={openIcon}></Icons>
