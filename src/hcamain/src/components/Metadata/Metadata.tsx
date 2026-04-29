@@ -78,6 +78,19 @@ const isValidDate = (dateStr: string): boolean => {
   return dateStr !== '0001-01-01T00:00:00Z';
 };
 
+// Function to escape HTML special characters for safe attribute usage
+const escapeHtmlAttribute = (str: string) => {
+  if (typeof str !== 'string') {
+    return '';
+  }
+  return str
+    .replace(/&/g, '&amp;') // Escape &
+    .replace(/"/g, '&quot;') // Escape double quotes
+    .replace(/'/g, '&#39;') // Escape single quotes
+    .replace(/</g, '&lt;') // Escape <
+    .replace(/>/g, '&gt;'); // Escape >
+};
+
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
@@ -122,7 +135,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const title = `${MetaTitle?.value || titleStripped} ${
     PageTitleSufix?.value || ''
   }`;
-  const description = MetaDescription?.value || Text?.value;
+  const description = escapeHtmlAttribute(
+    MetaDescription?.value || Text?.value || ''
+  );
   const image =
     MetaImage?.value?.src ||
     Image?.value?.src ||
@@ -131,8 +146,12 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
-  const pageText = Text?.value ? removeTags(Text?.value) : '';
-  const pageTitle = AbstractTitle?.value || Title.value;
+  const pageText = escapeHtmlAttribute(
+    Text?.value ? removeTags(Text?.value) : ''
+  );
+  const pageTitle = escapeHtmlAttribute(
+    AbstractTitle?.value || Title.value || ''
+  );
 
   const canonicalLink = getCanonical(
     CanonicalUrl?.value?.href,
