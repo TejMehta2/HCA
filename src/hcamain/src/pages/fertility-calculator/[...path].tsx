@@ -51,8 +51,8 @@ const SitecorePage = ({
 
   const route = layoutData.sitecore.route as PageRouteMetadata;
   const { fields } = route;
-  const follow = fields?.NoFollow ? 'nofollow' : 'follow';
-  const index = fields?.NoIndex ? 'noindex' : 'index';
+  const follow = fields?.NoFollow?.value ? 'nofollow' : 'follow';
+  const index = fields?.NoIndex?.value ? 'noindex' : 'index';
   const hideFromWebsiteSearch = fields?.HideFromWebsiteSearch;
 
   //console.log('follow', follow);
