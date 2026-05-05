@@ -13,7 +13,7 @@
   &.feature {
     color: var(--card-secondary-text);
     background-color: var(--card-secondary-background);
-    
+
     --heading-color: var(--card-secondary-text);
     --tag-background: var(--tag-secondary-background);
     --tag-text: var(--tag-secondary-text);
@@ -31,6 +31,15 @@
   flex-direction: column;
   gap: px-to-rem(16);
   height: 100%;
+
+  a {
+
+    &:focus,
+    &:active {
+      outline: 1px solid transparent;
+      outline-offset: 1px;
+    }
+  }
 
   img {
     max-height: px-to-rem(268);
@@ -71,7 +80,7 @@
     }
   }
 
-  & > *:last-child {
+  &>*:last-child {
     padding-top: px-to-rem(30 - 16);
     margin-top: auto;
   }
