@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
