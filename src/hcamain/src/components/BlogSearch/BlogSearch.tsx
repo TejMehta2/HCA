@@ -158,8 +158,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               autocompleteError
                 ? []
                 : autocompleteData?.response.results?.map(
-                    (result) => `${result.value}`
-                  )
+                  (result) => `${result.value}`
+                )
             }
           >
             {hasFilters && (
@@ -251,17 +251,19 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   return (
                     <CardBlog key={index}>
                       {cardImageSrc !== undefined ? (
-                        <Image
-                          src={upsertQuerystringParam(
-                            cardImageSrc,
-                            't',
-                            'w750'
-                          )}
-                          alt=""
-                          width="560"
-                          height="420"
-                          quality={90}
-                        />
+                        <a href={url}>
+                          <Image
+                            src={upsertQuerystringParam(
+                              cardImageSrc,
+                              't',
+                              'w750'
+                            )}
+                            alt=""
+                            width="560"
+                            height="420"
+                            quality={90}
+                          />
+                        </a>
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
