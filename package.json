@@ -14,6 +14,7 @@
     "hcamain:next:start": "cd src/hcamain && npm run next:start",
     "hcamain:type-check": "cd src/hcamain && npm i && npm run bootstrap && npm run type-check",
     "hcamain:copy": "cd src/component-library && npm i && npm run copy hcamain/src/temp",
+    "hcamain-csdk:copy": "cd src/component-library-content-sdk && npm i && npm run copy hcamain-contentsdk/src/temp",
     "hcamain:copy:docker": "cd src/component-library && npm run copy hcamain/src/temp",
     "hcamain:copybuild": "npm run hcamain:copy && npm run hcamain:build",
     "hcamain:copy:watch": "cd src/component-library && npm run watch hcamain/src/temp",

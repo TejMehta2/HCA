@@ -16,6 +16,9 @@
       ],
       ".sitecore/*": [
         ".sitecore/*"
+      ],
+       "@component-library/*": [
+        "src/temp/component-library/*"
       ]
     },
     "target": "ES2017",

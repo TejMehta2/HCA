@@ -24,6 +24,18 @@ const nextConfig: NextConfig = {
         port: '',
       },
     ],
+    domains: [
+          'upload.wikimedia.org',
+          'a.mktgcdn.com',
+          'hcil-q-001.sitecorecontenthub.cloud',
+          'hcil-p-001.sitecorecontenthub.cloud',
+          'edge.sitecorecloud.io',
+          'www.doctify.com',
+          'doctify.com',
+          'xm-dev.hcahealthcareqa.co.uk',
+          'www.hcahealthcareqa.co.uk'
+    ],
+    unoptimized: process.env.IMAGES_UNOPTIMIZED === 'true',
   },
   // use this configuration to serve the sitemap.xml and robots.txt files from the API route handlers
   rewrites: async () => {
