@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { DataComponentSimpleProps } from './DataComponentSimple.types';
 import styles from './DataComponentSimple.module.scss';
 import Text from '../../foundation/Text/Text';

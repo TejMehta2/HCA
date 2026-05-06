@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardDoctorLayoutProps } from './CardDoctorLayout.types';
 import styles from './CardDoctorLayout.module.scss';
 import Themes from '../../foundation/Themes/Themes';

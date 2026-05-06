@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ThemesProps } from './Themes.types';
 import styles from './Themes.module.scss';
 import { generateHtmlSafeId } from '../../utility-functions/index';

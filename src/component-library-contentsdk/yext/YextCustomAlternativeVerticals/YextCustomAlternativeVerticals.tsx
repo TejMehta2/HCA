@@ -3,7 +3,7 @@ import {
   VerticalResults as VerticalResultsData,
 } from '@yext/search-headless-react';
 import { VerticalConfig } from '@yext/search-ui-react';
-import React from 'react';
+import React, { type JSX } from 'react';
 import Text from '../../foundation/Text/Text';
 import useSetVertical from '../helpers/useSetVertical';
 import { VerticalKey } from '../YextSearch/YextSearch.types';

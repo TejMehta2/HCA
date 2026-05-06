@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface ContactItem {
   title: JSX.Element;
   number: JSX.Element | JSX.Element[];

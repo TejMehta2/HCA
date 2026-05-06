@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { TabsBlockProps } from './TabsBlock.types';
 import styles from './TabsBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

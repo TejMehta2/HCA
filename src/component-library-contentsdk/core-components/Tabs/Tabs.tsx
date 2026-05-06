@@ -1,4 +1,4 @@
-import React, { useId, useEffect, useRef, useState } from 'react';
+import React, { useId, useEffect, useRef, useState, type JSX } from 'react';
 import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';

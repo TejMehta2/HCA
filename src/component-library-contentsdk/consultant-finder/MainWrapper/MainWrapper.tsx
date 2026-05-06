@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { MainWrapperProps } from './MainWrapper.types';
 import styles from './MainWrapper.module.scss';
 

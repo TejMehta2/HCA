@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { IconBlocksProps } from './IconBlocksProps.types';
 import styles from './IconBlocks.module.scss';
 import Themes from '../../foundation/Themes/Themes';

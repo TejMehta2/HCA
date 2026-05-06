@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AccordionsBlockProps } from './AccordionsBlock.types';
 import styles from './AccordionsBlock.module.scss';
 import Accordions from '../../components/Accordions/Accordions';

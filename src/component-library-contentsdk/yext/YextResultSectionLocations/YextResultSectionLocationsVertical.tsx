@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState, type JSX } from 'react';
 import { YextResultSectionLocationsProps } from './YextResultSectionLocations.types';
 import styles from './YextResultSectionLocations.module.scss';
 import YextCustomMap from '../YextCustomMap/YextCustomMap';

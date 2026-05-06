@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { OurLocationsProps } from './OurLocations.types';
 import Themes from '../../foundation/Themes/Themes';
 import OurLocationsMobile from './OurLocationsMobile';

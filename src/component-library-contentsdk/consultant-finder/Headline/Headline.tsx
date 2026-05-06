@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeadlineProps } from './Headline.types';
 import styles from './Headline.module.scss';
 import ConsultantName from '../ConsultantName/ConsultantName';

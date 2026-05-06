@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { PaymentFormHeaderProps } from './PaymentFormHeader.types';
 import styles from './PaymentFormHeader.module.scss';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';

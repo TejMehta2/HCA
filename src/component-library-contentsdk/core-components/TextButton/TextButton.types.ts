@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 type TextButtonVariationUnionTypes = 'dark' | 'light';
 export interface TextButtonProps {

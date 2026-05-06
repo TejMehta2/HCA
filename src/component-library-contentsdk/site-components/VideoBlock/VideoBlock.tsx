@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { VideoBlockProps } from './VideoBlock.types';
 import styles from './VideoBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

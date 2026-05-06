@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderLocationProps } from './HeaderLocation.types';
 import styles from './HeaderLocation.module.scss';
 import Themes from '../../foundation/Themes/Themes';

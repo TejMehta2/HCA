@@ -1,4 +1,4 @@
-import React, { MutableRefObject, forwardRef } from 'react';
+import React, { MutableRefObject, forwardRef, type JSX } from 'react';
 import { SearchContainerProps } from './SearchContainer.types';
 import styles from './SearchContainer.module.scss';
 

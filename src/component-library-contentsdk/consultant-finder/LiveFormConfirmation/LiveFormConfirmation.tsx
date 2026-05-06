@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LiveFormConfirmationProps } from './LiveFormConfirmation.types';
 import styles from './LiveFormConfirmation.module.scss';
 

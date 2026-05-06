@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, type JSX } from 'react';
 import { SelectFieldProps } from './SelectField.types';
 import styles from './SelectField.module.scss';
 import ModalDropdown from '../../../../components/ModalDropdown/ModalDropdown';

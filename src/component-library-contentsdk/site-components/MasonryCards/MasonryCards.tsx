@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { MasonryCardProps, MasonryCardsProps } from './MasonryCards.types';
 import styles from './MasonryCards.module.scss';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';

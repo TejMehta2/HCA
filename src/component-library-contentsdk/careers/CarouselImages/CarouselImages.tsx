@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselImagesProps } from './CarouselImages.types';
 import styles from './CarouselImages.module.scss';
 import { generateHtmlSafeId } from '../../utility-functions';

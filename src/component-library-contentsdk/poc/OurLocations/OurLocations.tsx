@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, type JSX } from 'react';
 import { OurLocationsProps } from './OurLocations.types';
 import styles from './OurLocations.module.scss';
 import Themes from '../../foundation/Themes/Themes';

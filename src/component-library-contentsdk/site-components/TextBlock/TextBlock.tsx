@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextBlockProps } from './TextBlock.types';
 import styles from './TextBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

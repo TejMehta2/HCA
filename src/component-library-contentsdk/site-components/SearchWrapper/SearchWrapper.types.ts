@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 
 export interface ResultTab {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { DualCTABlockProps } from './DualCTABlock.types';
 import styles from './DualCTABlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

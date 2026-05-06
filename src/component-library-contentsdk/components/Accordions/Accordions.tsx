@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, type JSX } from 'react';
 import { AccordionsProps } from './Accordions.types';
 import styles from './Accordions.module.scss';
 import Accordion from '../../components/Accordion/Accordion';

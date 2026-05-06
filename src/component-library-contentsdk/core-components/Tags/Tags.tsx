@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TagsProps } from './Tags.types';
 import styles from './Tags.module.scss';
 

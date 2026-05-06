@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { VacancyHeaderProps } from './VacancyHeader.types';
 import styles from './VacancyHeader.module.scss';
 import Text from '../../foundation/Text/Text';

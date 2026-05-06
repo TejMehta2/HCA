@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Tabs from '../../core-components/Tabs/Tabs';
 import Themes from '../../foundation/Themes/Themes';
 import { VerticalKey } from '../YextSearch/YextSearch.types';

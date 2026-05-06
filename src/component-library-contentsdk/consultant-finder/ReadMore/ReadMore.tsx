@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, type JSX } from 'react';
 import { ReadMoreProps } from './ReadMore.types';
 import styles from './ReadMore.module.scss';
 import Icons from '../../foundation/Icons/Icons';

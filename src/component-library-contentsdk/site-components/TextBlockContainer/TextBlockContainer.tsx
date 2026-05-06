@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextBlockContainerProps } from './TextBlockContainer.types';
 import styles from './TextBlockContainer.module.scss';
 

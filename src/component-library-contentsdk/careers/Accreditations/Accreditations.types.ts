@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface AccreditationsProps {
   items?: {
     title?: JSX.Element;

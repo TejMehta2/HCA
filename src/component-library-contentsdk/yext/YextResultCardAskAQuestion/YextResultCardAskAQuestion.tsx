@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type JSX } from 'react';
 import { YextResultCardAskAQuestionProps } from './YextResultCardAskAQuestion.types';
 import styles from './YextResultCardAskAQuestion.module.scss';
 import Accordion from '../../components/Accordion/Accordion';

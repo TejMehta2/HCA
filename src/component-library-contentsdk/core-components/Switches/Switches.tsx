@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, type JSX } from 'react';
 import { SwitchesProps } from './Switches.types';
 import styles from './Switches.module.scss';
 

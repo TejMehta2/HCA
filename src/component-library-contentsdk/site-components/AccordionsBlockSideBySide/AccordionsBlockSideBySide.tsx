@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AccordionsBlockSideBySideProps } from './AccordionsBlockSideBySide.types';
 import styles from './AccordionsBlockSideBySide.module.scss';
 import Accordions from '../../components/Accordions/Accordions';

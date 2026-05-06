@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { RichTextProps } from './RichText.types';
 import styles from './RichText.module.scss';
 import { generateHtmlSafeId } from '../../utility-functions/index';

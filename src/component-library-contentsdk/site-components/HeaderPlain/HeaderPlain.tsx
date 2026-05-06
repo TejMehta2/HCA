@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderPlainProps } from './HeaderPlain.types';
 import styles from './HeaderPlain.module.scss';
 

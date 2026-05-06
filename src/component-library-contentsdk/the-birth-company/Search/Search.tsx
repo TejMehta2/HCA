@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { MouseEventHandler, useId, useState, useContext } from 'react';
+import React, { MouseEventHandler, useId, useState, useContext, type JSX } from 'react';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';

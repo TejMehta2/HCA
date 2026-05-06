@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect } from 'react';
+import React, { useEffect, type JSX } from 'react';
 import { MultiplePhoneNumbersProps } from './MultiplePhoneNumbers.types';
 import Address from '../Address/Address';
 import Text from '../../foundation/Text/Text';

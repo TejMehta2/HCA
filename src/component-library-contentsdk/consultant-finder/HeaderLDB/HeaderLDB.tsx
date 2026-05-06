@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderLDBProps } from './HeaderLDB.types';
 import styles from './HeaderLDB.module.scss';
 

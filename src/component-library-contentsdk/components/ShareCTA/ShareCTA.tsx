@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { ShareCTAProps } from './ShareCTA.types';
 import styles from './ShareCTA.module.scss';
 import Button from '../../core-components/Button/Button';

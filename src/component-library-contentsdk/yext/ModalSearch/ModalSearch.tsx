@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 import { ModalSearchProps } from './ModalSearch.types';
 import styles from './ModalSearch.module.scss';
 import Modals from '../../components/Modals/Modals';

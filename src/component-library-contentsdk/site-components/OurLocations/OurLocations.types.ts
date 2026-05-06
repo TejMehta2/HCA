@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { AdvancedBlockHeaderProps } from '../../components/AdvancedBlockHeader/AdvancedBlockHeader.types';
 import { Theme } from '../../foundation/Themes/Themes.types';
 

@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface CardLocationProps {
   quantity: JSX.Element;
   title: JSX.Element;

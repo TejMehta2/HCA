@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderBlogDetailsProps } from './HeaderBlogDetails.types';
 import styles from './HeaderBlogDetails.module.scss';
 import Themes from '../../foundation/Themes/Themes';

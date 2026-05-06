@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface PromoPiotrChildProps {
   icon: JSX.Element;
   text: JSX.Element;

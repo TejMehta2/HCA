@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { Accordions } from '../../components/Accordions/Accordions.types';
 
 export interface FiltersProps {

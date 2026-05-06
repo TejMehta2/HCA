@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef, type JSX } from 'react';
 import { ModalAppointmentProps } from './ModalAppointment.types';
 import styles from './ModalAppointment.module.scss';
 import Modals from '../Modals/Modals';

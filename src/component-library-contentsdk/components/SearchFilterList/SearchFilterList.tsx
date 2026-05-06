@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { SearchFilterListProps } from './SearchFilterList.types';
 import styles from './SearchFilterList.module.scss';
 import TextButton from '../../core-components/TextButton/TextButton';

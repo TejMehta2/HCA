@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ProfilePageSectionProps } from './ProfilePageSection.types';
 import styles from './ProfilePageSection.module.scss';
 

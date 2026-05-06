@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { RichTextWrapperProps } from './RichTextWrapper.types';
 import styles from './RichTextWrapper.module.scss';
 

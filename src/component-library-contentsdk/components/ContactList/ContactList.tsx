@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ContactListProps } from './ContactList.types';
 import styles from './ContactList.module.scss';
 

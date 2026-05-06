@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, type JSX } from 'react';
 import styles from './YextCustomPagination.module.scss';
 import { YextCustomPaginationProps } from './YextCustomPagination.types';
 import Pagination from '../../core-components/Pagination/Pagination';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { SelectFieldProps } from './SelectField.types';
 import styles from './SelectField.module.scss';
 import Icons from '../../../foundation/Icons/Icons';

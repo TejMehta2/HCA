@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, type JSX } from 'react';
 
 export interface CheckboxProps {
   label: string | JSX.Element;

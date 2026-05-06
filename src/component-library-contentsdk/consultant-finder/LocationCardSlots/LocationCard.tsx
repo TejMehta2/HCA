@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LocationCardProps } from './LocationCard.types';
 import Text from '../../foundation/Text/Text';
 import styles from './LocationCard.module.scss';

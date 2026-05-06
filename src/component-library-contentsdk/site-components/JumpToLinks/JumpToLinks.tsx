@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, type JSX } from 'react';
 import { JumpToLinkProps, JumpToLinksProps } from './JumpToLinks.types';
 import styles from './JumpToLinks.module.scss';
 import Button from '../../core-components/Button/Button';

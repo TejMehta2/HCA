@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CheckboxesProps } from './Checkboxes.types';
 import styles from './Checkboxes.module.scss';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CTABlockProps } from './CTABlock.types';
 import styles from './CTABlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Link from 'next/link';
 import styles from './PopularSearchesBox.module.scss';
 import Text from '../../foundation/Text/Text';

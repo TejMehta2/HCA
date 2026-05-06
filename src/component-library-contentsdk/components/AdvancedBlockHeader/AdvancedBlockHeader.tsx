@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AdvancedBlockHeaderProps } from './AdvancedBlockHeader.types';
 import styles from './AdvancedBlockHeader.module.scss';
 

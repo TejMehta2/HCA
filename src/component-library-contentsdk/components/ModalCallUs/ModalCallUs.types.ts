@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface phone {
   text?: string;
   number?: string;

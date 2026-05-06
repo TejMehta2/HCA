@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { VacancyListProps } from './VacancyList.types';
 import styles from './VacancyList.module.scss';
 

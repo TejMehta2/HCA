@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 import { Accordions } from '../../components/Accordions/Accordions.types';
 import { Theme } from '../../foundation/Themes/Themes.types';
 

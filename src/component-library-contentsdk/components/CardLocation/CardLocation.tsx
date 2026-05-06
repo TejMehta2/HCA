@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardLocationProps } from './CardLocation.types';
 import styles from './CardLocation.module.scss';
 import Button from '../../core-components/Button/Button';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import Link from 'next/link';
 import { ConsultantCardProps } from './ConsultantCard.types';
 import styles from './ConsultantCard.module.scss';

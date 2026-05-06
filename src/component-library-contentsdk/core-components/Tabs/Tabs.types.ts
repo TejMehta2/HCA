@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { IconName } from '../../foundation/Icons/icon-map.generated';
 
 export interface Tab {

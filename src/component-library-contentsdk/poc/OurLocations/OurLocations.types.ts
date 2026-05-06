@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { OurLocationsRegionProps } from '../../components/OurLocationsRegion/OurLocationsRegion.types';
 
 export interface OurLocationsProps {

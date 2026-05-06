@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Fragment } from 'react';
+import React, { Fragment, type JSX } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ProgressBarProps } from './ProgressBar.types';

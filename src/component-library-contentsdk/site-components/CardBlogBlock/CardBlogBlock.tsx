@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardBlogBlockProps } from './CardBlogBlock.types';
 import styles from './CardBlogBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

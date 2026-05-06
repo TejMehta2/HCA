@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, type JSX } from 'react';
 import { useRouter } from 'next/router';
 import styles from './NavigationMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';

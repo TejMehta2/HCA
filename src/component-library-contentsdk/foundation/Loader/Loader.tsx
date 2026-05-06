@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LoaderProps } from './Loader.types';
 import styles from './_Loader.module.scss';
 

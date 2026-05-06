@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { useState, type JSX } from 'react';
 import { TextareaProps } from './Textarea.types';
 import styles from './Textarea.module.scss';
 import Text from '../../../foundation/Text/Text';

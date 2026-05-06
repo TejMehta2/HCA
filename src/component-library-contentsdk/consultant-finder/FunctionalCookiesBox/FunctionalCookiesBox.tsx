@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './FunctionalCookiesBox.module.scss';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';

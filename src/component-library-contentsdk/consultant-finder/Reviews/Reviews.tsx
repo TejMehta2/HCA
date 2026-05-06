@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ReviewsProps } from './Reviews.types';
 import styles from './Reviews.module.scss';
 import Icons from '../../foundation/Icons/Icons';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantNameProps } from './ConsultantName.types';
 import styles from './ConsultantName.module.scss';

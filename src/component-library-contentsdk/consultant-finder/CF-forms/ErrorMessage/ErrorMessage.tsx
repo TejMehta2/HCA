@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ErrorMessageProps } from './ErrorMessage.types';
 import styles from './ErrorMessage.module.scss';
 import Text from '../../../foundation/Text/Text';

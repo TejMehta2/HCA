@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './Navigation.module.scss';
 import NavigationProps from './Navigation.types';
 

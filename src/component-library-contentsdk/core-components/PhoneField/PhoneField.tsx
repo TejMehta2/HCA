@@ -1,4 +1,4 @@
-import React, { useId, useState } from 'react';
+import React, { useId, useState, type JSX } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
 import 'intl-tel-input/build/css/intlTelInput.css';

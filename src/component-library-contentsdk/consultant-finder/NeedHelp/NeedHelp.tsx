@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { NeedHelpProps } from './NeedHelp.types';
 import styles from './NeedHelp.module.scss';
 import Text from '../../foundation/Text/Text';

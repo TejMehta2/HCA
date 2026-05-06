@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export interface LiveFormConfirmationProps {
   children?: ReactNode | JSX.Element;

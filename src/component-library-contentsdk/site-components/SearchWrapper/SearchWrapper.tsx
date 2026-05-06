@@ -3,6 +3,7 @@ import React, {
   useEffect,
   forwardRef,
   MutableRefObject,
+  type JSX,
 } from 'react';
 import { SearchWrapperProps } from './SearchWrapper.types';
 import styles from './SearchWrapper.module.scss';

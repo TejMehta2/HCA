@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, type JSX } from 'react';
 import { SelectFieldProps } from './SelectField.types';
 import styles from './SelectField.module.scss';
 import Icons from '../../foundation/Icons/Icons';

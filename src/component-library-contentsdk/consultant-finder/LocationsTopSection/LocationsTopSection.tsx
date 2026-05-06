@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, type JSX } from 'react';
 import { LocationsTopSectionProps } from './LocationsTopSection.types';
 import styles from './LocationsTopSection.module.scss';
 import Button from '../../core-components/Button/Button';

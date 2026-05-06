@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { AppointmentSummaryProps } from './AppointmentSummary.types';
 import styles from './AppointmentSummary.module.scss';

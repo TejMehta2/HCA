@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { PaymentSummaryProps } from './PaymentSummary.types';
 import styles from './PaymentSummary.module.scss';
 import Themes from '../../foundation/Themes/Themes';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextBlockHeaderProps } from './TextBlockHeader.types';
 import styles from './TextBlockHeader.module.scss';
 import { generateHtmlSafeId } from '../../utility-functions';

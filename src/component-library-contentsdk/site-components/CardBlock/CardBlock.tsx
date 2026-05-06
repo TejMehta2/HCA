@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardBlockProps } from './CardBlock.types';
 import styles from './CardBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

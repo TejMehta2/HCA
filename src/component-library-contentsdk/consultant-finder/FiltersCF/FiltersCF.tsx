@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { FiltersProps } from '../../site-components/Filters/Filters.types';
 import styles from '../../site-components/Filters/Filters.module.scss';

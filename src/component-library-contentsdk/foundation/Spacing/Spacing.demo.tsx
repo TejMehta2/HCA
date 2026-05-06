@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { SpacingProps } from './Spacing.demo.types';
 import styles from './Spacing.demo.module.scss';
 const Spacing = (props: SpacingProps): JSX.Element => {

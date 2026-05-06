@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, type JSX } from 'react';
 import { OurLocationsProps } from './OurLocations.types';
 import styles from './OurLocationsMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';

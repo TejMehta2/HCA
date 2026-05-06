@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { SearchSuggestionsProps } from './SearchSuggestions.types';
 import styles from './SearchSuggestions.module.scss';
 import Icons from '../../foundation/Icons/Icons';

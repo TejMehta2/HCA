@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { FormProgressBarProps } from './FormProgressBar.types';
 import styles from './FormProgressBar.module.scss';
 

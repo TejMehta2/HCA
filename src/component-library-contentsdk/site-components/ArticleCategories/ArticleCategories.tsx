@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ArticleCategoriesProps } from './ArticleCategories.types';
 import styles from './ArticleCategories.module.scss';
 import Themes from '../../foundation/Themes/Themes';

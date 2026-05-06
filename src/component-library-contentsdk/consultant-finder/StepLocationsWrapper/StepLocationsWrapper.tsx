@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { StepLocationsWrapperProps } from './StepLocationsWrapper.types';
 import styles from './StepLocationsWrapper.module.scss';
 

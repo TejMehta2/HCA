@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LocationsProps } from './Locations.types';
 import styles from './Locations.module.scss';
 import Practice from './Practice/Practice';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ProfilePageHeaderProps } from './ProfilePageHeader.types';
 import styles from './ProfilePageHeader.module.scss';
 import InfoBox from '../InfoBox/InfoBox';

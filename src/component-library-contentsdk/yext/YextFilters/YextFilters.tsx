@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { YextFiltersProps } from './YextFilters.types';
 import styles from './YextFilters.module.scss';
 import Modals from '../../components/Modals/Modals';

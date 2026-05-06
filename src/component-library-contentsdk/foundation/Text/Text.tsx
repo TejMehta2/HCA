@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextProps } from './Text.types';
 import styles from './Text.module.scss';
 import RichText from '../../core-components/RichText/RichText';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { RadiusProps } from './Radius.demo.types';
 import styles from './Radius.demo.module.scss';
 

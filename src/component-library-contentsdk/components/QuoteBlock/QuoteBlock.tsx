@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { QuoteBlockProps } from './QuoteBlock.types';
 import Tags from '../../core-components/Tags/Tags';
 import styles from './QuoteBlock.module.scss';

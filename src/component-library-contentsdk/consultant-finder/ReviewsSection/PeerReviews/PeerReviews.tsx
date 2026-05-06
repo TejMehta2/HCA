@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, type JSX } from 'react';
 import { PeerReviewsProps } from './PeerReviews.types';
 import styles from './PeerReviews.module.scss';
 import axios from 'axios';

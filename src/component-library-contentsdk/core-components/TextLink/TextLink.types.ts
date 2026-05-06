@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 import { TextVariationUnionTypes } from '../../foundation/Text/Text.types';
 
 export interface TextLinkProps {

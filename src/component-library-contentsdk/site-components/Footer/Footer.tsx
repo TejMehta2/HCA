@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { FooterProps } from './Footer.types';
 import styles from './Footer.module.scss';
 import Themes from '../../foundation/Themes/Themes';

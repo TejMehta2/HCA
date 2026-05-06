@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './YextNoResults.module.scss';
 import { YextNoResultsProps } from './YextNoResults.types';
 import Text from '../../foundation/Text/Text';

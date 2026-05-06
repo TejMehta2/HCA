@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, type JSX } from 'react';
 import { SearchFormLoadMoreProps } from './SearchFormLoadMore.types';
 import Button from '../../core-components/Button/Button';
 const SearchFormLoadMore = (props: SearchFormLoadMoreProps): JSX.Element => {

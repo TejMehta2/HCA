@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { OverallRatingProps } from './OverallRating.types';
 import styles from './OverallRating.module.scss';
 import Text from '../../foundation/Text/Text';

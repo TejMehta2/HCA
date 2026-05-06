@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { YextSectionProps } from './YextSection.types';
 import styles from './YextSection.module.scss';
 import Text from '../../foundation/Text/Text';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderTextProps } from './HeaderText.types';
 import styles from './HeaderText.module.scss';
 import Icons from '../../foundation/Icons/Icons';

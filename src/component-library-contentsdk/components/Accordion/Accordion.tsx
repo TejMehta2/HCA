@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useId } from 'react';
+import React, { KeyboardEvent, useId, type JSX } from 'react';
 import { AccordionProps } from './Accordion.types';
 import styles from './Accordion.module.scss';
 import Icons from '../../foundation/Icons/Icons';

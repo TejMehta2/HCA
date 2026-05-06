@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface VideoHeroProps {
   title?: JSX.Element;
   subtitle?: JSX.Element;

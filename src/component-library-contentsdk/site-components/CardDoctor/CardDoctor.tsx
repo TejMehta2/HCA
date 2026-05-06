@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardDoctorProps } from './CardDoctor.types';
 import styles from './CardDoctor.module.scss';
 import Button from '../../core-components/Button/Button';

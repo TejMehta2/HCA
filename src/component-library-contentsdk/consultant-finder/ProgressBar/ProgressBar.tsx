@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, type JSX } from 'react';
 import Link from 'next/link';
 import { ProgressBarProps } from './ProgressBar.types';
 import Icons from '../../foundation/Icons/Icons';

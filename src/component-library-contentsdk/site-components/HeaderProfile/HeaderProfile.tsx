@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderProfileProps } from './HeaderProfile.types';
 import styles from './HeaderProfile.module.scss';
 import Themes from '../../foundation/Themes/Themes';

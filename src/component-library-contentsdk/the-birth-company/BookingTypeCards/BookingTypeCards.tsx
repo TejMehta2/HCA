@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { BookingTypeCardsProps } from './BookingTypeCards.types';
 import styles from './BookingTypeCards.module.scss';
 import Text from '../../foundation/Text/Text';

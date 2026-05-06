@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useId, useRef } from 'react';
+import React, { ChangeEvent, useId, useRef, type JSX } from 'react';
 import { SortingProps, SortingOptionProps } from './Sorting.types';
 import styles from './Sorting.module.scss';
 import Modals from '../Modals/Modals';

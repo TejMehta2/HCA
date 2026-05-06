@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './_ScrollIntoView.module.scss';
 import Text from '../../foundation/Text/Text';
 import { useInView } from 'react-intersection-observer';

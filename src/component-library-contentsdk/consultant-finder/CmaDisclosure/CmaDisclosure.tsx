@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CmaDisclosureProps } from './CmaDisclosure.types';
 import styles from './CmaDisclosure.module.scss';
 

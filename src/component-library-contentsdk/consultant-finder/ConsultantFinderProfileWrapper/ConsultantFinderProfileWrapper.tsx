@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ConsultantFinderProfileWrapperProps } from './ConsultantFinderProfileWrapper.types';
 import styles from './ConsultantFinderProfileWrapper.module.scss';
 

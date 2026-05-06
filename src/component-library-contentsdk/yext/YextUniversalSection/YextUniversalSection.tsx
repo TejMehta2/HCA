@@ -1,5 +1,5 @@
 import { Result } from '@yext/search-headless-react';
-import React from 'react';
+import React, { type JSX } from 'react';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import styles from '../YextSearch/YextSearch.module.scss';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, type JSX } from 'react';
 import { SideScrollingCardsProps } from './SideScrollingCards.types';
 import styles from './SideScrollingCards.module.scss';
 import Text from '../../foundation/Text/Text';

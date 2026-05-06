@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, type JSX } from 'react';
 
 export interface SortingOptionProps {
   defaultChecked?: boolean;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardRoleProps } from './CardRole.types';
 import styles from './CardRole.module.scss';
 

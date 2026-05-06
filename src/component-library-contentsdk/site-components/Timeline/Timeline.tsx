@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TimelineProps, TimelineStepProps } from './Timeline.types';
 import styles from './Timeline.module.scss';
 import Button from '../../core-components/Button/Button';

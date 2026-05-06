@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { DoctifyProps } from './Doctify.types';
 import Icons from '../../foundation/Icons/Icons';
 import styles from './Doctify.module.scss';

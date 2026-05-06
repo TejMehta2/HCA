@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextButtonProps } from './TextButton.types';
 import styles from './TextButton.module.scss';
 

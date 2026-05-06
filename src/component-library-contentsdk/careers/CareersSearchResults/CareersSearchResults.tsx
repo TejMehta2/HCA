@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CareersSearchResultsProps } from './CareersSearchResults.types';
 import styles from './CareersSearchResults.module.scss';
 

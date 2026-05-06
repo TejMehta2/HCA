@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { YextResultCardConsultantsProps } from './YextResultCardConsultants.types';
 import styles from './YextResultCardConsultants.module.scss';
 import Button from '../../core-components/Button/Button';

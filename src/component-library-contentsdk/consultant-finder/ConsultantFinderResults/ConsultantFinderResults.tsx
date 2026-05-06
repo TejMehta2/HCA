@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ConsultantFinderResultsProps } from './ConsultantFinderResults.types';
 import styles from './ConsultantFinderResults.module.scss';
 

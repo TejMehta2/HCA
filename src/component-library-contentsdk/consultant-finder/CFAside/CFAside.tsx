@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CFAsideProps } from './CFAside.types';
 import styles from './CFAside.module.scss';
 

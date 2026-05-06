@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextFieldProps } from './TextField.types';
 import styles from './TextField.module.scss';
 import Icons from '../../../foundation/Icons/Icons';

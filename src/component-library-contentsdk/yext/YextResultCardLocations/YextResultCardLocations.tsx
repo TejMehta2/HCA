@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { YextResultCardLocationsProps } from './YextResultCardLocations.types';
 import styles from './YextResultCardLocations.module.scss';
 import Button from '../../core-components/Button/Button';

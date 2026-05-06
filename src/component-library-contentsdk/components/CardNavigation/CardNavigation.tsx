@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardNavigationProps } from './CardNavigation.types';
 import styles from './CardNavigation.module.scss';
 import Tags from '../../core-components/Tags/Tags';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ServiceCardsProps } from './ServiceCards.types';
 import styles from './ServiceCards.module.scss';
 import Button from '../../core-components/Button/Button';

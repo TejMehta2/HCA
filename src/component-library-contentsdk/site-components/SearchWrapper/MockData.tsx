@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';

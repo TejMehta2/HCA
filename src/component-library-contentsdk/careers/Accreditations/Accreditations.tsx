@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AccreditationsProps } from './Accreditations.types';
 import styles from './Accreditations.module.scss';
 import Text from '../../foundation/Text/Text';

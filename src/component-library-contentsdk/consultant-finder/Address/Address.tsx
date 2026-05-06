@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AddressProps } from './Address.types';
 import Text from '../../foundation/Text/Text';
 import styles from './Address.module.scss';

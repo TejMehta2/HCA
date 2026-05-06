@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardBlogProps } from './CardBlog.types';
 import styles from './CardBlog.module.scss';
 

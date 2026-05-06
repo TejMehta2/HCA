@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, type JSX } from 'react';
 import Tabs from '../../core-components/Tabs/Tabs';
 import Themes from '../../foundation/Themes/Themes';
 import PatientsReviews from './PatientReviews/PatientsReviews';

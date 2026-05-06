@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { BreadcrumbsProps } from './Breadcrumbs.types';
 import styles from './Breadcrumbs.module.scss';
 import Icons from '../../foundation/Icons/Icons';

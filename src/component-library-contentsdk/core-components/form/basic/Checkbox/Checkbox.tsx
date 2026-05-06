@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CheckboxProps } from './Checkbox.types';
 import styles from './Checkbox.module.scss';
 import Icons from '../../../../foundation/Icons/Icons';

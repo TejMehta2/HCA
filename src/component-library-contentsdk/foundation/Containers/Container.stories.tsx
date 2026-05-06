@@ -1,7 +1,7 @@
 import Container from './Container';
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from '../../core-components/Button/Button';
-import { JSX } from 'react';
+import { type JSX } from 'react';
 import ConatinerProps from './Container.types';
 import React from 'react';
 import Icons from '../Icons/Icons';

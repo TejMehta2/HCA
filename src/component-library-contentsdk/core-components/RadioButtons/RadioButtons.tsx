@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { RadioButtonsProps } from './RadioButtons.types';
 import styles from './RadioButtons.module.scss';
 

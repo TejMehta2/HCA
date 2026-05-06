@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardMapProps } from './CardMap.types';
 import styles from './CardMap.module.scss';
 import Button from '../../core-components/Button/Button';

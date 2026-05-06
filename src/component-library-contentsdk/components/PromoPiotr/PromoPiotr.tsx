@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { PromoPiotrProps } from './PromoPiotr.types';
 import styles from './PromoPiotr.module.scss';
 import RichTextWrapper from '../RichTextWrapper/RichTextWrapper';

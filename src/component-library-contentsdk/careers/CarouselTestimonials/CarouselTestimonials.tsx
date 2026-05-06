@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselTestimonialsProps } from './CarouselTestimonials.types';
 import styles from './CarouselTestimonials.module.scss';
 import Themes from '../../foundation/Themes/Themes';

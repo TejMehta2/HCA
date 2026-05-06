@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import TextLink from '../../core-components/TextLink/TextLink';
 import { FooterSmallProps } from './FooterSmall.types';

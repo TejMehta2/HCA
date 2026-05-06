@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { ScrollTransitionProps } from './ScrollTransition.types';
 import styles from './ScrollTransition.module.scss';
 import Themes from '../../foundation/Themes/Themes';

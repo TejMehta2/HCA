@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HomepageHeroOverlapProps } from './HomepageHeroOverlap.types';
 import HeaderWithImage from '../../site-components/HeaderWithImage/HeaderWithImage';
 import HomepageIntroBlock from '../../site-components/HomepageIntroBlock/HomepageIntroBlock';

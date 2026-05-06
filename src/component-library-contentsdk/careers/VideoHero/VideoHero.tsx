@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, type JSX } from 'react';
 import { VideoHeroProps } from './VideoHero.types';
 import styles from './VideoHero.module.scss';
 import TextButton from '../../core-components/TextButton/TextButton';

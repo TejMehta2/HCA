@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { SelectAppointmentTypeProps } from './SelectAppointmentType.types';
 import styles from './SelectAppointmentType.module.scss';

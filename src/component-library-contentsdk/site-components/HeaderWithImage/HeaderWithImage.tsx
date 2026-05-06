@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HeaderWithImageProps } from './HeaderWithImage.types';
 import styles from './HeaderWithImage.module.scss';
 import Themes from '../../foundation/Themes/Themes';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { YextStyledStaticFiltersProps } from './YextStyledStaticFilters.types';
 import styles from './YextStyledStaticFilters.module.scss';
 import { StaticFilters, StaticFiltersCssClasses } from '@yext/search-ui-react';

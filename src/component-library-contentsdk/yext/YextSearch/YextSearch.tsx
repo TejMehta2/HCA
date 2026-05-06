@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, type JSX } from 'react';
 import { UniversalResults } from '@yext/search-ui-react';
 import styles from './YextSearch.module.scss';
 import YextTabs from '../YextTabs/YextTabs';

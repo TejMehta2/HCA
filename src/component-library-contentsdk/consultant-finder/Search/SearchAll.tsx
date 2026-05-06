@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { MouseEventHandler, useId, useState, useContext } from 'react';
+import React, { MouseEventHandler, useId, useState, useContext, type JSX } from 'react';
 import axios from 'axios';
 import styles from './SearchAll.module.scss';
 import Icons from '../../foundation/Icons/Icons';

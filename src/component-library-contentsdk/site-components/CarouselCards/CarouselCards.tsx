@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselCardsProps } from './CarouselCards.types';
 import styles from './CarouselCards.module.scss';
 import Slider from '@ant-design/react-slick';

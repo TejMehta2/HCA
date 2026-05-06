@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LocationCardBlockProps } from './LocationCardBlock.types';
 import styles from './LocationCardBlock.module.scss';
 

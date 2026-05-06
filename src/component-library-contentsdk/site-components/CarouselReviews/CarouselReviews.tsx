@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CarouselReviewsProps } from './CarouselReviews.types';
 import styles from './CarouselReviews.module.scss';
 import Text from '../../foundation/Text/Text';

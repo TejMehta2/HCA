@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { BlogContentProps } from './BlogContent.types';
 import styles from './BlogContent.module.scss';
 import Themes from '../../foundation/Themes/Themes';

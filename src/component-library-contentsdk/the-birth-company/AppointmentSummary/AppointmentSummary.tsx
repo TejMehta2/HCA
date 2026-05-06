@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AppointmentSummaryProps } from './AppointmentSummary.types';
 import styles from './AppointmentSummary.module.scss';
 import Text from '../../foundation/Text/Text';

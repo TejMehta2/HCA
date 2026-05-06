@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TextLinkProps } from './TextLink.types';
 import styles from './TextLink.module.scss';
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext } from 'react';
+import React, { useContext, type JSX } from 'react';
 import { useRouter } from 'next/router';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';

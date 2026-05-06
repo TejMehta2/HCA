@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Numbers from '../../components/Numbers/Numbers';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';

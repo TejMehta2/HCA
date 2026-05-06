@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface VacancyHeaderProps {
   location?: string;
   city?: string;

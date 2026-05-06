@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { InfoBoxProps } from './InfoBox.types';
 import styles from './InfoBox.module.scss';
 import Icons from '../../foundation/Icons/Icons';

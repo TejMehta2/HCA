@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { StyledYextSearchBarProps } from './StyledYextSearchBar.types';
 import styles from './StyledYextSearchBar.module.scss';
 import { SearchBar } from '@yext/search-ui-react';

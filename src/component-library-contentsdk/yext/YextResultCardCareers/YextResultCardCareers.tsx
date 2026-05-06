@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { YextResultCardCareersProps } from './YextResultCardCareers.types';
 import styles from './YextResultCardCareers.module.scss';
 import Text from '../../foundation/Text/Text';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { EnquireNowBtnsProps } from './EnquireNowBtns.types';
 import styles from './EnquireNowBtns.module.scss';
 

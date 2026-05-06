@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TickListProps } from './TickList.types';
 import styles from './TickList.module.scss';
 

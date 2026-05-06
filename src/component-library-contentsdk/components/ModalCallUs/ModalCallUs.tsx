@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 import { Contact, ModalCallUsProps } from './ModalCallUs.types';
 import styles from './ModalCallUs.module.scss';
 import Modals from '../Modals/Modals';

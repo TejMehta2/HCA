@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { FormBuilderProps } from './FormBuilder.types';
 
 const FormBuilder = (props: FormBuilderProps): JSX.Element => {

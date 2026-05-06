@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Text from '../../foundation/Text/Text';
 import YextResultCardCareers from './YextResultCardCareers';
 // import { CardProps } from '@yext/search-ui-react';

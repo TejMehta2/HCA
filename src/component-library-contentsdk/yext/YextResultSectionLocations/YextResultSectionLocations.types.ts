@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface Location {
   id: string;
   center: google.maps.LatLngLiteral;

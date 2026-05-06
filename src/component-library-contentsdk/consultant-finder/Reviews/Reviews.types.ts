@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export interface ReviewsProps {
   reviewsTotal: number;

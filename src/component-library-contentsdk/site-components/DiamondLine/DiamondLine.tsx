@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { DiamondLineProps } from './DiamondLine.types';
 import styles from './DiamondLine.module.scss';
 import Icons from '../../foundation/Icons/Icons';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import classNames from 'classnames';
 import ContainerProps from './Container.types';
 import styles from './Container.module.scss';

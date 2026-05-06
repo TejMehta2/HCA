@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+'use client';
+import React, { useRef, type JSX } from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import { ImageAndTextBlockProps } from './ImageAndTextBlock.types';
 import styles from './ImageAndTextBlock.module.scss';

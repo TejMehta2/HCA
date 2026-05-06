@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardServiceProps } from './CardService.types';
 import TextButton from '../../core-components/TextButton/TextButton';
 import styles from './CardService.module.scss';

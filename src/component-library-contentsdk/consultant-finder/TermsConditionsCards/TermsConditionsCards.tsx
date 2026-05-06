@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TermsConditionsCardsProps } from './TermsConditionsCards.types';
 import styles from './TermsConditionsCards.module.scss';
 

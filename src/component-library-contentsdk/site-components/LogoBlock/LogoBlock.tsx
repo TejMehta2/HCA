@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { LogoBlockProps } from './LogoBlock.types';
 import styles from './LogoBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

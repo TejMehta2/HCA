@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, type JSX } from 'react';
 import { SlotsCalendarProps } from './SlotsCalendar.types';
 import styles from './SlotsCalendar.module.scss';
 import {

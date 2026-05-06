@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HomepageIntroBlockProps } from './HomepageIntroBlock.types';
 import styles from './HomepageIntroBlock.module.scss';
 import Text from '../../foundation/Text/Text';

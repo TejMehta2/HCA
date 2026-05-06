@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ConfirmationSummaryProps } from './ConfirmationSummary.types';
 import styles from './ConfirmationSummary.module.scss';
 import Text from '../../foundation/Text/Text';

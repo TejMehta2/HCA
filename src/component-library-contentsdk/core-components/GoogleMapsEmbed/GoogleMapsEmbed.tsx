@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  type JSX,
 } from 'react';
 import { GoogleMapsEmbedProps } from './GoogleMapsEmbed.types';
 import styles from './GoogleMapsEmbed.module.scss';

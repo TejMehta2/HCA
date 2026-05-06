@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { SideWrapperProps } from './SideWrapper.types';
 import styles from './SideWrapper.module.scss';
 

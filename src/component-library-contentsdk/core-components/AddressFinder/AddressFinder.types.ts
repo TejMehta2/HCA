@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface FindAddressData {
   address: string;
   postcode: string;

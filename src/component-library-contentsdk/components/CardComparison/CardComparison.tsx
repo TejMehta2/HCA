@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardComparisonProps, PackageItem } from './CardComparison.types';
 import styles from './CardComparison.module.scss';
 import Text from '../../foundation/Text/Text';

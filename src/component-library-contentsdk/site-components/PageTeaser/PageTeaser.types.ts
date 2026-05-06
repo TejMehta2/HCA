@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface PageTeaserProps {
   image?: JSX.Element;
   title: JSX.Element;

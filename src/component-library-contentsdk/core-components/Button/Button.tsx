@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Loader from '../../foundation/Loader/Loader';
 import { ButtonProps } from './Button.types';
 import styles from './Button.module.scss';

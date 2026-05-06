@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 import { ModalDropdownProps } from './ModalDropdown.types';
 import styles from './ModalDropdown.module.scss';
 

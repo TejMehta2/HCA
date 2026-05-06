@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { TemplateComponentProps } from './TemplateComponent.types';
 import styles from './TemplateComponent.module.scss';
 

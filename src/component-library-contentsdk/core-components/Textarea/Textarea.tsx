@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type JSX } from 'react';
 import { TextareaProps } from './Textarea.types';
 import styles from './Textarea.module.scss';
 import Icons from '../../foundation/Icons/Icons';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { OffsetTextBlockProps } from './OffsetTextBlock.types';
 import styles from './OffsetTextBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';

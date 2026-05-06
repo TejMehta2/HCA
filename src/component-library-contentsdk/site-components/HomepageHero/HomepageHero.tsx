@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { HomepageHeroProps } from './HomepageHero.types';
 import styles from './HomepageHero.module.scss';
 import Themes from '../../foundation/Themes/Themes';

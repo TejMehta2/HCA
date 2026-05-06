@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './Container.module.scss';
 import { ContainerProps } from './Container.types';
 const Container = (props: ContainerProps): JSX.Element => {

@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState } from 'react';
+import React, { useId, useRef, useState, type JSX } from 'react';
 import { SearchBarProps } from './SearchBar.types';
 import styles from './SearchBar.module.scss';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';

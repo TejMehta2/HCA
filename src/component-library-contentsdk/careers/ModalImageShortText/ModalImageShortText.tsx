@@ -1,4 +1,4 @@
-import React, { forwardRef, MutableRefObject } from 'react';
+import React, { forwardRef, MutableRefObject, type JSX } from 'react';
 import { ModalImageShortTextProps } from './ModalImageShortText.types';
 import Themes from '../../foundation/Themes/Themes';
 import Modals from '../../components/Modals/Modals';

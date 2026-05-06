@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardBlockCarouselProps } from './CardBlockCarousel.types';
 import styles from './CardBlockCarousel.module.scss';
 import Themes from '../../foundation/Themes/Themes';

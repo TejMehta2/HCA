@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 import { ModalTextProps } from './ModalText.types';
 import styles from './ModalText.module.scss';
 import Themes from '../../foundation/Themes/Themes';

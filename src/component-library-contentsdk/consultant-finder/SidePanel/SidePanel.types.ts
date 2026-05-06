@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export interface SidePanelProps {
   children?: ReactNode | JSX.Element;

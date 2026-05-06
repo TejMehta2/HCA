@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './PaddingCollapse.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 

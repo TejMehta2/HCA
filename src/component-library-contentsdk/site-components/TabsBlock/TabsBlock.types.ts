@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 import { Theme } from '../../foundation/Themes/Themes.types';
 

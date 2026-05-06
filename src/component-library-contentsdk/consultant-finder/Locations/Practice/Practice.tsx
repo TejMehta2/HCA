@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { type JSX } from 'react';
 import { PracticeProps } from './Practice.types';
 import styles from './Practice.module.scss';
 import Text from '../../../foundation/Text/Text';

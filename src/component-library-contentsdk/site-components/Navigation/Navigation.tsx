@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, type JSX } from 'react';
 import { NavigationProps } from './Navigation.types';
 import styles from './Navigation.module.scss';
 import NavigationDesktop from '../../components/NavigationDesktop/NavigationDesktop';

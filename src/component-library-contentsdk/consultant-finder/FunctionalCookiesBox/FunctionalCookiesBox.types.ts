@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export interface FunctionalCookiesBoxProps {
   children?: ReactNode | JSX.Element;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { ConsultantFeesProps } from './ConsultantFees.types';
 import styles from './ConsultantFees.module.scss';
 import Text from '../../foundation/Text/Text';

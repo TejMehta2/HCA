@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CantFindProps } from './CantFind.types';
 import styles from './CantFind.module.scss';
 

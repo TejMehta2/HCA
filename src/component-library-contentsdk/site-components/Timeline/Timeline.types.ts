@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface TimelineStepProps {
   index?: JSX.Element;
   heading?: JSX.Element;

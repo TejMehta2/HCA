@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 interface Page {
   pageControl: JSX.Element;
   stage?: 'active' | 'inactive' | 'previous';

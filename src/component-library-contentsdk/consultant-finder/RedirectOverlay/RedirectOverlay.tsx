@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { RedirectOverlayProps } from './RedirectOverlay.types';
 import styles from './RedirectOverlay.module.scss';
 

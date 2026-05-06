@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export interface BookingTypeCardProps {
   title?: ReactNode | JSX.Element;

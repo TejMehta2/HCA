@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 
 export default interface ConatinerProps {
   children: ReactNode | JSX.Element;

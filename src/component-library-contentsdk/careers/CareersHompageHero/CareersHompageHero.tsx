@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CareersHompageHeroProps } from './CareersHompageHero.types';
 import styles from './CareersHompageHero.module.scss';
 import homepageHeroStyles from '../../site-components/HomepageHero/HomepageHero.module.scss';

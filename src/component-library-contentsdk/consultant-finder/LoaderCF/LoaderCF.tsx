@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import styles from './LoaderCF.module.scss';
 import { LoaderCFProps } from './LoaderCF.types';
 import Loader from '../../foundation/Loader/Loader';

@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useLayoutEffect,
+  type JSX,
 } from 'react';
 import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';

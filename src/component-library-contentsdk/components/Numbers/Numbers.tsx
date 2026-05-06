@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { NumbersProps } from './Numbers.types';
 import styles from './Numbers.module.scss';
 

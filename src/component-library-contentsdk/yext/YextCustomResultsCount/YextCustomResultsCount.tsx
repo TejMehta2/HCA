@@ -6,7 +6,7 @@ import {
 } from '@yext/search-headless-react';
 import { useComposedCssClasses } from '@yext/search-ui-react';
 import classNames from 'classnames';
-import React from 'react';
+import React, { type JSX } from 'react';
 
 /**
  *  The CSS class interface for {@link ResultsCount}.

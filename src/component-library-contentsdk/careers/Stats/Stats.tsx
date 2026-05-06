@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { StatsProps } from './Stats.types';
 import styles from './Stats.module.scss';
 

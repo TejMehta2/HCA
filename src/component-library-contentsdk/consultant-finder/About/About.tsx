@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { AboutProps } from './About.types';
 import styles from './About.module.scss';
 import Text from '../../foundation/Text/Text';

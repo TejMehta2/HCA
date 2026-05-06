@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import icon3Dots48 from './assets-dist/3 dots48.svg';
 import icon3Lines from './assets-dist/3 lines.svg';
 import icon3Lines48 from './assets-dist/3 lines48.svg';

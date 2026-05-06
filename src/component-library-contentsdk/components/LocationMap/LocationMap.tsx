@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, type JSX } from 'react';
 import { LocationMapProps, LatLngLiteral } from './LocationMap.types';
 import styles from './LocationMap.module.scss';
 import GoogleMapsEmbed from '../../core-components/GoogleMapsEmbed/GoogleMapsEmbed';

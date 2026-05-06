@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CQCBlockProps } from './CQCBlock.types';
 import styles from './CQCBlock.module.scss';
 import Text from '../../foundation/Text/Text';

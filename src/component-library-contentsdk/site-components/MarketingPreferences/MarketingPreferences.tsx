@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { MarketingPreferencesProps } from './MarketingPreferences.types';
 import styles from './MarketingPreferences.module.scss';
 import Themes from '../../foundation/Themes/Themes';

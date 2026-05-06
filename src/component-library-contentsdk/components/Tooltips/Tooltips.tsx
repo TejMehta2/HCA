@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useId } from 'react';
+import React, { useRef, useState, useEffect, useId, type JSX } from 'react';
 import { TooltipsProps } from './Tooltips.types';
 import styles from './Tooltips.module.scss';
 import Icons from '../../foundation/Icons/Icons';

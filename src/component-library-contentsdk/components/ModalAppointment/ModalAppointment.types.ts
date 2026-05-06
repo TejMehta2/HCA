@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 export interface ModalAppointmentProps {
   title1: JSX.Element;
   copy1: JSX.Element;

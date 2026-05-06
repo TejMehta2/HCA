@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface HeaderWithImageProps {

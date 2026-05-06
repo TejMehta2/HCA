@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { CardBlockCarouselProps } from './CardBlockCarousel.types';
 import styles from './CardBlockCarouselMobile.module.scss';
 import Accordions from '../../components/Accordions/Accordions';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { PageTeaserProps } from './PageTeaser.types';
 import styles from './PageTeaser.module.scss';
 import TextButton from '../../core-components/TextButton/TextButton';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, useId, useState } from 'react';
+import React, { useContext, useId, useState, type JSX } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';

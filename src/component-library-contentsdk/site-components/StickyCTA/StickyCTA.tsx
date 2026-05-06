@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, type JSX } from 'react';
 import { StickyCTAProps } from './StickyCTA.types';
 import styles from './StickyCTA.module.scss';
 import Themes from '../../foundation/Themes/Themes';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { StepIntroProps } from './StepIntroProps.types';
 import styles from './StepIntro.module.scss';
 
