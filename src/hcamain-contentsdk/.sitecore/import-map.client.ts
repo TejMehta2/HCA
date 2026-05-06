@@ -8,13 +8,26 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
+import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import client from 'src/lib/sitecore-client';
-import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { CdpHelper, useSitecore, Text, Link, RichText } from '@sitecore-content-sdk/nextjs';
 import { useEffect } from 'react';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
+import Accordions from 'temp/component-library/components/Accordions/Accordions';
+import RichText_03acf887d1eb17c1f25c6f004768b1254803337d from 'temp/component-library/core-components/RichText/RichText';
+import Themes from 'temp/component-library/foundation/Themes/Themes';
+import Button from 'temp/component-library/core-components/Button/Button';
 
 const importMap = [
+  {
+    module: 'react/jsx-runtime',
+    exports: [
+      { name: 'jsx', value: jsx },
+      { name: 'Fragment', value: Fragment },
+      { name: 'jsxs', value: jsxs },
+    ]
+  },
   {
     module: 'src/lib/sitecore-client',
     exports: [
@@ -26,6 +39,9 @@ const importMap = [
     exports: [
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
+      { name: 'Text', value: Text },
+      { name: 'Link', value: Link },
+      { name: 'RichText', value: RichText },
     ]
   },
   {
@@ -44,6 +60,30 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: 'temp/component-library/components/Accordions/Accordions',
+    exports: [
+      { name: 'default', value: Accordions },
+    ]
+  },
+  {
+    module: 'temp/component-library/core-components/RichText/RichText',
+    exports: [
+      { name: 'default', value: RichText_03acf887d1eb17c1f25c6f004768b1254803337d },
+    ]
+  },
+  {
+    module: 'temp/component-library/foundation/Themes/Themes',
+    exports: [
+      { name: 'default', value: Themes },
+    ]
+  },
+  {
+    module: 'temp/component-library/core-components/Button/Button',
+    exports: [
+      { name: 'default', value: Button },
     ]
   }
 ] as ImportEntry[];
