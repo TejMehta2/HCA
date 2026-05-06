@@ -1,0 +1,149 @@
+import { type JSX } from 'react';
+import {
+  Field,
+  ImageField,
+  Text as JssText,
+  RichText as JssRichText,
+  ComponentRendering,
+  Placeholder,
+} from '@sitecore-content-sdk/nextjs';
+import Text from '@component-library/foundation/Text/Text';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Params from 'src/types/params';
+import RichText from '@component-library/core-components/RichText/RichText';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
+import { ComponentWithContextProps } from 'lib/component-props';
+
+const DynamicImageAndTextBlock = dynamic(
+  () =>
+    import('@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock'),
+  {
+    ssr: true,
+  }
+);
+
+interface Fields {
+  Heading?: Field<string>;
+  Title?: Field<string>;
+  Text?: Field<string>;
+  Image?: ImageField;
+}
+
+export type ImageShortTextProps = ComponentWithContextProps & {
+  params?: Params;
+  rendering?: ComponentRendering;
+  fields?: Fields;
+};
+
+const ImageShortTextDefaultComponent = (
+  props: ImageShortTextProps
+): JSX.Element => {
+  const { page } = props;
+  const isExperienceEditor = page.mode.isEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Image Short Text please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
+
+interface ImageLeftProps extends ImageShortTextProps {
+  imageAlignment: 'left' | 'right';
+}
+export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
+  const { imageAlignment = 'left' } = props;
+  const phKey = `image-short-text-${props.params?.DynamicPlaceholderId}`;
+
+  if (!props.fields) {
+    return <ImageShortTextDefaultComponent {...props} />;
+  }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
+  return (
+    <>
+      <DynamicImageAndTextBlock
+        id={componentAnchorId}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
+        theme={props.params?.Theme || 'A-HCA-White'}
+        imageAlignment={imageAlignment}
+        imageKeepAspectRatio={keepAspectRatio}
+        length="short"
+        subheader={
+          <Text  variation="subheading-1">
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        }
+        header={
+          props.fields?.Title?.value ? (
+            <Text
+              
+              variation={props.params?.HeadingSize || 'display-3'}
+            >
+              <JssRichText tag="span" field={props.fields?.Title} />
+            </Text>
+          ) : undefined
+        }
+        image={
+          <NextJssImage
+          isEditing={isEditing}
+            field={props.fields?.Image}
+            page={props.page}
+            next={{
+              width: 1000,
+              height: 1000,
+              sizes: '(max-width: 768px) 100vw, 50vw',
+            }}
+          />
+        }
+        ctas={
+          props.rendering && (
+            <PlaceHolderWrapper>
+              <Placeholder name={phKey} rendering={props.rendering} />
+            </PlaceHolderWrapper>
+          )
+        }
+      >
+        <Text tag="div" variation="body-large">
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
+        </Text>
+      </DynamicImageAndTextBlock>
+    </>
+  );
+};
+
+export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
+  if (!props.fields) {
+    return <ImageShortTextDefaultComponent {...props} />;
+  }
+  return <ImageLeft {...props} imageAlignment={'right'} />;
+};

@@ -7,10 +7,127 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-
+import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
+import { Placeholder, Text, RichText, Link, useSitecore, Image } from '@sitecore-content-sdk/nextjs';
+import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
+import { Default } from 'src/components/Doctify/DoctifyGraphQl';
+import { Default as Default_754e381b15f0511dcf4f78d3c8e55c08031a8918 } from 'src/components/CQCRating/CQCRatingGraphQl';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
+import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
+import Doctify from '@component-library/components/Doctify/Doctify';
+import React from 'react';
+import Icons from '@component-library/foundation/Icons/Icons';
+import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 
 const importMap = [
-
+  {
+    module: 'react/jsx-runtime',
+    exports: [
+      { name: 'jsx', value: jsx },
+      { name: 'Fragment', value: Fragment },
+      { name: 'jsxs', value: jsxs },
+    ]
+  },
+  {
+    module: '@sitecore-content-sdk/nextjs',
+    exports: [
+      { name: 'Placeholder', value: Placeholder },
+      { name: 'Text', value: Text },
+      { name: 'RichText', value: RichText },
+      { name: 'Link', value: Link },
+      { name: 'useSitecore', value: useSitecore },
+      { name: 'Image', value: Image },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Text/Text',
+    exports: [
+      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
+    ]
+  },
+  {
+    module: 'src/components/Doctify/DoctifyGraphQl',
+    exports: [
+      { name: 'Default', value: Default },
+    ]
+  },
+  {
+    module: 'src/components/CQCRating/CQCRatingGraphQl',
+    exports: [
+      { name: 'Default', value: Default_754e381b15f0511dcf4f78d3c8e55c08031a8918 },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/SitecoreSvg/SitecoreSvg',
+    exports: [
+      { name: 'default', value: SitecoreSvg },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
+    exports: [
+      { name: 'default', value: NextJssImage },
+    ]
+  },
+  {
+    module: 'next/dynamic',
+    exports: [
+      { name: 'default', value: dynamic },
+    ]
+  },
+  {
+    module: '@component-library/core-components/RichText/RichText',
+    exports: [
+      { name: 'default', value: RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper',
+    exports: [
+      { name: 'default', value: PlaceHolderWrapper },
+    ]
+  },
+  {
+    module: 'src/context/inPageNavGlobalStorage',
+    exports: [
+      { name: 'inPageNavGlobalStore', value: inPageNavGlobalStore },
+    ]
+  },
+  {
+    module: 'lib/getHeadingTags',
+    exports: [
+      { name: 'default', value: getHeadingTags },
+    ]
+  },
+  {
+    module: '@component-library/components/Doctify/Doctify',
+    exports: [
+      { name: 'default', value: Doctify },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'default', value: React },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Icons/Icons',
+    exports: [
+      { name: 'default', value: Icons },
+    ]
+  },
+  {
+    module: '@component-library/components/CQCBlock/CQCBlock',
+    exports: [
+      { name: 'default', value: CQCBlock },
+    ]
+  }
 ] as ImportEntry[];
 
 export default combineImportEntries(defaultServerImportEntries, importMap);

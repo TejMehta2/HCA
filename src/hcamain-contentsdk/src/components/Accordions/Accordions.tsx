@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import type React from 'react';
 import {
   Field,
@@ -7,15 +7,15 @@ import {
   Link as JssLink,
   Item,
   RichText as JssRichText,
-  useSitecore,  
 } from '@sitecore-content-sdk/nextjs';
-import Accordions from 'temp/component-library/components/Accordions/Accordions';
+import Accordions from '@component-library/components/Accordions/Accordions';
 import Params from 'src/types/params';
-import { AccordionsProps } from 'temp/component-library/components/Accordions/Accordions.types';
+import { AccordionsProps } from '@component-library/components/Accordions/Accordions.types';
 //import Head from 'next/head';
-import RichText from 'temp/component-library/core-components/RichText/RichText';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
-import Button from 'temp/component-library/core-components/Button/Button';
+import RichText from '@component-library/core-components/RichText/RichText';
+import Themes from '@component-library/foundation/Themes/Themes';
+import Button from '@component-library/core-components/Button/Button';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 type CTAIconFields = {
   fields?: {
@@ -36,7 +36,7 @@ interface Fields {
   Questions?: QuestionFields[];
 }
 
-type FAQProps = {
+type FAQProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -120,10 +120,9 @@ const getAccordions = (
 //   return faqSchema;
 // };
 
-
-const AccordionsDefaultComponent : React.FC<FAQProps> = (props) => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+const AccordionsDefaultComponent: React.FC<FAQProps> = (props) => {
+  const { page } = props;
+  const isExperienceEditor = page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -139,8 +138,8 @@ const AccordionsDefaultComponent : React.FC<FAQProps> = (props) => {
 };
 
 export const Default: React.FC<FAQProps> = (props) => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isExperienceEditor = page.mode.isEditing;
 
   if (!props?.fields?.Questions) {
     return <AccordionsDefaultComponent {...props} />;

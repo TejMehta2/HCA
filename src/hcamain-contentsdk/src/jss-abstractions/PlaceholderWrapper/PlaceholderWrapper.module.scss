@@ -1,0 +1,16 @@
+//@use '@component-library/utilities/index.module' as *;
+
+.placeholder {
+  display: grid;
+  gap: px-to-rem(8) 0;
+
+  & > *:not(:last-of-type) {
+    &[component-name='doctify'] {
+      margin-bottom: px-to-rem(16);
+    }
+
+    &[component-name='cqc'] {
+      margin-bottom: px-to-rem(16);
+    }
+  }
+}

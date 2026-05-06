@@ -14,10 +14,10 @@ import { CdpHelper, useSitecore, Text, Link, RichText } from '@sitecore-content-
 import { useEffect } from 'react';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
-import Accordions from 'temp/component-library/components/Accordions/Accordions';
-import RichText_03acf887d1eb17c1f25c6f004768b1254803337d from 'temp/component-library/core-components/RichText/RichText';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
-import Button from 'temp/component-library/core-components/Button/Button';
+import Accordions from '@component-library/components/Accordions/Accordions';
+import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
+import Themes from '@component-library/foundation/Themes/Themes';
+import Button from '@component-library/core-components/Button/Button';
 
 const importMap = [
   {
@@ -63,25 +63,25 @@ const importMap = [
     ]
   },
   {
-    module: 'temp/component-library/components/Accordions/Accordions',
+    module: '@component-library/components/Accordions/Accordions',
     exports: [
       { name: 'default', value: Accordions },
     ]
   },
   {
-    module: 'temp/component-library/core-components/RichText/RichText',
+    module: '@component-library/core-components/RichText/RichText',
     exports: [
-      { name: 'default', value: RichText_03acf887d1eb17c1f25c6f004768b1254803337d },
+      { name: 'default', value: RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 },
     ]
   },
   {
-    module: 'temp/component-library/foundation/Themes/Themes',
+    module: '@component-library/foundation/Themes/Themes',
     exports: [
       { name: 'default', value: Themes },
     ]
   },
   {
-    module: 'temp/component-library/core-components/Button/Button',
+    module: '@component-library/core-components/Button/Button',
     exports: [
       { name: 'default', value: Button },
     ]

@@ -1,0 +1,71 @@
+@use '@component-library/foundation/index.module' as *;
+
+.background {
+  color: var(--text);
+  background: var(--background);
+}
+
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+}
+
+.header {
+  display: flex;
+}
+
+.wrapper {
+  @include responsive-grid-start($breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-l: 8);
+
+  padding: $spacing-8 0;
+
+  &>* {
+    &:not(:last-child):not(.recaptcha) {
+      margin-bottom: $spacing-8;
+    }
+
+    &:first-child {
+      margin-bottom: $spacing-7;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+  }
+
+  .recaptcha {
+    margin-bottom: $spacing-2;
+  }
+}
+
+.payment {
+  .button {
+    margin-top: $spacing-8;
+  }
+}
+
+.has-aside {
+  .aside {
+    @include responsive-grid-start($breakpoint-l: 10);
+    @include responsive-grid-span($breakpoint-l: 3);
+
+    &>* {
+      margin-top: $spacing-8;
+      margin-bottom: $spacing-8;
+      position: sticky;
+      top: $spacing-8;
+    }
+  }
+
+  .wrapper {
+    @include responsive-grid-start($breakpoint-l: 1);
+    @include responsive-grid-span($breakpoint-l: 7);
+
+    &>* {
+      &:first-child {
+        margin-bottom: $spacing-8;
+      }
+    }
+  }
+}

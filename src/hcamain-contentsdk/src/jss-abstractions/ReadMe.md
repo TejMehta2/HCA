@@ -1,0 +1,1 @@
+See [ADR](../../../../documentation/frontend//022%20JSS%20component%20abstractions.md)
