@@ -196,6 +196,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
               ref={mainRef}
               data-event={'buttonClick'}
               data-navigation-type={'buttonClick'}
+              dir="auto"
             >
               <div id="content">
                 {isHomepage ? (

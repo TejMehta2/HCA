@@ -39,11 +39,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html[lang^='ar'] {
-  direction: rtl;
-}
-
-html[lang^='ar'] body {
+html[lang^='ar'] header,
+html[lang^='ar'] footer {
   direction: rtl;
   text-align: right;
 }
