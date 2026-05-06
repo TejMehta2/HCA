@@ -32,6 +32,8 @@ type FirstComponentProps = {
 };
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
+  console.log('layoutData.sitecore.context.language', layoutData.sitecore.context.language);
+  console.log('layoutData.sitecore.context?.isRTL', layoutData.sitecore.context?.isRTL);
   const { route } = layoutData.sitecore;
   const routeData = route as PageRouteMetadata;
   const isPageEditing = layoutData.sitecore.context.pageEditing;
@@ -91,9 +93,8 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
-  const browserTitle = `${
-    MetaTitle?.value || titleStripped || routeData.displayName
-  }`;
+  const browserTitle = `${MetaTitle?.value || titleStripped || routeData.displayName
+    }`;
 
   return (
     <>
@@ -195,6 +196,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
               ref={mainRef}
               data-event={'buttonClick'}
               data-navigation-type={'buttonClick'}
+              dir="auto"
             >
               <div id="content">
                 {isHomepage ? (
