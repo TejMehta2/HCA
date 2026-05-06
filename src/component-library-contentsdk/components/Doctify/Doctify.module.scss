@@ -1,0 +1,119 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--doctify-text);
+  display: grid;
+  gap: px-to-rem(8) 0;
+  width: fit-content;
+  position: relative;
+}
+
+.link {
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+    border-radius: $radius-small;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.review-container {
+  grid-area: 'review-container';
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(8);
+}
+
+.reviews {
+  @include apply-body-large;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(8);
+  color: var(--doctify-full-star);
+
+  ul {
+    display: flex;
+    gap: px-to-rem(8);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+
+      svg {
+        width: px-to-rem(14);
+        height: px-to-rem(13);
+      }
+    }
+  }
+}
+
+.inactive {
+  display: flex;
+  color: var(--doctify-empty-star);
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+  gap: px-to-rem(8);
+
+  @include apply-body-bold-small;
+}
+
+.centre {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+@include theme-mode(light, dark) using ($mode) {
+  @if $mode ==light {
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
+  }
+
+  @if $mode ==dark {
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
+  }
+
+  //Show light logo and hide dark logo for Chelsea themes based on data-theme attribute [data-theme='Chelsea-Beige'] .light-logo,
+  [data-theme='Chelsea-Navy-Blue'] .light-logo,
+  [data-theme='Chelsea-White'] .light-logo,
+  [data-theme='Chelsea-Beige'] .light-logo {
+    display: block !important;
+  }
+
+  [data-theme='Chelsea-Beige'] .dark-logo,
+  [data-theme='Chelsea-Navy-Blue'] .dark-logo,
+  [data-theme='Chelsea-White'] .dark-logo {
+    display: none !important;
+  }
+}

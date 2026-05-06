@@ -1,0 +1,40 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ModalCallUsStories from './ModalCallUs.stories';
+
+<Meta of={ModalCallUsStories} />
+
+# ModalCallUs
+
+## Description
+
+The ModalCallUs component is an instance of the Modals component, specialised for displaying contact info.
+
+The implementation of the open/close behavior is inherited from the Modals component, see the Modals documentation for further implementation details.
+
+It can be composed like this:
+
+```tsx
+const dialogRef = useRef<HTMLDialogElement>()
+<button onClick={() => dialogRef?.current?.showModal()}>Open</button>
+
+<ModalCallUs
+  ref={dialogRef}
+  mainContact={
+    {
+      title: <span>General enquiries & Appointments</span>,
+      phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
+      availability: <span>Monday to Friday 8am - 6pm</span>,
+    }
+  }
+  additionalContacts={
+    [
+      {
+        title: <span>media & Press</span>,
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
+        availability: <span>Monday to Friday 8am - 6pm</span>,
+      },
+      // ...
+    ]
+  }
+/>
+```

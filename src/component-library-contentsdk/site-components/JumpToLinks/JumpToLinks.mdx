@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as JumpToLinksStories from './JumpToLinks.stories'
+
+<Meta of={JumpToLinksStories} />
+
+# JumpToLinks
+
+## Description
+
+The JumpToLinks component is a simply navigation component, containing a heading and a list of links with images.
+
+The wrapper component JumpToLinks accepts two types of children:
+- JumpToLink (for off-page navigation)
+- JumpToAnchor (for on-page navigation)
+
+It can be composed like this:
+
+``` tsx
+<JumpToLinks
+  heading={
+    <Text variation="body-medium-medium">Navigate to</Text>
+  }
+>
+  <JumpToLink>
+    <a href="#">
+      <img src="/placeholders/taking pulse.jpeg" alt="" />
+      <span>Cancer care</span>
+    </a>
+  </JumpToLink>
+  {/* Additional links... */}
+</JumpToLinks>
+```

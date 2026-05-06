@@ -1,0 +1,27 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TextareaStories from './Textarea.stories';
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+## Description
+
+The Textarea component is a form field, it displays a character count which has a max which can be set via the `maxCharacters` prop (the default is 300).
+
+It can be composed like this:
+
+```tsx
+<Textarea
+  id="question"
+  label="Question"
+  required={true}
+  helperText="Optional helper text"
+  errorMessage="This field is required"
+/>
+```
+
+## Example
+
+<Canvas of={TextareaStories.Default} />
+<Controls of={TextareaStories.Default} />

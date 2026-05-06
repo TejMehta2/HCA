@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderPlainStories from './HeaderPlain.stories';
+
+<Meta of={HeaderPlainStories} />
+
+# HeaderPlain
+
+## Description
+
+The `HeaderPlain` component consists of a header, body copy and an optional subheader and image. It should be nested within a theme and will inherit the colours from that theme.
+
+The variation with an image is only intended to be used on the careers site. If an image exists it will remove the border radius at the bottom right
+
+It can be composed like this:
+
+```tsx
+<HeaderPlain
+  metatitle={
+    <Text variation="subheading-1">Optional meta title</Text>
+  }
+  heading={
+    <Text variation="display-1" tag="h1">News & articles about healthcare</Text>
+  }
+  description={
+    <Text tag="div" variation="body-large">
+      <p>
+        Quis laboris proident sint amet id cillum do dolor in tempor est.
+        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et
+        culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+      </p>
+    </Text>
+  }
+>
+  <Searchbar>
+    <Filters />
+    <Sorting />
+  </Searchbar>
+</HeaderPlain>
+```

@@ -1,0 +1,13 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: $spacing-4 0;
+
+  .text {
+    margin-left: $spacing-2;
+  }
+}

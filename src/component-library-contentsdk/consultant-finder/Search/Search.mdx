@@ -1,0 +1,23 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as SearchTreatments from './Search.stories';
+
+
+<Meta of={SearchTreatments} />
+
+
+# Searches Consultant Finder
+
+## Description
+
+The Consultant Finder includes search fields for all steps. 
+
+The search logic is designed to provide users with the most relevant results efficiently.
+
+Upon clicking, users are presented with popular search options sourced directly from Sitecore. 
+
+However, when users input a specific search term, the platform sends a request to Doctify to retrieve and display the corresponding data. 
+This approach ensures that users receive comprehensive and up-to-date information tailored to their search queries.
+
+
+
+<Canvas of={SearchTreatments.TreatmentConditions}  />

@@ -1,0 +1,6 @@
+**/.storybook/*
+*.targets
+**/temp/*
+**/microsite/*
+**/poc/**/*.scss
+**/.GeneratedTypeScriptModel/*

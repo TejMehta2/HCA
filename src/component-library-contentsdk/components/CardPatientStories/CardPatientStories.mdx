@@ -1,0 +1,54 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardPatientStoriesStories from './CardPatientStories.stories';
+
+<Meta of={CardPatientStoriesStories} />
+
+# CardPatientStories
+
+## Description
+
+The CardPatientStories component is a card component.
+
+It is intended to be used in the side scrolling and regular carousel components.
+
+The size of the card will be determined by the wrapping component as this will vary
+
+When the `ContentVariation` prop is set to `mixed` the background colour of each cards is determined sequentially, this is only used on the SideScrollingCards.
+
+It can be composed like this:
+
+```tsx
+<CardPatientStories
+  title={
+    <Text tag="h3" variation="display-4">
+      Every new birth tells its own story
+    </Text>
+  }
+  bodyCopy={
+    <Text tag="p" variation="body-large">
+      Quis laboris proident sint amet id cillum do dolor in tempor est
+      exercitation aute sint tempor eu ut.
+    </Text>
+  }
+  image={
+    <Image
+      src="/side-scrolling-placeholder.png"
+      alt="baby crying"
+      width="456"
+      height="253"
+    />
+  }
+  link={
+    <a href="#">
+      <span>
+        Read the <strong>Story</strong>
+      </span>
+    </a>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={CardPatientStoriesStories.Default} />
+<Controls of={CardPatientStoriesStories.Default} />

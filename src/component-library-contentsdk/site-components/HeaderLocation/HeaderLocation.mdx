@@ -1,0 +1,114 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderLocationStories from './HeaderLocation.stories';
+
+<Meta of={HeaderLocationStories} />
+
+# HeaderLocation
+
+## Description
+
+The HeaderLocation component is a header containing an image (in a diamond shape), hospital title, doctify rating, address, directions link, opening hours, two calls to actions and a cqc rating. It allows a choice of themes from `g` , `h`, `i`, `j` and `k`,
+
+It is intended to be used on a facility page.
+
+It can be composed like this:
+
+```tsx
+<HeaderLocation
+  title={
+    <Text variation="display-1" tag="h2">
+      The Wellington Hospital
+    </Text>
+  }
+  doctify={
+    <Doctify
+      alignment="left"
+      link={<a href="#"></a>}
+      rating={4}
+      reviews="13,500 +"
+      logo={{
+        dark: (
+          <Image
+            src="/doctify-dark.png"
+            alt="doctify logo"
+            width="83"
+            height="21"
+          />
+        ),
+        light: (
+          <Image
+            src="/doctify-light.png"
+            alt="doctify logo"
+            width="83"
+            height="21"
+          />
+        ),
+      }}
+    />
+  }
+  address={{
+    icon: <Icons iconName="iconPin"></Icons>,
+    text: (
+      <Text variation="body-large" tag="span">
+        Wellington Place St John's Wood London NW8 9LE
+      </Text>
+    ),
+
+    link: (
+      <TextButton>
+        <a href="#">Get Directions</a>
+      </TextButton>
+    ),
+  }}
+  open={{
+    icon: <Icons iconName="iconClock"></Icons>,
+    text: (
+      <Text variation="body-large" tag="span">
+        Open 24/7
+      </Text>
+    ),
+  }}
+  ctas={
+    <>
+      <Button size="large" variation="full">
+        <a href="#">
+          <Icons iconName="iconStethoscope" />
+          <span>
+            Find a <strong>Consultant</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" variation="outline">
+        <a href="#">
+          <Icons iconName="iconPhone" />
+          <span>
+            Call us <strong>today</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
+  image={<JssImage field={props.fields.PromoIcon} />}
+  theme="L-HCA-Teal-5"
+  cqc={
+    <CQCBlock
+      link={<a href="#">CQCBlock</a>}
+      icon={<Icons iconName="iconCheckCircle"></Icons>}
+      rating="Outstanding"
+      logo={{
+        dark: (
+          <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
+        ),
+        light: (
+          <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
+        ),
+      }}
+    />
+  }
+></HeaderLocation>
+```
+
+## Example
+
+<Canvas of={HeaderLocationStories.Default} />
+<Controls of={HeaderLocationStories.Default} />

@@ -1,0 +1,51 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CQCBlockStories from './CQCBlock.stories';
+
+<Meta of={CQCBlockStories} />
+
+# CQCBlock
+
+## Description
+
+The CQCBlock component is used various places on the site. There are two variations of this component - general and rating.
+The general version, with long or short options, is used in the footer for example.
+The rating variation displays the hospital's CQC rating instead of a title and text and is used on hospital location pages.
+To show the rating variation the `rating` prop should be passed (using one of the four available rating options).
+
+For the long version of this component the long styling will only be displayed on sizes larger than mobile, on mobile the short version styling will be displayed instead.
+
+It can be composed like this:
+
+### General CQC
+
+```tsx
+<CQCBlock
+  link={<JssLink field={props.fields.PromoLink}></JssLink>}
+  title="Care Quality Commission verified"
+  text="All our hospitals are rated Good or Oustanding."
+  icon={<Icons iconName="iconCheckCircle"></Icons>}
+  logo={{
+    dark: <JssImage field={props.fields.PromoIcon} width="120" height="37" />,
+    light: <JssImage field={props.fields.PromoIcon} width="120" height="37" />,
+  }}
+></CQCBlock>
+```
+
+### Rating CQC
+
+```tsx
+<CQCBlock
+  link={<JssLink field={props.fields.PromoLink}></JssLink>}
+  rating="Outstanding"
+  icon={<Icons iconName="iconCheckCircle"></Icons>}
+  logo={{
+    dark: <JssImage field={props.fields.PromoIcon} width="120" height="37" />,
+    light: <JssImage field={props.fields.PromoIcon} width="120" height="37" />,
+  }}
+></CQCBlock>
+```
+
+## Example
+
+<Canvas of={CQCBlockStories.Short} />
+<Controls of={CQCBlockStories.Short} />

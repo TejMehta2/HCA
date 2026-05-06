@@ -1,0 +1,51 @@
+@use '../../foundation/index.module.scss' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 500vh;
+  position: relative;
+}
+
+.component {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  background-color: $goldenrod-100;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+
+  & > div {
+    flex: 1;
+    padding: 4rem 0;
+  }
+
+  & > div:first-of-type {
+    background-color: $teal-100;
+  }
+
+  & > div:last-of-type {
+    background-color: $orange-100;
+  }
+}
+
+.slide-up-stagger {
+  & > * {
+    transform: translateY(100%);
+    transition: all 1s ease-out;
+  }
+
+  & > *:last-of-type {
+    transition-delay: 250ms;
+  }
+
+  &.active > * {
+    transform: translateY(0);
+  }
+}

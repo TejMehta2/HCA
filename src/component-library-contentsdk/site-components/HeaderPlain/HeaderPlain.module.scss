@@ -1,0 +1,81 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  background: var(--background);
+  border-radius: 0 0 $radius-large 0;
+  position: relative;
+
+  &:has(.image) {
+    border-radius: 0;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 60%);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.inner {
+  @include responsive-container;
+
+  position: relative;
+  padding: $spacing-12 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}
+
+.grid {
+  @include responsive-grid;
+
+  gap: 0;
+}
+
+.half {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+}
+
+.heading {
+  display: flex;
+  grid-row-start: 2;
+  color: var(--heading, var(--text));
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.metatitle {
+  grid-row-start: 1;
+  margin-bottom: $spacing-3;
+}
+
+.subtitle {
+  margin-top: $spacing-3;
+}
+
+.body-copy {
+  margin-top: $spacing-5;
+  grid-row-start: 3;
+
+  @include apply-body-large;
+}
+
+.padding-small {
+  padding-bottom: var(--spacing-7);
+}

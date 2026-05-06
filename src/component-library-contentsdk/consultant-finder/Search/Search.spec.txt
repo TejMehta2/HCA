@@ -1,0 +1,155 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import Search from './Search';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+
+type ConsultantFinderContextType = {
+  searchStringConsultantName: string;
+  setSearchStringConsultantName: (value: string) => string;
+  message: string;
+  setMessage: (value: string) => string;
+  searchString: string;
+  setSearchString: (value: string) => string;
+  keywordId: 0;
+  setKeywordId: (value: number) => number;
+  consultantSlug: string;
+  setConsultantSlug: (value: string) => string;
+  searchStringPayment: string;
+  setSearchStringPayment: (value: string) => string;
+  isSelfPayment: false;
+  setIsSelfPayment: (value: boolean) => boolean;
+};
+
+// Mock context values
+const mockContextValues: ConsultantFinderContextType = {
+  searchStringConsultantName: 'mockSearchString',
+  setSearchStringConsultantName: jest.fn(),
+  message: '',
+  setMessage: jest.fn(),
+  searchString: '',
+  setSearchString: jest.fn(),
+  keywordId: 0,
+  setKeywordId: jest.fn(),
+  consultantSlug: '',
+  setConsultantSlug: jest.fn(),
+  searchStringPayment: '',
+  setSearchStringPayment: jest.fn(),
+  isSelfPayment: false,
+  setIsSelfPayment: jest.fn(),
+};
+
+const renderWithProvider = (
+  component:
+    | string
+    | number
+    | boolean
+    | React.JSX.Element
+    | Iterable<React.ReactNode>
+    | null
+    | undefined
+) => {
+  return render(
+    <ConsultantFinderContext.Provider value={mockContextValues}>
+      {component}
+    </ConsultantFinderContext.Provider>
+  );
+};
+
+const mockProps = {
+  placeholder: 'Search...',
+  doctifyBaseURL: 'https://api.doctify.com/api/hca/search/autocomplete?search',
+  limit: 10,
+  noResultsMsg: 'No results found',
+  searchIcon: null,
+  searchStringConsultantName: mockContextValues.searchStringConsultantName,
+  setSearchStringConsultantName:
+    mockContextValues.setSearchStringConsultantName,
+  conditionsTreatmentsList: [
+    {
+      id: '036f2449-86bb-41d3-a5a1-3ad396c9b27d',
+      url: '/Finder/Step-Intro/Data/StepIntroData/FilterOptions/Hip-Replacement',
+      name: 'Hip Replacement',
+      displayName: 'Hip Replacement',
+      fields: {
+        id: {
+          value: 1140,
+        },
+        Value: {
+          value: 'Hip Replacement',
+        },
+        Key: {
+          value: 'HipReplacement',
+        },
+        name: {
+          value: 'Hip Replacement',
+        },
+        Order: {
+          value: 101,
+        },
+        type: {
+          value: 'procedure',
+        },
+      },
+    },
+    {
+      id: 'c990a95c-bee5-4b59-8496-02e28eb05e3f',
+      url: '/Finder/Step-Intro/Data/StepIntroData/FilterOptions/Asthma',
+      name: 'Asthma',
+      displayName: 'Asthma',
+      fields: {
+        id: {
+          value: 1017,
+        },
+        Value: {
+          value: 'Asthma',
+        },
+        Key: {
+          value: 'Asthma',
+        },
+        name: {
+          value: 'Asthma',
+        },
+        Order: {
+          value: 102,
+        },
+        type: {
+          value: 'condition',
+        },
+      },
+    },
+  ],
+  specialitiesList: [
+    {
+      id: 'ba9445ca-0349-4a40-9dd6-bff7659a3387',
+      url: '/Finder/Step-Intro/Data/StepIntroData/FilterOptions/Urology',
+      name: 'Urology',
+      displayName: 'Urology',
+      fields: {
+        id: {
+          value: 2339,
+        },
+        Value: {
+          value: 'Urology',
+        },
+        Key: {
+          value: 'Urology',
+        },
+        name: {
+          value: 'Urology',
+        },
+        Order: {
+          value: 5,
+        },
+        type: {
+          value: 'specialty',
+        },
+      },
+    },
+  ],
+};
+
+describe('Search component', () => {
+  it('renders without', () => {
+    renderWithProvider(<Search {...mockProps} />);
+  });
+});

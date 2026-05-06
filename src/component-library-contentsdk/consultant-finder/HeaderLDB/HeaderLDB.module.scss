@@ -1,0 +1,16 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.header-ldb {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-4 $spacing-6;
+  border-bottom: 1px solid $navy-blue-5;
+  position: relative;
+
+  .progress {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+}

@@ -1,0 +1,70 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as VideoBlockStories from './VideoBlock.stories';
+
+<Meta of={VideoBlockStories} />
+
+# VideoBlock
+
+## Description
+
+The VideoBlock component is a wrapper to present a video.
+
+It is intended to be used with the AdvancedBlockHeader component. See the docs for AdvancedBlockHeader for correspodning prop info.
+
+It can be composed like this:
+
+```tsx
+<VideoBlock
+  header={
+    <AdvancedBlockHeader
+      paddingSize={'none'}
+      subtitle={<Text variation={'subheading-1'}>Meta Title</Text>}
+      title={<Text variation={'display-2'}>Video Block</Text>}
+      body={
+        <Text variation={'body-large'}>
+          Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+          cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+          adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+          reprehenderit.
+        </Text>
+      }
+      ctas={
+        <>
+          <Button size={'small'} variation={'full'}>
+            <a href="#">
+              <span>
+                Learn more about <strong>self-pay</strong>
+              </span>
+            </a>
+          </Button>
+          <TextButton>
+            <a href="#">
+              <span>
+                Access care with <strong>insurance</strong>
+              </span>
+            </a>
+          </TextButton>
+        </>
+      }
+    />
+  }
+  video={
+    <VideoPlayer
+      videoUrl="https://www.youtube.com/embed/M7lc1UVf-VE"
+      overlayImage={
+        <Image
+          src="/placeholders/london.jpg"
+          alt="london skyline"
+          width="1120"
+          height="631"
+        />
+      }
+    />
+  }
+></VideoBlock>
+```
+
+## Example
+
+<Canvas of={VideoBlockStories.Default} />
+<Controls of={VideoBlockStories.Default} />

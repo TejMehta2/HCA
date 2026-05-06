@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as VideoHeroStories from './VideoHero.stories'
+
+<Meta of={VideoHeroStories} />
+
+# VideoHero
+
+## Description
+
+The VideoHero component displays headings, copy and a background video.
+
+It also supports a background image, which is shown while the video loads. Ideally both image and video are provided in the same aspect ratio.
+
+It is intended to be used on the careers homepage.
+
+If you supply a content video which is not 16:9 aspect ratio, then this aspect ratio should be passed to the videoAspectRatio prop. 
+
+It can be composed like this:
+
+``` tsx
+<VideoHero
+  title: {
+    <Text variation="display-1" tag="h2">
+      Departments
+    </Text>
+  }
+  copy={
+    <Text variation="body-large" tag="p">
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+      laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+      dolore.
+    </Text>
+  }
+  children={
+    <>
+      <Button size="large" variation="full" contentVariation="full-width">
+        <a href="#">
+          <Icons iconName="iconStethoscope" />
+          <span>
+            Find a <strong>Consultant</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" variation="outline" contentVariation="full-width">
+        <a href="#">
+          <Icons iconName="iconPhone" />
+          <span>
+            Call us <strong>today</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
+  image={
+    <Image
+      src="/placeholders/lab-technician.jpeg"
+      alt="lab technician"
+      width="1024"
+      height="683"
+    />
+  }
+  videoSrc={'https://player.vimeo.com/video/76979871'}
+/>
+```

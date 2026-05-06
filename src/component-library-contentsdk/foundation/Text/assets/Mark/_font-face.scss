@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Mark;
+  src:
+    url('./fonts/MarkforHCA-Book.otf') format('opentype'),
+    url('./fonts/MarkforHCA-BookItalic.otf') format('opentype');
+  font-weight: 450;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mark;
+  src:
+    url('./fonts/MarkforHCA-Medium.otf') format('opentype'),
+    url('./fonts/MarkforHCA-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mark;
+  src:
+    url('./fonts/MarkforHCA-Bold.otf') format('opentype'),
+    url('./fonts/MarkforHCA-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}

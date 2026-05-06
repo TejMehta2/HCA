@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextStyledStaticFiltersStories from './YextStyledStaticFilters.stories'
+
+<Meta of={YextStyledStaticFiltersStories} />
+
+# YextStyledStaticFilters
+
+## Description
+
+The YextStyledStaticFilters component is a styled wrapper component for the OTB Yext [StaticFilters](https://hitchhikers.yext.com/docs/search/staticfilter-react-component/) component.
+
+It is intended to be used in the CareersHomepageHeader to allow the user to apply filters to the global Yext instance, on the current vertical.
+
+It can be composed like this:
+
+``` tsx
+<YextStyledStaticFilters
+  fieldId={'location'}
+  filterOptions={[
+    { value: 'Option a' },
+    { value: 'Option b' },
+    { value: 'Option c' },
+    { value: 'Option d' },
+    { value: 'Option e' },
+    { value: 'Option f' },
+    { value: 'Option g' },
+    { value: 'Option h' },
+    { value: 'Option i' },
+  ]}
+  title={'Select a location'}
+/>
+```

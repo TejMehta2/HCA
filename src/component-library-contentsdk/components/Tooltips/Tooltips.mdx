@@ -1,0 +1,27 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TooltipsStories from './Tooltips.stories';
+
+<Meta of={TooltipsStories} />
+
+# Tooltips
+
+## Description
+
+The Tooltips component consists of a button to trigger displaying the tooltip and the tooltip contents. On larger sizes it displays on hover (and on click), on mobile it display on click. The alignment of the tooltip will be dertermined by the placement on the page, with the default being centered. If the tooltip is close enough to either the left or right that the content would not fit on the page in the centered position it will align to the appropriate side.
+
+It utilises theme to set the colours of the button / tooltip, however there is an optional theme prop to override this and set `dark` or `light` themes.
+
+It is intended to be used sitewide.
+
+It can be composed like this:
+
+```tsx
+<Tooltips theme="light">
+  <p>Based on 127 patient reviews.</p>
+</Tooltips>
+```
+
+## Example
+
+<Canvas of={TooltipsStories.Default} />
+<Controls of={TooltipsStories.Default} />

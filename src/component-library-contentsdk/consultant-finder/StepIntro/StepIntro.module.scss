@@ -1,0 +1,57 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.step-intro {
+    background-color: $navy-blue-100;
+    padding: $spacing-7 $spacing-14 $spacing-14 $spacing-14;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+
+    @include media(screen-l) {
+        padding: $spacing-14;
+    }
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 100%;
+
+    @include media(screen-l) {
+        flex-direction: row;
+        max-width: px-to-rem(800);
+    }
+}
+
+.headline {
+    color: $white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $spacing-2;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div:first-child {
+        margin-right: 0;
+        margin-bottom: $spacing-2;
+    }
+
+    @include media(screen-l) {
+        flex-direction: row;
+
+        div:first-child {
+            margin-right: $spacing-2;
+            margin-bottom: 0;
+        }
+    }
+}

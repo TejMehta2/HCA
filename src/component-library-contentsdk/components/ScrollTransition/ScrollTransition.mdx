@@ -1,0 +1,191 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ScrollTransitionStories from './ScrollTransition.stories';
+
+<Meta of={ScrollTransitionStories} />
+
+# ScrollTransition
+
+## Description
+
+The ScrollTransition component is a wrapper for the homepage components to allow the background color to transition as the user scrolls between components.
+
+This component also allows for individual component sections to be animated as they appear on screen for the first time.
+This can be achieved by adding `data-animate="s"` to a HTML element. The amount the elements animates depends on the given size, the options are 'xs', 's', 'm', and 'l'
+
+It is intended to be used on the homepage.
+
+It can be composed like this:
+
+```tsx
+<ScrollTransition initialTheme="A-HCA-White">
+  <>
+    <HomepageIntroBlock
+      title={
+        <Text variation="display-1" tag="h2">
+          Committed to your care
+        </Text>
+      }
+      copy={
+        <Text variation="body-large" tag="p">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore.
+        </Text>
+      }
+      stats={[
+        {
+          value: <span>26</span>,
+          label: <span>years in the UK</span>,
+        },
+        {
+          value: <span>3,000</span>,
+          label: <span>consultants</span>,
+        },
+        {
+          value: <span>770</span>,
+          label: <span>inpatient beds</span>,
+        },
+      ]}
+      cta={
+        <a href="#">
+          About <strong>HCA Healthcare UK</strong>
+        </a>
+      }
+      image={
+        <Image
+          src="/placeholders/happy-nurse.jpeg"
+          alt=""
+          width="1875"
+          height="1500"
+        />
+      }
+      cqc={
+        <Themes theme="A-HCA-White">
+          <CQCBlock
+            link={<a href="#"></a>}
+            title="Care Quality Commission verified"
+            text="All our hospitals are rated Good or Oustanding."
+            icon={<Icons iconName="iconCheckCircle"></Icons>}
+            logo={{
+              dark: (
+                <Image
+                  src="/cqc-white.png"
+                  alt="cqc logo"
+                  width="120"
+                  height="37"
+                />
+              ),
+              light: (
+                <Image
+                  src="/cqc-color.png"
+                  alt="cqc logo"
+                  width="120"
+                  height="37"
+                />
+              ),
+            }}
+          />
+        </Themes>
+      }
+      doctify={
+        <Themes theme="B-HCA-Navy-Blue">
+          <Doctify
+            alignment="left"
+            link={<a href="#"></a>}
+            rating={5}
+            reviews="13,500 +"
+            logo={{
+              dark: (
+                <Image
+                  src="/doctify-dark.png"
+                  alt="doctify logo"
+                  width="83"
+                  height="21"
+                />
+              ),
+              light: (
+                <Image
+                  src="/doctify-light.png"
+                  alt="doctify logo"
+                  width="83"
+                  height="21"
+                />
+              ),
+            }}
+          />
+        </Themes>
+      }
+    />
+
+    <ServiceCards
+      title={<Text variation="display-2">Exceptional care you can trust</Text>}
+      subtitle={<Text variation="subheading-1">our departments</Text>}
+      bodyText={
+        <Text>
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore.
+        </Text>
+      }
+      cta={
+        <a href="#">
+          <Icons iconName="iconSearch"></Icons> Search all departments
+        </a>
+      }
+    >
+      <CardService link={<a href="#">Learn More</a>}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 1</Text>
+      </CardService>
+      <CardService link={<a href="#">Learn More</a>}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 2</Text>
+      </CardService>
+      <CardService link={<a href="#">Learn More</a>}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 3</Text>
+      </CardService>
+      <CardService link={<a href="#">Learn More</a>}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 4</Text>
+      </CardService>
+      <CardService link={<a href="#">Learn More</a>}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 5</Text>
+      </CardService>
+    </ServiceCards>
+  </>
+</ScrollTransition>
+```
+
+## Example
+
+<Canvas of={ScrollTransitionStories.Default} />
+<Controls of={ScrollTransitionStories.Default} />

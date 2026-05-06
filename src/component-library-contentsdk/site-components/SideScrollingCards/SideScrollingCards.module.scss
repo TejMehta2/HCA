@@ -1,0 +1,89 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  position: relative;
+  overflow-x: clip;
+  color: var(--text);
+}
+
+.side-scroll-section {
+  display: flex;
+  flex-direction: column;
+
+  @include media(screen-l) {
+    position: sticky;
+    flex-direction: row;
+    top: px-to-rem(78);
+    height: calc(100vh - px-to-rem(70));
+    overflow: visible;
+  }
+}
+
+.intro {
+  background: var(--background);
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: px-to-rem(40);
+  padding: $spacing-13 $spacing-4;
+
+  @include media(screen-m) {
+    padding: $spacing-13 $spacing-6;
+  }
+
+  @include media(screen-l) {
+    width: 50%;
+    padding: 0 $spacing-10;
+  }
+
+  @include media(screen-xl) {
+    width: 43%;
+  }
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-rem(24);
+  }
+
+  & a {
+    width: 100%;
+    justify-content: center;
+
+    @include media(screen-m) {
+      width: fit-content;
+      justify-content: flex-start;
+    }
+  }
+}
+
+.cards {
+  display: grid;
+
+  @include media(screen-m) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(screen-l) {
+    display: flex;
+  }
+
+  /* Individual Card */
+  & > div {
+    min-height: px-to-rem(608);
+    height: auto;
+
+    @include media(screen-l) {
+      width: px-to-rem(456);
+      height: unset;
+    }
+
+    @include media(screen-xl) {
+      width: px-to-rem(533);
+    }
+
+    border-radius: 0;
+  }
+}

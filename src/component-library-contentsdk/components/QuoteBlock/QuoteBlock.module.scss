@@ -1,0 +1,44 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(24) 0;
+  margin: $spacing-8 0;
+  color: var(--text);
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.author {
+  display: flex;
+  gap: 0 px-to-rem(24);
+  height: 100%;
+
+  img {
+    border-radius: 50%;
+    max-width: px-to-rem(70);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    align-self: center;
+  }
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.name,
+.title {
+  @include apply-subheading-1;
+}

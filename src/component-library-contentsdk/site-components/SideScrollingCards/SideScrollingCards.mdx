@@ -1,0 +1,97 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SideScrollingCardsStories from './SideScrollingCards.stories'
+
+<Meta of={SideScrollingCardsStories} />
+
+# SideScrollingCards
+
+## Description
+
+The SideScrollingCards component consists of a title, body text, link, and Patient Story cards. 
+On mobile and tablet these cards are displayed in a simple grid and are stacked vertically. 
+However, on desktop these will be displayed horizantally and will give the illusion of scrolling sideways as the user navigates down the page
+
+The sidescrolling effect is achieved by taking the total width of each card and applying that as the height of the wrapper div. 
+The inner container div height is set to `height: 100vh;` and `position: sticky; top: 0;`
+As the user scrolls, there is a function which will take the scoll position and set it as the `translateX` of the inner div to give the appearance of scrolling sideways
+
+It is intended to be used only on the homepage
+
+It can be composed like this:
+
+``` tsx
+import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
+
+<SideScrollingCards 
+    title={<span>Stories from our patients</span>}
+    bodyCopy={
+      <span>
+        Quis laboris proident sint amet id cillum do dolor in tempor est.
+        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+        laborum et culpa minim.
+      </span>
+    }
+    link={
+      <a href="#">
+        <Icons iconName="iconSearch" />
+        <span>
+          Search <strong>all stories</strong>
+        </span>
+      </a>
+    }
+>
+    <CardPatientStories
+        title={<span>Every new birth tells its own story</span>}
+        bodyCopy={
+        <span>
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+        </span>
+        }
+        image={
+        <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+        />
+        }
+        link={
+        <a href="#">
+            <span>
+            Read the <strong>Story</strong>
+            </span>
+        </a>
+        }
+    />
+    <CardPatientStories
+        title={<span>Every new birth tells its own story</span>}
+        bodyCopy={
+        <span>
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+        </span>
+        }
+        image={
+        <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+        />
+        }
+        link={
+        <a href="#">
+            <span>
+            Read the <strong>Story</strong>
+            </span>
+        </a>
+        }
+    />
+</SideScrollingCards>
+```
+
+## Example 
+
+<Canvas of={SideScrollingCardsStories.Default} />
+<Controls of={SideScrollingCardsStories.Default} />

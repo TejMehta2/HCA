@@ -1,0 +1,15 @@
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
+
+.video-consultation {
+  margin-bottom: $spacing-8;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .title,
+  .text {
+    margin-bottom: $spacing-2;
+  }
+}

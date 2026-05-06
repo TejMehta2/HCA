@@ -1,0 +1,25 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+// Target header tag as sticky parent, to allow for nesting etc.
+header {
+  &:has(.sticky) {
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    transition: transform 0.2s ease;
+  }
+
+  &:has(.sticky.up) {
+    transform: translateY(0);
+  }
+
+  &:has(.sticky.down) {
+    transform: translateY(-100%);
+    @include media(screen-l) {
+      transform: translateY(
+        px-to-rem(-40)
+      ); // hide desktop eyebrow on scroll down
+    }
+  }
+}

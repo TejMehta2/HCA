@@ -1,0 +1,51 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-finder-navigation {
+  width: 100%;
+  min-height: px-to-rem(80);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  padding: $spacing-2 $spacing-6;
+  position: fixed;
+  bottom: 0;
+  text-align: left;
+  z-index: 2;
+  border-top: 1px solid $navy-blue-30;
+
+  &.show-on-mobile {
+    display: flex;
+
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+
+  &.hide-text-on-mobile {
+    color: $navy-blue-100;
+
+    p {
+      display: none;
+
+      @include media(screen-m) {
+        display: inline-block;
+        color: $navy-blue-100;
+        margin: 0 $spacing-3;
+      }
+    }
+  }
+
+  &.custom-btns-sm {
+    a {
+      padding: px-to-rem(16) $spacing-4;
+    }
+
+    @include media(screen-m) {
+      a {
+        padding: px-to-rem(16) $spacing-7;
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.modal-appointment {
+  @include responsive-container;
+
+  height: 100%;
+  color: var(--text);
+  text-align: center;
+  display: flex;
+
+  .grid {
+    padding-top: px-to-rem(60);
+    padding-bottom: px-to-rem(60);
+    @include responsive-grid;
+
+    grid-template-rows: auto px-to-rem(1) auto;
+    row-gap: $spacing-7;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+    @include media(screen-m, max) {
+      padding-bottom: px-to-rem(
+        180
+      ); // Extra mobile padding will usually be offscreen via scroll. We add this to offset IOS/Safari height issues.
+    }
+  }
+
+  .panel1 {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 1);
+  }
+
+  .panel2 {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 8);
+  }
+
+  .panel1,
+  .panel2 {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 5);
+  }
+
+  .hr {
+    @include responsive-grid-span(4, 2, 2, 2);
+    @include responsive-grid-start(2, 3, 6);
+
+    hr {
+      margin: 0;
+      width: 100%;
+      height: px-to-rem(1);
+      border: solid px-to-rem(1) $navy-blue-10;
+      @include media(screen-l) {
+        height: 100%;
+        width: px-to-rem(1);
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .title {
+    margin-bottom: $spacing-5;
+  }
+
+  .copy {
+    margin-bottom: $spacing-6;
+  }
+
+  .cta {
+    display: grid;
+    gap: px-to-rem(8);
+
+    button,
+    a {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @include media(screen-m, max) {
+      // Overrides Button component responsive padding from spacing variable
+      button,
+      a {
+        padding-left: px-to-rem(12);
+        padding-right: px-to-rem(12);
+      }
+    }
+    @include media(screen-m) {
+      justify-content: center;
+    }
+  }
+
+  .panel1:only-child {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 12);
+
+    @include media(screen-m) {
+      max-width: px-to-rem(457);
+      margin: auto;
+    }
+
+    .cta {
+      gap: px-to-rem(24);
+      justify-items: center;
+
+      [class*='Button_full-width'] {
+        justify-self: stretch; // If this occurs in multiple places, consider a new contentVariation for buttons
+      }
+    }
+  }
+}

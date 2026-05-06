@@ -1,0 +1,114 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as GridsStories from './Grids.demo.stories';
+
+<Meta of={GridsStories} />
+
+# Grids
+
+## Description
+
+The grids module defines four Sass mixins which apply various styles responsively using the breakpoints module.
+
+In addition to the mixin, they expose variables which can be used in instances where the mixins are not flexibile enough.
+
+### responsive-container
+
+Applies responsive `margin-left` and `margin-right` CSS properties.
+
+### responsive-grid
+
+Applies responsive grid parent styles.
+
+### responsive-grid-span
+
+Applies the CSS property `grid-column-span` responsively for the given arguments.
+
+### responsive-grid-start
+
+Applies the CSS property `grid-column-start` responsively for the given arguments.
+
+## Example
+
+This is a suggested way of applying the mixins to a component in the main content of the site, to achieve various responsive grid layouts.
+
+### In SCSS module styles
+
+```scss dark
+// Grids.demo.module.scss
+@use '../index.module.scss' as *;
+
+.grid > * {
+  background-color: $orange-60;
+  text-align: center;
+}
+
+.grid {
+  @include responsive-grid;
+}
+
+.half {
+  @include responsive-grid-span($default: 3, $breakpoint-l: 6);
+}
+
+.third {
+  @include responsive-grid-span($default: 2, $breakpoint-l: 4);
+}
+
+.floating {
+  @include responsive-grid-span($default: 2, $breakpoint-l: 4);
+  @include responsive-grid-start($default: 5, $breakpoint-l: 9);
+}
+
+.default {
+  @include responsive-grid-start;
+  @include responsive-grid-span;
+}
+```
+
+### In module React component
+
+```tsx dark
+// Grids.demo.tsx
+import React from 'react';
+import { GridsProps } from './Grids.demo.types';
+import styles from './Grids.demo.module.scss';
+import Text from '../Text/Text';
+const Grids = (props: GridsProps) => {
+  const {} = props;
+  return (
+    <div className={styles.grid}>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <Text>no class</Text>
+      <div className={styles.half}>
+        <Text>.half</Text>
+      </div>
+      <div className={styles.half}>
+        <Text>.half</Text>
+      </div>
+      <div className={styles.third}>
+        <Text>.third</Text>
+      </div>
+      <div className={styles.floating}>
+        <Text>.floating</Text>
+      </div>
+      <div className={styles.default}>
+        <Text>.default</Text>
+      </div>
+    </div>
+  );
+};
+
+export default Grids;
+```
+
+<Canvas of={GridsStories.Default} />

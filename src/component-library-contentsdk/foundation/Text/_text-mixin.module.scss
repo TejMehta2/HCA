@@ -1,0 +1,266 @@
+@use '../../utilities/index.module' as *;
+@use './assets/Mark/font-face' as *;
+@import 'https://use.typekit.net/mdu7dnk.css';
+
+$font-family: Mark, arial, helvetica, sans-serif;
+$base-font-weight: 450;
+$medium-font-weight: 500;
+$bold-font-weight: 700;
+
+/* || TEXT */
+@mixin apply-display-shared {
+  font-family: $font-family;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: $base-font-weight;
+}
+
+@mixin apply-display-1 {
+  @include apply-display-shared;
+
+  font-size: px-to-rem(46);
+  @include media(screen-m) {
+    font-size: px-to-rem(52);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(62);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(75);
+  }
+}
+
+@mixin apply-display-2 {
+  @include apply-display-shared;
+
+  font-size: px-to-rem(40);
+  @include media(screen-m) {
+    font-size: px-to-rem(46);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(54);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(67);
+  }
+}
+
+@mixin apply-display-3 {
+  @include apply-display-shared;
+
+  font-size: px-to-rem(34);
+  @include media(screen-m) {
+    font-size: px-to-rem(38);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(46);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(60);
+  }
+}
+
+@mixin apply-display-4 {
+  @include apply-display-shared;
+
+  font-size: px-to-rem(30);
+  @include media(screen-m) {
+    font-size: px-to-rem(34);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(40);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(52);
+  }
+}
+
+@mixin apply-display-5 {
+  @include apply-display-shared;
+
+  line-height: 130%;
+  font-size: px-to-rem(28);
+  @include media(screen-m) {
+    font-size: px-to-rem(30);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(34);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(45);
+  }
+}
+
+@mixin apply-display-6 {
+  @include apply-display-shared;
+
+  line-height: 130%;
+  font-size: px-to-rem(26);
+  @include media(screen-m) {
+    font-size: px-to-rem(28);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(28);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(37);
+  }
+}
+
+@mixin apply-heading-shared {
+  font-family: $font-family;
+  letter-spacing: -0.03em;
+  line-height: 150%;
+  font-weight: $base-font-weight;
+}
+@mixin apply-heading-1 {
+  @include apply-heading-shared;
+
+  font-size: px-to-rem(28);
+}
+
+@mixin apply-heading-2 {
+  @include apply-heading-shared;
+
+  font-size: px-to-rem(22);
+  @include media(screen-xl) {
+    font-size: px-to-rem(24);
+  }
+}
+
+@mixin apply-subheading-shared {
+  font-family: $font-family;
+  letter-spacing: 0.08em;
+  font-weight: $medium-font-weight;
+  text-transform: uppercase;
+}
+@mixin apply-subheading-1 {
+  @include apply-subheading-shared;
+
+  line-height: 160%;
+  font-size: px-to-rem(16);
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+
+@mixin apply-subheading-2 {
+  @include apply-subheading-shared;
+
+  line-height: 150%;
+  font-size: px-to-rem(14);
+  @include media(screen-xl) {
+    font-size: px-to-rem(16);
+  }
+}
+
+@mixin apply-body-shared {
+  font-family: $font-family;
+  font-weight: $base-font-weight;
+  line-height: 150%;
+  letter-spacing: -0.03em;
+}
+
+@mixin font-size-extra-large {
+  line-height: 160%;
+  font-size: px-to-rem(18);
+  @include media(screen-xl) {
+    font-size: px-to-rem(20);
+  }
+}
+
+@mixin apply-body-extra-large {
+  @include apply-body-shared;
+  @include font-size-extra-large;
+}
+
+@mixin apply-body-medium-extra-large {
+  @include apply-body-shared;
+  @include font-size-extra-large;
+
+  font-weight: $medium-font-weight;
+}
+
+@mixin apply-body-bold-extra-large {
+  @include apply-body-shared;
+  @include font-size-extra-large;
+
+  font-weight: $bold-font-weight;
+}
+
+@mixin font-size-large {
+  font-size: px-to-rem(16);
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+@mixin apply-body-large {
+  @include apply-body-shared;
+  @include font-size-large;
+}
+@mixin apply-body-medium-large {
+  @include apply-body-shared;
+  @include font-size-large;
+
+  font-weight: $medium-font-weight;
+}
+@mixin apply-body-bold-large {
+  @include apply-body-shared;
+  @include font-size-large;
+
+  font-weight: $bold-font-weight;
+}
+
+@mixin font-size-medium {
+  font-size: px-to-rem(16);
+}
+@mixin apply-body-medium {
+  @include apply-body-shared;
+  @include font-size-medium;
+}
+@mixin apply-body-medium-medium {
+  @include apply-body-shared;
+  @include font-size-medium;
+
+  font-weight: $medium-font-weight;
+}
+@mixin apply-body-bold-medium {
+  @include apply-body-shared;
+  @include font-size-medium;
+
+  font-weight: $bold-font-weight;
+}
+
+@mixin font-size-small {
+  font-size: px-to-rem(14);
+}
+@mixin apply-body-small {
+  @include apply-body-shared;
+  @include font-size-small;
+}
+
+@mixin apply-body-medium-small {
+  @include apply-body-shared;
+  @include font-size-small;
+
+  font-weight: $medium-font-weight;
+}
+@mixin apply-body-bold-small {
+  @include apply-body-shared;
+  @include font-size-small;
+
+  font-weight: $bold-font-weight;
+}
+
+@mixin apply-decorative {
+  font-family: shelby, sans-serif;
+  font-size: 1.75em; // size needs to be based on the wrapper as this will be applied within a 'display-' text class
+  letter-spacing: -0.03em;
+  line-height: 64%;
+  font-weight: 400;
+  margin-right: px-to-rem(16);
+
+  @include media(screen-l) {
+    line-height: 40%;
+  }
+}

@@ -1,0 +1,67 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as AddressFinderStories from './AddressFinder.stories';
+
+<Meta of={AddressFinderStories} />
+
+# AddressFinder
+
+## Description
+
+The AddressFinder component's purpose is to allow the user to fill in their address in a form by either using an autocomplete or entering it manually.
+Users are initially presented with the autocomplete option, where they can start typing their address and be presented a list of options, which if they click will appear as selected (at this point the autocomplete section is hidden). When selected the address chosen will be displayed and there are two buttons displayed below - `edit` and `remove`.
+
+By clicking `edit` users are presented with the manual input fields with the address prefilled - allowing them to easily change it.
+
+By clicking `remove`, the address is cleared and the address finder returns back to it's initial state displaying the autocomplete.
+
+Diplayed below the manual address fields is a button `new search` which will clear any selected address and return the address finder back to it's initial state, this provides a way for the user to show the autocomplete option again if they had decided to fill the address in manually but changed their mind.
+
+The story for AddressFinder has some mock results but the intention is for a request to be made in the parent component where AddressFinder is used and the result data be shared using the `addressResults` prop.
+
+It is intended to be used on the payment form.
+
+The render prop allows you to show manual editting fields by unpacking the response from the SplitAddress endpoint.
+
+It can be composed like this:
+
+```tsx
+<AddressFinder
+  render={(splitAddressResponse) => {
+    if (!splitAddressResponse) return <></>;
+    const { address1, address2, postcode, town } = splitAddressResponse;
+    return (
+      <>
+        <TextField
+          label={'Line 1'}
+          name={'line1'}
+          type="text"
+          defaultValue={address1 || ''}
+        />
+        <TextField
+          label={'Line 2'}
+          name={'line2'}
+          type="text"
+          defaultValue={address2 || ''}
+        />
+        <TextField
+          label={'Postcode'}
+          name={'postcode'}
+          type="text"
+          defaultValue={postcode || ''}
+        />
+        <TextField
+          label={'Town'}
+          name={'town'}
+          type="text"
+          defaultValue={town || ''}
+        />
+      </>
+    );
+  }}
+/>
+```
+
+## Example
+
+<Canvas of={AddressFinderStories.Default} />
+<Controls of={AddressFinderStories.Default} />

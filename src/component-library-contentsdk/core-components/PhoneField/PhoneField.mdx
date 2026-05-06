@@ -1,0 +1,23 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as PhoneFieldStories from './PhoneField.stories';
+
+<Meta of={PhoneFieldStories} />
+
+# PhoneField
+
+## Description
+
+The PhoneField component is a form created using International Telephone Input (https://www.npmjs.com/package/intl-tel-input) to generate a field which recognises the country code of the field and provides validation. We are using the React component version of the plugin.
+
+It is intended to be used in forms across the site and is intended to be as similar as possible to the equivilent Sitecore formbuilder form field.
+
+It can be composed like this:
+
+```tsx
+<PhoneField label={'Field label'} helpText={'Helper text'} required={true} />
+```
+
+## Example
+
+<Canvas of={PhoneFieldStories.Default} />
+<Controls of={PhoneFieldStories.Default} />

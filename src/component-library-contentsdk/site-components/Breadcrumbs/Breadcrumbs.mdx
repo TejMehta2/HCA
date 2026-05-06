@@ -1,0 +1,42 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+## Description
+
+The Breadcrumbs component is intended to display Breadcrumbs on pages sitewide. On mobile and tablet sizes it will display only the first breadcrumb and on larger sizes all breadcrumbs will be displayed, wrapping onto the next line where the text is too long.
+
+The last breadcrumb represents the current page and is not a link.
+
+On larger sizes, the home breadcrumb item will be displayed and there is no need to pass any props for it.
+
+It can be composed like this:
+
+```tsx
+<Breadcrumbs>
+  <TextLink key={0}>
+    <a href="#">
+      <Icons iconName="iconHome"></Icons>
+      <span className="sr-only">Home</span>
+    </a>
+  </TextLink>
+  <TextLink>
+    <a href="#">Services & Treatments</a>
+  </TextLink>
+  <TextLink>
+    <a href="#">Services & Treatments</a>
+  </TextLink>
+  <TextLink>
+    <a href="#">Services & Treatments</a>
+  </TextLink>
+  <span>Departments</span>
+</Breadcrumbs>
+```
+
+## Example
+
+<Canvas of={BreadcrumbsStories.Default} />
+<Controls of={BreadcrumbsStories.Default} />

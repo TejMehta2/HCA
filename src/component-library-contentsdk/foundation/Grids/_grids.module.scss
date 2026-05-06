@@ -1,0 +1,110 @@
+@use '../Spacing/spacing.module' as *;
+@use '../../utilities/index.module' as *;
+
+// To be applied to either site components, or the main site wrapper
+
+@mixin responsive-container {
+  margin-left: $spacing-14;
+  margin-right: $spacing-14;
+}
+
+// To be applied to site components where a layout which falls into the global grid layout is expected in the design
+$grid-gap: px-to-rem(16);
+$grid-columns-s: 6;
+$grid-columns-m: 6;
+$grid-columns-l: 12;
+$grid-columns-xl: 12;
+@mixin responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(#{$grid-columns-s}, 1fr);
+  gap: $grid-gap;
+
+  // Add extra breakpoints only if needed, i.e. columns value is different from previous breakpoint
+  @if $grid-columns-m != $grid-columns-s {
+    @include media(screen-m) {
+      grid-template-columns: repeat(#{$grid-columns-m}, 1fr);
+    }
+  }
+  @if $grid-columns-l != $grid-columns-m {
+    @include media(screen-l) {
+      grid-template-columns: repeat(#{$grid-columns-l}, 1fr);
+    }
+  }
+  @if $grid-columns-xl != $grid-columns-l {
+    @include media(screen-xl) {
+      grid-template-columns: repeat(#{$grid-columns-xl}, 1fr);
+    }
+  }
+}
+
+// Provides a shorthand to assign column starts at the various breakpoints
+@mixin responsive-grid-start(
+  $default: 1,
+  $breakpoint-m: $default,
+  $breakpoint-l: $breakpoint-m,
+  $breakpoint-xl: $breakpoint-l
+) {
+  // Defaults to 1 full width (6 on smaller screens, 12 on larger)
+  grid-column-start: #{$default};
+  @if $breakpoint-m {
+    @include media(screen-m) {
+      grid-column-start: #{$breakpoint-m};
+    }
+  }
+  @if $breakpoint-l {
+    @include media(screen-l) {
+      grid-column-start: #{$breakpoint-l};
+    }
+  }
+  @if $breakpoint-xl {
+    @include media(screen-xl) {
+      grid-column-start: #{$breakpoint-xl};
+    }
+  }
+}
+
+// Provides a shorthand to assign column spans at the various breakpoints
+@mixin responsive-grid-span(
+  $default: $grid-columns-s,
+  $breakpoint-m: $default,
+  $breakpoint-l: $grid-columns-l,
+  $breakpoint-xl: $breakpoint-l
+) {
+  // Defaults to span full width (6 on smaller screens, 12 on larger)
+
+  // Validate the arguments, mainly for documentation purposes
+  @if $default <
+    1 or
+    $breakpoint-m <
+    1 or
+    $breakpoint-l <
+    1 or
+    $breakpoint-m <
+    1
+  {
+    @error "responsive-grid-span arguments cannot be less than 1";
+  }
+  @if $default > $grid-columns-s or $breakpoint-m > $grid-columns-m {
+    @error "responsive-grid-span arguments $default, $breakpoint-m must not exceed the max grid size of 6";
+  }
+  @if $breakpoint-l > $grid-columns-l or $breakpoint-xl > $grid-columns-xl {
+    @error "responsive-grid-span arguments $breakpoint-l, $breakpoint-xl must not exceed the max grid size of 12";
+  }
+
+  grid-column-end: span #{$default};
+  @if $breakpoint-m {
+    @include media(screen-m) {
+      grid-column-end: span #{$breakpoint-m};
+    }
+  }
+  @if $breakpoint-l {
+    @include media(screen-l) {
+      grid-column-end: span #{$breakpoint-l};
+    }
+  }
+  @if $breakpoint-xl {
+    @include media(screen-xl) {
+      grid-column-end: span #{$breakpoint-xl};
+    }
+  }
+}

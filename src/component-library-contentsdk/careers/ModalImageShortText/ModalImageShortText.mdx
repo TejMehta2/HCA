@@ -1,0 +1,54 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ModalImageShortTextStories from './ModalImageShortText.stories'
+
+<Meta of={ModalImageShortTextStories} />
+
+# ModalImageShortText
+
+## Description
+
+The ModalImageShortText component is a modal which contains what appears to be the ImageShortText component.
+
+The ImageShortText component was already quite loaded with props, so we have implemented it as a new standalone component here to fit within the modal.
+
+It can be composed like this (note that copy might be a rich text field once integrated):
+
+``` tsx
+<ModalImageShortText
+  image={
+    <Image
+      src="/placeholders/linda.jpg"
+      alt="linda"
+      width="858"
+      height="763"
+    />
+    subheader={
+      <Text variation={'subheading-1'}>staff nurse (return to practice)</Text>
+    }
+    header={
+      <Text variation={'display-2'}>All about Linda</Text>
+    }
+    copy={
+      <Text tag="div" variation={'body-large'}>
+        “This has been a brilliant place to refresh my skills because
+        there&apos;s such a diverse range of advanced care. The high standards
+        are inspiring - every day, I want to improve.
+        <br></br>
+        <br></br>HCA UK aren&apos;t just employing me during the &apos;Return to
+        Practice&apos; programme, they&apos;re also covering the fees. As soon
+        as I get my Nursing and Midwifery Council (NMC) PIN, I&apos;ll be able
+        to start as a permanent staff nurse.
+        <br></br>
+        <br></br>
+        The incredible support is the main reason I&apos;d encourage people to
+        apply.”
+      </Text>
+    }
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={ModalImageShortTextStories.Default} />
+<Controls of={ModalImageShortTextStories.Default} />

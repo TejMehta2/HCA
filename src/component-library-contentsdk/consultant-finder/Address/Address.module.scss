@@ -1,0 +1,13 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.address {
+  h3,
+  svg {
+    display: inline;
+  }
+
+  svg {
+    margin-right: $spacing-2;
+  }
+}

@@ -1,0 +1,32 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(24);
+
+  @include media(screen-m) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.search-detail {
+  gap: px-to-rem(8);
+  scroll-margin-top: $spacing-4;
+}
+
+.wrapper {
+  padding: var(--theme-collapse-padding-top, #{$spacing-9}) 0 $spacing-13 0;
+  color: var(--text);
+  background: var(--background);
+}
+
+.inner {
+  @include responsive-container;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}

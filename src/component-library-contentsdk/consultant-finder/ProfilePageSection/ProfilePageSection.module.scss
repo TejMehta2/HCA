@@ -1,0 +1,19 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.section {
+  width: 100%;
+  padding: $spacing-7 0;
+  scroll-margin: $spacing-4;
+
+  @include media(screen-m) {
+    scroll-margin: $spacing-9;
+  }
+
+  // new color
+  border-bottom: 1px solid $navy-blue-30;
+
+  &-no-border-bottom {
+    border-bottom: none;
+  }
+}

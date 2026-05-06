@@ -1,0 +1,42 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include responsive-grid-span(6, 3, 3, 3);
+
+  display: none;
+  background-color: var(--card-background);
+  color: var(--text);
+  border-radius: $radius-small;
+  padding: $spacing-7 $spacing-6;
+  min-height: px-to-rem(341);
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-4;
+
+  @include media(screen-m) {
+    display: flex;
+  }
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+
+  time {
+    @include apply-body-medium-medium;
+  }
+
+  // Only target links NOT inside a div with "button" in its class
+  a {
+    &:not(:is(div[class*="button"] a)) {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

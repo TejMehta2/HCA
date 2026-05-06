@@ -1,0 +1,67 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+%input-radio {
+  appearance: none;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid var(--controls-border-default);
+  height: px-to-rem(24);
+  width: px-to-rem(24);
+  position: relative;
+
+  &:checked {
+    background: var(--controls-background-selected);
+    border-color: var(--controls-background-selected);
+
+    @include apply-body-medium-large;
+
+    &::after {
+      display: inline-block;
+      content: '';
+      border-radius: 50%;
+      background: var(--controls-background-selected-dot);
+      width: px-to-rem(4);
+      height: px-to-rem(4);
+      position: absolute;
+      inset: 50% 0 0 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--controls-border-focus);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background: var(--controls-background-disabled);
+    border-color: var(--controls-border-disabled);
+
+    &:checked {
+      border: var(--controls-background-disabled-selected);
+      background: var(--controls-background-disabled-selected);
+    }
+
+    &::after {
+      background: $white;
+    }
+  }
+}
+
+.wrapper {
+  @include apply-body-large;
+
+  display: flex;
+  gap: 0 $spacing-4;
+  color: var(--text);
+  align-items: center;
+
+  input {
+    @extend %input-radio;
+  }
+}

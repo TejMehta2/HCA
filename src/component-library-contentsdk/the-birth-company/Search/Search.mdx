@@ -1,0 +1,101 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchStories from './Search.stories';
+
+<Meta of={SearchStories} />
+
+# Search
+
+## Description
+
+The Search component is a simplified version of the Consultant Finder Search component. A slight difference between the two is this version supports subheadings within the dropdown
+
+It takes a list of data and displays in two columns. This can be filtered by typing into the input field
+
+It is intended to be used the first step of The Birth Company booking journey
+
+It can be composed like this:
+
+```tsx
+<Search
+  dropdownColumn1Label="Gynaecological scans"
+  dropdownColumn1List={[
+    {
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '1',
+          name: 'Hip Replacement'
+        }
+      ],
+      title: 'Fertility'
+    },
+    {
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '2',
+          name: 'Hip Replacement'
+        }
+      ],
+      title: 'Gynaecology'
+    }
+  ]}
+  dropdownColumn2Label="Pregnancy scans"
+  dropdownColumn2List={[
+    {
+      scans: [
+        {
+          extras: [
+            {
+              duration: '10',
+              id: 'targetItem0',
+              name: 'Blood Test',
+              price: '60'
+            },
+            {
+              duration: '10',
+              id: 'targetItem1',
+              name: 'Blood Test',
+              price: '60'
+            }
+          ],
+          id: '1',
+          name: 'Anatomy Scan'
+        }
+      ]
+    }
+  ]}
+  placeholder="Type in a scan or test..."
+/>
+```
+
+## Example
+
+<Canvas of={SearchStories.Default} />
+<Controls of={SearchStories.Default} />

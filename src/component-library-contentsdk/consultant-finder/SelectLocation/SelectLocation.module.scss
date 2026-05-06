@@ -1,0 +1,25 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.select-location {
+  @include responsive-container;
+  @include responsive-grid;
+
+  margin-top: $spacing-7;
+  margin-bottom: $spacing-10;
+
+  @include media(screen-l) {
+    max-width: px-to-rem(800);
+    margin: auto;
+    margin-top: $spacing-7;
+    margin-bottom: $spacing-10;
+  }
+
+  > div {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 6,
+      $breakpoint-l: 6
+    );
+  }
+}

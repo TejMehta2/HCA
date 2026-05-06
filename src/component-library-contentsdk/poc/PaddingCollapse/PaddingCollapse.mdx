@@ -1,0 +1,22 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as PaddingCollapseStories from './PaddingCollapse.stories';
+
+<Meta of={PaddingCollapseStories} />
+
+# PaddingCollapse
+
+## Description
+
+This proof of concept is to display how the padding can be collapsed if two components with the same theme are used next to one another.
+
+The `--theme-collapse-padding-top` custom property can be used in the component styles to set the padding top to 0 when the themes match.
+
+This is defined in `src\component-library\foundation\Themes\Themes.module.scss`
+
+e.g.
+
+```
+.example {
+    padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
+}
+```

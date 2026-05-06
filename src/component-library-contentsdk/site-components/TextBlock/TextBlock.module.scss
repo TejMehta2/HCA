@@ -1,0 +1,90 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  background: var(--background);
+  padding-top: var(--theme-collapse-padding-top, $spacing-13);
+  padding-bottom: $spacing-13;
+  position: relative;
+}
+
+.wrapper-rounded {
+  border-radius: $radius-medium;
+}
+
+/* Optional background image */
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 60%);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  @include responsive-container;
+  @include responsive-grid;
+}
+
+.content {
+  @include responsive-grid-start(1, 1, 3, 3);
+  @include responsive-grid-span(6, 6, 8, 8);
+
+  .subheading {
+    margin-bottom: $spacing-2;
+  }
+
+  .title {
+    color: var(--heading, var(--text));
+  }
+
+  .title,
+  .text {
+    margin-bottom: $spacing-6;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // CTA likely contains an empty dev when not populated, due to Sitecore placeholder behavior. So we shave the margin-bottom from the preceding  .text element
+  &:has(.ctas > *:empty) .text {
+    margin-bottom: 0;
+  }
+
+  .ctas {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+}
+
+.narrow-text {
+  @include responsive-grid-start(1, 2, 4, 4);
+  @include responsive-grid-span(6, 4, 6, 6);
+}
+
+.centered {
+  text-align: center;
+
+  .ctas {
+    align-items: center;
+  }
+}

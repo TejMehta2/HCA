@@ -1,0 +1,237 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as NavigationStories from './Navigation.stories';
+
+<Meta of={NavigationStories} />
+
+# Navigation
+
+## Description
+
+The Navigation site-component renders both the NavigationMobile and NavigationDesktop components.
+
+It is intended to be used as the main navigation for a site.
+
+### Shared behavior
+
+- The prop type is shared between desktop and mobile navigation components.
+- The navigation header transitions up out of view while the use is scrolling down, unless the nav drawer is open.
+- The navigation header shows a different theme when closed vs. when opened.
+
+### Prop structure
+
+The expected prop type is structured so that the tabs represent the first level of navigation, and the content within each tab represents a list of child
+components of template and variations.
+
+#### Second level child template/variation (grid columns occupied on desktop):
+
+- 'Main Navigation Links List'
+- - 'single-narrow' (2)
+- - 'single-wide' (3)
+- - 'double' (6)
+- - 'full' (12)
+- - 'simple' (3)
+- 'Navigation Content Block'
+- - 'single' (3) (styled as a card)
+- - 'double' (5)
+- 'Navigation Blog Post Card' (3)
+- 'Spacer' (1)
+
+#### Mobile/Desktop Differences
+
+- The desktop navigation consumes the content array within each tab in props, and renders them all as child components within each tab's drawer.
+- The mobile navigation renders the child template 'Main Navigation Links List' as the secondary level of navigation, and extracts the `links` attribute from within to render as the tertiary level navigation.
+- The mobile navigation will concatenate the primary and secondary navigation views in the case that there is only one secondary level 'Main Navigation Links List'
+
+### Usage
+
+It can be composed like this:
+
+```tsx
+const serviceCard: TabContent = {
+  variation: 'single',
+  template: 'Navigation Content Block',
+  heading: 'Featured Scan',
+  description: (
+    <Text tag="p" variation="body-medium">
+      Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
+    </Text>
+  ),
+  cta: (
+    <a href="#">
+      <span>
+        Learn <strong>more</strong>
+      </span>
+    </a>
+  ),
+};
+const blogCard: TabContent = {
+  template: 'Navigation Blog Post Card',
+  heading: 'Test or scan related blog article',
+  description: (
+    <Text tag="p" variation="body-medium">
+      Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
+    </Text>
+  ),
+  date: <time dateTime="Sept 7, 2023">Sept 7, 2023</time>,
+  tag: <a href="#">Blog</a>,
+};
+
+const props: NavigationProps = {
+  eyebrow: {
+    left: (
+      <>
+        <TextLink variation="body-medium">
+          <a href="#">For healthcare professionals</a>
+        </TextLink>
+        {/* ... */}
+      </>
+    ),
+    right: (
+      <>
+        <TextLink variation="body-medium">
+          <a href="#">About HCA</a>
+        </TextLink>
+        {/* ... */}
+      </>
+    ),
+  },
+  tabs: [
+    {
+      heading: 'Service & Treatments',
+      cta: (
+        <a href="#">
+          <span>
+            View all <strong>Service & Treatments</strong>
+          </span>
+        </a>
+      ),
+      content: [
+        {
+          template: 'Navigation Content Block',
+          variation: 'double',
+          heading: 'Services & Treatments',
+          description: (
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim.
+            </Text>
+          ),
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>Services & Treatments</strong>
+              </span>
+            </a>
+          ),
+        },
+        {
+          template: 'Main Navigation Links List',
+          variation: 'single-narrow',
+          heading: 'Departments',
+          links: [
+            <TextLink variation={'body-large'}>
+              <a href="#">Cancer Care</a>
+            </TextLink>,
+            {
+              /* ... */
+            },
+          ],
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>Departments</strong>
+              </span>
+            </a>
+          ),
+        },
+        {
+          template: 'Main Navigation Links List',
+          variation: 'single-narrow',
+          heading: 'GP Services & Urgent Care',
+          links: [
+            <TextLink variation={'body-large'}>
+              <a href="#">GP Services</a>
+            </TextLink>,
+            {
+              /* ... */
+            },
+          ],
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>GP Services & Urgent Care</strong>
+              </span>
+            </a>
+          ),
+        },
+        {
+          template: 'Main Navigation Links List',
+          variation: 'single-narrow',
+          heading: 'Treatments',
+          links: [
+            <TextLink variation={'body-large'}>
+              <a href="#">Cancer Care</a>
+            </TextLink>,
+            {
+              /* ... */
+            },
+          ],
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>Treatments</strong>
+              </span>
+            </a>
+          ),
+        },
+      ],
+    },
+    // ...
+    {
+      heading: 'Find a consultant',
+      mobileCta: <a href={'#'}>Find a consultant</a>,
+      hasChildren: false,
+    },
+    // ...
+  ],
+  search: (
+    <TextLink>
+      <button>
+        <Icons iconName={'iconSearch'} />
+        <span className="sr-only">Search</span>
+      </button>
+    </TextLink>
+  ),
+};
+
+<Navigation {...props} />;
+```

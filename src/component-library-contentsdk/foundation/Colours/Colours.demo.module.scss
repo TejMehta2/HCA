@@ -1,0 +1,76 @@
+@use './colours.module' as *;
+
+// Export color variables for use in Webpack.
+:export {
+  teal: {
+    teal-140: $teal-140;
+    teal-120: $teal-120;
+    teal-100: $teal-100;
+    teal-80: $teal-80;
+    teal-40: $teal-40;
+    teal-20: $teal-20;
+    teal-10: $teal-10;
+    teal-5: $teal-5;
+  }
+  navy: {
+    navy-blue-120: $navy-blue-120;
+    navy-blue-100: $navy-blue-100;
+    navy-blue-90: $navy-blue-90;
+    navy-blue-80: $navy-blue-80;
+    navy-blue-70: $navy-blue-70;
+    navy-blue-60: $navy-blue-60;
+    navy-blue-50: $navy-blue-50;
+    navy-blue-40: $navy-blue-40;
+    navy-blue-30: $navy-blue-30;
+    navy-blue-20: $navy-blue-20;
+    navy-blue-10: $navy-blue-10;
+    navy-blue-5: $navy-blue-5;
+  }
+  denim: {
+    denim-100: $denim-100;
+    denim-80: $denim-80;
+    denim-50: $denim-50;
+    denim-40: $denim-40;
+    denim-20: $denim-20;
+    denim-10: $denim-10;
+    denim-5: $denim-5;
+  }
+  white: {
+    white: $white;
+  }
+  fern: {
+    fern-100: $fern-100;
+    fern-80: $fern-80;
+    fern-60: $fern-60;
+    fern-40: $fern-40;
+    fern-20: $fern-20;
+    fern-10: $fern-10;
+    fern-5: $fern-5;
+  }
+  goldenrod: {
+    goldenrod-100: $goldenrod-100;
+    goldenrod-60: $goldenrod-60;
+    goldenrod-40: $goldenrod-40;
+    goldenrod-20: $goldenrod-20;
+  }
+  tangerine: {
+    tangerine-100: $tangerine-100;
+    tangerine-70: $tangerine-70;
+    tangerine-30: $tangerine-30;
+    tangerine-20: $tangerine-20;
+  }
+  orange: {
+    orange-150: $orange-150;
+    orange-100: $orange-100;
+    orange-80: $orange-80;
+    orange-60: $orange-60;
+    orange-40: $orange-40;
+    orange-20: $orange-20;
+  }
+  red: {
+    red-120: $red-120;
+    red-100: $red-100;
+    red-60: $red-60;
+    red-10: $red-10;
+  }
+}

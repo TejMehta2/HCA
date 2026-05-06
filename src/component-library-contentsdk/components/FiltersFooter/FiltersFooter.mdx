@@ -1,0 +1,22 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as FiltersFooterStories from './FiltersFooter.stories'
+
+<Meta of={FiltersFooterStories} />
+
+# FiltersFooter
+
+## Description
+
+The FiltersFooter component consists of two buttons - clear all and a see results button - and is a sticky footer for the `Filters` and `YextFilters` components. I takes a `resultCount` and `dialogRef` as props.
+
+It can be composed like this:
+
+``` tsx
+ <FiltersFooter
+    resultsCount={resultsCount}
+    dialogRef={dialogRef}
+></FiltersFooter>
+```
+
+
+

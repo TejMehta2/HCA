@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderBlogDetailsStories from './HeaderBlogDetails.stories';
+
+<Meta of={HeaderBlogDetailsStories} />
+
+# HeaderBlogDetails
+
+## Description
+
+The HeaderBlogDetails component consists of a category tag, publish date, title, and optional body text
+
+It is intended to be used as the header for individual blog articles
+
+It can be composed like this:
+
+```tsx
+<HeaderBlogDetails
+  theme="A-HCA-White"
+  tag={
+    <Tags contentVariation="quote">
+      <a href="#">Announcement</a>
+    </Tags>
+  }
+  date={<time dateTime="Sept 7, 2023">Sept 7, 2023</time>}
+  title={
+    <Text tag="h1" variation="display-1">
+      The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+    </Text>
+  }
+  bodyCopy={
+    <Text tag="p" variation="body-large">
+      London Bridge Hospital, part of HCA Healthcare UK, has once again been
+      rated as &apos;Outstanding&apos; by the Care Quality Commission (CQC),
+      following a recent inspection. London Bridge Hospital has held its
+      Outstanding rating since 2016.
+    </Text>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={HeaderBlogDetailsStories.Default} />
+<Controls of={HeaderBlogDetailsStories.Default} />

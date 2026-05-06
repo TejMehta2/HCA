@@ -1,0 +1,29 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: grid;
+  border-radius: $radius-small;
+  gap: $spacing-4;
+  padding: $spacing-2;
+  max-width: px-to-rem(900);
+  margin: 0 auto;
+  background-color: $teal-100;
+  border: 1px solid black;
+}
+
+.image > img {
+  width: 100%;
+  height: auto;
+}
+
+.children {
+  display: flex;
+  gap: $spacing-3;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

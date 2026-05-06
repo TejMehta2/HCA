@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as FormProgressBarStories from './FormProgressBar.stories';
+
+<Meta of={FormProgressBarStories} />
+
+# FormProgressBar
+
+## Description
+
+The FormProgressBar component shows the users progress through the payment form. The current page is highlighted in a coloured circle, previous pages are links, and future pages are greyed out
+
+It is intended to be used in the payment form
+
+It can be composed like this:
+
+```tsx
+<FormProgressBar
+  pages={[
+    {
+      pageControl: (
+        <a href="#">
+          <Icons iconName="iconInfo" />
+          <Text variation="body-medium-extra-large">Patient Details</Text>
+        </a>
+      ),
+      stage: 'previous',
+    },
+    {
+      pageControl: (
+        <div>
+          <Icons iconName="iconCreditCard" />
+          <Text variation="body-bold-extra-large">Payment</Text>
+        </div>
+      ),
+      stage: 'active',
+    },
+    {
+      pageControl: (
+        <div>
+          <Icons iconName="iconCheckCircle" />
+          <Text variation="body-medium-extra-large">Confirmation</Text>
+        </div>
+      ),
+      stage: 'inactive',
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={FormProgressBarStories.Default} />
+<Controls of={FormProgressBarStories.Default} />

@@ -1,0 +1,34 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-finder-search {
+  width: 100%;
+  margin: $spacing-6 0 $spacing-6 0;
+
+  &-searchbar {
+    position: relative;
+  }
+
+  &-icon {
+    position: absolute;
+    left: $spacing-5;
+    top: $spacing-5;
+  }
+
+  input {
+    appearance: none;
+    border: 1px solid $navy-blue-100;
+    border-radius: $radius-large;
+    width: 100%;
+    padding: $spacing-5 $spacing-7 $spacing-5 $spacing-9;
+    color: $navy-blue-100;
+    background-color: $white;
+    @include apply-body-medium-large;
+  }
+
+  &-close-btn {
+    position: absolute;
+    right: $spacing-5;
+    top: $spacing-5;
+  }
+}

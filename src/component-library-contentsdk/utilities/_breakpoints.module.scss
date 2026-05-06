@@ -1,0 +1,33 @@
+/* stylelint-disable unit-disallowed-list */
+$breakpoints: (
+  /* 600px*/ screen-m: 37.5rem,
+  /* 1135px*/ screen-l: 71rem,
+  /* 1440px*/ screen-xl: 90rem
+);
+
+@function get-breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+  }
+
+  @warn "The key #{$breakpoint} is not in the map '$breakpoints'";
+  @return null;
+}
+
+$cq-medium: 37.5rem;
+$cq-large: 55rem;
+$cq-xlarge: 90rem;
+
+@mixin media($breakpoint, $direction: min) {
+  $breakpoint-value: get-breakpoint($breakpoint);
+
+  @if $direction == max {
+    @media (max-width: ($breakpoint-value - 0.063)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: ($breakpoint-value)) {
+      @content;
+    }
+  }
+}

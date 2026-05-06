@@ -1,0 +1,107 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as YextResultCardConsultantsStories from './YextResultCardConsultants.stories';
+
+<Meta of={YextResultCardConsultantsStories} />
+
+# YextResultCardConsultants
+
+## Description
+
+The YextResultCardConsultants component is one of several custom results `CardComponent` used to display Yext search results.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It should be wrapped in a theme.
+
+### Visual component
+
+The visual card element can be re-used for other purposes as shown:
+
+```tsx
+<YextResultCardConsultants
+    image={
+      <Image
+        src="/placeholders/doctor-portrait-circle.png"
+        alt="doctor headshot"
+        width="140"
+        height="140"
+      />
+    }
+    title={<Text variation="heading-1">Christian Brown</Text>}
+    doctify={
+      <Doctify
+        alignment="left"
+        link={<a href="#"></a>}
+        rating={4}
+        reviews="13,500 +"
+        logo={{
+          dark: (
+            <Image
+              src="/doctify-dark.png"
+              alt="doctify logo"
+              width="83"
+              height="21"
+            />
+          ),
+          light: (
+            <Image
+              src="/doctify-light.png"
+              alt="doctify logo"
+              width="83"
+              height="21"
+            />
+          ),
+        }}
+      />
+    }
+    copy={
+      <Text variation="body-large">
+        Mr Christian Brown is a Consultant Urological Surgeon and a member of
+        the prostate robotic and laparoscopic teams at King&apos;s College
+        Hospital....
+      </Text>
+    }
+    phone={
+      <TextLink variation={'body-large'}>
+        <a href={`tel:020 3993 1861`}>
+          <Icons iconName="iconPhone"></Icons>
+          <span>020 3993 1861</span>
+        </a>
+      </TextLink>
+    }
+    specialties={
+      icon: <Icons iconName="iconStethoscope"></Icons>,
+      text: (
+        <Text variation="body-large" tag="span">
+          General Urology, Urology, Urological Oncology
+        </Text>
+      )
+    }
+    cta={<a href="#">View profile</a>}
+ />
+```
+
+### Adaptor component
+
+The adaptor component renders the visual component and maps the props to Yext search result data.
+
+Its purpose is to integrate the Yext response data with our re-usable visual component, and it is typically consumed by the SDK components as a `CardComponent`:
+
+```tsx
+<YextProvider>
+  <UniversalResults
+    verticalConfigMap={{
+      articles: {
+        label: 'Consultants',
+        CardComponent: YextResultCardConsultantsAdaptor,
+      },
+    }}
+  />
+  <VerticalResults CardComponent={YextResultCardConsultantsAdaptor} />
+</YextProvider>
+```
+
+## Example
+
+<Canvas of={YextResultCardConsultantsStories.Default} />
+<Controls of={YextResultCardConsultantsStories.Default} />

@@ -1,0 +1,209 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.footer {
+  padding-top: $spacing-9;
+  padding-bottom: $spacing-7;
+  background-color: var(--background);
+  color: var(--text);
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.inner {
+  @include responsive-container;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.columns {
+  @include responsive-grid;
+
+  row-gap: $spacing-7;
+
+  > * {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 3,
+      $breakpoint-xl: 3
+    );
+  }
+
+  .links,
+  .reviews {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subheading {
+    @include apply-subheading-2;
+
+    color: var(--text-date);
+    margin-bottom: px-to-rem(16);
+  }
+
+  .links {
+    gap: px-to-rem(16);
+  }
+
+  .reviews {
+    gap: px-to-rem(24);
+  }
+
+  .socials {
+    margin-top: px-to-rem(40);
+    display: flex;
+    flex-wrap: wrap;
+    gap: px-to-rem(8);
+  }
+}
+
+.top-row {
+  @include responsive-grid;
+
+  list-style: none;
+  padding: 0;
+  row-gap: px-to-rem(8);
+
+  li {
+    display: block;
+  }
+
+  .logo-section {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+    margin-bottom: px-to-rem(20);
+    @include media(screen-m) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .phone {
+    padding: $spacing-4 0;
+
+    @include media(screen-m) {
+      padding: 0;
+    }
+  }
+
+  .logo {
+    svg {
+      width: px-to-rem(195);
+      height: px-to-rem(55);
+    }
+  }
+
+  // Logic for if buttons should share row with logo, or wrap depending on quantity of buttons and breakpoint
+  &:has(> *:nth-of-type(4n + 1):last-child) .logo {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 9
+    );
+  }
+
+  &:has(> *:nth-of-type(4n + 2):last-child) .logo {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 6,
+      $breakpoint-l: 6
+    );
+  }
+
+  &:has(> *:nth-of-type(4n + 3):last-child) .logo {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 3,
+      $breakpoint-xl: 3
+    );
+  }
+
+  &:has(> *:nth-of-type(4n + 4):last-child) .logo {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 6,
+      $breakpoint-l: 12,
+      $breakpoint-xl: 12
+    );
+  }
+
+  > *:nth-child(1n + 2) {
+    a,
+    button {
+      padding-left: px-to-rem(
+        12
+      ); // Overrides Button component responsive padding from spacing variable
+
+      padding-right: px-to-rem(
+        12
+      ); // Overrides Button component responsive padding from spacing variable
+
+      width: 100%;
+      justify-content: center;
+    }
+
+    align-self: flex-end;
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 3,
+      $breakpoint-xl: 3
+    );
+  }
+}
+
+.hr {
+  border-color: $navy-blue-60;
+  border-style: solid;
+  margin: $spacing-9 0;
+
+  .bottom-row + & {
+    margin: $spacing-6 0;
+  }
+}
+
+.bottom-row {
+  margin-top: $spacing-9;
+  display: flex;
+  flex-flow: column wrap;
+  gap: px-to-rem(40);
+  @include media(screen-m) {
+    margin-top: px-to-rem(185);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.legals {
+  display: flex;
+  flex-flow: column wrap;
+  gap: px-to-rem(24);
+  @include media(screen-m) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  list-style: none;
+  padding: 0;
+}
+
+.point {
+  display: none;
+  @include media(screen-l) {
+    display: block;
+  }
+
+  position: relative;
+  background-color: currentcolor;
+  border-radius: px-to-rem(2);
+  width: px-to-rem(2);
+  height: px-to-rem(2);
+}

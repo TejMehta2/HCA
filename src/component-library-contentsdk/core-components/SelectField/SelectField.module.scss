@@ -1,0 +1,137 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: $navy-blue-60;
+  width: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+    @include apply-body-medium-extra-large;
+  }
+
+  .select {
+    display: block;
+    position: relative;
+
+    button {
+      background-color: $white;
+      color: inherit;
+      text-align: center;
+      padding: px-to-rem(16) $spacing-6;
+      height: $spacing-9;
+      border: 1px solid $navy-blue-60;
+      border-radius: $radius-large;
+      cursor: pointer;
+      width: 100%;
+      @include apply-body-large;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $spacing-3;
+    }
+
+    .arrow {
+      display: flex;
+      position: absolute;
+      right: $spacing-6;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  .help-text {
+    margin-top: $spacing-2;
+  }
+
+  .error-message {
+    display: none;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &:has(input:invalid) {
+    color: var(--field-error-colour);
+
+    .select {
+      button {
+        border-color: var(--field-error-colour);
+      }
+    }
+
+    .error-message {
+      display: flex;
+    }
+  }
+}
+
+.options {
+  position: absolute;
+  background-color: $white;
+  top: calc(100% + $spacing-1);
+  width: 100%;
+  max-height: px-to-rem(208);
+  overflow: hidden;
+  border: 1px solid $navy-blue-60;
+  border-radius: px-to-rem(32);
+  padding: calc($spacing-6 - px-to-rem(11)) 0 0;
+
+  &-inner-wrapper {
+    width: 100%;
+    max-height: inherit;
+    overflow-y: auto;
+    padding-bottom: $spacing-6;
+    @include scrollbar;
+  }
+
+  .option,
+  .form-select-option {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding: px-to-rem(11) $spacing-6;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:has(.mdi-check) {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    &.active {
+      background-color: $orange-40;
+      color: $navy-blue-100;
+    }
+  }
+
+  z-index: 999;
+
+  // To avoid tab focusing hidden elements
+  dialog:not([open]) & {
+    display: none;
+  }
+}
+
+.hidden-input {
+  @include sr-only;
+}
+
+.close {
+  // For click outside closing of modal
+  dialog:not([open]) & {
+    display: none;
+  }
+
+  opacity: 0;
+  user-select: none;
+  cursor: pointer;
+  position: fixed;
+  inset: 0;
+}

@@ -1,0 +1,136 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  position: relative;
+  display: flex;
+
+  &.inline {
+    display: inline-flex;
+    transform: translateY(25%);
+  }
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  background: none;
+  border: 0;
+  color: var(--text);
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+
+  @include media(screen-l) {
+    &:hover {
+      &~.content {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.content {
+  opacity: 0;
+  background: var(--card-secondary-background);
+  color: var(--card-secondary-text);
+  padding: $spacing-2 $spacing-5;
+  border-radius: $radius-small;
+  position: absolute;
+  top: calc(100% + px-to-rem(15));
+  width: max-content;
+  max-width: 50vw;
+  z-index: 5;
+
+  @include media(screen-m) {
+    max-width: px-to-rem(362);
+  }
+
+  @include apply-body-medium-medium;
+
+  &::before {
+    display: inline-block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: px-to-rem(7) solid transparent;
+    border-right: px-to-rem(7) solid transparent;
+    border-bottom: px-to-rem(7) solid var(--card-secondary-background);
+    position: absolute;
+    top: px-to-rem(-6);
+    left: calc(50% - px-to-rem(7));
+  }
+}
+
+.dark {
+  .button {
+    color: $white;
+  }
+
+  .content {
+    background: $white;
+    color: $navy-blue-100;
+
+    &::before {
+      border-bottom: px-to-rem(7) solid $white;
+    }
+  }
+}
+
+.light {
+  .button {
+    color: $navy-blue-100;
+  }
+
+  .content {
+    background: $navy-blue-100;
+    color: $white;
+
+    &::before {
+      border-bottom: px-to-rem(7) solid $navy-blue-100;
+    }
+  }
+}
+
+.right {
+  .content {
+    right: calc(50% - px-to-rem(20));
+
+    &::before {
+      right: px-to-rem(12);
+      left: unset;
+    }
+  }
+}
+
+.left {
+  .content {
+    left: calc(50% - px-to-rem(20));
+
+    &::before {
+      left: px-to-rem(12);
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+}
+
+.icon {
+  pointer-events: none;
+  display: flex;
+
+  svg {
+    pointer-events: inherit;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  border: none;
+}

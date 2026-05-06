@@ -1,0 +1,90 @@
+@use '../../foundation/index.module.scss' as *;
+
+/* dummy code for mock previous component */
+.dummy-component {
+  background-color: $teal-100;
+  width: 100%;
+  height: 1200px;
+}
+
+/* This height will likely need to be done as an inline style as it will be dependant on how many featured locations there are */
+.map-comp {
+  height: 300vh;
+  position: relative;
+}
+
+.map-wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Image will be the England map. 
+Real version will probably an SVG which will likely need more complex logic in order to fill in the correct counties */
+.image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  & img {
+    width: 50%;
+    height: 100vh;
+    object-fit: cover;
+    transition: all 1s ease-out;
+  }
+}
+
+.card {
+  position: absolute;
+  top: 30%;
+  right: 30%;
+  opacity: 0;
+  height: 300px;
+  width: 300px;
+  transition: all 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:nth-child(1) {
+  background-color: $orange-100;
+}
+
+.card:nth-child(2) {
+  background-color: $fern-100;
+}
+
+.card:nth-child(3) {
+  background-color: $tangerine-100;
+}
+
+.active {
+  opacity: 1;
+}
+
+.transform-image-1 {
+  transform: translateY(20%) scale(1.1);
+}
+
+.transform-image-2 {
+  transform: translateY(-10%) scale(1.05);
+}
+
+.transform-image-3 {
+  transform: translateY(10%) scale(1.2);
+}
+
+.transform-card-1 {
+  transform: translateY(30%);
+}
+
+.transform-card-2 {
+  transform: translateY(-20%) translateX(20%);
+}
+
+.transform-card-3 {
+  transform: translateY(10%);
+}

@@ -1,0 +1,36 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+// Also exported to globals/_rte-utilities
+%tick-list {
+  list-style: none;
+  display: grid;
+  gap: px-to-rem(12) px-to-rem(24);
+  align-items: flex-start;
+  padding-left: 0;
+  margin: $spacing-4 0 0;
+
+  li {
+    position: relative;
+    padding-left: px-to-rem(32);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      background: currentcolor;
+      mask: url('./tick.svg') no-repeat center;
+      mask-size: contain;
+    }
+  }
+}
+
+// For CSS modules
+.wrapper {
+  ul {
+    @extend %tick-list;
+  }
+}

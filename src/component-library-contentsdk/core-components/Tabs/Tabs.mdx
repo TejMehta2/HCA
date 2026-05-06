@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+## Description
+
+The Tabs component is designed to provide a row of styled radio inputs, which take a callback function as a prop. When a radio is selected, the callback will be called with the label of the item as an argument.
+
+They are intended to be used to control the display of tabbed content in other components.
+
+The theming of the Tab labels (background and text colour) are inherited from the cascade theme.
+
+The first item will be set as checked by default.
+
+In the example below, we have set the callback function to `console.log` the label for demonstration purposes.
+
+<Canvas of={TabsStories.Default}  />
+<Controls of={TabsStories.Default} />
+
+
+The icon is optional:
+
+<Canvas of={TabsStories.NoIcon}  />
+
+## Overflow behvior
+
+If the parent element which contains the Tabs element is too narrow to fit all the content, i.e. on smaller mobile screens, then the content will automatically scroll. The scrollbar itself is hidden, in accordance with the designs.
+
+This is demonstrated below, where the Story is decorated with a wrapper with the styles `max-width: 350px`, and `border-color: red` to inidicate the boundary.
+
+<Canvas of={TabsStories.Overflow}  />

@@ -1,0 +1,82 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as FooterStories from './Footer.stories'
+
+<Meta of={FooterStories} />
+
+# Footer
+
+## Description
+
+The Footer component is intended to be used sitewide at the bottom of every page.
+
+It can be composed like this:
+
+``` tsx
+<Footer 
+  buttons={ 
+    <>
+      <a href='#'>
+        <Icons iconName="iconMobile" />
+        <span>
+          App <strong>download</strong>
+        </span>
+      </a>
+      // ...
+    </>
+  }
+  columns={
+    [
+      {
+        title: 'About HCA',
+        links: [
+          <a href="#">Our HCA Story</a>,
+          <a href="#">Our Quality Commitment</a>,
+          <a href="#">Our Mission Statement</a>,
+          <a href="#">Contact HCA UK</a>,
+        ],
+        socials: [
+          <Button size={'small'} variation={'social'}>
+            <a href="#">
+              <Icons iconName="iconFacebook" />
+              <span className="sr-only">Facebook link</span>
+            </a>
+          </Button>,
+          // ...
+        ],
+      },
+      {
+        reviews: (
+          [
+            <CQCBlock
+              link={<a href="#">Test</a>}
+              theme="dark"
+              title="Care Quality Commission verified"
+              text="All our hospitals are rated Good or Oustanding."
+              icon={<Icons iconName="iconCheckCircle"></Icons>}
+              logo={{
+                dark: (
+                  <Image
+                    src="/cqc-white.png"
+                    alt="cqc logo"
+                    width="120"
+                    height="37"
+                  />
+                ),
+                light: (
+                  <Image
+                    src="/cqc-color.png"
+                    alt="cqc logo"
+                    width="120"
+                    height="37"
+                  />
+                ),
+              }}
+            />
+            // ...
+          ]
+        ),
+      },
+    ]
+  }
+/>
+```

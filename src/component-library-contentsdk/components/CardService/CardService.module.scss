@@ -1,0 +1,115 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.container {
+  position: relative;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: $spacing-7 $spacing-6;
+  width: 100%;
+  gap: px-to-rem(12) 0;
+  aspect-ratio: 358/397;
+  overflow-wrap: break-word;
+  min-width: 0;
+
+  @include media(screen-m) {
+    aspect-ratio: 377/397;
+  }
+
+  @include media(screen-l) {
+    min-width: px-to-rem(227);
+    aspect-ratio: 314/397;
+  }
+
+  @include media(screen-xl) {
+    aspect-ratio: 311/420;
+  }
+
+  & > * {
+    z-index: 1;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    border-radius: $radius-medium;
+    object-fit: cover;
+  }
+
+  .link {
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      inset: 0;
+      line-height: 0;
+      font-size: 0;
+      color: transparent;
+      z-index: 0;
+      border-radius: $radius-medium;
+
+      &::before,
+      &::after {
+        transition: all 0.3s ease-out;
+        content: '';
+        inset: 0;
+        position: absolute;
+        z-index: 0;
+        border-radius: $radius-medium;
+      }
+
+      &::before {
+        background: linear-gradient(
+          180deg,
+          rgb(0 0 0 / 0%) 43.84%,
+          rgba(0 0 0 / 50%) 71.06%
+        );
+      }
+
+      &::after {
+        background:
+          linear-gradient(0deg, rgba(0 0 0 / 50%) 0%, rgba(0 0 0 / 50%) 100%),
+          linear-gradient(
+            180deg,
+            rgb(0 0 0 / 0%) 32.18%,
+            rgba(0 0 0 / 20%) 76.07%
+          ),
+          linear-gradient(
+            180deg,
+            rgb(0 0 0 / 0%) 43.84%,
+            rgba(0 0 0 / 50%) 63.28%
+          );
+        opacity: 0;
+      }
+    }
+  }
+
+  /* Hover on container, adjust child elements */
+  &:hover {
+    .link {
+      a {
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    div:nth-of-type(2) {
+      a {
+        &::after {
+          width: 0;
+        }
+      }
+    }
+  }
+}

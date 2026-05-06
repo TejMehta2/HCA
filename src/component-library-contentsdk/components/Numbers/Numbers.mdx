@@ -1,0 +1,23 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as NumbersStories from './Numbers.stories';
+
+<Meta of={NumbersStories} />
+
+# Numbers
+
+## Description
+
+The Numbers component take a number and a size. Large is used as the default if no size has been passed as a prop
+
+It is intended to be used within other components
+
+It can be composed like this:
+
+```tsx
+<Numbers number={5} />
+```
+
+## Example
+
+<Canvas of={NumbersStories.Large} />
+<Controls of={NumbersStories.Large} />

@@ -1,0 +1,58 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as LocationCardBlockStories from './LocationCardBlock.stories';
+
+<Meta of={LocationCardBlockStories} />
+
+# LocationCardBlock
+
+## Description
+
+The LocationCardBlock component is a wrapper component for the LocationCard component
+
+It is intended to be used in the birth compnany booking flow
+
+It can be composed like this:
+
+```tsx
+<LocationCardBlock
+  cta={
+    <CantFind
+      contentVariation="the-birth-company"
+      title={
+        <Text tag="p" variation="body-medium-large">
+          Can’t find what you need?
+        </Text>
+      }
+    >
+      <TextButton>
+        <a href={`tel:020 3797 7236`}>
+          <span>020 3797 7236</span>
+        </a>
+      </TextButton>
+    </CantFind>
+  }
+>
+  <>
+    <LocationCard
+      name={<Text variation="body-bold-large">Wimpole Street, London</Text>}
+      description={
+        <Text variation="body-small">
+          The Waterfront Business Park, Beaufort House, Elstree WD6 3BS
+        </Text>
+      }
+    >
+      <span>
+        <Icons iconName="iconClock" />
+        <Text variation="body-small" tag="p">
+          Available Sat 21 Oct 2023
+        </Text>
+      </span>
+    </LocationCard>
+  </>
+</LocationCardBlock>
+```
+
+## Example
+
+<Canvas of={LocationCardBlockStories.Default} />
+<Controls of={LocationCardBlockStories.Default} />

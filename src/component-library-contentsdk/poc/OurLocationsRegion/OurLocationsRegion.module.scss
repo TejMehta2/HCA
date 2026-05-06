@@ -1,0 +1,90 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.image {
+  @include media(screen-l) {
+    position: absolute;
+    right: -5%;
+    transform: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Need to use max-width for media queries as there was a strange quirk where 
+  setting it back to auto on larger screens was messing with the position of it */
+  & img {
+    transition: transform 1s ease-out;
+    transform: scale(1.1);
+    object-fit: contain;
+
+    @include media(screen-l, 'max') {
+      width: 100%;
+    }
+
+    @include media(screen-m, 'max') {
+      height: 100%;
+      transform: scale(1.4);
+    }
+  }
+}
+
+/* mobile only image for full map + region colour */
+.region {
+  display: none;
+
+  @include media(screen-l) {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+  }
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+  margin-bottom: px-to-rem(40);
+  height: 100vh;
+
+  @include responsive-grid-span($default: 6);
+  @include responsive-container;
+
+  @include media(screen-l) {
+    position: absolute;
+    top: 50%;
+    right: px-to-rem(320);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    margin-bottom: 0;
+    height: auto;
+    transition:
+      transform 1s ease-in-out,
+      opacity 1s ease-in-out;
+  }
+}
+
+.card {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  @include media(screen-l) {
+    position: static;
+  }
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile {
+  display: block;
+
+  @include media(screen-l) {
+    display: none;
+  }
+}

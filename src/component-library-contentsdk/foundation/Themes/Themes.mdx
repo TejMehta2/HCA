@@ -1,0 +1,103 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ThemesStories from './Themes.stories';
+
+<Meta of={ThemesStories} />
+
+# Themes
+
+## Description
+
+Themes expose a list of CSS custom variables in the cascade. The current full list is best viewed via dev tools by inspecting the styles of any element nested in a theme.
+
+## Assigning a theme
+
+To apply a theme wrapping your elements in the Themes component:
+
+```tsx
+<Themes theme={'D-HCA-Teal'}>
+  <MyComponent />
+</Themes>
+```
+
+Many of the site components inherit the theme from the cascade, as demonstrated in the themes stories.
+
+The CSS custom properties of the theme can be consumed manually in any component, to make them compatible with themes:
+
+```scss
+.my-themed-component {
+  background: var(--background);
+  color: var(--text);
+
+  .card {
+    background: var(--card-background);
+    color: var(--card-text);
+  }
+}
+```
+
+## Modes
+
+Each theme has a light or dark mode, which determines colours automatically applied to nested components such as Cards.
+
+We can also access and apply styles for light and dark modes via the `theme-mode` mixin e.g. to hide or show a specific logo based on the current theme's mode:
+
+```scss
+.my-themed-component {
+  background: var(--background);
+  color: var(--text);
+
+  .card {
+    background: var(--card-background);
+    color: var(--card-text);
+  }
+
+  @include theme-mode(light, dark) using ($mode) {
+    @if $mode == light {
+      .light-logo {
+        display: block;
+      }
+      .dark-logo {
+        display: none;
+      }
+    }
+    @if $mode == dark {
+      .light-logo {
+        display: none;
+      }
+      .dark-logo {
+        display: block;
+      }
+    }
+  }
+}
+```
+
+## Padding collapse for adjacent components with the same theme
+
+We have created a proof of concept (src\component-library\poc\PaddingCollapse\PaddingCollapse.mdx) to display how the padding can be collapsed if two components with the same theme are used next to one another.
+
+The `--theme-collapse-padding-top` custom property can be used in the component styles to set the padding top to 0 when the themes match.
+
+e.g.
+
+```
+.example {
+    padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
+}
+```
+
+## Nested Themes
+
+Themes can be nested, as shown below.
+
+```tsx
+<Themes theme={'D-HCA-Teal'}>
+  <ParentComponent>
+    <h2>Here theme a</h2>
+    <Themes theme={'F-HCA-Fern'}>
+      <h3>Here theme b</h3>
+      <ChildComponent />
+    </Themes>
+  </ParentComponent>
+</Themes>
+```

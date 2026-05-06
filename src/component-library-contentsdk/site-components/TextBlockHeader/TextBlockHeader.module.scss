@@ -1,0 +1,9 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8);
+}

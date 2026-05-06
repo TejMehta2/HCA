@@ -1,0 +1,106 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-card {
+  width: 100%;
+  background-color: $teal-5;
+  border-radius: $radius-medium;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-5;
+  }
+
+  .reviews {
+    display: flex;
+  }
+
+  .title-subspecialty {
+    h2 {
+      margin-bottom: $spacing-2;
+    }
+  }
+
+  .list {
+    margin-bottom: $spacing-5;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin-bottom: $spacing-2;
+    }
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+  }
+
+  .list-title {
+    margin-right: 0;
+    margin-bottom: $spacing-2;
+    width: 100%;
+
+    @include media(screen-m) {
+      margin-right: $spacing-5;
+      margin-bottom: 0;
+      flex: 1;
+      max-width: 30%;
+      min-width: 30%;
+    }
+  }
+
+  .photo {
+    margin-right: $spacing-5;
+    height: px-to-rem(100);
+    width: px-to-rem(100);
+    min-width: px-to-rem(100);
+    max-width: px-to-rem(100);
+    max-height: px-to-rem(100);
+
+    @include media(screen-l) {
+      height: px-to-rem(105);
+      width: px-to-rem(105);
+      min-width: px-to-rem(105);
+      max-width: px-to-rem(105);
+      max-height: px-to-rem(105);
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      margin-bottom: $spacing-2;
+    }
+
+    .button-profile {
+      margin-top: $spacing-3;
+    }
+  }
+
+  .appointment {
+    margin: $spacing-5 0;
+  }
+
+  .info {
+    margin-top: $spacing-2;
+  }
+}

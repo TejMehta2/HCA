@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ModalSearchStories from './ModalSearch.stories'
+
+<Meta of={ModalSearchStories} />
+
+# ModalSearch
+
+## Description
+
+
+The ModalSearch component is an instance of the Modals component, specialised for displaying a Yext search bar and suggestion buttons.
+
+The implementation of the open/close behavior is inherited from the Modals component, see the Modals documentation for further implementation details.
+
+It is designe to redirect the user from anywhere on the site to a pre-populated version of the Yext generic search.
+
+It can be composed like this:
+
+
+``` tsx
+const dialogRef = useRef<HTMLDialogElement>()
+<button onClick={() => dialogRef?.current?.showModal()}>Open</button>
+
+<ModalSearch
+  id={'SEARCH_SUGGESTIONS_MODAL_ID'}
+  placeholder={'How can we help you?'}
+  subheading={
+    <Text variation={'subheading-1'}>
+      Popular searches
+    </Text>
+  }
+  redirectUrl={'/'}
+  suggestions={
+    [
+      {
+        icon: <Icons iconName={'iconSearch'} />,
+        text: <span>Suggestion 01</span>,
+        query: 'Suggestion 01',
+      }
+      // ... more suggestions
+    ]
+  }
+/>
+```

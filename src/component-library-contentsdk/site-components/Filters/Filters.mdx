@@ -1,0 +1,43 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as FiltersStories from './Filters.stories';
+
+<Meta of={FiltersStories} />
+
+# Filters
+
+## Description
+
+The Filters component displays one or more filters in a modal. On mobile it animates up from the bottom of the viewport and on desktop it slides in from the right. Each filter is displayed within an accordion and needs a title and then the filter options passed to it (via the `children` prop).
+
+It can be composed like this:
+
+```tsx
+<Filters
+  filters={[
+    {
+      title: 'Locations',
+      children: (
+        <Checkboxes>
+          <Checkbox
+            id="1"
+            value="Christie"
+            name="locations"
+            label="Christie Hospital"
+          ></Checkbox>
+          <Checkbox
+            id="2"
+            value="london-bridge"
+            name="locations"
+            label="London Bridge Hospital"
+          ></Checkbox>
+        </Checkboxes>
+      ),
+    },
+  ]}
+></Filters>
+```
+
+## Example
+
+<Canvas of={FiltersStories.Default} />
+<Controls of={FiltersStories.Default} />

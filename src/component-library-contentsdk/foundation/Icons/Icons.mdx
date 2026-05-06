@@ -1,0 +1,29 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as IconsStories from './Icons.stories';
+
+<Meta of={IconsStories} />
+
+# Icons
+
+## Description
+
+The Icon component is designed for the simple task of taking an icon name as a prop, and returning an SVG icon.
+
+Since the returned icon uses an SVG tag, it can inherit the `color` CSS property, enabling it to be styles to match parent element text color e.g. for button states.
+
+<Canvas of={IconsStories.Default}  />
+<Controls of={IconsStories.Default} />
+
+## Adding new Icons
+
+Place your icon into the `src/component-library/foundation/Icons/assets-src/` directory in svg format.
+
+Run the following command at the root directory of the component library `src/component-library/`
+
+`npm run register-icons`
+
+This will cause the `register-icons.ts` script to run and create an updated icon-map file `src/component-library/foundation/icons/icon-map.generated.ts` which is consumed by the Icons component, types and stories.
+
+It will also process the SVG files to remove hard coded fill and stroke colors, to replace them with `currentColor`.
+
+If there is an error in the generated file, try linting it. If that failes to resolve the error, there is probably an issue with the name of your new file.

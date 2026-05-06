@@ -1,0 +1,82 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ModalTextStories from './ModalText.stories';
+
+<Meta of={ModalTextStories} />
+
+# ModalText
+
+## Description
+
+The ModalText component is a modal which recieves two sets of titles, rich text, and optional ctas. These are displayed side by side on larger screens and stacked on mobile
+
+It is intended to be used primarily in the PricingInformation variation of the ImageAndText component, but can be used anywhere on a page
+
+It can be composed like this:
+
+```tsx
+<ModalText
+  theme={'A-HCA-White'}
+  title1={
+    <Text tag="h4" variation="display-4">
+      Included
+    </Text>
+  }
+  body1={
+    <div>
+      <h4>Before Admission</h4>
+      <ul>
+        <li>Pre-assessment</li>
+      </ul>
+      <h4>During your hospital stay</h4>
+      <ul>
+        <li>Accommodation in a standard room as quoted above</li>
+        <li>Routine admission tests</li>
+        <li>Patient meals are included but not transferable</li>
+        <li>Nursing care and facilities</li>
+        <li>Theatre fees, drugs and dressings</li>
+        <li>Removal of stitches, dressing and plaster as required</li>
+        <li>Take home medication&nbsp;</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>
+        For self-pay patients, please ask your consultant for information on our
+        fixed price self-pay hip replacement packages.&nbsp; For peace of mind
+        on your hospital and surgery costs, you may be eligible for one of the
+        fixed price packages that are available.
+      </p>
+    </div>
+  }
+  cta1={
+    <a href="#">
+      <Icons iconName="iconPlus" />
+      More Information
+    </a>
+  }
+  title2={
+    <Text tag="h4" variation="display-4">
+      Not included
+    </Text>
+  }
+  body2={
+    <ul>
+      <li>Any additional nights in hospital not described in the above</li>
+      <li>Specialist nursing above and beyond required level of care</li>
+      <li>Any post-operative treatments/consultations which may be required</li>
+      <li>
+        Any readmission due to complications will result in additional charges
+        in line with our standard prices
+      </li>
+      <li>
+        Personal costs including visitors&rsquo; meals and drinks as well as
+        newspapers
+      </li>
+      <li>Any costs not specified as included</li>
+    </ul>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={ModalTextStories.Default} />
+<Controls of={ModalTextStories.Default} />

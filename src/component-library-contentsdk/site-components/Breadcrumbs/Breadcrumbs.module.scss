@@ -1,0 +1,79 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include apply-body-large;
+  width: 100%;
+  padding: px-to-rem(24) px-to-rem(16);
+  background: var(--breadcrumbs-background);
+  color: $white;
+  display: flex;
+  align-items: center;
+
+  @include media(screen-l) {
+    padding: px-to-rem(24) 0;
+  }
+
+  .container {
+    @include responsive-container;
+  }
+
+  span {
+    @include apply-body-large;
+    color: var(--breadcrumbs-links);
+  }
+
+  a {
+    @include apply-body-bold-large;
+
+    display: flex;
+    align-items: center;
+    gap: 0 px-to-rem(8);
+    color: var(--breadcrumbs-links);
+    text-decoration: none;
+
+    span {
+      @include apply-body-large;
+      color: var(--breadcrumbs-links);
+    }
+
+    @include media(screen-l) {
+      display: flex;
+      text-wrap: nowrap;
+      gap: 0;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: px-to-rem(1);
+        height: px-to-rem(14);
+        background: var(--breadcrumbs-links);
+        margin: 0 px-to-rem(12);
+      }
+    }
+  }
+
+  &.no-back-cta {
+    display: none;
+
+    @include media(screen-l) {
+      display: flex;
+    }
+  }
+
+  .breadcrumb-back {
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+
+  .breadcrumbs-list {
+    display: none;
+    flex-wrap: wrap;
+    gap: px-to-rem(12) 0;
+
+    @include media(screen-l) {
+      display: flex;
+    }
+  }
+}

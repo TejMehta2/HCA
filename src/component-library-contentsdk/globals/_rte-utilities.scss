@@ -1,0 +1,98 @@
+@use '../core-components/TickList/TickList.module.scss' as *;
+@use '../foundation/index.module' as *;
+@use '../utilities/index.module' as *;
+/* stylelint-disable unit-disallowed-list */
+
+/* Utility classes which RTE editors can manually add to HTML */
+
+/* Styles a ul and li with tick icons */
+.tick {
+  @extend %tick-list;
+
+  &-2-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Styles a ul and li with circle background */
+.circle {
+  list-style: none;
+  counter-reset: step;
+  padding-left: 0;
+  margin: 0;
+  row-gap: var(--spacing-5);
+}
+
+.circle li {
+  align-items: flex-start;
+  counter-increment: step;
+  display: flex;
+  column-gap: px-to-rem(12);
+  @include apply-body-medium;
+
+  @include media(screen-l) {
+    align-items: center;
+  }
+}
+
+.circle li::before {
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: px-to-rem(32);
+  height: px-to-rem(32);
+  min-width: px-to-rem(32);
+  border-radius: 50%;
+  background-color: $teal-100;
+  color: var(--text);
+}
+
+/* Utility classes to override specific imported HTML */
+
+.vacancy-rte {
+  p:empty {
+    height: 1.2em;
+  }
+
+  @include apply-body-medium;
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    @include apply-heading-2;
+  }
+
+  ul {
+    list-style: initial;
+    margin: $spacing-5 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      padding-left: px-to-rem(30);
+      position: relative;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: px-to-rem(9);
+        content: '';
+        color: inherit;
+        display: inline-block;
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle id='Ellipse 1' cx='3' cy='3' r='3' fill='%230C2141'/%3E%3C/svg%3E");
+        width: px-to-rem(6);
+        height: px-to-rem(6);
+      }
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+}

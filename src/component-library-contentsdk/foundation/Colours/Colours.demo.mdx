@@ -1,0 +1,29 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ColoursStories from './Colours.demo.stories';
+
+<Meta of={ColoursStories} />
+
+# Colours
+
+The colour variables are intended to be imported directly into component scss module files, and assigned to various CSS properties e.g. `color`, `background-color` and `border-color`.
+
+For example here we apply it to the `background-color` property:
+
+```scss dark
+// MyComponent.module.scss
+@use '../../foundation/index.module.scss' as *;
+
+.demo-colour-1 {
+  background-color: $teal-140;
+}
+
+.demo-colour-2 {
+  background-color: $teal-100;
+}
+
+.demo-colour-3 {
+  background-color: $teal-80;
+}
+```
+
+<Canvas of={ColoursStories.Demo} />

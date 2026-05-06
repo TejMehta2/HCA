@@ -1,0 +1,28 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cf-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: $spacing-2 $spacing-14 $spacing-8 $spacing-14;
+  color: $navy-blue-100;
+
+  @include media(screen-m) {
+    padding: $spacing-8 $spacing-14;
+  }
+
+  form {
+    margin-right: 0;
+    width: 100%;
+
+    h1,
+    h2 {
+      margin-bottom: $spacing-5;
+    }
+
+    @include media(screen-l) {
+      margin-right: $spacing-13;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+%suggestions {
+  margin-top: $spacing-1;
+  border-radius: $radius-large;
+  border: solid px-to-rem(1) var(--text);
+  padding: px-to-rem(24) 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: $white;
+
+  &:has(.error-suggestion) {
+    padding: 0 0 px-to-rem(24) 0;
+  }
+}
+
+.suggestions {
+  @extend %suggestions;
+}
+
+%suggestion {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding: px-to-rem(8) px-to-rem(32);
+  @include apply-body-medium-large;
+
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  color: $navy-blue-100;
+
+  svg {
+    min-width: px-to-rem(24);
+  }
+
+  * {
+    padding: 0;
+    text-align: start;
+  }
+
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: var(--tag-text);
+    background-color: var(--tag-background);
+  }
+}
+
+.suggestion {
+  @extend %suggestion;
+}
+
+.error-suggestion {
+  display: flex;
+  gap: 0 px-to-rem(8);
+  background-color: $tangerine-20;
+  color: var(--field-error-colour);
+  padding: $spacing-4 $spacing-6;
+}

@@ -1,0 +1,94 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+%text-button-a {
+  display: inline-flex;
+  column-gap: px-to-rem(4);
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  padding: 0 0 px-to-rem(8);
+  position: relative;
+  color: var(--cta-text);
+  word-break: break-all;
+
+  @include apply-body-medium-large;
+
+  &::after {
+    background-color: var(--cta-text);
+    content: '';
+    display: block;
+    width: 100%;
+    height: px-to-rem(2);
+    transition: width 0.3s;
+    bottom: px-to-rem(0);
+    left: 0;
+    position: absolute;
+  }
+
+  &:active {
+    color: var(--cta-active-text);
+
+    &::after {
+      background: transparent;
+    }
+  }
+
+  &:disabled {
+    color: var(--cta-disabled-text);
+
+    &::after {
+      background: var(--cta-disabled-text);
+    }
+  }
+
+  &:hover {
+    &::after {
+      width: 0;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    border: px-to-rem(2) solid var(--cta-text);
+    padding: px-to-rem(4) px-to-rem(8);
+    border-radius: $radius-small;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.text-button {
+  width: max-content;
+  max-width: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
+  button,
+  a {
+    @extend %text-button-a;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+
+.dark {
+  @include apply-text-buttons-dark;
+}
+
+.light {
+  @include apply-text-buttons-light;
+}
+
+/* stylelint-enable no-descending-specificity */

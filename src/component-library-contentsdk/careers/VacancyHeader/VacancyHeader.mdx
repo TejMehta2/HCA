@@ -1,0 +1,47 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as VacancyHeaderStories from './VacancyHeader.stories';
+
+<Meta of={VacancyHeaderStories} />
+
+# VacancyHeader
+
+## Description
+
+The VacancyHeader component is a simple header component for the career vacancy pages.
+
+It shows a title, some basic info (location, city, clinical/non-clinical, full-time/part-time, job code) and a cta.
+
+It uses an image as the background. If there is no image then the background with be navy blue
+
+The theme is set within the component as it will always be a dark theme with white text
+
+It can be composed like this:
+
+```tsx
+<VacancyHeaderStories
+  title={<Text variation={'display-1'}>Staff Nurse - Imaging</Text>}
+  location={<>Lister Hospital</>}
+  city={<>London</>}
+  clinical={<>Clinical</>}
+  timing={<>Full time</>}
+  vacancyCode={<>0041819</>}
+  cta={
+    <Button variation={'full-light'} size="large">
+      <a href="#">
+        <span>
+          Apply <strong>now</strong>
+        </span>
+        <Icons iconName={'iconArrowRight'} />
+      </a>
+    </Button>
+  }
+  image={
+    <Image
+      src="/placeholders/doctor-looking-at-brain-scan.jpg"
+      alt="doctor scan check"
+      width="1024"
+      height="683"
+    />
+  }
+/>
+```

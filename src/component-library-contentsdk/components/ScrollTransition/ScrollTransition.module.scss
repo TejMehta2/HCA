@@ -1,0 +1,53 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.main-wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  transition: 800ms linear;
+
+  /* Transitions for component elements as they come into view */
+  [data-animate] {
+    transition: 800ms ease-out;
+  }
+
+  [data-animate='xs'] {
+    transform: translateY(px-to-rem(50));
+  }
+
+  [data-animate='s'] {
+    transform: translateY(px-to-rem(200));
+  }
+
+  [data-animate='m'] {
+    transform: translateY(px-to-rem(400));
+  }
+
+  [data-animate='l'] {
+    transform: translateY(px-to-rem(600));
+  }
+
+  [data-animate-delay] {
+    transition-delay: 0.3s;
+  }
+
+  [data-animate-active] {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion) {
+    [data-animate] {
+      transform: translateY(0);
+      transition: none;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  [data-content='diamond'] {
+    z-index: 0;
+  }
+}

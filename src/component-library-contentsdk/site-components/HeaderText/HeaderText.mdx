@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as HeaderTextStories from './HeaderText.stories'
+
+<Meta of={HeaderTextStories} />
+
+# HeaderText
+
+## Description
+
+The HeaderText component is a simple text header.
+
+It is intended initially designed to be used on the 404 page.
+
+It can be composed like this:
+
+``` tsx
+<HeaderTextStories
+  subtitle={
+    <Text variation={'subheading-1'}>Uh oh</Text>
+  }
+  title={
+    <Text variation={'display-2'}>Page not found.</Text>
+  }
+  description={
+    <Text variation={'body-large'}>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
+      mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
+      eiusmod ullamco eu esse laborum deserunt et officia reprehenderit.{' '}
+    </Text>
+  }
+  cta={
+    <Button size={'large'} variation={'full'}>
+      <a href="/">
+        <span>
+          Go <strong>back</strong>
+        </span>
+      </a>
+    </Button>
+  }
+>
+```

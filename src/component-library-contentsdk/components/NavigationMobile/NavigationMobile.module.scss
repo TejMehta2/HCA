@@ -1,0 +1,155 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: block;
+
+  @include media(screen-l) {
+    display: none;
+  }
+
+  position: relative;
+  background-color: var(--background);
+
+  &.closed {
+    background-color: color-mix(in srgb,
+        var(--card-background),
+        transparent 40%); // apply opacity to hex color
+
+    backdrop-filter: blur(#{px-to-rem(28)});
+  }
+}
+
+.navigation {
+  color: var(--text);
+}
+
+.back {
+  background-color: var(--card-background);
+  padding-top: $spacing-5;
+  padding-bottom: $spacing-5;
+
+  >* {
+    @include responsive-container;
+  }
+}
+
+.eyebrow {
+  margin-top: auto;
+  background-color: var(--card-background);
+  border-top-right-radius: $radius-large;
+
+  .eyebrow-inner {
+    @include responsive-container;
+
+    display: flex;
+    flex-direction: column;
+    padding-top: $spacing-7;
+    padding-bottom: $spacing-7;
+
+    >* {
+      @include apply-body-extra-large;
+
+      margin-top: px-to-rem(24);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.main {
+  @include responsive-container;
+
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ctas {
+    display: flex;
+    gap: px-to-rem(19);
+    align-items: center;
+
+    .search-wrapper {
+      display: flex;
+    }
+  }
+}
+
+.logo {
+  padding-top: px-to-rem(16);
+  padding-bottom: px-to-rem(16);
+  display: flex;
+
+  svg {
+    aspect-ratio: 149 / 42;
+  }
+
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+.drawer {
+  background-color: var(--background);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+
+  &:not(.open) {
+    @include sr-only;
+  }
+
+  height: calc(100svh - #{px-to-rem(78)});
+  overflow-y: auto;
+}
+
+.links {
+  height: 100%;
+  @include responsive-container;
+
+  padding-top: $spacing-7;
+
+  &.primary {
+    padding-top: $spacing-8;
+  }
+
+  padding-bottom: $spacing-7;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+    height: 100%;
+  }
+}
+
+// Local utilities
+
+.grow {
+  flex-grow: 1;
+}
+
+.bottom {
+  margin-top: auto;
+}
+
+.hidden {
+  display: none;
+}

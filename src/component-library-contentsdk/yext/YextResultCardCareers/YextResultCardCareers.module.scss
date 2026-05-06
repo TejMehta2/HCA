@@ -1,0 +1,72 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-6 $spacing-6 $spacing-7;
+  background-color: var(--card-background);
+  color: var(--text);
+  border-radius: $radius-medium;
+  gap: px-to-rem(16) $spacing-7;
+  align-items: normal;
+  @include media(screen-l) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $spacing-7 $spacing-6;
+  }
+}
+
+.title {
+  margin-bottom: $spacing-4;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3 $spacing-7;
+
+  @include media(screen-m) {
+    flex-flow: row wrap;
+  }
+}
+
+.city,
+.location,
+.clinical,
+.timing {
+  display: flex;
+  gap: px-to-rem(8);
+}
+
+/* Carousel variation */
+.carousel {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $spacing-6 $spacing-7;
+  min-height: px-to-rem(349);
+
+  @include media(screen-l) {
+    min-height: px-to-rem(357);
+  }
+
+  .bullets {
+    flex-flow: row wrap;
+    gap: $spacing-3 $spacing-5;
+
+    @include media(screen-l) {
+      gap: $spacing-2 $spacing-4;
+    }
+
+    .clinical,
+    .timing {
+      display: flex;
+    }
+  }
+
+  a {
+    width: fit-content;
+    padding-inline: px-to-rem(32);
+  }
+}

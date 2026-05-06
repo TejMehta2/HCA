@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as VideoPlayerStories from './VideoPlayer.stories';
+
+<Meta of={VideoPlayerStories} />
+
+# VideoPlayer
+
+## Description
+
+The VideoPlayer component displays an image and button which when clicked play a video embedded either from youtube or vimeo.
+
+It takes two props - a placeholder image which will be shown at 16:9 aspect ratio and a video embed URL.
+
+Example embed URLs below:
+Youtube = https://www.youtube.com/embed/M7lc1UVf-VE
+Vimeo = https://player.vimeo.com/video/76979871
+
+It is intended to be used in a Video Block
+
+It can be composed like this:
+
+```tsx
+<VideoPlayer
+  videoUrl="https://www.youtube.com/embed/M7lc1UVf-VE"
+  overlayImage={
+    <Image
+      src="/placeholders/london.jpg"
+      alt="london skyline"
+      width="1120"
+      height="631"
+    />
+  }
+></VideoPlayer>
+```
+
+## Example
+
+<Canvas of={VideoPlayerStories.Default} />
+<Controls of={VideoPlayerStories.Default} />

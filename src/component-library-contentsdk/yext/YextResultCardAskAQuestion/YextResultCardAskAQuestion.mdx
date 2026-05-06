@@ -1,0 +1,82 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as YextResultCardAskAQuestionStories from './YextResultCardAskAQuestion.stories';
+
+<Meta of={YextResultCardAskAQuestionStories} />
+
+# YextResultCardAskAQuestion
+
+## Description
+
+The YextResultCardArticles component is used alongside the custom Yext FAQ search results to allow a user to submit their own question if they cannot find the answer they are looking for.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It should be wrapped in a theme.
+
+### Visual component
+
+The visual card element can be re-used for other purposes as shown:
+
+```tsx
+<YextResultCardAskAQuestion
+  title={
+    <>
+        <Icons iconName="iconQuestion" />
+        <Text variation="heading-2">Ask a question</Text>
+    </>
+  }
+  titleDescription={
+    <>
+      <Text>
+        Can&apos;t find what you&apos;re looking for? Ask a question below.
+      </Text>
+    </>
+  }
+>
+  <form>
+    <Text variation="body-extra-large">
+      Enter your question and contact information, and we&apos;ll get back to
+      you with a response shortly.
+    </Text>
+
+    <Textarea
+      id="question"
+      label="Question"
+      required={true}
+      helperText="Optional helper text"
+      errorMessage="This field is required"
+    />
+    <TextField
+      id="name"
+      label="Name"
+      required={true}
+      errorMessage="This field is required"
+    />
+    <TextField
+      id="email"
+      label="Email"
+      required={true}
+      errorMessage="This field is required"
+    />
+    <Checkbox
+      id="consent"
+      label={
+        <span>
+          By submitting my email address, I consent to being contacted via email
+          at the address provided. <a href="#">Learn more here.</a>
+        </span>
+      }
+      name="example"
+      value="example"
+    ></Checkbox>
+    <Button variation="full" size="large" contentVariation="card">
+      <button type="submit">Submit</button>
+    </Button>
+  </form>
+</YextResultCardAskAQuestion>
+```
+
+## Example
+
+<Canvas of={YextResultCardAskAQuestionStories.Default} />
+<Controls of={YextResultCardAskAQuestionStories.Default} />

@@ -1,0 +1,125 @@
+@use '../foundation/index.module' as *;
+@use '../utilities/index.module' as *;
+
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
+byoc-sitecore-form,
+[data-byoc-sitecore-form] {
+  * {
+    font-family: $font-family !important;
+    letter-spacing: -0.03em !important;
+    line-height: 120% !important;
+
+    &:not(.submit-button):not(.submit-button > *):not(.global-input-error-message):not(.iti__arrow):not(.global-input-error-message):not(.form-input-error-message):not(p span) {
+      color: var(--text) !important;
+      border-color: currentcolor !important;
+    }
+  }
+
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-8;
+
+  @include responsive-grid;
+  @include responsive-container;
+
+  .checkbox-field,
+  .radio-field {
+    .form-field-label {
+      font-weight: $base-font-weight !important;
+    }
+  }
+
+  .main-form-wrapper {
+    width: 100%;
+
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+
+  .mdi-alert-circle::before {
+    color: #f03434;
+  }
+
+  //  phone field overrides
+  .iti__selected-country {
+    background-color: transparent !important;
+  }
+
+  .iti__arrow {
+    color: var(--text) !important;
+  }
+
+  // override for character limit shown on short fields
+  input+.limit-counter {
+    display: none;
+  }
+
+  /* hide number field arrows For Chrome, Safari, Edge, and Opera */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* For Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  // Hide/show asterisk for required fields (copied from Sitecore formbuilder inline styles)
+  .shared-input-field label .form-field-label .form-field-required,
+  .checkbox-field .form-field-label .form-field-required,
+  .checkbox-group-field .form-field-label .form-field-required,
+  .single-select-field .form-field-label .form-field-required,
+  .multi-select-field .form-field-label .form-field-required,
+  .radio-group-field .form-field-label .form-field-required,
+  .file-upload-field .form-field-required,
+  .required-component label .form-field-label .form-field-required,
+  .file-upload-field.required-component .form-field-required {
+    display: none;
+  }
+
+  //  make sure error colour is applied to all field borders
+  .form-input-error-field .global-input-wrapper {
+    border-color: var(--field-error-colour) !important;
+  }
+
+  .email_input-component .form-input-error-message,
+  .text_input-component .form-input-error-message {
+    font-style: normal !important;
+    font-size: px-to-rem(14) !important;
+  }
+
+  //  border radius is only applied by sitecore to input wrapper so when webkit autofill is
+  //  applied the background colour is not respecting the border radius
+  .global-input-wrapper {
+    input {
+      border-radius: px-to-rem(48) !important;
+    }
+  }
+
+  ul:not(.tick):not(.tick-2-cols) {
+    margin-top: $spacing-4;
+    list-style: disc;
+    list-style-position: outside;
+    padding-left: px-to-rem(24);
+
+    li {
+      margin-bottom: px-to-rem(12);
+    }
+  }
+
+  // Add margin-bottom for .tick and .tick-col-2
+  ul.tick,
+  ul.tick-col-2 {
+    margin-bottom: $spacing-4;
+  }
+
+  &:has(.form-input-error-field) [data-component-type="submit_button"]::after {
+    content: "Please correct the highlighted fields before submitting.";
+    color: #f03434;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: $spacing-4;
+  }
+}

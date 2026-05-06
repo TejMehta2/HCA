@@ -1,0 +1,64 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CareersSearchStories from './CareersSearch.stories'
+
+<Meta of={CareersSearchStories} />
+
+# CareersSearch
+
+## Description
+
+The CareersSearch component is simple wrapper component for displaying a search bar with dropdown filter buttons.
+
+``` tsx
+import YextStyledStaticFilters from '@component-library/yext/YextStyledStaticFilters/YextStyledStaticFilters';
+import SearchButton from '@component-library/components/SearchButton/SearchButton';
+
+<CareersSearch
+  search={
+    <SearchButton onClick={() => {}}>
+      <span>
+        Search for a <b>keyword or role</b>
+      </span>
+    </SearchButton>
+  }
+  filters={
+    <>
+      <YextStyledStaticFilters
+        fieldId={'location'}
+        filterOptions={[
+          { value: 'Option a' },
+          { value: 'Option b' },
+          { value: 'Option c' },
+          { value: 'Option d' },
+          { value: 'Option e' },
+          { value: 'Option f' },
+          { value: 'Option g' },
+          { value: 'Option h' },
+          { value: 'Option i' },
+        ]}
+        title={'Select a location'}
+      />
+      <YextStyledStaticFilters
+        fieldId={'area'}
+        filterOptions={[
+          { value: 'Option 1' },
+          { value: 'Option 2' },
+          { value: 'Option 3' },
+          { value: 'Option 4' },
+          { value: 'Option 5' },
+          { value: 'Option 6' },
+          { value: 'Option 7' },
+          { value: 'Option 8' },
+          { value: 'Option 9' },
+        ]}
+        title={'Select a job area'}
+      />
+    </>
+  }
+  submit={
+    <Button variation="full" size="large">
+      <button type="submit">Search roles</button>
+    </Button>
+  }
+/>
+```

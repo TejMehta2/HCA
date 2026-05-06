@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardDoctorLayoutStories from './CardDoctorLayout.stories'
+
+<Meta of={CardDoctorLayoutStories} />
+
+# CardDoctorLayout
+
+## Description
+
+The CardDoctorLayout component is a grid layout with a title and cta. It consumes multiple `CardDoctor` components as children.
+
+It is intended to be used as a page level component.
+
+It can be composed like this:
+
+``` tsx
+<CardDoctorLayout
+  title={
+    <Text variation="display-3" tag="h2">
+      Hip pain consultants
+    </Text>
+  }
+  cta={
+    <a href="#">
+      View all <strong>hip pain consultants</strong>
+    </a>
+  }
+  theme='a'
+>
+  <CardDoctor
+    image={
+      <Image
+        src="/placeholders/doctor-portrait-circle.png"
+        alt="doctor portrait"
+        width="91"
+        height="91"
+      />
+    }
+    title={
+      <Text variation="display-5" tag="h3">
+        John Smith
+      </Text>
+    }
+    department={<span>Orthopaedics</span>}
+    cta={
+      <a href="#">
+        View <strong>profile</strong>
+      </a>
+    }
+  />
+  // ...
+</CardDoctorLayout>
+```

@@ -1,0 +1,76 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  position: relative;
+  overflow: clip;
+  background-color: var(--background);
+  color: var(--text);
+  z-index: 1;
+
+  /* --component-height set in JS as it depends on the amount of regions displayed */
+  @include media(screen-l) {
+    height: var(--component-height);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include responsive-grid;
+
+  @include media(screen-l) {
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  background: linear-gradient(rgba($teal-20, 1) 75%, rgba($teal-20, 0));
+  padding: $spacing-4 $spacing-14 px-to-rem(95);
+  z-index: 2;
+  transition: transform 1.5s ease-out;
+
+  @include responsive-grid-span($breakpoint-l: 5);
+
+  @include media(screen-l) {
+    position: static;
+    padding: 0;
+    margin-left: $spacing-14;
+    justify-content: center;
+    height: 100vh;
+    background: none;
+    transition: none;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+}
+
+/* On smaller screens, the header hides / moves up once the user has scrolled */
+.hide {
+  transform: translateY(-100%);
+
+  @include media(screen-l) {
+    transform: none;
+  }
+}
+
+.desktop {
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
+  }
+}

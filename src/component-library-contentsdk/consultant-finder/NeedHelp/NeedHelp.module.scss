@@ -1,0 +1,31 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.help {
+  // display: none;
+
+  // @include media(screen-l) {
+  //   display: block;
+  margin: $spacing-2 0;
+  border-radius: $radius-small;
+  background-color: $navy-blue-100;
+  padding: $spacing-5;
+  color: $white;
+
+  .headline,
+  .phone {
+    margin-bottom: $spacing-4;
+  }
+
+  .phone {
+    h3 {
+      margin-bottom: $spacing-1;
+    }
+  }
+
+  .working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+  }
+}

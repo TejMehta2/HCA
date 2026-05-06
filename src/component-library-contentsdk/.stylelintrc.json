@@ -1,0 +1,26 @@
+{
+  "plugins": ["stylelint-prettier"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["export"]
+      }
+    ],
+    "unit-disallowed-list": [
+      ["px", "em", "rem"],
+      {
+        "ignoreProperties": {
+          "px": ["/^border/", "letter-spacing", "/^outline/", "box-shadow"],
+          "em": ["letter-spacing", "font-size"]
+        }
+      }
+    ]
+  },
+  "ignoreFiles": ["**/bundle.css"]
+}

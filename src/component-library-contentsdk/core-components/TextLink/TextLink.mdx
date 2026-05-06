@@ -1,0 +1,50 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TextLinkStories from './TextLink.stories';
+
+<Meta of={TextLinkStories} />
+
+# TextLink
+
+## Description
+
+The TextLink component displays a link or button with no background, text and an optional icon.
+
+It can be composed by wrapping a button, JSS Link or Link tag in the TextLink component. The styles will then be applied to the anchor or button tag nested within the TextLink component. The text inside the button or link should be wrapped in a span.
+
+```tsx
+const exampleClick = () => {
+  alert('Button was clicked');
+};
+
+<TextLink>
+  <button onClick="exampleClick">
+    <span>Text link text</span>
+    <Icons iconName="iconCross" />
+  </button>
+</TextLink>;
+```
+
+```tsx
+import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs';
+<TextLink>
+  <JssLink field={props.fields.PromoLink}>
+    <Icons iconName="iconCross" />
+    <span>Text link text</span>
+  </JssLink>
+</TextLink>;
+```
+
+```tsx
+import Link from 'next/link';
+<TextLink>
+  <Link href="/test">
+    <span>Text link text</span>
+    <Icons iconName="iconCross" />
+  </Link>
+</TextLink>;
+```
+
+## Example
+
+<Canvas of={TextLinkStories.Default} />
+<Controls of={TextLinkStories.Default} />

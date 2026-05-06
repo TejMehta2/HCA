@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as PaymentFormHeaderStories from './PaymentFormHeader.stories';
+
+<Meta of={PaymentFormHeaderStories} />
+
+# PaymentFormHeader
+
+## Description
+
+The PaymentFormHeader component is used on the Payment Form instead of the Navigation component.
+
+It can be composed like this:
+
+```tsx
+<PaymentFormHeader
+    paymentsText="Secure Online Payments"
+    contactText="Any questions?"
+    phoneNumber= {
+      icon: <Icons iconName="iconPhone" />,
+      text: '03332 223 133',
+      number: '03332223133',
+    }
+    openingHours= {
+      icon: <Icons iconName="iconClock" />,
+      text: 'Mon-Fri 9am - 5:30pm',
+    }
+></PaymentFormHeader>
+```
+
+## Example
+
+<Canvas of={PaymentFormHeaderStories.Default} />
+<Controls of={PaymentFormHeaderStories.Default} />

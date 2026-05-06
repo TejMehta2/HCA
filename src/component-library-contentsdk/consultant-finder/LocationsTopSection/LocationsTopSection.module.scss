@@ -1,0 +1,62 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.locations-top {
+  margin: $spacing-6 $spacing-14;
+
+  h1 {
+    margin: $spacing-2 0 $spacing-3 0;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+  }
+
+  .locations-search {
+    display: flex;
+    align-self: flex-start;
+    width: 100%;
+    margin-right: 0;
+
+    @include media(screen-m) {
+      width: 90%;
+    }
+
+    @include media(screen-l) {
+      margin-right: $spacing-1;
+      width: 50%;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 100%;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+
+    @include media(screen-l) {
+      width: fit-content;
+    }
+
+    button {
+      margin-left: $spacing-1;
+      margin-bottom: $spacing-2;
+
+      @include media(screen-l) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

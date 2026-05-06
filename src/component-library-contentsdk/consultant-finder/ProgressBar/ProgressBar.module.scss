@@ -1,0 +1,42 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.progress-bar {
+  display: none;
+
+  @include media(screen-l) {
+    display: flex;
+    align-items: center;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+
+    &-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: $spacing-2;
+      border-radius: 50%;
+      width: px-to-rem(32);
+      height: px-to-rem(32);
+      background-color: $navy-blue-10;
+
+      &--selected {
+        background-color: $teal-100;
+      }
+    }
+
+    &-text {
+      color: $navy-blue-100;
+    }
+  }
+
+  .divider {
+    width: px-to-rem(20);
+    height: px-to-rem(1);
+    background-color: $navy-blue-100;
+    margin: 0 $spacing-3;
+  }
+}

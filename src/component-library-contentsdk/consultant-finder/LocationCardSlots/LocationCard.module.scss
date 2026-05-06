@@ -1,0 +1,53 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.location-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: $radius-medium;
+  border: 1px solid $navy-blue-60;
+  padding: $spacing-5;
+  color: $navy-blue-100;
+  cursor: pointer;
+
+  .description {
+    margin: $spacing-3 0;
+  }
+
+  .main {
+    flex: 1;
+  }
+
+  .title {
+    margin: 0 0 $spacing-3 0;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    color: $navy-blue-60;
+    margin-bottom: $spacing-2;
+  }
+
+  .icon {
+    margin-right: $spacing-2;
+  }
+
+  &.selected {
+    background-color: $navy-blue-100;
+    color: $white;
+
+    .time {
+      color: $navy-blue-60;
+    }
+  }
+
+  .map {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: $spacing-3;
+    margin-top: $spacing-3;
+    border-top: 1px solid $navy-blue-10;
+  }
+}

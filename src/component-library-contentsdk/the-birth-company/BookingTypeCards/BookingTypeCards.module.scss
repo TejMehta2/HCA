@@ -1,0 +1,74 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--background);
+  color: var(--text);
+  margin-top: $spacing-7;
+  margin-bottom: px-to-rem(80);
+  max-width: px-to-rem(1120);
+
+  @include responsive-container;
+
+  @include media(screen-l) {
+    flex-flow: row wrap;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: auto;
+  }
+}
+
+.card {
+  text-align: center;
+  border-bottom: 1px solid $navy-blue-10;
+  padding: $spacing-7 0;
+  display: flex;
+  justify-content: center;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  &:last-of-type:nth-child(odd) {
+    border-bottom: none;
+  }
+
+  @include media(screen-l) {
+    padding: px-to-rem(46) px-to-rem(64) px-to-rem(65);
+    width: 50%;
+
+    &:nth-child(-n + 2) {
+      padding-top: 0;
+    }
+
+    &:nth-child(even) {
+      border-left: 1px solid $navy-blue-10;
+    }
+  }
+
+  .container {
+    max-width: px-to-rem(370);
+  }
+
+  .copy {
+    margin-top: $spacing-2;
+  }
+
+  .cta {
+    margin-top: $spacing-5;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+    align-items: center;
+
+    & > * {
+      width: 100%;
+
+      @include media(screen-m) {
+        width: auto;
+      }
+    }
+  }
+}

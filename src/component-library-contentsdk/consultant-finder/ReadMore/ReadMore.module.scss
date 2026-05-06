@@ -1,0 +1,19 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.read-more {
+  button {
+    span {
+      font-size: px-to-rem(14);
+    }
+
+    svg {
+      width: px-to-rem(20);
+      height: px-to-rem(20);
+    }
+  }
+
+  .read-more-buttons {
+    padding: $spacing-2 0;
+  }
+}

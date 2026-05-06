@@ -1,0 +1,25 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as YextResultCardFAQsStories from './YextResultCardFAQs.stories';
+
+<Meta of={YextResultCardFAQsStories} />
+
+# YextResultCardFAQs
+
+## Description
+
+The YextResultCardFAQs component is one of several custom results `CardComponent` used to display Yext search results.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It should be wrapped in a theme.
+
+It can be composed like this:
+
+```tsx
+<YextResultCardFAQs title={title}>{content}</YextResultCardFAQs>
+```
+
+## Example
+
+<Canvas of={YextResultCardFAQsStories.Default} />
+<Controls of={YextResultCardFAQsStories.Default} />

@@ -1,0 +1,28 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card-doctor-layout {
+  background-color: var(--background);
+  color: var(--text);
+
+  .grid {
+    @include responsive-container;
+
+    padding-top: $spacing-10;
+    padding-bottom: $spacing-13;
+  }
+
+  .title {
+    margin-bottom: $spacing-7;
+  }
+
+  .children {
+    @include responsive-grid;
+
+    margin-bottom: $spacing-7;
+
+    > * {
+      @include responsive-grid-span(6, 3, 3, 3);
+    }
+  }
+}

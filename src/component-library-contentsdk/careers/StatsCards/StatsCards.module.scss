@@ -1,0 +1,141 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.container {
+  @include responsive-container;
+
+  padding: $spacing-13 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+
+  @include media(screen-l) {
+    flex-direction: row;
+    gap: px-to-rem(23);
+  }
+}
+
+.text {
+  flex: 1;
+
+  @include media(screen-l) {
+    width: 40%;
+  }
+}
+
+.subheader {
+  margin-bottom: $spacing-4;
+}
+
+.body-copy {
+  margin-top: $spacing-6;
+}
+
+.stats {
+  flex: 1;
+  display: grid;
+  justify-content: end;
+  gap: px-to-rem(16);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, max-content);
+  grid-auto-flow: row dense;
+
+  @include media(screen-l) {
+    width: 60%;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--card-background);
+  border-radius: $radius-small;
+  padding: $spacing-6 $spacing-4;
+  gap: $spacing-6;
+
+  @include media(screen-l) {
+    padding: px-to-rem(32);
+    gap: 0;
+
+    &:first-of-type {
+      width: 100%;
+      max-width: px-to-rem(357);
+      aspect-ratio: 357/290;
+      justify-self: end;
+    }
+
+    &:nth-of-type(2) {
+      width: 100%;
+      max-width: px-to-rem(302);
+      aspect-ratio: 302/184;
+      align-self: end;
+    }
+
+    &:nth-of-type(3) {
+      width: 100%;
+      max-width: px-to-rem(248);
+      aspect-ratio: 248/303;
+      justify-self: end;
+      grid-row: 2/4;
+    }
+
+    &:nth-of-type(4) {
+      width: 100%;
+      max-width: px-to-rem(236);
+      aspect-ratio: 236/193;
+    }
+
+    &:nth-of-type(5) {
+      width: 100%;
+      max-width: px-to-rem(302);
+      aspect-ratio: 302/226;
+      justify-self: start;
+      grid-row: 3/5;
+    }
+
+    &:nth-of-type(6) {
+      width: 100%;
+      max-width: px-to-rem(357);
+      aspect-ratio: 357/184;
+      place-self: start end;
+    }
+  }
+}
+
+// Only 3 stat elements, use a different layout
+.stats:has(> :last-child:nth-child(3)) {
+  grid-template-rows: repeat(3, max-content);
+
+  .stat {
+    @include media(screen-l) {
+      padding: px-to-rem(32);
+      gap: 0;
+      height: 100%;
+
+      &:first-of-type {
+        max-width: px-to-rem(357);
+        max-height: px-to-rem(290);
+      }
+
+      &:nth-of-type(2) {
+        max-width: px-to-rem(248);
+        max-height: px-to-rem(303);
+        justify-self: start;
+        grid-row: 1/3;
+        grid-column: 2;
+      }
+
+      &:nth-of-type(3) {
+        max-width: px-to-rem(248);
+        max-height: px-to-rem(303);
+      }
+    }
+  }
+}

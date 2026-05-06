@@ -1,0 +1,50 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ModalsStories from './Modals.stories'
+
+<Meta of={ModalsStories} />
+
+# Modals
+
+## Description
+
+The Modals component is a wrapper for other page elements (e.g. filter, site search), which opens conditionally.
+
+Internally, the modal uses an HTML5 `dialog` tag, because of the out-of-the-box accessibility and performance that `dialog` provides.
+
+More info:
+[MDN: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+
+### Variations
+
+- 'right' - small portrait modal on right side of screen
+- 'fullscreen' - fills full screen width
+
+### Controlling the Modals
+
+The Modals component forwards a ref to the HTML5 `dialog` element inside. This allows the parent element to pass a ref prop, then call the built-in browser dialog API methods (`showModal` & `close`) on the ref:
+
+By typing the ref as `HTMLDialogElement`, we get intellisense on the API (`showModal` and `close`) when accessing the `ref.current`:
+
+You can also query the `dialog` element by providing an ID prop to use as a query selector. This enables you to control the modal state from other parts of the applications without context or prop drilling a ref.
+
+``` tsx dark
+import React, { useRef } from 'react'
+import Modals from '@hca/component-library/components/Modals/Modals'
+
+const MyComponent = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  return (
+    <>
+      <button onClick={() => dialogRef?.current?.close()}>Close</button>
+      <button onClick={() => dialogRef?.current?.showModal()}>Open</button>
+      <button onClick={() => dialogRef?.current?.open ? dialogRef?.current?.close() : dialogRef?.current?.showModal()}>Toggle</button>
+      <Modals ref={dialogRef}>Content</Modals>
+    </>
+  )
+}
+```
+
+The prop `defaultOpen` should only be passed as a static `true` value if you need the modal to be open on page load. This is mainly for demonstration purposes and it is not recommended to hold this value in React state, or update it dynamically.
+
+<Canvas of={ModalsStories.Default} />
+<Controls of={ModalsStories.Default} />

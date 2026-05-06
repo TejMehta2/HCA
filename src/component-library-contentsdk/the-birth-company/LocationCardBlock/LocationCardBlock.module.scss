@@ -1,0 +1,31 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  margin-top: $spacing-7;
+  margin-bottom: px-to-rem(112); /* This stops the content getting hidden behind the navigation at the bottom of the page */
+
+  @include responsive-container;
+  @include responsive-grid;
+}
+
+.container {
+  @include responsive-grid-span(6, 6, 8, 8);
+  @include responsive-grid-start(1, 1, 3, 3);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: px-to-rem(16);
+
+  @include media(screen-m) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cta {
+  margin-top: $spacing-7;
+}

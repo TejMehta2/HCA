@@ -1,0 +1,163 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
+
+.hero-location {
+  background-color: var(--background);
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+
+  @include media(screen-l, max) {
+    min-height: px-to-rem(709);
+    border-radius: 0 0 $radius-large 0;
+    margin-bottom: px-to-rem(32);
+  }
+
+  .ctas {
+    display: flex;
+    flex-direction: column;
+
+    @include media(screen-m) {
+      width: max-content;
+    }
+
+    > * {
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: px-to-rem(4);
+      }
+    }
+
+    @include media(screen-l, max) {
+      a,
+      button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.inner {
+  height: 100%;
+  @include responsive-container;
+
+  @include responsive-grid;
+
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-8;
+
+  @include media(screen-l) {
+    padding-top: $spacing-6;
+    padding-bottom: $spacing-6;
+  }
+
+  @include media(screen-xl) {
+    padding-top: $spacing-10;
+    padding-bottom: $spacing-10;
+  }
+}
+
+.content {
+  @include responsive-grid-span(6, 5, 5, 5);
+
+  max-width: px-to-rem(535);
+}
+
+.shape {
+  position: absolute;
+  width: px-to-rem(500);
+  height: px-to-rem(500);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+.image {
+  @include diamond-image-mask;
+
+  img {
+    object-position: unset;
+  }
+
+  width: 58%;
+}
+
+.location-info {
+  display: grid;
+  grid: auto auto / 1fr;
+  gap: $spacing-5 0;
+
+  @include media(screen-l) {
+    display: grid;
+    grid: auto auto / 1fr 1fr;
+    gap: $spacing-2 $spacing-5;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.address {
+  display: grid;
+  gap: 0 px-to-rem(8);
+  grid: auto auto / max-content auto;
+}
+
+.address-details {
+  display: grid;
+  gap: px-to-rem(8) 0;
+}
+
+.open {
+  display: flex;
+  gap: 0 px-to-rem(8);
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & > *:not(svg) {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+  }
+}
+
+.location-wrapper {
+  display: grid;
+  gap: $spacing-6 0;
+
+  @include media(screen-m) {
+    gap: $spacing-5 0;
+  }
+}
+
+.cta-wrapper {
+  display: flex;
+  flex-flow: column-reverse;
+  gap: $spacing-6 0;
+  margin-top: $spacing-6;
+
+  button,
+  a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @include media(screen-l) {
+    flex-flow: column;
+  }
+}
+
+.cqc {
+  & > div {
+    width: 100%;
+
+    @include media(screen-m) {
+      width: max-content;
+    }
+  }
+}

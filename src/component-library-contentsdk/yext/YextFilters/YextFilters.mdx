@@ -1,0 +1,49 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextFiltersStories from './YextFilters.stories'
+
+<Meta of={YextFiltersStories} />
+
+# YextFilters
+
+## Description
+
+The YextFilters component is intended to show a list of checkbox filters on the Yext search results page. On mobile it is shown within a modal.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It can be composed like this:
+
+``` tsx
+<YextFilters
+    filtersTitle="Tests, Scans, Treatments"
+    resultsCount={20}
+>
+    <Checkboxes>
+        <Checkbox
+          id="1"
+          label="Conditions (20)"
+          name="conditions"
+          value="conditions"
+        ></Checkbox>
+
+        <Checkbox
+          id="2"
+          label="Tests (15)"
+          name="tests"
+          value="tests"
+        ></Checkbox>
+
+        <Checkbox
+          id="3"
+          label="Treatments (2)"
+          name="tests"
+          value="tests"
+        ></Checkbox>
+      </Checkboxes>
+</YextFilters>
+```
+
+## Example 
+
+<Canvas of={YextFiltersStories.Default} />
+<Controls of={YextFiltersStories.Default} />

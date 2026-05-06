@@ -1,0 +1,61 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ReviewsStories from './Reviews.stories'
+
+<Meta of={ReviewsStories} />
+
+# Reviews
+
+## Description
+
+The Reviews component is...
+
+It is intended to be used in Consultant profile page.
+
+There are two types of reviews:
+One compact style and one for the profile intro.
+You can select which one to render using isConsultantProfileReviews prop set to true or false.
+Tooltip and doctify branding are optional too.
+
+It can be composed like this:
+
+const tooltipContent = (
+  <div>
+    <p>This is a tooltip content.</p>
+  </div>
+);
+
+Profile reviews render when isConsultantProfileReviews is true:
+``` tsx
+<Reviews 
+  reviewsTotal={5}
+  reviewsCount={5}
+  reviewsText={'Patients'}
+  isConsultantProfileReviews={true}
+  hasTooltip={true}
+  tooltipContent={tooltipContent}
+  titleText={'PATIENTS REVIEWS'}
+  doctifyText={'Reviewd By'}
+  doctifyLogo={null}
+  hasDoctifyBranding={true}
+/>
+```
+Compact reviews render when isConsultantProfileReviews is false:
+``` tsx
+<Reviews 
+  reviewsTotal={5}
+  reviewsCount={5}
+  reviewsText={'Patients'}
+  isConsultantProfileReviews={false}
+  hasTooltip={true}
+  tooltipContent={tooltipContent}
+  titleText={'PATIENTS REVIEWS'}
+  doctifyText={'Reviewd By'}
+  doctifyLogo={null}
+  hasDoctifyBranding={true}
+/>
+```
+
+## Example 
+
+<Canvas of={ReviewsStories.Default} />
+<Controls of={ReviewsStories.Default} />

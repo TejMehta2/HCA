@@ -1,0 +1,14 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.locations-wrapper {
+  margin: $spacing-6 0 $spacing-11 0;
+  @include responsive-container;
+  @include responsive-grid;
+
+  >div {
+    @include responsive-grid-span($default: 6,
+      $breakpoint-m: 6,
+      $breakpoint-l: 6);
+  }
+}

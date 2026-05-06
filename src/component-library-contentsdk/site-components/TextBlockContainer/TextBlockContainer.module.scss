@@ -1,0 +1,20 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.background {
+  background-color: var(--background);
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: var(--theme-collapse-padding-top, #{$spacing-13});
+  padding-bottom: $spacing-13;
+
+  // Remove containment when nested
+  [text-block-container] & {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+}

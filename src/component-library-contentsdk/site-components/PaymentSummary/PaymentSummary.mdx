@@ -1,0 +1,54 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as PaymentSummaryStories from './PaymentSummary.stories'
+
+<Meta of={PaymentSummaryStories} />
+
+# PaymentSummary
+
+## Description
+
+The PaymentSummary component is used when the payment form has been succesfully submitted and displays a summary of the transaction information.
+
+It can be composed like this:
+
+``` tsx
+<PaymentSummary
+  heading={
+      <Text variation="display-4" tag="h1">
+        Your payment is complete
+      </Text>
+    }
+    bodyText={
+      <Text variation="body-large" tag="div">
+        <p>Thank you, your invoice payment has been succesful.</p>
+      </Text>
+    }
+
+    summary={
+      <ConfirmationSummary
+        title="Payment summary"
+        optionalItems={[
+          { title: 'AmountPaid', text: '£2' },
+          { title: 'Invoice reference', text: '1234' },
+          { title: 'Payment date', text: '08 May 2024' },
+          { title: 'Payment type', text: 'Visa' },
+          { title: 'Status', text: 'Succesful' },
+          { title: 'Transaction ID', text: 'wfkh7462i7t6figryf' },
+        ]}
+      />
+    }
+    cta={
+      <Button variation="full-dark" size="large">
+        <button onClick={printHandler}>
+          <Icons iconName="iconPrint" />
+          Print confirmation
+        </button>
+      </Button>
+    }
+></PaymentSummary>
+```
+
+## Example 
+
+<Canvas of={PaymentSummaryStories.Default} />
+<Controls of={PaymentSummaryStories.Default} />

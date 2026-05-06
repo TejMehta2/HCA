@@ -1,0 +1,40 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextCustomMapStories from './YextCustomMap.stories'
+
+<Meta of={YextCustomMapStories} />
+
+# YextCustomMap
+
+## Description
+
+The YextCustomMap component is a wrapper around [GoogleMapsEmbed](?path=/docs/core-components-googlemapsembed--docs) which applies numbered markers to map, and adds a callback to them to allow them to update if they are selected.
+
+The selected markers show a tick icon in place of the number.
+
+It is intended to be used in YextResultSectionLocations to display HCA locations to users alongisde location cards.
+
+It can be composed like this:
+
+``` tsx
+<YextCustomMapStories
+  apiKey={process.env.STORYBOOK_GOOGLE_MAPS_API_KEY || ''}
+  center={
+    {
+      lat: 51.5072,
+      lng: 0.1276,
+    }
+  }
+  locations={
+    [
+      {
+        id: 'locationId',
+        center: {
+          lat: 51.5072,
+          lng: 0.1276,
+        },
+        callback: () => console.log('locationId selected'),
+      }
+    ]
+  }
+/>
+```

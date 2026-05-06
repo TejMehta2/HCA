@@ -1,0 +1,151 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.modal-contact-us {
+  text-align: center;
+  color: $navy-blue-100;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  min-height: 100%;
+
+  .contact svg {
+    // Accommodate responsive font size to center the icon vertically
+    @include media(screen-l) {
+      transform: translateY(px-to-rem(1));
+    }
+    @include media(screen-xl) {
+      transform: translateY(px-to-rem(2));
+    }
+  }
+
+  .link {
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .availability {
+    display: inline-flex;
+    gap: $spacing-2;
+    align-items: flex-start;
+  }
+
+  .desktop {
+    display: none;
+  }
+  @include media(screen-m) {
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: block;
+    }
+  }
+
+  .background {
+    background-color: $fern-10;
+  }
+}
+
+.main {
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+
+  .contact {
+    gap: $spacing-4;
+  }
+
+  .mobile {
+    align-self: stretch;
+  }
+}
+
+.additional {
+  @include responsive-container;
+
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: $spacing-7;
+  padding-bottom: $spacing-7;
+  gap: $spacing-7;
+  flex-direction: column;
+
+  hr {
+    display: none;
+  }
+
+  @include media(screen-l) {
+    flex-flow: row wrap;
+
+    .contact {
+      flex: 1 0 25%;
+    }
+
+    hr {
+      height: px-to-rem(128);
+      flex: 0 0 px-to-rem(1);
+      margin: 0;
+      border: none;
+      border-left: solid 1px $navy-blue-10;
+
+      &:nth-of-type(3n),
+      &:nth-of-type(3n + 2) {
+        display: block;
+      }
+    }
+  }
+
+  .contact {
+    max-width: px-to-rem(362);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .title {
+    margin-bottom: $spacing-2;
+  }
+
+  .availability {
+    display: grid;
+    grid: auto/ px-to-rem(24) 1fr;
+    margin-top: $spacing-2;
+
+    @include media(screen-l) {
+      margin-top: $spacing-4;
+    }
+
+    & > *:not(svg) {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+  }
+}
+
+.equal-size {
+  .additional {
+    margin-top: 0;
+    align-items: flex-start;
+  }
+
+  .availability {
+    text-align: left;
+  }
+}

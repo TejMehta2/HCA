@@ -1,0 +1,21 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CheckboxStories from './Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+## Description
+
+The Checkbox component is a form control which three different colour options which automatically adjust based on the current theme. Required props are 'label', 'name', 'id' and 'value'. There are also optional props of `disabled`, `indeterminate`, `onChange` and `checked` which can be set.
+
+It can be composed like this:
+
+```tsx
+<Checkbox id="1" label="checkbox" name="example" value="example"></Checkbox>
+```
+
+## Example
+
+<Canvas of={CheckboxStories.Default} />
+<Controls of={CheckboxStories.Default} />

@@ -1,0 +1,23 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextCustomPaginationStories from './YextCustomPagination.stories'
+
+<Meta of={YextCustomPaginationStories} />
+
+# YextCustomPagination
+
+## Description
+
+The YextCustomPagination component is a wrapper around the [Pagination core-component](?path=/docs/core-components-pagination--docs), but with page handling logic taken from the Yext [Pagination component source code](https://github.com/yext/search-ui-react/blob/main/src/components/Pagination.tsx)
+
+It connects the Pagination visual component with the Yext search actions hooks, and must be wrapped in the Yext provider. See the Story decorator for more details.
+
+It accepts an optional callback, which is useful e.g. to scroll to the top of the page after the page has changed.
+
+``` tsx
+<YextCustomPagination />
+```
+
+## Example 
+
+<Canvas of={YextCustomPaginationStories.Default} />
+<Controls of={YextCustomPaginationStories.Default} />

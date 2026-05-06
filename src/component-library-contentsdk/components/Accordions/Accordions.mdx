@@ -1,0 +1,72 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as AccordionsStories from './Accordions.stories';
+
+<Meta of={AccordionsStories} />
+
+# Accordions
+
+## Description
+
+The `Accordions` component is used to display one or more accordion.
+
+NB: The `Accordion` component is only used when nested in the `Accordions` component which controls the functionality of the Accordions as a group, and should be used even when using a single accordion.
+
+It is intended to be used in within a theme.
+
+It can be composed like this:
+
+```tsx
+<Accordions
+  accordions={[
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+  ]}
+></Accordions>
+```
+
+## Example
+
+<Canvas of={AccordionsStories.Default} />
+<Controls of={AccordionsStories.Default} />

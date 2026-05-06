@@ -1,0 +1,9 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+
+.content{
+  background: var(--background);
+  padding: var(--theme-collapse-padding-top, px-to-rem(16)) px-to-rem(16) px-to-rem(16);
+}
+

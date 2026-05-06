@@ -1,0 +1,72 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as YextResultCardArticlesStories from './YextResultCardArticles.stories';
+
+<Meta of={YextResultCardArticlesStories} />
+
+# YextResultCardArticles
+
+## Description
+
+The YextResultCardArticles component is one of several custom results `CardComponent` used to display Yext search results.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It should be wrapped in a theme.
+
+### Visual component
+
+The visual card element can be re-used for other purposes as shown:
+
+```tsx
+<YextResultCardArticles
+  image={
+    <Image
+      src="/placeholders/couple-on-bench.jpeg"
+      alt="couple on bench"
+      width="140"
+      height="140"
+    />
+  }
+  title={
+    <Text variation="heading-1">
+      HCA Healthcare UK invests £7m in new fleet of state-of- the art da Vinci
+      Xi robots
+    </Text>
+  }
+  copy={
+    <Text variation="body-large">
+      The announcement today includes the investment in the da Vinci's
+      minimally invasive robotic capability at HCA Healthcare UK's The Lister
+      Hospital for the first time. HCA Healthcare UK has invested in four new
+      da Vinci Xi robots, confirming its status...
+    </Text>
+  }
+  ctas: {
+    button: <button>Read more</button>,
+    textButton:
+      <button>
+        <Icons iconName="iconEmail"></Icons>Email us
+      </button>
+  }>
+</YextResultCardArticles>
+```
+
+### Adaptor component
+
+The adaptor component renders the visual component and maps the props to Yext search result data.
+
+Its purpose is to integrate the Yext response data with our re-usable visual component, and it is typically consumed by the SDK components as a `CardComponent`:
+
+```tsx
+<YextProvider>
+  <UniversalResults
+    verticalConfigMap={{
+      articles: {
+        label: 'Articles',
+        CardComponent: YextResultCardArticlesAdaptor,
+      },
+    }}
+  />
+  <VerticalResults CardComponent={YextResultCardArticlesAdaptor} />
+</YextProvider>
+```

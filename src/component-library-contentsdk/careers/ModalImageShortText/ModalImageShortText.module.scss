@@ -1,0 +1,46 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.grid {
+  @include responsive-container;
+
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  @include responsive-grid;
+
+  padding-top: $spacing-13;
+  padding-bottom: $spacing-13;
+}
+
+.image {
+  @include responsive-grid-span(6, 6, 6, 6);
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: $radius-medium;
+    overflow: hidden;
+  }
+}
+
+.text {
+  @include responsive-grid-span(6, 6, 5, 5);
+  @include responsive-grid-start($breakpoint-l: 8, $breakpoint-xl: 8);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.subheader {
+  margin-bottom: $spacing-2;
+}
+
+.header {
+  margin-bottom: $spacing-6;
+}

@@ -1,0 +1,125 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.inner {
+  padding-top: $spacing-7;
+  padding-bottom: $spacing-13;
+  @include responsive-container;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: $spacing-5 0;
+
+  &:has(.results:empty):has(.filters:empty) {
+    display: none;
+  }
+}
+
+.results {
+  color: var(--text);
+  @include apply-body-medium-extra-large;
+
+  padding: 0;
+  margin: 0;
+}
+
+.filters {
+  label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    margin-right: 0;
+    margin-left: 0;
+
+    @include apply-body-large;
+
+    &::before {
+      left: 0;
+      position: absolute;
+      content: '';
+      border: px-to-rem(2) solid $navy-blue-10;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      border-radius: $radius-small;
+    }
+
+    .text {
+      display: flex;
+      padding-left: px-to-rem(32);
+    }
+
+    a {
+      color: var(--text);
+      font-weight: 500;
+    }
+  }
+
+  input[type='checkbox'] {
+    appearance: none;
+    display: none;
+    margin: 0;
+
+    &:checked + label {
+      @include apply-body-medium-large;
+
+      &::before {
+        background: $orange-100;
+        border: 2px solid $orange-100;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        height: px-to-rem(24);
+        width: px-to-rem(24);
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      & + label {
+        &::before {
+          outline: px-to-rem(2) solid #{$navy-blue-100};
+          outline-offset: px-to-rem(2);
+        }
+      }
+    }
+  }
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  margin-bottom: $spacing-5;
+}
+
+.tabs {
+  margin: $spacing-5 0;
+  scroll-margin-top: px-to-rem(30);
+}
+
+.results-count {
+  color: var(--text);
+}
+
+.heading {
+  margin-top: $spacing-11;
+  margin-bottom: $spacing-5;
+
+  @include apply-heading-1;
+}

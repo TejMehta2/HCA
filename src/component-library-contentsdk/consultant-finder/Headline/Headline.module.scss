@@ -1,0 +1,37 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.headline {
+  display: flex;
+  justify-content: center;
+  margin: $spacing-7 $spacing-14 0;
+}
+
+.headline-with-name {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  margin: $spacing-7 $spacing-14 0;
+
+  @include media(screen-l) {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.heading {
+  margin: 0 auto;
+}
+
+.slots-headline {
+  margin: 0;
+}
+
+.back {
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
+  }
+}

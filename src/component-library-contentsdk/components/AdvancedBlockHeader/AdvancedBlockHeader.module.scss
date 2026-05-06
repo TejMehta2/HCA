@@ -1,0 +1,122 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  padding-top: var(--theme-collapse-padding-top, $spacing-13);
+  color: var(--text);
+  background-color: var(--background);
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  &.large {
+    padding-bottom: $spacing-13;
+  }
+
+  &.medium {
+    padding-bottom: $spacing-8;
+  }
+
+  &.small {
+    padding-bottom: $spacing-7;
+  }
+
+  &.none {
+    padding: 0;
+  }
+
+  &.small-mobile {
+    padding-left: $spacing-14;
+    padding-right: $spacing-14;
+    padding-bottom: $spacing-7;
+
+    @include media(screen-l) {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &.half-width {
+    width: 100%;
+
+    @include media(screen-l) {
+      width: 50%;
+    }
+  }
+
+  &:empty {
+    padding-bottom: 0;
+  }
+}
+
+.title {
+  max-width: max(50%, #{px-to-rem(552)});
+  color: var(--heading, var(--text));
+}
+
+.subtitle {
+  margin-bottom: px-to-rem(8);
+}
+
+.body {
+  margin-top: $spacing-6;
+  max-width: max(50%, #{px-to-rem(552)});
+
+  &:empty {
+    display: none;
+  }
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-6;
+  margin-top: $spacing-7;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.children {
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-7;
+}
+
+.centered {
+  @include responsive-grid;
+
+  text-align: center;
+  row-gap: 0;
+
+  .title,
+  .subtitle {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 4);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 4,
+      $breakpoint-l: 6
+    );
+
+    max-width: 100%;
+  }
+
+  .body {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 5);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 4,
+      $breakpoint-l: 4
+    );
+
+    margin-top: $spacing-2;
+    max-width: 100%;
+  }
+}

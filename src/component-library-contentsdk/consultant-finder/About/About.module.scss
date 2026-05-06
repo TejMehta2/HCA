@@ -1,0 +1,30 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.about {
+  width: 100%;
+
+  ul {
+    margin: 0;
+    word-break: break-all;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: disc;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .headline {
+    margin-bottom: $spacing-5;
+  }
+
+  .description {
+    @include apply-body-large;
+
+    p {
+      margin-bottom: $spacing-4;
+    }
+  }
+}

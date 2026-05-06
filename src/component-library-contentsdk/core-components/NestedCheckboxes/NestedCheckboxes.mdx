@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as NestedCheckboxesStories from './NestedCheckboxes.stories';
+
+<Meta of={NestedCheckboxesStories} />
+
+# NestedCheckboxes
+
+## Description
+
+The NestedCheckboxes component is allows for a checkbox with a list of nested checkboxes. The main checkbox in the list has three possible states (unchecked, indeterminate & checked) which are dependent on the nested checkbox list.
+
+It can be composed like this:
+
+```tsx
+<NestedCheckboxes
+  items={[
+    {
+      mainCheckbox: {
+        label: 'Main Checkbox',
+        name: 'main checkbox',
+        value: 'main-checkbox',
+        id: 'main',
+      },
+
+      subItems: [
+        {
+          id: '1',
+          label: 'Example 1',
+          name: 'example-1',
+          value: 'example-1',
+        },
+        {
+          id: '2',
+          label: 'Example 2',
+          name: 'example-2',
+          value: 'example-2',
+        },
+        {
+          id: '3',
+          label: 'Example 3',
+          name: 'example-3',
+          value: 'example-3',
+        },
+      ],
+    },
+  ]}
+></NestedCheckboxes>
+```
+
+## Example
+
+<Canvas of={NestedCheckboxesStories.Default} />
+<Controls of={NestedCheckboxesStories.Default} />

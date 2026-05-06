@@ -1,0 +1,85 @@
+@use '../../foundation/Spacing/spacing.module' as *;
+@use '../../foundation/Radius/radius.module' as *;
+@use '../../foundation/Text/text-mixin.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card {
+  &.default {
+    color: var(--text);
+    background-color: var(--card-background);
+    --heading-color: var(--heading, var(--text));
+  }
+
+  &.feature {
+    color: var(--card-secondary-text);
+    background-color: var(--card-secondary-background);
+    
+    --heading-color: var(--card-secondary-text);
+    --tag-background: var(--tag-secondary-background);
+    --tag-text: var(--tag-secondary-text);
+    --tag-hover-text: var(--tag-secondary-hover-text);
+    --tag-hover-background: var(--tag-secondary-hover-background);
+    --tag-active-background: var(--tag-secondary-active-background);
+    --tag-focus-background: var(--tag-secondary-focus-background);
+    --tag-focus-outline: var(--tag-secondary-focus-outline);
+  }
+
+  padding: $spacing-7 $spacing-6;
+  border-radius: $radius-medium;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(16);
+  height: 100%;
+
+  img {
+    max-height: px-to-rem(268);
+    margin: calc(-1 * #{$spacing-7}) calc(-1 * #{$spacing-6}) px-to-rem(40 - 16);
+    width: calc(100% + 2 * #{$spacing-6});
+    max-width: unset;
+    object-fit: cover;
+    transition: 0.6s ease;
+  }
+
+  time {
+    @include apply-body-medium-medium;
+
+    display: inline-block;
+  }
+
+  &.default time {
+    color: var(--text-date);
+  }
+
+  &.feature time {
+    color: var(--card-secondary-text);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      color: var(--heading-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & > *:last-child {
+    padding-top: px-to-rem(30 - 16);
+    margin-top: auto;
+  }
+
+  /* images zoom in slightly on hover. Transition timing can be found in CardPatientStories component */
+  &:hover {
+    & img {
+      transform: scale(1.05);
+    }
+  }
+}

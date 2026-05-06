@@ -1,0 +1,13 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.side-wrapper {
+  display: none;
+  margin-right: $spacing-14;
+
+  @include media(screen-l) {
+    display: block;
+    position: relative;
+    width: px-to-rem(400);
+  }
+}

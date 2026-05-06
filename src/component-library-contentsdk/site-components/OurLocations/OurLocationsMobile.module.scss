@@ -1,0 +1,148 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  display: none;
+  @include media(screen-l, max) {
+    display: block;
+  }
+
+  --transition: all 1s ease;
+
+  overflow-x: hidden;
+}
+
+.header {
+  padding-top: var(--theme-collapse-padding-top, $spacing-8);
+  padding-bottom: $spacing-8;
+  position: relative;
+  transition: var(--transition);
+  background-color: var(--background);
+
+  > * {
+    @include responsive-container;
+
+    transition: var(--transition);
+  }
+
+  z-index: 1;
+
+  &.above {
+    > * {
+      transform: translateY(-20%);
+    }
+
+    opacity: 0;
+  }
+
+  mask-image: linear-gradient(
+    180deg,
+    black 0%,
+    black 5%,
+    black calc(100% - #{$spacing-6}),
+    transparent 100%
+  );
+}
+
+.location {
+  z-index: 0;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+
+  // Allow first map image to overlap boundaries
+  &:nth-child(2) {
+    overflow: visible;
+  }
+
+  // Avoid map image abruptly ending for zoomed in maps
+  &:nth-child(1n + 3) {
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      black 5%,
+      black calc(100% - #{$spacing-6}),
+      transparent 100%
+    );
+  }
+}
+
+.card {
+  @include responsive-container;
+
+  position: absolute;
+  bottom: $spacing-6;
+  left: 0;
+  right: 0;
+}
+
+.map {
+  transition: var(--transition);
+  transition-duration: 1.2s;
+  transition-delay: 0.2s;
+  scale: var(--map-scale);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  .below & {
+    translate: 0 20vh;
+    transition-delay: 1s;
+  }
+}
+
+.map-inner {
+  pointer-events: none;
+  transition: inherit;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  --pos-x: calc(var(--map-x) * -100%);
+  --pos-y: calc(var(--map-y) * -100%);
+
+  translate: var(--pos-x) var(--pos-y);
+  transform-origin: center;
+  z-index: 0;
+
+  > img {
+    width: auto;
+    height: 200vh;
+    max-width: initial;
+  }
+}
+
+.pin {
+  color: var(--text);
+
+  .location:nth-child(2) & {
+    color: var(--background); // show all pins as dark on first slide
+  }
+
+  transition: var(--transition);
+  height: calc(px-to-rem(44) / var(--map-scale)); // correct for scale
+  width: auto;
+  position: absolute;
+
+  --pos-x: calc(var(--pin-x) * 100%);
+  --pos-y: calc(var(--pin-y) * 100%);
+
+  top: var(--pos-y);
+  left: var(--pos-x);
+  translate: -50% -100%;
+
+  &.active {
+    height: calc(px-to-rem(120) / var(--map-scale));
+    color: var(--background);
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}

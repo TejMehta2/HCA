@@ -1,0 +1,37 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as QuoteBlockStories from './QuoteBlock.stories';
+
+<Meta of={QuoteBlockStories} />
+
+# QuoteBlock
+
+## Description
+
+The QuoteBlock component is made up of a quote, an author image, an author name and a tag with the author's title.
+
+It is intended to be nested within a text block and the parent theme should cascade and be applied to the quote block.
+
+It can be composed like this:
+
+```tsx
+<QuoteBlock
+    author={
+        name: 'John Smith',
+        image: (
+            <Image
+            src="/placeholders/quote-block-author.png"
+            alt="author of quote"
+            width="70"
+            height="70"
+            />
+        ),
+        tag: <a href="#">Orthopaedics Consultant</a>,
+    }>
+    <Text variation="display-5">“The personal savings allowance enables most people to earn interest tax-free across various savings options.”<Text>
+</QuoteBlock>
+```
+
+## Example
+
+<Canvas of={QuoteBlockStories.Default} />
+<Controls of={QuoteBlockStories.Default} />

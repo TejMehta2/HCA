@@ -1,0 +1,82 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as LocationMapStories from './LocationMap.stories'
+
+<Meta of={LocationMapStories} />
+
+# LocationMap
+
+## Description
+
+The LocationMap component is a wrapper around the GoogleMapsEmbed core-component, which accepts a central location, and a list of nearby locations as props.
+
+The map renders markers for the nearby locations, which when clicked will show the corresponding provided child component, typically a CardMap.
+
+It is intended to be used in the map tab of the location search results.
+
+Note that the type of the card property is a function. This is to enable the card data to be integrated flexibly in the integration template, while allowing the hideCard callback to be called anywhere in the card.
+
+It can be composed like this:
+
+``` tsx
+<LocationMap
+  apiKey={'API_KEY'}
+  center={
+    {
+      lat: 51.5072,
+      lng: 0.1276,
+    }
+  }
+  locations={
+    [
+      {
+        center: {
+          lat: 51.52036,
+          lng: -0.14797,
+        }
+        card: (hideCard) => (
+          <CardMap
+            title={
+              <Text tag="h3" variation="heading-2">
+                The Harley Street Clinic
+              </Text>
+            }
+            address={
+              <Text tag="p" variation="body-large">
+                35 Weymouth Street W1G 8BJ London
+              </Text>
+            }
+            ctas={{
+              button1: (
+                <a href="#">
+                  <span>
+                    Learn <strong>more</strong>
+                  </span>
+                </a>
+              ),
+              button2: (
+                <a href="#">
+                  <span>
+                    Get <strong>directions</strong>
+                  </span>
+                </a>
+              ),
+              close: (
+                <button onClick={hideCard}>
+                  <span>Close</span>
+                  <Icons iconName="iconCross" />
+                </button>
+              ),
+            }}
+          />
+        )
+      }
+      // ... more cards
+    ]
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={LocationMapStories.Default} />
+<Controls of={LocationMapStories.Default} />

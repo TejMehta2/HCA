@@ -1,0 +1,120 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ShareCTAStories from './ShareCTA.stories';
+
+<Meta of={ShareCTAStories} />
+
+# ShareCTA
+
+## Description
+
+The ShareCTA component displays a heading, subheading and share buttons in a modal on desktop. On mobile it uses the Web Share API which will open native sharing options when the button is clicked.
+
+The params required are `shareData` which will provide a url, title and text for mobile sharing. Also provide a `heading`, `subheading` (optional) and `children` for desktop functionality, with the Buttons to be displayed being set via `children`.
+
+It is intended to be used on the treatment detail page.
+
+A `theme` should be provided to make sure the cta button colours are correct for the theme of the parent component.
+
+It can be composed like this:
+
+```tsx
+const handleCopy = () => {
+  navigator.clipboard.writeText(
+    'https://hca-digital-dev-hca-main.hcatest.co.uk/'
+  );
+};
+
+<ShareCTA
+  shareData={{
+    url: 'https://hca-digital-dev-hca-main.hcatest.co.uk/',
+    title: 'Hip Surgery - £5,000',
+    text: 'Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.',
+  }}
+  heading={
+    <Text tag="h2" variation="display-2">
+      Share this cost
+    </Text>
+  }
+  shareCtaText={
+    <span>
+      Share <strong>cost information</strong>
+    </span>
+  }
+  shareCtaIcon={
+    <span>
+      <Icons iconName="iconShare" />
+    </span>
+  }
+  subheading={
+    <Text tag="p" variation="subheading-1">
+      Hip Surgery - £5,000
+    </Text>
+  }
+  theme="A-HCA-White"
+>
+  children: (
+  <>
+    <Button size="large" variation="square-outline">
+      <button onClick={handleCopy}>
+        <Icons iconName="iconCopy"></Icons>
+        <span>Copy Link</span>
+      </button>
+    </Button>
+
+    <Button size="large" variation="square-outline">
+      <a
+        href={`mailto:?subject=${encodeURI('Hip Surgery')}&body=${encodeURI(
+          'Quis laboris proident sint amet id cillum do dolor in tempor est https://hca-digital-dev-hca-main.hcatest.co.uk/'
+        )}`}
+        title="Share by Email"
+      >
+        <Icons iconName="iconEmail"></Icons>
+        <span>Email</span>
+      </a>
+    </Button>
+
+    <Button size="large" variation="square-outline">
+      <a
+        href={`https://web.whatsapp.com/send?text=${encodeURI(
+          'https://hca-digital-dev-hca-main.hcatest.co.uk/'
+        )}`}
+        rel="nofollow noopener"
+        target="_blank"
+      >
+        <Icons iconName="iconWhatsapp"></Icons>
+        <span>WhatsApp</span>
+      </a>
+    </Button>
+
+    <Button size="large" variation="square-outline">
+      <a
+        href={`https://www.facebook.com/sharer/sharer.php?u=https://hca-digital-dev-hca-main.hcatest.co.uk/`}
+        rel="nofollow noopener"
+        target="_blank"
+      >
+        <Icons iconName="iconFacebook"></Icons>
+        <span>Facebook</span>
+      </a>
+    </Button>
+
+    <Button size="large" variation="square-outline">
+      <a
+        href={`https://twitter.com/intent/tweet?text=${encodeURI(
+          'Hip Surgery - £5,000'
+        )}/&url=https://hca-digital-dev-hca-main.hcatest.co.uk/`}
+        rel="nofollow noopener"
+        target="_blank"
+      >
+        <Icons iconName="iconX"></Icons>
+        <span>X (Twitter)</span>
+      </a>
+    </Button>
+  </>
+  ),
+</ShareCTA>;
+```
+
+## Example
+
+<Canvas of={ShareCTAStories.Default} />
+<Controls of={ShareCTAStories.Default} />

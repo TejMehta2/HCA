@@ -1,0 +1,30 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.overall-rating {
+  .reviews {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .subtitle {
+    display: flex;
+    margin: $spacing-5 0;
+  }
+
+  .subtitle-text {
+    margin-right: $spacing-1;
+  }
+
+  .no-reviews {
+    padding-top: $spacing-5;
+  }
+
+  .col {
+    width: 100%;
+
+    @include media(screen-l) {
+      width: calc(100% / 3);
+    }
+  }
+}

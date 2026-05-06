@@ -1,0 +1,69 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextResultCardLocationsStories from './YextResultCardLocations.stories'
+
+<Meta of={YextResultCardLocationsStories} />
+
+# YextResultCardLocations
+
+## Description
+
+The YextResultCardLocations component is one of several custom results `CardComponent` used to display Yext search results.
+
+The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
+
+It is intended to be used alongside an interactive map in YextResultSectionLocations.
+
+It should be wrapped in a theme.
+
+``` tsx
+const props = {
+  number: <Numbers number={<span>1</span>} />,
+  image: (
+    <Image
+      src="/placeholders/couple-on-bench.jpeg"
+      alt="couple on bench"
+      width="140"
+      height="140"
+    />
+  ),
+  title: (
+    <Text variation="heading-1">
+      Golders Green Outpatients and Diagnostics Centre
+    </Text>
+  ),
+  distance: <Text variation={'body-large'}>546.0 km</Text>,
+  ctas: {
+    button: <button>Learn more</button>,
+    textButton: (
+      <button>
+        <Icons iconName="iconEmail"></Icons>Email us
+      </button>
+    ),
+  },
+  address: {
+    icon: <Icons iconName={'iconPin'}></Icons>,
+    text: (
+      <Text variation="body-large" tag="span">
+        Roman House, 296 Golders Green Road London NW11 9PY
+      </Text>
+    ),
+  },
+  phone: {
+    icon: <Icons iconName="iconPhone"></Icons>,
+    text: (
+      <Text variation="body-large" tag="span">
+        020 3993 1861
+      </Text>
+    ),
+  },
+  openingHours: {
+    icon: <Icons iconName="iconPhone"></Icons>,
+    text: (
+      <Text variation="body-large" tag="span">
+        <strong>Open Now.</strong> Closes at 20:00
+      </Text>
+    ),
+  },
+};
+return <YextResultCardLocations {...props} />;
+```

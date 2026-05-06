@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CheckboxesStories from './Checkboxes.stories';
+
+<Meta of={CheckboxesStories} />
+
+# Checkboxes
+
+## Description
+
+The Checkboxes component is a group of checkboxes. It accepts the `Checkbox` component via the children prop.
+
+It is intended to be used in forms.
+
+It can be composed like this:
+
+```tsx
+<Checkboxes>
+  <Checkbox
+    id="1"
+    label="checkbox 1"
+    name="example"
+    value="checkbox-1"
+  ></Checkbox>
+
+  <Checkbox
+    id="2"
+    label="checkbox 2"
+    name="example"
+    value="checkbox-2"
+  ></Checkbox>
+
+  <Checkbox
+    id="3"
+    label="checkbox 3"
+    name="example"
+    value="checkbox-3"
+  ></Checkbox>
+</Checkboxes>
+```
+
+## Example
+
+<Canvas of={CheckboxesStories.Default} />
+<Controls of={CheckboxesStories.Default} />

@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as BlogContentStories from './BlogContent.stories';
+
+<Meta of={BlogContentStories} />
+
+# BlogContent
+
+## Description
+
+The BlogContent component contains all the content for an individual blog article. It is intended to receive rich text to populate the page
+
+It can contain text, an image, or a QuoteBlock
+
+It is intended to be used in the blog article page
+
+It can be composed like this:
+
+```tsx
+<BlogContent theme="A-HCA-White">
+  <div>
+    <p>
+      London Bridge Hospital, part of HCA Healthcare UK, has once again been
+      rated as &quot;Outstanding&quot; by the Care Quality Commission (CQC),
+      following a recent inspection. London Bridge Hospital has held its
+      Outstanding rating since 2016.
+    </p>
+  </div>
+</BlogContent>
+```
+
+## Example
+
+<Canvas of={BlogContentStories.BlogText} />
+<Controls of={BlogContentStories.BlogText} />

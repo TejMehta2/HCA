@@ -1,0 +1,68 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CTABlockStories from './CTABlock.stories';
+
+<Meta of={CTABlockStories} />
+
+# CTABlock
+
+## Description
+
+The CTABlock component consists of a subheading, heading, text copy, and three CTAs
+
+It is intended to be used on any page and can be set to be any theme
+
+It can be composed like this:
+
+```tsx
+<CTABlock
+  subheading={
+    <Text tag="p" variation="subheading-1">
+      meta title
+    </Text>
+  }
+  heading={
+    <Text tag="h2" variation="display-3">
+      Call-to-action block
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size="large" variation="full">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" variation="outline">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Text <strong>button</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  }
+>
+  <Text tag="p" variation="body-large">
+    Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
+    mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
+    eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip
+    laboris duis ex labore veniam labore do nostrud minim labore eiusmod
+    voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt
+    dolore dolore.
+  </Text>
+</CTABlock>
+```
+
+## Example
+
+<Canvas of={CTABlockStories.Default} />
+<Controls of={CTABlockStories.Default} />

@@ -1,0 +1,62 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderWithImageStories from './HeaderWithImage.stories';
+
+<Meta of={HeaderWithImageStories} />
+
+# HeaderWithImage
+
+## Description
+
+The HeaderWithImage component is intended to be used at the top of pages
+
+The background image is masked/clipped by the brand diamond shape, and should be cropped accordingly. However, to use an image of a different shape set the `noMask` prop to `true`.
+
+This component takes a subset of the globally available themes as a prop. You can switch theme using the Storybook controls panel.
+
+In order to allow control of tags via the CMS, the title, copy and ctas props expect you to wrap their value in the `<Text />` and `<Buttons />` foundation and core components, as shown below:
+
+```tsx
+<HeaderWithImage
+  title={
+    <Text variation={'display-1'} tag="h2">
+      Departments
+    </Text>
+  }
+  copy={
+    <Text variation={'body-large'} tag="p">
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
+      et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size={'large'} variation={'full'}>
+        <a href="#">
+          <Icons iconName={'iconStethoscope'} />
+          <span>
+            Find a <strong>Consultant</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size={'large'} variation={'outline'}>
+        <a href="#">
+          <Icons iconName={'iconPhone'} />
+          <span>
+            Call us <strong>today</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
+  image={
+    <Image
+      src="/placeholders/lab-technician.jpeg"
+      alt="lab technician"
+      width="1024"
+      height="683"
+    />
+  }
+  theme={'F-HCA-Fern'}
+/>
+```

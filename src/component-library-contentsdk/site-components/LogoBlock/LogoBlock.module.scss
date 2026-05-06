@@ -1,0 +1,73 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+}
+
+.content {
+  @include responsive-grid;
+  @include responsive-container;
+
+  row-gap: 0;
+  padding-bottom: $spacing-13;
+
+  .side-by-side & {
+    @include media(screen-l) {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.header {
+  @include responsive-grid-span(6, 6, 8, 7);
+
+  .side-by-side & {
+    @include responsive-grid-span(6, 6, 5, 5);
+  }
+}
+
+.logos {
+  @include responsive-grid-span(6, 6, 12, 12);
+  @include responsive-grid;
+
+  align-self: center;
+
+  .side-by-side & {
+    @include responsive-grid-start(1, 1, 7, 7);
+    @include responsive-grid-span(6, 6, 6, 6);
+    @include media(screen-l) {
+      padding-top: $spacing-8; // not specified in design, but will scale nicer in case many logos are added
+      padding-bottom: $spacing-8;
+    }
+  }
+}
+
+.logo {
+  @include responsive-grid-span(3, 2, 4, 4);
+
+  .side-by-side & {
+    @include responsive-grid-span(3, 2, 6, 6);
+  }
+
+  border-radius: $radius-medium;
+  overflow: hidden;
+
+  > * {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .columns-4:not(.side-by-side) & {
+    @include media(screen-l) {
+      @include responsive-grid-span(3, 2, 3, 3);
+    }
+  }
+}

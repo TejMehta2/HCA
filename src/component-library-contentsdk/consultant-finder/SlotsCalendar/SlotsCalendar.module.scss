@@ -1,0 +1,235 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.slots {
+  background-color: $teal-5;
+  padding: $spacing-6 $spacing-1;
+  min-height: 100vh;
+  color: $navy-blue-100;
+
+  @include media(screen-m) {
+    padding: $spacing-6 $spacing-14;
+  }
+
+  .header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $spacing-5 0 0;
+
+    @include media(screen-m) {
+      display: none;
+    }
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .weekdays {
+    padding: 0;
+
+    @include media(screen-m) {
+      padding: 0 px-to-rem(24);
+    }
+  }
+
+  .weekdays,
+  .week-header {
+    @include media(screen-l) {
+      gap: px-to-rem(32);
+    }
+  }
+
+  .header-container,
+  .week-header,
+  .weekdays {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .header-container {
+    margin: $spacing-6 0 $spacing-5 0;
+  }
+
+  .weekdays-item,
+  .week-header-item {
+    text-align: center;
+    width: 14.2857%;
+  }
+
+  .arrow {
+    &.desktop {
+      display: none;
+
+      @include media(screen-m) {
+        display: block;
+      }
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      outline: none;
+      background-color: $teal-5;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      text-align: center;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline-offset: 0.25rem;
+        border-radius: 0.5rem;
+        outline: 1px solid currentcolor;
+      }
+    }
+  }
+
+  .time {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      appearance: none;
+      outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      border: 1px solid $navy-blue-30;
+      border-radius: px-to-rem(14);
+      padding: $spacing-2 $spacing-1;
+      margin-bottom: $spacing-2;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $navy-blue-100;
+      }
+
+      &:focus-visible {
+        border-color: $navy-blue-40;
+        outline: 2px solid $navy-blue-100;
+        outline-offset: -0.25rem;
+      }
+
+      @include media(screen-m) {
+        border-radius: px-to-rem(31);
+      }
+
+      &.short-appointment {
+        background-color: $teal-20;
+        border: 1px solid $teal-20;
+      }
+
+      &.selected {
+        background-color: $navy-blue-100;
+        color: $white;
+      }
+
+      svg {
+        display: none;
+
+        @include media(screen-l) {
+          display: block;
+          margin-right: $spacing-1;
+        }
+      }
+    }
+  }
+
+  .btn-txt {
+    display: flex;
+
+    span {
+      font-size: px-to-rem(11);
+
+      @include media(screen-m) {
+        font-size: px-to-rem(18);
+      }
+    }
+  }
+
+  .day {
+    color: $navy-blue-70;
+  }
+
+  .date {
+    h3 {
+      font-size: px-to-rem(12);
+
+      @include media(screen-m) {
+        font-size: inherit;
+      }
+    }
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+  }
+
+  .location {
+    margin-left: 0;
+    text-align: center;
+
+    @include media(screen-m) {
+      margin-left: $spacing-2;
+      text-align: right;
+    }
+  }
+
+  .map {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: $spacing-7 $spacing-14 px-to-rem(100) $spacing-14;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+
+    .col {
+      display: flex;
+      align-items: center;
+
+      &:last-of-type {
+        margin-left: 0;
+
+        @include media(screen-m) {
+          margin-left: $spacing-4;
+        }
+      }
+
+      .dot {
+        border-radius: 50%;
+        width: px-to-rem(14);
+        height: px-to-rem(14);
+        background-color: $white;
+        margin-right: $spacing-2;
+        border: 1px solid $navy-blue-30;
+
+        &.dot-green {
+          background-color: $teal-20;
+          border: 1px solid $teal-20;
+        }
+      }
+    }
+  }
+}
+
+.no-slots {
+  margin-top: px-to-rem(16);
+  text-align: center;
+}

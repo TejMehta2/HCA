@@ -1,0 +1,98 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use './Slick.module.scss' as *;
+
+.wrapper {
+  overflow: hidden;
+  background: var(--background);
+  color: var(--text);
+}
+
+.container {
+  position: relative;
+  padding: $spacing-8 0 $spacing-9;
+  @include responsive-container;
+}
+
+.intro {
+  @include responsive-grid;
+
+  gap: px-to-rem(8) px-to-rem(16);
+
+  & > * {
+    @include responsive-grid-start(1);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 6
+    );
+  }
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 95%;
+  margin: px-to-rem(122) 0 $spacing-7;
+
+  @include media(screen-m) {
+    width: 100%;
+    margin-top: $spacing-7;
+  }
+}
+
+.slick-wrapper {
+  & div[class*='slick-track'] {
+    display: flex;
+    cursor: default;
+    margin: 0;
+  }
+
+  & div[class*='slick-slide'] {
+    padding-right: $spacing-4;
+    height: inherit;
+
+    /* Empty div is automatically appended around each Card by react-slick. Need to set to full height so that cards are all equal */
+    & > div {
+      height: 100%;
+    }
+  }
+
+  /* quirk of react-slick. Need to set negative of card spacing in parent */
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-4 * -1);
+  }
+
+  & div[class*='slick-arrow'] {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: calc(var(--spacing-7) * -1);
+    transform: translateY(-100%);
+
+    @include media(screen-m) {
+      left: unset;
+      right: 0;
+    }
+  }
+
+  & div[class*='slick-prev'] {
+    @include media(screen-m) {
+      transform: translateY(-100%) translateX(calc(-100% - px-to-rem(8)));
+    }
+  }
+
+  & div[class*='slick-next'] {
+    transform: translateY(-100%) translateX(calc(100% + px-to-rem(8)));
+    @include media(screen-m) {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.title {
+  color: var(--heading, var(--text));
+}
+
+.copy {
+  padding-top: $spacing-5;
+}

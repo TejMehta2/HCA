@@ -1,0 +1,128 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.accordion {
+  background: var(--card-background);
+  color: var(--text);
+  width: 100%;
+  border-radius: $radius-small;
+}
+
+.trigger {
+  color: inherit;
+  background: inherit;
+  border: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: $spacing-4 $spacing-6;
+  width: 100%;
+  border-radius: $radius-small;
+  gap: 0 $spacing-4;
+  cursor: pointer;
+
+  @include apply-body-medium-extra-large;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: -5px;
+  }
+}
+
+.content {
+  transition:
+    padding 0.4s ease-out,
+    opacity 0.3s linear;
+  color: var(--card-body-text);
+
+  @include apply-body-large;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+/* stylelint-disable no-descending-specificity */
+.toggle {
+  display: flex;
+  position: relative;
+  width: px-to-rem(24);
+  height: px-to-rem(24);
+
+  svg {
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+
+    &:first-of-type {
+      opacity: 0;
+    }
+
+    &:last-of-type {
+      opacity: 1;
+    }
+  }
+}
+
+.open {
+  .content {
+    opacity: 1;
+    padding: 0 $spacing-6 $spacing-7;
+  }
+
+  .toggle {
+    svg {
+      &:first-of-type {
+        opacity: 1;
+        width: px-to-rem(24);
+        height: px-to-rem(24);
+      }
+
+      &:last-of-type {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+}
+
+.closed {
+  .content {
+    opacity: 0;
+    height: 0;
+    padding: 0 $spacing-6 0;
+    pointer-events: none;
+    display: none;
+  }
+}
+
+.filters {
+  .trigger {
+    padding: px-to-rem(16) 0;
+    border-top: 1px solid $navy-blue-9;
+    border-radius: 0;
+    background-color: $white;
+  }
+
+  .content {
+    padding: 0;
+
+    & > fieldset {
+      padding: 0 0 $spacing-5 0;
+    }
+  }
+
+  &.accordion {
+    background-color: transparent;
+
+    &:first-of-type {
+      .trigger {
+        border: 0;
+      }
+    }
+  }
+}

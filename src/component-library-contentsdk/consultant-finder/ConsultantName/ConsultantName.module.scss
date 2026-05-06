@@ -1,0 +1,26 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: px-to-rem(220);
+    margin-bottom: $spacing-4;
+    padding: $spacing-2 $spacing-4 $spacing-2 $spacing-5;
+    border: 1px solid $teal-20;
+    border-radius: $radius-large;
+    background-color: $teal-5;
+
+    &-light {
+        background-color: $white;
+    }
+
+    @include media(screen-l) {
+        margin-bottom: 0;
+    }
+}
+
+.consultant {
+    margin-right: $spacing-2;
+}

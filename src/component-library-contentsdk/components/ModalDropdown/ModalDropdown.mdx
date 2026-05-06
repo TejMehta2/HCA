@@ -1,0 +1,49 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ModalDropdownStories from './ModalDropdown.stories'
+
+<Meta of={ModalDropdownStories} />
+
+# ModalDropdown
+
+## Description
+
+The ModalDropdown component is a wrapper for other page elements (e.g. Sort By), which opens conditionally.
+
+Internally, the modal uses an HTML5 `dialog` tag, because of the out-of-the-box accessibility and performance that `dialog` provides.
+
+More info:
+[MDN: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+
+### Controlling the Modals
+
+The Modals component forwards a ref to the HTML5 `dialog` element inside. This allows the parent element to pass a ref prop, then call the built-in browser dialog API methods (`showModal` & `close`) on the ref:
+
+By typing the ref as `HTMLDialogElement`, we get intellisense on the API (`showModal` and `close`) when accessing the `ref.current`:
+
+``` tsx dark
+import React, { useRef } from 'react'
+import ModalDropdown from '@hca/component-library/components/ModalDropdown/ModalDropdown'
+
+const MyComponent = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  return (
+    <>
+      <button onClick={() => dialogRef?.current?.close()}>Close</button>
+      <button onClick={() => dialogRef?.current?.show()}>Open</button>
+      <button onClick={() => dialogRef?.current?.open ? dialogRef?.current?.close() : dialogRef?.current?.show()}>Toggle</button>
+      <ModalDropdown ref={dialogRef}>Content</ModalDropdown>
+    </>
+  )
+}
+```
+
+### Mobile/Tablet styles
+
+As of time of writing, mobile styles were out of scope for this component, because it was built primarily to be used in the `Sorting` component, which uses `Modals` on mobile/tablet screen sizes.
+
+This may need to be extended to be used in other areas of the site.
+
+## Example 
+
+<Canvas of={ModalDropdownStories.Default} />
+<Controls of={ModalDropdownStories.Default} />

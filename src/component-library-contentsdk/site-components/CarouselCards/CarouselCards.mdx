@@ -1,0 +1,105 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CarouselCardsStories from './CarouselCards.stories';
+
+<Meta of={CarouselCardsStories} />
+
+# CarouselCards
+
+## Description
+
+The CarouselCards component consists of a title, cta, and multiple Card components. The carousel is using **react-slick** ([NPM](https://www.npmjs.com/package/@ant-design/react-slick))
+
+It is intended to be used with various card components as the carousel items.
+
+#### Complications
+
+There are a few complications that have occurred due to the limitations of react-slick.
+
+1. The default carousel styles could not be used in CSS Modules. The way around this is by targeting the slick class names within a container and searching for a div where it **contains** that class name.
+   For example:
+
+```css
+.slick-wrapper {
+  & div[class*='slick-slide'] {
+    padding-right: $spacing-4;
+  }
+}
+```
+
+2. Using a `react.fragment` in the children prop was causing all cards to be added as a single slide.
+   There is no way to add children cards without a fragment, but this was resolved by drilling further into the children prop when rendering them
+
+```tsx
+<Slider {...settings}>{children && children[0].props.children}</Slider>
+```
+
+3. All appended children get an extra div wrapped around it. This is added automatically and was causing problems with the card colour themes as the individual card components were no longer direct siblings.
+   This was resolved in the `CardPatientStories.module.scss` file by searching for `slick-slide` and using that as the sibling selector. The downside of this is there is a slight duplication of the card colours
+
+```css
+div[class*='slick-slide'] {
+  &:nth-of-type(4n + 1) {
+    .card {
+      background-color: $tangerine-100;
+    }
+  }
+
+  &:nth-of-type(4n + 2) {
+    .card {
+      background-color: $fern-40;
+    }
+  }
+  ...
+}
+```
+
+#### Composition
+
+It can be composed like this:
+
+```tsx
+<CarouselCards
+  title={<span>Orthopaedics Patient Stories</span>}
+  link={
+    <a href="#">
+      <Icons iconName="iconSearch" />
+      <span>
+        View all <strong>patient stories</strong>
+      </span>
+    </a>
+  }
+>
+  <>
+    <CardPatientStories
+      title={<span>Every new birth tells its own story</span>}
+      bodyCopy={
+        <span>
+          Quis laboris proident sint amet id cillum do dolor in tempor est
+          exercitation aute sint tempor eu ut
+        </span>
+      }
+      image={
+        <Image
+          src="/side-scrolling-placeholder.png"
+          alt="baby crying"
+          width="456"
+          height="253"
+        />
+      }
+      link={
+        <a href="#">
+          <span>
+            Read the <strong>Story</strong>
+          </span>
+        </a>
+      }
+    />
+    ...
+  </>
+</CarouselCards>
+```
+
+## Example
+
+<Canvas of={CarouselCardsStories.PatientStoryCards} />
+<Controls of={CarouselCardsStories.PatientStoryCards} />

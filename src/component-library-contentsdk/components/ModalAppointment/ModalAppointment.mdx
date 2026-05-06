@@ -1,0 +1,76 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ModalAppointmentStories from './ModalAppointment.stories'
+
+<Meta of={ModalAppointmentStories} />
+
+# ModalAppointment
+
+## Description
+
+The ModalAppointment component is an instance of the Modals component, specialised for displaying contact info.
+
+It is intended to be used in the homepage hero, and is opened via a CTA.
+
+The implementation of the open/close behavior is inherited from the Modals component, see the Modals documentation for further implementation details.
+
+It can be composed like this:
+
+``` tsx
+const dialogRef = useRef<HTMLDialogElement>()
+<button onClick={() => dialogRef?.current?.showModal()}>Open</button>
+
+<ModalAppointment 
+  ref={dialogRef}
+  title1={
+    <Text variation={'display-4'} tag="h2">
+      Need a specialist?
+    </Text>
+  }
+  copy1={
+    <Text variation={'body-large'}>
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo.
+    </Text>
+  }
+  cta1={
+    <Button size={'large'} variation={'full'}>
+      <a href="#">
+        <Icons iconName={'iconStethoscope'} />
+        <span>
+          Find a <strong>consultant</strong>
+        </span>
+      </a>
+    </Button>
+  }
+  title2={
+    <Text variation={'display-4'} tag="h2">
+      GP Services
+    </Text>
+  }
+  copy2={
+    <Text variation={'body-large'}>
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo.
+    </Text>
+  }
+  cta2={
+    <>
+      <Button size={'large'} variation={'full'}>
+        <a href="#">
+          <Icons iconName={'iconMobile'} />
+          <span>
+            Download our <strong>GP App</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size={'large'} variation={'outline'}>
+        <a href="#">
+          <span>
+            View all <strong>GP services</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
+/>
+```

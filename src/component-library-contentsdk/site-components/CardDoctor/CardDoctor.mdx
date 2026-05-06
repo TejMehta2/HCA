@@ -1,0 +1,43 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardDoctorStories from './CardDoctor.stories'
+
+<Meta of={CardDoctorStories} />
+
+# CardDoctor
+
+## Description
+
+The CardDoctor component is a simple card with a small image, title, department name and cta.
+
+It is intended to be used as a child of the `CardDoctorLayout` component
+
+It can be composed like this:
+
+``` tsx
+<CardDoctor
+  image={
+    <Image
+      src="/placeholders/doctor-portrait-circle.png"
+      alt="doctor portrait"
+      width="91"
+      height="91"
+    />
+  }
+  title={
+    <Text variation="display-3" tag="h3">
+      John Smith
+    </Text>
+  }
+  department={<span>Orthopaedics</span>}
+  cta={
+    <a href="#">
+      View <strong>profile</strong>
+    </a>
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={CardDoctorStories.Default} />
+<Controls of={CardDoctorStories.Default} />

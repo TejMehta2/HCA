@@ -1,0 +1,28 @@
+@use '../index.module.scss' as *;
+
+.grid > * {
+  background-color: $orange-60;
+  text-align: center;
+}
+
+.grid {
+  @include responsive-grid;
+}
+
+.half {
+  @include responsive-grid-span($default: 3, $breakpoint-l: 6);
+}
+
+.third {
+  @include responsive-grid-span($default: 2, $breakpoint-l: 4);
+}
+
+.floating {
+  @include responsive-grid-span($default: 2, $breakpoint-l: 4);
+  @include responsive-grid-start($default: 5, $breakpoint-l: 9);
+}
+
+.default {
+  @include responsive-grid-start;
+  @include responsive-grid-span;
+}

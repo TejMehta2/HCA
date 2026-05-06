@@ -1,0 +1,42 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.confirmation-summary {
+  width: 100%;
+  margin-bottom: $spacing-8;
+
+  &.no-spacing {
+    margin: 0;
+  }
+
+  .summary {
+    padding: $spacing-6 $spacing-7;
+    border-radius: $radius-medium;
+    background-color: $teal-5;
+  }
+
+  .title {
+    margin-bottom: $spacing-3;
+  }
+
+  .item {
+    display: flex;
+    padding: $spacing-5 0;
+    justify-content: space-between;
+    border-bottom: 1px solid $teal-20;
+    color: var(--text);
+
+    p {
+      text-align: right;
+    }
+
+    h4 {
+      word-break: keep-all;
+      margin-right: $spacing-3;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

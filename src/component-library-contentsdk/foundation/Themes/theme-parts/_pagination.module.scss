@@ -1,0 +1,163 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-pagination-white {
+  --pagination: #{$white};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$orange-100};
+}
+
+@mixin apply-pagination-navy-blue-70 {
+  --pagination: #{$navy-blue-70};
+  --pagination-hover: #{$teal-40};
+  --pagination-arrow-hover: #{$teal-80};
+}
+
+@mixin apply-pagination-tangerine {
+  --pagination: #{$tangerine-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$tangerine-100};
+}
+
+@mixin apply-pagination-tangerine-30 {
+  --pagination: #{$tangerine-30};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$white};
+}
+
+@mixin apply-pagination-fern {
+  --pagination: #{$fern-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$fern-100};
+}
+
+@mixin apply-pagination-fern-20 {
+  --pagination: #{$fern-20};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$white};
+}
+
+@mixin apply-pagination-teal-10 {
+  --pagination: #{$teal-10};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$white};
+}
+
+@mixin apply-pagination-teal-40 {
+  --pagination: #{$teal-40};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$teal-120};
+}
+
+@mixin apply-pagination-teal-100 {
+  --pagination: #{$teal-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$teal-120};
+}
+
+@mixin apply-pagination-orange {
+  --pagination: #{$orange-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$orange-100};
+}
+
+@mixin apply-pagination-orange-20 {
+  --pagination: #{$orange-20};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$white};
+}
+
+@mixin apply-pagination-orange-60 {
+  --pagination: #{$orange-60};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$orange-100};
+}
+
+@mixin apply-pagination-denim-40-light {
+  --pagination: #{$denim-40};
+  --pagination-hover: #{$white};
+  --pagination-arrow-hover: #{$denim-40};
+}
+
+@mixin apply-pagination-denim-40 {
+  --pagination: #{$denim-40};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$denim-40};
+}
+
+@mixin apply-pagination-denim-10 {
+  --pagination: #{$denim-10};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$denim-80};
+}
+
+@mixin apply-pagination-goldenrod-20 {
+  --pagination: #{$goldenrod-20};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$orange-100};
+}
+
+@mixin apply-pagination-palace-white {
+  --pagination: #{$palace-red-40};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$palace-red-40};
+}
+
+@mixin apply-pagination-palace-navy-blue {
+  --pagination: #{$navy-blue-70};
+  --pagination-hover: #{$palace-red-20};
+  --pagination-arrow-hover: #{$palace-red-20};
+}
+
+@mixin apply-pagination-grey {
+  --pagination: #{$grey-90};
+  --pagination-hover: #{$palace-red-20};
+  --pagination-arrow-hover: #{$palace-red-20};
+}
+
+@mixin apply-pagination-palace-red {
+  --pagination: #{$palace-red-80};
+  --pagination-hover: #{$palace-red-20};
+  --pagination-arrow-hover: #{$palace-red-20};
+}
+
+@mixin apply-pagination-orange-100 {
+  --pagination: #{$orange-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$orange-150};
+}
+
+@mixin apply-pagination-chelsea-gold-80 {
+  --pagination: #{$chelsea-gold-80};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$chelsea-gold-150};
+}
+
+@mixin apply-pagination-chelsea-navy-blue {
+  --pagination: #{$navy-blue-70};
+  --pagination-hover: #{$chelsea-gold-60};
+  --pagination-arrow-hover: #{$chelsea-gold-60};
+}
+
+@mixin apply-pagination-chelsea-gold-100 {
+  --pagination: #{$chelsea-gold-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$chelsea-gold-100};
+}
+
+@mixin apply-pagination-lbi {
+  --pagination: #{$purple-100};
+  --pagination-hover: #{$purple-120};
+  --pagination-arrow-hover: #{$purple-120};
+}
+
+@mixin apply-pagination-alan-black {
+  --pagination: #{$black-80};
+  --pagination-hover: #{$pink-50};
+  --pagination-arrow-hover: #{$pink-50};
+}
+
+@mixin apply-pagination-alan-white {
+  --pagination: #{$pink-20};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$pink-50};
+}

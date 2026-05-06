@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as AccreditationsStories from './Accreditations.stories'
+
+<Meta of={AccreditationsStories} />
+
+# Accreditations
+
+## Description
+
+The Accreditations component presents a list of accreditation icons plus corresponding descriptive text.
+
+It supports a 2 or 3 column variant on desktop. The default is 2 columns
+See below for the prop structure:
+
+``` tsx
+<Accreditations 
+  items={
+    [
+      {
+        text: (
+          <>
+            At HCA UK we recognise the value of candidates who have served in
+            the Armed Forces. As proud signatories of the Armed Forces Covenant
+            we welcome applications from both Armed Forces Veterans and Armed
+            Forces Reservists.
+          </>
+        ),
+        logo: (
+          <Image
+            src="/accreditations/armed-forces-covenant.png"
+            alt=""
+            width="643"
+            height="605"
+          />
+        ),
+      },
+      // ...additional items
+    ]
+  }
+/>
+```

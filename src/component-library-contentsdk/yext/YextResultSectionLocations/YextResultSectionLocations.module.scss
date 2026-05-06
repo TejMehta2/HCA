@@ -1,0 +1,72 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-5;
+  margin-bottom: $spacing-7;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.card {
+  scroll-margin-top: px-to-rem(140);
+}
+
+.grid {
+  @include responsive-grid;
+
+  row-gap: px-to-rem(16);
+
+  .map {
+    border-radius: $radius-small;
+    overflow: hidden;
+  }
+
+  .stacked & {
+    .map-column,
+    .cards {
+      @include responsive-grid-span(6, 6, 12, 12);
+    }
+
+    .map-column {
+      grid-row-start: 1;
+    }
+
+    .map {
+      height: px-to-rem(390);
+    }
+  }
+
+  .side-by-side & {
+    .map-column,
+    .cards {
+      @include responsive-grid-span(6, 6, 6, 6);
+    }
+
+    .map {
+      position: sticky;
+      top: calc(#{px-to-rem(70)} + #{$spacing-4}); // offset nav on scroll down
+      height: px-to-rem(624);
+    }
+
+    @include media(screen-l, max) {
+      .map-column {
+        grid-row-start: 1;
+      }
+
+      .map {
+        height: px-to-rem(390);
+      }
+    }
+  }
+}
+
+.card.selected {
+  --card-background: var(--card-background-selected);
+}

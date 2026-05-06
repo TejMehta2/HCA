@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CarouselContentStories from './CarouselContent.stories';
+
+<Meta of={CarouselContentStories} />
+
+# CarouselContent
+
+## Description
+
+The CarouselContent component is a carousel which cycles through various content pieces. It runs on an infinite loop, but does not transition automatically
+
+The carousel is using **react-slick** ([NPM](https://www.npmjs.com/package/@ant-design/react-slick))
+
+It is intended to be used on any page
+
+It can be composed like this:
+
+```tsx
+<CarouselContent
+  theme="A-HCA-White"
+  slides={[
+    {
+      title: (
+        <Text tag="h2" variation="display-2">
+          How to plan your visit
+        </Text>
+      ),
+      body: (
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      ),
+      image: (
+        <Image
+          src="/placeholders/carousel-content.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+      ),
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={CarouselContentStories.Default} />
+<Controls of={CarouselContentStories.Default} />

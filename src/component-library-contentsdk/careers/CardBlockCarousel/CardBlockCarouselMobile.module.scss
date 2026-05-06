@@ -1,0 +1,38 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: block;
+  @include media(screen-l) {
+    display: none;
+  }
+
+  @include responsive-grid-span($default: 6);
+
+  margin-top: $spacing-7;
+}
+
+.first-card {
+  margin-bottom: $spacing-3;
+  border-radius: $radius-medium;
+  overflow: hidden;
+  background: var(--card-background);
+
+  .image {
+    width: 100%;
+    aspect-ratio: 358/270;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    padding: $spacing-7 $spacing-4 $spacing-10;
+  }
+}

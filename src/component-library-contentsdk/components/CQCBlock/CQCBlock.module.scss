@@ -1,0 +1,166 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--cqc-background);
+  border-radius: $radius-small;
+  padding: px-to-rem(16);
+  position: relative;
+  border: 1px solid var(--cqc-outline);
+}
+
+.link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100% !important;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+    border-radius: $radius-small;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: solid #{px-to-rem(2)} transparent;
+      outline-offset: px-to-rem(-6);
+      outline-color: var(--cqc-focus-outline);
+    }
+  }
+}
+
+.title {
+  display: flex;
+  gap: px-to-rem(8);
+}
+
+.icon {
+  color: $teal-100;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+}
+
+@include theme-mode(light, dark) using ($mode) {
+  @if $mode ==light {
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
+
+    .wrapper {
+      color: $white;
+    }
+  }
+
+  @if $mode ==dark {
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
+
+    .wrapper {
+      color: $navy-blue-80;
+    }
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+  &.wrapper {
+    justify-content: center;
+
+    @include media(screen-m) {
+      width: fit-content;
+    }
+  }
+
+  .icon {
+    padding-left: px-to-rem(8);
+  }
+
+  .text {
+    display: none;
+  }
+}
+
+.requires-improvement {
+  .icon {
+    color: $tangerine-100;
+  }
+}
+
+.inadequate {
+  .icon {
+    color: $red-100;
+  }
+
+  &.dark {
+    .icon {
+      color: $orange-100;
+    }
+  }
+}
+
+.outstanding,
+.good {
+  &.dark {
+    .icon {
+      color: $fern-40;
+    }
+  }
+}
+
+.long {
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(8) px-to-rem(23);
+
+  @include media(screen-m) {
+    max-width: px-to-rem(490);
+  }
+
+  .title {
+    align-items: center;
+  }
+}
+
+.short {
+  .title {
+    justify-content: space-between;
+  }
+
+  &,
+  .content {
+    display: flex;
+    gap: px-to-rem(8) px-to-rem(23);
+    flex-direction: column;
+  }
+
+  @include media(screen-m) {
+    max-width: px-to-rem(314);
+  }
+}

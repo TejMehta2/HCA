@@ -1,0 +1,40 @@
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
+
+.practice {
+  margin-bottom: $spacing-8;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .address {
+    display: flex;
+    margin: $spacing-4 0;
+  }
+
+  .working-hours {
+    display: flex;
+    margin-bottom: $spacing-4;
+  }
+
+  .icon {
+    margin-right: $spacing-2;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex;
+
+      span {
+        &:first-of-type {
+          margin-right: $spacing-2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.inner {
+  position: relative;
+  height: px-to-rem(716);
+  @include media(screen-l) {
+    height: px-to-rem(608);
+  }
+}
+
+.children {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  & > * {
+    pointer-events: all;
+  }
+  @include media(screen-l) {
+    justify-content: flex-start;
+    padding-left: $spacing-13;
+    padding-right: $spacing-13;
+  }
+}

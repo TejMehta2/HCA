@@ -1,0 +1,71 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-controls-light {
+  --controls-border-default: #{$navy-blue-40};
+  --controls-background-selected: #{$orange-100};
+  --controls-background-selected-dot: #{$navy-blue-100};
+  --controls-background-disabled: #{$navy-blue-20};
+  --controls-border-disabled: #{$navy-blue-40};
+  --controls-background-disabled-selected: #{$navy-blue-40};
+  --controls-border-focus: #{$navy-blue-100};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}
+@mixin apply-controls-dark {
+  --controls-border-default: #{$navy-blue-40};
+  --controls-background-selected: #{$teal-100};
+  --controls-background-selected-dot: #{$navy-blue-100};
+  --controls-background-disabled: #{$navy-blue-60};
+  --controls-border-disabled: #{$navy-blue-50};
+  --controls-background-disabled-selected: #{$navy-blue-50};
+  --controls-border-focus: #{$white};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}
+@mixin apply-controls-medium {
+  --controls-border-default: #{$navy-blue-80};
+  --controls-background-selected-dot: #{$white};
+  --controls-background-selected: #{$navy-blue-100};
+  --controls-background-disabled: #{$teal-40};
+  --controls-border-disabled: #{$navy-blue-50};
+  --controls-background-disabled-selected: #{$navy-blue-50};
+  --controls-border-focus: #{$white};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}
+
+@mixin apply-controls-palace {
+  --controls-border-default: #{$navy-blue-40};
+  --controls-background-selected: #{$palace-red-100};
+  --controls-background-selected-dot: #{$white};
+  --controls-background-disabled: #{$navy-blue-20};
+  --controls-border-disabled: #{$navy-blue-40};
+  --controls-background-disabled-selected: #{$navy-blue-40};
+  --controls-border-focus: #{$navy-blue-100};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}
+
+@mixin apply-controls-chelsea {
+  --controls-border-default: #{$navy-blue-40};
+  --controls-background-selected: #{$chelsea-gold-100};
+  --controls-background-selected-dot: #{$navy-blue-100};
+  --controls-background-disabled: #{$navy-blue-20};
+  --controls-border-disabled: #{$navy-blue-40};
+  --controls-background-disabled-selected: #{$navy-blue-40};
+  --controls-border-focus: #{$navy-blue-100};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}
+
+@mixin apply-controls-alan {
+  --controls-border-default: #{$navy-blue-40};
+  --controls-background-selected: #{$pink-100};
+  --controls-background-selected-dot: #{$white};
+  --controls-background-disabled: #{$navy-blue-20};
+  --controls-border-disabled: #{$navy-blue-40};
+  --controls-background-disabled-selected: #{$navy-blue-40};
+  --controls-border-focus: #{$pink-100};
+  --controls-check: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")};
+  --controls-indeterminate: #{url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")};
+}

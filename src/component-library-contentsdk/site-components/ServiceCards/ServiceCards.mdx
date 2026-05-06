@@ -1,0 +1,61 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ServiceCardsStories from './ServiceCards.stories';
+
+<Meta of={ServiceCardsStories} />
+
+# ServiceCards
+
+## Description
+
+The ServiceCards component is made up of a title, subtitle, text, a cta & 5 service cards. The text content on the left should remain sticky when scrolling on large screen sizes.
+
+It is intended to be used on the homepage.
+
+There is a variation for RoleCards which is is intended to be used on the careers page. This variation can take any number of cards
+
+It can be composed like this:
+
+```tsx
+<ServiceCards
+  title={<Text variation="display-2">Exceptional care you can trust</Text>}
+  subtitle={<Text variation="subheading-1">our departments</Text>}
+  bodyText={
+    <Text>
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
+      et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    </Text>
+  }
+  cta={
+    <a href="#">
+      <Icons iconName="iconSearch"></Icons> Search all departments
+    </a>
+  }
+>
+  <CardService link={<a href="#">Learn More</a>}>
+    <JssImage field={props.fields.PromoIcon} />
+    <Text variation="display-6">Cardiac Care 1</Text>
+  </CardService>
+  <CardService link={<a href="#">Learn More</a>}>
+    <JssImage field={props.fields.PromoIcon} />
+    <Text variation="display-6">Cardiac Care 2</Text>
+  </CardService>
+  <CardService link={<a href="#">Learn More</a>}>
+    <JssImage field={props.fields.PromoIcon} />
+    <Text variation="display-6">Cardiac Care 3</Text>
+  </CardService>
+  <CardService link={<a href="#">Learn More</a>}>
+    <JssImage field={props.fields.PromoIcon} />
+    <Text variation="display-6">Cardiac Care 4</Text>
+  </CardService>
+  <CardService link={<a href="#">Learn More</a>}>
+    <JssImage field={props.fields.PromoIcon} />
+    <Text variation="display-6">Cardiac Care 5</Text>
+  </CardService>
+</ServiceCards>
+```
+
+## Example
+
+<Canvas of={ServiceCardsStories.Default} />
+<Controls of={ServiceCardsStories.Default} />

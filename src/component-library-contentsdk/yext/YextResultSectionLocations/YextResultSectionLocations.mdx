@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextResultSectionLocationsStories from './YextResultSectionLocations.stories'
+
+<Meta of={YextResultSectionLocationsStories} />
+
+# YextResultSectionLocations
+
+## Description
+
+The YextResultSectionLocations component is a google maps embed accompanied by a list of location cards.
+
+Users can select a map pin to high light the corresponding card. Likewise users can click the card title to check the corresponding pin.
+
+It is intended to be used to display the results of a Yext Search, both for verticals and universal.
+
+It can be stacked or side-by-side.
+
+It can be composed like this:
+
+``` tsx
+<YextResultSectionLocations
+  apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
+  center={
+    lat: 51.5072,
+    lng: 0.1276,
+  }
+  locations={[
+    {
+      id: 'location-1',
+      card: (
+      <YextResultCardLocations
+        {...cardPropsExample}
+        number={<Numbers number={<span>1</span>} />}
+      />
+    ),
+      center: {
+        lat: 51.52036,
+        lng: -0.14797,
+      },
+    }
+  ]}
+  title={'Locations'}
+variation={'side-by-side'}/>
+```

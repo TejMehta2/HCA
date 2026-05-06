@@ -1,0 +1,42 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardLocationStories from './CardLocation.stories';
+
+<Meta of={CardLocationStories} />
+
+# CardLocation
+
+### ID: EQTRHCA6
+
+## Description
+
+The CardLocation component is intended to be used within the homepage map component. It consists of a number, title, and CTA
+
+It can be composed like this:
+
+```tsx
+<CardLocation
+  theme="B-HCA-Navy-Blue"
+  amount={
+    <Text tag="p" variation="display-1">
+      35
+    </Text>
+  }
+  title={
+    <Text tag="p" variation="heading-2">
+      Locations across the UK
+    </Text>
+  }
+  cta={
+    <a href="#">
+      <span>
+        View <strong>all</strong>
+      </span>
+    </a>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={CardLocationStories.Default} />
+<Controls of={CardLocationStories.Default} />

@@ -1,0 +1,38 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as LocationCardStories from './LocationCard.stories';
+
+<Meta of={LocationCardStories} />
+
+# LocationCard
+
+## Description
+
+The LocationCard component is a card which takes a title, description, and children
+
+It is intended to be used in the birth company booking flow
+
+It can be composed like this:
+
+```tsx
+<LocationCard
+  name={<Text variation="body-bold-large">Wimpole Street, London</Text>}
+  description={
+    <Text variation="body-small">
+      The Waterfront Business Park, Beaufort House, Elstree WD6 3BS
+    </Text>
+  }
+  handleClick={() => {}}
+>
+  <span>
+    <Icons iconName="iconClock" />
+    <Text variation="body-small" tag="p">
+      Available Sat 21 Oct 2023
+    </Text>
+  </span>
+</LocationCard>
+```
+
+## Example
+
+<Canvas of={LocationCardStories.Default} />
+<Controls of={LocationCardStories.Default} />

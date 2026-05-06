@@ -1,0 +1,40 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background);
+  color: var(--text);
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-11;
+  padding-bottom: $spacing-13;
+  display: grid;
+  row-gap: $spacing-7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-6;
+
+  @include media(screen-l, max) {
+    flex-direction: column;
+  }
+}
+
+.filters {
+  display: flex;
+  grid-area: $spacing-2;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: $spacing-4;
+}

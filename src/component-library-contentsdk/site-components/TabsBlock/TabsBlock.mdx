@@ -1,0 +1,111 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TabsBlockStories from './TabsBlock.stories';
+
+<Meta of={TabsBlockStories} />
+
+# TabsBlock
+
+## Description
+
+The TabsBlock component uses the Tabs component to hide / show different content depending on the selected tab
+
+It uses the react-slick carousel to handle the switching from one tab to another, but does not have any of the touch controls
+
+There is a typescript error showing on the Slider tag related to the ref. It is believed to be a bug with the external library, but the error does not cause any issues with the functionality of the component
+
+It is intended to be used in any page
+
+It can be composed like this:
+
+```tsx
+<TabsBlock
+  theme="L-HCA-Teal-5"
+  title={
+    <Text tag="h2" variation="display-4">
+      Our appointments & memberships
+    </Text>
+  }
+  tabsContent={[
+    {
+      tab: { icon: 'iconOneOff', label: 'One-off' },
+      image: (
+        <Image
+          src="/placeholders/riverside-building-at-dusk.png"
+          alt="riverside building at dusk"
+          width="643"
+          height="605"
+        />
+      ),
+      title: (
+        <Text tag="h3" variation="display-5">
+          One-off appointments
+        </Text>
+      ),
+      bodyCopy: (
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      ),
+    },
+    {
+      tab: { icon: 'iconFlexible', label: 'Flexi' },
+      image: (
+        <Image
+          src="/placeholders/riverside-building-at-dusk.png"
+          alt="riverside building at dusk"
+          width="643"
+          height="605"
+        />
+      ),
+      title: (
+        <Text tag="h3" variation="display-5">
+          Flexi appointments
+        </Text>
+      ),
+      bodyCopy: (
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      ),
+    },
+    {
+      tab: { icon: 'iconCalendar', label: 'Annual' },
+      image: (
+        <Image
+          src="/placeholders/riverside-building-at-dusk.png"
+          alt="riverside building at dusk"
+          width="643"
+          height="605"
+        />
+      ),
+      title: (
+        <Text tag="h3" variation="display-5">
+          Annual appointments
+        </Text>
+      ),
+      bodyCopy: (
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      ),
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={TabsBlockStories.Default} />
+<Controls of={TabsBlockStories.Default} />

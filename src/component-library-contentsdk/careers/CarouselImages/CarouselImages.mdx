@@ -1,0 +1,54 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CarouselImagesStories from './CarouselImages.stories';
+
+<Meta of={CarouselImagesStories} />
+
+# CarouselImages
+
+## Description
+
+The CarouselImages component is a horizantal display of images which scroll across as the user scrolls up and down the page. They can also be dragged manually
+
+It is intended to be used on the careers homepage
+
+It can be composed like this:
+
+```tsx
+<CarouselImages
+  images={[
+    <MockedNextImage
+      key="0"
+      alt="a nurse"
+      height="605"
+      src="/placeholders/linda.jpg"
+      width="643"
+    />,
+    <MockedNextImage
+      key="1"
+      alt="masonry 1"
+      height="605"
+      src="/placeholders/masonry-1.jpg"
+      width="643"
+    />,
+    <MockedNextImage
+      key="2"
+      alt="masonry 2"
+      height="605"
+      src="/placeholders/masonry-2.jpg"
+      width="643"
+    />,
+    <MockedNextImage
+      key="3"
+      alt="masonry 3"
+      height="605"
+      src="/placeholders/masonry-3.jpg"
+      width="643"
+    />,
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={CarouselImagesStories.Default} />
+<Controls of={CarouselImagesStories.Default} />

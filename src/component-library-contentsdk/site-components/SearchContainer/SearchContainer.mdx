@@ -1,0 +1,25 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchContainerStories from './SearchContainer.stories';
+
+<Meta of={SearchContainerStories} />
+
+# SearchContainer
+
+## Description
+
+The SearchContainer component is a simple wrapper component which is intended to space out the components used inside searches e.g. Departments search.
+
+It also forwards a ref to allow for e.g. scrolling to the top of it when search results are returned.
+
+It can be composed like this:
+
+```tsx
+<SearchContainer>
+  <p>Contents</p>
+</SearchContainer>
+```
+
+## Example
+
+<Canvas of={SearchContainerStories.Default} />
+<Controls of={SearchContainerStories.Default} />
