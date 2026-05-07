@@ -152,3 +152,17 @@
     }
   }
 }
+
+:global(html[lang^='ar']) {
+  .children {
+    &::before {
+      left: auto;
+      right: calc(var(--label-size) / 2);
+    }
+
+    .step:last-child::after {
+      left: auto;
+      right: calc(var(--label-size) / 2 - px-to-rem(1));
+    }
+  }
+}
