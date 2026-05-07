@@ -4,7 +4,7 @@ import styles from './ModalSearch.module.scss';
 import Modals from '../../components/Modals/Modals';
 import StyledYextSearchBar from '../StyledYextSearchBar/StyledYextSearchBar';
 import { useSearchActions } from '@yext/search-headless-react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Button from '../../core-components/Button/Button';
 
 const ModalSearch = (
@@ -31,16 +31,15 @@ const ModalSearch = (
       inputElement?.focus?.();
       return;
     }
+
     searchActions.executeUniversalQuery();
 
-    router
-      .replace(redirectUrl)
-      .then(() => {
-        ref?.current?.close();
-      })
-      .catch((error) => {
-        console.error('Failed to change route:', error);
-      });
+    try {
+      router.replace(redirectUrl);
+      ref?.current?.close();
+    } catch (error) {
+      console.error('Failed to change route:', error);
+    }
   };
 
   return (

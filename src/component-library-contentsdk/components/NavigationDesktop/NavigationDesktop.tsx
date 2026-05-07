@@ -1,5 +1,6 @@
+'use client';
 import React, { useState, useEffect, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
@@ -27,20 +28,8 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     search,
     homeUrl = '/',
     logo,
-    darkLogo
+    darkLogo,
   } = props;
-
-  // close the nav when clicking a link within
-  const router = useRouter();
-  useEffect(() => {
-    router.events.on('routeChangeStart', closeNavigation);
-
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
-    return () => {
-      router.events.off('routeChangeStart', closeNavigation);
-    };
-  }, [router]);
 
   // State
   const [currentTab, setCurrentTab] = useState(defaultTab);
@@ -48,6 +37,14 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   // Event handlers
   const tabHandler = (index: number | null) => () => setCurrentTab(index);
   const closeNavigation = () => setCurrentTab(null);
+
+  // Close the nav after App Router route changes
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    closeNavigation();
+  }, [pathname, searchParams]);
 
   const isOpen = currentTab !== null;
 
@@ -65,7 +62,9 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
               >
                 <Text variation={'body-bold-extra-large'}>{heading}</Text>
                 <ul data-navigation-type={'navigationLinkClick'}>
-                  {links?.map((link, index) => <li key={index}>{link}</li>)}
+                  {links?.map((link, index) => (
+                    <li key={index}>{link}</li>
+                  ))}
                 </ul>
                 <TextButton>{cta}</TextButton>
               </div>
@@ -78,7 +77,9 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
               >
                 <Text variation={'body-bold-extra-large'}>{heading}</Text>
                 <ul data-navigation-type={'navigationLinkClick'}>
-                  {links?.map((link, index) => <li key={index}>{link}</li>)}
+                  {links?.map((link, index) => (
+                    <li key={index}>{link}</li>
+                  ))}
                 </ul>
                 <Button size={'large'} variation={'full'}>
                   {cta}
@@ -96,7 +97,9 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   data-navigation-type={'navigationLinkClick'}
                   className={styles.double}
                 >
-                  {links?.map((link, index) => <li key={index}>{link}</li>)}
+                  {links?.map((link, index) => (
+                    <li key={index}>{link}</li>
+                  ))}
                 </ul>
                 <Button size={'large'} variation={'full'}>
                   {cta}
@@ -114,7 +117,9 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   className={styles.full}
                   data-navigation-type={'navigationLinkClick'}
                 >
-                  {links?.map((link, index) => <li key={index}>{link}</li>)}
+                  {links?.map((link, index) => (
+                    <li key={index}>{link}</li>
+                  ))}
                 </ul>
                 <Button size={'large'} variation={'full'}>
                   {cta}
@@ -323,7 +328,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           </div>
         </div>
       </div>
-    </Themes >
+    </Themes>
   );
 };
 

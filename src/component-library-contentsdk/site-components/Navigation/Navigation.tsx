@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect, type JSX } from 'react';
 import { NavigationProps } from './Navigation.types';
 import styles from './Navigation.module.scss';
