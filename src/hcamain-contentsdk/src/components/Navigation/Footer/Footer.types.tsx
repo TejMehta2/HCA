@@ -4,9 +4,10 @@ import {
   TextField,
   ComponentRendering,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import { CQCFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
-import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
+} from '@sitecore-content-sdk/nextjs';
+import { CQCFieldsGraphQl } from 'components/Page Content/CQCRating/CQCRatingGraphQl.types';
+import { DoctifyReviewsFieldsGraphQl } from 'components/Page Content/Doctify/DoctifyGraphQl.types';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 // We extend generated types from Leprechaun, and overwrite types which are not specific enough for integration, mostly generic Sitecore Item
@@ -54,7 +55,7 @@ export interface Fields {
   };
 }
 
-export interface FooterProps {
+export type FooterProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: ComponentRendering & { params?: Params };

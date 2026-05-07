@@ -1,21 +1,16 @@
-/* eslint-disable */
-import React from 'react';
-import {
-  Placeholder,
-  Text as JssText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { type JSX } from 'react';
+import { Placeholder, Text as JssText } from '@sitecore-content-sdk/nextjs';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
-import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
-import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
+import { Default as Doctify } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
+import { Default as CQCRating } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
 import Text from '@component-library/foundation/Text/Text';
 import Footer from '@component-library/site-components/Footer/Footer';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isExperienceEditor = page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -50,6 +45,9 @@ export const Default = (props: FooterProps): JSX.Element => {
     reviews: [
       props.fields?.data?.item?.cqcStatus?.targetItem ? (
         <CQCRating
+          params={props.params}
+          rendering={props.rendering}
+          page={props.page}
           key={1}
           length="short"
           hideRating={true}
@@ -63,11 +61,13 @@ export const Default = (props: FooterProps): JSX.Element => {
         <></>
       ),
       props.fields?.data?.item?.doctifyReviews?.targetItem &&
-        typeof window !== 'undefined' &&
-        window.location.href.indexOf(
-          process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-        ) === -1 ? (
+      typeof window !== 'undefined' &&
+      window.location.href.indexOf(
+        process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+      ) === -1 ? (
         <Doctify
+          rendering={props.rendering}
+          page={props.page}
           params={props.params}
           key={2}
           fields={{
@@ -109,10 +109,10 @@ export const Default = (props: FooterProps): JSX.Element => {
       noLogo={props?.params?.NoLogo === '1'}
       logo={
         props?.fields?.data?.item?.logo?.jsonValue?.value &&
-          props.fields.data.item.logo.jsonValue.value['class'] !==
+        props.fields.data.item.logo.jsonValue.value['class'] !==
           'scEmptyImage' &&
-          props.fields.data.item.logo.jsonValue.value.src &&
-          props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
+        props.fields.data.item.logo.jsonValue.value.src &&
+        props.fields.data.item.logo.jsonValue.value.src.trim() !== '' ? (
           <NextJssImage
             editable={false}
             field={props.fields.data.item.logo.jsonValue}

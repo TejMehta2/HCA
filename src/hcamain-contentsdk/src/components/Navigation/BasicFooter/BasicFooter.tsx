@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import {
   Field,
   ImageField,
   LinkField,
   Link as JssLink,
   Text as JssText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Params from 'src/types/params';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface NavigationLink {
   link?: { jsonValue?: LinkField };
@@ -30,16 +30,16 @@ interface Fields {
   };
 }
 
-export type BasicFooterProps = {
+export type BasicFooterProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
 
 const BasicFooterDefaultComponent = (props: BasicFooterProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
-  return !isExperienceEditor ? (
+  return !isEditing ? (
     <></>
   ) : (
     <div className={`component ${props.params?.styles}`}>

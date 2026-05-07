@@ -8,7 +8,7 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { Placeholder, Text, RichText, Link, Image, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Placeholder, Text, RichText, Link, AppPlaceholder, Image } from '@sitecore-content-sdk/nextjs';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -19,12 +19,16 @@ import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-librar
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import componentMap from '.sitecore/component-map';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import React from 'react';
 import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
+import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Navigation/Footer/Footer.utilities';
+import Footer from '@component-library/site-components/Footer/Footer';
+import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
 
 const importMap = [
   {
@@ -42,8 +46,8 @@ const importMap = [
       { name: 'Text', value: Text },
       { name: 'RichText', value: RichText },
       { name: 'Link', value: Link },
+      { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'Image', value: Image },
-      { name: 'useSitecore', value: useSitecore },
     ]
   },
   {
@@ -107,6 +111,12 @@ const importMap = [
     ]
   },
   {
+    module: '.sitecore/component-map',
+    exports: [
+      { name: 'default', value: componentMap },
+    ]
+  },
+  {
     module: '@component-library/components/Doctify/Doctify',
     exports: [
       { name: 'default', value: Doctify },
@@ -140,6 +150,26 @@ const importMap = [
     module: '@component-library/components/CQCBlock/CQCBlock',
     exports: [
       { name: 'default', value: CQCBlock },
+    ]
+  },
+  {
+    module: 'src/components/Navigation/Footer/Footer.utilities',
+    exports: [
+      { name: 'linkReducer', value: linkReducer },
+      { name: 'columnMapper', value: columnMapper },
+      { name: 'SocialMediaCta', value: SocialMediaCta },
+    ]
+  },
+  {
+    module: '@component-library/site-components/Footer/Footer',
+    exports: [
+      { name: 'default', value: Footer },
+    ]
+  },
+  {
+    module: '@component-library/site-components/FooterSmall/FooterSmall',
+    exports: [
+      { name: 'default', value: FooterSmall },
     ]
   }
 ] as ImportEntry[];

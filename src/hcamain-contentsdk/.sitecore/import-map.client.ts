@@ -8,14 +8,24 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { Text, Link, RichText, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
+import { useRef, useEffect } from 'react';
+import { Text, RichText, Link, Image, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
+import Button from '@component-library/core-components/Button/Button';
+import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Accordions from '@component-library/components/Accordions/Accordions';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
-import Button from '@component-library/core-components/Button/Button';
+import Navigation from '@component-library/site-components/Navigation/Navigation';
+import JssDate from 'src/jss-abstractions/JssDate/JssDate';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
+import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
+import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import client from 'src/lib/sitecore-client';
-import { useEffect } from 'react';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
 
@@ -23,19 +33,45 @@ const importMap = [
   {
     module: 'react/jsx-runtime',
     exports: [
+      { name: 'Fragment', value: Fragment },
       { name: 'jsx', value: jsx },
       { name: 'jsxs', value: jsxs },
-      { name: 'Fragment', value: Fragment },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'useRef', value: useRef },
+      { name: 'useEffect', value: useEffect },
     ]
   },
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
       { name: 'Text', value: Text },
-      { name: 'Link', value: Link },
       { name: 'RichText', value: RichText },
+      { name: 'Link', value: Link },
+      { name: 'Image', value: Image },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
+    ]
+  },
+  {
+    module: '@component-library/components/ModalCallUs/ModalCallUs',
+    exports: [
+      { name: 'default', value: ModalCallUs },
+    ]
+  },
+  {
+    module: '@component-library/core-components/Button/Button',
+    exports: [
+      { name: 'default', value: Button },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours',
+    exports: [
+      { name: 'OpeningHours', value: OpeningHours },
     ]
   },
   {
@@ -57,21 +93,57 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/core-components/Button/Button',
+    module: '@component-library/site-components/Navigation/Navigation',
     exports: [
-      { name: 'default', value: Button },
+      { name: 'default', value: Navigation },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/JssDate/JssDate',
+    exports: [
+      { name: 'default', value: JssDate },
+    ]
+  },
+  {
+    module: '@component-library/core-components/TextLink/TextLink',
+    exports: [
+      { name: 'default', value: TextLink },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Icons/Icons',
+    exports: [
+      { name: 'default', value: Icons },
+    ]
+  },
+  {
+    module: '@component-library/yext/ModalSearch/ModalSearch',
+    exports: [
+      { name: 'default', value: ModalSearch },
+    ]
+  },
+  {
+    module: 'lib/constants',
+    exports: [
+      { name: 'SEARCH_SUGGESTIONS_MODAL_ID', value: SEARCH_SUGGESTIONS_MODAL_ID },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/SitecoreSvg/SitecoreSvg',
+    exports: [
+      { name: 'default', value: SitecoreSvg },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Text/Text',
+    exports: [
+      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
     ]
   },
   {
     module: 'src/lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
-    ]
-  },
-  {
-    module: 'react',
-    exports: [
-      { name: 'useEffect', value: useEffect },
     ]
   },
   {

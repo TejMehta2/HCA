@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint react/jsx-key: 0 */
-import React, { useRef } from 'react';
+'use client';
+import { type JSX, useRef } from 'react';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
 import {
   NavigationEyebrow,
@@ -12,10 +11,9 @@ import {
 } from './MainNavigation.types';
 import {
   Link as JssLink,
-  Text as JssText,
-  useSitecoreContext,
+  Text as JssText,  
   Image,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -28,9 +26,9 @@ import Text from '@component-library/foundation/Text/Text';
 const MainNavigationDefaultComponent = (
   props: MainNavigationProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
-  if (isExperienceEditor) {
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
+  if (isEditing) {
     return (
       <div className={`component ${props.params?.styles}`}>
         <div className="component-content">

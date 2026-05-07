@@ -1,11 +1,11 @@
-/* eslint-disable prettier/prettier */
 import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import {
   Field,
   ImageField,
   Item,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 type ExtendedSvg = Field & {
@@ -132,7 +132,7 @@ export interface MainNavigationParams extends Params {
   ThemeOpen?: Theme;
 }
 
-export interface MainNavigationProps {
+export type MainNavigationProps = ComponentWithContextProps & {
   params?: MainNavigationParams;
   fields?: Fields;
 }

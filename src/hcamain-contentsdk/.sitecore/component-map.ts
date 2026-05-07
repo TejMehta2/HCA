@@ -39,7 +39,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['CQCRating', { ...CQCRatingtypes, ...CQCRating }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA, componentType: 'client' }],
   ['Accordions', { ...Accordions, componentType: 'client' }],
-  ['MainNavigation', { ...MainNavigationtypes, ...MainNavigation }],
+  ['MainNavigation', { ...MainNavigationtypes, ...MainNavigation, componentType: 'client' }],
   ['Footer', { ...Footerutilities, ...Footertypes, ...Footer }],
   ['BasicFooter', { ...BasicFooter }],
 ]);

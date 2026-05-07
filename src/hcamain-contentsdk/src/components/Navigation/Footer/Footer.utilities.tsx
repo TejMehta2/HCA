@@ -1,10 +1,11 @@
+import { type JSX } from 'react';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { IconName } from '@component-library/foundation/Icons/icon-map.generated';
 import {
   Link as JssLink,
   Text as JssText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { Link, NavigationColumnsFolder, Profile } from './Footer.types';
 
 // Reduce through an array of sitecore LinkField, to accumulate an array of sitecore JSS Link
