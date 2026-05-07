@@ -1,9 +1,6 @@
-import {
-  Field,
-  ImageField,
-  LinkField,
-} from '@sitecore-content-sdk/nextjs'
+import { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 export interface DoctifyLogoFieldsGraphQl {
   text?: Field<string>;
@@ -22,7 +19,7 @@ export interface FieldsGraphQl {
   Reviews?: { targetItem: DoctifyReviewsFieldsGraphQl };
 }
 
-export type DoctifyPropsGraphQl = {
+export type DoctifyPropsGraphQl = ComponentWithContextProps & {
   params?: Params;
   fields?: {
     data?: {

@@ -4,6 +4,7 @@ import {
   LinkField,
 } from '@sitecore-content-sdk/nextjs'
 import Params from 'src/types/params';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 export interface DoctifyLogoFields {
   fields?: {
@@ -26,7 +27,7 @@ export interface Fields {
   Reviews?: DoctifyReviewsFields;
 }
 
-export type DoctifyProps = {
+export type DoctifyProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   alignment?: 'left' | 'right' | 'centre';

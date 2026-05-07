@@ -3,16 +3,15 @@ import {
   Text as JssText,
   Image as JssImage,
   Link as JssLink,
-  useSitecore,
-} from '@sitecore-content-sdk/nextjs'
+} from '@sitecore-content-sdk/nextjs';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import { DoctifyPropsGraphQl } from './DoctifyGraphQl.types';
 
 const DoctifyDefaultComponent = (props: DoctifyPropsGraphQl): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
-  return !isExperienceEditor ? (
+  return !isEditing ? (
     <></>
   ) : (
     <div className={`component ${props.params?.styles}`}>
@@ -26,8 +25,8 @@ const DoctifyDefaultComponent = (props: DoctifyPropsGraphQl): JSX.Element => {
 };
 
 export const Default = (props: DoctifyPropsGraphQl): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <DoctifyDefaultComponent {...props} />;
@@ -57,7 +56,7 @@ export const Default = (props: DoctifyPropsGraphQl): JSX.Element => {
         alignment={props.alignment}
         link={doctifyLink}
         rating={
-          isExperienceEditor ? (
+          isEditing ? (
             <JssText field={reviews?.targetItem?.stars} />
           ) : (
             reviews?.targetItem?.stars?.value || <></>

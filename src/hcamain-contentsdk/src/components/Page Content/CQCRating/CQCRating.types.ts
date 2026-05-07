@@ -5,6 +5,7 @@ import {
   LinkField,
 } from '@sitecore-content-sdk/nextjs'
 import Params from 'src/types/params';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 export type logoField = {
   Logo: { fields?: ImageField; value?: string };
@@ -32,7 +33,7 @@ export interface Fields {
   Title?: Field<string>;
 }
 
-export type CQCRatingProps = {
+export type CQCRatingProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   hideRating?: boolean;

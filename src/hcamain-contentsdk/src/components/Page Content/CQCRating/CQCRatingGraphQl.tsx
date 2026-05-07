@@ -1,18 +1,15 @@
 import { type JSX } from 'react';
-import {
-  Image as JssImage,
-  useSitecore,
-} from '@sitecore-content-sdk/nextjs'
+import { Image as JssImage } from '@sitecore-content-sdk/nextjs';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import { CQCBlockProps } from '@component-library/components/CQCBlock/CQCBlock.types';
 import { CQCRatingProps } from './CQCRatingGraphQl.types';
 
 const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
-  return !isExperienceEditor ? (
+  return !isEditing ? (
     <></>
   ) : (
     <div className={`component ${props.params?.styles}`}>

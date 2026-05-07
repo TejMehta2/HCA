@@ -18,10 +18,10 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
-import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
-import { CQCFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
+import { DoctifyReviewsFieldsGraphQl } from 'src/components/Page Content/Doctify/DoctifyGraphQl.types';
+import { CQCFieldsGraphQl } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl.types';
 import { ComponentWithContextProps } from 'lib/component-props';
 
 const DynamicHomepageIntroBlock = dynamic(

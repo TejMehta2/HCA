@@ -5,6 +5,7 @@ import {
   LinkField,
 } from '@sitecore-content-sdk/nextjs'
 import Params from 'src/types/params';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 export type logoFieldGraphQl = {
   logo: { jsonValue?: ImageField; value?: string };
@@ -29,7 +30,7 @@ export interface CQCFieldsGraphQl {
   title?: Field<string>;
 }
 
-export type CQCRatingProps = {
+export type CQCRatingProps = ComponentWithContextProps & {
   params?: Params;
   fields?: {
     data?: {

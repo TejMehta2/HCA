@@ -5,7 +5,7 @@ import {
   Text as JssText,
   RichText as JssRichText,
   ComponentRendering,
-  Placeholder,
+  AppPlaceholder,
 } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
@@ -13,9 +13,10 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -125,8 +126,8 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         }
         ctas={
           props.rendering && (
-            <PlaceHolderWrapper>
-              <Placeholder name={phKey} rendering={props.rendering} />
+            <PlaceHolderWrapper>             
+              <AppPlaceholder name={phKey} rendering={props.rendering} componentMap={componentMap} page={page} />
             </PlaceHolderWrapper>
           )
         }

@@ -1,10 +1,9 @@
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import {
   Text as JssText,
   Image as JssImage,
   Link as JssLink,
-  useSitecore,
-} from '@sitecore-content-sdk/nextjs'
+} from '@sitecore-content-sdk/nextjs';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import { DoctifyProps } from './Doctify.types';
 
@@ -17,8 +16,8 @@ const DoctifyDefaultComponent = (props: DoctifyProps): JSX.Element => (
 );
 
 export const Default = (props: DoctifyProps): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
   if (!props.fields) {
     return <DoctifyDefaultComponent {...props} />;
@@ -51,7 +50,7 @@ export const Default = (props: DoctifyProps): JSX.Element => {
         alignment={props.alignment}
         link={doctifyLink}
         rating={
-          isExperienceEditor ? (
+          isEditing ? (
             <JssText field={props.fields?.Reviews?.fields?.Stars} />
           ) : (
             props.fields?.Reviews?.fields?.Stars?.value || <></>

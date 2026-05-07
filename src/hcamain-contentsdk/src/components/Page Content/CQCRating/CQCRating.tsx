@@ -1,19 +1,18 @@
-import {type JSX } from 'react';
+import { type JSX } from 'react';
 import {
   Image as JssImage,
   Link as JssLink,
-  useSitecore,
-} from '@sitecore-content-sdk/nextjs'
+} from '@sitecore-content-sdk/nextjs';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import { CQCBlockProps } from '@component-library/components/CQCBlock/CQCBlock.types';
 import { CQCRatingProps } from './CQCRating.types';
 
 const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
 
-  return !isExperienceEditor ? (
+  return !isEditing ? (
     <></>
   ) : (
     <div className={`component ${props.params?.styles}`}>
@@ -27,12 +26,13 @@ const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => {
 };
 
 export const Default = (props: CQCRatingProps): JSX.Element => {
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext.pageEditing;
-
   if (!props.fields) {
     return <CQCRatingDefaultComponent {...props} />;
   }
+
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
+
   const { hideRating = false, length = 'long' } = props;
 
   const defaultRating = (
@@ -42,7 +42,7 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   ) as CQCBlockProps['rating'];
 
   const ratingLink =
-    props.fields?.ReportLink?.value?.href && !isExperienceEditor ? (
+    props.fields?.ReportLink?.value?.href && !isEditing ? (
       <a href={props.fields?.ReportLink?.value?.href}></a>
     ) : (
       props.fields?.ReportLink && <JssLink field={props.fields?.ReportLink} />
