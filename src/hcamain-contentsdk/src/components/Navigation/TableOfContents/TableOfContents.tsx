@@ -12,7 +12,7 @@ import {
   TableOfContentsProps,
   NavigableComponent,
 } from './TableOfContents.types';
-import router from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface TableOfContentsWithVariantProps extends TableOfContentsProps {
   variant: '' | 'stacked';
@@ -23,40 +23,31 @@ export const Default = (
 ): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>([]);
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      buildToC();
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, []);
-
-  // Initial scan
-  useEffect(() => {
-    buildToC();
-  }, []);
-
-  const buildToC = () => {
-    // Scan DOM for elements with data-subnav-link-title
+  const buildToC = useCallback(() => {
     const elements = document.querySelectorAll<HTMLElement>(
       '[data-subnav-link-title]'
     );
-    // console.log('[ToC] Found elements:', elements);
 
     const tocComponents: NavigableComponent[] = Array.from(elements).map(
-      (el) => {
-        const item = {
-          TableOfContentsLinkTitle: el.dataset.subnavLinkTitle || '',
-          Id: el.dataset.subnavLinkId || el.id || '', // fallback to id if not present
-        };
-        return item;
-      }
+      (el) => ({
+        TableOfContentsLinkTitle: el.dataset.subnavLinkTitle || '',
+        Id: el.dataset.subnavLinkId || el.id || '',
+      })
     );
 
     setComponentsList(tocComponents);
-  };
+  }, []);
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      buildToC();
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [buildToC, pathname, searchParams]);
 
   const hasNoDatasource = !props.fields;
 
