@@ -1,4 +1,4 @@
-﻿# may contain OAuth secrets, do not commit
+# may contain OAuth secrets, do not commit
 .sitecore/user.json
 
 # NuGet cache for Sitecore CLI
@@ -85,3 +85,14 @@ src/component-library/node_modules
 
 /src/hcamain/src/temp
 /src/undefined/component-library
+
+src/items/Prod_Sync_*
+src/items/HCA_GlobalData/
+src/items/HCA_Presentation/
+src/items/HCA_Settings/
+src/items/HCA_SiteContent/
+src/component-library/storybook-static/
+src/hcamain-contentsdk/src/temp/
+src/component-library-content-sdk-2/assets/images/map-pin.svg
+src/component-library-content-sdk-2/
+src/component-library-contentsdk/node_modules/
