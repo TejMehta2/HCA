@@ -1,12 +1,16 @@
+'use client';
 import React, { type JSX } from 'react';
 import { ErrorMessageProps } from './ErrorMessage.types';
 import styles from './ErrorMessage.module.scss';
-import { useI18n } from 'next-localization';
+import { useTranslations, useMessages } from 'next-intl';
 import Text from '../../foundation/Text/Text';
 
 const ErrorMessage = (props: ErrorMessageProps): JSX.Element => {
   const { children, contentVariation } = props;
-  const { t } = useI18n();
+
+  const messages = useMessages();
+  const siteName = Object.keys(messages)[0] || 'sync';
+  const t = useTranslations(siteName);
 
   const fallback = (
     <>

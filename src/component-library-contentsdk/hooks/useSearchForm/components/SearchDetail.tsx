@@ -1,4 +1,5 @@
-import { useI18n } from 'next-localization';
+'use client';
+import { createTranslator, useLocale } from 'next-intl';
 import React from 'react';
 
 // Shows the number of results
@@ -12,6 +13,9 @@ interface SearchDetailProps {
   input?: string;
 }
 
+const toIcuMessage = (message: string) =>
+  message.replace(/{{\s*([\w-]+)\s*}}/g, '{$1}');
+
 const SearchDetail = (props: SearchDetailProps) => {
   const {
     searchResultsText = '{{quantity}} results',
@@ -19,21 +23,28 @@ const SearchDetail = (props: SearchDetailProps) => {
     resultsCount,
     input,
   } = props;
-  const { t, set } = useI18n();
 
-  set('en', {
-    ['search-results-text-with-input']: searchResultsTextWithInput,
-    ['search-results-text']: searchResultsText,
+  const locale = useLocale();
+  const t = createTranslator({
+    locale,
+    messages: {
+      'search-results-text-with-input': toIcuMessage(
+        searchResultsTextWithInput
+      ),
+      'search-results-text': toIcuMessage(searchResultsText),
+    },
   });
-  const params = {
-    quantity: resultsCount,
-    input: input,
-  };
 
-  const key = params.input
-    ? 'search-results-text-with-input'
-    : 'search-results-text';
-  return <>{t(key, params)}</>;
+  const key = input ? 'search-results-text-with-input' : 'search-results-text';
+
+  return (
+    <>
+      {t(key, {
+        quantity: resultsCount,
+        ...(input ? { input } : {}),
+      })}
+    </>
+  );
 };
 
 export default SearchDetail;

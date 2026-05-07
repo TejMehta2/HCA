@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, type JSX } from 'react';
 import { FiltersProps } from './Filters.types';
 import styles from './Filters.module.scss';
@@ -9,7 +10,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../../components/Accordions/Accordions';
-import { useI18n } from 'next-localization';
+import { useTranslations, useMessages } from 'next-intl';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const {
@@ -25,7 +26,9 @@ const Filters = (props: FiltersProps): JSX.Element => {
     hideResultsCount = false,
   } = props;
 
-  const { t } = useI18n();
+  const messages = useMessages();
+  const siteName = Object.keys(messages)[0] || 'sync';
+  const t = useTranslations(siteName);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -46,11 +49,13 @@ const Filters = (props: FiltersProps): JSX.Element => {
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
         <Button variation="full" size="large">
-          <button onClick={() => {
-            dialogRef.current?.showModal();
-            dialogRef.current?.focus()
-          }
-          } type="button">
+          <button
+            onClick={() => {
+              dialogRef.current?.showModal();
+              dialogRef.current?.focus();
+            }}
+            type="button"
+          >
             {buttonIcon}
             {buttonText}
           </button>
