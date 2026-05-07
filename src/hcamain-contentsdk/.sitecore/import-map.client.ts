@@ -8,58 +8,34 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import client from 'src/lib/sitecore-client';
-import { CdpHelper, useSitecore, Text, Link, RichText } from '@sitecore-content-sdk/nextjs';
-import { useEffect } from 'react';
-import { pageView } from '@sitecore-content-sdk/events';
-import config from 'sitecore.config';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { Text, Link, RichText, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import Accordions from '@component-library/components/Accordions/Accordions';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Button from '@component-library/core-components/Button/Button';
+import client from 'src/lib/sitecore-client';
+import { useEffect } from 'react';
+import { pageView } from '@sitecore-content-sdk/events';
+import config from 'sitecore.config';
 
 const importMap = [
   {
     module: 'react/jsx-runtime',
     exports: [
       { name: 'jsx', value: jsx },
-      { name: 'Fragment', value: Fragment },
       { name: 'jsxs', value: jsxs },
-    ]
-  },
-  {
-    module: 'src/lib/sitecore-client',
-    exports: [
-      { name: 'default', value: client },
+      { name: 'Fragment', value: Fragment },
     ]
   },
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
-      { name: 'CdpHelper', value: CdpHelper },
-      { name: 'useSitecore', value: useSitecore },
       { name: 'Text', value: Text },
       { name: 'Link', value: Link },
       { name: 'RichText', value: RichText },
-    ]
-  },
-  {
-    module: 'react',
-    exports: [
-      { name: 'useEffect', value: useEffect },
-    ]
-  },
-  {
-    module: '@sitecore-content-sdk/events',
-    exports: [
-      { name: 'pageView', value: pageView },
-    ]
-  },
-  {
-    module: 'sitecore.config',
-    exports: [
-      { name: 'default', value: config },
+      { name: 'CdpHelper', value: CdpHelper },
+      { name: 'useSitecore', value: useSitecore },
     ]
   },
   {
@@ -84,6 +60,30 @@ const importMap = [
     module: '@component-library/core-components/Button/Button',
     exports: [
       { name: 'default', value: Button },
+    ]
+  },
+  {
+    module: 'src/lib/sitecore-client',
+    exports: [
+      { name: 'default', value: client },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'useEffect', value: useEffect },
+    ]
+  },
+  {
+    module: '@sitecore-content-sdk/events',
+    exports: [
+      { name: 'pageView', value: pageView },
+    ]
+  },
+  {
+    module: 'sitecore.config',
+    exports: [
+      { name: 'default', value: config },
     ]
   }
 ] as ImportEntry[];

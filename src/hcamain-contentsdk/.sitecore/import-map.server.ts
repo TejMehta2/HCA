@@ -8,10 +8,10 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { Placeholder, Text, RichText, Link, useSitecore, Image } from '@sitecore-content-sdk/nextjs';
+import { Placeholder, Text, RichText, Link, Image, useSitecore } from '@sitecore-content-sdk/nextjs';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
-import { Default } from 'src/components/Doctify/DoctifyGraphQl';
-import { Default as Default_754e381b15f0511dcf4f78d3c8e55c08031a8918 } from 'src/components/CQCRating/CQCRatingGraphQl';
+import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
+import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
@@ -21,6 +21,8 @@ import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import React from 'react';
+import Button from '@component-library/core-components/Button/Button';
+import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 
@@ -40,8 +42,8 @@ const importMap = [
       { name: 'Text', value: Text },
       { name: 'RichText', value: RichText },
       { name: 'Link', value: Link },
-      { name: 'useSitecore', value: useSitecore },
       { name: 'Image', value: Image },
+      { name: 'useSitecore', value: useSitecore },
     ]
   },
   {
@@ -51,15 +53,15 @@ const importMap = [
     ]
   },
   {
-    module: 'src/components/Doctify/DoctifyGraphQl',
+    module: 'src/components/Page Content/Doctify/DoctifyGraphQl',
     exports: [
       { name: 'Default', value: Default },
     ]
   },
   {
-    module: 'src/components/CQCRating/CQCRatingGraphQl',
+    module: 'src/components/Page Content/CQCRating/CQCRatingGraphQl',
     exports: [
-      { name: 'Default', value: Default_754e381b15f0511dcf4f78d3c8e55c08031a8918 },
+      { name: 'Default', value: Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e },
     ]
   },
   {
@@ -114,6 +116,18 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'default', value: React },
+    ]
+  },
+  {
+    module: '@component-library/core-components/Button/Button',
+    exports: [
+      { name: 'default', value: Button },
+    ]
+  },
+  {
+    module: '@component-library/core-components/TextButton/TextButton',
+    exports: [
+      { name: 'default', value: TextButtonComponent },
     ]
   },
   {
