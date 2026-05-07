@@ -47,12 +47,14 @@ const generateFileContent = (err: unknown, fileNames: string[]) => {
   if (err) {
     console.error(err);
   }
-  const fileContent = `${createImportsFromFileNames(fileNames)}
+  const fileContent = `import type { FC, SVGProps } from 'react'
+
+${createImportsFromFileNames(fileNames)}
 
 export type IconName =
   | ${createTypesFromFileName(fileNames)}
 
-const iconMap = new Map<IconName, () => JSX.Element>([
+const iconMap = new Map<IconName, FC<SVGProps<SVGSVGElement>>>([
   ${createMapEntriesFromFileNames(fileNames)}
 ])
 

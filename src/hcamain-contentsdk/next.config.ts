@@ -1,11 +1,23 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const svgrLoader = require.resolve('@svgr/webpack');
 
 const nextConfig: NextConfig = {
   // Enable Turbopack file system caching for faster dev startup (beta)
   // See: https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack
   experimental: {
     turbopackFileSystemCacheForDev: true,
+  },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [svgrLoader],
+        as: '*.js',
+      },
+    },
   },
 
   // use this configuration to ensure that only images from the whitelisted domains
@@ -51,6 +63,24 @@ const nextConfig: NextConfig = {
         locale: false,
       },
     ];
+  },
+  webpack: (config) => {
+    const assetRule = config.module.rules.find(
+      (rule: { test?: { test?: (value: string) => boolean } }) =>
+        rule.test?.test?.('.svg')
+    );
+
+    if (assetRule) {
+      assetRule.exclude = /\.svg$/i;
+    }
+
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: [svgrLoader],
+    });
+
+    return config;
   },
 };
 

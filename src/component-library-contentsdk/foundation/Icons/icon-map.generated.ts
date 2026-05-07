@@ -1,4 +1,4 @@
-import { type JSX } from 'react';
+import type { FC, SVGProps } from 'react';
 import icon3Dots48 from './assets-dist/3 dots48.svg';
 import icon3Lines from './assets-dist/3 lines.svg';
 import icon3Lines48 from './assets-dist/3 lines48.svg';
@@ -314,7 +314,7 @@ export type IconName =
   | 'iconWheelchair48'
   | 'iconX';
 
-const iconMap = new Map<IconName, () => JSX.Element>([
+const iconMap = new Map<IconName, FC<SVGProps<SVGSVGElement>>>([
   ['icon3Dots48', icon3Dots48],
   ['icon3Lines', icon3Lines],
   ['icon3Lines48', icon3Lines48],
