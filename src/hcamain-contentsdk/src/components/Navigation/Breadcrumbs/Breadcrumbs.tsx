@@ -1,5 +1,5 @@
-import React from 'react';
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { type JSX } from 'react';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 import Params from 'src/types/params';

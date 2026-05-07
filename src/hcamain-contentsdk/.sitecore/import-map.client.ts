@@ -9,7 +9,7 @@ import {
 // end of built-in imports
 
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
-import { useRef, useEffect } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
 import { Text, RichText, Link, Image, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import Button from '@component-library/core-components/Button/Button';
@@ -17,14 +17,17 @@ import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/Op
 import Accordions from '@component-library/components/Accordions/Accordions';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
+import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
+import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import Icons from '@component-library/foundation/Icons/Icons';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
-import Icons from '@component-library/foundation/Icons/Icons';
 import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
 import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import client from 'src/lib/sitecore-client';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
@@ -42,7 +45,9 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'useRef', value: useRef },
+      { name: 'useCallback', value: useCallback },
       { name: 'useEffect', value: useEffect },
+      { name: 'useState', value: useState },
     ]
   },
   {
@@ -93,6 +98,33 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/foundation/Text/Text',
+    exports: [
+      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
+    ]
+  },
+  {
+    module: '@component-library/site-components/JumpToLinks/JumpToLinks',
+    exports: [
+      { name: 'JumpToAnchor', value: JumpToAnchor },
+      { name: 'JumpToTextLink', value: JumpToTextLink },
+      { name: 'default', value: JumpToLinks },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Icons/Icons',
+    exports: [
+      { name: 'default', value: Icons },
+    ]
+  },
+  {
+    module: 'next/navigation',
+    exports: [
+      { name: 'usePathname', value: usePathname },
+      { name: 'useSearchParams', value: useSearchParams },
+    ]
+  },
+  {
     module: '@component-library/site-components/Navigation/Navigation',
     exports: [
       { name: 'default', value: Navigation },
@@ -111,12 +143,6 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/foundation/Icons/Icons',
-    exports: [
-      { name: 'default', value: Icons },
-    ]
-  },
-  {
     module: '@component-library/yext/ModalSearch/ModalSearch',
     exports: [
       { name: 'default', value: ModalSearch },
@@ -132,12 +158,6 @@ const importMap = [
     module: 'src/jss-abstractions/SitecoreSvg/SitecoreSvg',
     exports: [
       { name: 'default', value: SitecoreSvg },
-    ]
-  },
-  {
-    module: '@component-library/foundation/Text/Text',
-    exports: [
-      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
     ]
   },
   {

@@ -1,4 +1,5 @@
-import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export interface Fields {
@@ -29,10 +30,10 @@ export interface NavigablePagesFields {
   hideInSubNavigation: { boolValue: boolean };
 }
 
-export interface SubNavigationProps {
+export type SubNavigationProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
-}
+};
 
 export interface PageRouteData {
   itemId?: string;

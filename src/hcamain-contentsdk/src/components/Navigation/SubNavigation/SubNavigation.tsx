@@ -1,15 +1,9 @@
-/* eslint-disable */
-/* eslint react/jsx-key: 0 */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   NavigablePagesFields,
-  PageRouteData,
   SubNavigationProps,
 } from './SubNavigation.types';
-import {
-  Text as JssText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Text as JssText } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import JumpToLinks, {
   JumpToLink,
@@ -19,9 +13,9 @@ import Themes from '@component-library/foundation/Themes/Themes';
 const SubNavigationDefaultComponent = (
   props: SubNavigationProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
-  if (isExperienceEditor) {
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
+  if (isEditing) {
     return (
       <div className={`component ${props.params?.styles}`}>
         <div className="component-content">
@@ -36,11 +30,11 @@ const SubNavigationDefaultComponent = (
 };
 
 export const Default = (props: SubNavigationProps): JSX.Element => {
-  const context = useSitecoreContext();
-
   if (!props.fields?.data?.item)
     return <SubNavigationDefaultComponent {...props} />;
-  const contextPage = context.sitecoreContext?.route as PageRouteData;
+
+  const contextItemId = props.page.layout.sitecore.route?.itemId;
+
   const datasource = props.fields.data.item;
 
   let navigablePages = datasource.rootPage?.targetItem?.children?.results || [];
@@ -58,7 +52,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
     (item: NavigablePagesFields) =>
       !item.hideInSubNavigation?.boolValue &&
       item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
-        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+        contextItemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
   );
 
   if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;

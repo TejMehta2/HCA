@@ -26,8 +26,15 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
+import { JumpToLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import Themes from '@component-library/foundation/Themes/Themes';
 import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Navigation/Footer/Footer.utilities';
 import Footer from '@component-library/site-components/Footer/Footer';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
+import Head from 'next/head';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
 
 const importMap = [
@@ -153,6 +160,19 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/site-components/JumpToLinks/JumpToLinks',
+    exports: [
+      { name: 'JumpToLink', value: JumpToLink },
+      { name: 'default', value: JumpToLinks },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Themes/Themes',
+    exports: [
+      { name: 'default', value: Themes },
+    ]
+  },
+  {
     module: 'src/components/Navigation/Footer/Footer.utilities',
     exports: [
       { name: 'linkReducer', value: linkReducer },
@@ -164,6 +184,30 @@ const importMap = [
     module: '@component-library/site-components/Footer/Footer',
     exports: [
       { name: 'default', value: Footer },
+    ]
+  },
+  {
+    module: '@component-library/site-components/Breadcrumbs/Breadcrumbs',
+    exports: [
+      { name: 'default', value: Breadcrumbs },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 },
+    ]
+  },
+  {
+    module: 'next/head',
+    exports: [
+      { name: 'default', value: Head },
+    ]
+  },
+  {
+    module: '@component-library/core-components/TextLink/TextLink',
+    exports: [
+      { name: 'default', value: TextLink },
     ]
   },
   {

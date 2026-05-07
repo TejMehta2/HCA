@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+import { type JSX, useCallback, useEffect, useState } from 'react';
 import Text from '@component-library/foundation/Text/Text';
-import { Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Text as JssText } from '@sitecore-content-sdk/nextjs';
 import JumpToLinks, {
   JumpToAnchor,
   JumpToTextLink,

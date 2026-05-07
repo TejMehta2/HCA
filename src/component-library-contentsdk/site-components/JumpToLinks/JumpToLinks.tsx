@@ -1,3 +1,4 @@
+'use client';
 import React, { useCallback, useEffect, useRef, type JSX } from 'react';
 import { JumpToLinkProps, JumpToLinksProps } from './JumpToLinks.types';
 import styles from './JumpToLinks.module.scss';
