@@ -3,6 +3,7 @@ import { AppPlaceholder, DesignLibraryApp, Field, Page } from '@sitecore-content
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
 import componentMap from '.sitecore/component-map';
+import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 
 interface LayoutProps {
   page: Page;
@@ -22,6 +23,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
       <Scripts />
       <SitecoreStyles layoutData={layout} />
       {/* root placeholder for the app, which we add components to using route data */}
+      <YextProvider>
       <div className={mainClassPageEditing}>
         {mode.isDesignLibrary ? (
           route && (
@@ -73,6 +75,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           </>
         )}
       </div>
+      </YextProvider>
     </>
   );
 };
