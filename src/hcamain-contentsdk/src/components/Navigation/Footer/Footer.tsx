@@ -1,5 +1,8 @@
-import React, { type JSX } from 'react';
-import { Placeholder, Text as JssText } from '@sitecore-content-sdk/nextjs';
+import { type JSX } from 'react';
+import {
+  Text as JssText,
+  AppPlaceholder,
+} from '@sitecore-content-sdk/nextjs';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
 import { Default as Doctify } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
@@ -7,6 +10,7 @@ import { Default as CQCRating } from 'src/components/Page Content/CQCRating/CQCR
 import Text from '@component-library/foundation/Text/Text';
 import Footer from '@component-library/site-components/Footer/Footer';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import componentMap from '.sitecore/component-map';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
   const { page } = props;
@@ -26,6 +30,8 @@ const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
 };
 
 export const Default = (props: FooterProps): JSX.Element => {
+  console.log('Footer props:', props);
+
   if (!props.fields) {
     return <FooterDefaultComponent {...props} />;
   }
@@ -41,46 +47,50 @@ export const Default = (props: FooterProps): JSX.Element => {
       columnMapper(socials)
     ) || [];
 
-  const reviewColumn = {
-    reviews: [
-      props.fields?.data?.item?.cqcStatus?.targetItem ? (
-        <CQCRating
-          params={props.params}
-          rendering={props.rendering}
-          page={props.page}
-          key={1}
-          length="short"
-          hideRating={true}
-          fields={{
-            data: {
-              item: props.fields?.data?.item?.cqcStatus?.targetItem,
+  const reviews: JSX.Element[] = [];
+
+  if (props.fields?.data?.item?.cqcStatus?.targetItem) {
+    reviews.push(
+      <CQCRating
+        key="cqc"
+        params={props.params}
+        rendering={props.rendering}
+        page={props.page}
+        length="short"
+        hideRating={true}
+        fields={{
+          data: {
+            item: props.fields.data.item.cqcStatus.targetItem,
+          },
+        }}
+      />
+    );
+  }
+
+  if (
+    props.fields?.data?.item?.doctifyReviews?.targetItem &&
+    typeof window !== 'undefined' &&
+    !window.location.href.includes(
+      process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+    )
+  ) {
+    reviews.push(
+      <Doctify
+        key="doctify"
+        rendering={props.rendering}
+        page={props.page}
+        params={props.params}
+        fields={{
+          data: {
+            item: {
+              Reviews: props.fields.data.item.doctifyReviews,
             },
-          }}
-        />
-      ) : (
-        <></>
-      ),
-      props.fields?.data?.item?.doctifyReviews?.targetItem &&
-      typeof window !== 'undefined' &&
-      window.location.href.indexOf(
-        process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-      ) === -1 ? (
-        <Doctify
-          rendering={props.rendering}
-          page={props.page}
-          params={props.params}
-          key={2}
-          fields={{
-            data: {
-              item: { Reviews: props.fields?.data?.item?.doctifyReviews },
-            },
-          }}
-        />
-      ) : (
-        <></>
-      ),
-    ],
-  };
+          },
+        }}
+      />
+    );
+  }
+
   const legals =
     props.fields?.data?.item?.bottomLineLinksFolder?.targetItem?.links?.targetItems?.reduce(
       linkReducer,
@@ -133,15 +143,17 @@ export const Default = (props: FooterProps): JSX.Element => {
       }
       buttons={
         props.rendering ? (
-          <Placeholder
+          <AppPlaceholder
             name={`cta-buttons-${props.params?.DynamicPlaceholderId}`}
             rendering={props.rendering}
+            page={props.page}
+            componentMap={componentMap}
           />
         ) : (
           <></>
         )
       }
-      columns={[...columns, reviewColumn]}
+      columns={[...columns, ...(reviews.length ? [{ reviews }] : [])]}
       legals={legals}
       contact={contactUnitDetails}
     />
