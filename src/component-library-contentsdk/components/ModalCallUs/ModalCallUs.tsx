@@ -59,7 +59,9 @@ const ModalCallUs = (
       {contact?.availability && (
         <div className={styles.availability}>
           <Icons iconName={'iconClock'} />
-          <Text variation={'body-medium-large'}>{contact.availability}</Text>
+          <Text tag={'div'} variation={'body-medium-large'}>
+            {contact.availability}
+          </Text>
         </div>
       )}
     </div>
