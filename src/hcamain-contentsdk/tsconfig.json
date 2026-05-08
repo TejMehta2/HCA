@@ -22,7 +22,7 @@
       ]
     },
     "target": "ES2017",
-    "types": ["node", "google.maps", "JSX"],
+    "types": ["node", "google.maps"],
     "lib": [
       "dom",
       "dom.iterable",
