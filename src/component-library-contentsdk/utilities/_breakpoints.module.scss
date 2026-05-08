@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $breakpoints: (
   /* 600px*/ screen-m: 37.5rem,
   /* 1135px*/ screen-l: 71rem,
@@ -5,8 +7,8 @@ $breakpoints: (
 );
 
 @function get-breakpoint($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @return map-get($breakpoints, $breakpoint);
+  @if map.has-key($breakpoints, $breakpoint) {
+    @return map.get($breakpoints, $breakpoint);
   }
 
   @warn "The key #{$breakpoint} is not in the map '$breakpoints'";
