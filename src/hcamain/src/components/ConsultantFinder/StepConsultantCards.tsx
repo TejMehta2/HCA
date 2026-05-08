@@ -236,6 +236,17 @@ export const Default = (props: StepProps): JSX.Element => {
     lon: item.fields.lon.value,
   }));
 
+  useEffect(() => {
+    //test
+    if (!loading) {
+      console.log('results');
+      document.scrollingElement?.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [loading, results]);
+
   // location
   const applyLocationToSearch = (nextLocation: string) => {
     const selectedLocationConfig =
@@ -1352,13 +1363,6 @@ export const Default = (props: StepProps): JSX.Element => {
                           undefined,
                           { shallow: true, scroll: false }
                         );
-
-                        requestAnimationFrame(() => {
-                          document.scrollingElement?.scrollTo({
-                            top: 0,
-                            behavior: 'smooth',
-                          });
-                        });
                       }}
                       currentPage={Math.ceil((offset + 1) / 12)}
                     />
