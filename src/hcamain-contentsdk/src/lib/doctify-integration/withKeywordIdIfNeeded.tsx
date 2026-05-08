@@ -1,4 +1,4 @@
-import { LinkField, LinkFieldValue } from '@sitecore-jss/sitecore-jss-nextjs';
+import { LinkField, LinkFieldValue } from '@sitecore-content-sdk/nextjs';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import { resolveSitecoreLink } from 'lib/utility-functions/resolveSitecoreLink';
 

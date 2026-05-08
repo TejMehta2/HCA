@@ -1,11 +1,6 @@
-/* eslint-disable */
-import React, { useRef } from 'react';
-import {
-  Field,
-  Text as JssText,
-  RichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+import React, { useRef, type JSX } from 'react';
+import { Field, Text as JssText, RichText } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text from '@component-library/foundation/Text/Text';
@@ -21,6 +16,11 @@ import { DoctifyMappedSitecoreItemWithAncestors } from 'src/types/doctify/doctif
 import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
 import { ModalContentFields } from 'src/types/modalContent.GraphQL';
 import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
+import { ComponentWithContextProps } from 'lib/component-props';
+import {
+  isValidNextLinkHref,
+  normalizeHref,
+} from 'lib/utility-functions/nextLinkHref';
 
 interface Fields {
   cTAIcon?: svgIconFieldsTargetItem;
@@ -29,7 +29,7 @@ interface Fields {
   modalContent?: { targetItems: ModalContentFields[] };
 }
 
-type StickyCTAProps = {
+type StickyCTAProps = ComponentWithContextProps & {
   params?: Params;
   fields?: {
     data: { item: Fields; contextItem: DoctifyMappedSitecoreItemWithAncestors };
@@ -37,9 +37,9 @@ type StickyCTAProps = {
 };
 
 const StickyCTADefaultComponent = (props: StickyCTAProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
-  if (isExperienceEditor) {
+  const { page } = props;
+  const isEditing = page.mode.isEditing;
+  if (isEditing) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
@@ -95,7 +95,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
 
     e.preventDefault();
     dialogRef.current?.close();
-    window.location.href = href;
+    window.location.assign(href);
   };
 
   if (!props.fields) {
@@ -231,13 +231,25 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                   return;
                 }
 
-                const { href, text } = locationPageOrFirstParentLocation
+                const { href: rawHref, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(link.jsonValue, doctifyId, 'practice')
                   : withKeywordIdIfNeeded(
-                    link.jsonValue,
-                    doctifyId,
-                    'keywordId'
-                  );
+                      link.jsonValue,
+                      doctifyId,
+                      'keywordId'
+                    );
+                const href = normalizeHref(rawHref);
+                const useNextLink = isValidNextLinkHref(href);
+                const linkContent = (
+                  <>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: icon?.targetItem?.svgMarkup?.value || '',
+                      }}
+                    />
+                    <RichText tag="span" field={{ value: text }} />
+                  </>
+                );
 
                 return (
                   <Button
@@ -248,24 +260,35 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link
-                      href={href}
-                      target={link?.jsonValue?.value?.target}
-                      onClick={(e) =>
-                        handleModalNavigation(
-                          e,
-                          href,
-                          link?.jsonValue?.value?.target
-                        )
-                      }
-                    >
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: icon?.targetItem?.svgMarkup?.value || '',
-                        }}
-                      />
-                      <RichText tag="span" field={{ value: text }} />
-                    </Link>
+                    {useNextLink ? (
+                      <Link
+                        href={href}
+                        target={link?.jsonValue?.value?.target}
+                        onClick={(e) =>
+                          handleModalNavigation(
+                            e,
+                            href,
+                            link?.jsonValue?.value?.target
+                          )
+                        }
+                      >
+                        {linkContent}
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        target={link?.jsonValue?.value?.target}
+                        onClick={(e) =>
+                          handleModalNavigation(
+                            e,
+                            href,
+                            link?.jsonValue?.value?.target
+                          )
+                        }
+                      >
+                        {linkContent}
+                      </a>
+                    )}
                   </Button>
                 );
               })}
@@ -302,17 +325,29 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                   return;
                 }
 
-                const { href, text } = locationPageOrFirstParentLocation
+                const { href: rawHref, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(
-                    link?.jsonValue,
-                    doctifyId,
-                    'practice'
-                  )
+                      link?.jsonValue,
+                      doctifyId,
+                      'practice'
+                    )
                   : withKeywordIdIfNeeded(
-                    link?.jsonValue,
-                    doctifyId,
-                    'keywordId'
-                  );
+                      link?.jsonValue,
+                      doctifyId,
+                      'keywordId'
+                    );
+                const href = normalizeHref(rawHref);
+                const useNextLink = isValidNextLinkHref(href);
+                const linkContent = (
+                  <>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: icon?.targetItem?.svgMarkup?.value || '',
+                      }}
+                    />
+                    <RichText tag="span" field={{ value: text }} />
+                  </>
+                );
 
                 return (
                   <Button
@@ -323,24 +358,35 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                       buttonVariation.toLowerCase() as ButtonVariationUnionTypes
                     }
                   >
-                    <Link
-                      href={href}
-                      target={link.jsonValue?.value?.target}
-                      onClick={(e) =>
-                        handleModalNavigation(
-                          e,
-                          href,
-                          link?.jsonValue?.value?.target
-                        )
-                      }
-                    >
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: icon?.targetItem?.svgMarkup?.value || '',
-                        }}
-                      />
-                      <RichText tag="span" field={{ value: text }} />
-                    </Link>
+                    {useNextLink ? (
+                      <Link
+                        href={href}
+                        target={link.jsonValue?.value?.target}
+                        onClick={(e) =>
+                          handleModalNavigation(
+                            e,
+                            href,
+                            link?.jsonValue?.value?.target
+                          )
+                        }
+                      >
+                        {linkContent}
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        target={link.jsonValue?.value?.target}
+                        onClick={(e) =>
+                          handleModalNavigation(
+                            e,
+                            href,
+                            link?.jsonValue?.value?.target
+                          )
+                        }
+                      >
+                        {linkContent}
+                      </a>
+                    )}
                   </Button>
                 );
               })}
