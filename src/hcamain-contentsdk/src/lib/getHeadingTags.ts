@@ -1,9 +1,10 @@
 import Params from 'src/types/params';
+import type { HeadingTag } from 'src/types/params';
 
 // Utility function to evalute which heading should use a CMSable semantic heading tag, and which should use a span.
 // Intended to be used on component integrations which have a subtitle and title field
 
-type Tag = keyof JSX.IntrinsicElements | undefined;
+type Tag = HeadingTag | 'span' | undefined;
 
 const getHeadingTags = (
   params?: Params,

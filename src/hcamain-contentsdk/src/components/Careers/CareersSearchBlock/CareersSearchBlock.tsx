@@ -1,9 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { type JSX } from 'react';
 import {
-  useSitecoreContext,
-  GetStaticComponentProps,
   useComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import Button from '@component-library/core-components/Button/Button';
@@ -16,8 +16,7 @@ import CareersSearch from '@component-library/careers/CareersSearch/CareersSearc
 const CareersSearchBlockDefaultComponent = (
   props: CareersSearchBlockProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -65,9 +64,13 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
                   }
                   id={data?.facets[2].fieldId?.replace('c_', '') || ''}
                   options={
-                    data?.facets[2].options.map((option) => ({
-                      text: option.displayName,
-                    })) || []
+                    data?.facets[2].options.map(
+                      (
+                        option: JobsResponse['response']['facets'][number]['options'][number]
+                      ) => ({
+                        text: option.displayName,
+                      })
+                    ) || []
                   }
                 />
               )}
@@ -104,7 +107,7 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async () => {
+export const getStaticProps = async () => {
   try {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=0`

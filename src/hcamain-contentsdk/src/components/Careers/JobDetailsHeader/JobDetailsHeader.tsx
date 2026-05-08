@@ -1,8 +1,11 @@
-import React from 'react';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { type JSX } from 'react';
 import Themes from '@component-library/foundation/Themes/Themes';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
-import { JobDetailsHeaderProps, VacancyRoute } from './JobDetailsHeader.types';
+import {
+  JobDetailsHeaderProps,
+  VacancyResponse,
+  VacancyRoute,
+} from './JobDetailsHeader.types';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -14,8 +17,7 @@ import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParamet
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -31,15 +33,14 @@ const JobDetailsHeaderDefaultComponent = (
 };
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const vacancydata = sitecoreContext.route as VacancyRoute | undefined;
-  const data = vacancydata?.vacancy;
+  const vacancydata = props.page.layout.sitecore.route as VacancyRoute | undefined;
+  const data = vacancydata?.vacancy as VacancyResponse | undefined;
 
   if (!props?.fields?.data?.item) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
-  if (sitecoreContext?.pageEditing) {
+  if (props.page.mode.isEditing) {
     return <div>Vacancy details header</div>;
   }
 

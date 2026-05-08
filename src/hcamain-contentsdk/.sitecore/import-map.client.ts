@@ -9,9 +9,9 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { useRef, useCallback, useEffect, useState } from 'react';
+import { useRef, useCallback, useEffect, useState, createElement } from 'react';
 import React from 'react';
-import { Text, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, Image, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Text, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, Image, CdpHelper, useSitecore, useComponentProps } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
@@ -21,6 +21,7 @@ import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNe
 import { SITECORE_TEMPLATE_IDS } from 'lib/sitecore/templateIds';
 import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
 import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
+import { isValidNextLinkHref, normalizeHref } from 'lib/utility-functions/nextLinkHref';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Accordions from '@component-library/components/Accordions/Accordions';
@@ -29,7 +30,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
@@ -39,6 +40,23 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import client from 'src/lib/sitecore-client';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
+import useSWR from 'swr';
+import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
+import CareerSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import CareersHomepageHero from '@component-library/careers/CareersHompageHero/CareersHompageHero';
+import SearchBar from '@component-library/components/SearchBar/SearchBar';
+import SelectField from '@component-library/core-components/SelectField/SelectField';
+import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
+import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
+import Filters from '@component-library/site-components/Filters/Filters';
+import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
+import getHeadingTags from 'lib/getHeadingTags';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
 const importMap = [
   {
@@ -56,6 +74,7 @@ const importMap = [
       { name: 'useCallback', value: useCallback },
       { name: 'useEffect', value: useEffect },
       { name: 'useState', value: useState },
+      { name: 'createElement', value: createElement },
       { name: 'default', value: React },
     ]
   },
@@ -68,6 +87,7 @@ const importMap = [
       { name: 'Image', value: Image },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
+      { name: 'useComponentProps', value: useComponentProps },
     ]
   },
   {
@@ -125,6 +145,13 @@ const importMap = [
     ]
   },
   {
+    module: 'lib/utility-functions/nextLinkHref',
+    exports: [
+      { name: 'isValidNextLinkHref', value: isValidNextLinkHref },
+      { name: 'normalizeHref', value: normalizeHref },
+    ]
+  },
+  {
     module: '@component-library/components/ModalCallUs/ModalCallUs',
     exports: [
       { name: 'default', value: ModalCallUs },
@@ -173,6 +200,7 @@ const importMap = [
     exports: [
       { name: 'usePathname', value: usePathname },
       { name: 'useSearchParams', value: useSearchParams },
+      { name: 'useRouter', value: useRouter },
     ]
   },
   {
@@ -227,6 +255,103 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: 'swr',
+    exports: [
+      { name: 'default', value: useSWR },
+    ]
+  },
+  {
+    module: '@component-library/yext/YextResultCardCareers/YextResultCardCareers',
+    exports: [
+      { name: 'default', value: YextResultCardCareers },
+    ]
+  },
+  {
+    module: '@component-library/careers/CareersSearchResults/CareersSearchResults',
+    exports: [
+      { name: 'default', value: CareerSearchResults },
+    ]
+  },
+  {
+    module: '@component-library/site-components/ErrorMessage/ErrorMessage',
+    exports: [
+      { name: 'default', value: ErrorMessage },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
+    exports: [
+      { name: 'default', value: NextJssImage },
+    ]
+  },
+  {
+    module: '@component-library/careers/CareersHompageHero/CareersHompageHero',
+    exports: [
+      { name: 'default', value: CareersHomepageHero },
+    ]
+  },
+  {
+    module: '@component-library/components/SearchBar/SearchBar',
+    exports: [
+      { name: 'default', value: SearchBar },
+    ]
+  },
+  {
+    module: '@component-library/core-components/SelectField/SelectField',
+    exports: [
+      { name: 'default', value: SelectField },
+    ]
+  },
+  {
+    module: '@component-library/site-components/HeaderPlain/HeaderPlain',
+    exports: [
+      { name: 'getDynamicTitleStyle', value: getDynamicTitleStyle },
+      { name: 'default', value: HeaderPlain },
+    ]
+  },
+  {
+    module: '@component-library/components/SearchFilterList/SearchFilterList',
+    exports: [
+      { name: 'default', value: SearchFilterList },
+    ]
+  },
+  {
+    module: '@component-library/core-components/Checkbox/Checkbox',
+    exports: [
+      { name: 'default', value: Checkbox },
+    ]
+  },
+  {
+    module: '@component-library/core-components/Checkboxes/Checkboxes',
+    exports: [
+      { name: 'default', value: Checkboxes },
+    ]
+  },
+  {
+    module: '@component-library/site-components/Filters/Filters',
+    exports: [
+      { name: 'default', value: Filters },
+    ]
+  },
+  {
+    module: '@component-library/careers/CareersSearch/CareersSearch',
+    exports: [
+      { name: 'default', value: CareersSearch },
+    ]
+  },
+  {
+    module: 'lib/getHeadingTags',
+    exports: [
+      { name: 'default', value: getHeadingTags },
+    ]
+  },
+  {
+    module: '@component-library/site-components/CarouselCards/CarouselCards',
+    exports: [
+      { name: 'default', value: CarouselCards },
     ]
   }
 ] as ImportEntry[];

@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-import React from 'react';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { type JSX } from 'react';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Button from '@component-library/core-components/Button/Button';
@@ -9,15 +7,15 @@ import Container from '@component-library/foundation/Containers/Container';
 import {
   JobDetailsHeaderProps,
   VacancyRoute,
-} from 'components/JobDetailsHeader/JobDetailsHeader.types';
+} from '../JobDetailsHeader/JobDetailsHeader.types';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const vacancydata = sitecoreContext.route as VacancyRoute | undefined;
+  const vacancydata = props.page.layout.sitecore.route as VacancyRoute | undefined;
   const data = vacancydata?.vacancy;
 
-  if (sitecoreContext?.pageEditing) {
+  if (props.page.mode.isEditing) {
     return <div>Vacancy details</div>;
   }
 

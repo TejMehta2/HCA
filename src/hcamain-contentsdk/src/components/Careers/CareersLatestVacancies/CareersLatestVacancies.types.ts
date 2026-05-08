@@ -1,4 +1,5 @@
-import { Field, LinkFieldValue } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, LinkFieldValue } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import { YextFacetJson } from 'src/types/searchProps';
 
@@ -24,7 +25,7 @@ export interface GeneralSetting {
   value?: { value?: string };
 }
 
-export type CareersLatestVacanciesProps = {
+export type CareersLatestVacanciesProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {

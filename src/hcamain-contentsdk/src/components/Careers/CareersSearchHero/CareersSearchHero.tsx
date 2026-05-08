@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+'use client';
+
+import React, { useRef, type JSX } from 'react';
 import {
   RichText,
   Text as JssText,
-  useSitecoreContext,
-  GetStaticComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -21,9 +21,8 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import Filters from '@component-library/site-components/Filters/Filters';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { useRouter } from 'next/router';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -31,8 +30,7 @@ import getHeadingTags from 'lib/getHeadingTags';
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -85,55 +83,6 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
               </Text>
             </>
           }
-          children={
-            <CareersSearch
-              search={
-                <SearchBar
-                  preventSubmitOnSuggestion={true}
-                  name="input"
-                  placeholder={
-                    props.fields?.data?.item?.searchPhrasePlaceholder?.value
-                  }
-                />
-              }
-              filters={
-                <>
-                  <SelectField
-                    placeholder={
-                      props.fields?.data?.item?.selectAJobAreaLabel?.value
-                    }
-                    id={'jobArea'}
-                    options={
-                      props?.facets?.[1]?.options.map((option) => ({
-                        text: option.displayName,
-                      })) || []
-                    }
-                  />
-                  <SelectField
-                    placeholder={
-                      props.fields?.data?.item?.selectALocationLabel?.value
-                    }
-                    id={props?.facets[0].fieldId?.replace('c_', '') || ''}
-                    options={
-                      props?.facets[0].options.map((option) => ({
-                        text: option.displayName,
-                      })) || []
-                    }
-                  />
-                </>
-              }
-              submit={
-                <Button size={'large'} variation={'full'}>
-                  <button type="submit">
-                    {
-                      props.fields.data.item.searchRolesCTA?.jsonValue?.value
-                        .text
-                    }
-                  </button>
-                </Button>
-              }
-            />
-          }
           image={
             <NextJssImage
               field={props.fields?.data?.contextItem?.image?.jsonValue}
@@ -145,7 +94,52 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
               }}
             />
           }
-        />
+        >
+          <CareersSearch
+            search={
+              <SearchBar
+                preventSubmitOnSuggestion={true}
+                name="input"
+                placeholder={
+                  props.fields?.data?.item?.searchPhrasePlaceholder?.value
+                }
+              />
+            }
+            filters={
+              <>
+                <SelectField
+                  placeholder={
+                    props.fields?.data?.item?.selectAJobAreaLabel?.value
+                  }
+                  id={'jobArea'}
+                  options={
+                    props?.facets?.[1]?.options.map((option) => ({
+                      text: option.displayName,
+                    })) || []
+                  }
+                />
+                <SelectField
+                  placeholder={
+                    props.fields?.data?.item?.selectALocationLabel?.value
+                  }
+                  id={props?.facets[0].fieldId?.replace('c_', '') || ''}
+                  options={
+                    props?.facets[0].options.map((option) => ({
+                      text: option.displayName,
+                    })) || []
+                  }
+                />
+              </>
+            }
+            submit={
+              <Button size={'large'} variation={'full'}>
+                <button type="submit">
+                  {props.fields.data.item.searchRolesCTA?.jsonValue?.value.text}
+                </button>
+              </Button>
+            }
+          />
+        </CareersHomepageHero>
       </form>
     </Themes>
   );
@@ -206,7 +200,7 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     const entries = [...formData.entries()].filter(([, value]) => !!value);
     const params = new URLSearchParams(entries as string[][]);
     const url = `${pathname}?${params}`;
-    router.replace(url, undefined, { shallow: true });
+    router.replace(url, { scroll: false });
   };
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -308,7 +302,7 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async () => {
+export const getStaticProps = async () => {
   try {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=0`

@@ -1,10 +1,8 @@
 import {
   ImageField,
-  LayoutServiceContextData,
-  LayoutServiceData,
   RouteData,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import { SitecorePageProps } from 'lib/page-props';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export interface Fields {
@@ -27,7 +25,7 @@ interface MappingFields {
   image?: { jsonValue: ImageField };
 }
 
-export type JobDetailsHeaderProps = {
+export type JobDetailsHeaderProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {
@@ -60,15 +58,3 @@ export interface VacancyResponse {
 export type VacancyRoute = RouteData & {
   vacancy?: VacancyResponse;
 };
-
-export interface SitecoreVacancyPageProps extends SitecorePageProps {
-  layoutData: LayoutServiceData & {
-    sitecore: LayoutServiceContextData & {
-      route:
-        | RouteData
-        | (null & {
-            vacancy: VacancyResponse;
-          });
-    };
-  };
-}

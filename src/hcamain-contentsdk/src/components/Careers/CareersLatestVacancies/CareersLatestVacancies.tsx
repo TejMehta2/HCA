@@ -1,10 +1,10 @@
+'use client';
+
 import {
-  GetStaticComponentProps,
   useComponentProps,
-  useSitecoreContext,
   Link as JssLink,
   Text as JssText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
@@ -14,13 +14,12 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
-import { JobsResponse } from 'components/CareersSearchHero/CareersSearchHero.types';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { JobsResponse } from '../CareersSearchHero/CareersSearchHero.types';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import Button from '@component-library/core-components/Button/Button';
 import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
-import { useRef } from 'react';
-import { useRouter } from 'next/router';
+import { useRef, type JSX } from 'react';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
@@ -33,8 +32,7 @@ interface VariantCareersLatestVacanciesProps extends CareersLatestVacanciesProps
 const CareersLatestVacanciesDefaultComponent = (
   props: CareersLatestVacanciesProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -175,7 +173,7 @@ export const Default = (
             ...formData.entries(),
           ] as string[][]);
           const url = `${pathname}?${params}`;
-          router.replace(url, undefined, { shallow: true });
+          router.replace(url, { scroll: false });
         }}
       >
         {props.variant === 'carousel' ? (
@@ -326,7 +324,7 @@ export const Carousel = (
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
+export const getStaticProps = async (
   props: CareersLatestVacanciesProps
 ) => {
   try {

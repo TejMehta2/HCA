@@ -31,6 +31,16 @@ import * as Footertypes from 'src/components/Navigation/Footer/Footer.types';
 import * as Footer from 'src/components/Navigation/Footer/Footer';
 import * as Breadcrumbs from 'src/components/Navigation/Breadcrumbs/Breadcrumbs';
 import * as BasicFooter from 'src/components/Navigation/BasicFooter/BasicFooter';
+import * as JobDetailsHeadertypes from 'src/components/Careers/JobDetailsHeader/JobDetailsHeader.types';
+import * as JobDetailsHeader from 'src/components/Careers/JobDetailsHeader/JobDetailsHeader';
+import * as JobDetails from 'src/components/Careers/JobDetails/JobDetails';
+import * as CareersSearchResults from 'src/components/Careers/CareersSearchResults/CareersSearchResults';
+import * as CareersSearchHerotypes from 'src/components/Careers/CareersSearchHero/CareersSearchHero.types';
+import * as CareersSearchHero from 'src/components/Careers/CareersSearchHero/CareersSearchHero';
+import * as CareersSearchBlocktypes from 'src/components/Careers/CareersSearchBlock/CareersSearchBlock.types';
+import * as CareersSearchBlock from 'src/components/Careers/CareersSearchBlock/CareersSearchBlock';
+import * as CareersLatestVacanciestypes from 'src/components/Careers/CareersLatestVacancies/CareersLatestVacancies.types';
+import * as CareersLatestVacancies from 'src/components/Careers/CareersLatestVacancies/CareersLatestVacancies';
 
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCServerWrapper],
@@ -54,6 +64,12 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Footer', { ...Footerutilities, ...Footertypes, ...Footer }],
   ['Breadcrumbs', { ...Breadcrumbs }],
   ['BasicFooter', { ...BasicFooter }],
+  ['JobDetailsHeader', { ...JobDetailsHeadertypes, ...JobDetailsHeader }],
+  ['JobDetails', { ...JobDetails }],
+  ['CareersSearchResults', { ...CareersSearchResults, componentType: 'client' }],
+  ['CareersSearchHero', { ...CareersSearchHerotypes, ...CareersSearchHero, componentType: 'client' }],
+  ['CareersSearchBlock', { ...CareersSearchBlocktypes, ...CareersSearchBlock, componentType: 'client' }],
+  ['CareersLatestVacancies', { ...CareersLatestVacanciestypes, ...CareersLatestVacancies, componentType: 'client' }],
 ]);
 
 export default componentMap;

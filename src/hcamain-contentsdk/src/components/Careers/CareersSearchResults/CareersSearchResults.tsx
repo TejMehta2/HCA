@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useEffect, useState, type JSX } from 'react';
 import {
-  GetStaticComponentProps,
   useComponentProps,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
 import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
-import { JobsResponse } from 'components/CareersSearchHero/CareersSearchHero.types';
+import { JobsResponse } from '../CareersSearchHero/CareersSearchHero.types';
 import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CareerSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   ReadMoreCtaText?: { value?: string };
 }
 
-type CareersSearchResultsProps = {
+type CareersSearchResultsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {
@@ -32,8 +33,7 @@ type CareersSearchResultsProps = {
 const CareersSearchResultsDefaultComponent = (
   props: CareersSearchResultsProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -56,7 +56,8 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
   const [limit, setLimit] = useState(1);
 
   useEffect(() => {
-    setLimit(1);
+    const frame = requestAnimationFrame(() => setLimit(1));
+    return () => cancelAnimationFrame(frame);
   }, [searchParams]);
 
   const resultsPerPage = 10;
@@ -169,7 +170,7 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async () => {
+export const getStaticProps = async () => {
   try {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=false&limit=10`

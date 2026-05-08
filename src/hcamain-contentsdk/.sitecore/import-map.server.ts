@@ -8,7 +8,8 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { Placeholder, RichText, Text, Link, AppPlaceholder, Image } from '@sitecore-content-sdk/nextjs';
+import { AppPlaceholder, RichText, Text, Link, Placeholder, Image } from '@sitecore-content-sdk/nextjs';
+import componentMap from '.sitecore/component-map';
 import React from 'react';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
@@ -20,7 +21,6 @@ import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-librar
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
-import componentMap from '.sitecore/component-map';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
@@ -36,6 +36,11 @@ import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
+import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
+import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
+import Container from '@component-library/foundation/Containers/Container';
 
 const importMap = [
   {
@@ -49,12 +54,18 @@ const importMap = [
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
-      { name: 'Placeholder', value: Placeholder },
+      { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'RichText', value: RichText },
       { name: 'Text', value: Text },
       { name: 'Link', value: Link },
-      { name: 'AppPlaceholder', value: AppPlaceholder },
+      { name: 'Placeholder', value: Placeholder },
       { name: 'Image', value: Image },
+    ]
+  },
+  {
+    module: '.sitecore/component-map',
+    exports: [
+      { name: 'default', value: componentMap },
     ]
   },
   {
@@ -121,12 +132,6 @@ const importMap = [
     module: 'lib/getHeadingTags',
     exports: [
       { name: 'default', value: getHeadingTags },
-    ]
-  },
-  {
-    module: '.sitecore/component-map',
-    exports: [
-      { name: 'default', value: componentMap },
     ]
   },
   {
@@ -214,6 +219,36 @@ const importMap = [
     module: '@component-library/site-components/FooterSmall/FooterSmall',
     exports: [
       { name: 'default', value: FooterSmall },
+    ]
+  },
+  {
+    module: '@component-library/careers/VacancyHeader/VacancyHeader',
+    exports: [
+      { name: 'default', value: VacancyHeader },
+    ]
+  },
+  {
+    module: '@component-library/site-components/HeaderPlain/HeaderPlain',
+    exports: [
+      { name: 'getDynamicTitleStyle', value: getDynamicTitleStyle },
+    ]
+  },
+  {
+    module: 'lib/utility-functions/addThumbnailParameter',
+    exports: [
+      { name: 'addThumbnailParameter', value: addThumbnailParameter },
+    ]
+  },
+  {
+    module: '@component-library/site-components/BlogContent/BlogContent',
+    exports: [
+      { name: 'default', value: BlogContent },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Containers/Container',
+    exports: [
+      { name: 'default', value: Container },
     ]
   }
 ] as ImportEntry[];
