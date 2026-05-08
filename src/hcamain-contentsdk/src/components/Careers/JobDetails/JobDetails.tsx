@@ -26,8 +26,9 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || '';
 
+  //FIXME: originally there was BlogContent instead of Themes, but next was complaing about using hook inside BlogContent
   return (
-    <BlogContent
+    <Themes
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
@@ -45,6 +46,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           </a>
         </Button>
       </Container>
-    </BlogContent>
+    </Themes>
   );
 };
