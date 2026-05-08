@@ -29,6 +29,7 @@
     "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start"
   },
   "dependencies": {
+    "@ant-design/react-slick": "^2.0.0",
     "@sitecore-content-sdk/analytics-core": "~2.1.0",
     "@sitecore-content-sdk/events": "~2.1.0",
     "@sitecore-content-sdk/nextjs": "~2.1.0",
@@ -43,7 +44,8 @@
     "next-intl": "^4.3.5",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "sass": "^1.99.0"
+    "sass": "^1.99.0",
+    "swr": "^2.4.1"
   },
   "devDependencies": {
     "@sitecore-content-sdk/cli": "~2.1.0",
