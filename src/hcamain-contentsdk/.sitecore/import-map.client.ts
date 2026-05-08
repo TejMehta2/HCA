@@ -8,16 +8,24 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
+import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import { useRef, useCallback, useEffect, useState } from 'react';
-import { Text, RichText, Link, Image, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
-import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
+import React from 'react';
+import { Text, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, Image, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
+import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
+import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
+import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
+import Link from 'next/link';
+import { withKeywordIdIfNeeded } from 'lib/doctify-integration/withKeywordIdIfNeeded';
+import { SITECORE_TEMPLATE_IDS } from 'lib/sitecore/templateIds';
+import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
+import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
+import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Accordions from '@component-library/components/Accordions/Accordions';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
-import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -36,8 +44,8 @@ const importMap = [
   {
     module: 'react/jsx-runtime',
     exports: [
-      { name: 'Fragment', value: Fragment },
       { name: 'jsx', value: jsx },
+      { name: 'Fragment', value: Fragment },
       { name: 'jsxs', value: jsxs },
     ]
   },
@@ -48,6 +56,7 @@ const importMap = [
       { name: 'useCallback', value: useCallback },
       { name: 'useEffect', value: useEffect },
       { name: 'useState', value: useState },
+      { name: 'default', value: React },
     ]
   },
   {
@@ -55,22 +64,70 @@ const importMap = [
     exports: [
       { name: 'Text', value: Text },
       { name: 'RichText', value: RichText },
-      { name: 'Link', value: Link },
+      { name: 'Link', value: Link_8a80e63291fea86e0744df19113dc44bec187216 },
       { name: 'Image', value: Image },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
     ]
   },
   {
-    module: '@component-library/components/ModalCallUs/ModalCallUs',
-    exports: [
-      { name: 'default', value: ModalCallUs },
-    ]
-  },
-  {
     module: '@component-library/core-components/Button/Button',
     exports: [
       { name: 'default', value: Button },
+    ]
+  },
+  {
+    module: '@component-library/components/ModalAppointment/ModalAppointment',
+    exports: [
+      { name: 'default', value: ModalAppointment },
+    ]
+  },
+  {
+    module: '@component-library/foundation/Text/Text',
+    exports: [
+      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
+    ]
+  },
+  {
+    module: '@component-library/site-components/StickyCTA/StickyCTA',
+    exports: [
+      { name: 'default', value: StickyCTA },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link },
+    ]
+  },
+  {
+    module: 'lib/doctify-integration/withKeywordIdIfNeeded',
+    exports: [
+      { name: 'withKeywordIdIfNeeded', value: withKeywordIdIfNeeded },
+    ]
+  },
+  {
+    module: 'lib/sitecore/templateIds',
+    exports: [
+      { name: 'SITECORE_TEMPLATE_IDS', value: SITECORE_TEMPLATE_IDS },
+    ]
+  },
+  {
+    module: 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor',
+    exports: [
+      { name: 'firstDoctifyMappedSelfOrAncestor', value: firstDoctifyMappedSelfOrAncestor },
+    ]
+  },
+  {
+    module: 'lib/doctify-integration/firstSelfOrAncestorByTemplate',
+    exports: [
+      { name: 'firstSelfOrAncestorByTemplate', value: firstSelfOrAncestorByTemplate },
+    ]
+  },
+  {
+    module: '@component-library/components/ModalCallUs/ModalCallUs',
+    exports: [
+      { name: 'default', value: ModalCallUs },
     ]
   },
   {
@@ -95,12 +152,6 @@ const importMap = [
     module: '@component-library/foundation/Themes/Themes',
     exports: [
       { name: 'default', value: Themes },
-    ]
-  },
-  {
-    module: '@component-library/foundation/Text/Text',
-    exports: [
-      { name: 'default', value: Text_5660c949ca9a46e01d32019413f83db4dfe34e86 },
     ]
   },
   {

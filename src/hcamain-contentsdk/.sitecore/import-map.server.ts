@@ -8,7 +8,8 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { Placeholder, Text, RichText, Link, AppPlaceholder, Image } from '@sitecore-content-sdk/nextjs';
+import { Placeholder, RichText, Text, Link, AppPlaceholder, Image } from '@sitecore-content-sdk/nextjs';
+import React from 'react';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -21,7 +22,6 @@ import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import componentMap from '.sitecore/component-map';
 import Doctify from '@component-library/components/Doctify/Doctify';
-import React from 'react';
 import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -50,11 +50,17 @@ const importMap = [
     module: '@sitecore-content-sdk/nextjs',
     exports: [
       { name: 'Placeholder', value: Placeholder },
-      { name: 'Text', value: Text },
       { name: 'RichText', value: RichText },
+      { name: 'Text', value: Text },
       { name: 'Link', value: Link },
       { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'Image', value: Image },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'default', value: React },
     ]
   },
   {
@@ -127,12 +133,6 @@ const importMap = [
     module: '@component-library/components/Doctify/Doctify',
     exports: [
       { name: 'default', value: Doctify },
-    ]
-  },
-  {
-    module: 'react',
-    exports: [
-      { name: 'default', value: React },
     ]
   },
   {

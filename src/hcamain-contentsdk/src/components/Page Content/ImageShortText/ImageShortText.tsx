@@ -98,14 +98,14 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         imageKeepAspectRatio={keepAspectRatio}
         length="short"
         subheader={
-          <Text  variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           props.fields?.Title?.value ? (
             <Text
-              
+              tag={headingTag}
               variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssRichText tag="span" field={props.fields?.Title} />
@@ -114,7 +114,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         }
         image={
           <NextJssImage
-          isEditing={isEditing}
+            isEditing={isEditing}
             field={props.fields?.Image}
             page={props.page}
             next={{
@@ -126,8 +126,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         }
         ctas={
           props.rendering && (
-            <PlaceHolderWrapper>             
-              <AppPlaceholder name={phKey} rendering={props.rendering} componentMap={componentMap} page={page} />
+            <PlaceHolderWrapper>
+              <AppPlaceholder
+                name={phKey}
+                rendering={props.rendering}
+                componentMap={componentMap}
+                page={page}
+              />
             </PlaceHolderWrapper>
           )
         }

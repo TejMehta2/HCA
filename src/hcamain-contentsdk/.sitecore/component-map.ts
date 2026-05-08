@@ -6,6 +6,7 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 // end of built-in components
 import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
 import * as RichText from 'src/components/Page Content/RichText';
+import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
 import * as IntroBlock from 'src/components/Page Content/IntroBlock/IntroBlock';
 import * as ImageShortText from 'src/components/Page Content/ImageShortText/ImageShortText';
 import * as DoctifyGraphQltypes from 'src/components/Page Content/Doctify/DoctifyGraphQl.types';
@@ -37,6 +38,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Form', { ...Form, componentType: 'client' }],
   ['PartialDesignDynamicPlaceholder', { ...PartialDesignDynamicPlaceholder }],
   ['RichText', { ...RichText }],
+  ['StickyCTA', { ...StickyCTA, componentType: 'client' }],
   ['IntroBlock', { ...IntroBlock }],
   ['ImageShortText', { ...ImageShortText }],
   ['DoctifyGraphQl', { ...DoctifyGraphQltypes, ...DoctifyGraphQl }],
