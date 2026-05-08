@@ -32,8 +32,6 @@ type FirstComponentProps = {
 };
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
-  console.log('layoutData.sitecore.context.language', layoutData.sitecore.context.language);
-  console.log('layoutData.sitecore.context?.isRTL', layoutData.sitecore.context?.isRTL);
   const { route } = layoutData.sitecore;
   const routeData = route as PageRouteMetadata;
   const isPageEditing = layoutData.sitecore.context.pageEditing;
