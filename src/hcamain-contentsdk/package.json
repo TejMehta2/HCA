@@ -16,6 +16,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
+    "copy": "cd ../../ && npm i && npm run hcamain-csdk:copy",
     "build": "cross-env NODE_ENV=production npm-run-all --serial sitecore-tools:generate-map sitecore-tools:build next:build",
     "lint": "eslint ./src/**/*.tsx ./src/**/*.ts",
     "next:build": "next build",
