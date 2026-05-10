@@ -1,19 +1,16 @@
-/* eslint-disable @next/next/next-script-for-ga */
-import React from 'react';
+import React, { type JSX } from 'react';
 import {
   Field,
-  GetStaticComponentProps,
   ImageField,
   LinkField,
-  debug,
-  useComponentProps,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
+import { ComponentWithContextProps } from 'lib/component-props';
+import { headers } from 'next/headers';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -48,7 +45,7 @@ interface Fields {
   GtmKey?: { value?: Field<string> };
 }
 
-type MetadataProps = {
+type MetadataProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {
@@ -62,11 +59,6 @@ interface Speciality {
   name: string;
   url: string;
 }
-
-type UrlProps = {
-  baseUrl: string;
-  path: string;
-};
 
 const isValidDate = (dateStr: string): boolean => {
   const date = new Date(dateStr);
@@ -93,18 +85,26 @@ const escapeHtmlAttribute = (str: string) => {
 
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
-export const Default = (props: MetadataProps): JSX.Element => {
-  // hooks
-  const context = useSitecoreContext();
+const getRequestBaseUrl = async (): Promise<string> => {
+  const requestHeaders = await headers();
+  const host =
+    requestHeaders.get('x-forwarded-host') ??
+    requestHeaders.get('host') ??
+    requestHeaders.get(':authority');
 
-  const componentPropsData = useComponentProps<UrlProps>(props.rendering?.uid);
+  if (!host) return '';
 
-  const url = componentPropsData
-    ? `${componentPropsData.baseUrl}${componentPropsData.path}`
-    : undefined;
+  const protocol = requestHeaders.get('x-forwarded-proto') ?? 'https';
+  return `${protocol}://${host}`;
+};
 
-  const route = context.sitecoreContext?.route as PageRouteMetadata;
-  const { fields } = route;
+export const Default = async (props: MetadataProps): Promise<JSX.Element> => {
+  const baseUrl = await getRequestBaseUrl();
+  const path = props.page.layout.sitecore.context?.itemPath ?? '';
+  const url = baseUrl || path ? `${baseUrl}${path}` : undefined;
+
+  const route = props.page.layout.sitecore.route as PageRouteMetadata | undefined;
+  const fields = route?.fields;
 
   if (!fields || !props?.fields) return <MetadataDefaultComponent />;
 
@@ -133,7 +133,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
   // computed values
   const title = `${MetaTitle?.value || titleStripped} ${
-    PageTitleSufix?.value || ''
+    PageTitleSufix?.value?.value || ''
   }`;
   const description = escapeHtmlAttribute(
     MetaDescription?.value || Text?.value || ''
@@ -156,7 +156,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const canonicalLink = getCanonical(
     CanonicalUrl?.value?.href,
     url,
-    componentPropsData?.baseUrl
+    baseUrl
   );
 
   type SchemaPageType =
@@ -189,11 +189,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   };
 
   const globalGtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
-  const gtmKey = globalGtmKey ? globalGtmKey : props.fields?.GtmKey?.value;
-
-  debug.common('process.env.NODE_ENV', process.env.NODE_ENV);
-  debug.common('NEXT_PUBLIC_DISABLE_GTM', process.env.NEXT_PUBLIC_DISABLE_GTM);
-  debug.common('props.fields.GtmKey.value', props.fields?.GtmKey?.value);
+  const gtmKey = globalGtmKey ? globalGtmKey : props.fields?.GtmKey?.value?.value;
 
   const gtmTag = (!process.env.NEXT_PUBLIC_DISABLE_GTM ||
     process.env.NEXT_PUBLIC_DISABLE_GTM === 'false') && (
@@ -305,15 +301,3 @@ function getCanonical(
   return canonicalUrl;
 }
 
-export const getStaticProps: GetStaticComponentProps = async (
-  _: MetadataProps,
-  layoutData
-) => {
-  const path = layoutData?.sitecore?.context?.itemPath ?? '';
-  const baseUrl = process.env.BASE_URL ?? '';
-
-  return {
-    baseUrl,
-    path,
-  };
-};
