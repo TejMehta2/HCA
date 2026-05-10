@@ -1,4 +1,4 @@
-import {type JSX} from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   LinkField,
@@ -188,6 +188,9 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       cqc={
         datasource?.cQCStatus?.targetItem ? (
           <CQCRating
+            rendering={props.rendering}
+            params={props.params}
+            page={props.page}
             length="short"
             hideRating={true}
             fields={{
@@ -201,8 +204,10 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       doctify={
         datasource?.doctifyReviews?.targetItem ? (
           <Doctify
-            alignment="left"
+            rendering={props.rendering}
             params={props.params}
+            page={props.page}
+            alignment="left"
             key={2}
             fields={{
               data: { item: { Reviews: datasource?.doctifyReviews } },
