@@ -11,6 +11,11 @@ import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import { AppPlaceholder, RichText, Text, Link, Placeholder, Image } from '@sitecore-content-sdk/nextjs';
 import componentMap from '.sitecore/component-map';
 import React from 'react';
+import Head from 'next/head';
+import { removeTags } from '@component-library/utility-functions';
+import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
+import { headers } from 'next/headers';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -33,14 +38,12 @@ import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Naviga
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link_a258c208ba01265ca0aa9c7abae745cc7141aa63 from 'next/link';
-import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
-import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
-import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Container from '@component-library/foundation/Containers/Container';
+import Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 from 'temp/component-library/foundation/Themes/Themes';
 
 const importMap = [
   {
@@ -72,6 +75,36 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'default', value: React },
+    ]
+  },
+  {
+    module: 'next/head',
+    exports: [
+      { name: 'default', value: Head },
+    ]
+  },
+  {
+    module: '@component-library/utility-functions',
+    exports: [
+      { name: 'removeTags', value: removeTags },
+    ]
+  },
+  {
+    module: 'lib/utility-functions/addThumbnailParameter',
+    exports: [
+      { name: 'addThumbnailParameter', value: addThumbnailParameter },
+    ]
+  },
+  {
+    module: 'next/dist/shared/lib/utils',
+    exports: [
+      { name: 'isAbsoluteUrl', value: isAbsoluteUrl },
+    ]
+  },
+  {
+    module: 'next/headers',
+    exports: [
+      { name: 'headers', value: headers },
     ]
   },
   {
@@ -204,12 +237,6 @@ const importMap = [
     ]
   },
   {
-    module: 'next/head',
-    exports: [
-      { name: 'default', value: Head },
-    ]
-  },
-  {
     module: '@component-library/core-components/TextLink/TextLink',
     exports: [
       { name: 'default', value: TextLink },
@@ -234,21 +261,15 @@ const importMap = [
     ]
   },
   {
-    module: 'lib/utility-functions/addThumbnailParameter',
-    exports: [
-      { name: 'addThumbnailParameter', value: addThumbnailParameter },
-    ]
-  },
-  {
-    module: '@component-library/site-components/BlogContent/BlogContent',
-    exports: [
-      { name: 'default', value: BlogContent },
-    ]
-  },
-  {
     module: '@component-library/foundation/Containers/Container',
     exports: [
       { name: 'default', value: Container },
+    ]
+  },
+  {
+    module: 'temp/component-library/foundation/Themes/Themes',
+    exports: [
+      { name: 'default', value: Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 },
     ]
   }
 ] as ImportEntry[];
