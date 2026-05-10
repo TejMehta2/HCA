@@ -1,3 +1,4 @@
+import type { Page } from '@sitecore-content-sdk/nextjs';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
 import { notFound } from 'next/navigation';
 import { draftMode, headers as nextHeaders } from 'next/headers';
@@ -6,6 +7,10 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout from 'src/Layout';
 import Providers from 'src/Providers';
+import type {
+  VacancyResponse,
+  VacancyRoute,
+} from 'components/Careers/JobDetailsHeader/JobDetailsHeader.types';
 
 const VACANCY_WILDCARD_PATH = 'Careers/Vacancy/,-w-,';
 
@@ -19,7 +24,7 @@ type VacancyPageProps = {
 
 export const dynamic = 'force-dynamic';
 
-async function getVacancy(path: string) {
+async function getVacancy(path: string): Promise<VacancyResponse | null> {
   const response = await fetch(
     `${process.env.INTEGRATION_LAYER_URL}/careers/job/${encodeURIComponent(path)}`,
     { cache: 'no-store' }
@@ -44,7 +49,7 @@ export default async function VacancyPage({ params }: VacancyPageProps) {
 
   const draft = await draftMode();
 
-  let page;
+  let page: Page | null;
   if (draft.isEnabled) {
     const headers = await nextHeaders();
     const previewData = client.getPreviewData(headers);
@@ -69,19 +74,7 @@ export default async function VacancyPage({ params }: VacancyPageProps) {
       notFound();
     }
 
-    page = {
-      ...page,
-      layout: {
-        ...page.layout,
-        sitecore: {
-          ...page.layout.sitecore,
-          route: {
-            ...page.layout.sitecore.route,
-            vacancy,
-          },
-        },
-      },
-    };
+    (page.layout.sitecore.route as VacancyRoute).vacancy = vacancy;
   }
 
   return (
