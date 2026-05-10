@@ -1,4 +1,4 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import { SitecoreItem } from '../sitecore/sitecoreTypes';
 
 export interface DoctifyMappedSitecoreItem extends SitecoreItem {

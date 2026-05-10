@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { NavigableComponent } from 'components/TableOfContents/TableOfContents.types';
+import { NavigableComponent } from 'components/Navigation/TableOfContents/TableOfContents.types';
 import EventEmitter from 'events';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import Params from 'src/types/params';

@@ -1,5 +1,5 @@
 {
-  "name": "content-sdk-nextjs-app-router",
+  "name": "HCA-Main",
   "description": "Application utilizing Content SDK and Next.js",
   "version": "0.1.0",
   "private": true,
@@ -30,6 +30,8 @@
   },
   "dependencies": {
     "@ant-design/react-slick": "^2.0.0",
+    "@googlemaps/markerclusterer": "^2.6.2",
+    "@googlemaps/react-wrapper": "^1.2.0",
     "@sitecore-content-sdk/analytics-core": "~2.1.0",
     "@sitecore-content-sdk/events": "~2.1.0",
     "@sitecore-content-sdk/nextjs": "~2.1.0",
@@ -37,15 +39,19 @@
     "@sitecore-feaas/clientside": "^0.6.0",
     "@sitecore/components": "~2.1.0",
     "@types/google.maps": "^3.64.0",
+    "@types/intl-tel-input": "^18.1.4",
     "@yext/search-headless-react": "^2.7.1",
     "@yext/search-ui-react": "^3.0.3",
+    "axios": "^1.16.0",
     "date-fns": "^4.1.0",
+    "intl-tel-input": "^23.9.3",
     "next": "^16.2.0",
     "next-intl": "^4.3.5",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "sass": "^1.99.0",
-    "swr": "^2.4.1"
+    "swr": "^2.4.1",
+    "use-debounce": "^10.1.1"
   },
   "devDependencies": {
     "@sitecore-content-sdk/cli": "~2.1.0",

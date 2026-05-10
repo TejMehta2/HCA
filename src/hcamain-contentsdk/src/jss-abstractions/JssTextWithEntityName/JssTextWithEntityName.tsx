@@ -1,10 +1,18 @@
+'use client';
+
 import {
   Field,
+  RouteData,
   useSitecore,
   Text as JssText,
   RichText as JssRichText,
 } from '@sitecore-content-sdk/nextjs';
-import { PageRouteMetadata } from 'components/Metadata/Metadata';
+
+type PageRouteMetadata = RouteData & {
+  fields?: {
+    EntityName?: Field<string>;
+  };
+};
 
 interface JssTextWithEntityNameProps {
   field?: Field<string | undefined>;
@@ -13,10 +21,10 @@ interface JssTextWithEntityNameProps {
 
 const JssTextWithEntityName = (props: JssTextWithEntityNameProps) => {
   const { field, isRichText } = props;
-  const { sitecoreContext } = useSitecore();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-  const route = sitecoreContext?.route as PageRouteMetadata;
-  const entityName = route.fields?.EntityName?.value;
+  const { page } = useSitecore();
+  const isExperienceEditor = page.mode.isEditing;
+  const route = page.layout.sitecore.route as PageRouteMetadata | undefined;
+  const entityName = route?.fields?.EntityName?.value;
 
   if (isExperienceEditor || !entityName || !field)
     return isRichText ? (

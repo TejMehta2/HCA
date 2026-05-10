@@ -11,7 +11,7 @@ const JssDate = (props: JssDateProps) => {
       tag={'div'}
       field={field}
       editable={editable}
-      render={(date) =>
+      render={(date: Date) =>
         date ? (
           <time dateTime={date.toLocaleDateString('en-GB')}>
             {formatter(date)}

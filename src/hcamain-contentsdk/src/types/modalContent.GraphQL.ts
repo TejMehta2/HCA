@@ -1,4 +1,4 @@
-import { Field, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import { svgIconFieldsTargetItem } from './svgIconFields.GraphQL';
 
 export type ModalContentFields = {

@@ -2,7 +2,7 @@ import {
   Field,
   ImageField,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 export interface AuthorFields {
   name?: { jsonValue: Field<string> };
