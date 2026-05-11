@@ -3,7 +3,7 @@ import { FooterProps } from './Footer.types';
 import styles from './Footer.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import TextLink from '../../core-components/TextLink/TextLink';
-import Logo from '../../foundation/BrandAssets/Logo white.svg';
+import LogoIcon from '../../foundation/BrandAssets/Logo white.svg?react';
 import Text from '../../foundation/Text/Text';
 
 const Footer = (props: FooterProps): JSX.Element => {
@@ -17,8 +17,6 @@ const Footer = (props: FooterProps): JSX.Element => {
     contact,
     theme = 'B-HCA-Navy-Blue',
   } = props;
-  const LogoIcon = Logo as () => JSX.Element;
-
   return (
     <Themes theme={theme}>
       <footer className={styles.footer} data-event="navigationClick">
