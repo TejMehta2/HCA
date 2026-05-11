@@ -1,8 +1,8 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/nextjs-vite';
 import "../globals/index.scss";
-import React from "react";
+import React from 'react';
 import YextProvider from '../yext/YextProvider/YextProvider'
-import { I18nProvider } from 'next-localization';
+import { NextIntlClientProvider } from 'next-intl';
 
 const customViewports = {
   small: {
@@ -37,7 +37,13 @@ const customViewports = {
 
 const preview: Preview = {
   decorators: [
-    (Story) => <I18nProvider locale={"en-GB"}><YextProvider><Story/></YextProvider></I18nProvider>
+    (Story) => (
+      <NextIntlClientProvider locale="en-GB" messages={{ sync: {} }}>
+        <YextProvider>
+          <Story />
+        </YextProvider>
+      </NextIntlClientProvider>
+    ),
   ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
