@@ -15,7 +15,6 @@ import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
-import { headers } from 'next/headers';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -99,12 +98,6 @@ const importMap = [
     module: 'next/dist/shared/lib/utils',
     exports: [
       { name: 'isAbsoluteUrl', value: isAbsoluteUrl },
-    ]
-  },
-  {
-    module: 'next/headers',
-    exports: [
-      { name: 'headers', value: headers },
     ]
   },
   {

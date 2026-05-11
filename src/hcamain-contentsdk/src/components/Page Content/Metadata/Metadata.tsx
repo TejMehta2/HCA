@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   ImageField,
@@ -10,7 +10,7 @@ import { removeTags } from '@component-library/utility-functions';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 import { ComponentWithContextProps } from 'lib/component-props';
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -86,16 +86,17 @@ const escapeHtmlAttribute = (str: string) => {
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 const getRequestBaseUrl = async (): Promise<string> => {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get('x-forwarded-host') ??
-    requestHeaders.get('host') ??
-    requestHeaders.get(':authority');
+  // const requestHeaders = await headers();
+  // const host =
+  //   requestHeaders.get('x-forwarded-host') ??
+  //   requestHeaders.get('host') ??
+  //   requestHeaders.get(':authority');
 
-  if (!host) return '';
+  // if (!host) return '';
 
-  const protocol = requestHeaders.get('x-forwarded-proto') ?? 'https';
-  return `${protocol}://${host}`;
+  // const protocol = requestHeaders.get('x-forwarded-proto') ?? 'https';
+  // return `${protocol}://${host}`;
+  return "";
 };
 
 export const Default = async (props: MetadataProps): Promise<JSX.Element> => {
