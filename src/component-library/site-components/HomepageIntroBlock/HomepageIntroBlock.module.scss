@@ -36,10 +36,6 @@
     .image {
       height: auto;
 
-      @include media(screen-s) {
-        height: auto;
-      }
-
       @include media(screen-m) {
         height: 100%;
       }

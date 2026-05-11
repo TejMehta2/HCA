@@ -70,10 +70,6 @@
         margin-top: px-to-rem(40);
     }
 
-    @include media(screen-s) {
-        margin-top: 0;
-    }
-
     @include media(screen-m) {
         &:first-child {
             margin-top: 0;
