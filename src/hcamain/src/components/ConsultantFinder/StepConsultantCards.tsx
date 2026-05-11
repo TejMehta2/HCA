@@ -236,6 +236,17 @@ export const Default = (props: StepProps): JSX.Element => {
     lon: item.fields.lon.value,
   }));
 
+  useEffect(() => {
+    //test
+    if (!loading) {
+      console.log('results');
+      document.scrollingElement?.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [loading, results]);
+
   // location
   const applyLocationToSearch = (nextLocation: string) => {
     const selectedLocationConfig =
@@ -572,10 +583,10 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth',
+    // });
 
     // If router is not ready, set loading to true
     if (!router.isReady) {
@@ -1317,7 +1328,7 @@ export const Default = (props: StepProps): JSX.Element => {
               {!error && !loading && totalPgaes > 1 && results.length > 0 && (
                 <Container marginBottom="spacing-8">
                   <Themes theme={'A-HCA-White'}>
-                    <Pagination
+                    {/* <Pagination
                       pageCount={totalPgaes}
                       callback={(newPage: number) => {
                         const offset = (newPage - 1) * 12;
@@ -1331,6 +1342,26 @@ export const Default = (props: StepProps): JSX.Element => {
                           },
                           undefined,
                           { shallow: true }
+                        );
+                      }}
+                      currentPage={Math.ceil((offset + 1) / 12)}
+                    /> */}
+
+                    <Pagination
+                      pageCount={totalPgaes}
+                      callback={async (newPage: number) => {
+                        const nextOffset = (newPage - 1) * 12;
+                        setOffset(nextOffset);
+
+                        const { requestPath, ...queryParams } = router.query;
+
+                        await router.push(
+                          {
+                            pathname: router.pathname,
+                            query: { ...queryParams, offset: nextOffset },
+                          },
+                          undefined,
+                          { shallow: true, scroll: false }
                         );
                       }}
                       currentPage={Math.ceil((offset + 1) / 12)}
