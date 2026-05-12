@@ -5,6 +5,12 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
 import * as CallUsTodayCTA from 'src/components/Page Content/CallUsTodayCTA/CallUsTodayCTA';
+import * as BookAnAppointmentCTA from 'src/components/Page Content/BookAnAppointmentCTA/BookAnAppointmentCTA';
+import * as BlogText from 'src/components/Page Content/BlogText/BlogText';
+import * as BlogSearch from 'src/components/Page Content/BlogSearch/BlogSearch';
+import * as BlogRelatedArticles from 'src/components/Page Content/BlogRelatedArticles/BlogRelatedArticles';
+import * as BlogPageHeader from 'src/components/Page Content/BlogPageHeader/BlogPageHeader';
+import * as BlogCards from 'src/components/Page Content/BlogCards/BlogCards';
 import * as Accordions from 'src/components/Page Content/Accordions/Accordions';
 import * as TableOfContents from 'src/components/Navigation/TableOfContents/TableOfContents';
 import * as MainNavigation from 'src/components/Navigation/MainNavigation/MainNavigation';
@@ -19,6 +25,12 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Form', Form],
   ['StickyCTA', { ...StickyCTA }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA }],
+  ['BookAnAppointmentCTA', { ...BookAnAppointmentCTA }],
+  ['BlogText', { ...BlogText }],
+  ['BlogSearch', { ...BlogSearch }],
+  ['BlogRelatedArticles', { ...BlogRelatedArticles }],
+  ['BlogPageHeader', { ...BlogPageHeader }],
+  ['BlogCards', { ...BlogCards }],
   ['Accordions', { ...Accordions }],
   ['TableOfContents', { ...TableOfContents }],
   ['MainNavigation', { ...MainNavigation }],

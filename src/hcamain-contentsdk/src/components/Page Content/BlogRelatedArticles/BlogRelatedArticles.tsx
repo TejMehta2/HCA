@@ -1,23 +1,22 @@
-/* eslint-disable prettier/prettier */
-import React from 'react';
+'use client';
+import { type JSX } from 'react';
 import {
-  GetStaticComponentProps,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
   useComponentProps,
-  useSitecoreContext,
   debug,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
-import JssDate from '../../jss-abstractions/JssDate/JssDate';
-import JssTextWithEntityName from '../../jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
-import {
+import JssDate from 'src/jss-abstractions/JssDate/JssDate';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import type {
   BlogRelatedArticlesProps,
+  BlogRelatedArticles as BlogRelatedArticle,
   BlogRelatedArticlesResult,
   StaticProps,
 } from './BlogRelatedArticles.types';
@@ -26,9 +25,8 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
-import parse from 'html-react-parser';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
@@ -46,9 +44,7 @@ const BlogRelatedArticlesDefaultComponent = (
 );
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity =
     Number(props?.fields?.data?.item?.numberOfCards?.jsonValue?.value) || 3;
@@ -56,13 +52,12 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
   const queryString = 'articleTypeId';
-  const context = useSitecoreContext();
-  const currentArticleId = context.sitecoreContext?.route?.itemId?.toString();
+  const currentArticleId = props.page.layout.sitecore.route?.itemId?.toString();
   const formattedCurrentArticleId =
     currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
 
-  const relatedArticlesDisplayed = data?.BlogRelatedArticles?.reduce(
-    (acc, curr) => {
+  const relatedArticlesDisplayed = data?.BlogRelatedArticles?.reduce<BlogRelatedArticle[]>(
+    (acc: BlogRelatedArticle[], curr: BlogRelatedArticle) => {
       if (acc?.length >= quantity || curr?.pageId === formattedCurrentArticleId)
         return acc;
       return [...acc, curr];
@@ -159,8 +154,8 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           typeId,
           abstractImageUrl,
           primaryImageUrl,
-        },
-        index
+        }: BlogRelatedArticle,
+        index: number
       ) => {
         const cardImageSrc = ImageUrl(
           abstractImageUrl,
@@ -191,7 +186,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               </Text>
             )}
             <Text tag="div" variation="body-large">
-              {parse(abstractText || description || '')}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: abstractText || description || '',
+                }}
+              />
             </Text>
 
             <div>
@@ -298,7 +297,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
+export const getStaticProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
   const fields = rendering.fields?.data?.item;

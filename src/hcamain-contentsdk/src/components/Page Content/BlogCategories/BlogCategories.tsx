@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import {
   Field,
   Text as JssText,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import ArticleCategories from '@component-library/site-components/ArticleCategories/ArticleCategories';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { normalizeId } from 'lib/sitecore/templateIds';
 
 type CategoriesFields = {

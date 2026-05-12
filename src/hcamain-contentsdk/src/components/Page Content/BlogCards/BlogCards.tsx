@@ -1,25 +1,25 @@
-/* eslint-disable prettier/prettier */
-import React from 'react';
+'use client';
+import { type JSX } from 'react';
 import {
   Field,
   ImageField,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  useSitecoreContext,
   LinkFieldValue,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Params from 'src/types/params';
 import Tags from '@component-library/core-components/Tags/Tags';
 import Button from '@component-library/core-components/Button/Button';
-import JssDate from '../../jss-abstractions/JssDate/JssDate';
+import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 const DynamicCardBlogBlock = dynamic(
   () =>
@@ -69,14 +69,13 @@ interface Fields {
   };
 }
 
-type BlogCardsProps = {
+type BlogCardsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
 
 const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -92,9 +91,7 @@ const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => {
 };
 
 export const Carousel = (props: BlogCardsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
@@ -233,8 +230,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 };
 
 export const Standard = (props: BlogCardsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;

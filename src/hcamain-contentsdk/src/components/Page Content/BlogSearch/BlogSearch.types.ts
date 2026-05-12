@@ -1,4 +1,5 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export interface BlogResponse {
@@ -121,7 +122,7 @@ export interface Fields {
   FilterBy?: FilterOption[];
 }
 
-export type BlogSearchProps = {
+export type BlogSearchProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   fallbackData?: BlogResponse;

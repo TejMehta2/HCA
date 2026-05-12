@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Text as JssText } from '@sitecore-content-sdk/nextjs';
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { AuthorFields } from 'src/types/authorFields';

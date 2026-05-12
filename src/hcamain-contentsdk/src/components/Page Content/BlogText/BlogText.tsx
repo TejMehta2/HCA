@@ -1,27 +1,28 @@
-import React, { useMemo } from 'react';
+'use client';
+
+import React, { useMemo, type JSX } from 'react';
 import {
   Field,
   RichText as JssRichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   Text?: Field<string>;
 }
 
-type BlogTextProps = {
+type BlogTextProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
 
 const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -37,8 +38,7 @@ const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
 };
 
 export const Default = (props: BlogTextProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   // Update H2 tag in the Rich Text field value if not in Editing mode
   const processedField = useMemo(() => {
@@ -54,7 +54,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
 
     const transformedValue = rawValue.replace(
       /<h2[^>]*>(.*?)<\/h2>/gi,
-      (_match, fullContent) => {
+      (_match: string, fullContent: string) => {
         const cleanText = fullContent.replace(/<[^>]*>/g, '').trim();
         const cleanId = generateHtmlSafeId(cleanText);
         //h2 format required by TOC

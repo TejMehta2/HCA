@@ -1,19 +1,12 @@
-import React from 'react';
-import {
-  ComponentParams,
-  ComponentRendering,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { type JSX } from 'react';
+import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
 import { ColumnSplitterContext } from '@component-library/context/columnSplitterContext';
+import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
 
-interface ComponentProps {
-  rendering: ComponentRendering & { params: ComponentParams };
-  params: ComponentParams;
-}
-
-export const Default = (props: ComponentProps): JSX.Element => {
+export const Default = (props: ComponentWithContextProps): JSX.Element => {
   const columnWidths = [
     props.params.ColumnWidth1,
     props.params.ColumnWidth2,
@@ -36,7 +29,7 @@ export const Default = (props: ComponentProps): JSX.Element => {
     props.params.Styles8,
   ];
 
-  const enabledPlaceholders = props.params.EnabledPlaceholders.split(',');
+  const enabledPlaceholders = props.params.EnabledPlaceholders?.split(',') ?? [];
   const id = props.params.RenderingIdentifier;
   const hasMultipleColumns = enabledPlaceholders.length > 1;
 
@@ -51,7 +44,7 @@ export const Default = (props: ComponentProps): JSX.Element => {
             props.params.Styles,
           ]}
         >
-          {enabledPlaceholders.map((ph, index) => {
+          {enabledPlaceholders.map((ph: string, index: number) => {
             const phKey = `column-${ph}-{*}`;
             const phStyles = `${columnWidths[+ph - 1]} ${
               columnStyles[+ph - 1] ?? ''
@@ -59,10 +52,12 @@ export const Default = (props: ComponentProps): JSX.Element => {
 
             return (
               <RichTextElement key={index} additionalStyles={phStyles}>
-                <Placeholder
+                <AppPlaceholder
                   key={index}
                   name={phKey}
                   rendering={props.rendering}
+                  page={props.page}
+                  componentMap={componentMap}
                 />
               </RichTextElement>
             );

@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+'use client';
+
+import React, { useRef, type JSX } from 'react';
 import {
   Field,
   Text as JssText,
   RichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text from '@component-library/foundation/Text/Text';
@@ -19,6 +20,7 @@ import { DoctifyMappedSitecoreItemWithAncestors } from 'src/types/doctify/doctif
 import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
 import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
 import { ModalContentFields } from 'src/types/modalContent.GraphQL';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   cTAIcon?: svgIconFieldsTargetItem;
@@ -27,7 +29,7 @@ interface Fields {
   modalContent?: { targetItems: ModalContentFields[] };
 }
 
-type BookAnAppointmentCTAProps = {
+type BookAnAppointmentCTAProps = ComponentWithContextProps & {
   params?: Params;
   fields?: {
     data: { item: Fields; contextItem: DoctifyMappedSitecoreItemWithAncestors };
@@ -37,8 +39,7 @@ type BookAnAppointmentCTAProps = {
 const BookAnAppointmentCTADefaultComponent = (
   props: BookAnAppointmentCTAProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>

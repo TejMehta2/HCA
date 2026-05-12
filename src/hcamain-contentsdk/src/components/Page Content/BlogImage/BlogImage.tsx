@@ -1,27 +1,24 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import {
-  ImageField,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { type JSX } from 'react';
+import { ImageField } from '@sitecore-content-sdk/nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   Image?: ImageField;
 }
 
-type BlogImageProps = {
+type BlogImageProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
 
 const BlogImageDefaultComponent = (props: BlogImageProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -37,9 +34,7 @@ const BlogImageDefaultComponent = (props: BlogImageProps): JSX.Element => {
 };
 
 export const Default = (props: BlogImageProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-
-  if (!props.fields && !sitecoreContext?.route?.fields?.Image) {
+  if (!props.fields && !props.page.layout.sitecore.route?.fields?.Image) {
     return <BlogImageDefaultComponent {...props} />;
   }
 
@@ -49,7 +44,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
   const image = (
     props.fields?.Image
       ? props.fields.Image
-      : sitecoreContext?.route?.fields?.Image
+      : props.page.layout.sitecore.route?.fields?.Image
   ) as ImageField;
 
   const isContainerized = props?.params?.Containerized === '1';

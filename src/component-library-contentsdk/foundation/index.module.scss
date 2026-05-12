@@ -1,7 +1,7 @@
-@forward './Colours/colours.module';
-@forward './Grids/grids.module';
-@forward './Text/text-mixin.module';
-@forward './Themes/themes-mixin.module';
-@forward './Spacing/spacing.module';
-@forward './Radius/radius.module';
-@forward './Scrollbar/scrollbar.module';
+@forward './Colours/_colours.module.scss';
+@forward './Grids/_grids.module.scss';
+@forward './Text/_text-mixin.module.scss';
+@forward './Themes/_themes-mixin.module.scss';
+@forward './Spacing/_spacing.module.scss';
+@forward './Radius/_radius.module.scss';
+@forward './Scrollbar/_scrollbar.module.scss';

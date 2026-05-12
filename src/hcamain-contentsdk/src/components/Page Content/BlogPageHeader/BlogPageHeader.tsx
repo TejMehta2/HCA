@@ -1,5 +1,7 @@
-import React from 'react';
-import { RichText, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
+'use client';
+
+import React, { type JSX } from 'react';
+import { RichText, Text as JssText } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain, {
   getDynamicTitleStyle,
@@ -10,8 +12,7 @@ import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import Themes from '@component-library/foundation/Themes/Themes';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
-import { SearchResponse } from 'components/LocationsSearch/LocationsSearch.types';
-import { Autocomplete } from 'components/TestAndScansSearch/TestsAndScansSearch.types';
+import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
 import getBaselineParams from 'lib/getBaselineParams';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
@@ -42,7 +43,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     searchParams,
     autocompleteData,
     autocompleteError,
-  } = useSearchForm<SearchResponse, Autocomplete>({
+  } = useSearchForm<BlogResponse, Autocomplete>({
     baseUrl: CLIENT_API_PATH,
     searchPath: SEARCH_PATH,
     baselineParams: [...baselineParams],
@@ -119,7 +120,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
               autocompleteError
                 ? []
                 : autocompleteData?.response?.results?.map(
-                    (result) => `${result.value}`
+                    (result: { value: string }) => `${result.value}`
                   )
             }
           >

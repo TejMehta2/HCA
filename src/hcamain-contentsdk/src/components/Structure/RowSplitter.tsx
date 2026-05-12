@@ -1,17 +1,10 @@
-import React from 'react';
-import {
-  ComponentParams,
-  ComponentRendering,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { type JSX } from 'react';
+import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
+import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
 
-interface ComponentProps {
-  rendering: ComponentRendering & { params: ComponentParams };
-  params: ComponentParams;
-}
-
-export const Default = (props: ComponentProps): JSX.Element => {
+export const Default = (props: ComponentWithContextProps): JSX.Element => {
   const rowStyles = [
     props.params.Styles1,
     props.params.Styles2,
@@ -22,7 +15,7 @@ export const Default = (props: ComponentProps): JSX.Element => {
     props.params.Styles7,
     props.params.Styles8,
   ];
-  const enabledPlaceholders = props.params.EnabledPlaceholders.split(',');
+  const enabledPlaceholders = props.params.EnabledPlaceholders?.split(',') ?? [];
   const id = props.params.RenderingIdentifier;
 
   return (
@@ -30,13 +23,19 @@ export const Default = (props: ComponentProps): JSX.Element => {
       additionalStyles={[props.params.GridParameters, props.params.Styles]}
       id={id ? id : undefined}
     >
-      {enabledPlaceholders.map((ph, index) => {
+      {enabledPlaceholders.map((ph: string, index: number) => {
         const phKey = `row-${ph}-{*}`;
         const phStyles = `${rowStyles[+ph - 1] ?? ''}`.trimEnd();
 
         return (
           <RichTextElement key={index} additionalStyles={[phStyles, 'row']}>
-            <Placeholder key={index} name={phKey} rendering={props.rendering} />
+            <AppPlaceholder
+              key={index}
+              name={phKey}
+              rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
+            />
           </RichTextElement>
         );
       })}

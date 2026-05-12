@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+'use client';
+
+import React, { useRef, type JSX, type RefObject } from 'react';
 import {
-  GetStaticComponentProps,
   Text as JssText,
   RichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -19,7 +20,7 @@ import {
 } from './BlogSearch.types';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
-import getBaselineParams from '../../lib/getBaselineParams';
+import getBaselineParams from 'lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -31,7 +32,7 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
-import { useI18n } from 'next-localization';
+import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -51,7 +52,7 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
 
 export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
-  const { t } = useI18n();
+  const t = useTranslations();
 
   // Set up default baseline parameters from CMS
   const {
@@ -284,7 +285,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                 offset={offset}
                 limit={limit}
                 resultsCount={resultsCount}
-                scrollToRef={searchWrapperRef}
+                scrollToRef={searchWrapperRef as RefObject<HTMLElement>}
               />
             </>
           )}
@@ -295,11 +296,13 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
+export const getStaticProps = async (
   rendering: BlogSearchProps
 ) => {
   const { baselineParams } = getBaselineParams(rendering);
-  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const params = baselineParams.map(
+    (entry: [string, string]) => `${entry[0]}=${entry[1]}`
+  ); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 

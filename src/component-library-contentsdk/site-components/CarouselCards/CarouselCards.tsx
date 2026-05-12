@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselCardsProps } from './CarouselCards.types';
 import styles from './CarouselCards.module.scss';
