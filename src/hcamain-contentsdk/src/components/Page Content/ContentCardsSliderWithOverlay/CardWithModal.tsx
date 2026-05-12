@@ -1,8 +1,12 @@
-import React, { useRef } from 'react';
+
+'use client';
+
+import { type JSX, useRef } from 'react';
+
 import {
   Text as JssText,
   RichText as JssRichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';

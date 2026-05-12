@@ -1,5 +1,6 @@
 'use client';
-import React, { useRef, type JSX } from 'react';
+
+import React, { type JSX, useRef } from 'react';
 import { Field, Text as JssText, RichText } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
@@ -231,13 +232,18 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                   return;
                 }
 
-                const { href: rawHref, text } = locationPageOrFirstParentLocation
-                  ? withKeywordIdIfNeeded(link.jsonValue, doctifyId, 'practice')
-                  : withKeywordIdIfNeeded(
-                      link.jsonValue,
-                      doctifyId,
-                      'keywordId'
-                    );
+                const { href: rawHref, text } =
+                  locationPageOrFirstParentLocation
+                    ? withKeywordIdIfNeeded(
+                        link.jsonValue,
+                        doctifyId,
+                        'practice'
+                      )
+                    : withKeywordIdIfNeeded(
+                        link.jsonValue,
+                        doctifyId,
+                        'keywordId'
+                      );
                 const href = normalizeHref(rawHref);
                 const useNextLink = isValidNextLinkHref(href);
                 const linkContent = (
@@ -325,17 +331,18 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                   return;
                 }
 
-                const { href: rawHref, text } = locationPageOrFirstParentLocation
-                  ? withKeywordIdIfNeeded(
-                      link?.jsonValue,
-                      doctifyId,
-                      'practice'
-                    )
-                  : withKeywordIdIfNeeded(
-                      link?.jsonValue,
-                      doctifyId,
-                      'keywordId'
-                    );
+                const { href: rawHref, text } =
+                  locationPageOrFirstParentLocation
+                    ? withKeywordIdIfNeeded(
+                        link?.jsonValue,
+                        doctifyId,
+                        'practice'
+                      )
+                    : withKeywordIdIfNeeded(
+                        link?.jsonValue,
+                        doctifyId,
+                        'keywordId'
+                      );
                 const href = normalizeHref(rawHref);
                 const useNextLink = isValidNextLinkHref(href);
                 const linkContent = (

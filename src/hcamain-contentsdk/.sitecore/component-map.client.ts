@@ -4,6 +4,9 @@ import { BYOCClientWrapper, NextjsContentSdkComponent, FEaaSClientWrapper } from
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
+import * as HeroBannerWithSearch from 'src/components/Page Content/HeroBannerWithSearch/HeroBannerWithSearch';
+import * as Log404Email from 'src/components/Page Content/EmailUtils/Log404Email';
+import * as CardWithModal from 'src/components/Page Content/ContentCardsSliderWithOverlay/CardWithModal';
 import * as CallUsTodayCTA from 'src/components/Page Content/CallUsTodayCTA/CallUsTodayCTA';
 import * as BookAnAppointmentCTA from 'src/components/Page Content/BookAnAppointmentCTA/BookAnAppointmentCTA';
 import * as BlogSearch from 'src/components/Page Content/BlogSearch/BlogSearch';
@@ -23,6 +26,9 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['FEaaSWrapper', FEaaSClientWrapper],
   ['Form', Form],
   ['StickyCTA', { ...StickyCTA }],
+  ['HeroBannerWithSearch', { ...HeroBannerWithSearch }],
+  ['Log404Email', { ...Log404Email }],
+  ['CardWithModal', { ...CardWithModal }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA }],
   ['BookAnAppointmentCTA', { ...BookAnAppointmentCTA }],
   ['BlogSearch', { ...BlogSearch }],

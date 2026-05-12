@@ -1,6 +1,5 @@
 'use client';
-
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import { RichText, Text as JssText } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain, {

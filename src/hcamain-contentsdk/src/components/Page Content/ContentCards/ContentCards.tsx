@@ -1,5 +1,7 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   ImageField,
@@ -7,17 +9,16 @@ import {
   Text as JssText,
   Link as JssLink,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
@@ -54,7 +55,7 @@ interface Fields {
   };
 }
 
-export type ContentCardsProps = {
+export type ContentCardsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   dataSource: string;
@@ -63,8 +64,7 @@ export type ContentCardsProps = {
 const ContentCardsDefaultComponent = (
   props: ContentCardsProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -84,9 +84,7 @@ interface WithImageProps extends ContentCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   const { showImage = true } = props;
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
@@ -143,7 +141,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
-      variation={`${numberOfCards}-columns`}
+      variation={`${numberOfCards}-columns` as '2-columns' | '3-columns' | '4-columns'}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={

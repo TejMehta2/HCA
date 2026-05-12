@@ -1,16 +1,16 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
-  Text as JssText,
-  useSitecoreContext,
-  LinkField,
+  Text as JssText,  LinkField,
   RichText as JssRichText,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -40,7 +40,7 @@ interface Fields {
   Cards?: CardFields[];
 }
 
-type ContentCarouselExtendedProps = {
+type ContentCarouselExtendedProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -48,8 +48,7 @@ type ContentCarouselExtendedProps = {
 const ContentCarouselExtendedDefaultComponent = (
   props: ContentCarouselExtendedProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -65,8 +64,7 @@ const ContentCarouselExtendedDefaultComponent = (
 };
 
 export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <ContentCarouselExtendedDefaultComponent {...props} />;
   }

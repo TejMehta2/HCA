@@ -1,14 +1,14 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Text as JssText,
   Field,
   Link as JssLink,
   LinkField,
   ImageField,
-  RichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  RichText,} from '@sitecore-content-sdk/nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
@@ -16,7 +16,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {
@@ -52,7 +52,7 @@ interface Fields {
   };
 }
 
-type ContentCardsSliderProps = {
+type ContentCardsSliderProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -71,8 +71,7 @@ interface WithImageProps extends ContentCardsSliderProps {
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
   const { showImage = true } = props;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;

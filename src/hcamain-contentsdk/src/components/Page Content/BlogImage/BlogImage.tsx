@@ -1,5 +1,6 @@
+import { type JSX } from 'react';
 /* eslint-disable prettier/prettier */
-import React, { type JSX } from 'react';
+
 import { ImageField } from '@sitecore-content-sdk/nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';

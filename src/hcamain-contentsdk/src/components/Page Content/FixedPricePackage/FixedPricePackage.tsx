@@ -1,20 +1,23 @@
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   Text as JssText,
   RichText as JssRichText,
   ImageField,
   ComponentRendering,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  AppPlaceholder,
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
@@ -24,7 +27,7 @@ interface Fields {
   Image?: ImageField;
 }
 
-type FixedPricePackageProps = {
+type FixedPricePackageProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: ComponentRendering;
@@ -95,7 +98,7 @@ const IntegratedFixedPricedPackage = (
         ctas={
           props.rendering && (
             <PlaceHolderWrapper>
-              <Placeholder name={phKey} rendering={props.rendering} />
+              <AppPlaceholder name={phKey} rendering={props.rendering} page={props.page} componentMap={componentMap} />
             </PlaceHolderWrapper>
           )
         }

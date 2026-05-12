@@ -1,12 +1,13 @@
-import React from 'react';
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+
 import {
   Field,
   LinkField,
   Link as JssLink,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import Button from '@component-library/core-components/Button/Button';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
@@ -50,7 +51,7 @@ interface Fields {
   };
 }
 
-type FindAConsultantCTAProps = {
+type FindAConsultantCTAProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -58,8 +59,7 @@ type FindAConsultantCTAProps = {
 const FindAConsultantCTADefaultComponent = (
   props: FindAConsultantCTAProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -75,8 +75,7 @@ const FindAConsultantCTADefaultComponent = (
 };
 
 export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <FindAConsultantCTADefaultComponent {...props} />;

@@ -1,14 +1,14 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   LinkField,
   Link as JssLink,
   Text as JssText,
   Item,
-  RichText as JssRichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  RichText as JssRichText,} from '@sitecore-content-sdk/nextjs';
 import AccordionsBlock from '@component-library/site-components/AccordionsBlock/AccordionsBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -17,7 +17,7 @@ import { Accordions } from '@component-library/components/Accordions/Accordions.
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 //import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {
@@ -44,7 +44,7 @@ interface Fields {
   Questions?: QuestionFields[];
 }
 
-type FAQProps = {
+type FAQProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -129,8 +129,7 @@ const getAccordions = (
 // };
 
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -146,8 +145,7 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
 };
 
 export const Default = (props: FAQProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
@@ -247,8 +245,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 };
 
 export const RightAligned = (props: FAQProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
   }

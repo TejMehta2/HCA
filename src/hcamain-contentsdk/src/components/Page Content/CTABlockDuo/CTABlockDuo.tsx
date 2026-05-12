@@ -1,15 +1,18 @@
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   ComponentRendering,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  AppPlaceholder,
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import DualCTABlock from '@component-library/careers/DualCTABlock/DualCTABlock';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
-type TextBlockComponentDuoProps = {
+type TextBlockComponentDuoProps = ComponentWithContextProps & {
   params?: Params;
   rendering: ComponentRendering;
 };
@@ -27,7 +30,7 @@ export const Default = (props: TextBlockComponentDuoProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       content={
         <PlaceHolderWrapper>
-          <Placeholder name={phKey} rendering={props.rendering} />
+          <AppPlaceholder name={phKey} rendering={props.rendering} page={props.page} componentMap={componentMap} />
         </PlaceHolderWrapper>
       }
     />

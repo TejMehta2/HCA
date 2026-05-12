@@ -1,19 +1,21 @@
-import React from 'react';
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
+
 import {
   Field,
-  Placeholder,
+  AppPlaceholder,
   ComponentRendering,
   ImageField,
   RichText,
   Text as JSSText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import HeaderWithImage, {
   getDynamicTitleStyle,
 } from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params, { DarkTheme, darkThemes } from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
@@ -33,7 +35,7 @@ interface HeaderWithImageParams extends Params {
   HeadingBeforeTitle?: '1' | '0';
 }
 
-export type HeaderWithImageProps = {
+export type HeaderWithImageProps = ComponentWithContextProps & {
   params?: HeaderWithImageParams;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -46,8 +48,7 @@ interface HeaderWithImageVariantProps extends HeaderWithImageProps {
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -125,9 +126,11 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
       }
       ratings={
         props.rendering ? (
-          <Placeholder
+          <AppPlaceholder
             name={phKeyRatings}
             rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
             size={buttonSize}
             contentVariation="full-width"
           />
@@ -137,9 +140,11 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
       }
       ctas={
         props.rendering ? (
-          <Placeholder
+          <AppPlaceholder
             name={phKeyCtas}
             rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
             size={buttonSize}
             contentVariation="full-width"
           />

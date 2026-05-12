@@ -1,6 +1,12 @@
+'use client';
+
 import axios from 'axios';
-import { ILogEmailFields } from 'lib/consultant-finder/API_HCA';
-import { useEffect } from 'react';
+import { type JSX, useEffect } from 'react';
+
+interface ILogEmailFields {
+  profileType: string;
+  freeText: string;
+}
 
 /**
  * Rendered in case we need to email for the 404

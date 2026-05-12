@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useRef, type JSX, type RefObject } from 'react';
+import { RefObject, type JSX, useRef } from 'react';
+
 import {
   Text as JssText,
   RichText,

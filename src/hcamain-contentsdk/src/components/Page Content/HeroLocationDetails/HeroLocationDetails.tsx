@@ -1,13 +1,14 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
 /* eslint-disable */
-import React from 'react';
+
 import {
   Field,
   ImageField,
   Text as JssText,
   ComponentRendering,
-  Placeholder,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  AppPlaceholder,} from '@sitecore-content-sdk/nextjs';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
 import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
@@ -19,8 +20,8 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { CQSStatusFieldsGraphQl } from 'components/CQCRating/CQCRatingGraphQl.types';
-import { DoctifyReviewsFieldsGraphQl } from 'components/Doctify/DoctifyGraphQl.types';
+import { CQSStatusFieldsGraphQl } from '../CQCRating/CQCRatingGraphQl.types';
+import { DoctifyReviewsFieldsGraphQl } from '../Doctify/DoctifyGraphQl.types';
 
 interface Fields {
   data?: {
@@ -41,7 +42,7 @@ interface Fields {
   };
 }
 
-export type HeroLocationDetailsProps = {
+export type HeroLocationDetailsProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -52,8 +53,7 @@ const HeroLocationDetailsDefaultComponent = (
 ): JSX.Element => <div className={`component ${props.params?.styles}`}></div>;
 
 export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   if (!props.fields) {
@@ -92,6 +92,8 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           <Doctify
             alignment="left"
             params={props.params}
+            rendering={props.rendering}
+            page={props.page}
             key={2}
             fields={{
               data: {
@@ -183,7 +185,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
+            <AppPlaceholder name={phKey} rendering={props.rendering} page={props.page} componentMap={componentMap} />
           </PlaceHolderWrapper>
         )
       }
@@ -203,6 +205,9 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         props.fields?.data?.contextItem?.cQCRating?.targetItem ? (
           <CQCRating
             length="short"
+            params={props.params}
+            rendering={props.rendering}
+            page={props.page}
             fields={{
               data: {
                 item: props.fields?.data?.contextItem?.cQCRating?.targetItem,

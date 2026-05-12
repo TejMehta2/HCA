@@ -1,11 +1,12 @@
-import React from 'react';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+
 import Params from 'src/types/params';
 import YextSearch from '@component-library/yext/YextSearch/YextSearch';
 
 interface Fields {}
 
-type GenericSearchProps = {
+type GenericSearchProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -13,8 +14,7 @@ type GenericSearchProps = {
 const GenericSearchDefaultComponent = (
   props: GenericSearchProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>

@@ -1,17 +1,17 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
-  Text as JssText,
-  useSitecoreContext,
-  LinkField,
+  Text as JssText,  LinkField,
   RichText as JssRichText,
   ImageField,
   Link as JssLink,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 import dynamic from 'next/dynamic';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
@@ -54,7 +54,7 @@ interface Fields {
   Cards?: CardFields[];
 }
 
-type ContentVerticalSliderProps = {
+type ContentVerticalSliderProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -62,8 +62,7 @@ type ContentVerticalSliderProps = {
 const ContentVerticalSliderDefaultComponent = (
   props: ContentVerticalSliderProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -79,8 +78,7 @@ const ContentVerticalSliderDefaultComponent = (
 };
 
 export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <ContentVerticalSliderDefaultComponent {...props} />;
   }

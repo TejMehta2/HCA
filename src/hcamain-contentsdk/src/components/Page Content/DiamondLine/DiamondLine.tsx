@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import DiamondLine from '@component-library/site-components/DiamondLine/DiamondLine';
 import Params from 'src/types/params';
 

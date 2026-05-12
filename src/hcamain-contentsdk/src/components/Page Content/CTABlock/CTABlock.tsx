@@ -1,17 +1,20 @@
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   RichText,
-  Placeholder,
+  AppPlaceholder,
   ComponentRendering,
   Text as JSSText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
@@ -20,7 +23,7 @@ interface Fields {
   Text?: Field<string>;
 }
 
-type CTABlockProps = {
+type CTABlockProps = ComponentWithContextProps & {
   params?: Params;
 
   rendering?: ComponentRendering;
@@ -72,9 +75,11 @@ export const Default = (props: CTABlockProps): JSX.Element => {
       }
       ctas={
         props.rendering && (
-          <Placeholder
+          <AppPlaceholder
             name={phKey}
             rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
             size={buttonSize}
           />
         )

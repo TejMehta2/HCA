@@ -1,10 +1,11 @@
-import React from 'react';
-import { Field, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+
+import { Field, Text as JssText } from '@sitecore-content-sdk/nextjs';
 import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.types';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import Themes from '@component-library/foundation/Themes/Themes';
 
@@ -19,7 +20,7 @@ interface Fields {
   };
 }
 
-type ContactDetailsBoxProps = {
+type ContactDetailsBoxProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -27,8 +28,7 @@ type ContactDetailsBoxProps = {
 const ContactDetailsBoxDefaultComponent = (
   props: ContactDetailsBoxProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>

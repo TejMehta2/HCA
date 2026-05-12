@@ -2,9 +2,10 @@ import {
   Field,
   ImageField,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import { ConsultantExtract as Consultant } from './response.types';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 export type FilterField = {
   displayName?: string;
@@ -81,7 +82,7 @@ export interface Fields {
   };
 }
 
-export type DoctorCardsProps = {
+export type DoctorCardsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {

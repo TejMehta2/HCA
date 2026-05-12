@@ -9,9 +9,9 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { useRef, useMemo, createElement, useCallback, useEffect, useState } from 'react';
+import { useRef, useEffect, createElement, useCallback, useState } from 'react';
 import React from 'react';
-import { Text, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, useComponentProps, debug, Image as Image_8a80e63291fea86e0744df19113dc44bec187216, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Text, RichText, AppPlaceholder, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, useComponentProps, debug, Image as Image_8a80e63291fea86e0744df19113dc44bec187216, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
@@ -22,12 +22,19 @@ import { SITECORE_TEMPLATE_IDS } from 'lib/sitecore/templateIds';
 import { firstDoctifyMappedSelfOrAncestor } from 'lib/doctify-integration/firstDoctifyMappedSelfOrAncestor';
 import { firstSelfOrAncestorByTemplate } from 'lib/doctify-integration/firstSelfOrAncestorByTemplate';
 import { isValidNextLinkHref, normalizeHref } from 'lib/utility-functions/nextLinkHref';
+import componentMap from '.sitecore/component-map';
+import { getDynamicTitleStyle } from '@component-library/site-components/HomepageHero/HomepageHero';
+import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
+import SearchButton from '@component-library/components/SearchButton/SearchButton';
+import getSubheadingTag from 'lib/subheading-tag-getter';
+import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import axios from 'axios';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import ModalImageShortText from '@component-library/careers/ModalImageShortText/ModalImageShortText';
+import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
-import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
-import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
@@ -42,7 +49,7 @@ import SearchContainer from '@component-library/site-components/SearchContainer/
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import { getDynamicTitleStyle as getDynamicTitleStyle_d2b0c1156f49baaa09d6e438a4129cbd788b4284 } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
@@ -56,18 +63,17 @@ import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParame
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
-import getSubheadingTag from 'lib/subheading-tag-getter';
-import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import dynamic from 'next/dynamic';
 import Accordions from '@component-library/components/Accordions/Accordions';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
-import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
 import client from 'src/lib/sitecore-client';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
@@ -91,10 +97,9 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'useRef', value: useRef },
-      { name: 'useMemo', value: useMemo },
+      { name: 'useEffect', value: useEffect },
       { name: 'createElement', value: createElement },
       { name: 'useCallback', value: useCallback },
-      { name: 'useEffect', value: useEffect },
       { name: 'useState', value: useState },
       { name: 'default', value: React },
     ]
@@ -104,6 +109,7 @@ const importMap = [
     exports: [
       { name: 'Text', value: Text },
       { name: 'RichText', value: RichText },
+      { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'Link', value: Link_8a80e63291fea86e0744df19113dc44bec187216 },
       { name: 'useComponentProps', value: useComponentProps },
       { name: 'debug', value: debug },
@@ -174,21 +180,58 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/components/ModalCallUs/ModalCallUs',
+    module: '.sitecore/component-map',
     exports: [
-      { name: 'default', value: ModalCallUs },
+      { name: 'default', value: componentMap },
     ]
   },
   {
-    module: 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours',
+    module: '@component-library/site-components/HomepageHero/HomepageHero',
     exports: [
-      { name: 'OpeningHours', value: OpeningHours },
+      { name: 'getDynamicTitleStyle', value: getDynamicTitleStyle },
+      { name: 'default', value: HomepageHero },
     ]
   },
   {
-    module: '@component-library/site-components/BlogContent/BlogContent',
+    module: '@component-library/components/SearchButton/SearchButton',
     exports: [
-      { name: 'default', value: BlogContent },
+      { name: 'default', value: SearchButton },
+    ]
+  },
+  {
+    module: 'lib/subheading-tag-getter',
+    exports: [
+      { name: 'default', value: getSubheadingTag },
+    ]
+  },
+  {
+    module: 'lib/constants',
+    exports: [
+      { name: 'SEARCH_SUGGESTIONS_MODAL_ID', value: SEARCH_SUGGESTIONS_MODAL_ID },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
+    exports: [
+      { name: 'default', value: NextJssImage },
+    ]
+  },
+  {
+    module: 'axios',
+    exports: [
+      { name: 'default', value: axios },
+    ]
+  },
+  {
+    module: '@component-library/components/CardContent/CardContent',
+    exports: [
+      { name: 'default', value: CardContent },
+    ]
+  },
+  {
+    module: '@component-library/careers/ModalImageShortText/ModalImageShortText',
+    exports: [
+      { name: 'default', value: ModalImageShortText },
     ]
   },
   {
@@ -198,15 +241,15 @@ const importMap = [
     ]
   },
   {
-    module: 'src/context/inPageNavGlobalStorage',
+    module: '@component-library/components/ModalCallUs/ModalCallUs',
     exports: [
-      { name: 'inPageNavGlobalStore', value: inPageNavGlobalStore },
+      { name: 'default', value: ModalCallUs },
     ]
   },
   {
-    module: 'lib/utility-functions/generateHtmlSafeId',
+    module: 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours',
     exports: [
-      { name: 'generateHtmlSafeId', value: generateHtmlSafeId },
+      { name: 'OpeningHours', value: OpeningHours },
     ]
   },
   {
@@ -296,7 +339,7 @@ const importMap = [
   {
     module: '@component-library/site-components/HeaderPlain/HeaderPlain',
     exports: [
-      { name: 'getDynamicTitleStyle', value: getDynamicTitleStyle },
+      { name: 'getDynamicTitleStyle', value: getDynamicTitleStyle_d2b0c1156f49baaa09d6e438a4129cbd788b4284 },
       { name: 'default', value: HeaderPlain },
     ]
   },
@@ -373,15 +416,9 @@ const importMap = [
     ]
   },
   {
-    module: 'lib/subheading-tag-getter',
+    module: 'src/context/inPageNavGlobalStorage',
     exports: [
-      { name: 'default', value: getSubheadingTag },
-    ]
-  },
-  {
-    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
-    exports: [
-      { name: 'default', value: NextJssImage },
+      { name: 'inPageNavGlobalStore', value: inPageNavGlobalStore },
     ]
   },
   {
@@ -419,6 +456,12 @@ const importMap = [
     ]
   },
   {
+    module: 'lib/utility-functions/insideContainerComponent',
+    exports: [
+      { name: 'isInsideContainerComponent', value: isInsideContainerComponent },
+    ]
+  },
+  {
     module: '@component-library/site-components/Navigation/Navigation',
     exports: [
       { name: 'default', value: Navigation },
@@ -434,12 +477,6 @@ const importMap = [
     module: '@component-library/yext/ModalSearch/ModalSearch',
     exports: [
       { name: 'default', value: ModalSearch },
-    ]
-  },
-  {
-    module: 'lib/constants',
-    exports: [
-      { name: 'SEARCH_SUGGESTIONS_MODAL_ID', value: SEARCH_SUGGESTIONS_MODAL_ID },
     ]
   },
   {

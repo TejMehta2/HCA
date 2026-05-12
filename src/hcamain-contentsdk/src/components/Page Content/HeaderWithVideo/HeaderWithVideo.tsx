@@ -1,17 +1,19 @@
-import React from 'react';
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
+
 import {
   Field,
-  Placeholder,
+  AppPlaceholder,
   ComponentRendering,
   ImageField,
   RichText,
   Text as JSSText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import VideoHero from '@component-library/careers/VideoHero/VideoHero';
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Themes from '@component-library/foundation/Themes/Themes';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -31,7 +33,7 @@ interface Fields {
   };
 }
 
-export type HeaderWithVideoProps = {
+export type HeaderWithVideoProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -40,8 +42,7 @@ export type HeaderWithVideoProps = {
 const HeaderWithVideoDefaultComponent = (
   props: HeaderWithVideoProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -122,9 +123,11 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
         }
         children={
           props.rendering ? (
-            <Placeholder
+            <AppPlaceholder
               name={phKey}
               rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
               size={buttonSize}
               contentVariation="full-width"
             />

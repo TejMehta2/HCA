@@ -1,12 +1,17 @@
-import React from 'react';
+'use client';
+
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
+import { ComponentWithContextProps } from 'lib/component-props';
+
 import {
   Field,
   ImageField,
   Text as JssText,
   ComponentRendering,
-  Placeholder,
+  AppPlaceholder,
   RichText as JssRichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 import HomepageHero, {
   getDynamicTitleStyle,
@@ -36,7 +41,7 @@ interface Fields {
   };
 }
 
-export type HeroBannerWithSearchProps = {
+export type HeroBannerWithSearchProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -101,9 +106,11 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       }
       ctas={
         props.rendering ? (
-          <Placeholder
+          <AppPlaceholder
             name={phKey}
             rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
             contentVariation="full-width"
           />
         ) : (

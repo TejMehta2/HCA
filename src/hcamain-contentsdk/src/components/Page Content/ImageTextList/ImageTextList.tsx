@@ -1,17 +1,17 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   ImageField,
   Text as JssText,
-  RichText as JssRichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  RichText as JssRichText,} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
@@ -34,7 +34,7 @@ interface Fields {
   Cards?: CardFields[];
 }
 
-type ImageTextListProps = {
+type ImageTextListProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -42,8 +42,7 @@ type ImageTextListProps = {
 const ImageTextListDefaultComponent = (
   props: ImageTextListProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -63,8 +62,7 @@ interface ImageTextListColumnsProps extends ImageTextListProps {
 }
 
 export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   const { columns = 2 } = props;
 
   if (!props.fields) {
@@ -113,8 +111,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
 };
 
 export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <ImageTextListDefaultComponent {...props} />;

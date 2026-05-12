@@ -1,19 +1,20 @@
+import { type JSX } from 'react';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Field,
   Item,
   Text as JssText,
   RichText as JssRichText,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import TabsBlock from '@component-library/site-components/TabsBlock/TabsBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type HCAIconFields = {
   fields?: {

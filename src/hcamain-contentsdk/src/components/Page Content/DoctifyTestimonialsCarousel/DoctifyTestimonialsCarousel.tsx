@@ -1,17 +1,17 @@
+import React, { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 
 import {
   Field,
   Text as JssText,
   RichText,
-  ImageField,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  ImageField,} from '@sitecore-content-sdk/nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface TestimonialsFields {
@@ -41,7 +41,7 @@ interface Fields {
   Testimonials?: TestimonialsFields[];
 }
 
-type DoctifyTestimonialsCarouselProps = {
+type DoctifyTestimonialsCarouselProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -49,8 +49,7 @@ type DoctifyTestimonialsCarouselProps = {
 const DoctifyTestimonialsCarouselDefaultComponent = (
   props: DoctifyTestimonialsCarouselProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -68,8 +67,7 @@ const DoctifyTestimonialsCarouselDefaultComponent = (
 export const Default = (
   props: DoctifyTestimonialsCarouselProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }

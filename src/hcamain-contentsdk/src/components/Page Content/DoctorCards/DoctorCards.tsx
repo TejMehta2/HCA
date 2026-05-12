@@ -1,11 +1,11 @@
+import { type JSX } from 'react';
+import { ComponentWithContextProps } from 'lib/component-props';
 /* eslint-disable prettier/prettier */
-import React from 'react';
+
 import {
   Link as JssLink,
-  useSitecoreContext,
   useComponentProps,
-  GetStaticComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
@@ -20,15 +20,18 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Image from 'next/image';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
+
+type GetStaticComponentProps = (
+  rendering: DoctorCardsProps
+) => Promise<StaticProps | { consultants: Consultant[]; ctaQuery?: string; apiUrl?: string }>;
 
 const DoctorCardsDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
@@ -125,7 +128,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     >
       {showFallbackCard
         ? fallbackCard
-        : consultants?.map((consultant, index: number) => (
+        : consultants?.map((consultant: Consultant, index: number) => (
           <CardDoctor
             key={index}
             image={
