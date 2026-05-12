@@ -128,8 +128,10 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
               rendering={props.rendering}
               page={props.page}
               componentMap={componentMap}
-              size={buttonSize}
-              contentVariation="full-width"
+              passThroughComponentProps={{
+                size: buttonSize,
+                contentVariation: 'full-width',
+              }}
             />
           ) : (
             <></>

@@ -129,10 +129,12 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
           <AppPlaceholder
             name={phKeyRatings}
             rendering={props.rendering}
-              page={props.page}
-              componentMap={componentMap}
-            size={buttonSize}
-            contentVariation="full-width"
+            page={props.page}
+            componentMap={componentMap}
+            passThroughComponentProps={{
+              size: buttonSize,
+              contentVariation: 'full-width',
+            }}
           />
         ) : (
           <></>
@@ -143,10 +145,12 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
           <AppPlaceholder
             name={phKeyCtas}
             rendering={props.rendering}
-              page={props.page}
-              componentMap={componentMap}
-            size={buttonSize}
-            contentVariation="full-width"
+            page={props.page}
+            componentMap={componentMap}
+            passThroughComponentProps={{
+              size: buttonSize,
+              contentVariation: 'full-width',
+            }}
           />
         ) : (
           <></>
@@ -164,13 +168,17 @@ export const FullWidthImage = (
   }
 
   //make sure fulwidthimage variant has one of dark themes, if not fallback to default dark theme
+  const theme = props.params?.Theme;
+  const fullWidthTheme =
+    theme && darkThemes.includes(theme as DarkTheme)
+      ? theme
+      : 'B-HCA-Navy-Blue';
+
   const nextProps: HeaderWithImageVariantProps = {
     ...props,
     params: {
       ...props.params,
-      Theme: darkThemes.includes(props.params?.Theme as DarkTheme)
-        ? props.params?.Theme
-        : 'B-HCA-Navy-Blue',
+      Theme: fullWidthTheme,
     },
   };
 

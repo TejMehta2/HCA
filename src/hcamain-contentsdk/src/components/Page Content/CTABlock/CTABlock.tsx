@@ -1,7 +1,6 @@
 import { type JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import { ComponentWithContextProps } from 'lib/component-props';
-/* eslint-disable prettier/prettier */
 
 import {
   Field,
@@ -78,9 +77,9 @@ export const Default = (props: CTABlockProps): JSX.Element => {
           <AppPlaceholder
             name={phKey}
             rendering={props.rendering}
-              page={props.page}
-              componentMap={componentMap}
-            size={buttonSize}
+            page={props.page}
+            componentMap={componentMap}
+            passThroughComponentProps={{ size: buttonSize }}
           />
         )
       }
