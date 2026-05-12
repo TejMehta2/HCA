@@ -15,6 +15,7 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { AuthorFields } from 'src/types/authorFields';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 interface Fields {
   Quote?: Field<string>;
@@ -44,6 +45,81 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
   return <></>;
 };
 
+const BlogQuoteContent = ({
+  props,
+  alignment,
+  showQuotationMarks,
+}: {
+  props: BlogQuoteProps;
+  alignment?: 'center';
+  showQuotationMarks: boolean;
+}): JSX.Element => {
+  const author = props.fields?.Author?.[0];
+  const authorHref = author?.fields?.Link?.value?.href;
+  const hasAuthorLink = Boolean(authorHref);
+  const quote = props.fields?.Quote;
+  const hasQuote = Boolean(quote?.value);
+
+  const authorName = <JssText field={author?.fields?.Name} />;
+  const authorImage = (
+    <NextJssImage
+      field={author?.fields?.Avatar}
+      next={{
+        width: '70',
+        height: '70',
+      }}
+    />
+  );
+  const authorTag = (
+    <span>
+      <JssText field={author?.fields?.Position} />
+    </span>
+  );
+
+  return (
+    <RichText>
+      <QuoteBlock
+        alignment={alignment}
+        author={
+          author
+            ? {
+                name: hasAuthorLink ? (
+                  <a href={authorHref} target="_blank">
+                    {authorName}
+                  </a>
+                ) : (
+                  authorName
+                ),
+                image: hasAuthorLink ? (
+                  <a href={authorHref} target="_blank">
+                    {authorImage}
+                  </a>
+                ) : (
+                  authorImage
+                ),
+                tag: hasAuthorLink ? (
+                  <a href={authorHref} target="_blank">
+                    {authorTag}
+                  </a>
+                ) : (
+                  authorTag
+                ),
+              }
+            : undefined
+        }
+      >
+        {hasQuote ? (
+          <Text variation={props.params?.HeadingSize || 'display-3'}>
+            {showQuotationMarks ? '“' : null}
+            <JssText field={quote} />
+            {showQuotationMarks ? '”' : null}
+          </Text>
+        ) : null}
+      </QuoteBlock>
+    </RichText>
+  );
+};
+
 export const Default = (props: BlogQuoteProps): JSX.Element => {
   const { alignment } = props;
   if (!props.fields) {
@@ -53,101 +129,19 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
-  const quoteBlock = (
-    <QuoteBlock
-      alignment={alignment}
-      author={
-        props.fields?.Author?.length
-          ? {
-            name:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-            image:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <NextJssImage
-                    field={props.fields?.Author?.[0]?.fields?.Avatar}
-                    next={{
-                      width: '70',
-                      height: '70',
-                    }}
-                  />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-            tag:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <span>
-                    <JssText
-                      field={props.fields?.Author?.[0]?.fields?.Position}
-                    />
-                  </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
-          }
-          : undefined
-      }
-      children={
-        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the quote is not null or empty
-          <Text variation={props.params?.HeadingSize || 'display-3'}>
-            “<JssText field={props.fields?.Quote} />”
-          </Text>
-        ) : null // Render nothing if the quote is null or empty
-      }
-    />
-  );
-
-  const isContainerized = props?.params?.Containerized === '1';
-  if (isContainerized) {
-    return (
-      <RichText additionalStyles={props?.params?.styles}
-        id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
-      >
-        <figure>{quoteBlock}</figure>
-      </RichText>
-    );
-  }
-
   return (
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={alignment ? `quote-${alignment}` : 'quote'}
       id={componentAnchorId}
+      isInsideContainer={isInsideContainerComponent(props.params)}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
-      <RichText>{quoteBlock}</RichText>
+      <BlogQuoteContent
+        props={props}
+        alignment={alignment}
+        showQuotationMarks={true}
+      />
     </BlogContent>
   );
 };
@@ -159,99 +153,15 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
-  const quoteBlock = (
-    <QuoteBlock
-      author={
-        props.fields?.Author?.length
-          ? {
-            name:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-            image:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <NextJssImage
-                    field={props.fields?.Author?.[0]?.fields?.Avatar}
-                    next={{
-                      width: '70',
-                      height: '70',
-                    }}
-                  />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-            tag:
-              props.fields?.Author?.[0]?.fields?.Link &&
-                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
-                  <span>
-                    <JssText
-                      field={props.fields?.Author?.[0]?.fields?.Position}
-                    />
-                  </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
-          }
-          : undefined
-      }
-      children={
-        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the text is not null or empty
-          <Text variation={props.params?.HeadingSize || 'display-3'}>
-            <JssText field={props.fields?.Quote} />
-          </Text>
-        ) : null // Render nothing if the quote is null or empty
-      }
-    />
-  );
-
-  const isContainerized = props?.params?.Containerized === '1';
-  if (isContainerized) {
-    return (
-      <RichText additionalStyles={props?.params?.styles}
-        id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
-      >
-        <figure>{quoteBlock}</figure>
-      </RichText>
-    );
-  }
 
   return (
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
+      isInsideContainer={isInsideContainerComponent(props.params)}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
     >
-      <RichText>{quoteBlock}</RichText>
+      <BlogQuoteContent props={props} showQuotationMarks={false} />
     </BlogContent>
   );
 };
