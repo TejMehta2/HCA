@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useMemo, type JSX } from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   RichText as JssRichText,
@@ -38,37 +36,41 @@ const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
   return <></>;
 };
 
+const getProcessedTextField = (
+  props: BlogTextProps,
+  isExperienceEditor: boolean
+): Field<string> | undefined => {
+  const field = props.fields?.Text;
+  const rawValue = field?.value;
+
+  if (
+    isExperienceEditor ||
+    !rawValue ||
+    props?.params?.ExtractH2Links !== '1'
+  ) {
+    return field;
+  }
+
+  const transformedValue = rawValue.replace(
+    /<h2[^>]*>(.*?)<\/h2>/gi,
+    (_match: string, fullContent: string) => {
+      const cleanText = fullContent.replace(/<[^>]*>/g, '').trim();
+      const cleanId = generateHtmlSafeId(cleanText);
+      //h2 format required by TOC
+      return `<h2 id="${cleanId}" data-subnav-link-title="${cleanText}">${fullContent}</h2>`;
+    }
+  );
+
+  return {
+    ...field,
+    value: transformedValue,
+  };
+};
+
 export const Default = (props: BlogTextProps): JSX.Element => {
   const isExperienceEditor = props.page.mode.isEditing;
   const isInsideContainer = isInsideContainerComponent(props.params);
-
-  // Update H2 tag in the Rich Text field value if not in Editing mode
-  const processedField = useMemo(() => {
-    const rawValue = props.fields?.Text?.value;
-
-    if (
-      isExperienceEditor ||
-      !rawValue ||
-      props?.params?.ExtractH2Links !== '1'
-    ) {
-      return props?.fields?.Text;
-    }
-
-    const transformedValue = rawValue.replace(
-      /<h2[^>]*>(.*?)<\/h2>/gi,
-      (_match: string, fullContent: string) => {
-        const cleanText = fullContent.replace(/<[^>]*>/g, '').trim();
-        const cleanId = generateHtmlSafeId(cleanText);
-        //h2 format required by TOC
-        return `<h2 id="${cleanId}" data-subnav-link-title="${cleanText}">${fullContent}</h2>`;
-      }
-    );
-
-    return {
-      ...props?.fields?.Text,
-      value: transformedValue,
-    };
-  }, [props?.fields?.Text, props?.params?.ExtractH2Links, isExperienceEditor]);
+  const processedField = getProcessedTextField(props, isExperienceEditor);
 
   if (!props.fields) {
     return <BlogTextDefaultComponent {...props} />;
