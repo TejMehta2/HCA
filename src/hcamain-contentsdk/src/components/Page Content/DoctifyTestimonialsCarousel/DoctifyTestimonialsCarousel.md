@@ -1,0 +1,4 @@
+# DoctifyTestimonialsCarousel documentation
+
+## Additional information
+

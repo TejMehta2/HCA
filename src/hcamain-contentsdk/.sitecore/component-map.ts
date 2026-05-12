@@ -12,16 +12,46 @@ import * as RichText from 'src/components/Page Content/RichText';
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
 import * as Metadata from 'src/components/Page Content/Metadata/Metadata';
 import * as IntroBlock from 'src/components/Page Content/IntroBlock/IntroBlock';
+import * as ImageTextList from 'src/components/Page Content/ImageTextList/ImageTextList';
 import * as ImageShortText from 'src/components/Page Content/ImageShortText/ImageShortText';
+import * as ImagesCarousel from 'src/components/Page Content/ImagesCarousel/ImagesCarousel';
+import * as ImageAndTabs from 'src/components/Page Content/ImageAndTabs/ImageAndTabs';
+import * as HeroLocationDetails from 'src/components/Page Content/HeroLocationDetails/HeroLocationDetails';
+import * as HeroBannerWithSearch from 'src/components/Page Content/HeroBannerWithSearch/HeroBannerWithSearch';
+import * as HeaderWithVideo from 'src/components/Page Content/HeaderWithVideo/HeaderWithVideo';
+import * as HeaderWithImage from 'src/components/Page Content/HeaderWithImage/HeaderWithImage';
+import * as GenericSearch from 'src/components/Page Content/GenericSearch/GenericSearch';
+import * as FixedPricePackage from 'src/components/Page Content/FixedPricePackage/FixedPricePackage';
+import * as FindAConsultantCTA from 'src/components/Page Content/FindAConsultantCTA/FindAConsultantCTA';
+import * as FAQBlock from 'src/components/Page Content/FAQBlock/FAQBlock';
+import * as Log404Email from 'src/components/Page Content/EmailUtils/Log404Email';
+import * as responsetypes from 'src/components/Page Content/DoctorCards/response.types';
+import * as DoctorCardstypes from 'src/components/Page Content/DoctorCards/DoctorCards.types';
+import * as DoctorCards from 'src/components/Page Content/DoctorCards/DoctorCards';
+import * as DoctifyTestimonialsCarousel from 'src/components/Page Content/DoctifyTestimonialsCarousel/DoctifyTestimonialsCarousel';
 import * as DoctifyGraphQltypes from 'src/components/Page Content/Doctify/DoctifyGraphQl.types';
 import * as DoctifyGraphQl from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import * as Doctifytypes from 'src/components/Page Content/Doctify/Doctify.types';
 import * as Doctify from 'src/components/Page Content/Doctify/Doctify';
+import * as DiamondLine from 'src/components/Page Content/DiamondLine/DiamondLine';
 import * as CTAButton from 'src/components/Page Content/CTAButton/CTAButton';
+import * as CTABlockDuo from 'src/components/Page Content/CTABlockDuo/CTABlockDuo';
+import * as CTABlock from 'src/components/Page Content/CTABlock/CTABlock';
 import * as CQCRatingGraphQltypes from 'src/components/Page Content/CQCRating/CQCRatingGraphQl.types';
 import * as CQCRatingGraphQl from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
 import * as CQCRatingtypes from 'src/components/Page Content/CQCRating/CQCRating.types';
 import * as CQCRating from 'src/components/Page Content/CQCRating/CQCRating';
+import * as ContentVerticalSlider from 'src/components/Page Content/ContentVerticalSlider/ContentVerticalSlider';
+import * as ContentIconBlocks from 'src/components/Page Content/ContentIconBlocks/ContentIconBlocks';
+import * as ContentCarouselExtended from 'src/components/Page Content/ContentCarouselExtended/ContentCarouselExtended';
+import * as ContentCarousel from 'src/components/Page Content/ContentCarousel/ContentCarousel';
+import * as ContentCardsTriplet from 'src/components/Page Content/ContentCardsTriplet/ContentCardsTriplet';
+import * as ContentCardsSliderWithOverlay from 'src/components/Page Content/ContentCardsSliderWithOverlay/ContentCardsSliderWithOverlay';
+import * as CardWithModal from 'src/components/Page Content/ContentCardsSliderWithOverlay/CardWithModal';
+import * as ContentCardsSlider from 'src/components/Page Content/ContentCardsSlider/ContentCardsSlider';
+import * as ContentCardsMasonry from 'src/components/Page Content/ContentCardsMasonry/ContentCardsMasonry';
+import * as ContentCards from 'src/components/Page Content/ContentCards/ContentCards';
+import * as ContactDetailsBox from 'src/components/Page Content/ContactDetailsBox/ContactDetailsBox';
 import * as CallUsTodayCTA from 'src/components/Page Content/CallUsTodayCTA/CallUsTodayCTA';
 import * as BookAnAppointmentCTA from 'src/components/Page Content/BookAnAppointmentCTA/BookAnAppointmentCTA';
 import * as BlogText from 'src/components/Page Content/BlogText/BlogText';
@@ -75,15 +105,44 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['StickyCTA', { ...StickyCTA, componentType: 'client' }],
   ['Metadata', { ...Metadata }],
   ['IntroBlock', { ...IntroBlock }],
+  ['ImageTextList', { ...ImageTextList }],
   ['ImageShortText', { ...ImageShortText }],
+  ['ImagesCarousel', { ...ImagesCarousel }],
+  ['ImageAndTabs', { ...ImageAndTabs }],
+  ['HeroLocationDetails', { ...HeroLocationDetails }],
+  ['HeroBannerWithSearch', { ...HeroBannerWithSearch }],
+  ['HeaderWithVideo', { ...HeaderWithVideo }],
+  ['HeaderWithImage', { ...HeaderWithImage }],
+  ['GenericSearch', { ...GenericSearch }],
+  ['FixedPricePackage', { ...FixedPricePackage }],
+  ['FindAConsultantCTA', { ...FindAConsultantCTA }],
+  ['FAQBlock', { ...FAQBlock }],
+  ['Log404Email', { ...Log404Email }],
+  ['response', { ...responsetypes }],
+  ['DoctorCards', { ...DoctorCardstypes, ...DoctorCards }],
+  ['DoctifyTestimonialsCarousel', { ...DoctifyTestimonialsCarousel }],
   ['DoctifyGraphQl', { ...DoctifyGraphQltypes, ...DoctifyGraphQl }],
   ['Doctify', { ...Doctifytypes, ...Doctify }],
+  ['DiamondLine', { ...DiamondLine }],
   ['CTAButton', { ...CTAButton }],
+  ['CTABlockDuo', { ...CTABlockDuo }],
+  ['CTABlock', { ...CTABlock }],
   ['CQCRatingGraphQl', { ...CQCRatingGraphQltypes, ...CQCRatingGraphQl }],
   ['CQCRating', { ...CQCRatingtypes, ...CQCRating }],
+  ['ContentVerticalSlider', { ...ContentVerticalSlider }],
+  ['ContentIconBlocks', { ...ContentIconBlocks }],
+  ['ContentCarouselExtended', { ...ContentCarouselExtended }],
+  ['ContentCarousel', { ...ContentCarousel }],
+  ['ContentCardsTriplet', { ...ContentCardsTriplet }],
+  ['ContentCardsSliderWithOverlay', { ...ContentCardsSliderWithOverlay }],
+  ['CardWithModal', { ...CardWithModal }],
+  ['ContentCardsSlider', { ...ContentCardsSlider }],
+  ['ContentCardsMasonry', { ...ContentCardsMasonry }],
+  ['ContentCards', { ...ContentCards }],
+  ['ContactDetailsBox', { ...ContactDetailsBox }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA, componentType: 'client' }],
   ['BookAnAppointmentCTA', { ...BookAnAppointmentCTA, componentType: 'client' }],
-  ['BlogText', { ...BlogText, componentType: 'client' }],
+  ['BlogText', { ...BlogText }],
   ['BlogSearch', { ...BlogSearchtypes, ...BlogSearch, componentType: 'client' }],
   ['BlogRelatedArticles', { ...BlogRelatedArticlestypes, ...BlogRelatedArticles, componentType: 'client' }],
   ['BlogQuote', { ...BlogQuote }],
