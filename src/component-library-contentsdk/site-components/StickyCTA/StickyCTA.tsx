@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, type JSX } from 'react';
 import { StickyCTAProps } from './StickyCTA.types';
 import styles from './StickyCTA.module.scss';

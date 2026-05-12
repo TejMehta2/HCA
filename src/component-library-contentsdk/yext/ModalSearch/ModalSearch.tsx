@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, type JSX } from 'react';
 import { ModalSearchProps } from './ModalSearch.types';
 import styles from './ModalSearch.module.scss';

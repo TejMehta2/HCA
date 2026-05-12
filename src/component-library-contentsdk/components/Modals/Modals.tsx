@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useState, TouchEvent, type JSX } from 'react';
 import { ModalsProps } from './Modals.types';
 import styles from './Modals.module.scss';

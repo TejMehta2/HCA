@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, type JSX } from 'react';
 import { YextResultCardAskAQuestionProps } from './YextResultCardAskAQuestion.types';
 import styles from './YextResultCardAskAQuestion.module.scss';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Result } from '@yext/search-headless-react';
 import React, { type JSX } from 'react';
 import TextButton from '../../core-components/TextButton/TextButton';

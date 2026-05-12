@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { SearchFilterListProps } from './SearchFilterList.types';
 import styles from './SearchFilterList.module.scss';

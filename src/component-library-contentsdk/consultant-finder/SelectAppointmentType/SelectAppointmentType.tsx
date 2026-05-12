@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useContext, type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { SelectAppointmentTypeProps } from './SelectAppointmentType.types';

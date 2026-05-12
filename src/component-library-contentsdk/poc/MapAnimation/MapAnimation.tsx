@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState, type JSX } from 'react';
 import styles from './_MapAnimation.module.scss';
 import Text from '../../foundation/Text/Text';

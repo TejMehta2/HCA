@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useMemo, useState, type JSX } from 'react';
 import { LocationMapProps, LatLngLiteral } from './LocationMap.types';
 import styles from './LocationMap.module.scss';

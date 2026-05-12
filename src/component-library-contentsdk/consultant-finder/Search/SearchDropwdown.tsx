@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, type JSX } from 'react';
 import Text from '../../foundation/Text/Text';

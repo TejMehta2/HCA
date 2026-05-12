@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselImagesProps } from './CarouselImages.types';
 import styles from './CarouselImages.module.scss';
@@ -85,8 +86,12 @@ const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
   return (
     <div
       id={id}
-      {...(tableOfContentTitle ? { 'data-subnav-link-title': linkTableOfContentTitle } : {})}
-      {...(tableOfContentTitle ? { 'data-subnav-link-id': linkTableOfContentId } : {})}
+      {...(tableOfContentTitle
+        ? { 'data-subnav-link-title': linkTableOfContentTitle }
+        : {})}
+      {...(tableOfContentTitle
+        ? { 'data-subnav-link-id': linkTableOfContentId }
+        : {})}
       className={[
         styles.wrapper,
         contentVariation === 'equalSize' && styles['equal-size'],

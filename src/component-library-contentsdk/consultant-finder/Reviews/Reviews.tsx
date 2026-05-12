@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { ReviewsProps } from './Reviews.types';
 import styles from './Reviews.module.scss';

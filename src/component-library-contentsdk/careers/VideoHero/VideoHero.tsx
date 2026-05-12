@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, type JSX } from 'react';
 import { VideoHeroProps } from './VideoHero.types';
 import styles from './VideoHero.module.scss';

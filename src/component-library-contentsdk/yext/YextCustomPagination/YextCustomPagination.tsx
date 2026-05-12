@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, type JSX } from 'react';
 import styles from './YextCustomPagination.module.scss';
 import { YextCustomPaginationProps } from './YextCustomPagination.types';

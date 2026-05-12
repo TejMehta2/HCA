@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useId, type JSX } from 'react';
 import { AccordionsProps } from './Accordions.types';
 import styles from './Accordions.module.scss';

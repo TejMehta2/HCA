@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { AppointmentTypeCardProps } from './AppointmentTypeCard.types';
 import Text from '../../foundation/Text/Text';

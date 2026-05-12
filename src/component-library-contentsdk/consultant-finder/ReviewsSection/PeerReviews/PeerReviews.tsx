@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState, type JSX } from 'react';
 import { PeerReviewsProps } from './PeerReviews.types';

@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { MouseEventHandler, useId, useState, useContext, type JSX } from 'react';
 import axios from 'axios';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState, useCallback, type JSX } from 'react';
 import { OurLocationsProps } from './OurLocations.types';
 import styles from './OurLocations.module.scss';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState, type JSX } from 'react';
 
 import YextResultCardAskAQuestion from './YextResultCardAskAQuestion';

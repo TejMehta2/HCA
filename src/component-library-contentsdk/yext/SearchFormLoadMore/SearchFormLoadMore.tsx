@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, type JSX } from 'react';
 import { SearchFormLoadMoreProps } from './SearchFormLoadMore.types';
 import Button from '../../core-components/Button/Button';

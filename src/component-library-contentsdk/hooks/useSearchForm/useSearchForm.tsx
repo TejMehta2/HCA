@@ -1,5 +1,6 @@
 import { useSearchParams, usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
+'use client';
 import { ChangeEvent, FormEvent, useRef } from 'react';
 import useSWR from 'swr';
 import { useDebouncedCallback } from 'use-debounce';

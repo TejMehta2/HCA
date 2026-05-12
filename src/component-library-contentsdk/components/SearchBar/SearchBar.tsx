@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useId, useRef, useState, type JSX } from 'react';
 import { SearchBarProps } from './SearchBar.types';
 import styles from './SearchBar.module.scss';

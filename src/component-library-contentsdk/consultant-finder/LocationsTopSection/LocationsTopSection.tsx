@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useContext, type JSX } from 'react';
 import { LocationsTopSectionProps } from './LocationsTopSection.types';
 import styles from './LocationsTopSection.module.scss';

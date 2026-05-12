@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, type JSX } from 'react';
 import { MultiplePhoneNumbersProps } from './MultiplePhoneNumbers.types';

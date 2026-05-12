@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, type JSX } from 'react';
 import { TabsBlockProps } from './TabsBlock.types';
 import styles from './TabsBlock.module.scss';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, type JSX } from 'react';
 import { TextareaProps } from './Textarea.types';
 import styles from './Textarea.module.scss';

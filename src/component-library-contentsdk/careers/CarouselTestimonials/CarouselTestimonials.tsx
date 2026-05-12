@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState, type JSX } from 'react';
 import { CarouselTestimonialsProps } from './CarouselTestimonials.types';
 import styles from './CarouselTestimonials.module.scss';

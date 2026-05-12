@@ -1,3 +1,5 @@
+'use client';
+
 import React, { KeyboardEvent, useId, type JSX } from 'react';
 import { AccordionProps } from './Accordion.types';
 import styles from './Accordion.module.scss';

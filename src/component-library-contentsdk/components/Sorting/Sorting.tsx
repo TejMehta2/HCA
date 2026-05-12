@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ChangeEvent, useId, useRef, type JSX } from 'react';
 import { SortingProps, SortingOptionProps } from './Sorting.types';
 import styles from './Sorting.module.scss';

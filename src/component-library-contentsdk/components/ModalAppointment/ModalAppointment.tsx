@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useEffect, useRef, type JSX } from 'react';
 import { ModalAppointmentProps } from './ModalAppointment.types';
 import styles from './ModalAppointment.module.scss';

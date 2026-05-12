@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, useId, type JSX } from 'react';
 import { TooltipsProps } from './Tooltips.types';
 import styles from './Tooltips.module.scss';

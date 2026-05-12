@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { SearchButtonProps } from './SearchButton.types';
 import styles from './SearchButton.module.scss';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { FiltersFooterProps } from './FiltersFooter.types';
 import styles from './FiltersFooter.module.scss';

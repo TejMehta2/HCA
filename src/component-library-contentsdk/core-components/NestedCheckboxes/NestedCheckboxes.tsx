@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode, ChangeEvent, useState, useEffect, type JSX } from 'react';
 import { NestedCheckboxesProps } from './NestedCheckboxes.types';
 import { CheckboxProps } from '../Checkbox/Checkbox.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useEffect } from 'react';
 
 // hook useful to open close dropdown in search bar or other similar cases

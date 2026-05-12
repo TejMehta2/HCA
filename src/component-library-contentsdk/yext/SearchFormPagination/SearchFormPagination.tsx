@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, type JSX } from 'react';
 import { SearchFormPaginationProps } from './SearchFormPagination.types';
 import Pagination from '../../core-components/Pagination/Pagination';

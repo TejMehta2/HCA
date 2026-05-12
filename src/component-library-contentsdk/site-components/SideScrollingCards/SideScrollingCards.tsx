@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState, useRef, type JSX } from 'react';
 import { SideScrollingCardsProps } from './SideScrollingCards.types';
 import styles from './SideScrollingCards.module.scss';

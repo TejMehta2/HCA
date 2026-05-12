@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useContext, useEffect, type JSX } from 'react';
 import { useRouter } from 'next/router';

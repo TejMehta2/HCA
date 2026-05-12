@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, type JSX } from 'react';
 import Accordion from '../../components/Accordion/Accordion';
 import { YextResultCardFAQsProps } from './YextResultCardFAQs.types';

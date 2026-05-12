@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, type JSX } from 'react';
 import { VideoPlayerProps } from './VideoPlayer.types';
 import styles from './VideoPlayer.module.scss';

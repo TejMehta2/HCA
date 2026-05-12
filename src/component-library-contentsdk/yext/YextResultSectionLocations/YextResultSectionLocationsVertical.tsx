@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useEffect, useRef, useState, type JSX } from 'react';
 import { YextResultSectionLocationsProps } from './YextResultSectionLocations.types';
 import styles from './YextResultSectionLocations.module.scss';

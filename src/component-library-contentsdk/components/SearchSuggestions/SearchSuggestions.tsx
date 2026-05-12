@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { SearchSuggestionsProps } from './SearchSuggestions.types';
 import styles from './SearchSuggestions.module.scss';

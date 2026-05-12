@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useId, useState, type JSX } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';

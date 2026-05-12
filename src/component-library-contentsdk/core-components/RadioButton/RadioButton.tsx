@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useId, type JSX } from 'react';
 import { RadioButtonProps } from './RadioButton.types';
 import styles from './RadioButton.module.scss';

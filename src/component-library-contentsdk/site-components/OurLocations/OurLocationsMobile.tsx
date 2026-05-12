@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, type JSX } from 'react';
 import { OurLocationsProps } from './OurLocations.types';
 import styles from './OurLocationsMobile.module.scss';

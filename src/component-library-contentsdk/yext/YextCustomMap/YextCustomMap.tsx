@@ -1,3 +1,5 @@
+'use client';
+
 import React, { MutableRefObject, forwardRef, useMemo, type JSX } from 'react';
 import { YextCustomMapProps } from './YextCustomMap.types';
 import GoogleMapsEmbed from '../../core-components/GoogleMapsEmbed/GoogleMapsEmbed';

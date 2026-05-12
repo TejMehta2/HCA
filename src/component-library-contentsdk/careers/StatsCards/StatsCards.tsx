@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useCallback, useState, type JSX } from 'react';
 import { StatsCardsProps } from './StatsCards.types';
 import styles from './StatsCards.module.scss';

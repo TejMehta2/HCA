@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, type JSX } from 'react';
 import { ReadMoreProps } from './ReadMore.types';

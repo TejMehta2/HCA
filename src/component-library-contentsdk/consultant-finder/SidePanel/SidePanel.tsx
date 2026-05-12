@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState, type JSX } from 'react';
 import { SidePanelProps } from './SidePanel.types';
 import styles from './SidePanel.module.scss';

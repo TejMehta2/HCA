@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { type JSX } from 'react';
 import { CheckboxProps } from './Checkbox.types';

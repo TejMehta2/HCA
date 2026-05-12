@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { useRouter } from 'next/router';
 import { AppointmentSummaryProps } from './AppointmentSummary.types';
