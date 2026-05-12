@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect, useState, type JSX } from 'react';
 import { UniversalResults } from '@yext/search-ui-react';
 import styles from './YextSearch.module.scss';
@@ -12,7 +14,7 @@ import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCust
 import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
 import { ResultsCount } from '../YextCustomResultsCount/YextCustomResultsCount';
 import Themes from '../../foundation/Themes/Themes';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import YextNoResults from '../YextNoResults/YextNoResults';
 import { verticalConfigMap } from './verticalConfigMap';
 import Verticals from './Verticals';
@@ -23,20 +25,12 @@ const YextSearch = (): JSX.Element => {
   const searchActions = useSearchActions();
   const [hasLoaded, setHasLoaded] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     if (searchQuery) {
-      if (router.isReady) {
-        searchParams.set('query', searchQuery);
-        router.push(
-          {
-            pathname: location.pathname,
-            query: searchParams.toString(),
-          },
-          undefined,
-          { shallow: true }
-        );
-      }
+      searchParams.set('query', searchQuery);
+      router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
     } else if (!hasLoaded) {
       const query = searchParams.get('query');
       searchActions.setQuery(query || '');
@@ -46,7 +40,7 @@ const YextSearch = (): JSX.Element => {
     }
     setHasLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [hasLoaded, pathname, router, searchActions, searchQuery, verticalKey]);
 
   const resultsCountRef = useRef<HTMLDivElement>(null);
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);

@@ -1,6 +1,6 @@
-import { useSearchParams, usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
 'use client';
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ChangeEvent, FormEvent, useRef } from 'react';
 import useSWR from 'swr';
 import { useDebouncedCallback } from 'use-debounce';
@@ -124,7 +124,7 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     const params = new URLSearchParams([...data.entries()] as string[][]);
     const updatedParams = paramsCallback?.(params) || params;
     const url = `${pathname}?${updatedParams}`;
-    router.replace(url, undefined, { shallow: true });
+    router.replace(url, { scroll: false });
   };
   const handleChange = useDebouncedCallback(sendFormDataToPageQuery, 500);
 
