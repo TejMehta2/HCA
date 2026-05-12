@@ -43,9 +43,9 @@ const Themes = (props: ThemesProps): JSX.Element => {
     topLevelTheme,
     id,
     collapse = true,
-    tableOfContentTitle
+    tableOfContentTitle,
   } = props;
-  const CustomTag = tag as keyof JSX.IntrinsicElements;
+  const CustomTag = tag as React.ElementType;
 
   let linkTableOfContentId;
   let linkTableOfContentTitle;
@@ -66,8 +66,12 @@ const Themes = (props: ThemesProps): JSX.Element => {
       ].join(' ')}
       data-theme={theme}
       data-theme-mode={themeModes[theme]}
-      {...(tableOfContentTitle ? { 'data-subnav-link-title': linkTableOfContentTitle } : {})}
-      {...(tableOfContentTitle ? { 'data-subnav-link-id': linkTableOfContentId } : {})}
+      {...(tableOfContentTitle
+        ? { 'data-subnav-link-title': linkTableOfContentTitle }
+        : {})}
+      {...(tableOfContentTitle
+        ? { 'data-subnav-link-id': linkTableOfContentId }
+        : {})}
     >
       {children}
     </CustomTag>

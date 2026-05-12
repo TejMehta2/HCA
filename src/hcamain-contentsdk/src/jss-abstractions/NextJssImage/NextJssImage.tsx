@@ -21,8 +21,10 @@ const NextJssImage = (props: NextJssImageProps) => {
     const editableProp = typeof editable === 'boolean' ? { editable } : {};
     return <JssImage field={field} {...editableProp} />;
   }
-  if (!field?.value?.src) return <></>;
-  return <Image {...next} src={field.value.src} alt={field.value.alt || ''} />;
+  const src = field?.value?.src;
+  if (typeof src !== 'string' || !src) return <></>;
+  const alt = typeof field?.value?.alt === 'string' ? field.value.alt : '';
+  return <Image {...next} src={src} alt={alt} />;
 };
 
 export default NextJssImage;

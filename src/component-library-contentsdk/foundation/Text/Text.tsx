@@ -10,7 +10,7 @@ const Text = (props: TextProps): JSX.Element => {
     children,
     isHtml = false,
   } = props;
-  const CustomTag = tag as keyof JSX.IntrinsicElements;
+  const CustomTag = tag as React.ElementType;
   if (isHtml) {
     return (
       <RichText>

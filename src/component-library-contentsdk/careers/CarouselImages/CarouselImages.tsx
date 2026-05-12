@@ -28,10 +28,10 @@ const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
       if (!refCurrent) return;
 
       const scrollTop = window.scrollY;
-      const elementOffsetTop = wrapperRef.current.offsetTop;
+      const elementOffsetTop = refCurrent.offsetTop;
 
       const appearsOnScreen = elementOffsetTop - window.innerHeight;
-      const leavesScreen = wrapperRef.current.offsetHeight + elementOffsetTop;
+      const leavesScreen = refCurrent.offsetHeight + elementOffsetTop;
 
       if (scrollTop > appearsOnScreen && scrollTop < leavesScreen) {
         if (scrollTop > lastScroll) {
