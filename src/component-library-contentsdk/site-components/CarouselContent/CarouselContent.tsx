@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { CarouselContentProps } from './CarouselContent.types';
 import styles from './CarouselContent.module.scss';

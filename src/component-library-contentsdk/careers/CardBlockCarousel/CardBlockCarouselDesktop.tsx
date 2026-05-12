@@ -1,3 +1,5 @@
+'use client';
+
 import React, { type JSX } from 'react';
 import { CardBlockCarouselProps } from './CardBlockCarousel.types';
 import styles from './CardBlockCarouselDesktop.module.scss';

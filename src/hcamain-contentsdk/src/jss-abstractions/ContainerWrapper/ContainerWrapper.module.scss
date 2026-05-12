@@ -1,4 +1,4 @@
-@use '@component-library/foundation/index.module' as *;
+@use '../../temp/component-library/foundation/index.module' as *;
 
 .container {
   @include responsive-container;

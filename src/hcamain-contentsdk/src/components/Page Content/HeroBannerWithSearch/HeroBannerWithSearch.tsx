@@ -1,8 +1,9 @@
 'use client';
 
 import { type JSX } from 'react';
-import componentMap from '.sitecore/component-map';
 import { ComponentWithContextProps } from 'lib/component-props';
+
+import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
 
 import {
   Field,
@@ -45,6 +46,7 @@ export type HeroBannerWithSearchProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
+  componentMap?: ComponentMap;
 };
 
 const HeroBannerWithSearchDefaultComponent = (
@@ -105,13 +107,13 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
         </Text>
       }
       ctas={
-        props.rendering ? (
+        props.rendering && props.componentMap ? (
           <AppPlaceholder
             name={phKey}
             rendering={props.rendering}
-              page={props.page}
-              componentMap={componentMap}
-            contentVariation="full-width"
+            page={props.page}
+            componentMap={props.componentMap}
+            passThroughComponentProps={{ contentVariation: 'full-width' }}
           />
         ) : (
           <></>

@@ -1,5 +1,3 @@
-'use client';
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // capitalise frist letter of all words in a string
 export const capitalizeFirstLetter = (string: string) => {
