@@ -14,7 +14,6 @@ import { RichTextElement } from '@component-library/core-components/RichText/Ric
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import componentMap from '.sitecore/component-map';
 import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
-import { ColumnSplitterContext } from '@component-library/context/columnSplitterContext';
 import Themes from '@component-library/foundation/Themes/Themes';
 import TextBlockContainer from '@component-library/site-components/TextBlockContainer/TextBlockContainer';
 import Head from 'next/head';
@@ -102,12 +101,6 @@ const importMap = [
     module: 'src/jss-abstractions/ContainerWrapper/ContainerWrapper',
     exports: [
       { name: 'default', value: ContainerWrapper },
-    ]
-  },
-  {
-    module: '@component-library/context/columnSplitterContext',
-    exports: [
-      { name: 'ColumnSplitterContext', value: ColumnSplitterContext },
     ]
   },
   {

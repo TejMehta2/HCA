@@ -30,8 +30,6 @@ const FooterDefaultComponent = (props: FooterProps): JSX.Element => {
 };
 
 export const Default = (props: FooterProps): JSX.Element => {
-  console.log('Footer props:', props);
-
   if (!props.fields) {
     return <FooterDefaultComponent {...props} />;
   }

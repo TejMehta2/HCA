@@ -2,6 +2,7 @@ import React, { type JSX } from 'react';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { setInsideContainerComponentParam } from 'lib/utility-functions/insideContainerComponent';
 import componentMap from '.sitecore/component-map';
 
 export const Default = (props: ComponentWithContextProps): JSX.Element => {
@@ -26,7 +27,6 @@ export const Default = (props: ComponentWithContextProps): JSX.Element => {
       {enabledPlaceholders.map((ph: string, index: number) => {
         const phKey = `row-${ph}-{*}`;
         const phStyles = `${rowStyles[+ph - 1] ?? ''}`.trimEnd();
-
         return (
           <RichTextElement key={index} additionalStyles={[phStyles, 'row']}>
             <AppPlaceholder
@@ -35,6 +35,7 @@ export const Default = (props: ComponentWithContextProps): JSX.Element => {
               rendering={props.rendering}
               page={props.page}
               componentMap={componentMap}
+              modifyComponentProps={setInsideContainerComponentParam}
             />
           </RichTextElement>
         );

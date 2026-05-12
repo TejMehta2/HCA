@@ -9,6 +9,7 @@ import TextBlockContainer from '@component-library/site-components/TextBlockCont
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import componentMap from '.sitecore/component-map';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { setInsideContainerComponentParam } from 'lib/utility-functions/insideContainerComponent';
 
 type ContainerComponentProps = ComponentWithContextProps & {
   params?: Params;
@@ -24,9 +25,10 @@ export const Default = (props: ContainerComponentProps): JSX.Element => {
         <RichTextElement additionalStyles={'grid'}>
           <AppPlaceholder
             name={phKey}
-            rendering={renderingWithContainerContext}
+            rendering={props.rendering}
             page={props.page}
             componentMap={componentMap}
+            modifyComponentProps={setInsideContainerComponentParam}
           />
         </RichTextElement>
       </TextBlockContainer>
