@@ -11,6 +11,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 interface Fields {
   Text?: Field<string>;
@@ -39,6 +40,7 @@ const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
 
 export const Default = (props: BlogTextProps): JSX.Element => {
   const isExperienceEditor = props.page.mode.isEditing;
+  const isInsideContainer = isInsideContainerComponent(props.params);
 
   // Update H2 tag in the Rich Text field value if not in Editing mode
   const processedField = useMemo(() => {
@@ -79,6 +81,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
+      isInsideContainer={isInsideContainer}
       {...(tableOfContentTitle &&
       props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }

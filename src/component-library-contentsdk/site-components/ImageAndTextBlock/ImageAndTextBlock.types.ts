@@ -34,4 +34,5 @@ export interface ImageAndTextBlockProps {
   setLocation?: any;
   hasFunctionalConsentCookie?: boolean;
   showRegion?: boolean;
+  isInsideContainer?: boolean;
 }

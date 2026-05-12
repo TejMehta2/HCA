@@ -8,4 +8,5 @@ export interface BlogContentProps {
   contentVariation?: 'quote-center' | 'quote' | 'image';
   id?: string;
   tableOfContentTitle?: string;
+  isInsideContainer?: boolean;
 }

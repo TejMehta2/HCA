@@ -10,5 +10,5 @@ export interface JumpToLinksProps {
   variation?: string;
   isSticky?: boolean;
   mobileHeading?: string;
-  hasMultipleColumns?: boolean;
+  isInsideContainer?: boolean;
 }

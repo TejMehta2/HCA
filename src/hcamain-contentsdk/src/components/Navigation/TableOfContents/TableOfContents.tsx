@@ -13,6 +13,7 @@ import {
   NavigableComponent,
 } from './TableOfContents.types';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 interface TableOfContentsWithVariantProps extends TableOfContentsProps {
   variant: '' | 'stacked';
@@ -56,6 +57,7 @@ export const Default = (
       <JumpToLinks
         variation={props.variant}
         isSticky={true}
+        isInsideContainer={isInsideContainerComponent(props.params)}
         heading={
           hasNoDatasource ? (
             <Text variation="body-bold-large">Jump to</Text>
@@ -80,6 +82,7 @@ export const Default = (
     return (
       <Themes theme={'A-HCA-White'} collapse={false}>
         <JumpToLinks
+          isInsideContainer={isInsideContainerComponent(props.params)}
           heading={
             hasNoDatasource ? (
               <Text variation="body-medium-medium">Jump to</Text>

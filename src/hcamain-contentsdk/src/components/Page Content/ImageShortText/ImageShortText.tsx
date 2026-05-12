@@ -17,6 +17,7 @@ import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { ComponentWithContextProps } from 'lib/component-props';
 import componentMap from '.sitecore/component-map';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -91,9 +92,10 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         id={componentAnchorId}
         {...(tableOfContentTitle &&
         props?.params?.ExcludeFromTableOfContents !== '1'
-          ? { tableOfContentTitle: tableOfContentTitle }
-          : {})}
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
         theme={props.params?.Theme || 'A-HCA-White'}
+        isInsideContainer={isInsideContainerComponent(props.params)}
         imageAlignment={imageAlignment}
         imageKeepAspectRatio={keepAspectRatio}
         length="short"

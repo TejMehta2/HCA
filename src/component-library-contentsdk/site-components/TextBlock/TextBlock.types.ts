@@ -12,4 +12,5 @@ export interface TextBlockProps {
   contentVariation?: 'centered';
   id?: string;
   tableOfContentTitle?: string;
+  isInsideContainer?: boolean;
 }

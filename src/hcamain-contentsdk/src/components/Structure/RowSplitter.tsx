@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import { ComponentWithContextProps } from 'lib/component-props';
@@ -16,7 +16,8 @@ export const Default = (props: ComponentWithContextProps): JSX.Element => {
     props.params.Styles7,
     props.params.Styles8,
   ];
-  const enabledPlaceholders = props.params.EnabledPlaceholders?.split(',') ?? [];
+  const enabledPlaceholders =
+    props.params.EnabledPlaceholders?.split(',') ?? [];
   const id = props.params.RenderingIdentifier;
 
   return (

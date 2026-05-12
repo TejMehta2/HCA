@@ -6,7 +6,6 @@ import styles from './ImageAndTextBlock.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
-import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   const {
@@ -33,11 +32,10 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     tableOfContentTitle,
     locationCookies,
     showRegion,
+    isInsideContainer = false,
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const columnContext = useColumnSplitterContext();
-  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
   const hasImage = Boolean(image);
 
   // If there is no image at all, avoid applying image-right desktop reordering rules.
@@ -52,7 +50,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
         <div
           className={[
             styles.wrapper,
-            hasMultipleColumns ? styles['use-container-queries'] : '',
+            isInsideContainer ? styles['use-container-queries'] : '',
             iconList ? styles['icon-list-wrapper'] : '',
             contentVariation ? styles[contentVariation] : '',
           ].join(' ')}

@@ -2,7 +2,6 @@ import React, { type JSX } from 'react';
 import { BlogContentProps } from './BlogContent.types';
 import styles from './BlogContent.module.scss';
 import Themes from '../../foundation/Themes/Themes';
-import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 const BlogContent = (props: BlogContentProps): JSX.Element => {
   const {
@@ -12,19 +11,17 @@ const BlogContent = (props: BlogContentProps): JSX.Element => {
     contentVariation,
     id,
     tableOfContentTitle,
+    isInsideContainer = false,
   } = props;
-
-  const columnContext = useColumnSplitterContext();
-  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
 
   return (
     <Themes theme={theme} tableOfContentTitle={tableOfContentTitle}>
       <div
-        className={`${hasMultipleColumns ? [styles.wrapper, styles['wrapper-rounded']].join(' ') : styles.wrapper}`}
+        className={`${isInsideContainer ? [styles.wrapper, styles['wrapper-rounded']].join(' ') : styles.wrapper}`}
         id={id}
       >
         <div
-          className={`${hasMultipleColumns ? '' : styles.container} ${
+          className={`${isInsideContainer ? '' : styles.container} ${
             contentVariation ? styles[contentVariation + '-block'] : ''
           } ${imageKeepAspectRatio ? styles['keep-aspect-ratio'] : ''}`}
         >

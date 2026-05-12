@@ -1,12 +1,8 @@
 export const insideContainerComponentParam = 'IsInsideContainerComponent';
-export const insideContainerComponentValue = 'yes';
+export const insideContainerComponentValue = '1';
 
 type ComponentPropsWithParams = {
   params?: Record<string, string>;
-};
-
-type ParamsWithInsideContainerComponent = {
-  IsInsideContainerComponent?: string;
 };
 
 export const setInsideContainerComponentParam = <
@@ -21,7 +17,13 @@ export const setInsideContainerComponentParam = <
   },
 });
 
-export const isInsideContainerComponent = (
-  params?: ParamsWithInsideContainerComponent
-): boolean =>
-  params?.[insideContainerComponentParam] === insideContainerComponentValue;
+export const isInsideContainerComponent = (params?: unknown): boolean => {
+  if (!params || typeof params !== 'object') {
+    return false;
+  }
+
+  return (
+    (params as Record<string, unknown>)[insideContainerComponentParam] ===
+    insideContainerComponentValue
+  );
+};

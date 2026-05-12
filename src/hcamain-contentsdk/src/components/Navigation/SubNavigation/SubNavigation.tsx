@@ -9,6 +9,7 @@ import JumpToLinks, {
   JumpToLink,
 } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Themes from '@component-library/foundation/Themes/Themes';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 const SubNavigationDefaultComponent = (
   props: SubNavigationProps
@@ -63,6 +64,7 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <JumpToLinks
+        isInsideContainer={isInsideContainerComponent(props.params)}
         mobileHeading={props.fields?.data?.item?.title?.jsonValue?.value}
         heading={
           <Text variation="body-medium-medium">

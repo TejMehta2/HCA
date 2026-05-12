@@ -6,7 +6,6 @@ import Button from '../../core-components/Button/Button';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Modals from '../../components/Modals/Modals';
 import Icons from '../../foundation/Icons/Icons';
-import { useColumnSplitterContext } from '../../context/columnSplitterContext';
 
 export const JumpToLink = (props: JumpToLinkProps): JSX.Element => {
   const { children } = props;
@@ -34,14 +33,13 @@ export const JumpToAnchor = (props: JumpToLinkProps): JSX.Element => {
 };
 
 const JumpToLinks = (props: JumpToLinksProps): JSX.Element | null => {
-  const columnContext = useColumnSplitterContext();
-  const hasMultipleColumns = columnContext?.hasMultipleColumns ?? false;
   const {
     children,
     heading,
     variation,
     isSticky,
     mobileHeading = 'On this page',
+    isInsideContainer = false,
   } = props;
   const rootRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -176,7 +174,7 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element | null => {
     >
       {mobileHeading && (
         <>
-          <div className={!hasMultipleColumns ? styles.container : undefined}>
+          <div className={!isInsideContainer ? styles.container : undefined}>
             <div className={styles.mobileTriggerWrapper}>
               <button
                 type="button"
@@ -205,7 +203,7 @@ const JumpToLinks = (props: JumpToLinksProps): JSX.Element | null => {
       )}
       <div className={styles.desktopContent}>
         <div
-          className={`${styles['container-all']} ${hasMultipleColumns ? '' : styles.container}`}
+          className={`${styles['container-all']} ${isInsideContainer ? '' : styles.container}`}
         >
           {heading && <div className={styles.heading}>{heading}</div>}
           {children && <ul className={styles.children}>{children}</ul>}

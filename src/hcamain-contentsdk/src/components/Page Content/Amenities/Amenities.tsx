@@ -16,6 +16,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 type HCAIconFields = {
   fields?: {
@@ -78,6 +79,7 @@ const outputImageAndTextBlock = (
     <ImageAndTextBlock
       id={componentAnchorId}
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      isInsideContainer={isInsideContainerComponent(props.params)}
       imageAlignment={alignment}
       length="short"
       header={

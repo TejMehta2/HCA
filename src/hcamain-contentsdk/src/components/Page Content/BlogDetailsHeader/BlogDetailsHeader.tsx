@@ -18,6 +18,7 @@ import { MapAuthorsToBlockQuotes } from 'src/components/Page Content/Authors/Aut
 import Themes from '@component-library/foundation/Themes/Themes';
 import { normalizeId } from 'lib/sitecore/templateIds';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 type ArticleTypeFields = {
   id?: string;
@@ -89,6 +90,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   return (
     <HeaderBlogDetails
       theme={props.params?.Theme || 'A-HCA-White'}
+      isInsideContainer={isInsideContainerComponent(props.params)}
       tag={
         <>
           {props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
