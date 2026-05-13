@@ -10,6 +10,121 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetLocationSearch($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on LocationsSearch {
+          heading {
+            jsonValue
+          }
+          title {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
+          gridViewIcon {
+            ...IconFragment
+          }
+          gridViewText {
+            value
+          }
+          mapViewIcon {
+            ...IconFragment
+          }
+          mapViewText {
+            value
+          }
+          cTACardText {
+            value
+          }
+    
+          filterBy {
+            ...FilterOptionFragment
+          }
+          searchBy {
+            ...FilterOptionFragment
+          }
+          sortOptions {
+            ...FilterOptionFragment
+          }
+          filterOptions {
+            targetItems {
+              ... on FilterGroup {
+                header {
+                  value
+                }
+                filters {
+                  ...FilterOptionFragment
+                }
+              }
+            }
+          }
+          searchPlaceholder {
+            value
+          }
+          filterOptionsIcon {
+            ...IconFragment
+          }
+          filterOptionsText {
+            value
+          }
+          sortOptionsIcon {
+            ...IconFragment
+          }
+          sortOptionsText {
+            value
+          }
+          searchResultsText {
+            value
+          }
+          searchResultsTextWithInput {
+            value
+          }
+          resultsPerPage {
+            intValue
+            value
+          }
+          getDirectionsText {
+            value
+          }
+        }
+      }
+    }
+    
+    fragment IconFragment on LookupField {
+      targetItem {
+        ... on HCAIcon {
+          svgMarkup {
+            value
+          }
+        }
+      }
+    }
+    
+    fragment FilterOptionFragment on MultilistField {
+      targetItems {
+        ... on FilterOption {
+          displayName: field(name: "DisplayName") {
+            value
+          }
+          filter {
+            value
+          }
+          filterValueString {
+            value
+          }
+          filterValueGuid {
+            targetItem {
+              id
+            }
+          }
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Locations Search
@@ -32,6 +147,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{F09782B1-E400-4934-865B-CECD91198E94}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2ed6eea7-6e56-4e1d-8e22-40859c4d2998"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -78,14 +196,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "22160286-14c9-41a7-9296-087facd88970"
+      Value: "c1a57cfa-375b-4a7e-8d43-7441184b8187"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172347Z
+      Value: 20251210T212428Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

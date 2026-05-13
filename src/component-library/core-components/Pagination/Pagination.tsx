@@ -44,9 +44,8 @@ const Pagination = (props: PaginationProps): JSX.Element => {
           type="button"
           key={number}
           onClick={() => pageChangeHandler(number)}
-          className={`${styles['number']} ${
-            number === page ? styles['current-page'] : ''
-          }`}
+          className={`${styles['number']} ${number === page ? styles['current-page'] : ''
+            }`}
         >
           {number}
         </button>
@@ -152,9 +151,8 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       {pageButtons}
       <button
         type="button"
-        className={`${styles['arrow']} ${
-          page === pageCount ? styles['hide'] : ''
-        }`}
+        className={`${styles['arrow']} ${page === pageCount ? styles['hide'] : ''
+          }`}
         onClick={() => pageChangeHandler(page + 1)}
       >
         <Icons iconName="iconArrowSmallRight" />

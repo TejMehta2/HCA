@@ -18,11 +18,9 @@
   }
 
   .text-wrapper {
-    @include responsive-grid-span(
-      $default: 6,
+    @include responsive-grid-span($default: 6,
       $breakpoint-m: 5,
-      $breakpoint-l: 5
-    );
+      $breakpoint-l: 5);
 
     align-self: center;
   }
@@ -127,7 +125,7 @@
     }
 
     .stat {
-      > * {
+      >* {
         display: block;
       }
     }
@@ -170,6 +168,19 @@
 
     [class*='button'] {
       margin-top: $spacing-6;
+    }
+  }
+}
+
+:global(html[lang^='ar']) {
+  .intro-block.image-left {
+    .grid {
+      direction: ltr;
+    }
+
+    .text-wrapper {
+      direction: rtl;
+      text-align: right;
     }
   }
 }

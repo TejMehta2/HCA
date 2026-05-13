@@ -38,3 +38,12 @@ svg {
 html {
   scroll-behavior: smooth;
 }
+
+html[lang^='ar'] footer {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang^='ar'] header {
+  text-align: right;
+}
