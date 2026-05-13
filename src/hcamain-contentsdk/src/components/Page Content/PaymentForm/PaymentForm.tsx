@@ -10,7 +10,7 @@ import Button from '@component-library/core-components/Button/Button';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/core-components/form/basic/Container/Container';
-import styles from '../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
+import styles from 'src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
   ButtonTemplate,
