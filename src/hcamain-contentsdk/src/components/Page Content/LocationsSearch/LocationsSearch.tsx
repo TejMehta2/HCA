@@ -31,11 +31,10 @@ import Image from 'next/image';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
 import Filters from '@component-library/site-components/Filters/Filters';
-import getBaselineParams from 'lib/getBaselineParams';
-import unpackFilterOption from 'lib/unpackFilterOption';
+import { unpackFilterOptionJson } from 'lib/unpackFilterOption';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import { ApiSearchProps } from 'src/types/searchProps';
+import { ApiSearchPropsJson } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
@@ -43,6 +42,7 @@ import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import getHeadingTags from 'lib/getHeadingTags';
+import getBaselineParamsJson from 'lib/getBaselineParamsJson';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
@@ -70,7 +70,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
+    getBaselineParamsJson(props);
   const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
 
   // Hooks
@@ -115,19 +115,20 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
   const resultsRange = `${rangeStart}-${rangeEnd}`;
 
   // Parse filter options to be used in multiple components
-  const filterCategories = props.fields?.FilterOptions?.map((category) => ({
-    title: category?.fields.Header?.value || category?.displayName || '',
-    fields: category.fields?.Filters?.map((option) => {
-      const { id, key, value, displayName } = unpackFilterOption(option);
-      return {
-        id,
-        value,
-        name: key,
-        label: displayName,
-        defaultChecked: searchParams.getAll(key).includes(value),
-      };
-    }),
-  }));
+  const filterCategories =
+    props?.fields?.data?.item?.filterOptions?.targetItems?.map((category) => ({
+      title: category?.header?.value || category?.header?.value || '',
+      fields: category.filters?.targetItems.map((option) => {
+        const { id, key, value, displayName } = unpackFilterOptionJson(option);
+        return {
+          id,
+          value,
+          name: key,
+          label: displayName,
+          defaultChecked: searchParams.getAll(key).includes(value),
+        };
+      }),
+    }));
 
   const activeFilters = filterCategories?.reduce((previous, { fields }) => {
     return [
@@ -137,7 +138,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
   }, []);
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
-    props.fields?.Heading?.value
+    props?.fields?.data?.item?.heading?.jsonValue?.value
   );
   return (
     <form {...formHandlers}>
@@ -148,21 +149,26 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             <Text
               variation={
                 props.params?.HeadingSize ||
-                getDynamicTitleStyle(props?.fields?.Title?.value.length)
+                getDynamicTitleStyle(
+                  props?.fields?.data?.item?.title?.jsonValue?.value?.length
+                )
               }
               tag={headingTag}
             >
-              <JssText field={props?.fields?.Title} />
+              <JssText field={props?.fields?.data?.item?.title?.jsonValue} />
             </Text>
           }
           metatitle={
             <Text tag={subheadingTag} variation="subheading-1">
-              <JssText field={props.fields?.Heading} />
+              <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           }
           description={
             <Text tag="div" variation="body-large">
-              <JssRichText tag="span" field={props?.fields?.Text} />
+              <JssRichText
+                tag="span"
+                field={props?.fields?.data?.item?.text?.jsonValue}
+              />
             </Text>
           }
         >
@@ -174,7 +180,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                 undefined
               }
               name={'input'}
-              placeholder={fields?.SearchPlaceholder?.value}
+              placeholder={fields?.data?.item?.searchPlaceholder?.value}
               suggestions={
                 autocompleteError
                   ? []
@@ -186,10 +192,15 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             >
               <Filters
                 submitOnClose={true}
-                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonText={
+                  <JssText field={fields?.data?.item?.filterOptionsText} />
+                }
                 buttonIcon={
                   <SitecoreSvg>
-                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                    {
+                      props?.fields?.data?.item?.filterOptionsIcon?.targetItem
+                        ?.svgMarkup?.value
+                    }
                   </SitecoreSvg>
                 }
                 resultsCount={resultsCount}
@@ -206,25 +217,32 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                 }))}
               />
               <Sorting
-                buttonText={<JssText field={fields?.SortOptionsText} />}
+                buttonText={
+                  <JssText field={fields?.data?.item?.sortOptionsText} />
+                }
                 buttonIcon={
                   <SitecoreSvg>
-                    {props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value}
+                    {
+                      props?.fields?.data?.item?.sortOptionsIcon?.targetItem
+                        ?.svgMarkup?.value
+                    }
                   </SitecoreSvg>
                 }
                 options={
-                  props?.fields?.SortOptions?.map((option) => {
-                    const { id, key, value, displayName } =
-                      unpackFilterOption(option);
+                  props?.fields?.data?.item?.sortOptions?.targetItems?.map(
+                    (option) => {
+                      const { id, key, value, displayName } =
+                        unpackFilterOptionJson(option);
 
-                    return {
-                      id,
-                      value,
-                      labelText: displayName,
-                      name: key,
-                      defaultChecked: searchParams?.get(key) === value,
-                    };
-                  }) || []
+                      return {
+                        id,
+                        value,
+                        labelText: displayName,
+                        name: key,
+                        defaultChecked: searchParams?.get(key) === value,
+                      };
+                    }
+                  ) || []
                 }
               />
             </SearchBar>
@@ -256,9 +274,11 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               <Text tag="h3" variation="heading-1">
                 <SearchDetail
                   searchResultsTextWithInput={
-                    fields?.SearchResultsTextWithInput?.value
+                    fields?.data?.item?.searchResultsTextWithInput?.value
                   }
-                  searchResultsText={fields?.SearchResultsText?.value}
+                  searchResultsText={
+                    fields?.data?.item?.searchResultsText?.value
+                  }
                   resultsCount={resultsCount}
                   input={
                     searchParams.get('input') ||
@@ -282,10 +302,13 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                 tab: {
                   icon: (
                     <SitecoreSvg>
-                      {props?.fields?.GridViewIcon?.fields?.SvgMarkup?.value}
+                      {
+                        props?.fields?.data?.item?.gridViewIcon?.targetItem
+                          ?.svgMarkup?.value
+                      }
                     </SitecoreSvg>
                   ),
-                  label: props?.fields?.GridViewText?.value,
+                  label: props?.fields?.data?.item?.gridViewText?.value,
                 },
                 tabContent: (
                   <>
@@ -352,7 +375,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                 <Button size={'large'} variation={'full'}>
                                   <a href={url}>
                                     <JssRichText
-                                      field={props.fields?.CTACardText}
+                                      field={
+                                        props?.fields?.data?.item?.cTACardText
+                                      }
                                     />
                                   </a>
                                 </Button>
@@ -366,7 +391,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                   >
                                     <span>
                                       <JssText
-                                        field={fields.GetDirectionsText}
+                                        field={
+                                          fields.data?.item?.getDirectionsText
+                                        }
                                       />
                                     </span>
                                   </a>
@@ -400,10 +427,13 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                 tab: {
                   icon: (
                     <SitecoreSvg>
-                      {props?.fields?.MapViewIcon?.fields?.SvgMarkup?.value}
+                      {
+                        props?.fields?.data?.item?.mapViewIcon?.targetItem
+                          ?.svgMarkup?.value
+                      }
                     </SitecoreSvg>
                   ),
-                  label: props?.fields?.MapViewText?.value,
+                  label: props?.fields?.data?.item?.mapViewText?.value,
                 },
                 tabContent: (
                   <LocationMap
@@ -430,7 +460,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               button1: (
                                 <a href={data.url}>
                                   <JssRichText
-                                    field={props.fields?.CTACardText}
+                                    field={
+                                      props?.fields?.data?.item?.cTACardText
+                                    }
                                   />
                                 </a>
                               ),
@@ -447,7 +479,11 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                   )}
                                 >
                                   <span>
-                                    <JssText field={fields.GetDirectionsText} />
+                                    <JssText
+                                      field={
+                                        fields?.data?.item?.getDirectionsText
+                                      }
+                                    />
                                   </span>
                                 </a>
                               ) : undefined,
@@ -483,9 +519,9 @@ export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: ApiSearchProps
+  rendering: ApiSearchPropsJson
 ) => {
-  const { baselineParams } = getBaselineParams(rendering);
+  const { baselineParams } = getBaselineParamsJson(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url

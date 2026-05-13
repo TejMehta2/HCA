@@ -94,16 +94,10 @@ export interface FilterOption {
 }
 
 export interface FilterOptionJson {
-  displayName?: {
-    value: Field<string>;
-  };
-  filter?: {
-    value: Field<string>;
-  };
-  filterValueGuid?: {
-    value: string;
-  };
-  filterValueString?: string;
+  displayName?: Field<string>;
+  filter?: Field<string>;
+  filterValueGuid?: { targetItem: { id: string } };
+  filterValueString?: Field<string>;
 }
 
 export interface YextFacetJson {
@@ -124,6 +118,11 @@ export interface FilterCategory {
     Header?: Field<string>;
     Filters: FilterOption[];
   };
+}
+
+export interface FilterCategoryJson {
+  header: Field<string>;
+  filters: { targetItems: FilterOptionJson[] };
 }
 
 export interface Fields {
@@ -150,3 +149,37 @@ export type ApiSearchProps = {
   fields?: Fields;
   fallbackData?: ApiResponse;
 };
+
+export interface ApiSearchPropsJson {
+  heading?: { jsonValue: Field<string> };
+  title?: { jsonValue: Field<string> };
+  text?: { jsonValue: Field<string> };
+  searchPlaceholder?: Field<string>;
+  filterOptionsIcon?: HCAIconFields;
+  filterOptionsText?: Field<string>;
+  filterOptions?: { targetItems: FilterCategoryJson[] };
+  sortOptionsIcon?: HCAIconFields;
+  sortOptionsText?: Field<string>;
+  sortOptions?: { targetItems: FilterOptionJson[] };
+  searchResultsText?: Field<string>;
+  searchResultsTextWithInput?: Field<string>;
+  resultsPerPage?: Field<number>;
+  searchBy?: { targetItems: FilterOptionJson[] };
+  filterBy?: { targetItems: FilterOptionJson[] };
+  gridViewIcon?: HCAIconFields;
+  gridViewText?: Field<string>;
+  mapViewIcon?: HCAIconFields;
+  mapViewText?: Field<string>;
+  getDirectionsText?: Field<string>;
+  cTACardText?: Field<string>;
+}
+
+export interface ApiSearchPropsJson {
+  params?: Params;
+  fields?: {
+    data?: {
+      item?: ApiSearchPropsJson;
+    };
+  };
+  fallbackData?: ApiResponse;
+}
