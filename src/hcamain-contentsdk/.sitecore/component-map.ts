@@ -185,7 +185,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Metadata', { ...Metadata }],
   ['LogoBlock', { ...LogoBlock }],
   ['LocationsSearch', { ...LocationsSearchtypes, ...LocationsSearch, componentType: 'client' }],
-  ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta }],
+  ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta, componentType: 'client' }],
   ['LocationsMap', { ...LocationsMap, componentType: 'client' }],
   ['LocationMap', { ...LocationMap, componentType: 'client' }],
   ['LocationCardsTypes', { ...LocationCardsTypes }],

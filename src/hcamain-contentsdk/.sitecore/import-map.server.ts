@@ -63,8 +63,6 @@ import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
-import { useRef, createElement } from 'react';
-import React from 'react';
 import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -84,6 +82,8 @@ import AccordionsBlockSideBySide from '@component-library/site-components/Accord
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
+import { createElement } from 'react';
+import React from 'react';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import DiamondLine from '@component-library/site-components/DiamondLine/DiamondLine';
@@ -455,14 +455,6 @@ const importMap = [
     ]
   },
   {
-    module: 'react',
-    exports: [
-      { name: 'useRef', value: useRef },
-      { name: 'createElement', value: createElement },
-      { name: 'default', value: React },
-    ]
-  },
-  {
     module: '@component-library/site-components/PaymentFormHeader/PaymentFormHeader',
     exports: [
       { name: 'default', value: PaymentFormHeader },
@@ -569,6 +561,13 @@ const importMap = [
     module: 'lib/constants',
     exports: [
       { name: 'FINDER_PROFILE_CANONICAL_BASE_URL', value: FINDER_PROFILE_CANONICAL_BASE_URL },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'createElement', value: createElement },
+      { name: 'default', value: React },
     ]
   },
   {

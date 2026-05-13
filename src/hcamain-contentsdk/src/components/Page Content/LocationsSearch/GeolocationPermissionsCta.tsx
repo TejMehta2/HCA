@@ -1,3 +1,5 @@
+'use client';
+
 import Icons from '@component-library/foundation/Icons/Icons';
 import { useRef } from 'react';
 

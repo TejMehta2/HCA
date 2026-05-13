@@ -15,6 +15,7 @@ import * as PatientStoriesCards from 'src/components/Page Content/PatientStories
 import * as MoreInformationCTA from 'src/components/Page Content/MoreInformationCTA/MoreInformationCTA';
 import * as ModalContent from 'src/components/Page Content/ModalContent/ModalContent';
 import * as LocationsSearch from 'src/components/Page Content/LocationsSearch/LocationsSearch';
+import * as GeolocationPermissionsCta from 'src/components/Page Content/LocationsSearch/GeolocationPermissionsCta';
 import * as LocationsMap from 'src/components/Page Content/LocationsMap/LocationsMap';
 import * as LocationMap from 'src/components/Page Content/LocationMap/LocationMap';
 import * as LocationCards from 'src/components/Page Content/LocationCards/LocationCards';
@@ -51,6 +52,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['MoreInformationCTA', { ...MoreInformationCTA }],
   ['ModalContent', { ...ModalContent }],
   ['LocationsSearch', { ...LocationsSearch }],
+  ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta }],
   ['LocationsMap', { ...LocationsMap }],
   ['LocationMap', { ...LocationMap }],
   ['LocationCards', { ...LocationCards }],
