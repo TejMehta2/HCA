@@ -45,7 +45,6 @@ import getHeadingTags from 'lib/getHeadingTags';
 import getBaselineParamsJson from 'lib/getBaselineParamsJson';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
-
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
