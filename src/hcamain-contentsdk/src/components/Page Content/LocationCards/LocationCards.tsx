@@ -1,12 +1,13 @@
-import React from 'react';
+'use client';
+
+import { type JSX } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
   Link as JssLink,
-  useSitecoreContext,
-  GetStaticComponentProps,
+  GetComponentServerProps,
   useComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import {
   LocationCardsProps,
   LocationCardsResult,
@@ -23,7 +24,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
@@ -33,8 +34,7 @@ const SEARCH_PATH = '/locations/search';
 const LocationCardsDefaultComponent = (
   props: LocationCardsProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -272,8 +272,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
 
   const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
@@ -393,8 +392,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 export const Slider = (props: LocationCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
@@ -494,9 +492,10 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
-  rendering: LocationCardsProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  componentRendering
 ) => {
+  const rendering = componentRendering as unknown as LocationCardsProps;
   // Skip locations search if locations were picked manually in the datasource
   if ((rendering.fields?.data?.item?.locations?.PagesList?.length ?? 0) > 0) {
     return { Locations: [] };

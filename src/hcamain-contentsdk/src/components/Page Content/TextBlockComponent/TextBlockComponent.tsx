@@ -1,20 +1,21 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   RichText as JssRichText,
   Text as JssText,
-  useSitecoreContext,
   ComponentRendering,
-  Placeholder,
+  AppPlaceholder,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import OffsetTextBlock from '@component-library/careers/OffsetTextBlock/OffsetTextBlock';
 import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
@@ -27,7 +28,7 @@ interface Fields {
   Image?: ImageField;
 }
 
-type TextBlockComponentProps = {
+type TextBlockComponentProps = ComponentWithContextProps & {
   params?: Params;
   rendering: ComponentRendering;
   fields?: Fields;
@@ -36,8 +37,7 @@ type TextBlockComponentProps = {
 const TextBlockComponentDefaultComponent = (
   props: TextBlockComponentProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -54,8 +54,7 @@ const TextBlockComponentDefaultComponent = (
 
 export const Default = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
@@ -131,7 +130,12 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
       }
       ctas={
         <PlaceHolderWrapper>
-          <Placeholder name={phKey} rendering={props.rendering} />
+          <AppPlaceholder
+            name={phKey}
+            rendering={props.rendering}
+            page={props.page}
+            componentMap={componentMap}
+          />
         </PlaceHolderWrapper>
       }
     />
@@ -140,8 +144,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
 
 export const Offset = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
@@ -194,7 +197,12 @@ export const Offset = (props: TextBlockComponentProps): JSX.Element => {
       }
       ctas={
         <PlaceHolderWrapper>
-          <Placeholder name={phKey} rendering={props.rendering} />
+          <AppPlaceholder
+            name={phKey}
+            rendering={props.rendering}
+            page={props.page}
+            componentMap={componentMap}
+          />
         </PlaceHolderWrapper>
       }
     />

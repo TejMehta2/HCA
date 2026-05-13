@@ -1,13 +1,15 @@
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   Text as JssText,
   RichText,
   Image,
   ComponentRendering,
-  Placeholder,
+  AppPlaceholder,
   ImageFieldValue,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 type HCAIconFields = {
@@ -24,7 +26,7 @@ interface Fields {
   Image?: ImageFieldValue;
 }
 
-type TabProps = {
+type TabProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -62,7 +64,12 @@ export const Default = (props: TabProps): JSX.Element => {
       <RichText tag="span" field={props.fields?.Text} />
       <br />
       {props.rendering && (
-        <Placeholder name={phKey} rendering={props.rendering} />
+        <AppPlaceholder
+          name={phKey}
+          rendering={props.rendering}
+          page={props.page}
+          componentMap={componentMap}
+        />
       )}
     </div>
   );

@@ -2,10 +2,11 @@ import {
   Field,
   ImageField,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { ApiSearchProps } from 'src/types/searchProps';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
-import { Coordinate } from 'components/LocationsSearch/LocationsSearch.types';
+import { Coordinate } from 'components/Page Content/LocationsSearch/LocationsSearch.types';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -69,7 +70,7 @@ interface Fields {
   };
 }
 
-export type LocationCardsProps = ApiSearchProps & {
+export type LocationCardsProps = ApiSearchProps & ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {

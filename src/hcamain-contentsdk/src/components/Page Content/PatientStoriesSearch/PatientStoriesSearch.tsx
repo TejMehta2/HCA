@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+'use client';
+
+import { type JSX, type RefObject, useRef } from 'react';
 import {
-  GetStaticComponentProps,
+  GetComponentServerProps,
   Text as JssText,
   RichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -16,7 +18,7 @@ import {
   Autocomplete,
   ApiResponse,
   ApiSearchProps,
-} from '../../types/searchProps';
+} from 'src/types/searchProps';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 // import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
@@ -31,7 +33,7 @@ import HeaderPlain, {
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
-import { useI18n } from 'next-localization';
+import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -52,7 +54,7 @@ const PatientStoriesSearchDefaultComponent = (
 
 export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
-  const { t } = useI18n();
+  const t = useTranslations();
 
   // Set up default baseline parameters from CMS
   const {
@@ -64,6 +66,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const scrollRef = searchWrapperRef as RefObject<HTMLElement>;
   const {
     data,
     error,
@@ -315,7 +318,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               offset={offset}
               limit={limit}
               resultsCount={resultsCount}
-              scrollToRef={searchWrapperRef}
+              scrollToRef={scrollRef}
             />
             {/* <SearchFormLoadMore
             limit={limit}
@@ -335,7 +338,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
+export const getComponentServerProps: GetComponentServerProps = async (
   rendering: ApiSearchProps
 ) => {
   const { baselineParams } = getBaselineParams(rendering);

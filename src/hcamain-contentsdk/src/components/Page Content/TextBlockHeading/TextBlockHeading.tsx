@@ -1,21 +1,21 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   Text as JssText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
 }
 
-type TextBlockHeadingProps = {
+type TextBlockHeadingProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -23,8 +23,7 @@ type TextBlockHeadingProps = {
 const TextBlockHeadingDefaultComponent = (
   props: TextBlockHeadingProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>

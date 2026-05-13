@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+'use client';
+
+import { type JSX, useState } from 'react';
 import {
   Field,
   LinkField,
   Text as JssText,
   RichText as JssRichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import ShareCTA from '@component-library/components/ShareCTA/ShareCTA';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';

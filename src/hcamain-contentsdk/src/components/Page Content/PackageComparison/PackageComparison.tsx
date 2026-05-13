@@ -1,19 +1,19 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   RichText as JssRichText,
   Text as JssText,
   Link as JssLink,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import CardComparison from '@component-library/components/CardComparison/CardComparison';
 import {
@@ -70,7 +70,7 @@ export interface PackageCard {
   };
 }
 
-export type PackageComparisonProps = {
+export type PackageComparisonProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   dataSource: string;
@@ -79,8 +79,7 @@ export type PackageComparisonProps = {
 const PackageComparisonDefaultComponent = (
   props: PackageComparisonProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -96,9 +95,7 @@ const PackageComparisonDefaultComponent = (
 };
 
 export const Default = (props: PackageComparisonProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <PackageComparisonDefaultComponent {...props} />;

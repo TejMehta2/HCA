@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   Text as JssText,
   ImageField,
   RichText,
   ComponentRendering,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  AppPlaceholder,
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import ContactList from '@component-library/components/ContactList/ContactList';
@@ -17,7 +19,7 @@ import { ContactItem } from '@component-library/components/ContactList/ContactLi
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
@@ -35,7 +37,7 @@ interface Fields {
   };
 }
 
-type TalkToUsProps = {
+type TalkToUsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: ComponentRendering;
@@ -144,7 +146,12 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
+            <AppPlaceholder
+              name={phKey}
+              rendering={props.rendering}
+              page={props.page}
+              componentMap={componentMap}
+            />
           </PlaceHolderWrapper>
         )
       }

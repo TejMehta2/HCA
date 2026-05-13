@@ -9,8 +9,54 @@ import * as ColumnSplitter from 'src/components/Structure/ColumnSplitter';
 import * as ContainerComponent from 'src/components/Structure/ContainerComponent/ContainerComponent';
 import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
 import * as RichText from 'src/components/Page Content/RichText';
+import * as VideoPlayer from 'src/components/Page Content/VideoPlayer/VideoPlayer';
+import * as TreatmentsSearch from 'src/components/Page Content/TreatmentsSearch/TreatmentsSearch';
+import * as TreatmentsCards from 'src/components/Page Content/TreatmentsCards/TreatmentsCards';
+import * as Timeline from 'src/components/Page Content/Timeline/Timeline';
+import * as TextBlockHeading from 'src/components/Page Content/TextBlockHeading/TextBlockHeading';
+import * as TextBlockComponent from 'src/components/Page Content/TextBlockComponent/TextBlockComponent';
+import * as Testimonials from 'src/components/Page Content/Testimonials/Testimonials';
+import * as TestsAndScansSearchtypes from 'src/components/Page Content/TestAndScansSearch/TestsAndScansSearch.types';
+import * as TestAndScansSearch from 'src/components/Page Content/TestAndScansSearch/TestAndScansSearch';
+import * as TestAndScansCards from 'src/components/Page Content/TestAndScansCards/TestAndScansCards';
+import * as TalkToUs from 'src/components/Page Content/TalkToUs/TalkToUs';
+import * as Tab from 'src/components/Page Content/Tab/Tab';
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
+import * as Statstypes from 'src/components/Page Content/Stats/Stats.types';
+import * as Stats from 'src/components/Page Content/Stats/Stats';
+import * as ShareCTA from 'src/components/Page Content/ShareCTA/ShareCTA';
+import * as ServiceLinesSearch from 'src/components/Page Content/ServiceLinesSearch/ServiceLinesSearch';
+import * as ServiceCards from 'src/components/Page Content/ServiceCards/ServiceCards';
+import * as PricingInformation from 'src/components/Page Content/PricingInformation/PricingInformation';
+import * as PlainHeader from 'src/components/Page Content/PlainHeader/PlainHeader';
+import * as PaymentFormConfirmation from 'src/components/Page Content/PaymentFormConfirmation/PaymentFormConfirmation';
+import * as Paymenttypes from 'src/components/Page Content/PaymentFormConfirmation/Payment.types';
+import * as PaymentFormtypes from 'src/components/Page Content/PaymentForm/PaymentForm.types';
+import * as PaymentForm from 'src/components/Page Content/PaymentForm/PaymentForm';
+import * as Header from 'src/components/Page Content/PaymentForm/helpers/Header';
+import * as DynamicTextField from 'src/components/Page Content/PaymentForm/helpers/DynamicTextField';
+import * as DynamicTextArea from 'src/components/Page Content/PaymentForm/helpers/DynamicTextArea';
+import * as DynamicSelectField from 'src/components/Page Content/PaymentForm/helpers/DynamicSelectField';
+import * as createSchema from 'src/components/Page Content/PaymentForm/helpers/createSchema';
+import * as PatientStoriesSearch from 'src/components/Page Content/PatientStoriesSearch/PatientStoriesSearch';
+import * as PatientStoriesCardstypes from 'src/components/Page Content/PatientStoriesCards/PatientStoriesCards.types';
+import * as PatientStoriesCards from 'src/components/Page Content/PatientStoriesCards/PatientStoriesCards';
+import * as PatientStories from 'src/components/Page Content/PatientStories/PatientStories';
+import * as PageTeaser from 'src/components/Page Content/PageTeaser/PageTeaser';
+import * as PackageComparison from 'src/components/Page Content/PackageComparison/PackageComparison';
+import * as MoreInformationCTA from 'src/components/Page Content/MoreInformationCTA/MoreInformationCTA';
+import * as ModalContent from 'src/components/Page Content/ModalContent/ModalContent';
 import * as Metadata from 'src/components/Page Content/Metadata/Metadata';
+import * as LogoBlock from 'src/components/Page Content/LogoBlock/LogoBlock';
+import * as LocationsSearchtypes from 'src/components/Page Content/LocationsSearch/LocationsSearch.types';
+import * as LocationsSearch from 'src/components/Page Content/LocationsSearch/LocationsSearch';
+import * as GeolocationPermissionsCta from 'src/components/Page Content/LocationsSearch/GeolocationPermissionsCta';
+import * as LocationsMap from 'src/components/Page Content/LocationsMap/LocationsMap';
+import * as LocationMap from 'src/components/Page Content/LocationMap/LocationMap';
+import * as LocationCardsTypes from 'src/components/Page Content/LocationCards/LocationCardsTypes';
+import * as LocationCards from 'src/components/Page Content/LocationCards/LocationCards';
+import * as LandingPageHeadertypes from 'src/components/Page Content/LandingPageHeader/LandingPageHeader.types';
+import * as LandingPageHeader from 'src/components/Page Content/LandingPageHeader/LandingPageHeader';
 import * as IntroBlock from 'src/components/Page Content/IntroBlock/IntroBlock';
 import * as ImageTextList from 'src/components/Page Content/ImageTextList/ImageTextList';
 import * as ImageShortText from 'src/components/Page Content/ImageShortText/ImageShortText';
@@ -102,8 +148,49 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ContainerComponent', { ...ContainerComponent }],
   ['PartialDesignDynamicPlaceholder', { ...PartialDesignDynamicPlaceholder }],
   ['RichText', { ...RichText }],
+  ['VideoPlayer', { ...VideoPlayer }],
+  ['TreatmentsSearch', { ...TreatmentsSearch, componentType: 'client' }],
+  ['TreatmentsCards', { ...TreatmentsCards }],
+  ['Timeline', { ...Timeline }],
+  ['TextBlockHeading', { ...TextBlockHeading }],
+  ['TextBlockComponent', { ...TextBlockComponent }],
+  ['Testimonials', { ...Testimonials }],
+  ['TestsAndScansSearch', { ...TestsAndScansSearchtypes }],
+  ['TestAndScansSearch', { ...TestAndScansSearch, componentType: 'client' }],
+  ['TestAndScansCards', { ...TestAndScansCards }],
+  ['TalkToUs', { ...TalkToUs }],
+  ['Tab', { ...Tab }],
   ['StickyCTA', { ...StickyCTA, componentType: 'client' }],
+  ['Stats', { ...Statstypes, ...Stats }],
+  ['ShareCTA', { ...ShareCTA, componentType: 'client' }],
+  ['ServiceLinesSearch', { ...ServiceLinesSearch, componentType: 'client' }],
+  ['ServiceCards', { ...ServiceCards }],
+  ['PricingInformation', { ...PricingInformation }],
+  ['PlainHeader', { ...PlainHeader }],
+  ['PaymentFormConfirmation', { ...PaymentFormConfirmation, componentType: 'client' }],
+  ['Payment', { ...Paymenttypes }],
+  ['PaymentForm', { ...PaymentFormtypes, ...PaymentForm, componentType: 'client' }],
+  ['Header', { ...Header }],
+  ['DynamicTextField', { ...DynamicTextField }],
+  ['DynamicTextArea', { ...DynamicTextArea }],
+  ['DynamicSelectField', { ...DynamicSelectField }],
+  ['createSchema', { ...createSchema }],
+  ['PatientStoriesSearch', { ...PatientStoriesSearch, componentType: 'client' }],
+  ['PatientStoriesCards', { ...PatientStoriesCardstypes, ...PatientStoriesCards, componentType: 'client' }],
+  ['PatientStories', { ...PatientStories }],
+  ['PageTeaser', { ...PageTeaser }],
+  ['PackageComparison', { ...PackageComparison }],
+  ['MoreInformationCTA', { ...MoreInformationCTA, componentType: 'client' }],
+  ['ModalContent', { ...ModalContent, componentType: 'client' }],
   ['Metadata', { ...Metadata }],
+  ['LogoBlock', { ...LogoBlock }],
+  ['LocationsSearch', { ...LocationsSearchtypes, ...LocationsSearch, componentType: 'client' }],
+  ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta }],
+  ['LocationsMap', { ...LocationsMap, componentType: 'client' }],
+  ['LocationMap', { ...LocationMap, componentType: 'client' }],
+  ['LocationCardsTypes', { ...LocationCardsTypes }],
+  ['LocationCards', { ...LocationCards, componentType: 'client' }],
+  ['LandingPageHeader', { ...LandingPageHeadertypes, ...LandingPageHeader }],
   ['IntroBlock', { ...IntroBlock }],
   ['ImageTextList', { ...ImageTextList }],
   ['ImageShortText', { ...ImageShortText }],

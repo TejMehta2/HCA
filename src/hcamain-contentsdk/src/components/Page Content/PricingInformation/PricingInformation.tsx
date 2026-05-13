@@ -1,20 +1,21 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   Text as JssText,
   RichText,
-  Placeholder,
+  AppPlaceholder,
   ComponentRendering,
-  useSitecoreContext,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
@@ -30,7 +31,7 @@ interface Fields {
   LengthOfStayText?: Field<string>;
 }
 
-type PricingInformationProps = {
+type PricingInformationProps = ComponentWithContextProps & {
   params?: Params;
   rendering: ComponentRendering;
   fields?: Fields;
@@ -39,8 +40,7 @@ type PricingInformationProps = {
 const PricingInformationDefaultComponent = (
   props: PricingInformationProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -136,10 +136,14 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
-            <Placeholder
+            <AppPlaceholder
               name={phKey}
               rendering={props.rendering}
-              parentHeadingTag={props.params?.HeadingTag}
+              page={props.page}
+              componentMap={componentMap}
+              passThroughComponentProps={{
+                parentHeadingTag: props.params?.HeadingTag,
+              }}
             />
           </PlaceHolderWrapper>
         )

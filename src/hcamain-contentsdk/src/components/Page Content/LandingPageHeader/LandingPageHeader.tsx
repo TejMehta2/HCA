@@ -1,9 +1,8 @@
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Text as JssText,
   Image as JssImage,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { LandingPageHeaderProps } from './LandingPageHeader.types';
@@ -12,8 +11,7 @@ import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/Op
 const LandingPageHeaderDefaultComponent = (
   props: LandingPageHeaderProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>

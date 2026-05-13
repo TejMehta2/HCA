@@ -1,4 +1,5 @@
-import { ImageField, Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ImageField, Field } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import Params from 'src/types/params';
 
@@ -17,7 +18,7 @@ export interface Fields {
   };
 }
 
-export type LandingPageHeaderProps = {
+export type LandingPageHeaderProps = ComponentWithContextProps & {
   params?: Params;
   fields?: {
     data?: {

@@ -1,12 +1,14 @@
-import React, { useRef } from 'react';
+'use client';
+
+import { type JSX, useRef } from 'react';
 import {
   Field,
   Text as JssText,
-  useSitecoreContext,
   RichText as JssRichText,
   Link as JssLink,
   LinkFieldValue,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import Button from '@component-library/core-components/Button/Button';
 import ModalText from '@component-library/components/ModalText/ModalText';
@@ -34,7 +36,7 @@ interface Fields {
   ModalContent?: ModalContentFields[];
 }
 
-type MoreInformationCTAProps = {
+type MoreInformationCTAProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   parentHeadingTag: Params['HeadingTag'];
@@ -43,8 +45,7 @@ type MoreInformationCTAProps = {
 const MoreInformationCTADefaultComponent = (
   props: MoreInformationCTAProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -61,8 +62,7 @@ const MoreInformationCTADefaultComponent = (
 
 export const Default = (props: MoreInformationCTAProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <MoreInformationCTADefaultComponent {...props} />;

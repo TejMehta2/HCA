@@ -1,13 +1,14 @@
+'use client';
+
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
   Link as JssLink,
-  useSitecoreContext,
-  GetStaticComponentProps,
+  GetComponentServerProps,
   useComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import {
   patientStories as PatientStory,
   PatientStoriesCardsProps,
@@ -25,7 +26,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -34,8 +35,7 @@ const SEARCH_PATH = '/search';
 const PatientStoriesCardsDefaultComponent = (
   props: PatientStoriesCardsProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -223,9 +223,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
 
-  const { sitecoreContext } = useSitecoreContext();
-  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const currentStoryId = props.page.layout.sitecore.route?.itemId?.toString();
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -346,9 +345,8 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
 
   const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
+  const isExperienceEditor = props.page.mode.isEditing;
+  const currentStoryId = props.page.layout.sitecore.route?.itemId?.toString();
 
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -463,9 +461,8 @@ export const SliderWithLeftText = (
 ): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
+  const isExperienceEditor = props.page.mode.isEditing;
+  const currentStoryId = props.page.layout.sitecore.route?.itemId?.toString();
 
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -548,9 +545,10 @@ export const SliderWithLeftText = (
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
-  rendering: PatientStoriesCardsProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  componentRendering
 ) => {
+  const rendering = componentRendering as unknown as PatientStoriesCardsProps;
   const fields = rendering.fields?.data?.item;
 
   // Format props into entries, then query params

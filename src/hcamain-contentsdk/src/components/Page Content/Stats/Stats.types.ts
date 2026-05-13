@@ -1,4 +1,4 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 
 export interface Fields {

@@ -1,14 +1,15 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   ImageField,
   Text as JssText,
   RichText as JssRichText,
-  Placeholder,
+  AppPlaceholder,
   ComponentRendering,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import VideoBlock from '@component-library/site-components/VideoBlock/VideoBlock';
 import VideoPlayer from '@component-library/components/VideoPlayer/VideoPlayer';
@@ -17,7 +18,7 @@ import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type VideoProvidersFields = {
@@ -33,15 +34,14 @@ interface Fields {
   VideoThumbnail?: ImageField;
 }
 
-type VideoPlayerProps = {
+type VideoPlayerProps = ComponentWithContextProps & {
   params?: Params;
   rendering: ComponentRendering;
   fields?: Fields;
 };
 
 const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -102,10 +102,12 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
           }
           ctas={
             props.rendering && (
-              <Placeholder
+              <AppPlaceholder
                 name={phKey}
                 rendering={props.rendering}
-                size={buttonSize}
+                page={props.page}
+                componentMap={componentMap}
+                passThroughComponentProps={{ size: buttonSize }}
               />
             )
           }
@@ -219,10 +221,12 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
           }
           ctas={
             props.rendering && (
-              <Placeholder
+              <AppPlaceholder
                 name={phKey}
                 rendering={props.rendering}
-                size={buttonSize}
+                page={props.page}
+                componentMap={componentMap}
+                passThroughComponentProps={{ size: buttonSize }}
               />
             )
           }

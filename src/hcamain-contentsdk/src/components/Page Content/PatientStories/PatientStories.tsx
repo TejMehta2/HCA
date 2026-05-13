@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Link as JssLink,
   Field,
@@ -7,8 +7,8 @@ import {
   ImageField,
   RichText,
   LinkField,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import Text from '@component-library/foundation/Text/Text';
@@ -16,7 +16,7 @@ import CarouselCards from '@component-library/site-components/CarouselCards/Caro
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -48,7 +48,7 @@ interface Fields {
   };
 }
 
-type PatientStoriesProps = {
+type PatientStoriesProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -56,8 +56,7 @@ type PatientStoriesProps = {
 const PatientStoriesDefaultComponent = (
   props: PatientStoriesProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -73,8 +72,7 @@ const PatientStoriesDefaultComponent = (
 };
 
 export const Carousel = (props: PatientStoriesProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
@@ -175,8 +173,7 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
 };
 
 export const Default = (props: PatientStoriesProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
   }

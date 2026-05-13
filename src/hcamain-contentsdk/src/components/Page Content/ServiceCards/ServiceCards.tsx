@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   LinkField,
@@ -7,8 +7,8 @@ import {
   Text as JssText,
   ImageField,
   Link as JssLink,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 import CardService from '@component-library/components/CardService/CardService';
 import Text from '@component-library/foundation/Text/Text';
@@ -17,7 +17,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicServiceCards = dynamic(
@@ -60,7 +60,7 @@ interface Fields {
   };
 }
 
-type ServiceCardsProps = {
+type ServiceCardsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -68,8 +68,7 @@ type ServiceCardsProps = {
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -92,8 +91,7 @@ export const Default = ({
   variant = 'service',
   ...props
 }: ServiceCardsPropsVariantProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <ServiceCardsDefaultComponent {...props} />;

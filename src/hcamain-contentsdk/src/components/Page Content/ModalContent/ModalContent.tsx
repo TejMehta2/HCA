@@ -1,11 +1,13 @@
-import React, { useRef } from 'react';
+'use client';
+
+import { type JSX, useRef } from 'react';
 import {
   Field,
   Text as JssText,
   LinkField,
   Link as JssLink,
   RichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   ImageField,
@@ -7,16 +7,16 @@ import {
   Text as JssText,
   Link as JssLink,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Timeline, {
   TimelineStep,
 } from '@component-library/site-components/Timeline/Timeline';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import Themes from '@component-library/foundation/Themes/Themes';
 interface PagesFields {
@@ -52,15 +52,14 @@ interface Fields {
   };
 }
 
-export type TimelineProps = {
+export type TimelineProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   dataSource: string;
 };
 
 const TimelineDefaultComponent = (props: TimelineProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>
@@ -76,8 +75,7 @@ const TimelineDefaultComponent = (props: TimelineProps): JSX.Element => {
 };
 
 export const Default = (props: TimelineProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields?.data?.item) {
     return <TimelineDefaultComponent {...props} />;

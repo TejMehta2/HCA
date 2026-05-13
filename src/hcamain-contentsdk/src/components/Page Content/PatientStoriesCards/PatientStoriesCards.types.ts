@@ -2,9 +2,10 @@ import {
   Field,
   LinkFieldValue,
   ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
 import { ApiSearchProps } from 'src/types/searchProps';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -63,7 +64,7 @@ interface Fields {
   };
 }
 
-export type PatientStoriesCardsProps = ApiSearchProps & {
+export type PatientStoriesCardsProps = ApiSearchProps & ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {

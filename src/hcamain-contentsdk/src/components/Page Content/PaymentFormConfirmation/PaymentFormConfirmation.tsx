@@ -1,12 +1,13 @@
-import React from 'react';
+'use client';
+
+import { type JSX } from 'react';
 import {
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  useSitecoreContext,
   useComponentProps,
-  GetServerSideComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  GetComponentServerProps,
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
@@ -18,15 +19,14 @@ import {
   PaymentFormConfirmationProps,
   TransactionStatusResponse,
 } from './Payment.types';
-import Header from 'components/PaymentForm/helpers/Header';
+import Header from '../PaymentForm/helpers/Header';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
 const PaymentFormConfirmationDefaultComponent = (
   props: PaymentFormConfirmationProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -42,12 +42,11 @@ const PaymentFormConfirmationDefaultComponent = (
 };
 
 export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
 
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <PaymentFormConfirmationDefaultComponent {...props} />;
   }
@@ -181,18 +180,21 @@ export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps: GetServerSideComponentProps = async (
+export const getComponentServerProps: GetComponentServerProps = async (
   _,
   layoutData,
   context
 ) => {
-  const { query, req } = context;
+  const { query = {}, req } = context as {
+    query?: Record<string, string | string[]>;
+    req?: { headers: { host?: string }; url?: string };
+  };
 
   const transactionIdValue = query['transaction_id'];
 
   // If no transaction_id, log full URL and skip request
   if (!transactionIdValue) {
-    const fullUrl = `${req.headers.host}${req.url}`;
+    const fullUrl = `${req?.headers.host ?? ''}${req?.url ?? ''}`;
     console.log('verifone payment failed:', fullUrl);
     return {};
   }

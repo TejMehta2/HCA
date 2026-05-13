@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
+import componentMap from '.sitecore/component-map';
 import {
   Field,
   LinkField,
@@ -9,15 +10,16 @@ import {
   Image,
   Text as JSSText,
   Link as JSSLink,
-  Placeholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+  AppPlaceholder,
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface LogosFields {
@@ -34,7 +36,7 @@ interface Fields {
   Logos?: LogosFields[];
 }
 
-type LogoBlockProps = {
+type LogoBlockProps = ComponentWithContextProps & {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
@@ -103,10 +105,12 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
           }
           ctas={
             props.rendering && (
-              <Placeholder
+              <AppPlaceholder
                 name={phKey}
                 rendering={props.rendering}
-                size={buttonSize}
+                page={props.page}
+                componentMap={componentMap}
+                passThroughComponentProps={{ size: buttonSize }}
               />
             )
           }

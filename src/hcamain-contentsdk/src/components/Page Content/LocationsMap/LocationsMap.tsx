@@ -1,13 +1,15 @@
+'use client';
+
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import { type JSX } from 'react';
 import {
   Field,
   Text as JssText,
   LinkField,
   Link as JssLink,
   RichText as JssRichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -16,7 +18,7 @@ import CardLocation from '@component-library/components/CardLocation/CardLocatio
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicOurLocations = dynamic(
@@ -60,7 +62,7 @@ interface Fields {
   CTALink?: LinkField;
 }
 
-type LocationsMapProps = {
+type LocationsMapProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -76,8 +78,7 @@ const LocationsMapDefaultComponent = (
 );
 
 export const Default = (props: LocationsMapProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (!props.fields) {
     return <LocationsMapDefaultComponent {...props} />;
   }

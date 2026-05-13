@@ -1,7 +1,10 @@
+'use client';
+
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import { Text as JssText, Field, ComponentRendering, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { useI18n } from 'next-localization';
+import { type JSX } from 'react';
+import { Text as JssText, Field, ComponentRendering } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
+import { useTranslations } from 'next-intl';
 import LocationMapComponent from '@component-library/components/LocationMap/LocationMap';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import Text from '@component-library/foundation/Text/Text';
@@ -31,15 +34,14 @@ interface Fields {
   };
 }
 
-export type LocationMapProps = {
+export type LocationMapProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: ComponentRendering;
 };
 
 const LocationMapDefault = (props: LocationMapProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component ${props.params?.styles}`}>
@@ -53,8 +55,7 @@ const LocationMapDefault = (props: LocationMapProps): JSX.Element => {
 };
 
 const LocationMap = (props: LocationMapProps): JSX.Element => {
-  const { t } = useI18n();
-  useSitecoreContext();
+  const t = useTranslations();
 
   if (!props.fields?.data?.item) {
     return <LocationMapDefault {...props} />;

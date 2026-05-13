@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+'use client';
+
+import { type JSX, type RefObject, useRef } from 'react';
 import {
-  GetStaticComponentProps,
+  GetComponentServerProps,
   Text as JssText,
   RichText as JssRichText,
   useComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import {
   Autocomplete,
   LocationsSearchProps,
@@ -36,7 +38,7 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { ApiSearchPropsJson } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
-import { useI18n } from 'next-localization';
+import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
@@ -66,7 +68,7 @@ interface WithHeaderProps extends LocationsSearchProps {
 
 export const Default = (props: WithHeaderProps): JSX.Element => {
   const { fields, params, contentVariation } = props;
-  const { t } = useI18n();
+  const t = useTranslations();
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
@@ -75,6 +77,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const scrollRef = searchWrapperRef as RefObject<HTMLElement>;
   const {
     data,
     error,
@@ -188,7 +191,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               }
               locationCta={<GeolocationPermissionsCta />}
               error={'Please select a location from the dropdown'}
-              scrollRef={searchWrapperRef}
+              scrollRef={scrollRef}
             >
               <Filters
                 submitOnClose={true}
@@ -418,7 +421,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       offset={offset}
                       limit={limit}
                       resultsCount={resultsCount}
-                      scrollToRef={searchWrapperRef}
+                      scrollToRef={scrollRef}
                     />
                   </>
                 ),
@@ -518,7 +521,7 @@ export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
+export const getComponentServerProps: GetComponentServerProps = async (
   rendering: ApiSearchPropsJson
 ) => {
   const { baselineParams } = getBaselineParamsJson(rendering);

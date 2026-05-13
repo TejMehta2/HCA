@@ -1,13 +1,13 @@
-import React from 'react';
+import { type JSX } from 'react';
 import {
   ImageField,
   RichText as JssRichText,
   Text as JssText,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from 'next/image';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 import PageTeaser from '@component-library/site-components/PageTeaser/PageTeaser';
@@ -30,15 +30,14 @@ interface Fields {
   };
 }
 
-export type PageTeaserProps = {
+export type PageTeaserProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   dataSource: string;
 };
 
 const PageTeaserDefaultComponent = (props: PageTeaserProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   return !isExperienceEditor ? (
     <></>

@@ -1,21 +1,23 @@
 /* eslint-disable prettier/prettier */
+import { type JSX } from 'react';
 import {
   Text as JssText,
-  useSitecoreContext,
   RichText as JssRichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { StatsProps } from './Stats.types';
 import Stats from '@component-library/careers/Stats/Stats';
-import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import StatsCards from '@component-library/careers/StatsCards/StatsCards';
 import { StatProps } from '@component-library/careers/StatsCards/StatsCards.types';
 
-const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+type StatsComponentProps = StatsProps & ComponentWithContextProps;
+
+const StatsDefaultComponent = (props: StatsComponentProps): JSX.Element => {
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -30,7 +32,7 @@ const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
   return <></>;
 };
 
-export const Default = (props: StatsProps): JSX.Element => {
+export const Default = (props: StatsComponentProps): JSX.Element => {
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
   }
@@ -69,9 +71,8 @@ export const Default = (props: StatsProps): JSX.Element => {
   );
 };
 
-export const ThreeColumns = (props: StatsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+export const ThreeColumns = (props: StatsComponentProps): JSX.Element => {
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
@@ -114,9 +115,8 @@ export const ThreeColumns = (props: StatsProps): JSX.Element => {
   );
 };
 
-export const Cards = (props: StatsProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+export const Cards = (props: StatsComponentProps): JSX.Element => {
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;

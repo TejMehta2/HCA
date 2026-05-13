@@ -1,13 +1,15 @@
+'use client';
+
 /* eslint-disable */
-import React, { useState, useRef, FormEvent } from 'react';
+import { type JSX, useState, useRef, FormEvent } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Icons from '../../../../component-library/foundation/Icons/Icons';
-import Container from '../../../../component-library/core-components/form/basic/Container/Container';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Container from '@component-library/core-components/form/basic/Container/Container';
 import styles from '../../../src/jss-abstractions/FormContainer/FormContainer.module.scss';
 
 import {
@@ -29,22 +31,23 @@ import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes
 import MarketingPreferences from '@component-library/site-components/MarketingPreferences/MarketingPreferences';
 import {
   RichText as JssRichText,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from './helpers/DynamicTextField';
 import Header from './helpers/Header';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import DynamicSelectField from './helpers/DynamicSelectField';
 
-export const Default = (props: PaymentFormProps): JSX.Element => {
+type PaymentFormComponentProps = PaymentFormProps & ComponentWithContextProps;
+
+export const Default = (props: PaymentFormComponentProps): JSX.Element => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');
   const [recaptchaTouched, setRecaptchaTouched] = useState(false);
-  const context = useSitecoreContext().sitecoreContext;
-  const siteName = context?.site?.name;
-  const itemPath = context?.itemPath;
+  const siteName = props.page.siteName;
+  const itemPath = props.page.layout.sitecore.context.itemPath;
 
   // Hooks
   const formRef = useRef<HTMLFormElement>(null);
@@ -105,7 +108,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         const existingErrors = new Map(formErrors.entries());
         name && existingErrors.delete(name);
         const reducerInitialMap = name ? existingErrors : new Map();
-        const errorMap = error.errors.reduce((map, error) => {
+        const errorMap = error.issues.reduce<Map<string, string>>((map, error) => {
           const key = error.path[0] as string;
           if (name?.length && key !== name) return map; // name doesn't match
           if (map.get(key)) return map; // field already has an error
