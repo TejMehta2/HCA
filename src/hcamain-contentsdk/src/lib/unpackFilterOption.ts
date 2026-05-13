@@ -1,4 +1,4 @@
-import { FilterOption } from 'src/types/searchProps';
+import { FilterOption, FilterOptionJson } from 'src/types/searchProps';
 
 type SitecoreIdLike = string | { id?: string; guid?: string } | null | undefined;
 
@@ -19,6 +19,23 @@ const unpackFilterOption = ({ fields }: FilterOption) => {
     key,
     value,
     displayName: DisplayName?.value || '',
+  };
+};
+
+export const unpackFilterOptionJson = ({
+  filter,
+  filterValueGuid,
+  filterValueString,
+  displayName,
+}: FilterOptionJson) => {
+  const key = filter?.value || '';
+  const value =
+    formatId(filterValueGuid?.targetItem?.id) || filterValueString?.value || '';
+  return {
+    id: `${key}-${value}`,
+    key,
+    value,
+    displayName: displayName?.value || '',
   };
 };
 
