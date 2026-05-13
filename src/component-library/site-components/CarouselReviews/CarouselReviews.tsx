@@ -7,12 +7,21 @@ import Image from 'next/image';
 import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from '../CarouselCards/CustomArrows';
 import Slider from '@ant-design/react-slick';
-import DoctifyLogo from '../../assets/images/doctify-dark.png';
+import DoctifyLogoDark from '../../assets/images/doctify-dark.png';
+import DoctifyLogoLight from '../../assets/images/doctify-light.png';
 import StarEmpty from '../../assets/shapes/StarEmpty.svg';
 import StarHalf from '../../assets/shapes/StarHalf.svg';
 
 const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
-  const { theme, rating, reviewCount, children, id, tableOfContentTitle } = props;
+  const {
+    theme,
+    rating,
+    reviewCount,
+    children,
+    id,
+    tableOfContentTitle,
+    image,
+  } = props;
 
   /* Carousel settings */
   const settings = {
@@ -45,6 +54,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
   return (
     <Themes theme={theme} id={id} tableOfContentTitle={tableOfContentTitle}>
       <div className={styles['wrapper']}>
+        {image && <div className={styles.image}>{image}</div>}
         <div className={styles['container']}>
           <div>
             <Text tag="h2" variation="display-1">
@@ -71,7 +81,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
               <span>Verified by</span>
             </Text>
             <Image
-              src={DoctifyLogo}
+              src={image ? DoctifyLogoLight : DoctifyLogoDark}
               alt="doctify logo"
               width="83"
               height="21"

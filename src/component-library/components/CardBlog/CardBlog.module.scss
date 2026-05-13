@@ -7,12 +7,14 @@
   &.default {
     color: var(--text);
     background-color: var(--card-background);
+    --heading-color: var(--heading, var(--text));
   }
 
   &.feature {
     color: var(--card-secondary-text);
     background-color: var(--card-secondary-background);
 
+    --heading-color: var(--card-secondary-text);
     --tag-background: var(--tag-secondary-background);
     --tag-text: var(--tag-secondary-text);
     --tag-hover-text: var(--tag-secondary-hover-text);
@@ -29,6 +31,15 @@
   flex-direction: column;
   gap: px-to-rem(16);
   height: 100%;
+
+  a {
+
+    &:focus,
+    &:active {
+      outline: 1px solid transparent;
+      outline-offset: 1px;
+    }
+  }
 
   img {
     max-height: px-to-rem(268);
@@ -60,7 +71,7 @@
   h5,
   h6 {
     a {
-      color: inherit;
+      color: var(--heading-color);
       text-decoration: none;
 
       &:hover {
@@ -69,7 +80,7 @@
     }
   }
 
-  & > *:last-child {
+  &>*:last-child {
     padding-top: px-to-rem(30 - 16);
     margin-top: auto;
   }

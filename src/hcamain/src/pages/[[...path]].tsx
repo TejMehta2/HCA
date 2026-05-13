@@ -125,10 +125,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
     };
   } catch (error) {
-    console.error(error);
-    return {
-      notFound: true,
-    };
+    console.error('getStaticProps. Sitecore error:', error);
+    throw error;
   }
 };
 

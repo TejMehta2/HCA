@@ -1,8 +1,9 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -28,6 +29,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import { getHolidays } from '../../lib/consultant-finder/API_HCA';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { GetServerSidePropsContext } from 'next';
+import Modals from '@component-library/components/Modals/Modals';
 
 interface Fields {
   HCALogo: ImageField;
@@ -50,6 +52,7 @@ interface Fields {
   PhoneNumberIcon: any;
   ChooseTimeHeading: Field<string>;
   BookByPhoneIcon: any;
+  ResultsLink: Field<string>;
 }
 
 type StepProps = {
@@ -115,8 +118,12 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [keywordId, setKeywordId] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -128,9 +135,21 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
+    // get search from URL
+    const searchURL = router?.query?.search || '';
+    setSearch(searchURL.toString());
+
+    // get keywordId from URL
+    const keywordIdURL = router?.query?.keywordId || '';
+    setKeywordId(keywordIdURL.toString());
+
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
+
+    // get name from URL
+    const nameURL = router?.query?.name || '';
+    setName(nameURL.toString());
 
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || '';
@@ -143,7 +162,7 @@ export const Default = (props: StepProps): JSX.Element => {
     // if selected location and appointment type is missing then redirect to appointment type
     if (selectedLocation === '' && selectedTypeOfAppointment === '') {
       router.push(
-        `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+        `/finder/step-terms-and-conditions?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -168,10 +187,17 @@ export const Default = (props: StepProps): JSX.Element => {
                     slug={slug}
                     gmcNumber={gmcNumber}
                     reviewsTotal={reviewsTotal}
+                    name={name}
                   ></ProgressBar>
                 }
               ></HeaderLDB>
               <SlotsCalendar
+                slug={slug}
+                gmcNumber={gmcNumber}
+                reviewsTotal={reviewsTotal}
+                name={name}
+                backLinkHref={props?.fields?.BackLink?.value?.href}
+                backLinkText={props.fields.BackLink.value.text || 'Back'}
                 holidays={holidaysUK}
                 titleText={
                   props?.fields?.TitleText?.value || 'Please select a slot'
@@ -206,12 +232,77 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields?.BookByPhoneIcon?.fields?.SvgMarkup?.value}
                   </SitecoreSvg>
                 }
+                modalRef={dialogRef}
+                resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+                search={search}
+                keywordId={keywordId}
               />
-              <Navigation hideTextMobile={true}>
+              <Modals ref={dialogRef} alignContent='center'>
+                <Container alignItems={'center-align'}>
+                  {selectedDate !== '' && selectedTime !== '' && (
+                    <Text tag="p" variation="body-medium-extra-large">
+                      {isBookableContent &&
+                        `${props?.fields?.AppointmentSelectedText?.value ||
+                        'Appointment selected on'
+                        } ${selectedDate} at ${selectedTime}`}
+                      {!isBookableContent &&
+                        props?.fields?.KeyShortNoticeText?.value}
+                    </Text>
+                  )}
+                  {isBookableContent && (
+                    <Container marginBottom='spacing-4' marginTop='spacing-4'>
+                      <Button size={'small'} variation={'full-dark'}>
+                        <button
+                          disabled={
+                            selectedDate === '' && selectedTime === ''
+                              ? true
+                              : false
+                          }
+                          onClick={() =>
+                            router.push(
+                              `${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
+                            )
+                          }
+                        >
+                          <span>
+                            {props?.fields?.NextLink?.value?.text || 'Book Slot'}
+                          </span>
+                        </button>
+                      </Button>
+                    </Container>
+                  )}
+                  {!isBookableContent && (
+                    <Container marginBottom='spacing-4' marginTop='spacing-4'>
+                      <Button size={'small'} variation={'full-dark'}>
+                        <a
+                          href={`tel:${props?.fields?.PhoneNumberToBook?.value.replace(
+                            /\s/g,
+                            ''
+                          )}`}
+                        >
+                          <SitecoreSvg>
+                            {
+                              props?.fields?.PhoneNumberIcon?.fields?.SvgMarkup
+                                ?.value
+                            }
+                          </SitecoreSvg>
+                          <span>{props?.fields?.PhoneNumberToBook?.value}</span>
+                        </a>
+                      </Button>
+                    </Container>
+                  )}
+                  <TextButton>
+                    <button type="button" onClick={() => dialogRef?.current?.close()}>
+                      <span>{'Cancel'}</span>
+                    </button>
+                  </TextButton>
+                </Container>
+              </Modals>
+              <Navigation hideTextMobile={true} showOnMobile={true}>
                 <div>
                   <TextButton>
                     <Link
-                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                     >
                       <Icons iconName="iconArrowSmallLeft" />
                       <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -221,9 +312,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 {selectedDate !== '' && selectedTime !== '' && (
                   <Text tag="p" variation="body-medium-extra-large">
                     {isBookableContent &&
-                      `${
-                        props?.fields?.AppointmentSelectedText?.value ||
-                        'Appointment selected on'
+                      `${props?.fields?.AppointmentSelectedText?.value ||
+                      'Appointment selected on'
                       } ${selectedDate} at ${selectedTime}`}
                     {!isBookableContent &&
                       props?.fields?.KeyShortNoticeText?.value}
@@ -240,7 +330,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         }
                         onClick={() =>
                           router.push(
-                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                           )
                         }
                       >

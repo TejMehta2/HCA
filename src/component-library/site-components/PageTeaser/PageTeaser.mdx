@@ -1,0 +1,47 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as PageTeaserStories from './PageTeaser.stories'
+
+<Meta of={PageTeaserStories} />
+
+# PageTeaser
+
+## Description
+
+The PageTeaser component was designed for use on a two column layout on the blog page and will expand to the full width of it's container.
+
+It can be composed like this:
+
+``` tsx
+<PageTeaser
+  image={
+    <Image
+      src="/placeholders/couple-on-bench.jpeg"
+      alt="couple on a bench"
+      width="150"
+      height="150"
+    />
+  }
+  title={
+    <Text tag="h3" variation="heading-2">
+      Non-melanoma skin cancers
+    </Text>
+  }
+  bodyCopy={
+    <Text tag="p" variation="body-large">
+      Nisi do amet mollit ea. Ullamco id Lorem minim aliqua labore sit culpa consectetur quis magna duis. Commodo irure proident commodo in consectetur esse aliquip.
+    </Text>
+  }
+  link={
+    <a href="#">
+      <span>
+        Learn more
+      </span>
+    </a>
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={PageTeaserStories.Default} />
+<Controls of={PageTeaserStories.Default} />

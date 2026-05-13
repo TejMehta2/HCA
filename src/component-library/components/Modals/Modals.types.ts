@@ -6,4 +6,5 @@ export interface ModalsProps {
   defaultOpen?: boolean;
   variation?: 'right' | 'full';
   contentVariation?: 'filters' | 'sorting' | 'call';
+  alignContent?: 'center';
 }

@@ -18,7 +18,7 @@
   a {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 100% !important;
     inset: 0;
     line-height: 0;
     font-size: 0;
@@ -57,7 +57,7 @@
 }
 
 @include theme-mode(light, dark) using ($mode) {
-  @if $mode == light {
+  @if $mode ==light {
     .light-logo {
       display: none;
     }
@@ -70,7 +70,8 @@
       color: $white;
     }
   }
-  @if $mode == dark {
+
+  @if $mode ==dark {
     .light-logo {
       display: block;
     }
@@ -137,6 +138,7 @@
   display: flex;
   align-items: center;
   gap: px-to-rem(8) px-to-rem(23);
+
   @include media(screen-m) {
     max-width: px-to-rem(490);
   }

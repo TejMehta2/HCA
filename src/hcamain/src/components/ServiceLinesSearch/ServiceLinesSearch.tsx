@@ -266,8 +266,9 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                           <Image
                             src={cardImageSrc}
                             alt=""
-                            width="363"
-                            height="243"
+                            quality={90}
+                            width="560"
+                            height="420"
                           />
                         ) : undefined
                       }

@@ -4,6 +4,7 @@ import Breadcrumbs from './Breadcrumbs';
 import { BreadcrumbsProps } from './Breadcrumbs.types';
 
 const mockProps: BreadcrumbsProps = {
+  theme: 'A-HCA-White',
   backCta: {
     link: '#',
     text: 'Services & Treatments',

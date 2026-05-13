@@ -271,3 +271,45 @@ export const FullWidthImage: StoryObj<typeof HeaderWithImage> = {
     ),
   },
 };
+
+export const FullWidthImageWideText: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    theme: 'Alan-Black',
+    subtitlePlacement: 'before',
+    contentVariation: 'fullWidthImage',
+    textWidth: 'wide',
+    subtitle: <Text variation="subheading-1">We are BPS</Text>,
+    title: (
+      <Text variation="display-1">
+        Birmingham <span className="highlight">Prostate</span> Specialists
+      </Text>
+    ),
+    copy: (
+      <Text variation="body-large">
+        We’re one of the UK’s most progressive prostate clinics, led by highly
+        respected consultant urologist Alan Doherty and specialist
+        oncologist Dan Ford. Our Birmingham-based multidisciplinary team treats
+        patients nationally and internationally, offering expert advice
+        and tailored care shaped by the priorities that matter to you. 
+      </Text>
+    ),
+    ctas: (
+      <Button size="large" variation="full">
+        <a href="#">
+          <Icons iconName="iconSearch" />
+          <span>
+            Search <strong>roles</strong>
+          </span>
+        </a>
+      </Button>
+    ),
+    image: (
+      <Image
+        src="/placeholders/quality-care.jpg"
+        alt="quality care"
+        width="1512"
+        height="814"
+      />
+    ),
+  },
+};

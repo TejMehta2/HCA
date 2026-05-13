@@ -4,6 +4,7 @@ import {
   Field,
   GetStaticComponentProps,
   ImageField,
+  LinkField,
   debug,
   useComponentProps,
   useSitecoreContext,
@@ -12,6 +13,7 @@ import Params from 'src/types/params';
 import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -31,6 +33,7 @@ export interface PageRouteMetadata {
     JsonLdSchema?: Field<string>;
     Specialties?: Speciality[];
     Date?: Field<string>;
+    CanonicalUrl?: LinkField;
   };
   itemId?: string;
   templateId?: string;
@@ -60,6 +63,11 @@ interface Speciality {
   url: string;
 }
 
+type UrlProps = {
+  baseUrl: string;
+  path: string;
+};
+
 const isValidDate = (dateStr: string): boolean => {
   const date = new Date(dateStr);
 
@@ -70,12 +78,30 @@ const isValidDate = (dateStr: string): boolean => {
   return dateStr !== '0001-01-01T00:00:00Z';
 };
 
+// Function to escape HTML special characters for safe attribute usage
+const escapeHtmlAttribute = (str: string) => {
+  if (typeof str !== 'string') {
+    return '';
+  }
+  return str
+    .replace(/&/g, '&amp;') // Escape &
+    .replace(/"/g, '&quot;') // Escape double quotes
+    .replace(/'/g, '&#39;') // Escape single quotes
+    .replace(/</g, '&lt;') // Escape <
+    .replace(/>/g, '&gt;'); // Escape >
+};
+
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
   // hooks
   const context = useSitecoreContext();
-  const url = useComponentProps<string>(props.rendering?.uid);
+
+  const componentPropsData = useComponentProps<UrlProps>(props.rendering?.uid);
+
+  const url = componentPropsData
+    ? `${componentPropsData.baseUrl}${componentPropsData.path}`
+    : undefined;
 
   const route = context.sitecoreContext?.route as PageRouteMetadata;
   const { fields } = route;
@@ -100,6 +126,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
     Text,
     HideFromWebsiteSearch,
     Date,
+    CanonicalUrl,
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
@@ -108,7 +135,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const title = `${MetaTitle?.value || titleStripped} ${
     PageTitleSufix?.value || ''
   }`;
-  const description = MetaDescription?.value || Text?.value;
+  const description = escapeHtmlAttribute(
+    MetaDescription?.value || Text?.value || ''
+  );
   const image =
     MetaImage?.value?.src ||
     Image?.value?.src ||
@@ -117,8 +146,18 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
-  const pageText = Text?.value ? removeTags(Text?.value) : '';
-  const pageTitle = AbstractTitle?.value || Title.value;
+  const pageText = escapeHtmlAttribute(
+    Text?.value ? removeTags(Text?.value) : ''
+  );
+  const pageTitle = escapeHtmlAttribute(
+    AbstractTitle?.value || Title.value || ''
+  );
+
+  const canonicalLink = getCanonical(
+    CanonicalUrl?.value?.href,
+    url,
+    componentPropsData?.baseUrl
+  );
 
   type SchemaPageType =
     | 'Homepage'
@@ -207,7 +246,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
           <meta property="og:image" content={image} key="og:image" />
         )}{' '}
         &&
-        {url && <link rel="canonical" href={url} />} &&
+        {canonicalLink && <link rel="canonical" href={canonicalLink} />} &&
         {description && <meta name="description" content={description} />} &&
         {follow && index && (
           <meta name="robots" content={`${follow}, ${index}`} key="robots" />
@@ -254,11 +293,27 @@ export const Default = (props: MetadataProps): JSX.Element => {
   }
 };
 
+function getCanonical(
+  canonicalUrl?: string | null,
+  contextPageUrl?: string,
+  domain?: string
+) {
+  if (!canonicalUrl) return contextPageUrl;
+
+  if (!isAbsoluteUrl(canonicalUrl)) canonicalUrl = `${domain}${canonicalUrl}`;
+
+  return canonicalUrl;
+}
+
 export const getStaticProps: GetStaticComponentProps = async (
   _: MetadataProps,
   layoutData
 ) => {
-  const path = layoutData?.sitecore?.context?.itemPath;
-  const url = `${process.env.BASE_URL}${path}`; // Todo check with BE if we can get the domain or full URL from Sitecore data
-  return url;
+  const path = layoutData?.sitecore?.context?.itemPath ?? '';
+  const baseUrl = process.env.BASE_URL ?? '';
+
+  return {
+    baseUrl,
+    path,
+  };
 };

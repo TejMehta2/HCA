@@ -88,18 +88,22 @@ export interface FilterOption {
   fields: {
     DisplayName?: Field<string>;
     Filter?: Field<string>; // e.g. { value: 'locationId' }
-    FilterValueGuid?: Field<string> & {
-      id: string;
-    };
+    FilterValueGuid?: string;
     FilterValueString: Field<string>; // e.g. { value: 'Birmingham' }
   };
 }
 
 export interface FilterOptionJson {
-  displayName?: Field<string>;
-  filter?: Field<string>;
-  filterValueGuid?: { targetItem: { id: string } };
-  filterValueString?: Field<string>;
+  displayName?: {
+    value: Field<string>;
+  };
+  filter?: {
+    value: Field<string>;
+  };
+  filterValueGuid?: {
+    value: string;
+  };
+  filterValueString?: string;
 }
 
 export interface YextFacetJson {

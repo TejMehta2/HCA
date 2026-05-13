@@ -10,3 +10,9 @@
   --cqc-focus-outline: #{$navy-blue-100};
   --cqc-outline: unset;
 }
+
+@mixin apply-cqc-palace-red {
+  --cqc-background: #{$palace-red-80};
+  --cqc-focus-outline: #{$palace-red-100};
+  --cqc-outline: unset;
+}

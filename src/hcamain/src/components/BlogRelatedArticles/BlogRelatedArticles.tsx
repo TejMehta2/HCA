@@ -7,6 +7,7 @@ import {
   RichText as JssRichText,
   useComponentProps,
   useSitecoreContext,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
@@ -25,9 +26,11 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
+import parse from 'html-react-parser';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -76,34 +79,33 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
       (card, index) => {
-        const formattedArticleId =
-          card.articleType?.targetItem?.id &&
-          card.articleType?.targetItem?.id
-            .replaceAll(/[{},\-]/g, '')
-            .toLowerCase();
         return (
           <CardBlog key={index}>
-            {card.abstractImage?.jsonValue?.value?.src ? (
-              <NextJssImage
-                field={card.abstractImage?.jsonValue}
-                editable={false}
-                next={{
-                  width: 500,
-                  height: 400,
-                  sizes: '(max-width: 768px) 100vw, 30vw',
-                }}
-              />
-            ) : (
-              <NextJssImage
-                field={card.image?.jsonValue}
-                editable={false}
-                next={{
-                  width: 500,
-                  height: 400,
-                  sizes: '(max-width: 768px) 100vw, 30vw',
-                }}
-              />
-            )}
+            <a href={card.url?.path}>
+              {card.abstractImage?.jsonValue?.value?.src ? (
+                <NextJssImage
+                  field={card.abstractImage?.jsonValue}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    quality: 90,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
+              ) : (
+                <NextJssImage
+                  field={card.image?.jsonValue}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    quality: 90,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
+              )}
+            </a>
 
             <JssDate field={card.date?.jsonValue} editable={false} />
             {(card.abstractTitle?.value || card.title?.value) && (
@@ -120,7 +122,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 </a>
               </Text>
             )}
-            <Text tag="span" variation="body-large">
+            <Text tag="div" variation="body-large">
               {card.abstractText?.value ? (
                 <JssRichText field={card.abstractText} />
               ) : (
@@ -130,11 +132,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             <div>
               {!!card.articleType && (
                 <Tags>
-                  <a
-                    href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}
-                  >
-                    <JssText field={card.articleType?.targetItem?.title} />
-                  </a>
+                  <JssText
+                    tag="span"
+                    field={card.articleType?.targetItem?.title}
+                  />
                 </Tags>
               )}
             </div>
@@ -150,6 +151,8 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           name,
           date,
           url,
+          abstractTitle,
+          abstractText,
           title,
           description,
           typeName,
@@ -167,7 +170,15 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         return (
           <CardBlog key={index}>
             {cardImageSrc !== undefined ? (
-              <Image src={cardImageSrc} alt={name} width="643" height="605" />
+              <a href={`${url}`}>
+                <Image
+                  src={upsertQuerystringParam(cardImageSrc, 't', 'w750')}
+                  alt={name}
+                  width="643"
+                  height="605"
+                  quality={90}
+                />
+              </a>
             ) : undefined}
 
             <time>{formatDate(new Date(date))}</time>
@@ -176,11 +187,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                 variation="heading-2"
               >
-                <a href={`${url}`}>{title}</a>
+                <a href={`${url}`}>{abstractTitle ? abstractTitle : title}</a>
               </Text>
             )}
-            <Text tag="span" variation="body-large">
-              {description}
+            <Text tag="div" variation="body-large">
+              {parse(abstractText || description || '')}
             </Text>
 
             <div>
@@ -206,21 +217,28 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     props?.params,
     props?.fields?.Title?.value
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
 
-  const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
-    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
-    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+  const href = props.fields?.data?.item?.cTALink?.jsonValue?.value?.href;
+
+  const viewAllCta = href
+    ? props.fields?.data?.item?.articles?.ArticlesList?.length
+      ? href
+      : `${href}${ctaQuery}`
+    : undefined;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props?.fields?.data?.item?.heading?.jsonValue?.value
   );
-  console.log('test');
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       title={
         <Text
           tag={headingTag}
@@ -284,7 +302,11 @@ export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
   const fields = rendering.fields?.data?.item;
-  console.log('fields');
+
+  debug.common(
+    'BlogRelatedArticlesProps: rendering.fields?.data',
+    rendering.fields?.data
+  );
 
   // Format props into entries, then query params
   const customFilters =
@@ -299,13 +321,13 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const contextSearchParams = Object.entries(
     rendering.fields?.data?.contextItemSearchParams || {}
-  )
-    .filter(([, nestedValue]) => nestedValue.value !== '')
-    .map(([key, nestedValue]) => [
-      key,
-      nestedValue?.value &&
-      nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-    ]);
+  ).flatMap(([key, nestedValue]) =>
+    (nestedValue?.value || '')
+      .split('|')
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .map((value) => [key, value.replaceAll(/[{},\-]/g, '').toLowerCase()])
+  );
 
   const contextSearchIdParams = Object.entries(
     rendering.fields?.data?.contextItemSearchIdParams || {}
@@ -334,7 +356,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   try {
     const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
-
+    debug.common('yext fetch url', url.href);
     const response = await fetch(url.href);
     if (response.ok) {
       const data = await response.json();

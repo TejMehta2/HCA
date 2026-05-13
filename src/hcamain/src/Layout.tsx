@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * This Layout is needed for Starter Kit.
  */
@@ -90,13 +91,28 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
-  const browserTitle = `${
-    MetaTitle?.value || titleStripped || routeData.displayName
-  }`;
+  const browserTitle = `${MetaTitle?.value || titleStripped || routeData.displayName
+    }`;
 
   return (
     <>
       <Scripts />
+
+      {/* OneTrust Cookies Consent Notice */}
+      {/* <Script
+        src="https://cdn-ukwest.onetrust.com/scripttemplates/otSDKStub.js"
+        strategy="beforeInteractive"
+        type="text/javascript"
+        charSet="UTF-8"
+        data-domain-script="93edbf87-7898-49eb-8d4e-21c66bab104c-test"
+      />
+
+      <Script
+        id="onetrust-wrapper"
+        strategy="beforeInteractive"
+      >
+        {`function OptanonWrapper() { }`}
+      </Script> */}
       <Head>
         {browserTitle && <title>{browserTitle}</title>}
         <link
@@ -139,6 +155,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
       </Head>
+      {process.env.NEXT_PUBLIC_LOAD_COOKIES && (
+        <head
+          dangerouslySetInnerHTML={{
+            __html: process.env.NEXT_PUBLIC_LOAD_COOKIES,
+          }}
+        />
+      )}
       <Schema layoutData={layoutData} />
 
       {/* root placeholder for the app, which we add components to using route data */}
@@ -171,6 +194,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
               ref={mainRef}
               data-event={'buttonClick'}
               data-navigation-type={'buttonClick'}
+              dir="auto"
             >
               <div id="content">
                 {isHomepage ? (

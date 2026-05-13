@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 import React, { useEffect, useState } from 'react';
@@ -23,7 +24,7 @@ import Headline from '@component-library/consultant-finder/Headline/Headline';
 
 import { TheBirthCompanyContextProvider } from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
-import BookingTypeCards from 'temp/component-library/the-birth-company/BookingTypeCards/BookingTypeCards';
+import BookingTypeCards from '@component-library/the-birth-company/BookingTypeCards/BookingTypeCards';
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
@@ -143,7 +144,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       cta = (
         <>
           <Text variation="body-bold-small" tag="p">
-            Call to book below:
+            Enquire Now:
           </Text>
           <TextButton>
             <a href={`tel:${appointmentType.link.url}`}>
@@ -216,9 +217,8 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
           <div>
             <TextButton>
               <Link
-                href={`${
-                  props?.fields?.BackLink?.value?.href
-                }?${searchParams.toString()}`}
+                href={`${props?.fields?.BackLink?.value?.href
+                  }?${searchParams.toString()}`}
               >
                 <Icons iconName="iconArrowSmallLeft" />
                 <span>{props.fields.BackLink.value.text || 'Back'}</span>

@@ -28,7 +28,8 @@ type LocationsFields = {
   addressLine2?: { value?: string };
   postCode?: { value?: string };
   getDirections?: { value?: string };
-  url: { path?: string };
+  url: { url?: string };
+  proxyurl?: { jsonValue: LinkField; path?: string; text: string };
 };
 
 interface Fields {
@@ -50,6 +51,11 @@ interface Fields {
       cTAText?: { jsonValue?: Field<string> };
       getDirectionsText?: { jsonValue?: Field<string> };
       numberOfCards?: { jsonValue?: Field<string> };
+    };
+    contextItem?: {
+      locations?: {
+        targetItems?: LocationsFields[];
+      };
     };
     contextItemSearchIdParams?: {
       treatmentId?: string;

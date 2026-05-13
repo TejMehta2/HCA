@@ -489,3 +489,97 @@ export const Default: StoryObj<typeof Navigation> = {
     ),
   ],
 };
+
+export const AlanDoherty: StoryObj<typeof Navigation> = {
+  args: {
+    themeClosed: 'J-HCA-Tangerine-20',
+    themeOpen: 'Alan-Black',
+    eyebrow: {
+      left: <></>,
+      right: (
+        <>
+          <TextLink variation="body-medium">
+            <a href="#">Call us 0121 4464 444</a>
+          </TextLink>
+        </>
+      ),
+    },
+    tabs: [
+      {
+        heading: 'What we do',
+        mobileTabCta: (
+          <a href="#">
+            <span>What we do</span>
+          </a>
+        ),
+        content: [
+          {
+            template: 'Main Navigation Links List',
+            variation: 'double',
+            heading: <>What we do</>,
+            links: [
+              <TextLink variation={'body-large'}>
+                <a href="#">CT Scans</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Echocardiogram</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">MRI Scan</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Ultrasound</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Bone Density scan</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Arthroscopy</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Mammogram</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Endoscopy</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">Fertility diagnostics</a>
+              </TextLink>,
+              <TextLink variation={'body-large'}>
+                <a href="#">ERCP</a>
+              </TextLink>,
+            ],
+          },
+        ],
+        hasChildren: true,
+      },
+      {
+        heading: 'About Alan Doherty',
+        content: [],
+        hasChildren: false,
+        tabCta: <a href="#">About Alan Doherty</a>,
+      },
+      {
+        heading: 'Our team',
+        content: [],
+        hasChildren: false,
+        tabCta: <a href="#">Our team</a>,
+      },
+    ],
+    search: (
+      <TextLink>
+        <button>
+          <Icons iconName={'iconSearch'} />
+          <span className="sr-only">Search</span>
+        </button>
+      </TextLink>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <header>
+        <Story />
+      </header>
+    ),
+  ],
+};

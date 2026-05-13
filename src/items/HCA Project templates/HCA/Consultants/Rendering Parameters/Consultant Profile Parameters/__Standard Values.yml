@@ -1,0 +1,27 @@
+﻿---
+ID: "87a50603-1772-4e43-b6e8-f1796b6e2f32"
+Parent: "f9c3aeb7-0ec7-46a9-92ae-185393d913ff"
+Template: "f9c3aeb7-0ec7-46a9-92ae-185393d913ff"
+Path: /sitecore/templates/Project/HCA/Consultants/Rendering Parameters/Consultant Profile Parameters/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9847e00e-48f5-4d45-a37b-6c6d1beccee9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260320T125341Z

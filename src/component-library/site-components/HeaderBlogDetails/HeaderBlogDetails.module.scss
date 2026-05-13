@@ -22,12 +22,45 @@
   align-items: center;
   flex-wrap: wrap;
   gap: $spacing-4;
+  color: var(--text-date);
 
   & time {
     @include apply-body-medium;
   }
 }
 
+.title {
+  color: var(--heading, var(--text));
+}
+
 .copy {
-  margin-top: $spacing-5;
+  margin-top: $spacing-2;
+}
+
+.authors {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-4;
+  margin-top: $spacing-2;
+  width: fit-content;
+
+  @include media(screen-m) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: $spacing-6;
+    row-gap: $spacing-5;
+  }
+}
+
+.checked {
+  display: flex;
+  align-items: center;
+  @include apply-body-medium;
+
+  .separator {
+    display: flex;
+    margin-right: $spacing-4;
+    width: px-to-rem(1);
+    height: px-to-rem(20);
+    background-color: var(--text-date);
+  }
 }

@@ -102,7 +102,7 @@ const Summary = () => {
                 <p>{costData?.SummaryLabel?.CycleCost?.Label}</p>
               </div>
               <div className="ivf-calculator-summary-box-costs-col">
-                <p>£{cycleTypeCost}</p>
+                <p>£{cycleTypeCost.toFixed(2)}</p>
               </div>
             </div>
             <div className="ivf-calculator-summary-box-costs-row">
@@ -110,7 +110,7 @@ const Summary = () => {
                 <p>{costData?.SummaryLabel?.ProtocolCost?.Label}</p>
               </div>
               <div className="ivf-calculator-summary-box-costs-col">
-                <p>£{protocolTypeCost}</p>
+                <p>£{protocolTypeCost.toFixed(2)}</p>
               </div>
             </div>
             <div className="ivf-calculator-summary-box-costs-row">
@@ -118,7 +118,7 @@ const Summary = () => {
                 <p>{costData?.SummaryLabel?.BlastocystCultureCost?.Label}</p>
               </div>
               <div className="ivf-calculator-summary-box-costs-col">
-                <p>£{blastocystCultureCost}</p>
+                <p>£{blastocystCultureCost.toFixed(2)}</p>
               </div>
             </div>
             <div className="ivf-calculator-summary-box-costs-row">
@@ -126,7 +126,7 @@ const Summary = () => {
                 <p>{costData?.SummaryLabel?.AdjuvantsCost?.Label}</p>
               </div>
               <div className="ivf-calculator-summary-box-costs-col">
-                <p>£{adjuvantsCost}</p>
+                <p>£{adjuvantsCost.toFixed(2)}</p>
               </div>
             </div>
             <div className="ivf-calculator-summary-box-costs-row">
@@ -134,7 +134,7 @@ const Summary = () => {
                 <p>{costData?.SummaryLabel?.CycleDrugCost?.Label}</p>
               </div>
               <div className="ivf-calculator-summary-box-costs-col">
-                <p>£{cycleCost}</p>
+                <p>£{cycleCost.toFixed(2)}</p>
               </div>
             </div>
             <div className="ivf-calculator-summary-box-costs-row ivf-calculator-summary-box-costs-row--total">

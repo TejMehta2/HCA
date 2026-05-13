@@ -128,7 +128,7 @@ const Form = () => {
     // reset/ hide fields, hide summary when no cycle selection
     if (e.target.value === '') {
       setIsCalculating(false);
-    } else if (e.target.value === 'EggFreezing') {
+    } else if (e.target.value.startsWith('EggFreezing')) {
       // if egg freezing, show:
       // protocol
       // stimulation drug
@@ -182,7 +182,7 @@ const Form = () => {
   const handleChangeProtocolType = (e) => {
     setProtocolType(e.target.value);
     // console.log(e.target.value);
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         stimulationDrug.length > 0 &&
@@ -230,7 +230,7 @@ const Form = () => {
     // console.log(e.target.value);
     setStimulationDrug(e.target.value);
 
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         startingDose.length > 0 &&
@@ -298,7 +298,7 @@ const Form = () => {
       setStartingDose2('');
     }
 
-    if (cycleTypeVal === 'EggFreezing') {
+    if (cycleTypeVal.startsWith('EggFreezing')) {
       if (
         e.target.value.length > 0 &&
         stimulationDrug.length > 0 &&
@@ -409,10 +409,31 @@ const Form = () => {
         ? parseFloat(costData['CycleType'][cycleTypeVal].Cost)
         : 0;
     setCycleTypeCost(cycleTypeCostCalc);
+
+    // multiplier lookups - James request 2025-11-11
+    // Advanced embryology / blastocystCulture / supplementaryMultiplier cost
+    let supplementaryMultiplier =
+      parseFloat(
+        costData['CycleType'][cycleTypeVal]?.SupplementaryMultiplier
+      ) ?? 1.0;
+    if (isNaN(supplementaryMultiplier)) supplementaryMultiplier = 1.0;
+    let bloodsMultiplier =
+      parseFloat(costData['CycleType'][cycleTypeVal]?.BloodsMultiplier) ?? 1.0;
+    if (isNaN(bloodsMultiplier)) bloodsMultiplier = 1.0;
+    let medicationMultiplier =
+      parseFloat(costData['CycleType'][cycleTypeVal]?.MedicationMultiplier) ??
+      1.0;
+    if (isNaN(medicationMultiplier)) medicationMultiplier = 1.0;
+
+    //console.log("supplementary multiplier", supplementaryMultiplier);
+    //console.log("bloods multiplier", bloodsMultiplier);
+    //console.log("medication multiplier", medicationMultiplier);
+
     // console.log("cycle cost", cycleTypeCostCalc);
     const protocolTypeCostCalc =
       protocolType.length > 0
-        ? parseFloat(costData['ProtocolType'][protocolType].Cost)
+        ? parseFloat(costData['ProtocolType'][protocolType].Cost) *
+          bloodsMultiplier
         : 0;
     setProtocolTypeCost(protocolTypeCostCalc);
     // added 16/02 feedback from James
@@ -422,9 +443,9 @@ const Form = () => {
         : 0;
     //console.log("additional protocol drug cost", additionalProtocolDrugCost);
     const blastocystCultureCostCalc =
-      blastocystCulture.length > 0
+      (blastocystCulture.length > 0
         ? parseFloat(costData['BlastocystCulture'][blastocystCulture].Cost)
-        : 0;
+        : 0) * supplementaryMultiplier;
     setBlastocystCultureCost(blastocystCultureCostCalc);
     // console.log("blastocyst culture cost", blastocystCultureCostCalc);
     // multi-select
@@ -479,21 +500,35 @@ const Form = () => {
         // console.log("cycle price not in lookup table!");
       }
     }
-    setDrug1Cost(cyclePrice + additionalProtocolDrugCost);
-    setDrug2Cost(cyclePrice2);
-    setCycleCost(cyclePrice + additionalProtocolDrugCost + cyclePrice2);
+
+    setDrug1Cost(
+      (cyclePrice + additionalProtocolDrugCost) * medicationMultiplier
+    );
+    setDrug2Cost(cyclePrice2 * medicationMultiplier);
+    setCycleCost(
+      (cyclePrice + additionalProtocolDrugCost + cyclePrice2) *
+        medicationMultiplier
+    );
     setSelectedDrugValue(selectedDrugValue);
     setSelectedDrugValue2(selectedDrugValue2);
+    /*
+    console.log('cycle price', cyclePrice);
+    console.log('cycle price 2', cyclePrice2);
+    console.log('cycle type cost', cycleTypeCostCalc);
+    console.log('protocol type cost', protocolTypeCostCalc);
+    console.log('blastocyst culture cost', blastocystCultureCostCalc);
+    console.log('adjuvants cost', adjuvantsCostCalc);
+    console.log('additional protocol drug cost', additionalProtocolDrugCost);*/
 
     let totalCalculation =
-      cyclePrice +
-      cyclePrice2 +
+      ((cyclePrice + additionalProtocolDrugCost) * medicationMultiplier) +
+      (cyclePrice2 * medicationMultiplier) +
       cycleTypeCostCalc +
       protocolTypeCostCalc +
       blastocystCultureCostCalc +
-      adjuvantsCostCalc +
-      additionalProtocolDrugCost;
+      adjuvantsCostCalc;
     setTotalCost(totalCalculation.toFixed(2));
+    //console.log('total calculation', totalCalculation);
 
     // cycle type notes
     let cycleTypeNotes = '';

@@ -10,6 +10,7 @@ export default interface SearchProps {
   searchString?: string;
   setSearchString?: React.Dispatch<React.SetStateAction<string>>;
   setKeywordId?: React.Dispatch<React.SetStateAction<number>>;
+  setShowContinueBtn?: React.Dispatch<React.SetStateAction<boolean>>;
   searchIcon: any;
   searchIconResults?: any;
   conditionsTreatmentsList?: any;
@@ -17,10 +18,19 @@ export default interface SearchProps {
   searchStringConsultantName?: string;
   setSearchStringConsultantName?: React.Dispatch<React.SetStateAction<string>>;
   popularConsultantsList?: any;
+  locationList?: any;
   searchStringPayment?: string;
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
   insurersList?: any;
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
+  nextLink?: string;
+  specialistsLabel?: string;
+  specialistsList?: any;
+  isStepIntro?: boolean;
+  isStepCards?: boolean;
+  applyLocationToSearch?: any;
+  search?: any;
+  labelLocationsResults?: string;
 }

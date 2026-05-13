@@ -1,15 +1,22 @@
 import { FilterOption, FilterOptionJson } from 'src/types/searchProps';
 
-const formatId = (id?: string) => id?.toLowerCase()?.replace(/[-{}]/g, '');
+type SitecoreIdLike = string | { id?: string } | null | undefined;
+
+export const formatId = (id: SitecoreIdLike) => {
+  const s =
+    typeof id === 'string'
+      ? id
+      : (id?.id ?? (id as any)?.id ?? (id as any)?.guid);
+
+  return typeof s === 'string'
+    ? s.toLowerCase().replace(/[-{}]/g, '')
+    : undefined;
+};
 
 const unpackFilterOption = ({ fields }: FilterOption) => {
   const { Filter, FilterValueGuid, FilterValueString, DisplayName } = fields;
   const key = Filter?.value || '';
-  const value =
-    formatId(FilterValueGuid?.id) ||
-    formatId(FilterValueGuid?.value) ||
-    FilterValueString.value ||
-    '';
+  const value = formatId(FilterValueGuid) || FilterValueString.value || '';
   return {
     id: `${key}-${value}`,
     key,

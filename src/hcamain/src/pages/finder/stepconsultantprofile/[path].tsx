@@ -27,6 +27,8 @@ import RedirectOverlay from '@component-library/consultant-finder/RedirectOverla
 import useRouteChange from '@component-library/hooks/useRouteChange';
 import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
 import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
+import { PageRouteMetadata } from 'components/Metadata/Metadata';
+import Head from 'next/dist/shared/lib/head';
 
 const SitecorePage = ({
   notFound,
@@ -46,12 +48,31 @@ const SitecorePage = ({
     return <NotFound />;
   }
 
+  const route = layoutData.sitecore.route as PageRouteMetadata;
+  const { fields } = route;
+  const follow = fields?.NoFollow?.value ? 'nofollow' : 'follow';
+  const index = fields?.NoIndex?.value ? 'noindex' : 'index';
+  const hideFromWebsiteSearch = fields?.HideFromWebsiteSearch;
+  //console.log('fields..', fields);
+  //console.log('follow', follow);
+  //console.log('index', index);
+  //console.log('hideFromWebsiteSearch', hideFromWebsiteSearch);
+  //debugger;
   const isEditing = layoutData.sitecore.context.pageEditing;
   const isComponentRendering =
     layoutData.sitecore.context.renderingType === RenderingType.Component;
 
   return (
     <div>
+      <Head>
+        <meta name="robots" content={`${follow}, ${index}`} key="robots2" />
+        {hideFromWebsiteSearch?.value && (
+          <meta
+            name="hideFromWebsiteSearch"
+            content={hideFromWebsiteSearch?.value?.valueOf().toString()}
+          />
+        )}
+      </Head>
       {/* hello finder profile sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext

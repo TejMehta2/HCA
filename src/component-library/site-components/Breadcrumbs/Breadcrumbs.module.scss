@@ -3,10 +3,9 @@
 
 .wrapper {
   @include apply-body-large;
-
   width: 100%;
   padding: px-to-rem(24) px-to-rem(16);
-  background: $navy-blue-100;
+  background: var(--breadcrumbs-background);
   color: $white;
   display: flex;
   align-items: center;
@@ -19,17 +18,23 @@
     @include responsive-container;
   }
 
+  span {
+    @include apply-body-large;
+    color: var(--breadcrumbs-links);
+  }
+
   a {
     @include apply-body-bold-large;
 
     display: flex;
     align-items: center;
     gap: 0 px-to-rem(8);
-    color: inherit;
+    color: var(--breadcrumbs-links);
     text-decoration: none;
 
     span {
       @include apply-body-large;
+      color: var(--breadcrumbs-links);
     }
 
     @include media(screen-l) {
@@ -42,9 +47,17 @@
         display: inline-block;
         width: px-to-rem(1);
         height: px-to-rem(14);
-        background: $white;
+        background: var(--breadcrumbs-links);
         margin: 0 px-to-rem(12);
       }
+    }
+  }
+
+  &.no-back-cta {
+    display: none;
+
+    @include media(screen-l) {
+      display: flex;
     }
   }
 

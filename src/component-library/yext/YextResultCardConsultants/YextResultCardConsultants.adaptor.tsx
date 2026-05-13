@@ -9,6 +9,7 @@ import HealthcareProfessional from '../../types/yext/healthcare_professionals';
 import DoctifyLogoDark from '../../assets/images/doctify-dark.png';
 import DoctifyLogoLight from '../../assets/images/doctify-light.png';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { tidySearchDescription } from '../helpers/tidySearchDescription';
 
 const YextResultCardConsultantsAdaptor = (
   props: CardProps<HealthcareProfessional>
@@ -33,6 +34,8 @@ const YextResultCardConsultantsAdaptor = (
 
   const specialties = c_specialty?.map((item) => item.keywordName)?.join(', ');
 
+  const strippedDescription = tidySearchDescription(c_body);
+
   return (
     <YextResultCardConsultants
       image={
@@ -53,9 +56,9 @@ const YextResultCardConsultantsAdaptor = (
         </Text>
       }
       copy={
-        c_body ? (
+        strippedDescription ? (
           <Text tag="div" variation={'body-large'}>
-            <span dangerouslySetInnerHTML={{ __html: c_body }} />
+            <span dangerouslySetInnerHTML={{ __html: strippedDescription }} />
           </Text>
         ) : undefined
       }

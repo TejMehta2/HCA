@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as FooterSmallStories from './FooterSmall.stories';
+
+<Meta of={FooterSmallStories} />
+
+# FooterSmall
+
+## Description
+
+The FooterSmall component is a simple footer which can be used at the bottom of any page
+
+It can be composed like this:
+
+```tsx
+<FooterSmall
+  copyright={
+    <Text tag="small" variation="body-small">
+      © Palace Gate Practice 2025. All rights reserved.
+    </Text>
+  }
+  ctas={[
+    <a href="#">Privacy Policy</a>,
+    <a href="#">Terms & Conditions</a>,
+    <a href="#">Terms of business</a>,
+  ]}
+  logo={
+    <MockedNextImage
+      alt=""
+      height="34"
+      src="/palace-gate-white.svg"
+      width="209"
+    />
+  }
+  theme="Palace-Navy-Blue"
+/>
+```
+
+## Example
+
+<Canvas of={FooterSmallStories.Default} />
+<Controls of={FooterSmallStories.Default} />

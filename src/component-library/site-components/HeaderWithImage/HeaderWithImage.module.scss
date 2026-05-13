@@ -17,10 +17,12 @@
   }
 
   .ctas {
+
     // nested for increased specificity of a/button tag overrides
-    > *:not(:last-child) {
+    >*:not(:last-child) {
       margin-bottom: $spacing-2;
     }
+
     @include media(screen-m) {
       width: max-content;
       max-width: px-to-rem(500);
@@ -78,6 +80,10 @@
   align-self: center;
 }
 
+.wide-text {
+  @include responsive-grid-span(6, 6, 7, 7);
+}
+
 .subtitle {
   &:nth-child(1) {
     margin-bottom: $spacing-3;
@@ -104,9 +110,6 @@
 }
 
 .full-width-image {
-  // should always use the dark theme, but cannot be applied in the JSX as it interferes with the ScrollTransition component
-  @include apply-theme-b-navy;
-
   border-radius: 0;
   align-items: flex-end;
 
@@ -160,4 +163,62 @@
   }
 
   max-height: 100vh;
+}
+
+// image right
+
+// :global(html[lang^='ar']) {
+//   .hero-with-image:not(.full-width-image) {
+//     .inner {
+//       direction: ltr;
+//     }
+
+//     .content {
+//       direction: rtl;
+//       text-align: right;
+//     }
+
+//     .ctas {
+//       direction: rtl;
+//       margin-left: auto;
+//     }
+
+//     .image,
+//     .image-no-mask {
+//       direction: ltr;
+//     }
+//   }
+// }
+
+// image left
+:global(html[lang^='ar']) {
+  .hero-with-image:not(.full-width-image) {
+    .inner {
+      direction: rtl;
+    }
+
+    .content {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .image,
+    .image-no-mask {
+      right: auto;
+      left: 0;
+    }
+
+    .image {
+      transform: translate(0, calc(-50% - #{px-to-rem(1)})) scaleX(-1);
+
+      img {
+        transform: scaleX(-1);
+      }
+    }
+
+    .ratings {
+      right: auto;
+      left: px-to-rem(47);
+    }
+  }
 }

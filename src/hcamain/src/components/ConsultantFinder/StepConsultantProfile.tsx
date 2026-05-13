@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Consultant profile component
 // Place on page in wildcarded folder e.g. \XMCloud\HCA-Eqtr\HCA-XMCloud\src\hcamain\src\pages\finder\StepConsultantProfile
@@ -61,6 +62,7 @@ import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
 import router from 'next/router';
+// import Script from 'next/script';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -161,7 +163,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ignoreReviewConsultant = await checkIfConsultantIsNoReviews(slug);
   const consultantIsDoctifyPhoneNumber =
     physicianStructuredDataJson?.mainEntity?.medicalSpecialty?.name ===
-      'General Practice (GP)' ||
+    'General Practice (GP)' ||
     (await checkIfConsultantIsDoctifyPhoneNumber(slug));
 
   /*
@@ -213,20 +215,36 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
+  // function extractOneTrustConfig(html: string | undefined) {
+  //   if (!html) return null;
+
+  //   // Grab the otSDKStub.js src
+  //   const srcMatch = html.match(/src="([^"]*otSDKStub\.js[^"]*)"/i);
+
+  //   // Grab the data-domain-script value
+  //   const domainMatch = html.match(/data-domain-script="([^"]+)"/i);
+
+  //   if (!srcMatch || !domainMatch) return null;
+
+  //   return {
+  //     src: srcMatch[1],
+  //     domainScript: domainMatch[1],
+  //   };
+  // }
+
+  // const cookieHtml = process.env.NEXT_PUBLIC_LOAD_COOKIES;
+
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
   const id = props.params.RenderingIdentifier;
-  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${
-    serverSideData?.ProfileJson?.lastName || ''
-  }`;
-  const name = `${serverSideData?.ProfileJson?.title || ''} ${
-    serverSideData?.ProfileJson?.firstName || ''
-  } ${serverSideData?.ProfileJson?.lastName || ''} ${
-    serverSideData?.ProfileJson?.suffix || ''
-  }`;
+  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${serverSideData?.ProfileJson?.lastName || ''
+    }`;
+  const name = `${serverSideData?.ProfileJson?.title || ''} ${serverSideData?.ProfileJson?.firstName || ''
+    } ${serverSideData?.ProfileJson?.lastName || ''} ${serverSideData?.ProfileJson?.suffix || ''
+    }`;
   const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   // Refs for each tab section
@@ -392,14 +410,6 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    // console.log(
-    //   'serverSideData?.IgnoreReviewsConsultant',
-    //   serverSideData?.IgnoreReviewsConsultant
-    // );
-    // console.log(
-    //   'serverSideData?.DoctifyPhoneNumberConsultant',
-    //   serverSideData?.DoctifyPhoneNumberConsultant
-    // );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
@@ -440,15 +450,13 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
-            {/* top section */}
             <div>
               <Breadcrumbs
                 backCta={{
                   text: 'Consultant Finder',
-                  link: `${
-                    props?.fields?.BreadcrumbHomePage?.value?.href ||
+                  link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
                     '/finder/step-intro'
-                  }`,
+                    }`,
                 }}
               >
                 <TextLink>
@@ -459,10 +467,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 </TextLink>
                 <TextLink>
                   <Link
-                    href={`${
-                      props?.fields?.BreadcrumbHomePage?.value?.href ||
+                    href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
                       '/finder/step-intro'
-                    }`}
+                      }`}
                   >
                     {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
                   </Link>
@@ -470,11 +477,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 {topSpecialty[0]?.name && (
                   <TextLink>
                     <Link
-                      href={`${
-                        props?.fields?.ResultsLink?.value?.href
-                      }?search=${topSpecialty[0]?.name || ''}&keywordId=${
-                        topSpecialty[0]?.id || ''
-                      }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`}
+                      href={`${props?.fields?.ResultsLink?.value?.href
+                        }?search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''
+                        }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`}
                     >
                       {topSpecialty[0]?.name}
                     </Link>
@@ -486,7 +491,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Themes theme={'A-HCA-White'}>
                   <Tabs
                     callback={(label) => {
-                      //console.log(label);
                       handleTabClick(label);
                     }}
                     tabs={[
@@ -536,7 +540,6 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Themes theme={'A-HCA-White'}>
                     <Tabs
                       callback={(label) => {
-                        //console.log(label);
                         handleTabClick(label);
                       }}
                       tabs={[
@@ -577,11 +580,15 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.averageRating
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.averageRating || 0
                     }
                     reviewsText="Patients"
                     reviewsTotal={
-                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.reviewsTotal || 0
                     }
                     noReviewsMsg={
                       'This consultant does not have any reviews at the moment.'
@@ -602,29 +609,26 @@ export const Default = (props: StepProps): JSX.Element => {
                           backgroundColour="green"
                           icon={null}
                           isShortInfo={true}
-                          shortText={`${
-                            props?.fields?.NextInitialAppointmentText?.value ||
+                          shortText={`${props?.fields?.NextInitialAppointmentText?.value ||
                             'Next initial appointment'
-                          } ${formatDateShort(
-                            firstAppointmentData?.initial_appointment
-                          )}`}
+                            } ${formatDateShort(
+                              firstAppointmentData?.initial_appointment
+                            )}`}
                         />
                         <InfoBox
                           backgroundColour="orange"
                           icon={null}
                           isShortInfo={true}
-                          shortText={`${
-                            props?.fields?.NextFollowOnAppointmentText?.value ||
+                          shortText={`${props?.fields?.NextFollowOnAppointmentText?.value ||
                             'Next follow up appointment'
-                          } ${formatDateShort(
-                            firstAppointmentData?.follow_appointment
-                          )}`}
+                            } ${formatDateShort(
+                              firstAppointmentData?.follow_appointment
+                            )}`}
                         />
                         <Text tag="p" variation="body-small">
-                          {`${
-                            props?.fields?.LastCheckedText?.value ||
+                          {`${props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          } ${firstAppointmentData?.refreshedText}
+                            } ${firstAppointmentData?.refreshedText}
                           `}
                         </Text>
                       </>
@@ -693,17 +697,16 @@ export const Default = (props: StepProps): JSX.Element => {
                 </ProfilePageSection>
                 {serverSideData?.ProfileJson?.registrationBodies &&
                   serverSideData?.ProfileJson?.registrationBodies.length >
-                    0 && (
+                  0 && (
                     <ProfilePageSection>
                       <DataComponentSimple
                         title={
                           props?.fields?.RegisteredWithSubHeadingText?.value ||
                           'Registered with'
                         }
-                        data={`${
-                          serverSideData?.ProfileJson?.registrationBodies[0]
-                            ?.name || 'General Medical Council'
-                        }: ${gmcNumber}`}
+                        data={`${serverSideData?.ProfileJson?.registrationBodies[0]
+                          ?.name || 'General Medical Council'
+                          }: ${gmcNumber}`}
                       ></DataComponentSimple>
                     </ProfilePageSection>
                   )}
@@ -824,12 +827,10 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/finder/step-terms-and-conditions?slug=${
-                              serverSideData?.ProfileJson.slug
-                            }&gmcNumber=${gmcNumber}&reviewsTotal=${
-                              serverSideData?.ProfileJson?.review
+                            href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug
+                              }&name=${encodeURIComponent(shortName)}&gmcNumber=${gmcNumber}&reviewsTotal=${serverSideData?.ProfileJson?.review
                                 ?.reviewsTotal || 0
-                            }`}
+                              }&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
                           >
                             <span>
                               {props.fields.BookOnlineButtonLink.value.text ||
@@ -844,14 +845,11 @@ export const Default = (props: StepProps): JSX.Element => {
                           ?.hideAppointmentRequest && (
                           <Button variation="full-dark" size="small">
                             <Link
-                              href={`${
-                                props?.fields?.EnquireNowButtonLink?.value?.href
-                              }?slug=${
-                                serverSideData?.ProfileJson.slug
-                              }&reviewsTotal=${
-                                serverSideData?.ProfileJson?.review
+                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href
+                                }?slug=${serverSideData?.ProfileJson.slug
+                                }&reviewsTotal=${serverSideData?.ProfileJson?.review
                                   ?.reviewsTotal || 0
-                              }`}
+                                }`}
                             >
                               <span>
                                 {props?.fields?.EnquireNowButtonLink?.value
@@ -876,7 +874,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 >
                   <Reviews
                     doctifyLogo={
-                      <JssImage field={props?.fields?.DoctifyLogoImage} />
+                      <JssImage field={props.fields.DoctifyLogoImage} />
                     }
                     doctifyText={
                       props?.fields?.DoctifyText?.value || 'Reviewed By'
@@ -884,11 +882,15 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.averageRating
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.averageRating || 0
                     }
                     reviewsText="Patients"
                     reviewsTotal={
-                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                      serverSideData?.IgnoreReviewsConsultant
+                        ? 0
+                        : serverSideData?.ProfileJson?.review?.reviewsTotal || 0
                     }
                     noReviewsMsg={
                       'This consultant does not have any reviews at the moment.'
@@ -909,29 +911,26 @@ export const Default = (props: StepProps): JSX.Element => {
                           backgroundColour="green"
                           icon={null}
                           isShortInfo={true}
-                          shortText={`${
-                            props?.fields?.NextInitialAppointmentText?.value ||
+                          shortText={`${props?.fields?.NextInitialAppointmentText?.value ||
                             'Next initial appointment'
-                          } ${formatDateShort(
-                            firstAppointmentData?.initial_appointment
-                          )}`}
+                            } ${formatDateShort(
+                              firstAppointmentData?.initial_appointment
+                            )}`}
                         />
                         <InfoBox
                           backgroundColour="orange"
                           icon={null}
                           isShortInfo={true}
-                          shortText={`${
-                            props?.fields?.NextFollowOnAppointmentText?.value ||
+                          shortText={`${props?.fields?.NextFollowOnAppointmentText?.value ||
                             'Next follow up appointment'
-                          } ${formatDateShort(
-                            firstAppointmentData?.follow_appointment
-                          )}`}
+                            } ${formatDateShort(
+                              firstAppointmentData?.follow_appointment
+                            )}`}
                         />
                         <Text tag="p" variation="body-small">
-                          {`${
-                            props?.fields?.LastCheckedText?.value ||
+                          {`${props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          } ${firstAppointmentData?.refreshedText}
+                            } ${firstAppointmentData?.refreshedText}
                           `}
                         </Text>
                       </>
@@ -948,7 +947,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   contentVariation="full-width"
                 >
                   <Link
-                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&name=${encodeURIComponent(shortName)}&gmcNumber=${gmcNumber}&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
                   >
                     <span>
                       {props.fields.BookOnlineButtonLink.value.text ||

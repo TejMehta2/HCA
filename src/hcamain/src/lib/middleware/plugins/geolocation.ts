@@ -14,7 +14,11 @@ class GeolocationPlugin implements MiddlewarePlugin {
       const { geo } = req;
 
       if (!req.cookies.has('near')) {
-        const city = geo?.city || 'London';
+        const isUK = geo?.country === 'GB';
+
+        //set city only when in the UK. When outside default to London.
+        const city = isUK ? geo?.city || 'London' : 'London';
+
         response.cookies.set('near', city, {
           httpOnly: false,
         });

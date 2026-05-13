@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { AppointmentTypeCardProps } from './AppointmentTypeCard.types';
 import Text from '../../foundation/Text/Text';
 import styles from './AppointmentTypeCard.module.scss';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
-  const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);
 
   return (
     <div
-      className={`${styles['appointment-type-card']} ${
-        selectedTypeOfAppointment === props.isFollowUpAppointment
-          ? styles['selected']
-          : ''
-      }`}
+      className={`${styles['appointment-type-card']} ${props.isSelected === props.isFollowUpAppointment
+        ? styles['selected']
+        : ''
+        }`}
       onClick={(e) => props.handleClick(e)}
       data-is-follow-up-appointment={props.isFollowUpAppointment}
       data-parent="parent"

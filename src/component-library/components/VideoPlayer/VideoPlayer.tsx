@@ -12,20 +12,26 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
 
   const handlePlay = () => {
     const width = window.innerWidth;
-    //  medium screen breakpoint
     const isScreenM = width > 600;
-    //  mute is required by most browsers to autoplay
-    const isYoutube = videoSrc.includes('www.youtube.com');
-    // check if query params already exist
-    const hasExistingParams = videoSrc.includes('?');
-    const startParams = hasExistingParams ? '&' : '?';
-    const muteParam = isYoutube ? 'mute' : 'muted';
-    //  this will only apply on mobile browsers
-    const fullscreenParam = !isScreenM ? '&playsinline=0' : '';
 
-    setVideoSrc(
-      `${videoSrc}${startParams}autoplay=1&${muteParam}=1&${fullscreenParam}`
-    );
+    const isYoutube = videoUrl.includes('youtube.com');
+
+    const url = new URL(videoUrl);
+
+    // Preserve existing params and just add/update
+    url.searchParams.set('autoplay', '1');
+    url.searchParams.set(isYoutube ? 'mute' : 'muted', '1');
+
+    if (!isScreenM) {
+      url.searchParams.set('playsinline', '0');
+    }
+
+    // ensure enablejsapi stays
+    if (isYoutube) {
+      url.searchParams.set('enablejsapi', '1');
+    }
+
+    setVideoSrc(url.toString());
     sethideOverlay(true);
   };
 

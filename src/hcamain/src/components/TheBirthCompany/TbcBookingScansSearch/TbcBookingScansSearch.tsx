@@ -20,16 +20,7 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Container from '@component-library/foundation/Containers/Container';
-import LoaderCF from 'temp/component-library/consultant-finder/LoaderCF/LoaderCF';
-
-// Function to help process total price when x% of surcharge needs to be added
-// const applyPercentage = (value: string, baseValue: number): number => {
-//   if (value.endsWith('%')) {
-//     const percentage = parseFloat(value) / 100;
-//     return Math.round(baseValue * percentage);
-//   }
-//   return parseFloat(value);
-// };
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 const formatPrice = (value: string): string => {
   return value.endsWith('%')

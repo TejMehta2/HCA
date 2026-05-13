@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
@@ -35,6 +36,7 @@ import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -116,6 +118,11 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     fields?.Heading?.value,
     'h1'
   );
+
+  const hasFilters = filterCategories?.some(
+    (category) => category.fields && category.fields.length > 0
+  );
+
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
@@ -152,30 +159,32 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               autocompleteError
                 ? []
                 : autocompleteData?.response.results?.map(
-                    (result) => `${result.value}`
-                  )
+                  (result) => `${result.value}`
+                )
             }
           >
-            <Filters
-              buttonText={<JssText field={fields?.FilterOptionsText} />}
-              buttonIcon={
-                <SitecoreSvg>
-                  {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              resultsCount={resultsCount}
-              filters={filterCategories?.map((category) => ({
-                title: category.title,
-                contentVariation: 'filters',
-                children: (
-                  <Checkboxes>
-                    {category.fields?.map((props) => {
-                      return <Checkbox {...props} key={props.id} />;
-                    })}
-                  </Checkboxes>
-                ),
-              }))}
-            />
+            {hasFilters && (
+              <Filters
+                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                resultsCount={resultsCount}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+            )}
           </SearchBar>
           <SearchFilterList
             filters={activeFilters || []}
@@ -231,7 +240,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     primaryImageUrl,
                     url,
                     date,
-                    typeId,
                     typeName,
                   } = data;
 
@@ -244,12 +252,19 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   return (
                     <CardBlog key={index}>
                       {cardImageSrc !== undefined ? (
-                        <Image
-                          src={cardImageSrc}
-                          alt=""
-                          width="363"
-                          height="243"
-                        />
+                        <a href={url}>
+                          <Image
+                            src={upsertQuerystringParam(
+                              cardImageSrc,
+                              't',
+                              'w750'
+                            )}
+                            alt=""
+                            width="560"
+                            height="420"
+                            quality={90}
+                          />
+                        </a>
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
@@ -260,7 +275,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                       <div>
                         {!!typeName && (
                           <Tags>
-                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                            <span>{typeName}</span>
                           </Tags>
                         )}
                       </div>

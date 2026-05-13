@@ -5,4 +5,5 @@ export default interface NavigationProps {
   showOnMobile?: boolean;
   hasCustomBtnMobile?: boolean;
   hideTextMobile?: boolean;
+  hideOnDesktop?: boolean;
 }

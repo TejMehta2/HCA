@@ -7,4 +7,11 @@ export interface SelectLocationProps {
   icon: ReactNode | JSX.Element;
   iconPhone: ReactNode | JSX.Element;
   noLocationsMsg: string;
+  viewOnMapText?: string;
+  nextLink: string;
+  cantFindIcon?: ReactNode | JSX.Element;
+  cantFindNumber?: string;
+  cantFindTitle?: ReactNode | JSX.Element;
+  isSelected: string;
+  setIsSelected: React.Dispatch<React.SetStateAction<string>>;
 }

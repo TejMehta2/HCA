@@ -2,6 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .container {
+
   // display flex
   &.display-flex {
     display: flex;
@@ -11,6 +12,23 @@
     @include media(screen-l) {
       flex-direction: row;
     }
+  }
+
+  &.grid-layout {
+    @include responsive-container;
+    @include responsive-grid;
+
+    div {
+      @include responsive-grid-span($default: 6, $breakpoint-l: 8);
+      @include responsive-grid-start($default: 1, $breakpoint-l: 3);
+    }
+  }
+
+  &.center-align {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
   }
 
   // width
@@ -84,6 +102,10 @@
     margin-left: $spacing-4;
   }
 
+  &.margin-left-spacing-5 {
+    margin-left: $spacing-5;
+  }
+
   &.margin-left-spacing-6 {
     margin-left: $spacing-6;
   }
@@ -95,6 +117,10 @@
 
   &.margin-right-spacing-4 {
     margin-right: $spacing-4;
+  }
+
+  &.margin-right-spacing-5 {
+    margin-right: $spacing-5;
   }
 
   &.margin-right-spacing-6 {
@@ -122,6 +148,10 @@
     margin-top: $spacing-8;
   }
 
+  &.margin-top-spacing-11 {
+    margin-top: $spacing-11;
+  }
+
   // bottom
   &.margin-bottom-spacing-2 {
     margin-bottom: $spacing-2;
@@ -141,5 +171,9 @@
 
   &.margin-bottom-spacing-8 {
     margin-bottom: $spacing-8;
+  }
+
+  &.margin-bottom-spacing-11 {
+    margin-bottom: $spacing-11;
   }
 }

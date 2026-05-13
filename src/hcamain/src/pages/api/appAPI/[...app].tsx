@@ -284,23 +284,20 @@ export default async function handler(
 
   // add headers
   if (revalidate.now() || revalidate.noCache()) {
-    res.appendHeader('Cache-Control', 'no-cache');
-    res.appendHeader('CDN-Cache-Control', 'no-cache');
-    res.appendHeader('Vercel-CDN-Cache-Control', 'no-cache');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('CDN-Cache-Control', 'no-cache');
+    res.setHeader('Vercel-CDN-Cache-Control', 'no-cache');
   } else {
-    res.appendHeader('Cache-Control', 'max-age=60');
-    res.appendHeader('CDN-Cache-Control', 'max-age=100');
-    res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
+    res.setHeader('Cache-Control', 'max-age=60');
+    res.setHeader('CDN-Cache-Control', 'max-age=100');
+    res.setHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   }
 
   // CORS as we are going cross domains
-  res.appendHeader('Access-Control-Allow-Origin', '*');
-  res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.appendHeader(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
-  res.appendHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   return res.status(200).json(output);
 }

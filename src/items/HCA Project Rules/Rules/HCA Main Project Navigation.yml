@@ -4,12 +4,16 @@ Parent: "ff0bc016-2d01-4f55-a020-ef6fc2fe7559"
 Template: "664e5035-eb8c-4ba1-9731-a098fcc9127a"
 Path: /sitecore/system/Settings/Rules/Insert Options/Rules/HCA Main Project Navigation
 SharedFields:
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "00a6eccf-bfc1-4fe1-b5e3-dd7e92aef473"
 - ID: "fa307b86-da2a-44bd-887d-e2057cdb4948"
   Hint: Rule
   Value: |
     <ruleset>
       <rule
-        uid="{8DCA4952-AA2D-4739-9F21-1F0A14103753}">
+        uid="{8DCA4952-AA2D-4739-9F21-1F0A14103753}"
+        name="Footer">
         <conditions>
           <condition
             id="{5DE6D53E-EA62-4D17-8BDD-FEBCD80AC07B}"
@@ -20,6 +24,22 @@ SharedFields:
           <action
             id="{918FFCF0-F9E1-4DB6-A191-3EFA5A91C583}"
             uid="9085788C69534775833685C7088EFA0E"
+            insertoptionid="{A39B1B99-6608-4E03-94B2-F68F682AEA02}" />
+        </actions>
+      </rule>
+      <rule
+        uid="{2D9B272E-F5A7-40F0-9CA7-F90C6E871C36}"
+        name="Basic footer">
+        <conditions>
+          <condition
+            id="{5DE6D53E-EA62-4D17-8BDD-FEBCD80AC07B}"
+            uid="DD559C03E1B343AB94413792293B3F37"
+            templateid="{B68157E4-EABB-42E7-8315-83971F071024}" />
+        </conditions>
+        <actions>
+          <action
+            id="{918FFCF0-F9E1-4DB6-A191-3EFA5A91C583}"
+            uid="5741B007C59945BCBF85A2D87A95F6D8"
             insertoptionid="{A39B1B99-6608-4E03-94B2-F68F682AEA02}" />
         </actions>
       </rule>
@@ -42,7 +62,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0a463540-c580-45ea-bd2c-fb6485df9931"
+      Value: "c7b3a052-e47b-4f0d-bf38-bf583fd3eddd"
     - ID: "9e0287d9-af90-41ad-8d36-332375e194d6"
       Hint: Name
       Value: HCA Main Project Navigation Insert Options Rules
@@ -52,4 +72,4 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240105T173603Z
+      Value: 20260319T195941Z

@@ -111,7 +111,8 @@ export const Default = ({
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -120,7 +121,10 @@ export const Default = ({
   return (
     <DynamicServiceCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       contentVariation={variant}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
@@ -194,23 +198,25 @@ export const Default = ({
               key={index}
             >
               {service.abstractImage?.jsonValue.value?.src &&
-                service.abstractImage?.jsonValue.value?.class !==
+              service.abstractImage?.jsonValue.value?.class !==
                 'scEmptyImage' ? (
                 <Image
+                  quality={90}
                   src={service?.abstractImage.jsonValue?.value?.src || ''}
                   alt={
                     (service?.abstractImage.jsonValue?.value?.alt as string) ||
                     ''
                   }
-                  width="313"
-                  height="317"
+                  width="500"
+                  height="666"
                 />
               ) : (
                 <Image
+                  quality={90}
                   src={service?.image?.jsonValue?.value?.src || ''}
                   alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
-                  width="313"
-                  height="317"
+                  width="500"
+                  height="666"
                 />
               )}
               <Text tag="div" variation="display-6">

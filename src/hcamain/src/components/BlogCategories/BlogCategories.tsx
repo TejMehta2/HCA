@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Field,
@@ -10,6 +9,7 @@ import ArticleCategories from '@component-library/site-components/ArticleCategor
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
+import { normalizeId } from 'lib/sitecore/templateIds';
 
 type CategoriesFields = {
   displayName?: { value?: string };
@@ -55,12 +55,16 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || componentTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || componentTitle;
 
   return (
     <ArticleCategories
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text
@@ -78,7 +82,7 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
               '?' +
               category.filter?.value +
               '=' +
-              category.filterValueGuid?.targetItem?.id
+              normalizeId(category.filterValueGuid?.targetItem?.id)
             }
             key={index}
           >

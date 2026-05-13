@@ -17,6 +17,8 @@ import MultiplePhoneNumbers from '../MultiplePhoneNumbers/MultiplePhoneNumbers';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const ignoreReviews = (props.ignoreReviewsConsultantsList ?? []).includes(props.slug);
+
   // get specialties
   const specialties = props.keywords.filter(
     (item: any) => item.keywordType === 'specialty'
@@ -79,18 +81,22 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             )}
           </div>
         </div>
-        <div className={styles.reviews}>
-          <Reviews
-            reviewsTotal={5}
-            reviewsCount={props.reviewsCount}
-            isConsultantProfileReviews={false}
-            hasTooltip={false}
-            tooltipContent={'tooltip'}
-            doctifyText={props.doctifyText}
-            doctifyLogo={props.doctifyLogo}
-            hasDoctifyBranding={true}
-          />
-        </div>
+        {
+          !ignoreReviews &&
+          <div className={styles.reviews}>
+            <Reviews
+              reviewsTotal={ignoreReviews ? 0 : (props.reviewsTotal || 0)}
+              reviewsCount={ignoreReviews ? 0 : (props.reviewsCount || 0)}
+              isConsultantProfileReviews={false}
+              hasTooltip={false}
+              tooltipContent={'tooltip'}
+              doctifyText={props.doctifyText}
+              doctifyLogo={props.doctifyLogo}
+              hasDoctifyBranding={true}
+            />
+          </div>
+        }
+
         {props.hospitals && props.hospitals.length > 0 && (
           <div className={styles['list']}>
             <div className={styles['list-title']}>
@@ -142,11 +148,10 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               backgroundColour="green"
               icon={null}
               isShortInfo={true}
-              shortText={`${
-                props.nextAppointmentTitle || 'Next appointment on'
-              } ${formatDateShort(
-                props?.firstAppointment?.follow_appointment
-              )}`}
+              shortText={`${props.nextAppointmentTitle || 'Next appointment on'
+                } ${formatDateShort(
+                  props?.firstAppointment?.follow_appointment
+                )}`}
             />
             <div className={styles.info}>
               <Text tag="p" variation="body-small">
@@ -166,7 +171,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.enquireNowLink}?slug=${props.slug}&reviewsTotal=${props.reviewsTotal}`}
+                href={`${props.enquireNowLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&reviewsTotal=${props.reviewsTotal}`}
               >
                 <span>{props.enquireNowCTAText}</span>
               </Link>
@@ -181,7 +186,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.bookOnlineLink}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}`}
+                href={`${props.bookOnlineLink}?slug=${props.slug}&name=${encodeURIComponent(props.name || '')}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}&search=${topSpecialty[0]?.name || ''}&keywordId=${topSpecialty[0]?.id || ''}`}
               >
                 <span>{props.bookNowCTAText}</span>
               </Link>

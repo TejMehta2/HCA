@@ -25,6 +25,7 @@ import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -56,106 +57,131 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const locations = data?.Locations?.slice(0, Number(quantity) || 3);
 
-  if (
-    props?.fields?.data?.item?.locations?.PagesList &&
-    props?.fields?.data?.item?.locations?.PagesList.length
-  ) {
-    cards = props?.fields?.data?.item?.locations?.PagesList?.filter(
-      (p) => p && Object.keys(p).length > 0
-    ).map(
-      (
-        {
-          abstractTitle,
-          title,
-          addressLine1,
-          addressLine2,
-          postCode,
-          city,
-          abstractImage,
-          image,
-          url,
-          getDirections,
-        },
-        index
-      ) => (
-        <CardMap
-          key={index}
-          title={
-            <Text
-              variation="heading-1"
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
-            >
-              {abstractTitle?.value ? (
-                <JssText field={abstractTitle} />
-              ) : (
-                <JssText field={title} />
-              )}
-            </Text>
-          }
-          address={
-            <>
-              {addressLine1?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={addressLine1} />
-                  &nbsp;
+  const locationsOnDatasource = props?.fields?.data?.item?.locations?.PagesList;
+  const locationsOnContextItem =
+    props?.fields?.data?.contextItem?.locations?.targetItems;
+
+  const locationsList =
+    locationsOnDatasource && locationsOnDatasource.length
+      ? locationsOnDatasource
+      : locationsOnContextItem;
+
+  if (locationsList && locationsList.length) {
+    cards = locationsList
+      .filter((p) => p && Object.keys(p).length > 0)
+      .map(
+        (
+          {
+            abstractTitle,
+            title,
+            addressLine1,
+            addressLine2,
+            postCode,
+            city,
+            abstractImage,
+            image,
+            url,
+            getDirections,
+            proxyurl,
+          },
+          index
+        ) => {
+          const cardCtaUrl = proxyurl?.jsonValue?.value?.href
+            ? proxyurl?.jsonValue?.value?.href
+            : url?.url;
+
+          return (
+            <CardMap
+              key={index}
+              title={
+                <Text
+                  variation="heading-1"
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
+                >
+                  {abstractTitle?.value ? (
+                    <JssText field={abstractTitle} />
+                  ) : (
+                    <JssText field={title} />
+                  )}
                 </Text>
-              )}
-              {addressLine2?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={addressLine2} />
-                  &nbsp;
-                </Text>
-              )}
-              {postCode?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={postCode} />
-                  &nbsp;
-                </Text>
-              )}
-              {city?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={city} />
-                </Text>
-              )}
-            </>
-          }
-          image={
-            abstractImage?.jsonValue?.value?.src ||
-            image?.jsonValue?.value?.src ? (
-              abstractImage?.jsonValue?.value?.src ? (
-                <Image
-                  src={abstractImage?.jsonValue?.value?.src || ''}
-                  alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
-                  width="363"
-                  height="176"
-                />
-              ) : (
-                <Image
-                  src={image?.jsonValue?.value?.src || ''}
-                  alt={(image?.jsonValue?.value?.alt as string) || ''}
-                  width="363"
-                  height="176"
-                />
-              )
-            ) : undefined
-          }
-          ctas={{
-            button1: (
-              <a href={url?.path}>
-                <JssRichText field={linkText} />
-              </a>
-            ),
-            button2: (
-              <a href={getDirections?.value}>
-                <span>
-                  <JssText field={getDirectionsText} />
-                </span>
-              </a>
-            ),
-          }}
-        />
-      )
-    );
+              }
+              address={
+                <>
+                  {addressLine1?.value && (
+                    <Text variation={'body-large'} tag="span">
+                      <JssText field={addressLine1} />
+                      &nbsp;
+                    </Text>
+                  )}
+                  {addressLine2?.value && (
+                    <Text variation={'body-large'} tag="span">
+                      <JssText field={addressLine2} />
+                      &nbsp;
+                    </Text>
+                  )}
+                  {postCode?.value && (
+                    <Text variation={'body-large'} tag="span">
+                      <JssText field={postCode} />
+                      &nbsp;
+                    </Text>
+                  )}
+                  {city?.value && (
+                    <Text variation={'body-large'} tag="span">
+                      <JssText field={city} />
+                    </Text>
+                  )}
+                </>
+              }
+              image={
+                abstractImage?.jsonValue?.value?.src ||
+                image?.jsonValue?.value?.src ? (
+                  abstractImage?.jsonValue?.value?.src ? (
+                    <Image
+                      src={upsertQuerystringParam(
+                        abstractImage?.jsonValue?.value?.src || '',
+                        't',
+                        'w750'
+                      )}
+                      alt={
+                        (abstractImage?.jsonValue?.value?.alt as string) || ''
+                      }
+                      width="560"
+                      height="420"
+                      quality={90}
+                    />
+                  ) : (
+                    <Image
+                      src={upsertQuerystringParam(
+                        image?.jsonValue?.value?.src || '',
+                        't',
+                        'w750'
+                      )}
+                      alt={(image?.jsonValue?.value?.alt as string) || ''}
+                      width="560"
+                      height="420"
+                      quality={90}
+                    />
+                  )
+                ) : undefined
+              }
+              ctas={{
+                button1: (
+                  <a href={cardCtaUrl}>
+                    <JssRichText field={linkText} />
+                  </a>
+                ),
+                button2: (
+                  <a href={getDirections?.value}>
+                    <span>
+                      <JssText field={getDirectionsText} />
+                    </span>
+                  </a>
+                ),
+              }}
+            />
+          );
+        }
+      );
   } else {
     cards =
       locations &&
@@ -208,10 +234,11 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               image={
                 cardImageSrc !== undefined ? (
                   <Image
+                    quality={90}
                     src={cardImageSrc}
                     alt={title}
-                    width="500"
-                    height="400"
+                    width="560"
+                    height="420"
                     sizes={'(max-width: 768px) 100vw, 30vw'}
                   />
                 ) : undefined

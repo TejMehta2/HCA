@@ -46,7 +46,11 @@ const Filters = (props: FiltersProps): JSX.Element => {
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
         <Button variation="full" size="large">
-          <button onClick={() => dialogRef.current?.showModal()} type="button">
+          <button onClick={() => {
+            dialogRef.current?.showModal();
+            dialogRef.current?.focus()
+          }
+          } type="button">
             {buttonIcon}
             {buttonText}
           </button>
@@ -70,6 +74,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
                 openIcon="iconChevronDown"
                 closeIcon="iconChevronUp"
                 accordions={filters}
+                isFilters={true}
               ></Accordions>
             </div>
           )}
