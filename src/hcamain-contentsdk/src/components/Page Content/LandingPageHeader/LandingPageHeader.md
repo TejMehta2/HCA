@@ -1,0 +1,3 @@
+# LandingPageHeader documentation
+
+## Additional information
