@@ -3,8 +3,8 @@ import React, { useState, useEffect, type JSX } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
-import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
-import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
+import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg?react';
+import LogoWhite from '../../foundation/BrandAssets/Logo white.svg?react';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 import CardNavigation from '../../components/CardNavigation/CardNavigation';
