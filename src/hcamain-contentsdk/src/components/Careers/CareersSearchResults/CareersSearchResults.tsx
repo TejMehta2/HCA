@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, type JSX } from 'react';
 import {
+  GetComponentServerProps,
   useComponentProps,
 } from '@sitecore-content-sdk/nextjs';
 
@@ -170,7 +171,7 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps = async () => {
+export const getComponentServerProps: GetComponentServerProps = async () => {
   try {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=false&limit=10`
