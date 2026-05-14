@@ -11,9 +11,6 @@ import Providers from 'src/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 type PageProps = {
   params: Promise<{ site: string; locale: string; path?: string[]; [key: string]: string | string[] | undefined }>;
 };
