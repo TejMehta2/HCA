@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { type JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import {
@@ -66,7 +65,8 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
     props.fields?.Heading?.value
@@ -74,7 +74,10 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       length="long"
       imageAlignment="left"
@@ -102,37 +105,6 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
           <JssText field={props.fields?.Title} />
         </Text>
       }
-      children={
-        <>
-          <div>
-            <Text tag="p" variation="subheading-2">
-              <JssText field={props.fields?.PriceFromText} />
-            </Text>
-            <Text tag="p" variation="display-2">
-              <JssText field={props.fields?.PriceFrom} />
-            </Text>
-            <Text tag="div" variation="body-large">
-              <RichText field={props.fields?.Text} />
-            </Text>
-          </div>
-          <div>
-            <Text tag="p" variation="subheading-2">
-              <JssText field={props.fields?.ConsultantFeeText} />
-            </Text>
-            <Text tag="p" variation="display-5">
-              <JssText field={props.fields?.ConsultantFee} />
-            </Text>
-          </div>
-          <div>
-            <Text tag="p" variation="subheading-2">
-              <JssText field={props.fields?.LengthOfStayText} />
-            </Text>
-            <Text tag="p" variation="display-5">
-              <JssText field={props.fields?.LengthOfStay} />
-            </Text>
-          </div>
-        </>
-      }
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
@@ -148,6 +120,36 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
           </PlaceHolderWrapper>
         )
       }
-    />
+    >
+      <>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            <JssText field={props.fields?.PriceFromText} />
+          </Text>
+          <Text tag="p" variation="display-2">
+            <JssText field={props.fields?.PriceFrom} />
+          </Text>
+          <Text tag="div" variation="body-large">
+            <RichText field={props.fields?.Text} />
+          </Text>
+        </div>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            <JssText field={props.fields?.ConsultantFeeText} />
+          </Text>
+          <Text tag="p" variation="display-5">
+            <JssText field={props.fields?.ConsultantFee} />
+          </Text>
+        </div>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            <JssText field={props.fields?.LengthOfStayText} />
+          </Text>
+          <Text tag="p" variation="display-5">
+            <JssText field={props.fields?.LengthOfStay} />
+          </Text>
+        </div>
+      </>
+    </ImageAndTextBlock>
   );
 };

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { type JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import {
