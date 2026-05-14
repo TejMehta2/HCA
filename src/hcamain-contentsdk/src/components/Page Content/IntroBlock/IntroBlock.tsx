@@ -15,7 +15,7 @@ import { Default as Doctify } from '../Doctify/DoctifyGraphQl';
 import { Default as CQCRating } from '../CQCRating/CQCRatingGraphQl';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import dynamic from 'next/dynamic';
+import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
@@ -24,14 +24,6 @@ import { DoctifyReviewsFieldsGraphQl } from 'src/components/Page Content/Doctify
 import { CQCFieldsGraphQl } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl.types';
 import { ComponentWithContextProps } from 'lib/component-props';
 import componentMap from '.sitecore/component-map';
-
-const DynamicHomepageIntroBlock = dynamic(
-  () =>
-    import('@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock'),
-  {
-    ssr: true,
-  }
-);
 
 interface CountersFields {
   number?: {
@@ -141,7 +133,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
   return (
-    <DynamicHomepageIntroBlock
+    <HomepageIntroBlock
       id={componentAnchorId}
       {...(tableOfContentTitle &&
       props?.params?.ExcludeFromTableOfContents !== '1'
@@ -215,7 +207,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
             }}
           />
         ) : (
-          <></>
+          undefined
         )
       }
     >
@@ -229,7 +221,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           />
         </PlaceHolderWrapper>
       )}
-    </DynamicHomepageIntroBlock>
+    </HomepageIntroBlock>
   );
 };
 

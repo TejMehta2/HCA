@@ -74,7 +74,7 @@ export const Default = (props: DefaultProps): JSX.Element => {
   const contacts: Contact[] = [];
   props.fields?.data?.item?.contactUnit?.contactUnitList?.map((contactUnit) => {
     const title = contactUnit?.contactUnitName;
-    const phone = contactUnit?.telephoneNumber?.telephoneNumberList.map(
+    const phone = contactUnit?.telephoneNumber?.telephoneNumberList?.map(
       (telephoneNumber) => {
         return {
           text: telephoneNumber?.phoneNumber?.value,
