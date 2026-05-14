@@ -7,7 +7,7 @@ import {
   Link as JssLink,
   ImageField,
   ComponentRendering,
-  Placeholder,
+  AppPlaceholder,
 } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
@@ -23,6 +23,7 @@ import getHeadingTags from 'lib/getHeadingTags';
 import { DoctifyReviewsFieldsGraphQl } from 'src/components/Page Content/Doctify/DoctifyGraphQl.types';
 import { CQCFieldsGraphQl } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl.types';
 import { ComponentWithContextProps } from 'lib/component-props';
+import componentMap from '.sitecore/component-map';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -220,7 +221,12 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     >
       {props.rendering && (
         <PlaceHolderWrapper>
-          <Placeholder name={phKey} rendering={props.rendering} />
+          <AppPlaceholder
+            name={phKey}
+            rendering={props.rendering}
+            page={props.page}
+            componentMap={componentMap}
+          />
         </PlaceHolderWrapper>
       )}
     </DynamicHomepageIntroBlock>
