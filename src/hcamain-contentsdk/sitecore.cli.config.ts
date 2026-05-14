@@ -21,6 +21,20 @@ export default defineCliConfig({
   },
   componentMap: {
     paths: ['src/components'],
-    exclude: ['src/components/content-sdk/*'],
+    exclude: [
+      'src/components/content-sdk/*',
+      'src/components/**/*.types.ts',
+      'src/components/**/*.types.tsx',
+      'src/components/**/*Types.ts',
+      'src/components/**/*Types.tsx',
+      'src/components/**/*.utilities.ts',
+      'src/components/**/*.utilities.tsx',
+      'src/components/**/*.mapping.ts',
+      'src/components/**/*.mapping.tsx',
+      'src/components/**/*.mapping.GraphQL.ts',
+      'src/components/**/*.mapping.GraphQL.tsx',
+      'src/components/**/helpers/*',
+      'src/components/**/response.types.ts',
+    ],
   },
 });

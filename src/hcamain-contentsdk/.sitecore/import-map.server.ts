@@ -66,6 +66,7 @@ import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
 import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
+import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import CarouselImages from '@component-library/careers/CarouselImages/CarouselImages';
 import TabsBlock from '@component-library/site-components/TabsBlock/TabsBlock';
@@ -469,6 +470,12 @@ const importMap = [
     module: 'src/components/Page Content/CQCRating/CQCRatingGraphQl',
     exports: [
       { name: 'Default', value: Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e },
+    ]
+  },
+  {
+    module: '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock',
+    exports: [
+      { name: 'default', value: HomepageIntroBlock },
     ]
   },
   {
