@@ -53,7 +53,7 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
 
 export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
-  const t = useTranslations();
+  const t = useTranslations(props?.page?.siteName);
 
   // Set up default baseline parameters from CMS
   const {

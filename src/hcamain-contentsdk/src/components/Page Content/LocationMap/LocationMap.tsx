@@ -55,7 +55,7 @@ const LocationMapDefault = (props: LocationMapProps): JSX.Element => {
 };
 
 const LocationMap = (props: LocationMapProps): JSX.Element => {
-  const t = useTranslations();
+  const t = useTranslations(props?.page?.siteName);
 
   if (!props.fields?.data?.item) {
     return <LocationMapDefault {...props} />;

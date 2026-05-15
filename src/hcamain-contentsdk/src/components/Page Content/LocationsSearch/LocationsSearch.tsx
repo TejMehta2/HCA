@@ -68,7 +68,7 @@ interface WithHeaderProps extends LocationsSearchProps {
 
 export const Default = (props: WithHeaderProps): JSX.Element => {
   const { fields, params, contentVariation } = props;
-  const t = useTranslations();
+  const t = useTranslations(props?.page?.siteName);
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =

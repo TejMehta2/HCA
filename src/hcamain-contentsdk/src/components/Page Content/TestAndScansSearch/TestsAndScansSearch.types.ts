@@ -1,4 +1,5 @@
 import { Field } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export interface TestsAndScansResponse {
@@ -119,7 +120,7 @@ export interface Fields {
   FilterBy?: FilterOption[];
 }
 
-export type TestsAndScansSearchProps = {
+export type TestsAndScansSearchProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   fallbackData?: TestsAndScansResponse;

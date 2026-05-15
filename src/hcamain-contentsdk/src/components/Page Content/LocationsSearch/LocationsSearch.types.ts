@@ -1,4 +1,5 @@
 import { Field } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 import { ApiSearchPropsJson } from 'src/types/searchProps';
 
@@ -114,7 +115,7 @@ export interface Fields {
   getDirectionsText?: Field<string>;
 }
 
-export type LocationsSearchProps = ApiSearchPropsJson & {
+export type LocationsSearchProps = ComponentWithContextProps & ApiSearchPropsJson & {
   params?: Params;
   fields?: {
     data?: {

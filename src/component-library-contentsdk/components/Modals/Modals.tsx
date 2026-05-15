@@ -6,7 +6,7 @@ import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
-import { useTranslations, useMessages } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 // A toggle-able React Modal using the native HTML5 dialog element
 // The modal has an animated drag and swipe behavior to mimic the typical mobile app draws that it resembles visually
@@ -34,9 +34,7 @@ const Modals = (
     handle,
   } = styles;
 
-  const messages = useMessages();
-  const siteName = Object.keys(messages)[0] || 'sync';
-  const t = useTranslations(siteName);
+  const t = useTranslations();
 
   const Overlay = () => (
     <button

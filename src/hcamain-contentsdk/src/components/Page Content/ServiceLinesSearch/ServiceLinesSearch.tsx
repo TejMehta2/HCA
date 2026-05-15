@@ -34,6 +34,7 @@ import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorM
 import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/servicelines`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/servicelines`;
@@ -49,9 +50,9 @@ const ServiceLinesSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ApiSearchProps): JSX.Element => {
+export const Default = (props: ApiSearchProps & ComponentWithContextProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
-  const t = useTranslations();
+  const t = useTranslations(props.page?.siteName);
 
   // Set up default baseline parameters from CMS
   const {
