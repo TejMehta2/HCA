@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, type JSX } from 'react';
+import React, { Suspense, useRef, type JSX } from 'react';
 import {
   GetComponentServerProps,
   RichText,
@@ -146,7 +146,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
   );
 };
 
-export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
+const CompactContent = (props: CareersSearchHeroProps): JSX.Element => {
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
   const pathname = usePathname();
@@ -301,6 +301,12 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     </Themes>
   );
 };
+
+export const Compact = (props: CareersSearchHeroProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <CompactContent {...props} />
+  </Suspense>
+);
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async () => {

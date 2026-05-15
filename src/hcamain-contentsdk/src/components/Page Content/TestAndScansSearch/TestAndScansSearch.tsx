@@ -1,6 +1,6 @@
 'use client';
 
-import { type JSX, type RefObject, useRef } from 'react';
+import { Suspense, type JSX, type RefObject, useRef } from 'react';
 import {
   GetComponentServerProps,
   Text as JssText,
@@ -49,7 +49,7 @@ const TestAndScansSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
+const DefaultContent = (props: TestsAndScansSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
   const t = useTranslations();
 
@@ -307,6 +307,12 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
     </Themes>
   );
 };
+
+export const Default = (props: TestsAndScansSearchProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async (

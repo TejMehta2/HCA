@@ -1,5 +1,11 @@
 'use client';
-import { type JSX, useCallback, useEffect, useState } from 'react';
+import {
+  Suspense,
+  type JSX,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import { Text as JssText } from '@sitecore-content-sdk/nextjs';
 import JumpToLinks, {
@@ -19,7 +25,7 @@ interface TableOfContentsWithVariantProps extends TableOfContentsProps {
   variant: '' | 'stacked';
 }
 
-export const Default = (
+const DefaultContent = (
   props: TableOfContentsWithVariantProps
 ): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>([]);
@@ -107,6 +113,14 @@ export const Default = (
     );
   }
 };
+
+export const Default = (
+  props: TableOfContentsWithVariantProps
+): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 export const Stacked = (props: TableOfContentsProps): JSX.Element => {
   return <Default {...props} variant={'stacked'} />;

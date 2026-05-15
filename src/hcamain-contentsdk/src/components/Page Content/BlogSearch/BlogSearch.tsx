@@ -1,6 +1,6 @@
 'use client';
 
-import { RefObject, type JSX, useRef } from 'react';
+import { RefObject, Suspense, type JSX, useRef } from 'react';
 
 import {
   GetComponentServerProps,
@@ -52,7 +52,7 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: BlogSearchProps): JSX.Element => {
+const DefaultContent = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
   const t = useTranslations(props?.page?.siteName);
 
@@ -296,6 +296,12 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     </form>
   );
 };
+
+export const Default = (props: BlogSearchProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async (

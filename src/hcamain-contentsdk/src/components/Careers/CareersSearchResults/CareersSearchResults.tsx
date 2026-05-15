@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, type JSX } from 'react';
+import React, { Suspense, useEffect, useState, type JSX } from 'react';
 import {
   GetComponentServerProps,
   useComponentProps,
@@ -49,7 +49,7 @@ const CareersSearchResultsDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: CareersSearchResultsProps): JSX.Element => {
+const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
   const fallbackData = useComponentProps<JobsResponse['response']>(
     props.rendering?.uid
   );
@@ -169,6 +169,12 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
     </Themes>
   );
 };
+
+export const Default = (props: CareersSearchResultsProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async () => {

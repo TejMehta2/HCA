@@ -20,7 +20,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import Button from '@component-library/core-components/Button/Button';
 import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
-import { useRef, type JSX } from 'react';
+import { Suspense, useRef, type JSX } from 'react';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
@@ -48,7 +48,7 @@ const CareersLatestVacanciesDefaultComponent = (
   return <></>;
 };
 
-export const Default = (
+const DefaultContent = (
   props: VariantCareersLatestVacanciesProps
 ): JSX.Element => {
   const fallbackData = useComponentProps<JobsResponse['response']>(
@@ -313,6 +313,14 @@ export const Default = (
     </Themes>
   );
 };
+
+export const Default = (
+  props: VariantCareersLatestVacanciesProps
+): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 export const Carousel = (
   props: VariantCareersLatestVacanciesProps

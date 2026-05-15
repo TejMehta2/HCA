@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, type JSX } from 'react';
+import React, { Suspense, useState, useEffect, type JSX } from 'react';
 import { NavigationProps } from './Navigation.types';
 import styles from './Navigation.module.scss';
 import NavigationDesktop from '../../components/NavigationDesktop/NavigationDesktop';
@@ -24,8 +24,12 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const scrollDirection = useScrollDirection();
   return (
     <div className={[styles.sticky, styles[scrollDirection]].join(' ')}>
-      <NavigationDesktop {...props} homeUrl={homeUrl} />
-      <NavigationMobile {...props} homeUrl={homeUrl} />
+      <Suspense fallback={null}>
+        <NavigationDesktop {...props} homeUrl={homeUrl} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <NavigationMobile {...props} homeUrl={homeUrl} />
+      </Suspense>
     </div>
   );
 };

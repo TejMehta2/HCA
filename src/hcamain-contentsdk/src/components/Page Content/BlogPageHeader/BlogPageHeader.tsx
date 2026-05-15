@@ -1,5 +1,5 @@
 'use client';
-import { type JSX } from 'react';
+import { Suspense, type JSX } from 'react';
 import { RichText, Text as JssText } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain, {
@@ -27,7 +27,7 @@ const BlogPageHeaderDefaultComponent = (): JSX.Element => {
   return <></>;
 };
 
-export const Default = (props: BlogPageHeaderProps): JSX.Element => {
+const DefaultContent = (props: BlogPageHeaderProps): JSX.Element => {
   const { fields, params } = props;
 
   // Set up default baseline parameters from CMS
@@ -164,3 +164,9 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     </form>
   );
 };
+
+export const Default = (props: BlogPageHeaderProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

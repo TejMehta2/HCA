@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Fragment, type JSX } from 'react';
+import React, { Fragment, Suspense, type JSX } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ProgressBarProps } from './ProgressBar.types';
@@ -8,7 +8,7 @@ import Text from '../../foundation/Text/Text';
 import styles from './ProgressBar.module.scss';
 import TextLink from '../../core-components/TextLink/TextLink';
 
-const ProgressBar = (props: ProgressBarProps): JSX.Element => {
+const ProgressBarContent = (props: ProgressBarProps): JSX.Element => {
   const { steps, currentPage } = props;
 
   const searchParams = useSearchParams() || '';
@@ -69,5 +69,11 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
     </div>
   );
 };
+
+const ProgressBar = (props: ProgressBarProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <ProgressBarContent {...props} />
+  </Suspense>
+);
 
 export default ProgressBar;

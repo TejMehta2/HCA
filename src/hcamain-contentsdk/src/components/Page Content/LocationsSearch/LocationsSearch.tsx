@@ -1,6 +1,6 @@
 'use client';
 
-import { type JSX, type RefObject, useRef } from 'react';
+import { Suspense, type JSX, type RefObject, useRef } from 'react';
 import {
   GetComponentServerProps,
   Text as JssText,
@@ -66,7 +66,7 @@ interface WithHeaderProps extends LocationsSearchProps {
   contentVariation: 'padding-small';
 }
 
-export const Default = (props: WithHeaderProps): JSX.Element => {
+const DefaultContent = (props: WithHeaderProps): JSX.Element => {
   const { fields, params, contentVariation } = props;
   const t = useTranslations(props?.page?.siteName);
 
@@ -511,6 +511,12 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     </form>
   );
 };
+
+export const Default = (props: WithHeaderProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
   if (!props.fields) {

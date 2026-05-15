@@ -1,6 +1,6 @@
 'use client';
 
-import { type JSX, type RefObject, useRef } from 'react';
+import { Suspense, type JSX, type RefObject, useRef } from 'react';
 import {
   GetComponentServerProps,
   Text as JssText,
@@ -50,7 +50,7 @@ const ServiceLinesSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ApiSearchProps & ComponentWithContextProps): JSX.Element => {
+const DefaultContent = (props: ApiSearchProps & ComponentWithContextProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
   const t = useTranslations(props.page?.siteName);
 
@@ -309,6 +309,14 @@ export const Default = (props: ApiSearchProps & ComponentWithContextProps): JSX.
     </Themes>
   );
 };
+
+export const Default = (
+  props: ApiSearchProps & ComponentWithContextProps
+): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async (
