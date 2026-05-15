@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable prettier/prettier */
 import { type JSX } from 'react';
 import { Text as JssText, Field, ComponentRendering } from '@sitecore-content-sdk/nextjs';
 import { ComponentWithContextProps } from 'lib/component-props';

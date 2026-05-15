@@ -310,9 +310,11 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async (
-  rendering: TestsAndScansSearchProps
+  rendering
 ) => {
-  const { baselineParams } = getBaselineParams(rendering);
+  const { baselineParams } = getBaselineParams({
+    fields: rendering.fields as TestsAndScansSearchProps['fields'],
+  });
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
@@ -321,8 +323,7 @@ export const getComponentServerProps: GetComponentServerProps = async (
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as TestsAndScansResponse;
-      return rendering;
+      return { fallbackData: fallbackData as TestsAndScansResponse };
     } else {
       throw response.statusText;
     }

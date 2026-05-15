@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  GetComponentServerProps,
   useComponentProps,
   Link as JssLink,
   Text as JssText,
@@ -324,11 +325,13 @@ export const Carousel = (
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps = async (
-  props: CareersLatestVacanciesProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  rendering
 ) => {
   try {
-    const scope = getJobFamiliesQueryString(props);
+    const scope = getJobFamiliesQueryString({
+      fields: rendering.fields as CareersLatestVacanciesProps['fields'],
+    });
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6&${scope}`
     );
@@ -342,7 +345,7 @@ export const getStaticProps = async (
 
 // Function to map jobFamilies to query string
 const getJobFamiliesQueryString = (
-  props: CareersLatestVacanciesProps
+  props: Pick<CareersLatestVacanciesProps, 'fields'>
 ): string => {
   const jobFamilies = props.fields?.data?.item?.jobFamilies?.targetItems;
   if (!jobFamilies || jobFamilies.length === 0) {

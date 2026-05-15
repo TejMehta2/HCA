@@ -1,6 +1,7 @@
 'use client';
 import { type JSX } from 'react';
 import {
+  GetComponentServerProps,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
@@ -297,14 +298,15 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps = async (
-  rendering: BlogRelatedArticlesProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  rendering
 ) => {
-  const fields = rendering.fields?.data?.item;
+  const renderingFields = rendering.fields as BlogRelatedArticlesProps['fields'];
+  const fields = renderingFields?.data?.item;
 
   debug.common(
     'BlogRelatedArticlesProps: rendering.fields?.data',
-    rendering.fields?.data
+    renderingFields?.data
   );
 
   // Format props into entries, then query params
@@ -319,7 +321,7 @@ export const getStaticProps = async (
     [];
 
   const contextSearchParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchParams || {}
+    renderingFields?.data?.contextItemSearchParams || {}
   ).flatMap(([key, nestedValue]) =>
     (nestedValue?.value || '')
       .split('|')
@@ -329,7 +331,7 @@ export const getStaticProps = async (
   );
 
   const contextSearchIdParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchIdParams || {}
+    renderingFields?.data?.contextItemSearchIdParams || {}
   )
     .filter(([, value]) => value !== '')
     .map(([key, value]) => [

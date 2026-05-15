@@ -3,6 +3,7 @@
 import { RefObject, type JSX, useRef } from 'react';
 
 import {
+  GetComponentServerProps,
   Text as JssText,
   RichText,
 } from '@sitecore-content-sdk/nextjs';
@@ -297,10 +298,12 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps = async (
-  rendering: BlogSearchProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  rendering
 ) => {
-  const { baselineParams } = getBaselineParams(rendering);
+  const { baselineParams } = getBaselineParams({
+    fields: rendering.fields as BlogSearchProps['fields'],
+  });
   const params = baselineParams.map(
     (entry: [string, string]) => `${entry[0]}=${entry[1]}`
   ); // Compute as query strings
@@ -311,8 +314,7 @@ export const getStaticProps = async (
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as BlogResponse;
-      return rendering;
+      return { fallbackData: fallbackData as BlogResponse };
     } else {
       throw response.statusText;
     }

@@ -1,8 +1,7 @@
 import { type JSX } from 'react';
-import { ComponentWithContextProps } from 'lib/component-props';
-/* eslint-disable prettier/prettier */
 
 import {
+  GetComponentServerProps,
   Link as JssLink,
   useComponentProps,
 } from '@sitecore-content-sdk/nextjs';
@@ -23,10 +22,6 @@ import Image from 'next/image';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
-
-type GetStaticComponentProps = (
-  rendering: DoctorCardsProps
-) => Promise<StaticProps | { consultants: Consultant[]; ctaQuery?: string; apiUrl?: string }>;
 
 const DoctorCardsDefaultComponent = (): JSX.Element => <></>;
 
@@ -174,10 +169,11 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async (
-  rendering: DoctorCardsProps
+export const getComponentServerProps: GetComponentServerProps = async (
+  rendering
 ) => {
-  const fields = rendering.fields?.data?.item;
+  const renderingFields = rendering.fields as DoctorCardsProps['fields'];
+  const fields = renderingFields?.data?.item;
 
   // Format props into entries, then query params
   const consultants =
@@ -205,11 +201,11 @@ export const getStaticProps: GetStaticComponentProps = async (
     ]) || [];
 
   const contextSearchParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchParams || {}
+    renderingFields?.data?.contextItemSearchParams || {}
   ).map(([key, nestedValue]) => [key, nestedValue?.value]);
 
   const contextSearchIdParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchIdParams || {}
+    renderingFields?.data?.contextItemSearchIdParams || {}
   ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/g, '').toLowerCase()]); // clean up bad ID characters
 
   const ctaParams = customFilters.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
