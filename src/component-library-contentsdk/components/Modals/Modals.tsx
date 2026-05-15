@@ -34,7 +34,8 @@ const Modals = (
     handle,
   } = styles;
 
-  const t = useTranslations();
+  //TODO: fix site resolution or move this away from component library.
+  const t = useTranslations('hcamain');
 
   const Overlay = () => (
     <button
