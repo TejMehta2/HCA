@@ -82,15 +82,16 @@ export interface Fields {
   };
 }
 
-export type DoctorCardsProps = ComponentWithContextProps & {
+export type StaticProps = {
+  apiUrl?: string;
+  ctaQuery?: string;
+  consultants?: Consultant[];
+};
+
+export type DoctorCardsProps = ComponentWithContextProps & StaticProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {
     uid?: string;
   };
-};
-
-export type StaticProps = {
-  ctaQuery: string;
-  consultants: Consultant[];
 };

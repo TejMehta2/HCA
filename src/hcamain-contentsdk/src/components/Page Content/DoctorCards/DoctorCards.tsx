@@ -3,12 +3,11 @@ import { type JSX } from 'react';
 import {
   GetComponentServerProps,
   Link as JssLink,
-  useComponentProps,
 } from '@sitecore-content-sdk/nextjs';
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
-import { DoctorCardsProps, StaticProps } from './DoctorCards.types';
+import { DoctorCardsProps } from './DoctorCards.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import {
   FindResponse,
@@ -27,10 +26,9 @@ const DoctorCardsDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
   const isExperienceEditor = props.page.mode.isEditing;
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
-  const ctaQuery = data?.ctaQuery;
+  const consultants = props.consultants?.slice(0, Number(quantity) || 4);
+  const ctaQuery = props.ctaQuery || '';
 
   if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
     return <DoctorCardsDefaultComponent />;
