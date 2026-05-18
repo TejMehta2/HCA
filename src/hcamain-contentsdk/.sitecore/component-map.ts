@@ -74,7 +74,6 @@ import * as ContentCarouselExtended from 'src/components/Page Content/ContentCar
 import * as ContentCarousel from 'src/components/Page Content/ContentCarousel/ContentCarousel';
 import * as ContentCardsTriplet from 'src/components/Page Content/ContentCardsTriplet/ContentCardsTriplet';
 import * as ContentCardsSliderWithOverlay from 'src/components/Page Content/ContentCardsSliderWithOverlay/ContentCardsSliderWithOverlay';
-import * as CardWithModal from 'src/components/Page Content/ContentCardsSliderWithOverlay/CardWithModal';
 import * as ContentCardsSlider from 'src/components/Page Content/ContentCardsSlider/ContentCardsSlider';
 import * as ContentCardsMasonry from 'src/components/Page Content/ContentCardsMasonry/ContentCardsMasonry';
 import * as ContentCards from 'src/components/Page Content/ContentCards/ContentCards';
@@ -180,7 +179,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ContentCarousel', { ...ContentCarousel }],
   ['ContentCardsTriplet', { ...ContentCardsTriplet }],
   ['ContentCardsSliderWithOverlay', { ...ContentCardsSliderWithOverlay }],
-  ['CardWithModal', { ...CardWithModal, componentType: 'client' }],
   ['ContentCardsSlider', { ...ContentCardsSlider }],
   ['ContentCardsMasonry', { ...ContentCardsMasonry }],
   ['ContentCards', { ...ContentCards }],

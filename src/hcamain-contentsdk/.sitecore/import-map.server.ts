@@ -83,7 +83,6 @@ import AccordionsBlockSideBySide from '@component-library/site-components/Accord
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
-import { createElement } from 'react';
 import React from 'react';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Doctify from '@component-library/components/Doctify/Doctify';
@@ -572,7 +571,6 @@ const importMap = [
   {
     module: 'react',
     exports: [
-      { name: 'createElement', value: createElement },
       { name: 'default', value: React },
     ]
   },
