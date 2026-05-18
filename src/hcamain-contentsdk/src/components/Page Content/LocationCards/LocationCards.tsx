@@ -491,6 +491,8 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
   );
 };
 
+export const Default = Grid;
+
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getComponentServerProps: GetComponentServerProps = async (
   componentRendering
