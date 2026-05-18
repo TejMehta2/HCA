@@ -55,6 +55,9 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
     props.fields?.data?.contextItem?.subHeading?.jsonValue?.value,
     'h1'
   );
+  const locationFacet = props.facets?.[0];
+  const jobAreaFacet = props.facets?.[1];
+
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <form
@@ -114,7 +117,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                   }
                   id={'jobArea'}
                   options={
-                    props?.facets?.[1]?.options.map((option) => ({
+                    jobAreaFacet?.options?.map((option) => ({
                       text: option.displayName,
                     })) || []
                   }
@@ -123,9 +126,9 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                   placeholder={
                     props.fields?.data?.item?.selectALocationLabel?.value
                   }
-                  id={props?.facets[0].fieldId?.replace('c_', '') || ''}
+                  id={locationFacet?.fieldId?.replace('c_', '') || ''}
                   options={
-                    props?.facets[0].options.map((option) => ({
+                    locationFacet?.options?.map((option) => ({
                       text: option.displayName,
                     })) || []
                   }
@@ -314,10 +317,13 @@ export const getComponentServerProps: GetComponentServerProps = async () => {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=0`
     );
+    if (!response.ok) {
+      throw new Error(`Careers search facets request failed: ${response.status}`);
+    }
     const data = await response.json();
-    return JSON.parse(JSON.stringify(data.response));
+    return JSON.parse(JSON.stringify(data.response ?? { facets: [] }));
   } catch (error) {
     console.error(error);
-    return {};
+    return { facets: [] };
   }
 };
