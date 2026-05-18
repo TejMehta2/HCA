@@ -53,9 +53,9 @@ const CardBlockCarouselDesktop = (
     const group = otherCards.slice(i, i + 4);
 
     cardGroups.push(
-      <React.Fragment key={i}>
-        <div className={styles['card-group']}>{group}</div>
-      </React.Fragment>
+      <div className={styles['card-group']} key={i}>
+        {group}
+      </div>
     );
   }
 
