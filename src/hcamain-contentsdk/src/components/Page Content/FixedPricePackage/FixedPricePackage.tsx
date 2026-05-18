@@ -120,3 +120,5 @@ export const ImageLeft = (props: FixedPricePackageProps): JSX.Element => (
 export const ImageRight = (props: FixedPricePackageProps): JSX.Element => (
   <IntegratedFixedPricedPackage {...props} imageAlignment="right" />
 );
+
+export const Default = ImageLeft;

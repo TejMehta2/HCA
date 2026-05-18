@@ -360,3 +360,5 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     </>
   );
 };
+
+export const Default = Carousel;

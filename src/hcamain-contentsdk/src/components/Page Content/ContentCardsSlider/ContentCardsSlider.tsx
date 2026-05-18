@@ -231,3 +231,5 @@ export const WithoutImage = (props: ContentCardsSliderProps): JSX.Element => {
   }
   return <WithImage {...props} showImage={false} />;
 };
+
+export const Default = WithImage;

@@ -139,3 +139,5 @@ export const ImageRight = (props: AmenitiesProps): JSX.Element => {
 
   return outputImageAndTextBlock(props, 'right', componentAnchorId);
 };
+
+export const Default = ImageLeft;

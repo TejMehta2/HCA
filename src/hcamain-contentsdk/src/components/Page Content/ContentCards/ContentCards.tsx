@@ -299,3 +299,5 @@ export const WithoutImage = (props: ContentCardsProps): JSX.Element => {
 
   return <WithImage {...props} showImage={false} />;
 };
+
+export const Default = WithImage;

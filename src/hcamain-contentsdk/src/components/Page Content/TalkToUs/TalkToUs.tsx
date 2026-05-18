@@ -170,3 +170,5 @@ export const ImageRight = (props: TalkToUsProps): JSX.Element => {
   }
   return <ImageLeft {...props} imageAlignment="right" />;
 };
+
+export const Default = ImageLeft;

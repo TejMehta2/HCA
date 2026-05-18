@@ -18,3 +18,5 @@ export const LeftAligned = (props: DiamondLineProps): JSX.Element => {
 export const RightAligned = (props: DiamondLineProps): JSX.Element => {
   return <DiamondLine theme={props.params.Theme || 'H-HCA-Tangerine'} />;
 };
+
+export const Default = RightAligned;

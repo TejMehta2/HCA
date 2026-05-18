@@ -288,3 +288,5 @@ export const WithoutImage = (props: TestAndScansCardsProps): JSX.Element => {
 
   return <WithImage {...props} showImage={false} />;
 };
+
+export const Default = WithImage;
