@@ -6,7 +6,6 @@ import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
-import { useTranslations } from 'next-intl';
 
 // A toggle-able React Modal using the native HTML5 dialog element
 // The modal has an animated drag and swipe behavior to mimic the typical mobile app draws that it resembles visually
@@ -33,9 +32,6 @@ const Modals = (
     content,
     handle,
   } = styles;
-
-  //TODO: fix site resolution or move this away from component library.
-  const t = useTranslations('hcamain');
 
   const Overlay = () => (
     <button
@@ -64,7 +60,7 @@ const Modals = (
     <div className={close}>
       <TextLink>
         <button type="button" onClick={() => ref?.current?.close()}>
-          <span>{t('close') || 'Close'}</span>
+          <span>{'Close'}</span>
           <Icons iconName="iconCross" />
         </button>
       </TextLink>

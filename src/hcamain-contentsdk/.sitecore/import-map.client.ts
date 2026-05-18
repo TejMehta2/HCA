@@ -8,7 +8,7 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { createElement, useRef, useState, useEffect, useCallback } from 'react';
+import { createElement, Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import React from 'react';
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import { Text, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, useComponentProps, AppPlaceholder, debug, Image as Image_8a80e63291fea86e0744df19113dc44bec187216, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
@@ -120,6 +120,7 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'createElement', value: createElement },
+      { name: 'Suspense', value: Suspense },
       { name: 'useRef', value: useRef },
       { name: 'useState', value: useState },
       { name: 'useEffect', value: useEffect },
