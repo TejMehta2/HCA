@@ -91,6 +91,7 @@ import HomepageHero from '@component-library/site-components/HomepageHero/Homepa
 import SearchButton from '@component-library/components/SearchButton/SearchButton';
 import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
 import axios from 'axios';
+import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
@@ -609,6 +610,12 @@ const importMap = [
     module: 'axios',
     exports: [
       { name: 'default', value: axios },
+    ]
+  },
+  {
+    module: '@component-library/careers/CardBlockCarousel/CardBlockCarousel',
+    exports: [
+      { name: 'default', value: CardBlockCarousel },
     ]
   },
   {

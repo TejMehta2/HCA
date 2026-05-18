@@ -92,7 +92,6 @@ import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import CardRole from '@component-library/careers/CardRole/CardRole';
 import IconBlocksProps from '@component-library/components/IconBlocks/IconBlocks';
-import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
 import { IconCtaBlockChild } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
 import IconCtaBlock from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
@@ -620,12 +619,6 @@ const importMap = [
     module: '@component-library/components/IconBlocks/IconBlocks',
     exports: [
       { name: 'default', value: IconBlocksProps },
-    ]
-  },
-  {
-    module: '@component-library/careers/CardBlockCarousel/CardBlockCarousel',
-    exports: [
-      { name: 'default', value: CardBlockCarousel },
     ]
   },
   {

@@ -1,10 +1,12 @@
+'use client';
+
 import { type JSX } from 'react';
 import { ComponentWithContextProps } from 'lib/component-props';
-/* eslint-disable prettier/prettier */
 
 import {
   Field,
-  Text as JssText,  LinkField,
+  Text as JssText,
+  LinkField,
   RichText as JssRichText,
   ImageField,
 } from '@sitecore-content-sdk/nextjs';
@@ -97,11 +99,9 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
         icon: card?.fields?.Icon ? (
           <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
         ) : undefined,
-        title: hasTitle ? (
-          card?.fields?.Title?.value
-        ) : undefined,
+        title: hasTitle ? card?.fields?.Title?.value : undefined,
         bodyText: hasText ? (
-          <Text variation="body-medium">
+          <Text variation="body-medium" tag='div'>
             <JssRichText tag="div" field={card.fields?.Text} />
           </Text>
         ) : undefined,
@@ -149,7 +149,10 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       cards={cards}
     ></CardBlockCarousel>
   );

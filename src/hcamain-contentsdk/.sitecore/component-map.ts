@@ -175,7 +175,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['CQCRating', { ...CQCRating }],
   ['ContentVerticalSlider', { ...ContentVerticalSlider }],
   ['ContentIconBlocks', { ...ContentIconBlocks }],
-  ['ContentCarouselExtended', { ...ContentCarouselExtended }],
+  ['ContentCarouselExtended', { ...ContentCarouselExtended, componentType: 'client' }],
   ['ContentCarousel', { ...ContentCarousel }],
   ['ContentCardsTriplet', { ...ContentCardsTriplet }],
   ['ContentCardsSliderWithOverlay', { ...ContentCardsSliderWithOverlay }],

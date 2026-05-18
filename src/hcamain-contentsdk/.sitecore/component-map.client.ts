@@ -21,6 +21,7 @@ import * as LocationMap from 'src/components/Page Content/LocationMap/LocationMa
 import * as LocationCards from 'src/components/Page Content/LocationCards/LocationCards';
 import * as HeroBannerWithSearch from 'src/components/Page Content/HeroBannerWithSearch/HeroBannerWithSearch';
 import * as Log404Email from 'src/components/Page Content/EmailUtils/Log404Email';
+import * as ContentCarouselExtended from 'src/components/Page Content/ContentCarouselExtended/ContentCarouselExtended';
 import * as CallUsTodayCTA from 'src/components/Page Content/CallUsTodayCTA/CallUsTodayCTA';
 import * as BookAnAppointmentCTA from 'src/components/Page Content/BookAnAppointmentCTA/BookAnAppointmentCTA';
 import * as BlogSearch from 'src/components/Page Content/BlogSearch/BlogSearch';
@@ -57,6 +58,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['LocationCards', { ...LocationCards }],
   ['HeroBannerWithSearch', { ...HeroBannerWithSearch }],
   ['Log404Email', { ...Log404Email }],
+  ['ContentCarouselExtended', { ...ContentCarouselExtended }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA }],
   ['BookAnAppointmentCTA', { ...BookAnAppointmentCTA }],
   ['BlogSearch', { ...BlogSearch }],
