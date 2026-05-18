@@ -31,7 +31,7 @@ export interface PagesFields {
   overlayImage?: { jsonValue: ImageField };
 }
 
-interface Fields {
+export interface ContentCardsSliderWithOverlayFields {
   data?: {
     item?: {
       heading?: { jsonValue?: Field<string> };
@@ -51,7 +51,7 @@ interface Fields {
 
 type ContentCardsSliderWithOverlayProps = ComponentWithContextProps & {
   params?: Params;
-  fields?: Fields;
+  fields?: ContentCardsSliderWithOverlayFields;
 };
 
 const ContentCardsSliderWithOverlayDefaultComponent = (
@@ -73,7 +73,7 @@ const ContentCardsSliderWithOverlayDefaultComponent = (
 };
 
 export interface WithImageProps extends ContentCardsSliderWithOverlayProps {
-  showImage: boolean;
+  showImage?: boolean;
 }
 
 export const Default = (props: WithImageProps): JSX.Element => {
@@ -155,7 +155,15 @@ export const Default = (props: WithImageProps): JSX.Element => {
       link={link || <></>}
     >
       {props.fields?.data?.item?.pages?.PagesList?.map((cards, index) => {
-        return <CardWithModal {...props} cards={cards} key={index} />;
+        return (
+          <CardWithModal
+            key={index}
+            cards={cards}
+            fields={props.fields}
+            params={props.params}
+            showImage={props.showImage}
+          />
+        );
       })}
     </CarouselCards>
   );

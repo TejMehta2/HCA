@@ -12,11 +12,18 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import ModalImageShortText from '@component-library/careers/ModalImageShortText/ModalImageShortText';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { PagesFields, WithImageProps } from './ContentCardsSliderWithOverlay';
+import type {
+  ContentCardsSliderWithOverlayFields,
+  PagesFields,
+} from './ContentCardsSliderWithOverlay';
 import Text from '@component-library/foundation/Text/Text';
+import type Params from 'src/types/params';
 
-interface CardWithModalProps extends WithImageProps {
+interface CardWithModalProps {
   cards: PagesFields;
+  fields?: ContentCardsSliderWithOverlayFields;
+  params?: Params;
+  showImage?: boolean;
 }
 
 const CardWithModal = (props: CardWithModalProps) => {
