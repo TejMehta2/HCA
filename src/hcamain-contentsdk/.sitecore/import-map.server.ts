@@ -8,7 +8,7 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { AppPlaceholder, RichText, Text, Link, Image, useComponentProps } from '@sitecore-content-sdk/nextjs';
+import { AppPlaceholder, RichText, Text, Link, Image } from '@sitecore-content-sdk/nextjs';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import { setInsideContainerComponentParam, isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
@@ -138,7 +138,6 @@ const importMap = [
       { name: 'Text', value: Text },
       { name: 'Link', value: Link },
       { name: 'Image', value: Image },
-      { name: 'useComponentProps', value: useComponentProps },
     ]
   },
   {

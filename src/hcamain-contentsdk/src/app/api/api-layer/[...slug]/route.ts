@@ -26,6 +26,7 @@ async function proxyRequest(request: NextRequest, context: RouteContext) {
     const headers = new Headers(request.headers);
     headers.delete('host');
     headers.delete('referer');
+    headers.set('accept-encoding', 'identity');
 
     const method = request.method;
     const body =
@@ -58,5 +59,9 @@ async function proxyRequest(request: NextRequest, context: RouteContext) {
 }
 
 export async function GET(request: NextRequest, context: RouteContext) {
+  return proxyRequest(request, context);
+}
+
+export async function POST(request: NextRequest, context: RouteContext) {
   return proxyRequest(request, context);
 }
