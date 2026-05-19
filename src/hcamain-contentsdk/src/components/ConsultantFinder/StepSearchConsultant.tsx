@@ -6,7 +6,7 @@
 
 import { type JSX } from 'react';
 import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import {
   Image as JssImage,
   Link as JssLink,

@@ -98,6 +98,25 @@ import * as MainNavigation from 'src/components/Navigation/MainNavigation/MainNa
 import * as Footer from 'src/components/Navigation/Footer/Footer';
 import * as Breadcrumbs from 'src/components/Navigation/Breadcrumbs/Breadcrumbs';
 import * as BasicFooter from 'src/components/Navigation/BasicFooter/BasicFooter';
+import * as _StepTemplate from 'src/components/ConsultantFinder/_StepTemplate';
+import * as StepTermsAndConditions from 'src/components/ConsultantFinder/StepTermsAndConditions';
+import * as StepSlotSelect from 'src/components/ConsultantFinder/StepSlotSelect';
+import * as StepSearchConsultant from 'src/components/ConsultantFinder/StepSearchConsultant';
+import * as StepPayment from 'src/components/ConsultantFinder/StepPayment';
+import * as StepLocationSelect from 'src/components/ConsultantFinder/StepLocationSelect';
+import * as StepLocations from 'src/components/ConsultantFinder/StepLocations';
+import * as StepLiveBookingForm from 'src/components/ConsultantFinder/StepLiveBookingForm';
+import * as StepLiveBookingConfirmation from 'src/components/ConsultantFinder/StepLiveBookingConfirmation';
+import * as StepIntro from 'src/components/ConsultantFinder/StepIntro';
+import * as StepEnquireFormConfirmation from 'src/components/ConsultantFinder/StepEnquireFormConfirmation';
+import * as StepEnquireForm from 'src/components/ConsultantFinder/StepEnquireForm';
+import * as StepConsultantProfile from 'src/components/ConsultantFinder/StepConsultantProfile';
+import * as StepConsultantCards from 'src/components/ConsultantFinder/StepConsultantCards';
+import * as StepAppointmentType from 'src/components/ConsultantFinder/StepAppointmentType';
+import * as routeQuery from 'src/components/ConsultantFinder/routeQuery';
+import * as FrameReviews from 'src/components/ConsultantFinder/FrameReviews';
+import * as CMADisclosures from 'src/components/ConsultantFinder/CMADisclosures';
+import * as AxiosLocalPatcher from 'src/components/ConsultantFinder/AxiosLocalPatcher';
 import * as JobDetailsHeader from 'src/components/Careers/JobDetailsHeader/JobDetailsHeader';
 import * as JobDetails from 'src/components/Careers/JobDetails/JobDetails';
 import * as CareersSearchResults from 'src/components/Careers/CareersSearchResults/CareersSearchResults';
@@ -203,6 +222,25 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Footer', { ...Footer }],
   ['Breadcrumbs', { ...Breadcrumbs }],
   ['BasicFooter', { ...BasicFooter }],
+  ['_StepTemplate', { ..._StepTemplate }],
+  ['StepTermsAndConditions', { ...StepTermsAndConditions, componentType: 'client' }],
+  ['StepSlotSelect', { ...StepSlotSelect, componentType: 'client' }],
+  ['StepSearchConsultant', { ...StepSearchConsultant, componentType: 'client' }],
+  ['StepPayment', { ...StepPayment, componentType: 'client' }],
+  ['StepLocationSelect', { ...StepLocationSelect, componentType: 'client' }],
+  ['StepLocations', { ...StepLocations, componentType: 'client' }],
+  ['StepLiveBookingForm', { ...StepLiveBookingForm, componentType: 'client' }],
+  ['StepLiveBookingConfirmation', { ...StepLiveBookingConfirmation, componentType: 'client' }],
+  ['StepIntro', { ...StepIntro, componentType: 'client' }],
+  ['StepEnquireFormConfirmation', { ...StepEnquireFormConfirmation, componentType: 'client' }],
+  ['StepEnquireForm', { ...StepEnquireForm, componentType: 'client' }],
+  ['StepConsultantProfile', { ...StepConsultantProfile, componentType: 'client' }],
+  ['StepConsultantCards', { ...StepConsultantCards, componentType: 'client' }],
+  ['StepAppointmentType', { ...StepAppointmentType, componentType: 'client' }],
+  ['routeQuery', { ...routeQuery }],
+  ['FrameReviews', { ...FrameReviews }],
+  ['CMADisclosures', { ...CMADisclosures, componentType: 'client' }],
+  ['AxiosLocalPatcher', { ...AxiosLocalPatcher, componentType: 'client' }],
   ['JobDetailsHeader', { ...JobDetailsHeader }],
   ['JobDetails', { ...JobDetails }],
   ['CareersSearchResults', { ...CareersSearchResults, componentType: 'client' }],

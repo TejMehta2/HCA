@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
@@ -12,6 +12,8 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { setSearchStringConsultantName } = useContext(ConsultantFinderContext);
   const specialties =
     props?.data?.filter((item: any) => item.type === 'specialty') || [];
@@ -33,22 +35,12 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
     setSearchStringConsultantName('');
     // Update the URL with the search value and keyword ID
 
-    if (router?.query?.search) {
-      delete router.query.search;
-    }
+    const nextSearchParams = new URLSearchParams(searchParams.toString());
+    nextSearchParams.set('search', name);
+    nextSearchParams.set('keywordId', id.toString());
+    nextSearchParams.set('offset', '0');
 
-    if (router?.query?.keywordId) {
-      delete router.query.keywordId;
-    }
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { search: name, keywordId: id, ...router.query, offset: '0' },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(`${pathname}?${nextSearchParams.toString()}`);
     props.setIsComponentVisible(false);
   };
 

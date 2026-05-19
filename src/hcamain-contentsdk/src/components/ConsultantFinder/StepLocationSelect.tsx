@@ -6,7 +6,7 @@
 
 import { type JSX } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Image as JssImage,
@@ -28,6 +28,7 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import axios from 'axios';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   HCALogo: ImageField;
@@ -72,6 +73,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   //console.log('step location', props.fields);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [search, setSearch] = useState<string>('');
@@ -92,36 +94,29 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get search from URL
-    const searchURL = router?.query?.search || '';
-    setSearch(searchURL.toString());
+    setSearch(getQueryValue(searchParams, 'search'));
 
     // get keywordId from URL
-    const keywordIdURL = router?.query?.keywordId || '';
-    setKeywordId(keywordIdURL.toString());
+    setKeywordId(getQueryValue(searchParams, 'keywordId'));
 
     // get slug from URL
-    const slug = router?.query?.slug || '';
-    setSlug(slug.toString());
+    const slug = getQueryValue(searchParams, 'slug');
+    setSlug(slug);
 
     // get name from URL
-    const nameURL = router?.query?.name || '';
-    setName(nameURL.toString());
+    setName(getQueryValue(searchParams, 'name'));
 
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
+    const gmcNumber = getQueryValue(searchParams, 'gmcNumber');
+    setGmcNumber(gmcNumber);
 
     // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
+    const reviewsTotal = searchParams.get('reviewsTotal');
     setReviewsTotal(Number(reviewsTotal));
 
     // get isFollowup from URL
-    const isFollowUpAppointment = router?.query?.isFollowOnAppointment || null;
+    const isFollowUpAppointment = searchParams.get('isFollowOnAppointment');
     if (isFollowUpAppointment) {
       setSelectedTypeOfAppointment(isFollowUpAppointment?.toString());
     }
@@ -147,7 +142,7 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log(error);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
@@ -155,7 +150,7 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {router.isReady && (
+        {(
           <>
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}

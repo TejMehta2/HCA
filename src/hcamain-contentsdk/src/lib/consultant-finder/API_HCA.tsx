@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { unstable_cache } from 'next/cache';
-import { parse } from 'node-html-parser';
 import { GetHCAConfig } from './getHCAConfig';
 import {
   getSpecialistProfileData,
@@ -118,11 +117,12 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
             <url><loc>https://www.hcahealthcare.co.uk/finder/specialists/mr-chukwuemeka-okaro</loc></url>
             <url><loc>https://www.hcahealthcare.co.uk/finder/specialists/mohamed-imam</loc></url>
           </urlset>*/
-          // parse with this https://www.npmjs.com/package/node-html-parser
-          const root = parse(consultantsXML);
-          root.getElementsByTagName('loc').forEach((urlEle: any) => {
-            const slug = urlEle.text.split('/').pop();
-            slugs = slugs.concat(slug);
+          const locMatches = consultantsXML.matchAll(/<loc>(.*?)<\/loc>/g);
+          Array.from(locMatches).forEach(([, url]) => {
+            const slug = url.split('/').pop();
+            if (slug) {
+              slugs = slugs.concat(slug);
+            }
           });
           //console.log("CF all slugs:", slugs);
         } else {

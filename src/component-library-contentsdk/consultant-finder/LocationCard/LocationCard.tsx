@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useContext, useEffect, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { LocationCardProps } from './LocationCard.types';
 import styles from './LocationCard.module.scss';
 import Text from '../../foundation/Text/Text';
@@ -17,7 +17,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   const [totalConsultants, setTotalConsultants] = useState(null);
   const arrayWithSelectedSlugs: string[] = selectedLocations;
   const [isSelected, setSelected] = useState<boolean>(false);
-  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     setSelected(arrayWithSelectedSlugs.includes(props.slug));
@@ -25,11 +25,11 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   }, [selectedLocations]);
 
   useEffect(() => {
-    const keywordIdQuery = router?.query?.keywordId || '';
+    const keywordIdQuery = searchParams.get('keywordId') || '';
     // get searchString from URL
-    const searchStringQuery = router?.query?.searchString || '';
+    const searchStringQuery = searchParams.get('searchString') || '';
     // get payment option from URL
-    const paymentOption = router?.query?.insurer || '';
+    const paymentOption = searchParams.get('insurer') || '';
 
     axios
       .get(
@@ -46,7 +46,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
         console.log(error);
       });
     // eslint-disable-next-line
-  }, [router.isReady]);
+  }, [searchParams]);
 
   const handleClick = () => {
     const newArray: string[] = selectedLocations;

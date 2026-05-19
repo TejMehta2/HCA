@@ -1,7 +1,7 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { MouseEventHandler, useId, useState, useContext, type JSX } from 'react';
+import React, { MouseEventHandler, useEffect, useId, useState, useContext, type JSX } from 'react';
 import axios from 'axios';
 import styles from './SearchAll.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -24,7 +24,12 @@ const SearchAll = (props: SearchProps): JSX.Element => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  const [inputValue, setInputValue] = useState(props.searchString || '');
   const searchId = useId();
+
+  useEffect(() => {
+    setInputValue(props.searchString || '');
+  }, [props.searchString]);
 
   // console.log('test', props.conditionsTreatmentsList);
   // console.log('test specialities', props.specialitiesList);
@@ -70,6 +75,8 @@ const SearchAll = (props: SearchProps): JSX.Element => {
   };
 
   const handleClose = () => {
+    setInputValue('');
+
     if (props.setSearchString) {
       props.setSearchString('');
     }
@@ -84,6 +91,7 @@ const SearchAll = (props: SearchProps): JSX.Element => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.value);
+    setInputValue(e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
@@ -163,7 +171,7 @@ const SearchAll = (props: SearchProps): JSX.Element => {
             placeholder={props.placeholder}
             onChange={handleChange}
             onClick={handleOnClick}
-            value={props.searchString}
+            value={inputValue}
           />
         </label>
         {isComponentVisible && (
@@ -175,7 +183,10 @@ const SearchAll = (props: SearchProps): JSX.Element => {
             noResultsMsg={props.noResultsMsg}
             error={error}
             setKeywordId={props.setKeywordId}
-            setSearchString={props.setSearchString}
+            setSearchString={(value) => {
+              setInputValue(value);
+              props.setSearchString?.(value);
+            }}
             setIsComponentVisible={setIsComponentVisible}
             resultsIcon={props.searchIcon}
             specialtyLabel={props.specialtyLabel}
@@ -194,7 +205,7 @@ const SearchAll = (props: SearchProps): JSX.Element => {
           {!props.searchIcon && <Icons iconName="iconSearch" />}
         </span>
         <div className={styles['consultant-finder-search-close-btn']}>
-          {props.searchString !== '' && (
+          {inputValue !== '' && (
             <TextLink>
               <button onClick={handleClose}>
                 <Icons iconName="iconCross" />

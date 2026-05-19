@@ -9,7 +9,7 @@ import React, {
   FormEvent,
   type JSX,
 } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -23,6 +23,8 @@ import { transformFields } from '../../utility-functions/index';
 
 const Search = (props: SearchProps): JSX.Element => {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { setSearchStringConsultantName, setConsultantSlug } = useContext(
     ConsultantFinderContext
   );
@@ -51,18 +53,13 @@ const Search = (props: SearchProps): JSX.Element => {
 
   // remove search and keywordId from URL
   const removeSearchKeywordIdQueries = () => {
-    const { search, keywordId, ...queryParams } = router.query;
+    const queryParams = new URLSearchParams(searchParams.toString());
+    queryParams.delete('search');
+    queryParams.delete('keywordId');
+    queryParams.set('offset', '0');
 
-    queryParams.offset = '0';
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: queryParams,
-      },
-      undefined,
-      { shallow: true }
-    );
+    const queryString = queryParams.toString();
+    router.push(`${pathname}${queryString ? `?${queryString}` : ''}`);
   };
 
   const handlePopularSearch = () => {

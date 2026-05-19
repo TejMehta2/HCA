@@ -13,7 +13,6 @@ import { type JSX } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
-  GetStaticComponentProps,
   Image as JssImage,
   ImageField,
   Field,
@@ -21,6 +20,8 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-content-sdk/nextjs';
+
+type GetStaticComponentProps = (...args: any[]) => Promise<any>;
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
@@ -64,7 +65,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 // import Script from 'next/script';
 
 interface Fields {
@@ -209,6 +210,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  const router = useRouter();
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [firstAppointmentData, setFirstAppointmentData] = useState<any>();
   const [nextAptRequestToken, setNextAptRequestToken] =

@@ -31,6 +31,22 @@ import * as BlogCards from 'src/components/Page Content/BlogCards/BlogCards';
 import * as Accordions from 'src/components/Page Content/Accordions/Accordions';
 import * as TableOfContents from 'src/components/Navigation/TableOfContents/TableOfContents';
 import * as MainNavigation from 'src/components/Navigation/MainNavigation/MainNavigation';
+import * as StepTermsAndConditions from 'src/components/ConsultantFinder/StepTermsAndConditions';
+import * as StepSlotSelect from 'src/components/ConsultantFinder/StepSlotSelect';
+import * as StepSearchConsultant from 'src/components/ConsultantFinder/StepSearchConsultant';
+import * as StepPayment from 'src/components/ConsultantFinder/StepPayment';
+import * as StepLocationSelect from 'src/components/ConsultantFinder/StepLocationSelect';
+import * as StepLocations from 'src/components/ConsultantFinder/StepLocations';
+import * as StepLiveBookingForm from 'src/components/ConsultantFinder/StepLiveBookingForm';
+import * as StepLiveBookingConfirmation from 'src/components/ConsultantFinder/StepLiveBookingConfirmation';
+import * as StepIntro from 'src/components/ConsultantFinder/StepIntro';
+import * as StepEnquireFormConfirmation from 'src/components/ConsultantFinder/StepEnquireFormConfirmation';
+import * as StepEnquireForm from 'src/components/ConsultantFinder/StepEnquireForm';
+import * as StepConsultantProfile from 'src/components/ConsultantFinder/StepConsultantProfile';
+import * as StepConsultantCards from 'src/components/ConsultantFinder/StepConsultantCards';
+import * as StepAppointmentType from 'src/components/ConsultantFinder/StepAppointmentType';
+import * as CMADisclosures from 'src/components/ConsultantFinder/CMADisclosures';
+import * as AxiosLocalPatcher from 'src/components/ConsultantFinder/AxiosLocalPatcher';
 import * as CareersSearchResults from 'src/components/Careers/CareersSearchResults/CareersSearchResults';
 import * as CareersSearchHero from 'src/components/Careers/CareersSearchHero/CareersSearchHero';
 import * as CareersSearchBlock from 'src/components/Careers/CareersSearchBlock/CareersSearchBlock';
@@ -68,6 +84,22 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Accordions', { ...Accordions }],
   ['TableOfContents', { ...TableOfContents }],
   ['MainNavigation', { ...MainNavigation }],
+  ['StepTermsAndConditions', { ...StepTermsAndConditions }],
+  ['StepSlotSelect', { ...StepSlotSelect }],
+  ['StepSearchConsultant', { ...StepSearchConsultant }],
+  ['StepPayment', { ...StepPayment }],
+  ['StepLocationSelect', { ...StepLocationSelect }],
+  ['StepLocations', { ...StepLocations }],
+  ['StepLiveBookingForm', { ...StepLiveBookingForm }],
+  ['StepLiveBookingConfirmation', { ...StepLiveBookingConfirmation }],
+  ['StepIntro', { ...StepIntro }],
+  ['StepEnquireFormConfirmation', { ...StepEnquireFormConfirmation }],
+  ['StepEnquireForm', { ...StepEnquireForm }],
+  ['StepConsultantProfile', { ...StepConsultantProfile }],
+  ['StepConsultantCards', { ...StepConsultantCards }],
+  ['StepAppointmentType', { ...StepAppointmentType }],
+  ['CMADisclosures', { ...CMADisclosures }],
+  ['AxiosLocalPatcher', { ...AxiosLocalPatcher }],
   ['CareersSearchResults', { ...CareersSearchResults }],
   ['CareersSearchHero', { ...CareersSearchHero }],
   ['CareersSearchBlock', { ...CareersSearchBlock }],

@@ -6,7 +6,7 @@
 
 import { type JSX } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import {
   Link as JssLink,
@@ -26,6 +26,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Container from '@component-library/foundation/Containers/Container';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import { isMobile } from '@component-library/utility-functions/index';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   TitleText: Field<string>;
@@ -61,6 +62,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     searchStringPayment,
     setSearchStringPayment,
@@ -81,28 +83,22 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get keywordID from URL
-    const keywordIdQuery = router?.query?.keywordId || '';
-    setKewordId(keywordIdQuery.toString());
+    setKewordId(getQueryValue(searchParams, 'keywordId'));
 
     // get searchString from URL
-    const searchStringQuery = router?.query?.searchString || '';
-    setSearch(searchStringQuery.toString());
+    setSearch(getQueryValue(searchParams, 'searchString'));
 
     setIsSelfPayment(false);
     setSearchStringPayment('');
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
       <>
-        {router.isReady && (
+        {(
           <>
             <Headline
               withConsultantName={true}

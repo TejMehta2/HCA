@@ -1,7 +1,7 @@
 'use client';
 
 import React, { type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { AppointmentSummaryProps } from './AppointmentSummary.types';
 import styles from './AppointmentSummary.module.scss';
 import Text from '../../foundation/Text/Text';

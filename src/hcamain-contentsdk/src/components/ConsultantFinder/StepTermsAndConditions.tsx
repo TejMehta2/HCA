@@ -6,7 +6,7 @@
 
 import { type JSX } from 'react';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Image as JssImage,
@@ -27,6 +27,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -72,7 +73,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   //console.log(props.fields);
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [search, setSearch] = useState<string>('');
@@ -86,36 +87,27 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get search from URL
-    const searchURL = router?.query?.search || '';
-    setSearch(searchURL.toString());
+    setSearch(getQueryValue(searchParams, 'search'));
     // get keywordId from URL
-    const keywordIdURL = router?.query?.keywordId || '';
-    setKeywordId(keywordIdURL.toString());
+    setKeywordId(getQueryValue(searchParams, 'keywordId'));
     // get slug from URL
-    const slug = router?.query?.slug || '';
-    setSlug(slug.toString());
+    setSlug(getQueryValue(searchParams, 'slug'));
     // get name from URL
-    const nameURL = router?.query?.name || '';
-    setName(nameURL.toString());
+    setName(getQueryValue(searchParams, 'name'));
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
+    setGmcNumber(getQueryValue(searchParams, 'gmcNumber'));
     // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
+    const reviewsTotal = searchParams.get('reviewsTotal');
     setReviewsTotal(Number(reviewsTotal));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        {router.isReady && (
+        {(
           <div className="component-content">
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}

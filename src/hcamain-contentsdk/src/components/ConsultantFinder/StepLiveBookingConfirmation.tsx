@@ -5,7 +5,7 @@
 
 import { type JSX } from 'react';
 import React, { useEffect, useState, useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Image as JssImage,
   ImageField,
@@ -23,6 +23,7 @@ import { ConsultantFinderContext } from '@component-library/context/consultantFi
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import Script from 'next/script';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   TitleText: Field<string>;
@@ -79,6 +80,7 @@ export const Default = (props: StepProps): JSX.Element => {
     patientName,
   } = useContext(ConsultantFinderContext);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
@@ -89,28 +91,23 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get slug from URL
-    const slugURL = router?.query?.slug || null;
+    const slugURL = searchParams.get('slug');
     if (slugURL) {
       setSlug(slugURL.toString());
     }
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
+    setGmcNumber(getQueryValue(searchParams, 'gmcNumber'));
     // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
+    const reviewsTotal = searchParams.get('reviewsTotal');
     setReviewsTotal(Number(reviewsTotal));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
       <>
-        {router.isReady && (
+        {(
           <>
             {completedFormId && completedFormId.length > 0 && (
               <Script /* HWPD-3463 - data layer */

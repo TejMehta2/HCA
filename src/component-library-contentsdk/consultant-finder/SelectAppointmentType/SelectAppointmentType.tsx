@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useContext, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { SelectAppointmentTypeProps } from './SelectAppointmentType.types';
 import styles from './SelectAppointmentType.module.scss';
 import AppointmentTypeCard from '../AppointmentTypeCard/AppointmentTypeCard';

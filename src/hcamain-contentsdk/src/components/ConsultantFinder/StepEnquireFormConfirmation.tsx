@@ -10,8 +10,8 @@ import {
   ImageField,
   Field,
   LinkField,
-import { useRouter } from 'next/router';
 } from '@sitecore-content-sdk/nextjs';
+import { useRouter } from 'next/navigation';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';

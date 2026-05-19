@@ -5,7 +5,7 @@
 
 import { type JSX } from 'react';
 import React, { useEffect, useState, useRef, useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useForm, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
@@ -125,6 +125,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   //console.log(props.fields);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [slug, setSlug] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const [insurers, setInsurers] = useState<object[]>([]);
@@ -398,22 +399,18 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get slug from URL
-    const slugURL = router?.query?.slug || null;
+    const slugURL = searchParams.get('slug');
     if (slugURL) {
       setSlug(slugURL.toString());
       getConsultantData(slugURL.toString());
     }
 
     // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
+    const reviewsTotal = searchParams.get('reviewsTotal');
     setReviewsTotal(Number(reviewsTotal));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
@@ -423,7 +420,7 @@ export const Default = (props: StepProps): JSX.Element => {
             {'There was an error, please try again later.'}
           </Text>
         )}
-        {router.isReady && !loadingData && !errorData && (
+        {!loadingData && !errorData && (
           <>
             <Breadcrumbs
               backCta={{

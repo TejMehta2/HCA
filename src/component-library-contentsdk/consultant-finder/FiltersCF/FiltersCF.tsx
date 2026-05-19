@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FiltersProps } from '../../site-components/Filters/Filters.types';
 import styles from '../../site-components/Filters/Filters.module.scss';
 
@@ -17,6 +17,8 @@ import Accordions from '../../components/Accordions/Accordions';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const {
     buttonText = (
       <span>
@@ -31,66 +33,24 @@ const Filters = (props: FiltersProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const clearFields = () => {
-    const {
-      offset,
-      language,
-      insurer,
-      gender,
-      videoConsultation,
-      practice,
-      requestPath,
-      ...queryParams
-    } = router.query;
+    const newQueryParams = new URLSearchParams(searchParams.toString());
+    [
+      'offset',
+      'language',
+      'insurer',
+      'gender',
+      'videoConsultation',
+      'practice',
+      'requestPath',
+      'search',
+      'keywordId',
+    ].forEach((key) => newQueryParams.delete(key));
 
-    const newQueryParams: any = { ...queryParams };
+    newQueryParams.set('offset', '0');
+    newQueryParams.set('sortType', 'relevance');
 
-    // Remove search if it exists
-    if ('search' in newQueryParams) {
-      delete newQueryParams.search;
-    }
-
-    // Remove keywordId if it exists
-    if ('keywordId' in newQueryParams) {
-      delete newQueryParams.keywordId;
-    }
-
-    // Remove language if it exists
-    if ('language' in newQueryParams) {
-      delete newQueryParams.language;
-    }
-
-    // Remove insurer if it exists
-    if ('insurer' in newQueryParams) {
-      delete newQueryParams.insurer;
-    }
-
-    // Remove gender if it exists
-    if ('gender' in newQueryParams) {
-      delete newQueryParams.gender;
-    }
-
-    // Remove videoConsultation if it exists
-    if ('videoConsultation' in newQueryParams) {
-      delete newQueryParams.videoConsultation;
-    }
-
-    // Remove practice if it exists
-    if ('practice' in newQueryParams) {
-      delete newQueryParams.practice;
-    }
-
-    // Update offset and sortBy to their default values
-    newQueryParams.offset = 0;
-    newQueryParams.sortType = 'relevance';
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: newQueryParams,
-      },
-      undefined,
-      { shallow: true }
-    );
+    const queryString = newQueryParams.toString();
+    router.push(`${pathname}${queryString ? `?${queryString}` : ''}`);
   };
 
   return (

@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { SelectLocationProps } from './SelectLocation.types';
 import LocationCard from '../LocationCardSlots/LocationCard';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';

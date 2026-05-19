@@ -118,6 +118,7 @@ import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Naviga
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
+import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
 import Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 from 'temp/component-library/foundation/Themes/Themes';
 
@@ -761,6 +762,12 @@ const importMap = [
     module: '@component-library/site-components/FooterSmall/FooterSmall',
     exports: [
       { name: 'default', value: FooterSmall },
+    ]
+  },
+  {
+    module: '@component-library/consultant-finder/ReviewsSection/ReviewsSection',
+    exports: [
+      { name: 'default', value: ReviewsSection },
     ]
   },
   {

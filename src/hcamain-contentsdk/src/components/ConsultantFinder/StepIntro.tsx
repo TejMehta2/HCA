@@ -4,7 +4,7 @@
 
 import { type JSX } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 import {
@@ -21,6 +21,7 @@ import SearchLocation from '@component-library/consultant-finder/Search/SearchLo
 import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
 import PopularSearchesBox from '@component-library/consultant-finder/PopularSearchesBox/PopularSearchesBox';
 import Themes from '@component-library/foundation/Themes/Themes';
+import { buildUrl } from './routeQuery';
 
 interface Fields {
   QuickSearchLink: LinkField;
@@ -219,10 +220,12 @@ export const Default = (props: StepProps): JSX.Element => {
   const handleClickAdvanceSearch = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-    router.push({
-      pathname: props.fields.AdvancedSearchLink.value.href,
-      query: { keywordId: keywordId, searchString: searchString },
-    });
+    router.push(
+      buildUrl(props.fields.AdvancedSearchLink.value.href || '', {
+        keywordId,
+        searchString,
+      })
+    );
   };
 
   if (props.fields) {

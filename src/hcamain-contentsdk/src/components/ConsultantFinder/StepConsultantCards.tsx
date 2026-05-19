@@ -6,12 +6,10 @@
 'use client';
 
 import { type JSX } from 'react';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useMemo } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
-  GetStaticComponentProps,
   Image as JssImage,
   ImageField,
   Field,
@@ -20,6 +18,8 @@ import {
   ComponentRendering,
   LayoutServiceData,
 } from '@sitecore-content-sdk/nextjs';
+
+type GetStaticComponentProps = (...args: any[]) => Promise<any>;
 import Text from '@component-library/foundation/Text/Text';
 import ConsultantCard from '@component-library/consultant-finder/ConsultantCard/ConsultantCard';
 import Pagination from '@component-library/core-components/Pagination/Pagination';
@@ -53,6 +53,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import SearchLocation from '@component-library/consultant-finder/Search/SearchLocation';
 import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
+import { buildUrl, getQueryObject } from './routeQuery';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -206,6 +207,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
+  const query = useMemo(() => getQueryObject(searchParams), [searchParams]);
   const [totalPgaes, setTotalPages] = useState(0);
   const [total, setTotal] = useState(0);
   const [results, setResults] = useState([]);
@@ -263,22 +266,17 @@ export const Default = (props: StepProps): JSX.Element => {
     // update UI immediately
     setSelectedLocationConsultants(nextLocation);
 
-    // update URL params -> triggers your existing fetch effect (router.query dependency)
-    const { requestPath, offset, location, ...queryParams } = router.query;
+    // update URL params -> triggers your existing fetch effect
+    const { requestPath, offset, location, ...queryParams } = query;
 
     router.push(
-      {
-        pathname: router.pathname,
-        query: {
-          ...queryParams,
-          lat: lat,
-          lon: lon,
-          distance: distance,
-          offset: 0, // reset pagination when changing region
-        },
-      },
-      undefined,
-      { shallow: true }
+      buildUrl(pathname, {
+        ...queryParams,
+        lat: lat,
+        lon: lon,
+        distance: distance,
+        offset: 0, // reset pagination when changing region
+      })
     );
   };
 
@@ -299,21 +297,14 @@ export const Default = (props: StepProps): JSX.Element => {
 
   // Update URL query parameters
   const updateUrlParams = (practices: string[]) => {
-    const queryParams = { ...router.query };
+    const queryParams = { ...query };
     delete queryParams.practice;
     delete queryParams.requestPath;
     delete queryParams.offset;
     if (practices.length > 0) {
       queryParams.practice = practices.join(',');
     }
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { ...queryParams, offset: 0 },
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(buildUrl(pathname, { ...queryParams, offset: 0 }));
   };
 
   const isOneTrustAvailable = () =>
@@ -349,7 +340,6 @@ export const Default = (props: StepProps): JSX.Element => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (!router.isReady) return;
 
     const syncWithConsent = () => {
       const consent = hasFunctionalConsent();
@@ -363,10 +353,10 @@ export const Default = (props: StepProps): JSX.Element => {
 
       // If URL has location, don't hydrate from cookie here.
       // Let the "results" useEffect handle location from URL.
-      if (router.query.location) return;
+      if (query.location) return;
 
       const saved = readCookie('location');
-      const locationParam = router.query.location;
+      const locationParam = query.location ? query.location.toString() : '';
       if (locationParam) {
         setSelectedLocationConsultants(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
         setSearchStringLocations(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
@@ -388,7 +378,7 @@ export const Default = (props: StepProps): JSX.Element => {
     window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
     return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
     // include searchStringLocations so the handler sees latest selection
-  }, [router.isReady]);
+  }, [query]);
 
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -442,39 +432,18 @@ export const Default = (props: StepProps): JSX.Element => {
   // gender
   const handleGenderOptions = (value: string) => {
     setCheckedOptionGender(value);
-    const { requestPath, offset, ...updatedQuery } = router.query;
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { ...updatedQuery, gender: value, offset: 0 },
-      },
-      undefined,
-      { shallow: true }
-    );
+    const { requestPath, offset, ...updatedQuery } = query;
+    router.push(buildUrl(pathname, { ...updatedQuery, gender: value, offset: 0 }));
   };
 
   // insurer
   const handleRadioButtonChange = (value: number) => {
     setSelectedInsurer(value);
     if (value === 0) {
-      const { insurer, offset, ...queryWithoutInsurer } = router.query;
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { ...queryWithoutInsurer, offset: 0 },
-        },
-        undefined,
-        { shallow: true }
-      );
+      const { insurer, offset, ...queryWithoutInsurer } = query;
+      router.push(buildUrl(pathname, { ...queryWithoutInsurer, offset: 0 }));
     } else {
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { ...router.query, insurer: value },
-        },
-        undefined,
-        { shallow: true }
-      );
+      router.push(buildUrl(pathname, { ...query, insurer: value }));
     }
   };
 
@@ -483,25 +452,11 @@ export const Default = (props: StepProps): JSX.Element => {
     const selectedValue = e.target.value;
     setSelectedLanguage(selectedValue);
     if (selectedValue !== '') {
-      const { requestPath, ...updatedQuery } = router.query;
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { ...updatedQuery, language: selectedValue, offset: 0 },
-        },
-        undefined,
-        { shallow: true }
-      );
+      const { requestPath, ...updatedQuery } = query;
+      router.push(buildUrl(pathname, { ...updatedQuery, language: selectedValue, offset: 0 }));
     } else {
-      const { language, ...queryWithoutLanguage } = router.query;
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { ...queryWithoutLanguage, offset: 0 },
-        },
-        undefined,
-        { shallow: true }
-      );
+      const { language, ...queryWithoutLanguage } = query;
+      router.push(buildUrl(pathname, { ...queryWithoutLanguage, offset: 0 }));
     }
   };
 
@@ -521,7 +476,7 @@ export const Default = (props: StepProps): JSX.Element => {
       location,
       distance,
       ...queryParams
-    } = router.query;
+    } = query;
 
     const newQueryParams: any = { ...queryParams };
 
@@ -575,14 +530,7 @@ export const Default = (props: StepProps): JSX.Element => {
     setSelectedLocationConsultants('Anywhere');
     setSearchStringLocations('Anywhere');
 
-    router.push(
-      {
-        pathname: router.pathname,
-        query: newQueryParams,
-      },
-      undefined,
-      { shallow: true }
-    );
+    router.push(buildUrl(pathname, newQueryParams));
   };
 
   useEffect(() => {
@@ -591,17 +539,11 @@ export const Default = (props: StepProps): JSX.Element => {
     //   behavior: 'smooth',
     // });
 
-    // If router is not ready, set loading to true
-    if (!router.isReady) {
-      setLoading(true);
-      return; // Exit early if router is not ready
-    }
-
     // location
-    const locationQuery = router.query.location?.toString();
-    const latQuery = router.query.lat?.toString();
-    const lonQuery = router.query.lon?.toString();
-    const distanceQuery = router.query.distance?.toString();
+    const locationQuery = searchParams.get('location') || undefined;
+    const latQuery = searchParams.get('lat') || undefined;
+    const lonQuery = searchParams.get('lon') || undefined;
+    const distanceQuery = searchParams.get('distance') || undefined;
 
     if (locationQuery) {
       const locationFormatted =
@@ -632,17 +574,15 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     // offset
-    const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
+    const initialOffset = searchParams.get('offset') ? Number(searchParams.get('offset')) : 0;
     setOffset(initialOffset);
 
     // practice
-    const practiceQuery = router.query.practice;
-    const videoPractice = router.query.videoConsultation;
+    const practiceQuery = searchParams.get('practice');
+    const videoPractice = searchParams.get('videoConsultation');
     if (practiceQuery) {
       // console.log('practiceQuery', practiceQuery);
-      const practices = Array.isArray(practiceQuery)
-        ? practiceQuery
-        : practiceQuery.split(',');
+      const practices = practiceQuery.split(',');
       setCheckedPractices(practices);
       // console.log('practices', practices);
       setCheckedPractices(practices);
@@ -658,7 +598,7 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     // gender
-    const genderQueryParam = router.query.gender;
+    const genderQueryParam = searchParams.get('gender');
     if (genderQueryParam) {
       setCheckedOptionGender(genderQueryParam.toString());
     } else {
@@ -666,19 +606,20 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     // insurer
-    const { insurer } = router.query;
+    const insurer = searchParams.get('insurer');
     if (insurer) {
       setSelectedInsurer(Number(insurer));
     }
 
     // languages
-    const { language } = router.query;
+    const language = searchParams.get('language');
     if (language) {
       setSelectedLanguage(language.toString());
     }
 
     // Set the search string based on the query parameter if it exists
-    const { search, keywordId } = router.query;
+    const search = searchParams.get('search');
+    const keywordId = searchParams.get('keywordId');
 
     if (search) {
       setSearchString(search.toString());
@@ -786,14 +727,14 @@ export const Default = (props: StepProps): JSX.Element => {
       .finally(() => {
         //console.log('set doctify loaded true');
         setDoctifyLoaded(true);
-      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady, router.query]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        {router.isReady && !pageNotFound && (
+        {!pageNotFound && (
           <>
             <Breadcrumbs
               backCta={{
@@ -923,7 +864,7 @@ export const Default = (props: StepProps): JSX.Element => {
                                   const target = e.target;
                                   setIsChecked(target.checked);
 
-                                  const queryParams = { ...router.query };
+                                  const queryParams = { ...query };
                                   if (target.checked) {
                                     queryParams.videoConsultation = 'true';
                                     queryParams.offset = '0';
@@ -931,14 +872,7 @@ export const Default = (props: StepProps): JSX.Element => {
                                     delete queryParams.videoConsultation;
                                     delete queryParams.offset;
                                   }
-                                  router.push(
-                                    {
-                                      pathname: router.pathname,
-                                      query: queryParams,
-                                    },
-                                    undefined,
-                                    { shallow: true }
-                                  );
+                                  router.push(buildUrl(pathname, queryParams));
                                 }}
                               ></Checkbox>
                             </div>
@@ -1087,7 +1021,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       options={[
                         {
                           id: 'relevance',
-                          defaultChecked: router.query.sortType === 'relevance',
+                          defaultChecked: query.sortType === 'relevance',
                           labelText:
                             props?.fields?.SortByMostRelevantOptionText
                               ?.value || 'Most relevant',
@@ -1095,7 +1029,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         },
                         {
                           id: 'rating',
-                          defaultChecked: router.query.sortType === 'rating',
+                          defaultChecked: query.sortType === 'rating',
                           labelText:
                             props?.fields?.SortByHigestRatedOptionText?.value ||
                             'Highest rated by patients',
@@ -1103,7 +1037,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         },
                         {
                           id: 'nearest',
-                          defaultChecked: router.query.sortType === 'nearest',
+                          defaultChecked: query.sortType === 'nearest',
                           labelText:
                             props?.fields?.SortByMostNearestOptionText?.value ||
                             'Nearest',
@@ -1115,21 +1049,14 @@ export const Default = (props: StepProps): JSX.Element => {
 
                         if (target.checked) {
                           const queryParams = {
-                            ...router.query,
+                            ...query,
                             sortType: target.value,
                             offset: 0,
                           };
                           if ('requestPath' in queryParams) {
                             delete queryParams.requestPath;
                           }
-                          router.push(
-                            {
-                              pathname: router.pathname,
-                              query: queryParams,
-                            },
-                            undefined,
-                            { shallow: true }
-                          );
+                          router.push(buildUrl(pathname, queryParams));
                         }
                       }}
                     />
@@ -1337,14 +1264,9 @@ export const Default = (props: StepProps): JSX.Element => {
                         const offset = (newPage - 1) * 12;
                         setOffset(offset);
                         // Update the URL query parameters
-                        const { requestPath, ...queryParams } = router.query;
+                        const { requestPath, ...queryParams } = query;
                         router.push(
-                          {
-                            pathname: router.pathname,
-                            query: { ...queryParams, offset: offset },
-                          },
-                          undefined,
-                          { shallow: true }
+                          buildUrl(pathname, { ...queryParams, offset: offset })
                         );
                       }}
                       currentPage={Math.ceil((offset + 1) / 12)}
@@ -1356,15 +1278,11 @@ export const Default = (props: StepProps): JSX.Element => {
                         const nextOffset = (newPage - 1) * 12;
                         setOffset(nextOffset);
 
-                        const { requestPath, ...queryParams } = router.query;
+                        const { requestPath, ...queryParams } = query;
 
                         await router.push(
-                          {
-                            pathname: router.pathname,
-                            query: { ...queryParams, offset: nextOffset },
-                          },
-                          undefined,
-                          { shallow: true, scroll: false }
+                          buildUrl(pathname, { ...queryParams, offset: nextOffset }),
+                          { scroll: false }
                         );
                       }}
                       currentPage={Math.ceil((offset + 1) / 12)}

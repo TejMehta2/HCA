@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
@@ -20,8 +20,6 @@ const SearchAllDdropdown = (props: SearchDropdownProps): JSX.Element => {
     props?.data?.filter((item: any) => item.type !== 'specialty') || [];
 
   const handleClick = (name: string, id: number) => {
-    props.setIsComponentVisible(false);
-
     if (props.setSearchString) {
       props.setSearchString(name);
     }
@@ -29,6 +27,7 @@ const SearchAllDdropdown = (props: SearchDropdownProps): JSX.Element => {
       props.setKeywordId(id);
     }
     setSearchStringConsultantName('');
+    props.setIsComponentVisible(false);
   };
 
   return (

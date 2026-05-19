@@ -12,13 +12,18 @@
 //
 // new mode - doctify slug format, data will come from the Doctify record and is based on the slug
 // https://www.hcacloud.localhost/Finder/CMADisclosures/miss-joanna-franks
+'use client';
+
+import { type JSX } from 'react';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useParams, useSearchParams } from 'next/navigation';
 import {
-  GetStaticComponentProps,
   ComponentRendering,
   useComponentProps,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import { getPathSegments } from './routeQuery';
+
+type GetStaticComponentProps = (...args: any[]) => Promise<any>;
 import axios from 'axios';
 import { getSpecialistProfileData } from 'lib/consultant-finder/API_Doctify';
 import CmaDisclosure from '@component-library/consultant-finder/CmaDisclosure/CmaDisclosure';
@@ -75,7 +80,8 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const router = useRouter();
+  const params = useParams<{ path?: string[] }>();
+  const searchParams = useSearchParams();
   const id = props.params.RenderingIdentifier;
   const [cmaHTML, setcmaHTML] = useState('Loading...');
 
@@ -91,19 +97,13 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
-    if (!router.isReady) {
-      return;
-    }
     //console.log('use effect1');
     // grab the GUID from the query parmeters - legacy style - redirect?
-    let cmaId = router?.query?.CmaContentId || null;
-    if (
-      !cmaId &&
-      router?.query?.path?.length &&
-      router?.query?.path?.length > 0
-    ) {
+    let cmaId = searchParams.get('CmaContentId');
+    const path = getPathSegments(params.path);
+    if (!cmaId && path.length > 0) {
       //grab the GUID from the url frag - NextJS style? parmeters
-      cmaId = (router.query.path as [])[(router.query.path as []).length - 1];
+      cmaId = path[path.length - 1];
     }
     const cmaURL = `https:/api/finderAPI/CMA?cmaId=${cmaId}`;
 
@@ -124,7 +124,7 @@ export const Default = (props: StepProps): JSX.Element => {
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [params.path, searchParams, ssHTML]);
 
   if (props.fields) {
     return (

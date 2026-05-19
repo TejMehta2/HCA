@@ -1,7 +1,7 @@
 'use client';
 
 import React, { type JSX } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { ConsultantNameProps } from './ConsultantName.types';
 import styles from './ConsultantName.module.scss';
 import Text from '../../foundation/Text/Text';

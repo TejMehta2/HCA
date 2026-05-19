@@ -6,7 +6,7 @@
 
 import { type JSX } from 'react';
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   ImageField,
   Field,
@@ -22,6 +22,7 @@ import { ConsultantFinderContext } from '@component-library/context/consultantFi
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import Link from 'next/link';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   TitleText: Field<string>;
@@ -63,6 +64,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [insurer, seInsurer] = useState('');
   const [calculate, setCalculate] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
   // console.log('selectedLocations', selectedLocations);
   // console.log('array', array);
   const slugs = props?.fields?.Hospitals.map(
@@ -80,28 +82,21 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get keywordID from URL
-    const keywordIdQuery = router?.query?.keywordId || '';
-    setKewordId(keywordIdQuery.toString());
+    setKewordId(getQueryValue(searchParams, 'keywordId'));
 
     // get searchString from URL
-    const searchStringQuery = router?.query?.searchString || '';
-    setSearch(searchStringQuery.toString());
+    setSearch(getQueryValue(searchParams, 'searchString'));
 
     // get payment option from URL
-    const paymentOption = router?.query?.insurer || '';
-    seInsurer(paymentOption.toString());
+    seInsurer(getQueryValue(searchParams, 'insurer'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
       <>
-        {router.isReady && (
+        {(
           <>
             <LocationsTopSection
               hospitals={hospitals}

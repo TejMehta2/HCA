@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GraphQLRequestClient } from '@sitecore-jss/sitecore-jss-nextjs/graphql';
-import config from 'temp/config';
+import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
+
+const sitecoreApiHost = process.env.NEXT_PUBLIC_SITECORE_API_HOST || '';
+const sitecoreApiKey = process.env.NEXT_PUBLIC_SITECORE_API_KEY || '';
+const graphQLEndpoint =
+  process.env.GRAPH_QL_ENDPOINT ||
+  (sitecoreApiHost ? `${sitecoreApiHost}/sitecore/api/graph/edge` : '');
 
 // dynamic GraphQL query, works on flat object at the mo...
 // references
@@ -18,8 +23,8 @@ export async function getItemFromGraphQL(
       `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
     );*/
 
-    const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
-      apiKey: config.sitecoreApiKey,
+    const graphQLClient = new GraphQLRequestClient(graphQLEndpoint, {
+      apiKey: sitecoreApiKey,
     });
 
     // build a dynamic query

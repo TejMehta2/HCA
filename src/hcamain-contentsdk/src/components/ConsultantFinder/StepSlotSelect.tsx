@@ -7,10 +7,9 @@
 
 import { type JSX } from 'react';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
-  GetStaticComponentProps,
   useComponentProps,
   ComponentRendering,
   Image as JssImage,
@@ -19,6 +18,8 @@ import {
   LinkField,
   LayoutServiceData,
 } from '@sitecore-content-sdk/nextjs';
+
+type GetStaticComponentProps = (...args: any[]) => Promise<any>;
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
@@ -33,6 +34,7 @@ import { getHolidays } from '../../lib/consultant-finder/API_HCA';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { GetServerSidePropsContext } from 'next';
 import Modals from '@component-library/components/Modals/Modals';
+import { getQueryValue } from './routeQuery';
 
 interface Fields {
   HCALogo: ImageField;
@@ -120,6 +122,7 @@ export const Default = (props: StepProps): JSX.Element => {
   } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [slug, setSlug] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [search, setSearch] = useState<string>('');
@@ -134,42 +137,36 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     // get search from URL
-    const searchURL = router?.query?.search || '';
-    setSearch(searchURL.toString());
+    setSearch(getQueryValue(searchParams, 'search'));
 
     // get keywordId from URL
-    const keywordIdURL = router?.query?.keywordId || '';
-    setKeywordId(keywordIdURL.toString());
+    setKeywordId(getQueryValue(searchParams, 'keywordId'));
 
     // get slug from URL
-    const slug = router?.query?.slug || '';
-    setSlug(slug.toString());
+    const slug = getQueryValue(searchParams, 'slug');
+    setSlug(slug);
 
     // get name from URL
-    const nameURL = router?.query?.name || '';
-    setName(nameURL.toString());
+    const name = getQueryValue(searchParams, 'name');
+    setName(name);
 
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
+    const gmcNumber = getQueryValue(searchParams, 'gmcNumber');
+    setGmcNumber(gmcNumber);
 
     // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
+    const reviewsTotal = searchParams.get('reviewsTotal');
     setReviewsTotal(Number(reviewsTotal));
 
     // if selected location and appointment type is missing then redirect to appointment type
     if (selectedLocation === '' && selectedTypeOfAppointment === '') {
       router.push(
-        `/finder/step-terms-and-conditions?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
+        `/finder/step-terms-and-conditions?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${getQueryValue(searchParams, 'search')}&keywordId=${getQueryValue(searchParams, 'keywordId')}`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [searchParams]);
 
   if (props.fields) {
     return (
@@ -177,8 +174,7 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {router.isReady &&
-          selectedLocation !== '' &&
+        {selectedLocation !== '' &&
           selectedTypeOfAppointment !== '' && (
             <>
               <HeaderLDB
