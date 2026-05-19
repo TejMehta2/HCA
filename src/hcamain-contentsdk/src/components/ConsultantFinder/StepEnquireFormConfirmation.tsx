@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
+'use client';
+
+import { type JSX } from 'react';
 import React, { useContext } from 'react';
 import {
   RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
 import { useRouter } from 'next/router';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';

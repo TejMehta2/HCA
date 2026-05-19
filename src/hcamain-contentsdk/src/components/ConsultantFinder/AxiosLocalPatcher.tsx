@@ -1,3 +1,5 @@
+'use client';
+
 import axios from 'axios';
 
 // fix up https to http for localhost:3000 disconnected mode use

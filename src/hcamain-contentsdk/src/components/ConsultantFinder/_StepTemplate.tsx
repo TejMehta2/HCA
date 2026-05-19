@@ -1,5 +1,6 @@
 // Template finder component
 
+import { type JSX } from 'react';
 import React from 'react';
 import {
   Image as JssImage,
@@ -8,7 +9,7 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 

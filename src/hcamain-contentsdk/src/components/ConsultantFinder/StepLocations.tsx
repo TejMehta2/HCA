@@ -2,13 +2,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
+'use client';
+
+import { type JSX } from 'react';
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import LocationCardsWrapper from '@component-library/consultant-finder/LocationCardsWrapper/LocationCardsWrapper';
 import LocationCard from '@component-library/consultant-finder/LocationCard/LocationCard';

@@ -7,6 +7,9 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
+'use client';
+
+import { type JSX } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
@@ -17,7 +20,7 @@ import {
   LinkField,
   useComponentProps,
   ComponentRendering,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';

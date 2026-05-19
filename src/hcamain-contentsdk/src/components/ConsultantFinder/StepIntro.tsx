@@ -1,5 +1,8 @@
 /* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
+
+import { type JSX } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
@@ -8,7 +11,7 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import SearchAll from '@component-library/consultant-finder/Search/SearchAll';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';

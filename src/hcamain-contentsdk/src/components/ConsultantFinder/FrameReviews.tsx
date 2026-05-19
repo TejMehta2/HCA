@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
+import { type JSX } from 'react';
 import React from 'react';
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-content-sdk/nextjs';
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 
 interface Fields {

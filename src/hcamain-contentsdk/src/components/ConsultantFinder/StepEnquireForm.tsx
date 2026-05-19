@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
+'use client';
+
+import { type JSX } from 'react';
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -17,7 +20,7 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';

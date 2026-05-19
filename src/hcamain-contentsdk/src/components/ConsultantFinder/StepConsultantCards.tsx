@@ -3,6 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template finder component
 
+'use client';
+
+import { type JSX } from 'react';
 import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -16,7 +19,7 @@ import {
   useComponentProps,
   ComponentRendering,
   LayoutServiceData,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import ConsultantCard from '@component-library/consultant-finder/ConsultantCard/ConsultantCard';
 import Pagination from '@component-library/core-components/Pagination/Pagination';
