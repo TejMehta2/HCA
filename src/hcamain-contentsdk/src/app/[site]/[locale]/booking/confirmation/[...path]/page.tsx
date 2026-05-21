@@ -1,65 +1,72 @@
-import { useEffect } from 'react';
-import NotFound from 'src/NotFound';
-import Layout from 'src/Layout';
-import {
-  RenderingType,
-  SitecoreContext,
-  ComponentPropsContext,
-  EditingComponentPlaceholder,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
-import { SitecorePageProps } from 'lib/page-props';
-import { sitecorePagePropsFactory } from 'lib/page-props-factory';
-import { componentBuilder } from 'temp/componentBuilder';
-import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
-import { GetServerSideProps } from 'next';
+import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
+import { draftMode, headers as nextHeaders } from 'next/headers';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import client from 'src/lib/sitecore-client';
+import Layout, { RouteFields } from 'src/Layout';
+import Providers from 'src/Providers';
 
-const SitecorePage = (props: SitecorePageProps): JSX.Element => {
-  const { notFound, componentProps, layoutData, headLinks } = props;
-  useCustomTracking();
-  useEffect(() => {
-    // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
-    handleEditorFastRefresh();
-  }, []);
+type BookingConfirmationPageProps = {
+  params: Promise<{
+    site: string;
+    locale: string;
+    path?: string[];
+  }>;
+};
 
-  if (notFound || !layoutData.sitecore.route) {
-    // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
-    return <NotFound />;
+export const dynamic = 'force-dynamic';
+
+const BOOKING_CONFIRMATION_PATH = 'booking/confirmation/,-w-,';
+
+export default async function BookingConfirmationPage({
+  params,
+}: BookingConfirmationPageProps) {
+  const { site, locale } = await params;
+
+  setRequestLocale(`${site}_${locale}`);
+
+  const draft = await draftMode();
+  let page;
+
+  if (draft.isEnabled) {
+    const headers = await nextHeaders();
+    const previewData = client.getPreviewData(headers);
+
+    if (isDesignLibraryPreviewData(previewData)) {
+      page = await client.getDesignLibraryData(previewData);
+    } else {
+      page = await client.getPreview(previewData);
+    }
+  } else {
+    page = await client.getPage(BOOKING_CONFIRMATION_PATH, { site, locale });
   }
 
-  const isEditing = layoutData.sitecore.context.pageEditing;
-  const isComponentRendering =
-    layoutData.sitecore.context.renderingType === RenderingType.Component;
+  if (!page?.layout.sitecore.route) {
+    notFound();
+  }
 
   return (
-    <ComponentPropsContext value={componentProps}>
-      <SitecoreContext
-        componentFactory={componentBuilder.getComponentFactory({ isEditing })}
-        layoutData={layoutData}
-      >
-        {/*
-          Sitecore Pages supports component rendering to avoid refreshing the entire page during component editing.
-          If you are using Experience Editor only, this logic can be removed, Layout can be left.
-        */}
-        {isComponentRendering ? (
-          <EditingComponentPlaceholder rendering={layoutData.sitecore.route} />
-        ) : (
-          <Layout layoutData={layoutData} headLinks={headLinks} />
-        )}
-      </SitecoreContext>
-    </ComponentPropsContext>
+    <NextIntlClientProvider>
+      <Providers page={page}>
+        <Layout page={page} />
+      </Providers>
+    </NextIntlClientProvider>
   );
-};
+}
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  if (context.params) {
-    context.params.path = [`booking/confirmation/,-w-,`];
-  }
+export const generateMetadata = async ({
+  params,
+}: BookingConfirmationPageProps) => {
+  const { site, locale } = await params;
+  const page = await client.getPage(BOOKING_CONFIRMATION_PATH, {
+    site,
+    locale,
+  });
 
-  const props = await sitecorePagePropsFactory.create(context);
   return {
-    props,
+    title:
+      (page?.layout.sitecore.route?.fields as RouteFields)?.Title?.value?.toString() ||
+      'Page',
   };
 };
-
-export default SitecorePage;
