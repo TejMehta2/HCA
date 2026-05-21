@@ -1,44 +1,92 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import fetch from 'node-fetch';
-import stream from 'stream';
-import { promisify } from 'util';
+import { type NextRequest } from 'next/server';
 
-const pipeline = promisify(stream.pipeline); // allow us to forward promise to asset
+type RouteContext = {
+  params: Promise<{
+    slug?: string[];
+  }>;
+};
+
+type ProxyRequestInit = RequestInit & {
+  duplex?: 'half';
+};
+
+function getErrorBody(err: unknown): BodyInit | null {
+  if (err === null || err === undefined) {
+    return null;
+  }
+
+  if (typeof err === 'object' || typeof err === 'number' || typeof err === 'boolean') {
+    return JSON.stringify(err);
+  }
+
+  return String(err);
+}
 
 // Proxy requests to remote integration API layer
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextRequest, context: RouteContext) {
   try {
-    const { method = 'GET', body, query, headers } = req;
+    const method = req.method || 'GET';
+    const { slug } = await context.params;
 
     // Construct remote request URL
-    const slug = query.slug as string[] | string;
-    const path = typeof slug === 'string' ? slug : slug?.join('/');
-    const remoteRequestUrl = new URL(path, process.env.INTEGRATION_LAYER_URL);
+    const path = slug?.join('/');
+    const remoteRequestUrl = new URL(path as string, process.env.INTEGRATION_LAYER_URL);
 
     // Forward original URL query to remote request URL
-    const params = new URLSearchParams(query as Record<string, string>);
-    params.delete('slug');
-    remoteRequestUrl.search = params.toString() || '';
+    remoteRequestUrl.search = req.nextUrl.searchParams.toString() || '';
 
     // fetch from remote integration layer server
-    delete headers.host;
-    delete headers.referer;
+    const headers = new Headers(req.headers);
+    headers.delete('host');
+    headers.delete('referer');
 
-    const response = await fetch(remoteRequestUrl.href, {
+    const fetchOptions: ProxyRequestInit = {
       method,
-      body: method === 'GET' ? undefined : body,
-      headers: headers as Record<string, string>,
-    });
+      headers,
+    };
+
+    if (method !== 'GET' && req.body) {
+      fetchOptions.body = req.body;
+      fetchOptions.duplex = 'half';
+    }
+
+    const response = await fetch(remoteRequestUrl.href, fetchOptions);
 
     if (!response.ok || !response.body) {
       throw `unexpected response ${response.statusText} at ${remoteRequestUrl} (${req.url})`;
     }
-    await pipeline(response.body, res);
+
+    return new Response(response.body);
   } catch (err) {
     console.log(err); // log to server
-    return res.status(500).send(err);
+    return new Response(getErrorBody(err), { status: 500 });
   }
+}
+
+export async function GET(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function POST(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function PUT(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function PATCH(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function DELETE(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function HEAD(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function OPTIONS(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
 }
