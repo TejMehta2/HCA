@@ -9,7 +9,6 @@ import {
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import React from 'react';
-import componentMap from '.sitecore/component-map';
 import { AppPlaceholder, Image, RichText, Text, Link } from '@sitecore-content-sdk/nextjs';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
@@ -17,6 +16,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import { setInsideContainerComponentParam, isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
+import componentMap from '.sitecore/component-map';
 import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
 import Themes from '@component-library/foundation/Themes/Themes';
 import TextBlockContainer from '@component-library/site-components/TextBlockContainer/TextBlockContainer';
@@ -145,12 +145,6 @@ const importMap = [
     ]
   },
   {
-    module: '.sitecore/component-map',
-    exports: [
-      { name: 'default', value: componentMap },
-    ]
-  },
-  {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
       { name: 'AppPlaceholder', value: AppPlaceholder },
@@ -190,6 +184,12 @@ const importMap = [
     exports: [
       { name: 'setInsideContainerComponentParam', value: setInsideContainerComponentParam },
       { name: 'isInsideContainerComponent', value: isInsideContainerComponent },
+    ]
+  },
+  {
+    module: '.sitecore/component-map',
+    exports: [
+      { name: 'default', value: componentMap },
     ]
   },
   {

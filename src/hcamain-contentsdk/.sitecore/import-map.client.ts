@@ -9,7 +9,7 @@ import {
 // end of built-in imports
 
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { useEffect, useState, useContext, useMemo, useRef, createElement, Suspense, useCallback } from 'react';
+import { Suspense, useEffect, useState, useContext, useMemo, useRef, createElement, useCallback } from 'react';
 import React from 'react';
 import { useRouter, useSearchParams, usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -29,7 +29,6 @@ import BookingTypeCards from '@component-library/the-birth-company/BookingTypeCa
 import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SlotsCalendarBirthCompany from '@component-library/the-birth-company/SlotsCalendar/SlotsCalendarBirthCompany';
-import componentMap from '.sitecore/component-map';
 import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
 import LocationCardBlock from '@component-library/the-birth-company/LocationCardBlock/LocationCardBlock';
@@ -215,13 +214,13 @@ const importMap = [
   {
     module: 'react',
     exports: [
+      { name: 'Suspense', value: Suspense },
       { name: 'useEffect', value: useEffect },
       { name: 'useState', value: useState },
       { name: 'useContext', value: useContext },
       { name: 'useMemo', value: useMemo },
       { name: 'useRef', value: useRef },
       { name: 'createElement', value: createElement },
-      { name: 'Suspense', value: Suspense },
       { name: 'useCallback', value: useCallback },
       { name: 'default', value: React },
     ]
@@ -344,12 +343,6 @@ const importMap = [
     module: '@component-library/the-birth-company/SlotsCalendar/SlotsCalendarBirthCompany',
     exports: [
       { name: 'default', value: SlotsCalendarBirthCompany },
-    ]
-  },
-  {
-    module: '.sitecore/component-map',
-    exports: [
-      { name: 'default', value: componentMap },
     ]
   },
   {
