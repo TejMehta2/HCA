@@ -1,8 +1,14 @@
+import { neon } from '@neondatabase/serverless';
 import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseAppItemsFromGraphQL';
 import { getRecurseGenericItemsFromGraphQL } from 'lib/consultant-finder/getRecurseGenericItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { neon } from '@neondatabase/serverless';
+import { type NextRequest, NextResponse } from 'next/server';
+
+type RouteContext = {
+  params: Promise<{
+    app?: string[];
+  }>;
+};
 
 // mock articles
 /*
@@ -101,6 +107,11 @@ const articles = [
   },
 ];
 */
+type AppApiBody = {
+  accessCode?: string;
+  key?: string;
+  value?: string;
+};
 
 // media library items have these properties
 interface ISitecoreMediaProps {
@@ -115,12 +126,51 @@ interface IAccessCodeProps {
   accessCode: string;
 }
 
+export const dynamic = 'force-dynamic';
+
+async function getRequestBody(req: NextRequest): Promise<AppApiBody | undefined> {
+  if (!req.body) {
+    return undefined;
+  }
+
+  const contentType = req.headers.get('content-type') ?? '';
+
+  try {
+    if (contentType.includes('application/x-www-form-urlencoded')) {
+      const formData = await req.formData();
+
+      return Object.fromEntries(formData.entries()) as AppApiBody;
+    }
+
+    return (await req.json()) as AppApiBody;
+  } catch {
+    return undefined;
+  }
+}
+
+function setResponseHeaders(response: NextResponse) {
+  // add headers
+  if (revalidate.now() || revalidate.noCache()) {
+    response.headers.set('Cache-Control', 'no-cache');
+    response.headers.set('CDN-Cache-Control', 'no-cache');
+    response.headers.set('Vercel-CDN-Cache-Control', 'no-cache');
+  } else {
+    response.headers.set('Cache-Control', 'max-age=60');
+    response.headers.set('CDN-Cache-Control', 'max-age=100');
+    response.headers.set('Vercel-CDN-Cache-Control', 'max-age=120');
+  }
+
+  // CORS as we are going cross domains
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  response.headers.set('Access-Control-Allow-Credentials', 'true');
+}
+
 // example http://localhost:3000/api/appAPI/PCApp or http://localhost:3000/api/appAPI/Library or http://localhost:3000/api/appAPI/AccessCode
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { app } = req.query;
+async function appAPIHandler(req: NextRequest, context: RouteContext) {
+  const { app } = await context.params;
+  const body = await getRequestBody(req);
   let output: unknown[] | unknown = [];
   const appRootPath = '/sitecore/content/HCA/App';
   const accessCodesRootPath = '/sitecore/content/HCA/App/AccessCodes';
@@ -150,24 +200,24 @@ export default async function handler(
   //const error: string = '';
   if (frags) {
     // path is appended to root, query params for context
-    const lang = (req?.query?.lang as string) ?? 'en';
-    const platform = (req?.query?.platform as string) ?? '';
+    const lang = req.nextUrl.searchParams.get('lang') ?? 'en';
+    const platform = req.nextUrl.searchParams.get('platform') ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
     const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
-    const mode = (req?.query?.mode as string) ?? 'app';
+    const mode = req.nextUrl.searchParams.get('mode') ?? 'app';
 
     // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
       case 'relaywrite': // this is a request to write a relay a code e.g. 2FA
         {
-          if (req?.body && req.body.key && req.body.value) {
+          if (body && body.key && body.value) {
             ('use server');
             // Connect to the Neon database
             const sql = neon(`${process.env.DATABASE_URL}`);
 
             // Insert the key value into the Postgres database
             const result = await sql.query(
-              `INSERT INTO app_relay (app_key,app_value) VALUES ('${req.body.key}','${req.body.value}')`
+              `INSERT INTO app_relay (app_key,app_value) VALUES ('${body.key}','${body.value}')`
             );
             output = JSON.stringify(result);
           }
@@ -175,14 +225,14 @@ export default async function handler(
         break;
       case 'relayread': // this is a request to read a relay code e.g. 2FA
         {
-          if (req?.body && req.body.key) {
+          if (body && body.key) {
             ('use server');
             // Connect to the Neon database
             const sql = neon(`${process.env.DATABASE_URL}`);
 
             // select the top from the Postgres database
             const result = await sql.query(
-              `SELECT app_key,app_value,updated,now() - updated as age from app_relay where app_key like '${req.body.key}' order by updated desc limit 1`
+              `SELECT app_key,app_value,updated,now() - updated as age from app_relay where app_key like '${body.key}' order by updated desc limit 1`
             );
 
             if (result && result.length > 0) {
@@ -194,9 +244,9 @@ export default async function handler(
 
       case 'accesscodes': // this is a request for access code content
         {
-          if (req?.method === 'POST') {
-            if (req?.body && req.body.accessCode) {
-              const accessCodeRequested = req.body.accessCode;
+          if (req.method === 'POST') {
+            if (body && body.accessCode) {
+              const accessCodeRequested = body.accessCode;
               //console.log('accessCodeRequested', accessCodeRequested);
               const accessCodesData = await getRecurseAppItemsFromGraphQL(
                 accessCodesRootPath,
@@ -282,22 +332,36 @@ export default async function handler(
     }
   }
 
-  // add headers
-  if (revalidate.now() || revalidate.noCache()) {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('CDN-Cache-Control', 'no-cache');
-    res.setHeader('Vercel-CDN-Cache-Control', 'no-cache');
-  } else {
-    res.setHeader('Cache-Control', 'max-age=60');
-    res.setHeader('CDN-Cache-Control', 'max-age=100');
-    res.setHeader('Vercel-CDN-Cache-Control', 'max-age=120');
-  }
+  const response = NextResponse.json(output, { status: 200 });
+  setResponseHeaders(response);
 
-  // CORS as we are going cross domains
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  return response;
+}
 
-  return res.status(200).json(output);
+export async function GET(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function POST(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function PUT(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function PATCH(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function DELETE(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function HEAD(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
+}
+
+export async function OPTIONS(req: NextRequest, context: RouteContext) {
+  return appAPIHandler(req, context);
 }
