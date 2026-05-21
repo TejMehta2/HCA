@@ -1,14 +1,15 @@
-import React from 'react';
+'use client';
+
+import { type JSX, Suspense } from 'react';
 import {
+  AppPlaceholder,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  useSitecoreContext,
   useComponentProps,
-  GetServerSideComponentProps,
-  Placeholder,
+  GetComponentServerProps,
   debug,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -23,7 +24,7 @@ import {
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
-import Head from 'next/head';
+import Script from 'next/script';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -88,8 +89,7 @@ function getEcommerceDataLayer(
 const TbcBookingConfirmationDefaultComponent = (
   props: TbcBookingConfirmationProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -104,9 +104,8 @@ const TbcBookingConfirmationDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
+const DefaultContent = (props: TbcBookingConfirmationProps): JSX.Element => {
   debug.common('TBCBookingConfirmation Default Component started');
-  const { sitecoreContext } = useSitecoreContext();
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
@@ -118,7 +117,7 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
 
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   //use status querystring param to manually switch between successful and failed views in edit mode
   if (isExperienceEditor && transactionStatus != null) {
@@ -254,13 +253,13 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   return (
     <>
       {ecommerceDataLayer && (
-        <Head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: ecommerceDataLayer,
-            }}
-          />
-        </Head>
+        <Script
+          id="tbc-booking-confirmation-data-layer"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: ecommerceDataLayer,
+          }}
+        />
       )}
       <FormContainer
         heading={<></>}
@@ -291,9 +290,14 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
         }
         aside={
           <CFAside>
-            {props.rendering && (
+            {props.rendering && props.componentMap && (
               <PlaceHolderWrapper>
-                <Placeholder name={phKey} rendering={props.rendering} />
+                <AppPlaceholder
+                  name={phKey}
+                  rendering={props.rendering}
+                  page={props.page}
+                  componentMap={props.componentMap}
+                />
               </PlaceHolderWrapper>
             )}
           </CFAside>
@@ -313,11 +317,15 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 };
 
 export const getServerSideProps: GetServerSideComponentProps = async (
+
+export const getComponentServerProps: GetComponentServerProps = async (
   _,
   layoutData,
   context
 ) => {
-  const { query } = context;
+  const { query = {} } = context as {
+    query?: Record<string, string | string[]>;
+  };
   let response;
 
   const orderIdQuery = `orderId=${query.path}`;
@@ -326,7 +334,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
   debug.common('TBCBookingConfirmation query.path', query.path);
-  debug.common('TBCBookingConfirmation getServerSideProps started');
+  debug.common('TBCBookingConfirmation getComponentServerProps started');
 
   if (layoutData.sitecore.context.pageEditing) {
     const mockResponse = {

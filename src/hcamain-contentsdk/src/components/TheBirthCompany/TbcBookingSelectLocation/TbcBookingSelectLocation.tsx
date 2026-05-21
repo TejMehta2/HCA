@@ -1,22 +1,23 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
+
 // Template finder component
 // Based on src\hcamain\src\components\ConsultantFinder\StepLocationSelect.tsx
 
+import { type JSX, Suspense } from 'react';
 import React, { useState, useEffect, useContext } from 'react';
-import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
 import {
+  AppPlaceholder,
   Image as JssImage,
   ImageField,
   Field,
   LinkField,
-  useSitecoreContext,
-  Placeholder,
-  ComponentRendering,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
@@ -34,6 +35,7 @@ import {
 } from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   HCALogo: ImageField;
@@ -54,10 +56,9 @@ interface Fields {
   };
 }
 
-type StepProps = {
-  params: { [key: string]: string };
+type StepProps = ComponentWithContextProps & {
   fields: Fields;
-  rendering?: ComponentRendering;
+  componentMap?: ComponentMap;
 };
 
 interface LocationFields {
@@ -68,8 +69,7 @@ interface LocationFields {
 }
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params.styles}`}>
@@ -126,10 +126,6 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${paramScanId}&configurationId=${configurationId}`;
 
     axios
@@ -143,7 +139,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router, router.isReady, paramScanId, configurationId]);
+  }, [paramScanId, configurationId]);
 
   const chosenLocationHandler = (locationId: string) => {
     setSelectedLocation(locationId);
@@ -160,7 +156,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {router.isReady && (
+        {
           <>
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}
@@ -193,9 +189,14 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                       ></CantFind>
                     )}
 
-                    {props.rendering && (
+                    {props.rendering && props.componentMap && (
                       <PlaceHolderWrapper>
-                        <Placeholder name={phKey} rendering={props.rendering} />
+                        <AppPlaceholder
+                          name={phKey}
+                          rendering={props.rendering}
+                          page={props.page}
+                          componentMap={props.componentMap}
+                        />
                       </PlaceHolderWrapper>
                     )}
                   </>
@@ -247,7 +248,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               </div>
             </Navigation>
           </>
-        )}
+        }
       </div>
     );
   }

@@ -1,3 +1,6 @@
+'use client';
+
+import { type JSX } from 'react';
 import React, { useState } from 'react';
 
 import TextField from '@component-library/core-components/TextField/TextField';
@@ -7,12 +10,12 @@ import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import {
-  useSitecoreContext,
   RichText as JssRichText,
   Text as JssText,
   Field,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Params from 'src/types/params';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   data?: {
@@ -26,7 +29,7 @@ interface Fields {
   };
 }
 
-type PregnancyCalculatorProps = {
+type PregnancyCalculatorProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
 };
@@ -48,8 +51,7 @@ function formatDate(date: Date): string {
 const PregnancyCalculatorDefaultComponent = (
   props: PregnancyCalculatorProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -66,8 +68,7 @@ const PregnancyCalculatorDefaultComponent = (
 
 export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
   const [lmp, setLmp] = useState<string>('');
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <PregnancyCalculatorDefaultComponent {...props} />;

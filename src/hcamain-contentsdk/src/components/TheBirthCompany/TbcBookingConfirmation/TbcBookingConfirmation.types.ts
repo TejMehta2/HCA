@@ -1,8 +1,9 @@
 import {
-  ComponentRendering,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export type HCAIconFields = {
@@ -40,10 +41,10 @@ export interface Fields {
   AmountLabel?: Field<string>;
 }
 
-export type TbcBookingConfirmationProps = {
+export type TbcBookingConfirmationProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
-  rendering?: ComponentRendering;
+  componentMap?: ComponentMap;
   serviceName: string;
   extras: string;
   type: string;

@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
+
 // Template finder component
 
+import { type JSX, Suspense } from 'react';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   ComponentRendering,
@@ -11,7 +14,7 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
@@ -26,7 +29,6 @@ import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 import SlotsCalendarBirthCompany from '@component-library/the-birth-company/SlotsCalendar/SlotsCalendarBirthCompany';
-import { useSearchParams } from 'next/navigation';
 
 interface Fields {
   HCALogo: ImageField;
@@ -155,10 +157,6 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
       top: 0,
       behavior: 'smooth',
     });
-
-    if (!router.isReady) {
-      return;
-    }
 
     //  if any required params are missing redirect back to the start of the journey
     if (!paramScanId || !paramLocationId || !paramTypeId) {

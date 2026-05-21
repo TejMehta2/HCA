@@ -1,4 +1,5 @@
-import { LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { LinkField } from '@sitecore-content-sdk/nextjs';
+import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
 
 export interface Fields {
@@ -26,12 +27,9 @@ export interface TbcDropdownColumn {
   scans: ApiFields[];
 }
 
-export type TbcBookingScansSearchProps = {
+export type TbcBookingScansSearchProps = ComponentWithContextProps & {
   params?: Params;
   fields: Fields;
-  rendering?: {
-    uid?: string;
-  };
 };
 
 export interface TbcServiceExtra {

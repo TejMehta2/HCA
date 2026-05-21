@@ -1,6 +1,9 @@
 /* eslint-disable */
+'use client';
+
+import { type JSX, Suspense } from 'react';
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -20,37 +23,38 @@ import {
   SectionTemplate,
   SectionTitleTemplate,
   TextTemplate,
-} from '../../PaymentForm/PaymentForm.types';
+} from '../../Page Content/PaymentForm/PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
-import createSchema from '../../PaymentForm/helpers/createSchema';
+import createSchema from '../../Page Content/PaymentForm/helpers/createSchema';
 import Checkbox from '@component-library/core-components/form/basic/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import MarketingPreferences from '@component-library/site-components/MarketingPreferences/MarketingPreferences';
 import {
-  ComponentRendering,
+  AppPlaceholder,
   RichText as JssRichText,
-  Placeholder,
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
-import DynamicTextField from '../../PaymentForm/helpers/DynamicTextField';
-import { useRouter } from 'next/router';
+import DynamicTextField from '../../Page Content/PaymentForm/helpers/DynamicTextField';
 import axios from 'axios';
-import DynamicSelectField from '../../PaymentForm/helpers/DynamicSelectField';
+import DynamicSelectField from '../../Page Content/PaymentForm/helpers/DynamicSelectField';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import AppointmentSummary from '@component-library/the-birth-company/AppointmentSummary/AppointmentSummary';
-import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
+import DynamicTextArea from '../../Page Content/PaymentForm/helpers/DynamicTextArea';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Container from '@component-library/core-components/form/basic/Container/Container';
+import { ComponentWithContextProps } from 'lib/component-props';
 
-export interface TbcBookingDetailsProps extends PaymentFormProps {
+export interface TbcBookingDetailsProps
+  extends PaymentFormProps,
+    ComponentWithContextProps {
   params: { [key: string]: string };
-  rendering?: ComponentRendering;
+  componentMap?: ComponentMap;
 }
 
 interface AppointmentDetailFields {
@@ -84,10 +88,9 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');
   const [recaptchaTouched, setRecaptchaTouched] = useState(false);
-  const context = useSitecoreContext().sitecoreContext;
   const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
-  const siteName = context?.site?.name;
-  const itemPath = context?.itemPath;
+  const siteName = props.page.siteName;
+  const itemPath = props.page.layout.sitecore.context.itemPath;
 
   // Hooks
   const formRef = useRef<HTMLFormElement>(null);
@@ -113,10 +116,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
       top: 0,
       behavior: 'smooth',
     });
-
-    if (!router.isReady) {
-      return;
-    }
 
     const paramScanId = searchParams.get('scanId');
     const paramExtras = searchParams.getAll('extraId');
@@ -144,7 +143,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         setError(error.message || true);
         // console.log('error', error);
       });
-  }, [router, router.isReady, searchParams]);
+  }, [router, searchParams]);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return;
@@ -469,9 +468,14 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   />
                 ) : undefined}
 
-                {props.rendering && (
+                {props.rendering && props.componentMap && (
                   <PlaceHolderWrapper>
-                    <Placeholder name={phKey} rendering={props.rendering} />
+                    <AppPlaceholder
+                      name={phKey}
+                      rendering={props.rendering}
+                      page={props.page}
+                      componentMap={props.componentMap}
+                    />
                   </PlaceHolderWrapper>
                 )}
               </>
@@ -920,3 +924,9 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     </Themes>
   );
 };
+
+export const Default = (props: TbcBookingDetailsProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

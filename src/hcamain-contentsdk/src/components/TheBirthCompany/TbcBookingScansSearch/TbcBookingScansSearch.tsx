@@ -1,7 +1,8 @@
+'use client';
+
+import { type JSX, Suspense } from 'react';
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import Themes from '@component-library/foundation/Themes/Themes';
 import {
@@ -62,8 +63,7 @@ const groupByArea = (data: ApiFields[]): GroupedScans => {
 const TbcBookingScansSearchDefaultComponent = (
   props: TbcBookingScansSearchProps
 ): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const isExperienceEditor = props.page.mode.isEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
@@ -81,7 +81,9 @@ const TbcBookingScansSearchDefaultComponent = (
 export const Default = (props: TbcBookingScansSearchProps): JSX.Element => {
   return (
     <TheBirthCompanyContextProvider>
-      <TbcSearch {...props} />
+      <Suspense fallback={null}>
+        <TbcSearch {...props} />
+      </Suspense>
     </TheBirthCompanyContextProvider>
   );
 };
@@ -111,10 +113,6 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
 
   // Fetch list of scans
   useEffect(() => {
-    if (!router.isReady) {
-      return;
-    }
-
     const paramLocationId = searchParams.get('locationId');
     const paramTypeId = searchParams.get('typeId');
 

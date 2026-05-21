@@ -1,9 +1,11 @@
 /* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
+
 // Template finder component
+import { type JSX, Suspense } from 'react';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
 import {
@@ -12,7 +14,7 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
@@ -102,10 +104,6 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    if (!router.isReady) {
-      return;
-    }
-
     const paramScanId = searchParams.get('scanId');
     const paramExtras = searchParams.getAll('extraId');
     const paramLocationId = searchParams.get('locationId');
@@ -130,7 +128,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router, router.isReady, searchParams, configurationId]);
+  }, [router, searchParams, configurationId]);
 
   const handleSubmit = (selectedTypeId: string) => {
     nextPageParams.set('typeId', selectedTypeId);
@@ -192,7 +190,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
           className={`component promo ${props.params.styles}`}
           id={id ? id : undefined}
         >
-          {router.isReady && (
+          {
             <div className="component-content">
               <HeaderLDB
                 logo={<JssImage field={props?.fields?.HCALogo} />}
@@ -211,7 +209,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               {loading && <LoaderCF />}
               {!loading && !error && <BookingTypeCards cards={typeCtas} />}
             </div>
-          )}
+          }
         </div>
         <Navigation>
           <div>

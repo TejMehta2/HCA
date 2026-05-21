@@ -2,18 +2,20 @@
 // Template finder component
 
 import React from 'react';
+import { type JSX } from 'react';
 
 import {
+  AppPlaceholder,
   Image as JssImage,
   ImageField,
   Field,
   LinkField,
-  Placeholder,
-  ComponentRendering,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-content-sdk/nextjs';
+import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -28,10 +30,9 @@ interface Fields {
   API_C2_ReserveConsultantSlot_RecapchaKey: Field<string>;
 }
 
-export type StepProps = {
-  params: { [key: string]: string };
-  rendering?: ComponentRendering;
+export type StepProps = ComponentWithContextProps & {
   fields: Fields;
+  componentMap?: ComponentMap;
 };
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
@@ -62,9 +63,14 @@ export const Default = (props: StepProps): JSX.Element => {
               ></ProgressBar>
             }
           ></HeaderLDB>
-          {props.rendering && (
+          {props.rendering && props.componentMap && (
             <PlaceHolderWrapper>
-              <Placeholder name={phKey} rendering={props.rendering} />
+              <AppPlaceholder
+                name={phKey}
+                rendering={props.rendering}
+                page={props.page}
+                componentMap={props.componentMap}
+              />
             </PlaceHolderWrapper>
           )}
         </>
