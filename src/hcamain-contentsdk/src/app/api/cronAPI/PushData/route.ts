@@ -1,5 +1,5 @@
 'use server';
-import type { NextApiRequest } from 'next';
+import { type NextRequest } from 'next/server';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // read data from an endpoint via http get and post it to another endpoint using http post
@@ -141,8 +141,8 @@ const longRunning = async (
  * Implements long running response. Only works with edge runtime.
  * @link https://github.com/vercel/next.js/issues/9965
  */
-export default async function PushData(
-  req: NextApiRequest //,
+async function PushData(
+  req: NextRequest //,
   //_res: NextApiResponse
 ) {
   const responseStream = new TransformStream();
@@ -292,6 +292,32 @@ export default async function PushData(
   });
 }
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
+
+export async function GET(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function POST(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return PushData(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return PushData(req);
+}
