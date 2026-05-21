@@ -1,25 +1,21 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { getLDBFirstAppointmentDatas } from 'lib/consultant-finder/API_C2';
 
 // wrapper for C2 Get First Appointment API ability to call from the client side (internally without passing secrets)
-const GetLDBFirstAppointmentDatas = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<NextApiResponse | void> => {
-  const {
-    query: { gmcNumber }, // pass as individual gmcNumber=xx&gmcNumber=yy
-    query: { gmcNumbers }, // pass as comma separated gmcNumbers=xx,yy
-  } = req;
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const gmcNumber = searchParams.getAll('gmcNumber'); // pass as individual gmcNumber=xx&gmcNumber=yy
+  const gmcNumbers = searchParams.get('gmcNumbers'); // pass as comma separated gmcNumbers=xx,yy
 
   //console.log("gmcNumbers",gmcNumber as string[]);
   const response = await getLDBFirstAppointmentDatas(
     gmcNumber as string[],
     gmcNumbers as string
   ); // e.g. "4113571"
-  res.setHeader('Cache-Control', 'max-age=60');
-  res.setHeader('CDN-Cache-Control', 'max-age=180');
-  res.setHeader('Vercel-CDN-Cache-Control', 'max-age=360');
-  return res.status(200).json(response);
-};
 
-export default GetLDBFirstAppointmentDatas;
+  const nextResponse = NextResponse.json(response, { status: 200 });
+  nextResponse.headers.set('Cache-Control', 'max-age=60');
+  nextResponse.headers.set('CDN-Cache-Control', 'max-age=180');
+  nextResponse.headers.set('Vercel-CDN-Cache-Control', 'max-age=360');
+  return nextResponse;
+}

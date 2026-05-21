@@ -1,16 +1,19 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   FinderMakeEnquiry,
   IFinderEnquiryFields,
 } from 'lib/consultant-finder/API_C2';
 
 // wrapper for C2 Make Booking Enquiry API ability to call from the client side (internally without passing secrets)
-const PostFinderMakeBookingEnquiry = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<NextApiResponse | void> => {
+export async function POST(req: NextRequest) {
   //console.log('req.body', req.body);
-  const demographics = req.body as IFinderEnquiryFields; // demographics of the patient
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    body = undefined;
+  }
+  const demographics = body as IFinderEnquiryFields; // demographics of the patient
   //console.log(demographics);
 
   let response: unknown = '';
@@ -24,7 +27,5 @@ const PostFinderMakeBookingEnquiry = async (
     console.warn(`PostFinderMakeBookingEnquiry missing form params`);
   }
 
-  return res.status(200).json(response);
-};
-
-export default PostFinderMakeBookingEnquiry;
+  return NextResponse.json(response, { status: 200 });
+}
