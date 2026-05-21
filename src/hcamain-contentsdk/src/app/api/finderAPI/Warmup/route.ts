@@ -1,4 +1,3 @@
-'use server';
 import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 /* eslint-disable @typescript-eslint/no-explicit-any */
