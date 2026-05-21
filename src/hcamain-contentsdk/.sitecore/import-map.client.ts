@@ -155,8 +155,6 @@ import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcru
 import EnquireNowBtns from '@component-library/consultant-finder/EnquireNowBtns/EnquireNowBtns';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
-import { checkIfConsultantIsNoReviews, checkIfConsultantIsDoctifyPhoneNumber, checkIfLiveBookingIsAvailable, getPhysicianStructuredData, getActiveLiveDiaryConsultantSlugs, getDoctifyPhoneNumberConsultantSlugs, getIgnoreReviewsConsultantSlugs } from 'lib/consultant-finder/API_HCA';
-import { getSpecialistProfileData, isErrorWithProfileData, getInsuranceData } from 'lib/consultant-finder/API_Doctify';
 import ConsultantFinderProfileWrapper from '@component-library/consultant-finder/ConsultantFinderProfileWrapper/ConsultantFinderProfileWrapper';
 import SideWrapper from '@component-library/consultant-finder/SideWrapper/SideWrapper';
 import MainWrapper from '@component-library/consultant-finder/MainWrapper/MainWrapper';
@@ -1079,26 +1077,6 @@ const importMap = [
     module: '@component-library/consultant-finder/Reviews/Reviews',
     exports: [
       { name: 'default', value: Reviews },
-    ]
-  },
-  {
-    module: 'lib/consultant-finder/API_HCA',
-    exports: [
-      { name: 'checkIfConsultantIsNoReviews', value: checkIfConsultantIsNoReviews },
-      { name: 'checkIfConsultantIsDoctifyPhoneNumber', value: checkIfConsultantIsDoctifyPhoneNumber },
-      { name: 'checkIfLiveBookingIsAvailable', value: checkIfLiveBookingIsAvailable },
-      { name: 'getPhysicianStructuredData', value: getPhysicianStructuredData },
-      { name: 'getActiveLiveDiaryConsultantSlugs', value: getActiveLiveDiaryConsultantSlugs },
-      { name: 'getDoctifyPhoneNumberConsultantSlugs', value: getDoctifyPhoneNumberConsultantSlugs },
-      { name: 'getIgnoreReviewsConsultantSlugs', value: getIgnoreReviewsConsultantSlugs },
-    ]
-  },
-  {
-    module: 'lib/consultant-finder/API_Doctify',
-    exports: [
-      { name: 'getSpecialistProfileData', value: getSpecialistProfileData },
-      { name: 'isErrorWithProfileData', value: isErrorWithProfileData },
-      { name: 'getInsuranceData', value: getInsuranceData },
     ]
   },
   {

@@ -1,5 +1,10 @@
 import { JSX } from 'react';
-import { AppPlaceholder, DesignLibraryApp, Field, Page } from '@sitecore-content-sdk/nextjs';
+import {
+  AppPlaceholder,
+  DesignLibraryApp,
+  Field,
+  Page,
+} from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
 import componentMap from '.sitecore/component-map';
@@ -31,7 +36,9 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
               page={page}
               rendering={route}
               componentMap={componentMap}
-              loadServerImportMap={() => import('.sitecore/import-map.server')}
+              loadServerImportMap={() =>
+                import('.sitecore/import-map.server')
+              }
             />
           )
         ) : (

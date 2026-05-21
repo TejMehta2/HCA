@@ -42,10 +42,10 @@ import * as StepLiveBookingConfirmation from 'src/components/ConsultantFinder/St
 import * as StepIntro from 'src/components/ConsultantFinder/StepIntro';
 import * as StepEnquireFormConfirmation from 'src/components/ConsultantFinder/StepEnquireFormConfirmation';
 import * as StepEnquireForm from 'src/components/ConsultantFinder/StepEnquireForm';
-import * as StepConsultantProfile from 'src/components/ConsultantFinder/StepConsultantProfile';
-import * as StepConsultantCards from 'src/components/ConsultantFinder/StepConsultantCards';
+import * as StepConsultantProfileClient from 'src/components/ConsultantFinder/StepConsultantProfileClient';
+import * as StepConsultantCardsClient from 'src/components/ConsultantFinder/StepConsultantCardsClient';
 import * as StepAppointmentType from 'src/components/ConsultantFinder/StepAppointmentType';
-import * as CMADisclosures from 'src/components/ConsultantFinder/CMADisclosures';
+import * as CMADisclosuresClient from 'src/components/ConsultantFinder/CMADisclosuresClient';
 import * as AxiosLocalPatcher from 'src/components/ConsultantFinder/AxiosLocalPatcher';
 import * as CareersSearchResults from 'src/components/Careers/CareersSearchResults/CareersSearchResults';
 import * as CareersSearchHero from 'src/components/Careers/CareersSearchHero/CareersSearchHero';
@@ -95,10 +95,10 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['StepIntro', { ...StepIntro }],
   ['StepEnquireFormConfirmation', { ...StepEnquireFormConfirmation }],
   ['StepEnquireForm', { ...StepEnquireForm }],
-  ['StepConsultantProfile', { ...StepConsultantProfile }],
-  ['StepConsultantCards', { ...StepConsultantCards }],
+  ['StepConsultantProfileClient', { ...StepConsultantProfileClient }],
+  ['StepConsultantCardsClient', { ...StepConsultantCardsClient }],
   ['StepAppointmentType', { ...StepAppointmentType }],
-  ['CMADisclosures', { ...CMADisclosures }],
+  ['CMADisclosuresClient', { ...CMADisclosuresClient }],
   ['AxiosLocalPatcher', { ...AxiosLocalPatcher }],
   ['CareersSearchResults', { ...CareersSearchResults }],
   ['CareersSearchHero', { ...CareersSearchHero }],

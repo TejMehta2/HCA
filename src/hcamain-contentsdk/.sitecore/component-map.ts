@@ -110,11 +110,14 @@ import * as StepLiveBookingConfirmation from 'src/components/ConsultantFinder/St
 import * as StepIntro from 'src/components/ConsultantFinder/StepIntro';
 import * as StepEnquireFormConfirmation from 'src/components/ConsultantFinder/StepEnquireFormConfirmation';
 import * as StepEnquireForm from 'src/components/ConsultantFinder/StepEnquireForm';
+import * as StepConsultantProfileClient from 'src/components/ConsultantFinder/StepConsultantProfileClient';
 import * as StepConsultantProfile from 'src/components/ConsultantFinder/StepConsultantProfile';
+import * as StepConsultantCardsClient from 'src/components/ConsultantFinder/StepConsultantCardsClient';
 import * as StepConsultantCards from 'src/components/ConsultantFinder/StepConsultantCards';
 import * as StepAppointmentType from 'src/components/ConsultantFinder/StepAppointmentType';
 import * as routeQuery from 'src/components/ConsultantFinder/routeQuery';
 import * as FrameReviews from 'src/components/ConsultantFinder/FrameReviews';
+import * as CMADisclosuresClient from 'src/components/ConsultantFinder/CMADisclosuresClient';
 import * as CMADisclosures from 'src/components/ConsultantFinder/CMADisclosures';
 import * as AxiosLocalPatcher from 'src/components/ConsultantFinder/AxiosLocalPatcher';
 import * as JobDetailsHeader from 'src/components/Careers/JobDetailsHeader/JobDetailsHeader';
@@ -234,12 +237,15 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['StepIntro', { ...StepIntro, componentType: 'client' }],
   ['StepEnquireFormConfirmation', { ...StepEnquireFormConfirmation, componentType: 'client' }],
   ['StepEnquireForm', { ...StepEnquireForm, componentType: 'client' }],
-  ['StepConsultantProfile', { ...StepConsultantProfile, componentType: 'client' }],
-  ['StepConsultantCards', { ...StepConsultantCards, componentType: 'client' }],
+  ['StepConsultantProfileClient', { ...StepConsultantProfileClient, componentType: 'client' }],
+  ['StepConsultantProfile', { ...StepConsultantProfile }],
+  ['StepConsultantCardsClient', { ...StepConsultantCardsClient, componentType: 'client' }],
+  ['StepConsultantCards', { ...StepConsultantCards }],
   ['StepAppointmentType', { ...StepAppointmentType, componentType: 'client' }],
   ['routeQuery', { ...routeQuery }],
   ['FrameReviews', { ...FrameReviews }],
-  ['CMADisclosures', { ...CMADisclosures, componentType: 'client' }],
+  ['CMADisclosuresClient', { ...CMADisclosuresClient, componentType: 'client' }],
+  ['CMADisclosures', { ...CMADisclosures }],
   ['AxiosLocalPatcher', { ...AxiosLocalPatcher, componentType: 'client' }],
   ['JobDetailsHeader', { ...JobDetailsHeader }],
   ['JobDetails', { ...JobDetails }],

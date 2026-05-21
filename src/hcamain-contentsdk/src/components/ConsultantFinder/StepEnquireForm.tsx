@@ -136,7 +136,10 @@ export const Default = (props: StepProps): JSX.Element => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [specialty, setTopSpecialty] = useState<string>('');
   const [additionalErrorText, setAdditionalErrorText] = useState<string>('');
-  const formId = self?.crypto?.randomUUID() || Date.now().toString();
+  const formId =
+  typeof self !== 'undefined' && self.crypto?.randomUUID
+    ? self.crypto.randomUUID()
+    : Date.now().toString();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const {

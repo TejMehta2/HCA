@@ -118,7 +118,12 @@ import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Naviga
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
+import { checkIfConsultantIsNoReviews, checkIfConsultantIsDoctifyPhoneNumber, checkIfLiveBookingIsAvailable, getPhysicianStructuredData, getActiveLiveDiaryConsultantSlugs, getDoctifyPhoneNumberConsultantSlugs, getIgnoreReviewsConsultantSlugs } from 'lib/consultant-finder/API_HCA';
+import { getSpecialistProfileData, isErrorWithProfileData, getInsuranceData } from 'lib/consultant-finder/API_Doctify';
+import { Default as Default_844964c826b725d51ce782898cf2eb97658009a2 } from 'src/components/ConsultantFinder/StepConsultantProfileClient';
+import { Default as Default_f5d10bc6847776a52ccdf97f5390946fd1933181 } from 'src/components/ConsultantFinder/StepConsultantCardsClient';
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
+import { Default as Default_e14821894a71ac7a6e65fc5dc320029fcbf616d3 } from 'src/components/ConsultantFinder/CMADisclosuresClient';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
 import Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 from 'temp/component-library/foundation/Themes/Themes';
 
@@ -765,9 +770,47 @@ const importMap = [
     ]
   },
   {
+    module: 'lib/consultant-finder/API_HCA',
+    exports: [
+      { name: 'checkIfConsultantIsNoReviews', value: checkIfConsultantIsNoReviews },
+      { name: 'checkIfConsultantIsDoctifyPhoneNumber', value: checkIfConsultantIsDoctifyPhoneNumber },
+      { name: 'checkIfLiveBookingIsAvailable', value: checkIfLiveBookingIsAvailable },
+      { name: 'getPhysicianStructuredData', value: getPhysicianStructuredData },
+      { name: 'getActiveLiveDiaryConsultantSlugs', value: getActiveLiveDiaryConsultantSlugs },
+      { name: 'getDoctifyPhoneNumberConsultantSlugs', value: getDoctifyPhoneNumberConsultantSlugs },
+      { name: 'getIgnoreReviewsConsultantSlugs', value: getIgnoreReviewsConsultantSlugs },
+    ]
+  },
+  {
+    module: 'lib/consultant-finder/API_Doctify',
+    exports: [
+      { name: 'getSpecialistProfileData', value: getSpecialistProfileData },
+      { name: 'isErrorWithProfileData', value: isErrorWithProfileData },
+      { name: 'getInsuranceData', value: getInsuranceData },
+    ]
+  },
+  {
+    module: 'src/components/ConsultantFinder/StepConsultantProfileClient',
+    exports: [
+      { name: 'Default', value: Default_844964c826b725d51ce782898cf2eb97658009a2 },
+    ]
+  },
+  {
+    module: 'src/components/ConsultantFinder/StepConsultantCardsClient',
+    exports: [
+      { name: 'Default', value: Default_f5d10bc6847776a52ccdf97f5390946fd1933181 },
+    ]
+  },
+  {
     module: '@component-library/consultant-finder/ReviewsSection/ReviewsSection',
     exports: [
       { name: 'default', value: ReviewsSection },
+    ]
+  },
+  {
+    module: 'src/components/ConsultantFinder/CMADisclosuresClient',
+    exports: [
+      { name: 'Default', value: Default_e14821894a71ac7a6e65fc5dc320029fcbf616d3 },
     ]
   },
   {
