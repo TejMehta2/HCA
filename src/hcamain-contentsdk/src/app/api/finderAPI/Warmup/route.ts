@@ -3,7 +3,7 @@ import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 import { parse } from 'node-html-parser';
 
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
@@ -108,10 +108,7 @@ const longRunning = async (
  */
 
 // warm up by loading each consultant profile page
-export default async function Warmup(
-  req: NextApiRequest,
-  _res: NextApiResponse
-) {
+async function Warmup(req: NextRequest) {
   const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
@@ -212,6 +209,32 @@ export default async function Warmup(
   });
 }
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
+
+export async function GET(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function POST(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return Warmup(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return Warmup(req);
+}

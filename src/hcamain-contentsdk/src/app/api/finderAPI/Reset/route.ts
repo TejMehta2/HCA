@@ -9,18 +9,17 @@ import { GetC2Config } from 'lib/consultant-finder/getC2Config';
 import { GetDoctifyConfig } from 'lib/consultant-finder/getDoctifyConfig';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { IKeyProtection } from './IKeyProtection';
+import { type NextRequest } from 'next/server';
+import { type IKeyProtection } from '../IKeyProtection';
 
 // we don't want to cache the reset function
 export const dynamic = 'force-dynamic';
 
 // admin function to purge the data cache
-const Reset = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<NextApiResponse | void> => {
-  const protectionParams: IKeyProtection | unknown = req.query;
+const Reset = async (req: NextRequest): Promise<Response> => {
+  const protectionParams: IKeyProtection | unknown = Object.fromEntries(
+    req.nextUrl.searchParams.entries()
+  );
   if (
     (protectionParams as IKeyProtection).key !=
     process.env.ADMIN_PROTECTION_KEY!
@@ -28,7 +27,9 @@ const Reset = async (
     console.warn(
       'error, CF admin - Reset called with incorrect or missing admin key'
     );
-    return res.status(500).send('error missing or invalid admin protection');
+    return new Response('error missing or invalid admin protection', {
+      status: 500,
+    });
   }
   // first set the flag
   revalidate.setRevalidateNow(true);
@@ -152,8 +153,38 @@ const Reset = async (
   }
 
   const ret = `<div>done</div>${new Date().toISOString()}`;
-  res.setHeader('Content-Type', 'text/html');
-  return res.status(200).send(ret);
+  return new Response(ret, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/html',
+    },
+  });
 };
 
-export default Reset;
+export async function GET(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function POST(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return Reset(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return Reset(req);
+}

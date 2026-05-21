@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { NextApiRequest } from 'next';
+import { type NextRequest } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import * as XLSX from 'xlsx';
 import axios from 'axios';
@@ -458,7 +458,7 @@ const longRunning = async (notify: Notify) => {
  */
 
 // entry point - console in browser functionality
-export default async function RefreshMediaLibrary(req: NextApiRequest) {
+async function RefreshMediaLibrary(req: NextRequest) {
   const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
@@ -591,6 +591,32 @@ export default async function RefreshMediaLibrary(req: NextApiRequest) {
 }
 
 // needed from streaming console in browser
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
+
+export async function GET(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function POST(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return RefreshMediaLibrary(req);
+}

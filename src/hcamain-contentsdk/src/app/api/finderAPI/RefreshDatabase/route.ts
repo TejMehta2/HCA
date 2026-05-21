@@ -2,7 +2,7 @@
 import { getLDBFirstAppointmentDatas } from 'lib/consultant-finder/API_C2';
 import { doctifyGetAllConsultantSlugs } from 'lib/consultant-finder/API_Doctify';
 import { IConsultantRecord } from 'lib/consultant-finder/API_HCA';
-import type { NextApiRequest } from 'next';
+import { type NextRequest } from 'next/server';
 import { neon } from '@neondatabase/serverless';
 import * as XLSX from 'xlsx';
 
@@ -322,7 +322,7 @@ const longRunning = async (notify: Notify) => {
  */
 
 // console in browser framework entrypoint
-export default async function RefreshDatabase(req: NextApiRequest) {
+async function RefreshDatabase(req: NextRequest) {
   const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
@@ -436,6 +436,32 @@ export default async function RefreshDatabase(req: NextApiRequest) {
   });
 }
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
+
+export async function GET(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function POST(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return RefreshDatabase(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return RefreshDatabase(req);
+}
