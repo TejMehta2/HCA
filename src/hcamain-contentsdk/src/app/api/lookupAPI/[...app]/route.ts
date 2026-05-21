@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getItemFromGraphQL } from 'lib/consultant-finder/getItemFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest, NextResponse } from 'next/server';
 import * as XLSX from 'xlsx';
+
+type RouteContext = {
+  params: Promise<{
+    app?: string[];
+  }>;
+};
 
 // read excel xlsx file
 export async function readExcel(
@@ -102,11 +108,8 @@ original interface
   ResponseResult<string> FindByTypeAndKeys(string project, LookupAPIDatasourceType dsType, string dictionary, string type, string keys, OutputFormat outputFormat = OutputFormat.Standard, Dictionary<string, string> queryValues = null);
   ResponseResult<string> SearchKeys(string project, LookupAPIDatasourceType dsType,  string dictionary, string type, string key, Dictionary<string, string> queryValues = null);
 */
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { app } = req.query;
+async function handler(req: NextRequest, context: RouteContext) {
+  const { app } = await context.params;
 
   const frags = app as string[];
   let project: string = '';
@@ -114,7 +117,10 @@ export default async function handler(
   let operation: string = '';
   let dictionary: string = '';
   let optionals: string = '';
-  const queryValues_Key = req?.query?.key;
+  const queryValues_Key =
+    req.nextUrl.searchParams.getAll('key').length > 1
+      ? req.nextUrl.searchParams.getAll('key')
+      : req.nextUrl.searchParams.get('key');
 
   //console.log('key', queryValues_Key);
 
@@ -320,13 +326,44 @@ export default async function handler(
   }
 
   if (revalidate.now() || revalidate.noCache()) {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('CDN-Cache-Control', 'no-cache');
-    res.setHeader('Vercel-CDN-Cache-Control', 'no-cache');
+    const nextResponse = NextResponse.json(output, { status: 200 });
+    nextResponse.headers.set('Cache-Control', 'no-cache');
+    nextResponse.headers.set('CDN-Cache-Control', 'no-cache');
+    nextResponse.headers.set('Vercel-CDN-Cache-Control', 'no-cache');
+    return nextResponse;
   } else {
-    res.setHeader('Cache-Control', 'max-age=600');
-    res.setHeader('CDN-Cache-Control', 'max-age=1800');
-    res.setHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
+    const nextResponse = NextResponse.json(output, { status: 200 });
+    nextResponse.headers.set('Cache-Control', 'max-age=600');
+    nextResponse.headers.set('CDN-Cache-Control', 'max-age=1800');
+    nextResponse.headers.set('Vercel-CDN-Cache-Control', 'max-age=3600');
+    return nextResponse;
   }
-  return res.status(200).json(output);
+}
+
+export async function GET(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function POST(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function PUT(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function PATCH(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function DELETE(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function HEAD(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
+}
+
+export async function OPTIONS(req: NextRequest, context: RouteContext) {
+  return handler(req, context);
 }
