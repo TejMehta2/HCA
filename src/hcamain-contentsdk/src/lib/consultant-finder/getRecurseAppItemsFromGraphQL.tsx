@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GraphQLRequestClient } from '@sitecore-jss/sitecore-jss-nextjs/graphql';
-import config from 'temp/config';
+import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
+
+const sitecoreApiHost = process.env.NEXT_PUBLIC_SITECORE_API_HOST || '';
+const sitecoreApiKey = process.env.NEXT_PUBLIC_SITECORE_API_KEY || '';
+const graphQLEndpoint =
+  process.env.GRAPH_QL_ENDPOINT ||
+  (sitecoreApiHost ? `${sitecoreApiHost}/sitecore/api/graph/edge` : '');
 
 // GraphQL query for App / Portal project objects
 // references
@@ -339,8 +344,8 @@ export async function getRecurseAppItemsFromGraphQL(
   lang: string,
   platform: string
 ): Promise<any> {
-  const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
-    apiKey: config.sitecoreApiKey,
+  const graphQLClient = new GraphQLRequestClient(graphQLEndpoint, {
+    apiKey: sitecoreApiKey,
   });
 
   const resultRecursed = await loadRecursedAppItemsFromGraphQL(
