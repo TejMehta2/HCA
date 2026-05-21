@@ -83,7 +83,7 @@ interface PaymentAPIResponse {
   };
 }
 
-export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
+const DefaultContent = (props: TbcBookingDetailsProps): JSX.Element => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const [errorRecaptcha, setErrorRecaptcha] = useState<string>('');

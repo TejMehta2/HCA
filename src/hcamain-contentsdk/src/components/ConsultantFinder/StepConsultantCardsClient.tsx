@@ -5,7 +5,7 @@
 
 'use client';
 
-import { type JSX } from 'react';
+import { type JSX, Suspense } from 'react';
 import React, { useEffect, useState, useContext, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -138,7 +138,7 @@ const StepDefaultComponent = (props: StepConsultantCardsProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: StepConsultantCardsProps): JSX.Element => {
+const DefaultContent = (props: StepConsultantCardsProps): JSX.Element => {
   const serverSideData = useComponentProps<StepConsultantCardsServerSideProps>(
     props.rendering.uid
   );
@@ -1254,3 +1254,9 @@ export const Default = (props: StepConsultantCardsProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+export const Default = (props: StepConsultantCardsProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

@@ -14,7 +14,7 @@
 // https://www.hcacloud.localhost/Finder/CMADisclosures/miss-joanna-franks
 'use client';
 
-import { type JSX, useEffect, useState } from 'react';
+import { type JSX, Suspense, useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import {
   type ComponentRendering,
@@ -44,7 +44,7 @@ const StepDefaultComponent = (props: CMADisclosuresProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: CMADisclosuresProps): JSX.Element => {
+const DefaultContent = (props: CMADisclosuresProps): JSX.Element => {
   const params = useParams<{ path?: string[] }>();
   const searchParams = useSearchParams();
   const id = props.params.RenderingIdentifier;
@@ -110,3 +110,9 @@ export const Default = (props: CMADisclosuresProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+export const Default = (props: CMADisclosuresProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

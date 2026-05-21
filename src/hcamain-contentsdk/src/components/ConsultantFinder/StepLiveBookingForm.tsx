@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { type JSX } from 'react';
+import { type JSX, Suspense } from 'react';
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm, FieldErrors } from 'react-hook-form';
@@ -139,7 +139,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: StepProps): JSX.Element => {
+const DefaultContent = (props: StepProps): JSX.Element => {
   // console.log('step booking form', props.fields);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
@@ -1578,3 +1578,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+export const Default = (props: StepProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

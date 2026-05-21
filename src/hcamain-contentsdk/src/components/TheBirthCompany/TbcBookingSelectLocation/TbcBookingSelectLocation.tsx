@@ -87,7 +87,9 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => {
 export const Default = (props: StepProps): JSX.Element => {
   return (
     <TheBirthCompanyContextProvider>
-      <TbcLocations {...props} />
+      <Suspense fallback={null}>
+        <TbcLocations {...props} />
+      </Suspense>
     </TheBirthCompanyContextProvider>
   );
 };

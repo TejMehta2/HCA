@@ -316,7 +316,11 @@ const DefaultContent = (props: TbcBookingConfirmationProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps: GetServerSideComponentProps = async (
+export const Default = (props: TbcBookingConfirmationProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
 
 export const getComponentServerProps: GetComponentServerProps = async (
   _,

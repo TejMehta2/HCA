@@ -4,7 +4,7 @@
 
 'use client';
 
-import { type JSX } from 'react';
+import { type JSX, Suspense } from 'react';
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
@@ -60,7 +60,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: StepProps): JSX.Element => {
+const DefaultContent = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const {
@@ -251,3 +251,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+export const Default = (props: StepProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);

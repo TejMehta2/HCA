@@ -4,7 +4,7 @@
 
 'use client';
 
-import { type JSX } from 'react';
+import { type JSX, Suspense } from 'react';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -70,7 +70,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: StepProps): JSX.Element => {
+const DefaultContent = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   //console.log(props.fields);
   const searchParams = useSearchParams();
@@ -228,3 +228,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+export const Default = (props: StepProps): JSX.Element => (
+  <Suspense fallback={null}>
+    <DefaultContent {...props} />
+  </Suspense>
+);
