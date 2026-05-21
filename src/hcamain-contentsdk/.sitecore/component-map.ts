@@ -4,6 +4,14 @@ import { BYOCServerWrapper, NextjsContentSdkComponent, FEaaSServerWrapper } from
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
+import * as TbcBookingStepWrapper from 'src/components/TheBirthCompany/TbcBookingStepWrapper/TbcBookingStepWrapper';
+import * as TbcBookingSelectType from 'src/components/TheBirthCompany/TbcBookingSelectType/TbcBookingSelectType';
+import * as TbcBookingSelectSlot from 'src/components/TheBirthCompany/TbcBookingSelectSlot/TbcBookingSelectSlot';
+import * as TbcBookingSelectLocation from 'src/components/TheBirthCompany/TbcBookingSelectLocation/TbcBookingSelectLocation';
+import * as TbcBookingScansSearch from 'src/components/TheBirthCompany/TbcBookingScansSearch/TbcBookingScansSearch';
+import * as TbcBookingDetails from 'src/components/TheBirthCompany/TbcBookingDetails/TbcBookingDetails';
+import * as TbcBookingConfirmation from 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmation';
+import * as PregnancyCalculator from 'src/components/TheBirthCompany/PregnancyCalculator/PregnancyCalculator';
 import * as RowSplitter from 'src/components/Structure/RowSplitter';
 import * as ColumnSplitter from 'src/components/Structure/ColumnSplitter';
 import * as ContainerComponent from 'src/components/Structure/ContainerComponent/ContainerComponent';
@@ -131,6 +139,14 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCServerWrapper],
   ['FEaaSWrapper', FEaaSServerWrapper],
   ['Form', { ...Form, componentType: 'client' }],
+  ['TbcBookingStepWrapper', { ...TbcBookingStepWrapper }],
+  ['TbcBookingSelectType', { ...TbcBookingSelectType, componentType: 'client' }],
+  ['TbcBookingSelectSlot', { ...TbcBookingSelectSlot, componentType: 'client' }],
+  ['TbcBookingSelectLocation', { ...TbcBookingSelectLocation, componentType: 'client' }],
+  ['TbcBookingScansSearch', { ...TbcBookingScansSearch, componentType: 'client' }],
+  ['TbcBookingDetails', { ...TbcBookingDetails, componentType: 'client' }],
+  ['TbcBookingConfirmation', { ...TbcBookingConfirmation, componentType: 'client' }],
+  ['PregnancyCalculator', { ...PregnancyCalculator, componentType: 'client' }],
   ['RowSplitter', { ...RowSplitter }],
   ['ColumnSplitter', { ...ColumnSplitter }],
   ['ContainerComponent', { ...ContainerComponent }],

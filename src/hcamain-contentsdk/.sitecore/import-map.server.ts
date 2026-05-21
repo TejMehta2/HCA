@@ -8,11 +8,15 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { AppPlaceholder, RichText, Text, Link, Image } from '@sitecore-content-sdk/nextjs';
+import React from 'react';
+import componentMap from '.sitecore/component-map';
+import { AppPlaceholder, Image, RichText, Text, Link } from '@sitecore-content-sdk/nextjs';
+import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import { setInsideContainerComponentParam, isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
-import componentMap from '.sitecore/component-map';
 import ContainerWrapper from 'src/jss-abstractions/ContainerWrapper/ContainerWrapper';
 import Themes from '@component-library/foundation/Themes/Themes';
 import TextBlockContainer from '@component-library/site-components/TextBlockContainer/TextBlockContainer';
@@ -32,7 +36,6 @@ import { TimelineStep } from '@component-library/site-components/Timeline/Timeli
 import Timeline from '@component-library/site-components/Timeline/Timeline';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
-import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import OffsetTextBlock from '@component-library/careers/OffsetTextBlock/OffsetTextBlock';
 import { getPresentationParam } from 'lib/utility-functions/getPresentationParam';
@@ -83,7 +86,6 @@ import AccordionsBlockSideBySide from '@component-library/site-components/Accord
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
-import React from 'react';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import DiamondLine from '@component-library/site-components/DiamondLine/DiamondLine';
@@ -137,13 +139,43 @@ const importMap = [
     ]
   },
   {
+    module: 'react',
+    exports: [
+      { name: 'default', value: React },
+    ]
+  },
+  {
+    module: '.sitecore/component-map',
+    exports: [
+      { name: 'default', value: componentMap },
+    ]
+  },
+  {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
       { name: 'AppPlaceholder', value: AppPlaceholder },
+      { name: 'Image', value: Image },
       { name: 'RichText', value: RichText },
       { name: 'Text', value: Text },
       { name: 'Link', value: Link },
-      { name: 'Image', value: Image },
+    ]
+  },
+  {
+    module: '@component-library/consultant-finder/HeaderLDB/HeaderLDB',
+    exports: [
+      { name: 'default', value: HeaderLDB },
+    ]
+  },
+  {
+    module: '@component-library/the-birth-company/ProgressBar/ProgressBar',
+    exports: [
+      { name: 'default', value: ProgressBar },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper',
+    exports: [
+      { name: 'default', value: PlaceHolderWrapper },
     ]
   },
   {
@@ -158,12 +190,6 @@ const importMap = [
     exports: [
       { name: 'setInsideContainerComponentParam', value: setInsideContainerComponentParam },
       { name: 'isInsideContainerComponent', value: isInsideContainerComponent },
-    ]
-  },
-  {
-    module: '.sitecore/component-map',
-    exports: [
-      { name: 'default', value: componentMap },
     ]
   },
   {
@@ -273,12 +299,6 @@ const importMap = [
     module: '@component-library/site-components/TextBlockHeader/TextBlockHeader',
     exports: [
       { name: 'default', value: TextBlockHeader },
-    ]
-  },
-  {
-    module: 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper',
-    exports: [
-      { name: 'default', value: PlaceHolderWrapper },
     ]
   },
   {
@@ -570,12 +590,6 @@ const importMap = [
     module: 'lib/constants',
     exports: [
       { name: 'FINDER_PROFILE_CANONICAL_BASE_URL', value: FINDER_PROFILE_CANONICAL_BASE_URL },
-    ]
-  },
-  {
-    module: 'react',
-    exports: [
-      { name: 'default', value: React },
     ]
   },
   {

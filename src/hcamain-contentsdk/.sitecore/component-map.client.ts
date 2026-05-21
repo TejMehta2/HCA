@@ -3,6 +3,13 @@
 import { BYOCClientWrapper, NextjsContentSdkComponent, FEaaSClientWrapper } from '@sitecore-content-sdk/nextjs';
 import { Form } from '@sitecore-content-sdk/nextjs';
 
+import * as TbcBookingSelectType from 'src/components/TheBirthCompany/TbcBookingSelectType/TbcBookingSelectType';
+import * as TbcBookingSelectSlot from 'src/components/TheBirthCompany/TbcBookingSelectSlot/TbcBookingSelectSlot';
+import * as TbcBookingSelectLocation from 'src/components/TheBirthCompany/TbcBookingSelectLocation/TbcBookingSelectLocation';
+import * as TbcBookingScansSearch from 'src/components/TheBirthCompany/TbcBookingScansSearch/TbcBookingScansSearch';
+import * as TbcBookingDetails from 'src/components/TheBirthCompany/TbcBookingDetails/TbcBookingDetails';
+import * as TbcBookingConfirmation from 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmation';
+import * as PregnancyCalculator from 'src/components/TheBirthCompany/PregnancyCalculator/PregnancyCalculator';
 import * as TreatmentsSearch from 'src/components/Page Content/TreatmentsSearch/TreatmentsSearch';
 import * as TestAndScansSearch from 'src/components/Page Content/TestAndScansSearch/TestAndScansSearch';
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
@@ -56,6 +63,13 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCClientWrapper],
   ['FEaaSWrapper', FEaaSClientWrapper],
   ['Form', Form],
+  ['TbcBookingSelectType', { ...TbcBookingSelectType }],
+  ['TbcBookingSelectSlot', { ...TbcBookingSelectSlot }],
+  ['TbcBookingSelectLocation', { ...TbcBookingSelectLocation }],
+  ['TbcBookingScansSearch', { ...TbcBookingScansSearch }],
+  ['TbcBookingDetails', { ...TbcBookingDetails }],
+  ['TbcBookingConfirmation', { ...TbcBookingConfirmation }],
+  ['PregnancyCalculator', { ...PregnancyCalculator }],
   ['TreatmentsSearch', { ...TreatmentsSearch }],
   ['TestAndScansSearch', { ...TestAndScansSearch }],
   ['StickyCTA', { ...StickyCTA }],
