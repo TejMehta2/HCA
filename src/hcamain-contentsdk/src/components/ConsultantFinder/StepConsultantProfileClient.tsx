@@ -54,7 +54,6 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
-import { useRouter } from 'next/navigation';
 // import Script from 'next/script';
 
 export interface StepConsultantProfileFields {
@@ -141,7 +140,6 @@ const StepDefaultComponent = (
 );
 
 export const Default = (props: StepConsultantProfileProps): JSX.Element => {
-  const router = useRouter();
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const [firstAppointmentData, setFirstAppointmentData] = useState<any>();
   const [nextAptRequestToken, setNextAptRequestToken] =
@@ -241,12 +239,6 @@ export const Default = (props: StepConsultantProfileProps): JSX.Element => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serverSideData]); // only trigger fetch on serverside data update
-
-  useEffect(() => {
-    if (shouldRedirectTo404) {
-      router.push('/404-c');
-    }
-  }, [router, shouldRedirectTo404]);
 
   // if (
   //   !serverSideData ||

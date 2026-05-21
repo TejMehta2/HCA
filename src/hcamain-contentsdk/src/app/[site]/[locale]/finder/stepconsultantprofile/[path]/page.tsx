@@ -1,4 +1,9 @@
 import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
+import {
+  getSpecialistProfileData,
+  isErrorWithProfileData,
+} from 'lib/consultant-finder/API_Doctify';
+import { notFound } from 'next/navigation';
 import { generateFinderMetadata, renderFinderPage } from '../../FinderPage';
 
 type ConsultantProfilePageProps = {
@@ -18,6 +23,17 @@ export default async function ConsultantProfilePage({
   params,
 }: ConsultantProfilePageProps) {
   const resolvedParams = await params;
+  const consultantProfileJson = resolvedParams.path
+    ? await getSpecialistProfileData(resolvedParams.path)
+    : null;
+
+  if (
+    !consultantProfileJson ||
+    isErrorWithProfileData(consultantProfileJson)
+  ) {
+    notFound();
+  }
+
   return renderFinderPage(
     resolvedParams,
     PROFILE_WILDCARD_PATH,
