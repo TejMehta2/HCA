@@ -1,22 +1,55 @@
-import { findAddress, IFindAddressFields } from 'lib/consultant-finder/API_HCA';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { findAddress, type IFindAddressFields } from 'lib/consultant-finder/API_HCA';
+import { type NextRequest, NextResponse } from 'next/server';
 
 // wrapper for integration layer postcode lookup API
 // call e.g. https://www.hcacloud.localhost/api/locationAPI/FindAddress?postCode=TN233DS
-const FindAddress = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<NextApiResponse | void> => {
-  const fieldBody: IFindAddressFields = req.body as IFindAddressFields;
-  const fieldParams: IFindAddressFields | unknown = req.query; // destruct if passed as query params
-  const params: IFindAddressFields = fieldBody || fieldParams;
+const FindAddress = async (req: NextRequest): Promise<Response> => {
+  let fieldBody: IFindAddressFields | undefined;
+  try {
+    fieldBody = req.body ? ((await req.json()) as IFindAddressFields) : undefined;
+  } catch {
+    fieldBody = undefined;
+  }
+
+  const fieldParams: IFindAddressFields | unknown = Object.fromEntries(
+    req.nextUrl.searchParams.entries()
+  ); // destruct if passed as query params
+  const params: IFindAddressFields =
+    fieldBody || (fieldParams as IFindAddressFields);
   console.log('FindAddressFields params...', params);
   const response = await findAddress(params);
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Cache-Control', 'max-age=600');
-  res.setHeader('CDN-Cache-Control', 'max-age=1800');
-  res.setHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
-  return res.status(200).json(response);
+  const nextResponse = NextResponse.json(response, { status: 200 });
+  nextResponse.headers.set('Content-Type', 'application/json');
+  nextResponse.headers.set('Cache-Control', 'max-age=600');
+  nextResponse.headers.set('CDN-Cache-Control', 'max-age=1800');
+  nextResponse.headers.set('Vercel-CDN-Cache-Control', 'max-age=3600');
+  return nextResponse;
 };
 
-export default FindAddress;
+export async function GET(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function POST(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function PATCH(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function HEAD(req: NextRequest) {
+  return FindAddress(req);
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return FindAddress(req);
+}
