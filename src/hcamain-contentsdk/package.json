@@ -59,7 +59,8 @@
     "sass": "^1.99.0",
     "swr": "^2.4.1",
     "use-debounce": "^10.1.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@sitecore-content-sdk/cli": "~2.1.0",
