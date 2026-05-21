@@ -56,12 +56,19 @@ export type TbcBookingConfirmationProps = ComponentWithContextProps & {
 };
 
 export interface TransactionStatusResponse {
-  amount: string;
-  referenceNumber: string;
-  paymentDate: string;
-  lastUpdateDate: string;
-  paymentType: string;
-  status: string;
-  paymentTransactionId: string;
-  orderId: string;
+  serviceName?: string;
+  extras?: string;
+  type?: string;
+  duration?: string;
+  appointmentDateTime?: string;
+  location?: string;
+  amount?: string;
+  referenceNumber?: string;
+  paymentDate?: string;
+  lastUpdateDate?: string;
+  paymentType?: string;
+  status?: string;
+  paymentTransactionId?: string;
+  orderId?: string;
+  retryQuerystring?: string | null;
 }

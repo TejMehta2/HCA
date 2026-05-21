@@ -9,10 +9,11 @@ import {
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import React from 'react';
-import { AppPlaceholder, Image, RichText, Text, Link } from '@sitecore-content-sdk/nextjs';
+import { AppPlaceholder, Image, debug, RichText, Text, Link } from '@sitecore-content-sdk/nextjs';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { Default } from 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmationClient';
 import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 import RichText_581248f070c5ac493ea66e8ab7c6ff49a7d12c41 from '@component-library/core-components/RichText/RichText';
 import { setInsideContainerComponentParam, isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
@@ -67,7 +68,7 @@ import { removeTags } from '@component-library/utility-functions';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
-import { Default } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
+import { Default as Default_66b42592331e4bf68eb42877389dcd792d3d92a5 } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
 import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
@@ -148,6 +149,7 @@ const importMap = [
     exports: [
       { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'Image', value: Image },
+      { name: 'debug', value: debug },
       { name: 'RichText', value: RichText },
       { name: 'Text', value: Text },
       { name: 'Link', value: Link },
@@ -169,6 +171,12 @@ const importMap = [
     module: 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper',
     exports: [
       { name: 'default', value: PlaceHolderWrapper },
+    ]
+  },
+  {
+    module: 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmationClient',
+    exports: [
+      { name: 'Default', value: Default },
     ]
   },
   {
@@ -485,7 +493,7 @@ const importMap = [
   {
     module: 'src/components/Page Content/Doctify/DoctifyGraphQl',
     exports: [
-      { name: 'Default', value: Default },
+      { name: 'Default', value: Default_66b42592331e4bf68eb42877389dcd792d3d92a5 },
     ]
   },
   {

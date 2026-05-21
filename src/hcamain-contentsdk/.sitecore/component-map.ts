@@ -10,6 +10,7 @@ import * as TbcBookingSelectSlot from 'src/components/TheBirthCompany/TbcBooking
 import * as TbcBookingSelectLocation from 'src/components/TheBirthCompany/TbcBookingSelectLocation/TbcBookingSelectLocation';
 import * as TbcBookingScansSearch from 'src/components/TheBirthCompany/TbcBookingScansSearch/TbcBookingScansSearch';
 import * as TbcBookingDetails from 'src/components/TheBirthCompany/TbcBookingDetails/TbcBookingDetails';
+import * as TbcBookingConfirmationClient from 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmationClient';
 import * as TbcBookingConfirmation from 'src/components/TheBirthCompany/TbcBookingConfirmation/TbcBookingConfirmation';
 import * as PregnancyCalculator from 'src/components/TheBirthCompany/PregnancyCalculator/PregnancyCalculator';
 import * as RowSplitter from 'src/components/Structure/RowSplitter';
@@ -145,7 +146,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['TbcBookingSelectLocation', { ...TbcBookingSelectLocation, componentType: 'client' }],
   ['TbcBookingScansSearch', { ...TbcBookingScansSearch, componentType: 'client' }],
   ['TbcBookingDetails', { ...TbcBookingDetails, componentType: 'client' }],
-  ['TbcBookingConfirmation', { ...TbcBookingConfirmation, componentType: 'client' }],
+  ['TbcBookingConfirmationClient', { ...TbcBookingConfirmationClient, componentType: 'client' }],
+  ['TbcBookingConfirmation', { ...TbcBookingConfirmation }],
   ['PregnancyCalculator', { ...PregnancyCalculator, componentType: 'client' }],
   ['RowSplitter', { ...RowSplitter }],
   ['ColumnSplitter', { ...ColumnSplitter }],
