@@ -24,6 +24,7 @@ export default defineCliConfig({
     paths: ['src/components'],
     exclude: [
       'src/components/content-sdk/*',
+      'src/components/core-components/*',
       'src/components/**/*.types.ts',
       'src/components/**/*.types.tsx',
       'src/components/**/*Types.ts',
