@@ -1,0 +1,33 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,500;1,700&display=swap';
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('./glyphicons-halflings-regular.eot');
+  src:
+    url('./glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('./glyphicons-halflings-regular.woff2') format('woff2'),
+    url('./glyphicons-halflings-regular.woff') format('woff'),
+    url('./glyphicons-halflings-regular.ttf') format('truetype'),
+    url('./glyphicons-halflings-regular.svg#glyphicons_halflingsregular')
+      format('svg');
+}
+
+/*
+ * Cookie compliance fonts
+ */
+
+/* SourceSansPro */
+@font-face {
+  font-family: SourceSansProRegular;
+  src: url('./SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: SourceSansProSemiBold;
+  src: url('./SourceSansPro-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: SourceSansProBold;
+  src: url('./SourceSansPro-Bold.ttf') format('truetype');
+}

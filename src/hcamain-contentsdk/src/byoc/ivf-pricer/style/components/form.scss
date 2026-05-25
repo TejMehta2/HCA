@@ -1,0 +1,110 @@
+.ivf-calculator-input {
+  margin-bottom: $hcauk-spacing-20;
+  text-align: left;
+
+  input,
+  textarea,
+  select,
+  input[type='date'] {
+    font-family: Brown-Std, sans-serif;
+    appearance: none;
+    border: 1 solid $hcauk-light-grey-3;
+    border-radius: 5;
+    width: 100%;
+    padding: 15 18;
+    color: $hcauk-blue;
+    background-color: white;
+    font-size: 16;
+    line-height: 22;
+  }
+
+  input,
+  select,
+  input[type='date'] {
+    height: 60;
+  }
+
+  /* stylelint-disable  selector-pseudo-element-no-unknown */
+  ::input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: $hcauk-dark-grey-2;
+  }
+
+  /* stylelint-disable  selector-pseudo-class-no-unknown */
+  :placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $hcauk-dark-grey-2;
+    opacity: 1;
+  }
+
+  ::placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $hcauk-dark-grey-2;
+    opacity: 1;
+  }
+
+  :input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $hcauk-dark-grey-2;
+  }
+
+  label {
+    font-family: Brown-Std, sans-serif;
+    font-size: 16;
+    line-height: 22;
+    font-weight: bold;
+    display: inline-block;
+    color: $hcauk-blue;
+    margin-bottom: $hcauk-spacing-10;
+  }
+
+  &__optional {
+    color: $hcauk-dark-grey-2;
+  }
+
+  &__select {
+    width: 100%;
+    text-align: left;
+
+    &-container {
+      display: flex;
+      position: relative;
+      flex-grow: 1;
+    }
+
+    /* stylelint-disable selector-class-pattern */
+    &-menu.g-select__menu {
+      appearance: none;
+      border-radius: 5;
+      width: 100%;
+      padding: 10 35 10 18;
+      color: $hcauk-blue;
+      font-size: 16;
+      line-height: 22;
+      background-image: inherit !important;
+      background-color: inherit !important;
+      background-position: inherit !important;
+      background-repeat: inherit !important;
+      background-size: inherit !important;
+    }
+
+    &-arrow,
+    &-double-arrow {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      right: 20;
+    }
+
+    &-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-double-arrow {
+      display: flex;
+      flex-direction: column;
+      top: 5;
+    }
+  }
+}
