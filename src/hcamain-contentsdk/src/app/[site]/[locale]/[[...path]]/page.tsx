@@ -10,9 +10,15 @@ import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import CustomTracking from 'components/core-components/CustomTracking';
 
 type PageProps = {
-  params: Promise<{ site: string; locale: string; path?: string[]; [key: string]: string | string[] | undefined }>;
+  params: Promise<{
+    site: string;
+    locale: string;
+    path?: string[];
+    [key: string]: string | string[] | undefined;
+  }>;
 };
 
 export default async function Page({ params }: PageProps) {
@@ -45,6 +51,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <NextIntlClientProvider>
+      <CustomTracking />
       <Providers page={page}>
         <Layout page={page} />
       </Providers>
@@ -78,6 +85,9 @@ export const generateMetadata = async ({ params }: PageProps) => {
   // The same call as for rendering the page. Should be cached by default react behavior
   const page = await client.getPage(path ?? [], { site, locale });
   return {
-    title: (page?.layout.sitecore.route?.fields as RouteFields)?.Title?.value?.toString() || 'Page',
+    title:
+      (
+        page?.layout.sitecore.route?.fields as RouteFields
+      )?.Title?.value?.toString() || 'Page',
   };
 };
