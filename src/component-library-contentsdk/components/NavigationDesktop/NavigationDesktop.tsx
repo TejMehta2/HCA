@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, type JSX } from 'react';
+import React, { useState, useEffect, type JSX, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
@@ -316,14 +316,16 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   </li>
                 );
               })}
-              {search && (
-                <li
-                  className={styles.control}
-                  data-navigation-type="searchOpen"
-                >
-                  {search}
-                </li>
-              )}
+              <Suspense fallback={null}>
+                {search && (
+                  <li
+                    className={styles.control}
+                    data-navigation-type="searchOpen"
+                  >
+                    {search}
+                  </li>
+                )}
+              </Suspense>
             </ul>
           </div>
         </div>
