@@ -1,7 +1,4 @@
-import {
-  Field,
-  LinkField,
-} from '@sitecore-content-sdk/nextjs';
+import { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentMap } from '@sitecore-content-sdk/nextjs';
 import { ComponentWithContextProps } from 'lib/component-props';
 import Params from 'src/types/params';
@@ -45,14 +42,14 @@ export type TbcBookingConfirmationProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   componentMap?: ComponentMap;
-  serviceName: string;
-  extras: string;
-  type: string;
-  duration: string;
-  appointmentDateTime: string;
-  location: string;
-  amount: string;
-  retryQuerystring: string;
+  serviceName?: string;
+  extras?: string;
+  type?: string;
+  duration?: string;
+  appointmentDateTime?: string;
+  location?: string;
+  amount?: string;
+  retryQuerystring?: string | null;
 };
 
 export interface TransactionStatusResponse {

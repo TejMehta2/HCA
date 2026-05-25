@@ -8,22 +8,33 @@ import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
 import CustomTracking from 'components/core-components/CustomTracking';
 
+type RouteSearchParams = Record<string, string | string[] | undefined>;
+
 type BookingConfirmationPageProps = {
   params: Promise<{
     site: string;
     locale: string;
     path?: string[];
   }>;
+  searchParams?: Promise<RouteSearchParams>;
 };
 
 export const dynamic = 'force-dynamic';
 
 const BOOKING_CONFIRMATION_PATH = 'booking/confirmation/,-w-,';
 
+const getSearchParam = (
+  value: string | string[] | undefined
+): string | undefined => (Array.isArray(value) ? value[0] : value);
+
 export default async function BookingConfirmationPage({
   params,
+  searchParams,
 }: BookingConfirmationPageProps) {
-  const { site, locale } = await params;
+  const [{ site, locale, path }, resolvedSearchParams] = await Promise.all([
+    params,
+    searchParams ?? Promise.resolve<RouteSearchParams>({}),
+  ]);
 
   setRequestLocale(`${site}_${locale}`);
 
@@ -46,6 +57,18 @@ export default async function BookingConfirmationPage({
   if (!page?.layout.sitecore.route) {
     notFound();
   }
+
+  (
+    page.layout.sitecore.context as typeof page.layout.sitecore.context & {
+      bookingConfirmation?: {
+        orderId?: string;
+        transactionId?: string;
+      };
+    }
+  ).bookingConfirmation = {
+    orderId: path?.toString(),
+    transactionId: getSearchParam(resolvedSearchParams.transaction_id),
+  };
 
   return (
     <NextIntlClientProvider>

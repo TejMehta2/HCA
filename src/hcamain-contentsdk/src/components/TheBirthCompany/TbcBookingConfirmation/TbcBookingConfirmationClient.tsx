@@ -5,7 +5,6 @@ import {
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  useComponentProps,
   debug,
 } from '@sitecore-content-sdk/nextjs';
 import { useSearchParams } from 'next/navigation';
@@ -28,6 +27,7 @@ export type TbcBookingConfirmationClientProps = Omit<
   'componentMap'
 > & {
   asidePlaceholder?: ReactNode;
+  transactionStatus?: TransactionStatusResponse;
 };
 
 type EcommerceDataLayerProps = Pick<
@@ -117,26 +117,24 @@ const DefaultContent = (
   props: TbcBookingConfirmationClientProps
 ): JSX.Element => {
   debug.common('TBCBookingConfirmation Default Component started');
-  const transactionStatus = useComponentProps<TransactionStatusResponse>(
-    props.rendering?.uid
-  );
+  const searchParams = useSearchParams();
+  const paramErrors = searchParams.get('error');
+
+  const isExperienceEditor = props.page.mode.isEditing;
+  const transactionStatus =
+    isExperienceEditor && props.transactionStatus
+      ? {
+          ...props.transactionStatus,
+          status:
+            searchParams.get('status') !== 'failed' ? 'Successful' : 'failed',
+        }
+      : props.transactionStatus;
   const confirmationProps = {
     ...props,
     ...transactionStatus,
   };
 
   debug.common('TbcBookingConfirmation transactionStatus', transactionStatus);
-
-  const searchParams = useSearchParams();
-  const paramErrors = searchParams.get('error');
-
-  const isExperienceEditor = props.page.mode.isEditing;
-
-  // use status querystring param to manually switch between successful and failed views in edit mode
-  if (isExperienceEditor && transactionStatus != null) {
-    const status = searchParams.get('status');
-    transactionStatus.status = status !== 'failed' ? 'Successful' : 'failed';
-  }
 
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
@@ -225,7 +223,7 @@ const DefaultContent = (
   const options = [
     {
       title: props.fields?.ServiceNameLabel?.value || 'Scan',
-      text: confirmationProps.serviceName,
+      text: getStringValue(confirmationProps.serviceName),
     },
     {
       title: props.fields?.DateLabel?.value || 'Date',
@@ -237,15 +235,15 @@ const DefaultContent = (
     },
     {
       title: props.fields?.DurationLabel?.value || 'Duration',
-      text: `${confirmationProps.duration} minutes`,
+      text: `${getStringValue(confirmationProps.duration)} minutes`,
     },
     {
       title: props.fields?.TypeLabel?.value || 'Type',
-      text: confirmationProps.type,
+      text: getStringValue(confirmationProps.type),
     },
     {
       title: props.fields?.LocationLabel?.value || 'Location',
-      text: confirmationProps.location,
+      text: getStringValue(confirmationProps.location),
     },
   ];
 

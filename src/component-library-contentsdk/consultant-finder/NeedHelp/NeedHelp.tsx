@@ -36,10 +36,10 @@ const NeedHelp = (props: NeedHelpProps): JSX.Element => {
         <Text tag="h3" variation="body-bold-small">
           {workingHoursHeadline}
         </Text>
-        <Text tag="p" variation="body-large">
+        <Text tag="div" variation="body-large">
           {workingHours}
         </Text>
-        <Text tag="p" variation="body-large">
+        <Text tag="div" variation="body-large">
           {workingHoursTime}
         </Text>
       </div>
