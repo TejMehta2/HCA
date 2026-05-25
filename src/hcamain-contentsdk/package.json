@@ -49,6 +49,8 @@
     "@yext/search-ui-react": "^3.0.3",
     "axios": "^1.16.0",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.26.2",
+    "html-react-parser": "^5.2.11",
     "intl-tel-input": "^23.9.3",
     "next": "^16.2.0",
     "next-intl": "^4.3.5",

@@ -1,6 +1,5 @@
 'use client';
 import { useContext } from 'react';
-import uuid from 'react-uuid';
 //import { motion, AnimatePresence } from "../js/framer-motion/framer-motion.js";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FertilityCalculatorContext } from '../context/FertilityCalculatorContext';
@@ -50,7 +49,7 @@ export default function Select() {
       {selectMenus?.length > 0 && (
         <div className="selectors-container">
           {selectMenus.map((select, i) => (
-            <div className="select" key={uuid()}>
+            <div className="select" key={select.Id || select.Name || i}>
               <Label
                 headerTitle={select.Label}
                 helpText={select.HelpText}
@@ -66,8 +65,11 @@ export default function Select() {
                     value={value[`${select.Name}`]}
                     onChange={handleOnChange}
                   >
-                    {select.Options.map((option) => (
-                      <option value={option.Value} key={uuid()}>
+                    {select.Options.map((option, optionIndex) => (
+                      <option
+                        value={option.Value}
+                        key={`${select.Id || select.Name}-${option.Value}-${optionIndex}`}
+                      >
                         {option.Text}
                       </option>
                     ))}
