@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useEffect, useState, type JSX } from 'react';
+import React, { useEffect, useState, type JSX } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './NavigationMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';
@@ -127,16 +127,14 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
               {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
             </a>
             <div className={styles.ctas}>
-              <Suspense fallback={null}>
-                {search && (
-                  <div
-                    className={styles['search-wrapper']}
-                    data-navigation-type="searchOpen"
-                  >
-                    {search}
-                  </div>
-                )}
-              </Suspense>
+              {search && (
+                <div
+                  className={styles['search-wrapper']}
+                  data-navigation-type="searchOpen"
+                >
+                  {search}
+                </div>
+              )}
               {toggleButton}
             </div>
           </div>
