@@ -1,6 +1,7 @@
 'use client';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import './ivf-pricer/IVFApp';
+import './fertility-calc/FCalcApp';
 /**
  * You can import your own client components here
  * @example

@@ -1,0 +1,33 @@
+@import './sass/normalize.scss';
+@import './sass/variables.scss';
+@import './sass/breakpoints.scss';
+@import './sass/components/global.scss';
+@import './sass/typography.scss';
+// Components
+@import './sass/components/header.scss';
+@import './sass/components/headline.scss';
+@import './sass/components/stats.scss';
+@import './sass/components/selectors.scss';
+@import './sass/components/births.scss';
+
+.App {
+  text-align: center;
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+  font-size: 16px;
+  font-family: "Brown-Std";
+  color: $hcauk-dark-blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
