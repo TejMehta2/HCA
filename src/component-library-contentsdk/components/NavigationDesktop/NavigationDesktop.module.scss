@@ -76,6 +76,24 @@
   }
 }
 
+.logo-open {
+  display: none;
+}
+
+.logo-closed {
+  display: contents;
+}
+
+.wrapper.open {
+  .logo-open {
+    display: contents;
+  }
+
+  .logo-closed {
+    display: none;
+  }
+}
+
 .tabs {
   list-style: none;
   margin: 0;

@@ -1,6 +1,6 @@
 'use client';
 
-import { type JSX, type ReactNode } from 'react';
+import React, { type JSX, type ReactNode } from 'react';
 import styles from './Navigation.module.scss';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 
