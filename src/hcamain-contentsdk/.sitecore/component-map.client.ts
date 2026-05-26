@@ -38,7 +38,6 @@ import * as BlogPageHeader from 'src/components/Page Content/BlogPageHeader/Blog
 import * as BlogCards from 'src/components/Page Content/BlogCards/BlogCards';
 import * as Accordions from 'src/components/Page Content/Accordions/Accordions';
 import * as TableOfContents from 'src/components/Navigation/TableOfContents/TableOfContents';
-import * as MainNavigation from 'src/components/Navigation/MainNavigation/MainNavigation';
 import * as StepTermsAndConditions from 'src/components/ConsultantFinder/StepTermsAndConditions';
 import * as StepSlotSelect from 'src/components/ConsultantFinder/StepSlotSelect';
 import * as StepSearchConsultant from 'src/components/ConsultantFinder/StepSearchConsultant';
@@ -99,7 +98,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BlogCards', { ...BlogCards }],
   ['Accordions', { ...Accordions }],
   ['TableOfContents', { ...TableOfContents }],
-  ['MainNavigation', { ...MainNavigation }],
   ['StepTermsAndConditions', { ...StepTermsAndConditions }],
   ['StepSlotSelect', { ...StepSlotSelect }],
   ['StepSearchConsultant', { ...StepSearchConsultant }],

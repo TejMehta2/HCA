@@ -239,7 +239,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Accordions', { ...Accordions, componentType: 'client' }],
   ['TableOfContents', { ...TableOfContents, componentType: 'client' }],
   ['SubNavigation', { ...SubNavigation }],
-  ['MainNavigation', { ...MainNavigation, componentType: 'client' }],
+  ['MainNavigation', { ...MainNavigation }],
   ['Footer', { ...Footer }],
   ['Breadcrumbs', { ...Breadcrumbs }],
   ['BasicFooter', { ...BasicFooter }],

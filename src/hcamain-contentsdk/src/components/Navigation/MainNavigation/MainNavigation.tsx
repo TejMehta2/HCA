@@ -1,5 +1,4 @@
-'use client';
-import { type JSX, useRef } from 'react';
+import { type JSX } from 'react';
 import Navigation from '@component-library/site-components/Navigation/Navigation';
 import {
   NavigationEyebrow,
@@ -16,12 +15,8 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
-import Icons from '@component-library/foundation/Icons/Icons';
-import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
-import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import Themes from '@component-library/foundation/Themes/Themes';
-import Text from '@component-library/foundation/Text/Text';
+import MainNavigationSearchModalClient from './MainNavigationSearchModalClient';
+import MainNavigationSearchTriggerClient from './MainNavigationSearchTriggerClient';
 
 const MainNavigationDefaultComponent = (
   props: MainNavigationProps
@@ -56,8 +51,6 @@ const TabChildHeading = (props: MainNavigationTabChild) => {
 };
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
     props.fields?.data?.item?.navigationTabs?.targetItems?.map((tab) => ({
@@ -80,12 +73,20 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
             </TextLink>
           )),
           cta: child?.cta?.jsonValue ? (
-            <JssLink field={child?.cta?.jsonValue} editable={false} />
+            <JssLink
+              key={`navigation-child-cta-${child?.cta?.jsonValue?.value?.href || child?.title?.value || ''}`}
+              field={child?.cta?.jsonValue}
+              editable={false}
+            />
           ) : (
             <></>
           ),
           mobileCta: child?.cta?.jsonValue?.value?.href ? (
-            <JssLink field={child?.cta?.jsonValue} editable={false}>
+            <JssLink
+              key={`navigation-child-mobile-cta-${child?.cta?.jsonValue?.value?.href || child?.title?.value || ''}`}
+              field={child?.cta?.jsonValue}
+              editable={false}
+            >
               {child?.mobileCtaText?.value ? (
                 <JssText field={child?.mobileCtaText} editable={false} />
               ) : (
@@ -96,10 +97,18 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           showOnMobile: child?.showOnMobile?.boolValue || false,
         })) || [],
       mobileTabCta: tab?.mobileTabCta?.jsonValue?.value?.href ? (
-        <JssLink field={tab?.mobileTabCta?.jsonValue} editable={false} />
+        <JssLink
+          key={`navigation-mobile-tab-cta-${tab?.mobileTabCta?.jsonValue?.value?.href || tab?.tabTitle?.value || ''}`}
+          field={tab?.mobileTabCta?.jsonValue}
+          editable={false}
+        />
       ) : undefined,
       tabCta: tab?.tabCta?.jsonValue?.value?.href ? (
-        <JssLink field={tab?.tabCta?.jsonValue} editable={false}>
+        <JssLink
+          key={`navigation-tab-cta-${tab?.tabCta?.jsonValue?.value?.href || tab?.tabTitle?.value || ''}`}
+          field={tab?.tabCta?.jsonValue}
+          editable={false}
+        >
           <JssText field={tab?.tabTitle} editable={false} />
         </JssLink>
       ) : undefined,
@@ -138,6 +147,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
 
   const searchModalConfig =
     props.fields.data?.item?.searchModalConfigurationFolder?.targetItem;
+  const searchRedirectUrl =
+    searchModalConfig?.baseUrl?.jsonValue?.value?.href;
 
   return (
     <>
@@ -171,54 +182,29 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         }
         eyebrow={eyebrow}
         search={
-          searchModalConfig?.baseUrl?.jsonValue?.value?.href ? (
-            <TextLink>
-              <button
-                onClick={() => {
-                  const dialog = document.getElementById(
-                    SEARCH_SUGGESTIONS_MODAL_ID
-                  ) as HTMLDialogElement;
-                  dialog?.showModal();
-                }}
-              >
-                <Icons iconName={'iconSearch'} />
-                <span className="sr-only">Search</span>
-              </button>
-            </TextLink>
+          searchRedirectUrl ? (
+            <MainNavigationSearchTriggerClient />
           ) : undefined
         }
       />
-      <Themes theme={'A-HCA-White'}>
-        <ModalSearch
-          id={SEARCH_SUGGESTIONS_MODAL_ID}
-          ref={dialogRef}
+      {searchRedirectUrl && (
+        <MainNavigationSearchModalClient
           placeholder={searchModalConfig?.searchPlaceholder?.value || ''}
-          subheading={
-            searchModalConfig?.popularSearchesLabel ? (
-              <Text variation={'subheading-1'}>
-                <JssText
-                  field={searchModalConfig?.popularSearchesLabel}
-                  editable={false}
-                />
-              </Text>
-            ) : undefined
+          popularSearchesLabel={
+            searchModalConfig?.popularSearchesLabel?.value || ''
           }
-          redirectUrl={searchModalConfig?.baseUrl?.jsonValue?.value.href}
+          redirectUrl={searchRedirectUrl}
           suggestions={
             searchModalConfig?.popularSearches?.PopularSearch?.map(
               (search) => ({
-                icon: (
-                  <SitecoreSvg>
-                    {search?.icon?.Icon?.svgMarkup?.value}
-                  </SitecoreSvg>
-                ),
-                text: <JssText field={search.text} editable={false} />,
+                iconSvg: search?.icon?.Icon?.svgMarkup?.value,
+                text: search?.text?.value,
                 query: search?.text?.value,
               })
             ) || []
           }
         />
-      </Themes>
+      )}
     </>
   );
 };
