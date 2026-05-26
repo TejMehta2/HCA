@@ -1,4 +1,4 @@
-import { NextFetchEvent, type NextRequest } from 'next/server';
+import { NextFetchEvent, NextResponse, type NextRequest } from 'next/server';
 import {
   defineProxy,
   AppRouterMultisiteProxy,
@@ -12,8 +12,16 @@ import sites from '.sitecore/sites.json';
 import scConfig from 'sitecore.config';
 import { routing } from './i18n/routing';
 import client from './lib/sitecore-client';
+import { SmallcaseUrlProxy } from './lib/proxy/smallcase-url-proxy';
 
-export default function proxy(req: NextRequest, event: NextFetchEvent) {
+export default async function proxy(req: NextRequest, event: NextFetchEvent) {
+  const smallcaseUrl = new SmallcaseUrlProxy();
+  const initialResponse = await smallcaseUrl.handle(req, NextResponse.next());
+
+  if (initialResponse.headers.has('location')) {
+    return initialResponse;
+  }
+
   // PreviewProxy authorizes preview requests
   const preview = new PreviewProxy({
     client: client,
@@ -98,7 +106,10 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
     // },
   });
 
-  return defineProxy(preview, botTracking, locale, multisite, redirects, personalize).exec(req);
+  return defineProxy(preview, botTracking, locale, multisite, redirects, personalize).exec(
+    req,
+    initialResponse
+  );
 }
 
 export const config = {

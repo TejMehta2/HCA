@@ -14,7 +14,7 @@ import React from 'react';
 import { useRouter, useSearchParams, usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
-import { Image, Text, AppPlaceholder, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, useComponentProps, debug, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Image, Text, AppPlaceholder, RichText, Link as Link_8a80e63291fea86e0744df19113dc44bec187216, debug, useComponentProps, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text_5660c949ca9a46e01d32019413f83db4dfe34e86 from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
@@ -126,6 +126,7 @@ import { isInsideContainerComponent } from 'lib/utility-functions/insideContaine
 import Navigation_8f8d9ea1e1d8d267de16f348c3551d4c3693d287 from '@component-library/site-components/Navigation/Navigation';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
+import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 import client from 'src/lib/sitecore-client';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
@@ -254,8 +255,8 @@ const importMap = [
       { name: 'AppPlaceholder', value: AppPlaceholder },
       { name: 'RichText', value: RichText },
       { name: 'Link', value: Link_8a80e63291fea86e0744df19113dc44bec187216 },
-      { name: 'useComponentProps', value: useComponentProps },
       { name: 'debug', value: debug },
+      { name: 'useComponentProps', value: useComponentProps },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
     ]
@@ -908,6 +909,12 @@ const importMap = [
     module: '@component-library/yext/ModalSearch/ModalSearch',
     exports: [
       { name: 'default', value: ModalSearch },
+    ]
+  },
+  {
+    module: '@component-library/hooks/useCustomTracking/useCustomTracking',
+    exports: [
+      { name: 'default', value: useCustomTracking },
     ]
   },
   {
