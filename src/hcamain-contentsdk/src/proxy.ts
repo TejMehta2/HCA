@@ -3,7 +3,6 @@ import {
   defineProxy,
   AppRouterMultisiteProxy,
   PersonalizeProxy,
-  RedirectsProxy,
   LocaleProxy,
   BotTrackingProxy,
   PreviewProxy,
@@ -13,6 +12,7 @@ import scConfig from 'sitecore.config';
 import { routing } from './i18n/routing';
 import client from './lib/sitecore-client';
 import { SmallcaseUrlProxy } from './lib/proxy/smallcase-url-proxy';
+import { RedirectsEdgeConfigProxy } from './lib/proxy/redirects-edge-config-proxy';
 
 export default async function proxy(req: NextRequest, event: NextFetchEvent) {
   const smallcaseUrl = new SmallcaseUrlProxy();
@@ -64,19 +64,13 @@ export default async function proxy(req: NextRequest, event: NextFetchEvent) {
     skip: () => false,
   });
 
-  // Instantiate proxies - they will use Edge config if available, otherwise fall back to local config
-  // Each proxy will skip processing if required API configuration is not available
-  const redirects = new RedirectsProxy({
+  const redirectsEdgeConfig = new RedirectsEdgeConfigProxy({
     /**
      * List of sites for site resolver to work with
      */
     sites,
-    ...scConfig.api.edge,
-    ...scConfig.api.local,
-    ...scConfig.redirects,
     // This function determines if the proxy should be turned off on per-request basis.
     // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
-    // By default it is disabled while in development mode.
     // This is an important performance consideration since Next.js Edge proxy runs on every request.
     skip: () => false,
   });
@@ -106,7 +100,14 @@ export default async function proxy(req: NextRequest, event: NextFetchEvent) {
     // },
   });
 
-  return defineProxy(preview, botTracking, locale, multisite, redirects, personalize).exec(
+  return defineProxy(
+    preview,
+    botTracking,
+    locale,
+    multisite,
+    redirectsEdgeConfig,
+    personalize
+  ).exec(
     req,
     initialResponse
   );
