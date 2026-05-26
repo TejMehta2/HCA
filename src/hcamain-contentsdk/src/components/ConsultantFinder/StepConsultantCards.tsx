@@ -12,11 +12,17 @@ import {
 } from './StepConsultantCardsClient';
 
 async function GetConsultantsData(): Promise<StepConsultantCardsServerSideProps> {
-  const ignoreConsultantReviews = await getIgnoreReviewsConsultantSlugs();
-  const insurers = await getInsuranceData();
-  const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs();
-  const consultantsSlugsDoctifyPhone =
-    await getDoctifyPhoneNumberConsultantSlugs();
+  const [
+    ignoreConsultantReviews,
+    insurers,
+    consultantsSlugsLD,
+    consultantsSlugsDoctifyPhone,
+  ] = await Promise.all([
+    getIgnoreReviewsConsultantSlugs(),
+    getInsuranceData(),
+    getActiveLiveDiaryConsultantSlugs(),
+    getDoctifyPhoneNumberConsultantSlugs(),
+  ]);
 
   return {
     Insurers: insurers,
