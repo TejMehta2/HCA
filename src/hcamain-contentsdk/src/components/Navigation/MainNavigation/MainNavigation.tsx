@@ -50,6 +50,14 @@ const TabChildHeading = (props: MainNavigationTabChild) => {
   return <JssText field={title} />;
 };
 
+const isCareersRoute = (itemPath?: string) => {
+  const normalizedPath = itemPath?.toLowerCase().replace(/^\/+|\/+$/g, '');
+
+  return (
+    normalizedPath === 'careers' || normalizedPath?.startsWith('careers/')
+  );
+};
+
 export const Default = (props: MainNavigationProps): JSX.Element => {
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
@@ -149,6 +157,11 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
     props.fields.data?.item?.searchModalConfigurationFolder?.targetItem;
   const searchRedirectUrl =
     searchModalConfig?.baseUrl?.jsonValue?.value?.href;
+  const homeUrl = isCareersRoute(
+    props.page.layout.sitecore.context.itemPath
+  )
+    ? '/careers'
+    : '/';
 
   return (
     <>
@@ -156,6 +169,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         themeClosed={props.params?.Theme || 'I-HCA-Goldenrod'}
         themeOpen={props.params?.ThemeOpen || 'B-HCA-Navy-Blue'}
         tabs={tabs}
+        homeUrl={homeUrl}
         logo={
           props?.fields?.data?.item?.logo?.jsonValue?.value &&
           props.fields.data.item.logo.jsonValue.value['class'] !==
