@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
+import scConfig from 'sitecore.config';
 
 const sitecoreApiHost = process.env.NEXT_PUBLIC_SITECORE_API_HOST || '';
 const sitecoreApiKey = process.env.NEXT_PUBLIC_SITECORE_API_KEY || '';
-const graphQLEndpoint =
-  process.env.GRAPH_QL_ENDPOINT ||
-  (sitecoreApiHost ? `${sitecoreApiHost}/sitecore/api/graph/edge` : '');
+const graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
 
 // dynamic GraphQL query, works on flat object at the mo...
 // references
 //https://www.getfishtank.com/blog/useful-sitecore-graphql-queries
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
 //https://doc.sitecore.com/xmc/en/developers/xm-cloud/query-examples.html
+
 
 export async function getItemFromGraphQL(
   itemId: string,
@@ -23,9 +23,9 @@ export async function getItemFromGraphQL(
       `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
     );*/
 
-    const graphQLClient = new GraphQLRequestClient(graphQLEndpoint, {
-      apiKey: sitecoreApiKey,
-    });
+    const graphQLClient = new GraphQLRequestClient(graphqlendpoint, {
+    apiKey: scConfig.api.edge.contextId,
+  });
 
     // build a dynamic query
     let GQLQuery: string = `
