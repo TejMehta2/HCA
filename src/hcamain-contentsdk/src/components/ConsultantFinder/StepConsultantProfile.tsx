@@ -15,6 +15,7 @@ import {
   type StepConsultantProfileProps,
   type StepConsultantProfileServerSideProps,
 } from './StepConsultantProfileClient';
+import { notFound } from 'next/navigation';
 
 const getRouteParam = (value: unknown): string => {
   if (Array.isArray(value)) {
@@ -61,9 +62,14 @@ export const getComponentServerProps: GetComponentServerProps = async (
     'General Practice (GP)' ||
     (await checkIfConsultantIsDoctifyPhoneNumber(slug));
 
+ const isProfileError = isErrorWithProfileData(consultantProfileJson);
+
+  if(isProfileError || !consultantProfileJson)
+    return notFound();
+
   return {
     Slug: slug,
-    ErrorWithProfileData: isErrorWithProfileData(consultantProfileJson),
+    ErrorWithProfileData: isProfileError,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
     IgnoreReviewsConsultant: ignoreReviewConsultant,
     DoctifyPhoneNumberConsultant: consultantIsDoctifyPhoneNumber,

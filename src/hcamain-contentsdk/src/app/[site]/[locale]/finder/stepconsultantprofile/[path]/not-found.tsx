@@ -1,31 +1,35 @@
 import Link from 'next/link';
+import { getCachedPageParams } from '@sitecore-content-sdk/nextjs';
+import { NextIntlClientProvider } from 'next-intl';
 import client from 'lib/sitecore-client';
 import scConfig from 'sitecore.config';
-import { ErrorPage } from '@sitecore-content-sdk/nextjs';
 import Layout from 'src/Layout';
 import Providers from 'src/Providers';
 
-export default async function NotFound() {
-  if (scConfig.defaultSite) {
-    const page = await client.getErrorPage(ErrorPage.NotFound, {
-      site: scConfig.defaultSite,
-      locale: scConfig.defaultLanguage,
-    });
+const NOT_FOUND_PATH = 'finder/stepconsultantprofile/404';
 
-    if (page) {
-      return (
-        <Providers page={page}>
-          <Layout page={page} />
-        </Providers>
-      );
-    }
+export default async function NotFound() {
+  const { site, locale } = getCachedPageParams();
+
+  const page = await client.getPage(NOT_FOUND_PATH, {
+    site: site || scConfig.defaultSite,
+    locale: locale || scConfig.defaultLanguage,
+  });
+
+  if (page?.layout.sitecore.route) {
+    return (
+      <NextIntlClientProvider>       
+          <Providers page={page}>
+            <Layout page={page} />
+          </Providers>        
+      </NextIntlClientProvider>
+    );
   }
 
   return (
     <div style={{ padding: 10 }}>
-      <h1>Consultant not found</h1>
-      <p>This page does not exist.</p>
-      <Link href="/">Go to the Home page</Link>
+      <h1>Consultant not found</h1>      
+      <Link href="/finder">Go to the Home page</Link>
     </div>
   );
 }
