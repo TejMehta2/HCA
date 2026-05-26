@@ -36,7 +36,8 @@ async function getVacancy(path: string): Promise<VacancyResponse | null> {
   }
 
   if (!response.ok) {
-    throw new Error(`Vacancy request failed with status ${response.status}`);
+    console.log(`Vacancy request failed with status ${response.status}, path: ${path}`);
+    return null;     
   }
 
   const data = await response.json();
@@ -65,14 +66,14 @@ export default async function VacancyPage({ params }: VacancyPageProps) {
   }
 
   if (!page?.layout.sitecore.route) {
-    notFound();
+    return notFound();
   }
 
   if (!page.mode.isEditing) {
     const vacancy = await getVacancy(path);
 
     if (!vacancy) {
-      notFound();
+      return notFound();
     }
 
     (page.layout.sitecore.route as VacancyRoute).vacancy = vacancy;
