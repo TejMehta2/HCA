@@ -14,7 +14,6 @@ import {
   ImageField,
   Field,
   LinkField,
-  useComponentProps,
   ComponentRendering,
 } from '@sitecore-content-sdk/nextjs';
 
@@ -121,6 +120,7 @@ export type StepConsultantCardsProps = {
   rendering: ComponentRendering;
   params: { [key: string]: string };
   fields: Fields;
+  serverSideData: StepConsultantCardsServerSideProps;
 };
 
 export interface StepConsultantCardsServerSideProps {
@@ -139,15 +139,12 @@ const StepDefaultComponent = (props: StepConsultantCardsProps): JSX.Element => (
 );
 
 const DefaultContent = (props: StepConsultantCardsProps): JSX.Element => {
-  const serverSideData = useComponentProps<StepConsultantCardsServerSideProps>(
-    props.rendering.uid
-  );
-
-  const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
+  
+  const insurersDoctify = props?.serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
-  const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
+  const consultantsSlugs: any = props?.serverSideData?.LiveDiaryConsultantsSlugs;
+  const doctifyPhoneSlugs: any = props?.serverSideData?.DoctifyPhoneConsultantsSlugs;
   // const ignoreReviewsConsultantsSlugs: any  = serverSideData?.NoReviewsConsultants;
   // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
   const {
@@ -650,7 +647,7 @@ const DefaultContent = (props: StepConsultantCardsProps): JSX.Element => {
           setTotalPages(totalPages);
           if (resp.data.rows.length > 0) {
             // fill data with is live diary flag
-            if (serverSideData?.LiveDiaryConsultantsSlugs && resp.data.rows) {
+            if (props?.serverSideData?.LiveDiaryConsultantsSlugs && resp.data.rows) {
               // load the is live diary flag from the server side data, based on the results from the doctify search
               resp.data.rows.forEach(
                 (consultant: {
@@ -658,7 +655,7 @@ const DefaultContent = (props: StepConsultantCardsProps): JSX.Element => {
                   slug: string;
                 }) => {
                   consultant.isLiveDiaryConsultant =
-                    serverSideData?.LiveDiaryConsultantsSlugs.indexOf(
+                    props?.serverSideData?.LiveDiaryConsultantsSlugs.indexOf(
                       consultant?.slug
                     ) > -1;
                 }
@@ -1098,7 +1095,7 @@ const DefaultContent = (props: StepConsultantCardsProps): JSX.Element => {
                     <ConsultantCard
                       key={consultant?.id}
                       ignoreReviewsConsultantsList={
-                        serverSideData?.NoReviewsConsultants || []
+                        props?.serverSideData?.NoReviewsConsultants || []
                       }
                       profilePhoto={
                         consultant?.images?.logo ||

@@ -1,5 +1,4 @@
 import { type JSX } from 'react';
-import { type GetComponentServerProps } from '@sitecore-content-sdk/nextjs';
 import {
   getActiveLiveDiaryConsultantSlugs,
   getDoctifyPhoneNumberConsultantSlugs,
@@ -12,7 +11,7 @@ import {
   type StepConsultantCardsServerSideProps,
 } from './StepConsultantCardsClient';
 
-export const getComponentServerProps: GetComponentServerProps = async () => {
+async function GetConsultantsData(): Promise<StepConsultantCardsServerSideProps> {
   const ignoreConsultantReviews = await getIgnoreReviewsConsultantSlugs();
   const insurers = await getInsuranceData();
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs();
@@ -25,16 +24,21 @@ export const getComponentServerProps: GetComponentServerProps = async () => {
     DoctifyPhoneConsultantsSlugs: consultantsSlugsDoctifyPhone,
     NoReviewsConsultants: ignoreConsultantReviews,
   } satisfies StepConsultantCardsServerSideProps;
-};
+}
 
-export const Default = ({
+export default async function Default({
   rendering,
   params,
   fields,
-}: StepConsultantCardsProps): JSX.Element => (
-  <StepConsultantCardsClient
-    rendering={rendering}
-    params={params}
-    fields={fields}
-  />
-);
+}: StepConsultantCardsProps): Promise<JSX.Element> {
+  const serverData = await GetConsultantsData();
+
+  return (
+    <StepConsultantCardsClient
+      serverSideData={serverData}
+      rendering={rendering}
+      params={params}
+      fields={fields}
+    />
+  );
+}
