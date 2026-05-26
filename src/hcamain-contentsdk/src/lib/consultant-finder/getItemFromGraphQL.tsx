@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
 import scConfig from 'sitecore.config';
-
-const sitecoreApiHost = process.env.NEXT_PUBLIC_SITECORE_API_HOST || '';
-const sitecoreApiKey = process.env.NEXT_PUBLIC_SITECORE_API_KEY || '';
-const graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
+import client from 'src/lib/sitecore-client';
 
 // dynamic GraphQL query, works on flat object at the mo...
 // references
@@ -23,15 +19,11 @@ export async function getItemFromGraphQL(
       `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
     );*/
 
-    const graphQLClient = new GraphQLRequestClient(graphqlendpoint, {
-    apiKey: scConfig.api.edge.contextId,
-  });
-
     // build a dynamic query
     let GQLQuery: string = `
-    query
+    query GetItem($itemId: String!, $language: String!)
     {
-      item(path: "${itemId}", language: "en") {
+      item(path: $itemId, language: $language) {
         ... on ${templateName} { 
     `;
     // map in desired keys (properties) to fetch
@@ -50,13 +42,20 @@ export async function getItemFromGraphQL(
     `;
 
     //console.log('GQLQuery: ', GQLQuery);
-    const GQLResult = await graphQLClient.request<any>(GQLQuery);
+    const GQLResult = await client.getData<any>(GQLQuery, {
+      itemId,
+      language: scConfig.defaultLanguage || 'en',
+    });
     //console.log('GraphQL itemToFetch result:', JSON.stringify(itemToFetch));
     //map the result back to the requesting object
-    if (GQLResult) {
-      Object.keys(itemToFetch).forEach(
-        (key) => (itemToFetch[key] = GQLResult.item[key].value)
-      );
+    if (GQLResult?.item) {
+      Object.keys(itemToFetch).forEach((key) => {
+        const value = GQLResult.item?.[key]?.value;
+
+        if (value !== undefined) {
+          itemToFetch[key] = value;
+        }
+      });
     }
     //console.log('GraphQL itemToFetch result:', JSON.stringify(GQLResult));
   } catch (e) {
