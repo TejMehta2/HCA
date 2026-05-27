@@ -874,12 +874,6 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/components/Accordions/Accordions',
-    exports: [
-      { name: 'default', value: Accordions },
-    ]
-  },
-  {
     module: '@component-library/site-components/JumpToLinks/JumpToLinks',
     exports: [
       { name: 'JumpToAnchor', value: JumpToAnchor },

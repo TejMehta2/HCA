@@ -35,8 +35,6 @@ import * as BookAnAppointmentCTA from 'src/components/Page Content/BookAnAppoint
 import * as BlogSearch from 'src/components/Page Content/BlogSearch/BlogSearch';
 import * as BlogRelatedArticles from 'src/components/Page Content/BlogRelatedArticles/BlogRelatedArticles';
 import * as BlogPageHeader from 'src/components/Page Content/BlogPageHeader/BlogPageHeader';
-import * as BlogCards from 'src/components/Page Content/BlogCards/BlogCards';
-import * as Accordions from 'src/components/Page Content/Accordions/Accordions';
 import * as TableOfContents from 'src/components/Navigation/TableOfContents/TableOfContents';
 import * as StepTermsAndConditions from 'src/components/ConsultantFinder/StepTermsAndConditions';
 import * as StepSlotSelect from 'src/components/ConsultantFinder/StepSlotSelect';
@@ -95,8 +93,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BlogSearch', { ...BlogSearch }],
   ['BlogRelatedArticles', { ...BlogRelatedArticles }],
   ['BlogPageHeader', { ...BlogPageHeader }],
-  ['BlogCards', { ...BlogCards }],
-  ['Accordions', { ...Accordions }],
   ['TableOfContents', { ...TableOfContents }],
   ['StepTermsAndConditions', { ...StepTermsAndConditions }],
   ['StepSlotSelect', { ...StepSlotSelect }],
