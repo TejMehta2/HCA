@@ -98,6 +98,28 @@
   }
 }
 
+.logo-open,
+.toggle-open {
+  display: none;
+}
+
+.logo-closed,
+.toggle-closed {
+  display: contents;
+}
+
+.wrapper.open {
+  .logo-open,
+  .toggle-open {
+    display: contents;
+  }
+
+  .logo-closed,
+  .toggle-closed {
+    display: none;
+  }
+}
+
 .drawer {
   background-color: var(--background);
   position: absolute;

@@ -2,41 +2,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { getThemeMode } from '../../foundation/Themes/Themes.config';
 import { type Theme } from '../../foundation/Themes/Themes.types';
 import themeStyles from '../../foundation/Themes/Themes.module.scss';
 import styles from './NavigationDesktop.module.scss';
-
-const themeModes: Record<Theme, 'dark' | 'light'> = {
-  'A-HCA-White': 'dark',
-  'B-HCA-Navy-Blue': 'light',
-  'C-HCA-Denim': 'light',
-  'D-HCA-Teal': 'dark',
-  'E-HCA-Cerulean': 'dark',
-  'F-HCA-Fern': 'dark',
-  'G-HCA-Orange': 'dark',
-  'H-HCA-Tangerine': 'dark',
-  'I-HCA-Goldenrod': 'dark',
-  'J-HCA-Tangerine-20': 'dark',
-  'K-HCA-Fern-20': 'dark',
-  'L-HCA-Teal-5': 'dark',
-  'M-HCA-Goldenrod-20': 'dark',
-  'N-HCA-Denim-5': 'dark',
-  'O-HCA-Teal-20': 'dark',
-  'Palace-White': 'dark',
-  'Palace-Grey': 'light',
-  'Palace-Beige': 'dark',
-  'Palace-Red': 'light',
-  'Chelsea-White': 'dark',
-  'Chelsea-Navy-Blue': 'light',
-  'Chelsea-Beige': 'dark',
-  'Chelsea-Gold': 'dark',
-  LBI: 'dark',
-  'LBI-Dark': 'dark',
-  'LBI-White': 'light',
-  'Alan-Black': 'light',
-  'Alan-White': 'dark',
-  'Alan-Light-Grey': 'dark',
-};
 
 type NavigationDesktopControllerClientProps = {
   initialActiveIndex?: number | null;
@@ -92,7 +61,7 @@ const NavigationDesktopControllerClient = ({
       }
 
       themeRoot.setAttribute('data-theme', nextTheme);
-      themeRoot.setAttribute('data-theme-mode', themeModes[nextTheme]);
+      themeRoot.setAttribute('data-theme-mode', getThemeMode(nextTheme));
     };
 
     const setActiveIndex = (nextActiveIndex: number | null) => {

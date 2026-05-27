@@ -112,10 +112,15 @@ import { isSitecoreDateSet } from 'lib/utility-functions/isSitecoreDateSet';
 import { MapAuthorsToBlockQuotes } from 'src/components/Page Content/Authors/Authors.mapping.GraphQL';
 import { normalizeId } from 'lib/sitecore/templateIds';
 import ArticleCategories from '@component-library/site-components/ArticleCategories/ArticleCategories';
+import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Container from '@component-library/foundation/Containers/Container';
 import { MapAuthorsToBlockQuotes as MapAuthorsToBlockQuotes_f1fc40f7ba2cdda3a1177bac77c7f1437676782b } from 'src/components/Page Content/Authors/Authors.mapping';
+import Accordions from '@component-library/components/Accordions/Accordions';
 import { JumpToLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import Navigation from '@component-library/site-components/Navigation/Navigation';
+import MainNavigationSearchModalClient from 'src/components/Navigation/MainNavigation/MainNavigationSearchModalClient';
+import MainNavigationSearchTriggerClient from 'src/components/Navigation/MainNavigation/MainNavigationSearchTriggerClient';
 import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Navigation/Footer/Footer.utilities';
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
@@ -123,6 +128,7 @@ import FooterSmall from '@component-library/site-components/FooterSmall/FooterSm
 import { checkIfConsultantIsNoReviews, checkIfConsultantIsDoctifyPhoneNumber, checkIfLiveBookingIsAvailable, getPhysicianStructuredData, getActiveLiveDiaryConsultantSlugs, getDoctifyPhoneNumberConsultantSlugs, getIgnoreReviewsConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import { getSpecialistProfileData, isErrorWithProfileData, getInsuranceData } from 'lib/consultant-finder/API_Doctify';
 import { Default as Default_844964c826b725d51ce782898cf2eb97658009a2 } from 'src/components/ConsultantFinder/StepConsultantProfileClient';
+import { notFound } from 'next/navigation';
 import { Default as Default_f5d10bc6847776a52ccdf97f5390946fd1933181 } from 'src/components/ConsultantFinder/StepConsultantCardsClient';
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import { Default as Default_e14821894a71ac7a6e65fc5dc320029fcbf616d3 } from 'src/components/ConsultantFinder/CMADisclosuresClient';
@@ -740,6 +746,12 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/components/CardBlog/CardBlog',
+    exports: [
+      { name: 'default', value: CardBlog },
+    ]
+  },
+  {
     module: '@component-library/foundation/Containers/Container',
     exports: [
       { name: 'default', value: Container },
@@ -752,10 +764,34 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/components/Accordions/Accordions',
+    exports: [
+      { name: 'default', value: Accordions },
+    ]
+  },
+  {
     module: '@component-library/site-components/JumpToLinks/JumpToLinks',
     exports: [
       { name: 'JumpToLink', value: JumpToLink },
       { name: 'default', value: JumpToLinks },
+    ]
+  },
+  {
+    module: '@component-library/site-components/Navigation/Navigation',
+    exports: [
+      { name: 'default', value: Navigation },
+    ]
+  },
+  {
+    module: 'src/components/Navigation/MainNavigation/MainNavigationSearchModalClient',
+    exports: [
+      { name: 'default', value: MainNavigationSearchModalClient },
+    ]
+  },
+  {
+    module: 'src/components/Navigation/MainNavigation/MainNavigationSearchTriggerClient',
+    exports: [
+      { name: 'default', value: MainNavigationSearchTriggerClient },
     ]
   },
   {
@@ -808,6 +844,12 @@ const importMap = [
     module: 'src/components/ConsultantFinder/StepConsultantProfileClient',
     exports: [
       { name: 'Default', value: Default_844964c826b725d51ce782898cf2eb97658009a2 },
+    ]
+  },
+  {
+    module: 'next/navigation',
+    exports: [
+      { name: 'notFound', value: notFound },
     ]
   },
   {

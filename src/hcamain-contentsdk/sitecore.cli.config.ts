@@ -16,7 +16,11 @@ export default defineCliConfig({
       extractFiles(),
       writeImportMap({
         paths: ['src/components'],
-        exclude: ['src/components/**/CardWithModal.tsx'],
+        exclude: [
+          'src/components/**/CardWithModal.tsx',
+          'src/components/Navigation/MainNavigation/MainNavigationSearchModalClient.tsx',
+          'src/components/Navigation/MainNavigation/MainNavigationSearchTriggerClient.tsx',
+        ],
       }),
     ],
   },
@@ -37,6 +41,8 @@ export default defineCliConfig({
       'src/components/**/*.mapping.GraphQL.tsx',
       'src/components/**/helpers/*',
       'src/components/**/CardWithModal.tsx',
+      'src/components/Navigation/MainNavigation/MainNavigationSearchModalClient.tsx',
+      'src/components/Navigation/MainNavigation/MainNavigationSearchTriggerClient.tsx',
       'src/components/**/response.types.ts',
     ],
   },

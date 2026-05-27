@@ -119,13 +119,9 @@ import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
-import Accordions from '@component-library/components/Accordions/Accordions';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
-import Navigation_8f8d9ea1e1d8d267de16f348c3551d4c3693d287 from '@component-library/site-components/Navigation/Navigation';
-import TextLink from '@component-library/core-components/TextLink/TextLink';
-import ModalSearch from '@component-library/yext/ModalSearch/ModalSearch';
 import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 import client from 'src/lib/sitecore-client';
 import { pageView } from '@sitecore-content-sdk/events';
@@ -165,6 +161,7 @@ import SearchLocation from '@component-library/consultant-finder/Search/SearchLo
 import FunctionalCookiesBox from '@component-library/consultant-finder/FunctionalCookiesBox/FunctionalCookiesBox';
 import PopularSearchesBox from '@component-library/consultant-finder/PopularSearchesBox/PopularSearchesBox';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
 import EnquireNowBtns from '@component-library/consultant-finder/EnquireNowBtns/EnquireNowBtns';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
@@ -888,24 +885,6 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/site-components/Navigation/Navigation',
-    exports: [
-      { name: 'default', value: Navigation_8f8d9ea1e1d8d267de16f348c3551d4c3693d287 },
-    ]
-  },
-  {
-    module: '@component-library/core-components/TextLink/TextLink',
-    exports: [
-      { name: 'default', value: TextLink },
-    ]
-  },
-  {
-    module: '@component-library/yext/ModalSearch/ModalSearch',
-    exports: [
-      { name: 'default', value: ModalSearch },
-    ]
-  },
-  {
     module: '@component-library/hooks/useCustomTracking/useCustomTracking',
     exports: [
       { name: 'default', value: useCustomTracking },
@@ -1145,6 +1124,12 @@ const importMap = [
     module: '@component-library/site-components/Breadcrumbs/Breadcrumbs',
     exports: [
       { name: 'default', value: Breadcrumbs },
+    ]
+  },
+  {
+    module: '@component-library/core-components/TextLink/TextLink',
+    exports: [
+      { name: 'default', value: TextLink },
     ]
   },
   {

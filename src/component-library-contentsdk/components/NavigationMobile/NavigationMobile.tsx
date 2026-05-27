@@ -1,6 +1,4 @@
-'use client';
-import React, { useEffect, useState, type JSX } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import React, { Suspense, type JSX } from 'react';
 import styles from './NavigationMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg?react';
@@ -12,25 +10,40 @@ import {
   NavigationProps,
   NavigationTab,
 } from '../../site-components/Navigation/Navigation.types';
+import NavigationMobileControllerClient from './NavigationMobileControllerClient';
 
-interface BackButtonProps {
-  callback: () => void;
-  displayText: JSX.Element;
-}
+const BackButton = ({
+  children,
+  type,
+}: {
+  children: JSX.Element;
+  type: 'menu' | 'secondary';
+}) => (
+  <div
+    className={[styles.back, styles.hidden].join(' ')}
+    data-navigation-mobile-back={type}
+  >
+    <TextLink variation={'body-large'}>
+      <button type="button" data-navigation-mobile-back-button={type}>
+        <Icons iconName={'iconArrowLeft'} />
+        {children}
+      </button>
+    </TextLink>
+  </div>
+);
 
-const BackButton = (props: BackButtonProps) => {
-  const { callback, displayText } = props;
-  return (
-    <div className={styles.back}>
-      <TextLink variation={'body-large'}>
-        <button onClick={callback}>
-          <Icons iconName={'iconArrowLeft'} />
-          {displayText}
-        </button>
-      </TextLink>
-    </div>
-  );
-};
+const getMobileTabs = (tabs: NavigationTab[]): NavigationTab[] =>
+  tabs.map((tab) => ({
+    ...tab,
+    content: tab.content?.filter((item) => {
+      const isLinkList = item.template === 'Main Navigation Links List';
+      const isSimpleContentBlock =
+        item.template === 'Navigation Content Block' &&
+        ['simple', 'single'].includes(item.variation || '') &&
+        item.showOnMobile;
+      return isLinkList || isSimpleContentBlock;
+    }),
+  }));
 
 const NavigationMobile = (props: NavigationProps): JSX.Element => {
   const {
@@ -43,88 +56,31 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
     logo,
     darkLogo,
   } = props;
-
-  // Hooks
-  const [isOpen, setIsOpen] = useState(false);
-
-  const [primaryChoice, setPrimaryChoice] = useState<number | null>(null);
-  const [secondaryChoice, setSecondaryChoice] = useState<number | null>(null);
-
-  // Prevent body scroll while nav open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  // Event handlers
-  const closeNavigation = () => {
-    setIsOpen(false);
-    setPrimaryChoice(null);
-    setSecondaryChoice(null);
-  };
-  const openNavigation = () => setIsOpen(true);
-
-  // Close the nav after App Router route changes
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    closeNavigation();
-  }, [pathname, searchParams]);
-
-  // Transform props to filter out desktop child components
-  const mobileTabs: NavigationTab[] = tabs.map((tab) => ({
-    ...tab,
-    content: tab.content?.filter((item) => {
-      const isLinkList = item.template === 'Main Navigation Links List';
-      const isSimpleContentBlock =
-        item.template === 'Navigation Content Block' &&
-        ['simple', 'single'].includes(item.variation || '') &&
-        item.showOnMobile;
-      return isLinkList || isSimpleContentBlock;
-    }),
-  }));
-
-  // Sub-components
-  const toggleButton = (
-    <TextLink>
-      <button
-        data-navigation-type={isOpen ? 'mobileNavigationOpen' : null}
-        onClick={isOpen ? closeNavigation : openNavigation}
-        aria-expanded={isOpen}
-      >
-        <span className={isOpen ? '' : 'sr-only'}>
-          <Icons iconName={'iconCross'} />
-        </span>
-        <span className={isOpen ? 'sr-only' : ''}>
-          <Icons iconName={'icon3Lines'} />
-        </span>
-        <span className={'sr-only'}>
-          {isOpen ? 'Close navigation' : 'Open navigation'}
-        </span>
-      </button>
-    </TextLink>
-  );
+  const mobileTabs = getMobileTabs(tabs);
 
   return (
-    <Themes theme={isOpen ? themeOpen : themeClosed}>
+    <Themes theme={themeClosed}>
       <div
         data-event="mobileNavigationClick"
-        className={[styles.wrapper, isOpen ? styles.open : styles.closed].join(
-          ' '
-        )}
+        data-navigation-mobile-root
+        className={[styles.wrapper, styles.closed].join(' ')}
       >
+        <Suspense fallback={null}>
+          <NavigationMobileControllerClient
+            themeClosed={themeClosed}
+            themeOpen={themeOpen}
+          />
+        </Suspense>
         <nav className={[styles.navigation].join(' ')} role="navigation">
           <div className={styles.main}>
             <a className={styles.logo} href={homeUrl}>
               <span className="sr-only">Home</span>
-              {isOpen ? logo || <LogoWhite /> : darkLogo || <LogoBlue />}
+              <span className={styles['logo-closed']}>
+                {darkLogo || <LogoBlue />}
+              </span>
+              <span className={styles['logo-open']}>
+                {logo || <LogoWhite />}
+              </span>
             </a>
             <div className={styles.ctas}>
               {search && (
@@ -135,68 +91,69 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                   {search}
                 </div>
               )}
-              {toggleButton}
+              <TextLink>
+                <button
+                  type="button"
+                  data-navigation-mobile-toggle
+                  aria-expanded={false}
+                >
+                  <span className={styles['toggle-open']}>
+                    <Icons iconName={'iconCross'} />
+                  </span>
+                  <span className={styles['toggle-closed']}>
+                    <Icons iconName={'icon3Lines'} />
+                  </span>
+                  <span
+                    className={'sr-only'}
+                    data-navigation-mobile-toggle-label
+                  >
+                    Open navigation
+                  </span>
+                </button>
+              </TextLink>
             </div>
           </div>
-          <div className={[styles.drawer, isOpen ? styles.open : ''].join(' ')}>
-            {primaryChoice !== null && (
+          <div className={styles.drawer} data-navigation-mobile-drawer>
+            <BackButton type="menu">
               <>
-                {(secondaryChoice === null ||
-                  mobileTabs[primaryChoice].content.length <= 1) && (
-                  <BackButton
-                    callback={() => {
-                      setPrimaryChoice(null);
-                      setSecondaryChoice(null);
-                    }}
-                    displayText={
-                      <>
-                        Back to <strong>Menu</strong>
-                      </>
-                    }
-                  />
-                )}
-                {secondaryChoice !== null &&
-                  mobileTabs[primaryChoice].content.length > 1 && (
-                    <BackButton
-                      callback={() => setSecondaryChoice(null)}
-                      displayText={
-                        <>
-                          Back to{' '}
-                          <strong>{mobileTabs[primaryChoice].heading}</strong>
-                        </>
-                      }
-                    />
-                  )}
+                Back to <strong>Menu</strong>
               </>
-            )}
+            </BackButton>
+            <BackButton type="secondary">
+              <>
+                Back to <strong data-navigation-mobile-active-primary-label />
+              </>
+            </BackButton>
 
             <div
-              className={[
-                styles.links,
-                primaryChoice === null && secondaryChoice === null
-                  ? styles.primary
-                  : '',
-              ].join(' ')}
+              className={[styles.links, styles.primary].join(' ')}
+              data-navigation-mobile-links
             >
               <ul>
                 {mobileTabs.map((primary, primaryIndex) => {
+                  const contentCount = primary.content?.length || 0;
+
                   if (primary.hasChildren) {
                     return (
                       <React.Fragment key={primaryIndex}>
                         <li
-                          className={
-                            primaryChoice === null ? '' : styles.hidden
-                          }
+                          data-navigation-mobile-primary-item
+                          data-navigation-mobile-primary-index={primaryIndex}
                         >
                           <TextLink full={true}>
                             <button
+                              type="button"
                               data-navigation-type="mobileNavClick"
-                              onClick={() => {
-                                setPrimaryChoice(primaryIndex);
-                                if (primary.content.length <= 1) {
-                                  setSecondaryChoice(0);
-                                }
-                              }}
+                              data-navigation-mobile-primary-button
+                              data-navigation-mobile-primary-index={
+                                primaryIndex
+                              }
+                              data-navigation-mobile-primary-label={
+                                primary.heading
+                              }
+                              data-navigation-mobile-primary-content-count={
+                                contentCount
+                              }
                             >
                               <span>{primary.heading}</span>
                               <Icons iconName={'iconChevronRight'} />
@@ -204,34 +161,43 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                           </TextLink>
                         </li>
                         <li
-                          className={[
-                            styles.grow,
-                            primaryChoice === primaryIndex ? '' : styles.hidden,
-                          ].join(' ')}
+                          className={[styles.grow, styles.hidden].join(' ')}
+                          data-navigation-mobile-secondary-group
+                          data-navigation-mobile-primary-index={primaryIndex}
                         >
                           <ul>
                             {primary.content?.map(
                               (secondary, secondaryIndex) => {
+                                const secondaryLinkOnly = [
+                                  'simple',
+                                  'single',
+                                ].includes(secondary.variation || '');
+
                                 return (
                                   <React.Fragment key={secondaryIndex}>
                                     <li
-                                      className={
-                                        primaryChoice === primaryIndex &&
-                                        secondaryChoice === null
-                                          ? ''
-                                          : styles.hidden
+                                      className={styles.hidden}
+                                      data-navigation-mobile-secondary-item
+                                      data-navigation-mobile-primary-index={
+                                        primaryIndex
+                                      }
+                                      data-navigation-mobile-secondary-index={
+                                        secondaryIndex
                                       }
                                     >
                                       <TextLink full={true}>
-                                        {['simple', 'single'].includes(
-                                          secondary.variation || ''
-                                        ) ? (
+                                        {secondaryLinkOnly ? (
                                           <>{secondary.mobileCta}</>
                                         ) : (
                                           <button
+                                            type="button"
                                             data-navigation-type="mobileSubNavClick"
-                                            onClick={() =>
-                                              setSecondaryChoice(secondaryIndex)
+                                            data-navigation-mobile-secondary-button
+                                            data-navigation-mobile-primary-index={
+                                              primaryIndex
+                                            }
+                                            data-navigation-mobile-secondary-index={
+                                              secondaryIndex
                                             }
                                           >
                                             <span>{secondary.heading}</span>
@@ -245,10 +211,15 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                     <li
                                       className={[
                                         styles.grow,
-                                        secondaryChoice === secondaryIndex
-                                          ? ''
-                                          : styles.hidden,
+                                        styles.hidden,
                                       ].join(' ')}
+                                      data-navigation-mobile-tertiary-group
+                                      data-navigation-mobile-primary-index={
+                                        primaryIndex
+                                      }
+                                      data-navigation-mobile-secondary-index={
+                                        secondaryIndex
+                                      }
                                     >
                                       <ul>
                                         {secondary.links?.map(
@@ -256,14 +227,6 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                             <li
                                               data-navigation-type="navigationLinkClickMobile"
                                               key={index}
-                                              className={
-                                                primaryChoice ===
-                                                  primaryIndex &&
-                                                secondaryChoice ===
-                                                  secondaryIndex
-                                                  ? ''
-                                                  : styles.hidden
-                                              }
                                             >
                                               {tertiary}
                                             </li>
@@ -275,11 +238,15 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                       data-navigation-type="NavigationTextCTAMobile"
                                       className={[
                                         styles.bottom,
-                                        primaryChoice === primaryIndex &&
-                                        secondaryChoice === secondaryIndex
-                                          ? ''
-                                          : styles.hidden,
+                                        styles.hidden,
                                       ].join(' ')}
+                                      data-navigation-mobile-secondary-bottom
+                                      data-navigation-mobile-primary-index={
+                                        primaryIndex
+                                      }
+                                      data-navigation-mobile-secondary-index={
+                                        secondaryIndex
+                                      }
                                     >
                                       <Button
                                         size={'large'}
@@ -297,14 +264,14 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                         {primary.mobileTabCta && (
                           <li
                             data-navigation-type="navigationCTAMobile"
-                            className={[
-                              styles.bottom,
-                              primaryChoice === primaryIndex &&
-                              (secondaryChoice === null ||
-                                primary.content.length <= 1)
-                                ? ''
-                                : styles.hidden,
-                            ].join(' ')}
+                            className={[styles.bottom, styles.hidden].join(
+                              ' '
+                            )}
+                            data-navigation-mobile-primary-bottom
+                            data-navigation-mobile-primary-index={primaryIndex}
+                            data-navigation-mobile-single-level={
+                              contentCount <= 1
+                            }
                           >
                             <Button size={'large'} variation={'outline'}>
                               {primary.mobileTabCta}
@@ -313,34 +280,28 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                         )}
                       </React.Fragment>
                     );
-                  } else {
-                    return (
-                      <React.Fragment key={primaryIndex}>
-                        <li
-                          className={
-                            primaryChoice === null ? '' : styles.hidden
-                          }
-                        >
-                          <TextLink full={true}>{primary.tabCta}</TextLink>
-                        </li>
-                      </React.Fragment>
-                    );
                   }
+
+                  return (
+                    <React.Fragment key={primaryIndex}>
+                      <li data-navigation-mobile-primary-item>
+                        <TextLink full={true}>{primary.tabCta}</TextLink>
+                      </li>
+                    </React.Fragment>
+                  );
                 })}
               </ul>
             </div>
-            {primaryChoice === null && (
-              <div className={styles.eyebrow}>
-                <div
-                  className={styles['eyebrow-inner']}
-                  data-event="mobileNavigationClick"
-                  data-navigation-type="headerNavigationMobile"
-                >
-                  {eyebrow?.left}
-                  {eyebrow?.right}
-                </div>
+            <div className={styles.eyebrow} data-navigation-mobile-eyebrow>
+              <div
+                className={styles['eyebrow-inner']}
+                data-event="mobileNavigationClick"
+                data-navigation-type="headerNavigationMobile"
+              >
+                {eyebrow?.left}
+                {eyebrow?.right}
               </div>
-            )}
+            </div>
           </div>
         </nav>
       </div>
