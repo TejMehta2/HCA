@@ -1,4 +1,3 @@
-'use client'
 import { type JSX } from 'react';
 import { ComponentWithContextProps } from 'lib/component-props';
 
