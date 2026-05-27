@@ -1,11 +1,8 @@
-'use client';
-import { type JSX } from 'react';
+import { Suspense, type JSX } from 'react';
 import {
-  GetComponentServerProps,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  useComponentProps,
   debug,
 } from '@sitecore-content-sdk/nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
@@ -27,9 +24,10 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -44,27 +42,33 @@ const BlogRelatedArticlesDefaultComponent = (
   </div>
 );
 
-export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
+const BlogRelatedArticlesContent = async (
+  props: BlogRelatedArticlesProps
+): Promise<JSX.Element> => {
   const isExperienceEditor = props.page.mode.isEditing;
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const serverResponseData = await getBlogRelatedArticlesData(props.fields);
   const quantity =
     Number(props?.fields?.data?.item?.numberOfCards?.jsonValue?.value) || 3;
 
-  const ctaQuery = data?.ctaQuery;
+  const ctaQuery = serverResponseData?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
   const queryString = 'articleTypeId';
   const currentArticleId = props.page.layout.sitecore.route?.itemId?.toString();
   const formattedCurrentArticleId =
     currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
 
-  const relatedArticlesDisplayed = data?.BlogRelatedArticles?.reduce<BlogRelatedArticle[]>(
-    (acc: BlogRelatedArticle[], curr: BlogRelatedArticle) => {
-      if (acc?.length >= quantity || curr?.pageId === formattedCurrentArticleId)
-        return acc;
-      return [...acc, curr];
-    },
-    []
-  );
+  const relatedArticlesDisplayed =
+    serverResponseData?.BlogRelatedArticles?.reduce<BlogRelatedArticle[]>(
+      (acc: BlogRelatedArticle[], curr: BlogRelatedArticle) => {
+        if (
+          acc?.length >= quantity ||
+          curr?.pageId === formattedCurrentArticleId
+        )
+          return acc;
+        return [...acc, curr];
+      },
+      []
+    );
 
   if (!props.fields?.data?.item) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
@@ -213,12 +217,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <></>;
   }
 
-  const componentAnchorId = inPageNavGlobalStore.addItem(
-    props?.params,
-    props?.fields?.Title?.value
-  );
   const tableOfContentTitle =
     props?.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentTitle);
 
   const href = props.fields?.data?.item?.cTALink?.jsonValue?.value?.href;
 
@@ -236,7 +238,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     <CarouselCards
       id={componentAnchorId}
       {...(tableOfContentTitle &&
-        props?.params?.ExcludeFromTableOfContents !== '1'
+      props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       title={
@@ -297,11 +299,15 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   );
 };
 
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering
-) => {
-  const renderingFields = rendering.fields as BlogRelatedArticlesProps['fields'];
+export const Default = (props: BlogRelatedArticlesProps): JSX.Element => (
+  <Suspense fallback={<LoaderCF loadingMsg='Loading articles...'/>}>
+    <BlogRelatedArticlesContent {...props} />
+  </Suspense>
+);
+
+async function getBlogRelatedArticlesData(
+  renderingFields?: BlogRelatedArticlesProps['fields']
+): Promise<StaticProps> {
   const fields = renderingFields?.data?.item;
 
   debug.common(
@@ -371,7 +377,6 @@ export const getComponentServerProps: GetComponentServerProps = async (
       return {
         BlogRelatedArticles: selectedData,
         ctaQuery,
-        apiUrl: url.href,
       };
     } else {
       throw {
@@ -389,4 +394,4 @@ export const getComponentServerProps: GetComponentServerProps = async (
     );
     return { BlogRelatedArticles: [], ctaQuery };
   }
-};
+}

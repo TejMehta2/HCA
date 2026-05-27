@@ -112,13 +112,11 @@ import HomepageHero from '@component-library/site-components/HomepageHero/Homepa
 import SearchButton from '@component-library/components/SearchButton/SearchButton';
 import { SEARCH_SUGGESTIONS_MODAL_ID, FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
-import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
+import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
@@ -153,6 +151,7 @@ import TextField_ae6531357313b9348b5da8da3e5e956d108a6bf5 from '@component-libra
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
 import Checkbox_2bd018632c0cb601005c23ae4688b271fed925a9 from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
 import MarketingPreferences_8adef88a23d191fc2e5fc2b20b6bdd274e646a0c from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
 import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
 import SearchAll from '@component-library/consultant-finder/Search/SearchAll';
@@ -829,21 +828,15 @@ const importMap = [
     ]
   },
   {
-    module: 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours',
-    exports: [
-      { name: 'OpeningHours', value: OpeningHours },
-    ]
-  },
-  {
-    module: '@component-library/consultant-finder/NeedHelp/NeedHelp',
-    exports: [
-      { name: 'default', value: NeedHelp },
-    ]
-  },
-  {
     module: '@component-library/components/ModalCallUs/ModalCallUs',
     exports: [
       { name: 'default', value: ModalCallUs },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours',
+    exports: [
+      { name: 'OpeningHours', value: OpeningHours },
     ]
   },
   {
@@ -862,12 +855,6 @@ const importMap = [
     module: 'src/jss-abstractions/JssDate/formatDate',
     exports: [
       { name: 'default', value: formatDate },
-    ]
-  },
-  {
-    module: 'src/jss-abstractions/JssDate/JssDate',
-    exports: [
-      { name: 'default', value: JssDate },
     ]
   },
   {
@@ -1076,6 +1063,12 @@ const importMap = [
     module: '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences',
     exports: [
       { name: 'default', value: MarketingPreferences_8adef88a23d191fc2e5fc2b20b6bdd274e646a0c },
+    ]
+  },
+  {
+    module: '@component-library/consultant-finder/NeedHelp/NeedHelp',
+    exports: [
+      { name: 'default', value: NeedHelp },
     ]
   },
   {
