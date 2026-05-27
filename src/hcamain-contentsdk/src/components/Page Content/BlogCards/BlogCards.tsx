@@ -1,4 +1,3 @@
-'use client';
 import { type JSX } from 'react';
 import {
   Field,
@@ -17,9 +16,9 @@ import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 const DynamicCardBlogBlock = dynamic(
   () =>
@@ -98,13 +97,11 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 
   const tableOfContentsLinkTitle =
     props.fields?.data?.item?.title?.jsonValue?.value;
-  const componentAnchorId = inPageNavGlobalStore.addItem(
-    props?.params,
-    tableOfContentsLinkTitle
-  );
 
   const tableOfContentTitle =
     props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentTitle);
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -237,13 +234,11 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
   }
 
   const componentTitle = props.fields?.data?.item?.title?.jsonValue?.value;
-  const componentAnchorId = inPageNavGlobalStore.addItem(
-    props?.params,
-    componentTitle
-  );
 
   const tableOfContentTitle =
     props?.params?.TableOfContentsLinkTitle || componentTitle;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentTitle);
 
   return (
     <>
@@ -289,53 +284,58 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         {props.fields?.data?.item.cards?.targetItems?.map((card, index) => {
           const isFeature = index % 10 === 0 || index % 10 === 7; // scaling logic to accommodate more than 5 cards
 
+          const cardTitle = card.abstractTitle?.value ? (
+            <JssText field={card.abstractTitle} />
+          ) : (
+            <JssText field={card.title} />
+          );
+
+          const cardDescription = card.abstractText?.value ? (
+            <JssRichText tag="span" field={card.abstractText} />
+          ) : (
+            <JssRichText tag="span" field={card.text} />
+          );
+
+          const cardImage =
+            isFeature &&
+            card.abstractImage?.jsonValue?.value?.src &&
+            card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
+              <Image
+                src={card.abstractImage?.jsonValue?.value?.src || ''}
+                alt={
+                  (card.abstractImage?.jsonValue?.value?.alt as string) || ''
+                }
+                width="644"
+                height="268"
+              />
+            ) : (
+              isFeature &&
+              card.image?.jsonValue?.value?.src && (
+                <Image
+                  src={card.image?.jsonValue?.value?.src || ''}
+                  alt={(card.image?.jsonValue?.value?.alt as string) || ''}
+                  width="644"
+                  height="268"
+                />
+              )
+            );
+
           return (
             <CardBlog
               key={card.id}
               variation={isFeature ? 'feature' : 'default'}
             >
-              {isFeature &&
-              card.abstractImage?.jsonValue?.value?.src &&
-              card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
-                <Image
-                  src={card.abstractImage?.jsonValue?.value?.src || ''}
-                  alt={
-                    (card.abstractImage?.jsonValue?.value?.alt as string) || ''
-                  }
-                  width="644"
-                  height="268"
-                />
-              ) : (
-                isFeature &&
-                card.image?.jsonValue?.value?.src && (
-                  <Image
-                    src={card.image?.jsonValue?.value?.src || ''}
-                    alt={(card.image?.jsonValue?.value?.alt as string) || ''}
-                    width="644"
-                    height="268"
-                  />
-                )
-              )}
+              {cardImage}
               <JssDate field={card.date?.jsonValue} editable={false} />
               <Text
                 tag={'h3'}
                 variation={isFeature ? 'display-5' : 'heading-2'}
               >
-                <a href={card.url?.path}>
-                  {card.abstractTitle?.value ? (
-                    <JssText field={card.abstractTitle} />
-                  ) : (
-                    <JssText field={card.title} />
-                  )}
-                </a>
+                <a href={card.url?.path}>{cardTitle}</a>
               </Text>
               {isFeature && (
                 <Text tag={'p'} variation={'body-large'}>
-                  {card.abstractText?.value ? (
-                    <JssRichText tag="span" field={card.abstractText} />
-                  ) : (
-                    <JssRichText tag="span" field={card.text} />
-                  )}
+                  {cardDescription}
                 </Text>
               )}
               <div>
