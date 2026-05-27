@@ -291,9 +291,9 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
           );
 
           const cardDescription = card.abstractText?.value ? (
-            <JssRichText tag="span" field={card.abstractText} />
+            <JssRichText tag="div" field={card.abstractText} />
           ) : (
-            <JssRichText tag="span" field={card.text} />
+            <JssRichText tag="div" field={card.text} />
           );
 
           const cardImage =
@@ -334,7 +334,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                 <a href={card.url?.path}>{cardTitle}</a>
               </Text>
               {isFeature && (
-                <Text tag={'p'} variation={'body-large'}>
+                <Text tag={'div'} variation={'body-large'}>
                   {cardDescription}
                 </Text>
               )}
