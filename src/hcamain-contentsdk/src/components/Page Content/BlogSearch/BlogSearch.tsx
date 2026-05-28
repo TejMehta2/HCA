@@ -2,11 +2,7 @@
 
 import { RefObject, Suspense, type JSX, useRef } from 'react';
 
-import {
-  GetComponentServerProps,
-  Text as JssText,
-  RichText,
-} from '@sitecore-content-sdk/nextjs';
+import { Text as JssText, RichText } from '@sitecore-content-sdk/nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -39,9 +35,9 @@ import SearchDetail from '@component-library/hooks/useSearchForm/components/Sear
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
+import LoaderCF from 'temp/component-library/consultant-finder/LoaderCF/LoaderCF';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
-const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
 
 const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
@@ -52,7 +48,7 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
   </div>
 );
 
-const DefaultContent = (props: BlogSearchProps): JSX.Element => {
+export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
   const t = useTranslations(props?.page?.siteName);
 
@@ -70,6 +66,7 @@ const DefaultContent = (props: BlogSearchProps): JSX.Element => {
     error,
     formHandlers,
     searchParams,
+    isResultsLoading,
     autocompleteData,
     autocompleteError,
   } = useSearchForm<BlogResponse, Autocomplete>({
@@ -206,28 +203,34 @@ const DefaultContent = (props: BlogSearchProps): JSX.Element => {
       </Themes>
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         <SearchContainer ref={searchWrapperRef}>
-          <Text tag="h3" variation="heading-1">
-            <SearchDetail
-              searchResultsTextWithInput={
-                fields?.SearchResultsTextWithInput?.value
-              }
-              searchResultsText={fields?.SearchResultsText?.value}
-              resultsCount={resultsCount}
-              input={
-                searchParams.get('input') ||
-                searchParams.get('autocomplete') ||
-                undefined
-              }
-            />
-          </Text>
-          {!!rangeEnd && (
-            <Text variation="body-medium">
-              <span>
-                {t('showing') || 'Showing'} {resultsRange}
-              </span>
-            </Text>
+          {!isResultsLoading && (
+            <>
+              <Text tag="h3" variation="heading-1">
+                <SearchDetail
+                  searchResultsTextWithInput={
+                    fields?.SearchResultsTextWithInput?.value
+                  }
+                  searchResultsText={fields?.SearchResultsText?.value}
+                  resultsCount={resultsCount}
+                  input={
+                    searchParams.get('input') ||
+                    searchParams.get('autocomplete') ||
+                    undefined
+                  }
+                />
+              </Text>
+              {!!rangeEnd && (
+                <Text variation="body-medium">
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
+                </Text>
+              )}
+            </>
           )}
-          {error || !resultsCount ? (
+          {isResultsLoading ? (
+            <LoaderCF loadingMsg={t('loading-articles')} />
+          ) : error || !resultsCount ? (
             <ErrorMessage contentVariation="no-container" />
           ) : (
             <>
@@ -295,44 +298,4 @@ const DefaultContent = (props: BlogSearchProps): JSX.Element => {
       </Themes>
     </form>
   );
-};
-
-export const Default = (props: BlogSearchProps): JSX.Element => (
-  <Suspense fallback={null}>
-    <DefaultContent {...props} />
-  </Suspense>
-);
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering
-) => {
-  const { baselineParams } = getBaselineParams({
-    fields: rendering.fields as BlogSearchProps['fields'],
-  });
-  const params = baselineParams.map(
-    (entry: [string, string]) => `${entry[0]}=${entry[1]}`
-  ); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
-
-  try {
-    const response = await fetch(url.href);
-    if (response.ok) {
-      const fallbackData = await response.json();
-      return { fallbackData: fallbackData as BlogResponse };
-    } else {
-      throw response.statusText;
-    }
-  } catch (error) {
-    console.error(
-      {
-        message: 'BlogSearch server-side data fetching error',
-        error: error,
-        requestUrl: url.href,
-      },
-      error
-    );
-    return { blog: [] };
-  }
 };

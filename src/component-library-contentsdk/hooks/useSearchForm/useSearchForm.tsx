@@ -105,7 +105,7 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   const query = `?${searchParamsObj.toString()}`;
   const url = `${baseUrl}${searchPath}${query}`;
 
-  const { data, error, isLoading } = useSWR<ResponseT>(
+  const { data, error, isLoading, isValidating } = useSWR<ResponseT>(
     url,
     (url: string) => fetch(url).then((res) => res.json()),
     {
@@ -183,6 +183,8 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     error,
     formHandlers,
     searchParams,
+    isLoading,
+    isResultsLoading: isLoading || isValidating,
     autocompleteData,
     autocompleteError,
     autocompleteIsLoading,
