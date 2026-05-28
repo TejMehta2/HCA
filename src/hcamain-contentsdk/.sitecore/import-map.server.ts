@@ -8,7 +8,7 @@ import {
 // end of built-in imports
 
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import { Suspense } from 'react';
+import { Suspense, use } from 'react';
 import React from 'react';
 import { AppPlaceholder, Image, debug, RichText, Text, Link } from '@sitecore-content-sdk/nextjs';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
@@ -138,10 +138,11 @@ import { Default as Default_f5d10bc6847776a52ccdf97f5390946fd1933181 } from 'src
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import { Default as Default_e14821894a71ac7a6e65fc5dc320029fcbf616d3 } from 'src/components/ConsultantFinder/CMADisclosuresClient';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
-import Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 from 'temp/component-library/foundation/Themes/Themes';
+import CareersHomepageHero from '@component-library/careers/CareersHompageHero/CareersHompageHero';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SelectField_cc13017b93648a2d9553231f1377cbe2ac372737 from '@component-library/core-components/SelectField/SelectField';
 import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
+import CareersSearchHeroCompactClient from 'src/components/Careers/CareersSearchHero/CareersSearchHeroCompactClient';
 
 const importMap = [
   {
@@ -156,6 +157,7 @@ const importMap = [
     module: 'react',
     exports: [
       { name: 'Suspense', value: Suspense },
+      { name: 'use', value: use },
       { name: 'default', value: React },
     ]
   },
@@ -910,9 +912,9 @@ const importMap = [
     ]
   },
   {
-    module: 'temp/component-library/foundation/Themes/Themes',
+    module: '@component-library/careers/CareersHompageHero/CareersHompageHero',
     exports: [
-      { name: 'default', value: Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 },
+      { name: 'default', value: CareersHomepageHero },
     ]
   },
   {
@@ -931,6 +933,12 @@ const importMap = [
     module: '@component-library/careers/CareersSearch/CareersSearch',
     exports: [
       { name: 'default', value: CareersSearch },
+    ]
+  },
+  {
+    module: 'src/components/Careers/CareersSearchHero/CareersSearchHeroCompactClient',
+    exports: [
+      { name: 'default', value: CareersSearchHeroCompactClient },
     ]
   }
 ] as ImportEntry[];

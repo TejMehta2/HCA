@@ -268,7 +268,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['JobDetailsHeader', { ...JobDetailsHeader }],
   ['JobDetails', { ...JobDetails }],
   ['CareersSearchResults', { ...CareersSearchResults, componentType: 'client' }],
-  ['CareersSearchHero', { ...CareersSearchHero, componentType: 'client' }],
+  ['CareersSearchHero', { ...CareersSearchHero }],
   ['CareersSearchBlock', { ...CareersSearchBlock }],
   ['CareersLatestVacancies', { ...CareersLatestVacancies, componentType: 'client' }],
 ]);

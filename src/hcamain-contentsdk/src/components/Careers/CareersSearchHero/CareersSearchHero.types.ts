@@ -32,7 +32,7 @@ export type CareersSearchHeroProps = ComponentWithContextProps & {
   rendering?: {
     uid?: string;
   };
-  facets: JobsResponse['response']['facets'];
+  facets?: JobsResponse['response']['facets'];
 };
 
 export interface JobsResponse {

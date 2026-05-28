@@ -196,9 +196,6 @@ import CmaDisclosure from '@component-library/consultant-finder/CmaDisclosure/Cm
 import useSWR from 'swr';
 import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
 import CareerSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
-import CareersHomepageHero from '@component-library/careers/CareersHompageHero/CareersHompageHero';
-import SelectField_cc13017b93648a2d9553231f1377cbe2ac372737 from '@component-library/core-components/SelectField/SelectField';
-import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
 
 const importMap = [
   {
@@ -1334,24 +1331,6 @@ const importMap = [
     module: '@component-library/careers/CareersSearchResults/CareersSearchResults',
     exports: [
       { name: 'default', value: CareerSearchResults },
-    ]
-  },
-  {
-    module: '@component-library/careers/CareersHompageHero/CareersHompageHero',
-    exports: [
-      { name: 'default', value: CareersHomepageHero },
-    ]
-  },
-  {
-    module: '@component-library/core-components/SelectField/SelectField',
-    exports: [
-      { name: 'default', value: SelectField_cc13017b93648a2d9553231f1377cbe2ac372737 },
-    ]
-  },
-  {
-    module: '@component-library/careers/CareersSearch/CareersSearch',
-    exports: [
-      { name: 'default', value: CareersSearch },
     ]
   }
 ] as ImportEntry[];
