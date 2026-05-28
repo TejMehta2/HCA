@@ -1,6 +1,12 @@
 'use client';
 
-import React, { Suspense, useEffect, useState, type JSX } from 'react';
+import React, {
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  type JSX,
+} from 'react';
 
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -29,6 +35,8 @@ type CareersSearchResultsProps = ComponentWithContextProps & {
   };
 };
 
+type JobResult = JobsResponse['response']['results'][number];
+
 const CareersSearchResultsDefaultComponent = (
   props: CareersSearchResultsProps
 ): JSX.Element => {
@@ -49,15 +57,34 @@ const CareersSearchResultsDefaultComponent = (
 
 const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
-  const [limit, setLimit] = useState(1);
+  const [offset, setOffset] = useState(0);
+  const [results, setResults] = useState<JobResult[]>([]);
+  const [resultsCount, setResultsCount] = useState(0);
   const t = useTranslations(props?.page?.siteName);
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => setLimit(1));
-    return () => cancelAnimationFrame(frame);
-  }, [searchParams]);
+  const searchQuery = useMemo(
+    () =>
+      [...searchParams.entries()]
+        .filter(
+          ([key, value]) =>
+            value?.length && key !== 'limit' && key !== 'offset'
+        )
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&'),
+    [searchParams]
+  );
+  const [activeSearchQuery, setActiveSearchQuery] = useState(searchQuery);
 
   const resultsPerPage = 10;
+  const isNewSearch = activeSearchQuery !== searchQuery;
+  const requestOffset = isNewSearch ? 0 : offset;
+
+  useEffect(() => {
+    setActiveSearchQuery(searchQuery);
+    setOffset(0);
+    setResults([]);
+    setResultsCount(0);
+  }, [searchQuery]);
+
   /* 
     New search on each searchParams change
     searchParams are either:
@@ -72,22 +99,42 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
   } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
-    }/careers/search?verticalKey=jobs&limit=${limit * resultsPerPage}&${[
-      ...searchParams.entries(),
-    ]
-      .filter(([, value]) => value?.length)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&')}`,
+    }/careers/search?verticalKey=jobs&limit=${resultsPerPage}&offset=${requestOffset}${
+      searchQuery ? `&${searchQuery}` : ''
+    }`,
     (url: string) =>
       fetch(url)
         .then((res) => res.json())
         .then((data) => data.response),
     {
-      keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window
     }
   );
   const isResultsLoading = isLoading || isValidating;
+
+  useEffect(() => {
+    if (!response) {
+      return;
+    }
+
+    setResultsCount(Number(response.resultsCount) || 0);
+    setResults((previousResults) => {
+      const nextResults = response.results || [];
+
+      if (requestOffset === 0) {
+        return nextResults;
+      }
+
+      const loadedResultIds = new Set(
+        previousResults.map((job) => job.data.id)
+      );
+      const newResults = nextResults.filter(
+        (job) => !loadedResultIds.has(job.data.id)
+      );
+
+      return [...previousResults, ...newResults];
+    });
+  }, [requestOffset, response]);
 
   if (!props?.fields) {
     return <CareersSearchResultsDefaultComponent {...props} />;
@@ -97,78 +144,91 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
     console.error(error);
   }
 
+  const hasResults = !isNewSearch && results.length > 0;
+  const isInitialResultsLoading =
+    (isResultsLoading || isNewSearch) && !hasResults;
+  const isLoadingMoreResults = isResultsLoading && hasResults;
+  const hasMoreResults = !isNewSearch && results.length < resultsCount;
+
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      {isResultsLoading ? (
+      {isInitialResultsLoading ? (
         <CareerSearchResults
           results={<LoaderCF loadingMsg={t('loading-vacancies')} />}
         />
-      ) : !response?.resultsCount ? (
+      ) : !hasResults ? (
         <ErrorMessage />
       ) : (
         <CareerSearchResults
           count={
             <>
               <Text variation="heading-1">
-                {response?.resultsCount} vacancies
+                {resultsCount} vacancies
               </Text>
               <Text variation="body-bold-medium">
-                Showing 1 -{' '}
-                {Math.min(
-                  Number(response?.resultsCount),
-                  limit * resultsPerPage
-                )}
+                Showing 1 - {Math.min(resultsCount, results.length)}
               </Text>
             </>
           }
-          results={response?.results?.map((job) => {
-            return (
-              <YextResultCardCareers
-                key={job.data.id}
-                location={job.data.jobLocation}
-                city={job.data.jobCity}
-                clinical={job.data.jobFunction}
-                timing={job.data.employmentType}
-                title={<Text variation={'heading-1'}>{job.data.name}</Text>}
-                cta={
-                  <Button
-                    contentVariation={'full-width'}
-                    variation={'full'}
-                    size={'small'}
-                  >
-                    <a
-                      href={
-                        job.data.landingPageUrl ||
-                        job.data.applicationUrl ||
-                        '#'
-                      }
-                    >
-                      {props.fields?.ReadMoreCtaText?.value ||
-                        'Read More & Apply'}
-                    </a>
-                  </Button>
-                }
-              />
-            );
-          })}
+          results={
+            <>
+              {results.map((job) => {
+                return (
+                  <YextResultCardCareers
+                    key={job.data.id}
+                    location={job.data.jobLocation}
+                    city={job.data.jobCity}
+                    clinical={job.data.jobFunction}
+                    timing={job.data.employmentType}
+                    title={
+                      <Text variation={'heading-1'}>{job.data.name}</Text>
+                    }
+                    cta={
+                      <Button
+                        contentVariation={'full-width'}
+                        variation={'full'}
+                        size={'small'}
+                      >
+                        <a
+                          href={
+                            job.data.landingPageUrl ||
+                            job.data.applicationUrl ||
+                            '#'
+                          }
+                        >
+                          {props.fields?.ReadMoreCtaText?.value ||
+                            'Read More & Apply'}
+                        </a>
+                      </Button>
+                    }
+                  />
+                );
+              })}
+              {isLoadingMoreResults ? (
+                <LoaderCF loadingMsg={t('loading-vacancies')} />
+              ) : null}
+            </>
+          }
           cta={
-            <Button size={'large'} variation={'full'}>
-              <button
-                onClick={() => {
-                  if (limit * resultsPerPage < Number(response?.resultsCount)) {
-                    setLimit((prev) => prev + 1);
-                  }
-                }}
-                disabled={
-                  limit * resultsPerPage >= Number(response?.resultsCount)
-                }
-              >
-                <Icons iconName="iconPlus" />
-                <span>
-                  Show <b>more</b>
-                </span>
-              </button>
-            </Button>
+            hasMoreResults ? (
+              <Button size={'large'} variation={'full'}>
+                <button
+                  onClick={() => {
+                    if (hasMoreResults && !isResultsLoading) {
+                      setOffset(results.length);
+                    }
+                  }}
+                  disabled={isResultsLoading || !hasMoreResults}
+                >
+                  <Icons iconName="iconPlus" />
+                  <span>
+                    Show <b>more</b>
+                  </span>
+                </button>
+              </Button>
+            ) : (
+              <></>
+            )
           }
         />
       )}
