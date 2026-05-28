@@ -9,7 +9,6 @@ import {
   VacancyRoute,
 } from '../JobDetailsHeader/JobDetailsHeader.types';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
-import Themes from 'temp/component-library/foundation/Themes/Themes';
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const vacancydata = props.page.layout.sitecore.route as VacancyRoute | undefined;
@@ -25,10 +24,9 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || '';
-
-  //FIXME: originally there was BlogContent instead of Themes, but next was complaing about using hook inside BlogContent
+  
   return (
-    <Themes
+    <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
       {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
@@ -46,6 +44,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           </a>
         </Button>
       </Container>
-    </Themes>
+    </BlogContent>
   );
 };
