@@ -117,6 +117,7 @@ import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/Op
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
+import LoaderCF_05e5c12e32407470fb01e76eafcac53d82ccb44b from 'temp/component-library/consultant-finder/LoaderCF/LoaderCF';
 import { JumpToAnchor, JumpToTextLink } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import JumpToLinks from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
@@ -855,6 +856,12 @@ const importMap = [
     module: 'src/jss-abstractions/JssDate/formatDate',
     exports: [
       { name: 'default', value: formatDate },
+    ]
+  },
+  {
+    module: 'temp/component-library/consultant-finder/LoaderCF/LoaderCF',
+    exports: [
+      { name: 'default', value: LoaderCF_05e5c12e32407470fb01e76eafcac53d82ccb44b },
     ]
   },
   {
