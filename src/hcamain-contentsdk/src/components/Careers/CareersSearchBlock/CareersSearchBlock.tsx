@@ -1,10 +1,4 @@
-'use client';
-
-import React, { type JSX } from 'react';
-import {
-  GetComponentServerProps,
-  useComponentProps,
-} from '@sitecore-content-sdk/nextjs';
+import React, { use, type JSX } from 'react';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import Button from '@component-library/core-components/Button/Button';
@@ -32,10 +26,11 @@ const CareersSearchBlockDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: CareersSearchBlockProps): JSX.Element => {
-  const data = useComponentProps<JobsResponse['response']>(
-    props.rendering?.uid
-  );
+export const Default = (
+  props: CareersSearchBlockProps
+): JSX.Element => {
+  const data = use(getInitialVacanciesResponse());
+
   if (!props?.fields?.data?.item) {
     return <CareersSearchBlockDefaultComponent {...props} />;
   }
@@ -65,13 +60,9 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
                   }
                   id={data?.facets[2].fieldId?.replace('c_', '') || ''}
                   options={
-                    data?.facets[2].options.map(
-                      (
-                        option: JobsResponse['response']['facets'][number]['options'][number]
-                      ) => ({
-                        text: option.displayName,
-                      })
-                    ) || []
+                    data?.facets[2].options.map((option) => ({
+                      text: option.displayName,
+                    })) || []
                   }
                 />
               )}
@@ -107,16 +98,25 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
   );
 };
 
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async () => {
+async function getInitialVacanciesResponse(): Promise<
+  JobsResponse['response'] | null
+> {
   try {
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=0`
     );
-    const data = await response.json();
-    return JSON.parse(JSON.stringify(data.response));
+
+    if (!response.ok) {
+      console.error(
+        `Careers vacancies initial response failed with status ${response.status}`
+      );
+      return null;
+    }
+
+    const data = (await response.json()) as JobsResponse;
+    return data.response;
   } catch (error) {
     console.error(error);
-    return {};
+    return null;
   }
-};
+}

@@ -52,7 +52,6 @@ import * as CMADisclosuresClient from 'src/components/ConsultantFinder/CMADisclo
 import * as AxiosLocalPatcher from 'src/components/ConsultantFinder/AxiosLocalPatcher';
 import * as CareersSearchResults from 'src/components/Careers/CareersSearchResults/CareersSearchResults';
 import * as CareersSearchHero from 'src/components/Careers/CareersSearchHero/CareersSearchHero';
-import * as CareersSearchBlock from 'src/components/Careers/CareersSearchBlock/CareersSearchBlock';
 import * as CareersLatestVacancies from 'src/components/Careers/CareersLatestVacancies/CareersLatestVacancies';
 
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -108,7 +107,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['AxiosLocalPatcher', { ...AxiosLocalPatcher }],
   ['CareersSearchResults', { ...CareersSearchResults }],
   ['CareersSearchHero', { ...CareersSearchHero }],
-  ['CareersSearchBlock', { ...CareersSearchBlock }],
   ['CareersLatestVacancies', { ...CareersLatestVacancies }],
 ]);
 

@@ -139,6 +139,9 @@ import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/
 import { Default as Default_e14821894a71ac7a6e65fc5dc320029fcbf616d3 } from 'src/components/ConsultantFinder/CMADisclosuresClient';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
 import Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 from 'temp/component-library/foundation/Themes/Themes';
+import SearchBar from '@component-library/components/SearchBar/SearchBar';
+import SelectField_cc13017b93648a2d9553231f1377cbe2ac372737 from '@component-library/core-components/SelectField/SelectField';
+import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
 
 const importMap = [
   {
@@ -910,6 +913,24 @@ const importMap = [
     module: 'temp/component-library/foundation/Themes/Themes',
     exports: [
       { name: 'default', value: Themes_2ddec0f56d772a8d0aeaac3f0e0cec8ebacff321 },
+    ]
+  },
+  {
+    module: '@component-library/components/SearchBar/SearchBar',
+    exports: [
+      { name: 'default', value: SearchBar },
+    ]
+  },
+  {
+    module: '@component-library/core-components/SelectField/SelectField',
+    exports: [
+      { name: 'default', value: SelectField_cc13017b93648a2d9553231f1377cbe2ac372737 },
+    ]
+  },
+  {
+    module: '@component-library/careers/CareersSearch/CareersSearch',
+    exports: [
+      { name: 'default', value: CareersSearch },
     ]
   }
 ] as ImportEntry[];
