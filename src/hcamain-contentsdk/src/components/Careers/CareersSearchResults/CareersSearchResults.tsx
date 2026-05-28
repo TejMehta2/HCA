@@ -1,10 +1,6 @@
 'use client';
 
 import React, { Suspense, useEffect, useState, type JSX } from 'react';
-import {
-  GetComponentServerProps,
-  useComponentProps,
-} from '@sitecore-content-sdk/nextjs';
 
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -18,6 +14,8 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import CareerSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { ComponentWithContextProps } from 'lib/component-props';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import { useTranslations } from 'next-intl';
 
 interface Fields {
   ReadMoreCtaText?: { value?: string };
@@ -50,11 +48,9 @@ const CareersSearchResultsDefaultComponent = (
 };
 
 const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
-  const fallbackData = useComponentProps<JobsResponse['response']>(
-    props.rendering?.uid
-  );
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
   const [limit, setLimit] = useState(1);
+  const t = useTranslations(props?.page?.siteName);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setLimit(1));
@@ -68,7 +64,12 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
     - updated by search bar or filters Moo12on same page
     - available on page load (redirect from e.g. careers home or user copy/paste)
   */
-  const { data: response, error } = useSWR<JobsResponse['response']>(
+  const {
+    data: response,
+    error,
+    isLoading,
+    isValidating,
+  } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
     }/careers/search?verticalKey=jobs&limit=${limit * resultsPerPage}&${[
@@ -84,9 +85,9 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
     {
       keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window
-      fallbackData,
     }
   );
+  const isResultsLoading = isLoading || isValidating;
 
   if (!props?.fields) {
     return <CareersSearchResultsDefaultComponent {...props} />;
@@ -98,8 +99,13 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      {!response?.resultsCount && <ErrorMessage />}
-      {!!response?.resultsCount && (
+      {isResultsLoading ? (
+        <CareerSearchResults
+          results={<LoaderCF loadingMsg={t('loading-vacancies')} />}
+        />
+      ) : !response?.resultsCount ? (
+        <ErrorMessage />
+      ) : (
         <CareerSearchResults
           count={
             <>
@@ -170,22 +176,11 @@ const DefaultContent = (props: CareersSearchResultsProps): JSX.Element => {
   );
 };
 
-export const Default = (props: CareersSearchResultsProps): JSX.Element => (
-  <Suspense fallback={null}>
-    <DefaultContent {...props} />
-  </Suspense>
-);
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async () => {
-  try {
-    const response = await fetch(
-      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=false&limit=10`
-    );
-    const data = await response.json();
-    return JSON.parse(JSON.stringify(data.response));
-  } catch (error) {
-    console.error(error);
-    return {};
-  }
+export const Default = (props: CareersSearchResultsProps): JSX.Element => {
+  const t = useTranslations(props?.page?.siteName);
+  return (
+    <Suspense fallback={<LoaderCF loadingMsg={t('loading-vacancies')} />}>
+      <DefaultContent {...props} />
+    </Suspense>
+  );
 };
