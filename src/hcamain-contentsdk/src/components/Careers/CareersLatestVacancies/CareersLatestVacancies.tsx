@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  GetComponentServerProps,
-  useComponentProps,
-  Link as JssLink,
-  Text as JssText,
-} from '@sitecore-content-sdk/nextjs';
+import { Link as JssLink, Text as JssText } from '@sitecore-content-sdk/nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
@@ -25,6 +20,8 @@ import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorM
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import getHeadingTags from 'lib/getHeadingTags';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import { useTranslations } from 'next-intl';
 
 interface VariantCareersLatestVacanciesProps extends CareersLatestVacanciesProps {
   variant?: 'carousel';
@@ -51,13 +48,11 @@ const CareersLatestVacanciesDefaultComponent = (
 const DefaultContent = (
   props: VariantCareersLatestVacanciesProps
 ): JSX.Element => {
-  const fallbackData = useComponentProps<JobsResponse['response']>(
-    props.rendering?.uid
-  );
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations(props?.page?.siteName);
 
   const limit = 1;
   const resultsPerPage = 6;
@@ -72,7 +67,12 @@ const DefaultContent = (
     .filter(([, value]) => value?.length)
     .map(([key, value]) => `${key}=${value}`);
 
-  const { data: response } = useSWR<JobsResponse['response']>(
+  const {
+    data: response,
+    error,
+    isLoading,
+    isValidating,
+  } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
     }/careers/search?verticalKey=jobs&retrieveFacets=true&${scope}&limit=${
@@ -85,9 +85,9 @@ const DefaultContent = (
     {
       keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window
-      fallbackData,
     }
   );
+  const isResultsLoading = isLoading || isValidating;
 
   if (!props?.fields?.data?.item) {
     return <CareersLatestVacanciesDefaultComponent {...props} />;
@@ -181,7 +181,7 @@ const DefaultContent = (
           <CarouselCards
             theme={props.params?.Theme || 'A-HCA-White'}
             cardsToDisplay={4}
-            link={cta}
+            link={isResultsLoading ? undefined : cta}
             subtitle={
               <Text tag={subheadingTag} variation="subheading-1">
                 <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
@@ -196,38 +196,49 @@ const DefaultContent = (
               </Text>
             }
           >
-            {response?.results?.map((job) => {
-              return (
-                <YextResultCardCareers
-                  variation="carousel"
-                  key={job.data.id}
-                  location={job.data.jobLocation}
-                  city={job.data.jobCity}
-                  clinical={job.data.jobFunction}
-                  timing={job.data.employmentType}
-                  title={<Text variation={'heading-1'}>{job.data.name}</Text>}
-                  cta={
-                    <Button
-                      contentVariation={'full-width'}
-                      variation={'full'}
-                      size={'small'}
-                    >
-                      <a
-                        href={
-                          job.data.landingPageUrl ||
-                          job.data.applicationUrl ||
-                          '#'
+            {isResultsLoading
+              ? [<LoaderCF key="loading" loadingMsg={t('loading')} />]
+              : error || !response?.resultsCount
+                ? [
+                    <ErrorMessage
+                      key="error"
+                      contentVariation={'no-container'}
+                    />,
+                  ]
+                : response?.results?.map((job) => {
+                    return (
+                      <YextResultCardCareers
+                        variation="carousel"
+                        key={job.data.id}
+                        location={job.data.jobLocation}
+                        city={job.data.jobCity}
+                        clinical={job.data.jobFunction}
+                        timing={job.data.employmentType}
+                        title={
+                          <Text variation={'heading-1'}>{job.data.name}</Text>
                         }
-                      >
-                        {props.fields?.data?.item?.searchConfiguration
-                          ?.targetItem?.readMoreCtaText?.value ||
-                          'Read More & Apply'}
-                      </a>
-                    </Button>
-                  }
-                />
-              );
-            })}
+                        cta={
+                          <Button
+                            contentVariation={'full-width'}
+                            variation={'full'}
+                            size={'small'}
+                          >
+                            <a
+                              href={
+                                job.data.landingPageUrl ||
+                                job.data.applicationUrl ||
+                                '#'
+                              }
+                            >
+                              {props.fields?.data?.item?.searchConfiguration
+                                ?.targetItem?.readMoreCtaText?.value ||
+                                'Read More & Apply'}
+                            </a>
+                          </Button>
+                        }
+                      />
+                    );
+                  })}
           </CarouselCards>
         ) : (
           <CareersSearchResults
@@ -268,7 +279,11 @@ const DefaultContent = (
               </>
             }
             results={
-              response?.resultsCount ? (
+              isResultsLoading ? (
+                <LoaderCF loadingMsg={t('loading')} />
+              ) : error ? (
+                <ErrorMessage contentVariation={'no-container'} />
+              ) : response?.resultsCount ? (
                 response?.results?.map((job) => {
                   return (
                     <YextResultCardCareers
@@ -306,7 +321,7 @@ const DefaultContent = (
                 <ErrorMessage contentVariation={'no-container'} />
               )
             }
-            cta={cta}
+            cta={isResultsLoading ? <></> : cta}
           />
         )}
       </form>
@@ -330,25 +345,6 @@ export const Carousel = (
   }
 
   return <Default {...props} variant={'carousel'} />;
-};
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering
-) => {
-  try {
-    const scope = getJobFamiliesQueryString({
-      fields: rendering.fields as CareersLatestVacanciesProps['fields'],
-    });
-    const response = await fetch(
-      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6&${scope}`
-    );
-    const data = await response.json();
-    return JSON.parse(JSON.stringify(data.response));
-  } catch (error) {
-    console.error(error);
-    return {};
-  }
 };
 
 // Function to map jobFamilies to query string
