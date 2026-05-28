@@ -150,165 +150,161 @@ const BlogSearchContent = (props: BlogSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <Suspense fallback={null}>
-            <SearchBar
-              defaultValue={searchParams.get('input') || undefined}
-              name={'input'}
-              placeholder={fields?.SearchPlaceholder?.value}
-              suggestions={
-                autocompleteError
-                  ? []
-                  : autocompleteData?.response.results?.map(
-                      (result) => `${result.value}`
-                    )
-              }
-            >
-              {hasFilters && (
-                <Filters
-                  buttonText={<JssText field={fields?.FilterOptionsText} />}
-                  buttonIcon={
-                    <SitecoreSvg>
-                      {
-                        props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup
-                          ?.value
-                      }
-                    </SitecoreSvg>
-                  }
-                  resultsCount={resultsCount}
-                  filters={filterCategories?.map((category) => ({
-                    title: category.title,
-                    contentVariation: 'filters',
-                    children: (
-                      <Checkboxes>
-                        {category.fields?.map((props) => {
-                          return <Checkbox {...props} key={props.id} />;
-                        })}
-                      </Checkboxes>
-                    ),
-                  }))}
-                />
-              )}
-            </SearchBar>
-            <SearchFilterList
-              filters={activeFilters || []}
-              clearFilters={() => {
-                activeFilters?.forEach(({ id }, index) => {
-                  const field = document.getElementById(id) as HTMLInputElement;
-                  if (!field) return;
-                  if (index === activeFilters.length - 1) {
-                    field.click(); // interact with last field to trigger a form change event
-                  } else {
-                    field.checked = false; // update other fields without triggering form change event
-                  }
-                });
-              }}
-            />
-          </Suspense>
+          <SearchBar
+            defaultValue={searchParams.get('input') || undefined}
+            name={'input'}
+            placeholder={fields?.SearchPlaceholder?.value}
+            suggestions={
+              autocompleteError
+                ? []
+                : autocompleteData?.response.results?.map(
+                    (result) => `${result.value}`
+                  )
+            }
+          >
+            {hasFilters && (
+              <Filters
+                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                resultsCount={resultsCount}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+            )}
+          </SearchBar>
+          <SearchFilterList
+            filters={activeFilters || []}
+            clearFilters={() => {
+              activeFilters?.forEach(({ id }, index) => {
+                const field = document.getElementById(id) as HTMLInputElement;
+                if (!field) return;
+                if (index === activeFilters.length - 1) {
+                  field.click(); // interact with last field to trigger a form change event
+                } else {
+                  field.checked = false; // update other fields without triggering form change event
+                }
+              });
+            }}
+          />
         </HeaderPlain>
       </Themes>
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        <Suspense fallback={<LoaderCF loadingMsg={t('loading-articles')} />}>
-          <SearchContainer ref={searchWrapperRef}>
-            {!isResultsLoading && (
-              <>
-                <Text tag="h3" variation="heading-1">
-                  <SearchDetail
-                    searchResultsTextWithInput={
-                      fields?.SearchResultsTextWithInput?.value
-                    }
-                    searchResultsText={fields?.SearchResultsText?.value}
-                    resultsCount={resultsCount}
-                    input={
-                      searchParams.get('input') ||
-                      searchParams.get('autocomplete') ||
-                      undefined
-                    }
-                  />
-                </Text>
-                {!!rangeEnd && (
-                  <Text variation="body-medium">
-                    <span>
-                      {t('showing') || 'Showing'} {resultsRange}
-                    </span>
-                  </Text>
-                )}
-              </>
-            )}
-            {isResultsLoading ? (
-              <LoaderCF loadingMsg={t('loading-articles')} />
-            ) : error || !resultsCount ? (
-              <ErrorMessage contentVariation="no-container" />
-            ) : (
-              <>
-                <CardGrid>
-                  {data?.response.results?.map((item, index) => {
-                    const { data } = item;
-                    const {
-                      abstractTitle,
-                      abstractImageUrl,
-                      title,
-                      imageUrl,
-                      primaryImageUrl,
-                      url,
-                      date,
-                      typeName,
-                    } = data;
-
-                    const cardImageSrc = ImageUrl(
-                      abstractImageUrl,
-                      primaryImageUrl,
-                      imageUrl
-                    );
-
-                    return (
-                      <CardBlog key={index}>
-                        {cardImageSrc !== undefined ? (
-                          <Image
-                            src={upsertQuerystringParam(
-                              cardImageSrc,
-                              't',
-                              'w750'
-                            )}
-                            alt=""
-                            width="560"
-                            height="420"
-                            quality={90}
-                          />
-                        ) : undefined}
-                        <time>{formatDate(new Date(date))}</time>
-                        <Text tag={'h3'} variation={'heading-2'}>
-                          <a href={url}>
-                            {abstractTitle ? abstractTitle : title}
-                          </a>
-                        </Text>
-                        <div>
-                          {!!typeName && (
-                            <Tags>
-                              <span>{typeName}</span>
-                            </Tags>
-                          )}
-                        </div>
-                      </CardBlog>
-                    );
-                  })}
-                </CardGrid>
-                <SearchFormPagination
-                  offset={offset}
-                  limit={limit}
+        <SearchContainer ref={searchWrapperRef}>
+          {!isResultsLoading && (
+            <>
+              <Text tag="h3" variation="heading-1">
+                <SearchDetail
+                  searchResultsTextWithInput={
+                    fields?.SearchResultsTextWithInput?.value
+                  }
+                  searchResultsText={fields?.SearchResultsText?.value}
                   resultsCount={resultsCount}
-                  scrollToRef={searchWrapperRef as RefObject<HTMLElement>}
+                  input={
+                    searchParams.get('input') ||
+                    searchParams.get('autocomplete') ||
+                    undefined
+                  }
                 />
-              </>
-            )}
-          </SearchContainer>
-        </Suspense>
+              </Text>
+              {!!rangeEnd && (
+                <Text variation="body-medium">
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
+                </Text>
+              )}
+            </>
+          )}
+          {isResultsLoading ? (
+            <LoaderCF loadingMsg={t('loading-articles')} />
+          ) : error || !resultsCount ? (
+            <ErrorMessage contentVariation="no-container" />
+          ) : (
+            <>
+              <CardGrid>
+                {data?.response.results?.map((item, index) => {
+                  const { data } = item;
+                  const {
+                    abstractTitle,
+                    abstractImageUrl,
+                    title,
+                    imageUrl,
+                    primaryImageUrl,
+                    url,
+                    date,
+                    typeName,
+                  } = data;
+
+                  const cardImageSrc = ImageUrl(
+                    abstractImageUrl,
+                    primaryImageUrl,
+                    imageUrl
+                  );
+
+                  return (
+                    <CardBlog key={index}>
+                      {cardImageSrc !== undefined ? (
+                        <Image
+                          src={upsertQuerystringParam(
+                            cardImageSrc,
+                            't',
+                            'w750'
+                          )}
+                          alt=""
+                          width="560"
+                          height="420"
+                          quality={90}
+                        />
+                      ) : undefined}
+                      <time>{formatDate(new Date(date))}</time>
+                      <Text tag={'h3'} variation={'heading-2'}>
+                        <a href={url}>
+                          {abstractTitle ? abstractTitle : title}
+                        </a>
+                      </Text>
+                      <div>
+                        {!!typeName && (
+                          <Tags>
+                            <span>{typeName}</span>
+                          </Tags>
+                        )}
+                      </div>
+                    </CardBlog>
+                  );
+                })}
+              </CardGrid>
+              <SearchFormPagination
+                offset={offset}
+                limit={limit}
+                resultsCount={resultsCount}
+                scrollToRef={searchWrapperRef as RefObject<HTMLElement>}
+              />
+            </>
+          )}
+        </SearchContainer>
       </Themes>
     </form>
   );
 };
 
-export const Default = (props: BlogSearchProps): JSX.Element => (
-  <Suspense fallback={null}>
-    <BlogSearchContent {...props} />
-  </Suspense>
-);
+export const Default = (props: BlogSearchProps): JSX.Element => {
+  const t = useTranslations(props?.page?.siteName);
+  return (
+    <Suspense fallback={<LoaderCF loadingMsg={t('loading')} />}>
+      <BlogSearchContent {...props} />
+    </Suspense>
+  );
+};
