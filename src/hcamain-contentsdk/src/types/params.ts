@@ -1,22 +1,9 @@
+import type { Theme } from '@component-library/foundation/Themes/Themes.types';
+export type { Theme } from '@component-library/foundation/Themes/Themes.types';
+
 // These Types correspond with CMS options
 // They should be synchronized by back end developers when CMS options are updated/added
 // This allows for type safety in integrated component props
-export type Theme =
-  | 'A-HCA-White'
-  | 'B-HCA-Navy-Blue'
-  | 'C-HCA-Denim'
-  | 'D-HCA-Teal'
-  | 'E-HCA-Cerulean'
-  | 'F-HCA-Fern'
-  | 'G-HCA-Orange'
-  | 'H-HCA-Tangerine'
-  | 'I-HCA-Goldenrod'
-  | 'J-HCA-Tangerine-20'
-  | 'K-HCA-Fern-20'
-  | 'L-HCA-Teal-5'
-  | 'M-HCA-Goldenrod-20'
-  | 'N-HCA-Denim-5';
-
 export const darkThemes = [
   'B-HCA-Navy-Blue',
   'C-HCA-Denim',
