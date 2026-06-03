@@ -11,6 +11,7 @@ import Providers from 'src/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import CustomTracking from 'components/core-components/CustomTracking';
+import Schema from 'src/Schema';
 
 type PageProps = {
   params: Promise<{
@@ -51,8 +52,10 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <NextIntlClientProvider>
+      <GtmScript gtmKey={gtmKey} />
       <CustomTracking />
       <Providers page={page}>
+        <Schema layoutData={page.layout} />
         <Layout page={page} />
       </Providers>
     </NextIntlClientProvider>
