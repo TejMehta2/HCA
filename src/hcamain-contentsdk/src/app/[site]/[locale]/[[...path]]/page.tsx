@@ -12,6 +12,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import CustomTracking from 'components/core-components/CustomTracking';
 import Schema from 'src/Schema';
+import { getMetadataGtmKey } from 'lib/sitecore/metadata';
+import GtmScript from 'components/core-components/GtmScript';
 
 type PageProps = {
   params: Promise<{
@@ -21,6 +23,8 @@ type PageProps = {
     [key: string]: string | string[] | undefined;
   }>;
 };
+
+
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
@@ -49,6 +53,9 @@ export default async function Page({ params }: PageProps) {
   if (!page) {
     notFound();
   }
+
+  const gtmKey =
+    getMetadataGtmKey(page.layout) || process.env.NEXT_PUBLIC_GTM_KEY;
 
   return (
     <NextIntlClientProvider>

@@ -37,24 +37,24 @@ export interface PageRouteMetadata {
   displayName?: string;
 }
 
-interface Fields {
-  DefaultMetaImage?: { value?: ImageField };
-  PageTitleSufix?: { value?: Field<string> };
-  TwitterCard?: { value?: Field<string> };
+export interface MetadataFields {
+  DefaultMetaImage?: ImageField;
+  PageTitleSufix?: { value?: string };
+  TwitterCard?: { value?: string };
   Image?: ImageField;
-  GtmKey?: { value?: Field<string> };
+  GtmKey?: { value?: string };
 }
 
 type MetadataProps = ComponentWithContextProps & {
   params?: Params;
-  fields?: Fields;
+  fields?: MetadataFields;
   rendering?: {
     uid?: string;
   };
 };
 interface Speciality {
   displayName: string;
-  fields?: Fields;
+  fields?: MetadataFields;
   id: string;
   name: string;
   url: string;
@@ -134,7 +134,7 @@ export const Default = async (props: MetadataProps): Promise<JSX.Element> => {
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
   // computed values
   const title = `${MetaTitle?.value || titleStripped} ${
-    PageTitleSufix?.value?.value || ''
+    PageTitleSufix?.value || ''
   }`;
   const description = escapeHtmlAttribute(
     MetaDescription?.value || Text?.value || ''
@@ -142,7 +142,7 @@ export const Default = async (props: MetadataProps): Promise<JSX.Element> => {
   const image =
     MetaImage?.value?.src ||
     Image?.value?.src ||
-    DefaultMetaImage?.value?.value?.src;
+    DefaultMetaImage?.value?.src;
 
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
@@ -189,41 +189,19 @@ export const Default = async (props: MetadataProps): Promise<JSX.Element> => {
     }
   };
 
-  const globalGtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
-  const gtmKey = globalGtmKey ? globalGtmKey : props.fields?.GtmKey?.value?.value;
-
-  const gtmTag = (!process.env.NEXT_PUBLIC_DISABLE_GTM ||
-    process.env.NEXT_PUBLIC_DISABLE_GTM === 'false') && (
-    <script
-      id="gtm-snippet"
-      dangerouslySetInnerHTML={{
-        __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer', '${gtmKey}');
-          `,
-      }}
-    />
-  );
-
   const cf: boolean = getPageType(TemplateId) === 'CF';
 
   if (cf) {
     return (
       <Head>
-        {gtmTag}
         <meta name="robots" content={`${follow}, ${index}`} key="robots" />
       </Head>
     );
   } else {
     return (
       <Head>
-        {gtmTag}
-        &&
-        {TwitterCard?.value?.value && (
-          <meta name="twitters:card" content={TwitterCard?.value?.value} />
+        {TwitterCard?.value && (
+          <meta name="twitters:card" content={TwitterCard?.value} />
         )}
         &&
         {title && (
