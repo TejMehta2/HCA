@@ -112,7 +112,7 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
         bodyCopy: (
           <Text tag="div" variation="body-large">
             <RichText>
-              <JssRichText tag="p" field={tab?.fields?.Text} />
+              <JssRichText tag="div" field={tab?.fields?.Text} />
             </RichText>
           </Text>
         ),
