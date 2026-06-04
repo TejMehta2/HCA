@@ -9,7 +9,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>      
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/mdu7dnk.css" />
+      </head>
+      <body>
         <Themes theme={'A-HCA-White'}>{children}</Themes>
       </body>
     </html>
