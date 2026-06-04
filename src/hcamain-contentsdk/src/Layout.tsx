@@ -40,14 +40,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   return (
     <>
       <Scripts />
-      <SitecoreStyles layoutData={layout} />
-      {process.env.NEXT_PUBLIC_LOAD_COOKIES && (
-        <head
-          dangerouslySetInnerHTML={{
-            __html: process.env.NEXT_PUBLIC_LOAD_COOKIES,
-          }}
-        />
-      )}
+      <SitecoreStyles layoutData={layout} />      
       {/* root placeholder for the app, which we add components to using route data */}
       <YextProvider>
         <div className={mainClassPageEditing}>
@@ -63,7 +56,8 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
               />
             )
           ) : (
-            <>             
+            <>
+             
               <header>
                 <div id="header">
                   {route && (
