@@ -34,25 +34,29 @@ export type JobDetailsHeaderProps = ComponentWithContextProps & {
 };
 
 export interface VacancyResponse {
+  applicationUrl: string;
+  contractType?: string | null;
+  createdDateTimeISO?: string;
+  datePosted?: string;
   employmentType: string;
+  id: string;
   jobAreas: string[];
+  jobCity: string;
+  jobFamily?: string;
   jobFamilyGroup: string;
   jobFamilyNameforJobProfile: string;
   jobFunction: string;
   jobLocation: string;
-  jobCity: string;
   jobProfile: string;
+  landingPageUrl: string;
+  name: string;
   richDescription: {
     html: string;
   };
   bodyPlain: string;
   startDate: string;
-  workerSubType: string;
-  id: string;
-  name: string;
   uid: number;
-  landingPageUrl: string;
-  applicationUrl: string;
+  workerSubType: string;
 }
 
 export type VacancyRoute = RouteData & {

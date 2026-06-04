@@ -34,3 +34,22 @@ export const getSiteBaseUrl = async (siteName: string) => {
     normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL)
   );
 };
+
+export const getPagePath = (itemPath?: string, path?: string[]) => {
+  if (itemPath) {
+    return itemPath.startsWith('/') ? itemPath : `/${itemPath}`;
+  }
+
+  return path?.length ? `/${path.join('/')}` : '/';
+};
+
+export const toTwitterCard = (card?: string) => {
+  switch (card?.toLowerCase().replace(/\s+/g, '_')) {
+    case 'summary_large_image':
+      return 'summary_large_image';
+    case 'summary':
+      return 'summary';
+    default:
+      return undefined;
+  }
+};

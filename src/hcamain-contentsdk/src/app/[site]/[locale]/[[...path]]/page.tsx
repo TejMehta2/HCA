@@ -18,7 +18,7 @@ import GtmScript from 'components/core-components/GtmScript';
 import { PageRouteMetadata } from 'components/Page Content/Metadata/Metadata';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import { isSitecoreDateSet } from 'lib/utility-functions/isSitecoreDateSet';
-import { getSiteBaseUrl } from 'lib/utility-functions/urlUtils';
+import { getPagePath, getSiteBaseUrl, toTwitterCard } from 'lib/utility-functions/urlUtils';
 import { removeTags } from '@component-library/utility-functions';
 
 type PageProps = {
@@ -28,25 +28,6 @@ type PageProps = {
     path?: string[];
     [key: string]: string | string[] | undefined;
   }>;
-};
-
-const getPagePath = (itemPath?: string, path?: string[]) => {
-  if (itemPath) {
-    return itemPath.startsWith('/') ? itemPath : `/${itemPath}`;
-  }
-
-  return path?.length ? `/${path.join('/')}` : '/';
-};
-
-const toTwitterCard = (card?: string) => {
-  switch (card?.toLowerCase().replace(/\s+/g, '_')) {
-    case 'summary_large_image':
-      return 'summary_large_image';
-    case 'summary':
-      return 'summary';
-    default:
-      return undefined;
-  }
 };
 
 export default async function Page({ params }: PageProps) {
