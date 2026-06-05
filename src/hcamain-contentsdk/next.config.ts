@@ -88,6 +88,11 @@ const nextConfig: NextConfig = {
         locale: false,
       },
       {
+        source: '/paymentform/:path*',
+        destination: '/api/payment/api/paymentForm/:path*',
+        locale: false,
+      },
+        {
         source: '/paymentForm/:path*',
         destination: '/api/payment/api/paymentForm/:path*',
         locale: false,

@@ -124,7 +124,7 @@ export const config = {
    * 7. all root files inside /public
    */
   matcher: [
-    '/',
-    '/((?!api/|sitemap|robots|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg).*)',
+    '/',    
+    '/((?!api/|sitemap|robots|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|android-chrome-*|webhooks/sitecore/|api-layer/|referrer/|careers/vacancy/|paymentForm/|paymentform/).*)',
   ],
 };
