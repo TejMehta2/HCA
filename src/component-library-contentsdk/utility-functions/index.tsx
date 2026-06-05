@@ -160,8 +160,8 @@ export const formatDateDMY = (date: string) => {
 
 // remove html tags from a string
 
-export function removeTags(str: string) {
-  return str.replace(/<\/?[^>]+(>|$)/g, '');
+export function removeTags(str?: string | null) {
+  return str?.replace(/<\/?[^>]+(>|$)/g, '') || '';
 }
 
 export const scrollToRef = (section: React.RefObject<HTMLElement>) => {
