@@ -9,7 +9,7 @@ import {
 // end of built-in imports
 
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { Suspense, useEffect, useState, useContext, useMemo, useRef, createElement, useCallback } from 'react';
+import { Suspense, useEffect, useState, useContext, useMemo, useRef, createElement, useCallback, Component } from 'react';
 import React from 'react';
 import { useRouter, useSearchParams, usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -217,6 +217,7 @@ const importMap = [
       { name: 'useRef', value: useRef },
       { name: 'createElement', value: createElement },
       { name: 'useCallback', value: useCallback },
+      { name: 'Component', value: Component },
       { name: 'default', value: React },
     ]
   },

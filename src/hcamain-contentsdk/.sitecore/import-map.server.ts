@@ -130,6 +130,7 @@ import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Naviga
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { checkIfConsultantIsNoReviews, checkIfConsultantIsDoctifyPhoneNumber, checkIfLiveBookingIsAvailable, getPhysicianStructuredData, getActiveLiveDiaryConsultantSlugs, getDoctifyPhoneNumberConsultantSlugs, getIgnoreReviewsConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import { getSpecialistProfileData, isErrorWithProfileData, getInsuranceData } from 'lib/consultant-finder/API_Doctify';
 import { Default as Default_844964c826b725d51ce782898cf2eb97658009a2 } from 'src/components/ConsultantFinder/StepConsultantProfileClient';
@@ -853,6 +854,12 @@ const importMap = [
     module: '@component-library/site-components/FooterSmall/FooterSmall',
     exports: [
       { name: 'default', value: FooterSmall },
+    ]
+  },
+  {
+    module: '@next/third-parties/google',
+    exports: [
+      { name: 'GoogleTagManager', value: GoogleTagManager },
     ]
   },
   {

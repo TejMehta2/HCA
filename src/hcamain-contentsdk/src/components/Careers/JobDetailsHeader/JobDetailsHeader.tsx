@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import Themes from '@component-library/foundation/Themes/Themes';
 import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
 import {
@@ -9,10 +9,8 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
-import Head from 'next/head';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -61,20 +59,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     : props.fields?.data?.contextItem?.image;
 
   return (
-    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      <Head>
-        <title>{data.name}</title>
-        <meta property="og:title" content={data.name} key="og:title" />
-        {matchedSetting?.image && (
-          <meta
-            property="og:image"
-            content={addThumbnailParameter(
-              matchedSetting?.image?.jsonValue?.value?.src
-            )}
-            key="og:image"
-          />
-        )}
-      </Head>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>      
       <VacancyHeader
         title={
           <Text variation={getDynamicTitleStyle(data.name.length)} tag="h1">
