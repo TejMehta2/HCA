@@ -15,7 +15,7 @@ import * as TestAndScansSearch from 'src/components/Page Content/TestAndScansSea
 import * as StickyCTA from 'src/components/Page Content/StickyCTA/StickyCTA';
 import * as ShareCTA from 'src/components/Page Content/ShareCTA/ShareCTA';
 import * as ServiceLinesSearch from 'src/components/Page Content/ServiceLinesSearch/ServiceLinesSearch';
-import * as PaymentFormConfirmation from 'src/components/Page Content/PaymentFormConfirmation/PaymentFormConfirmation';
+import * as PrintConfirmationCta from 'src/components/Page Content/PaymentFormConfirmation/PrintConfirmationCta';
 import * as PaymentForm from 'src/components/Page Content/PaymentForm/PaymentForm';
 import * as PatientStoriesSearch from 'src/components/Page Content/PatientStoriesSearch/PatientStoriesSearch';
 import * as PatientStoriesCards from 'src/components/Page Content/PatientStoriesCards/PatientStoriesCards';
@@ -69,7 +69,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['StickyCTA', { ...StickyCTA }],
   ['ShareCTA', { ...ShareCTA }],
   ['ServiceLinesSearch', { ...ServiceLinesSearch }],
-  ['PaymentFormConfirmation', { ...PaymentFormConfirmation }],
+  ['PrintConfirmationCta', { ...PrintConfirmationCta }],
   ['PaymentForm', { ...PaymentForm }],
   ['PatientStoriesSearch', { ...PatientStoriesSearch }],
   ['PatientStoriesCards', { ...PatientStoriesCards }],

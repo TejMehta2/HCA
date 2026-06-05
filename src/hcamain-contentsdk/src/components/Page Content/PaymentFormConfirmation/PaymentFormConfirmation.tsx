@@ -1,27 +1,69 @@
-'use client';
-
 import { type JSX } from 'react';
 import {
-  Text as JssText,
+  debug,
   Link as JssLink,
   RichText as JssRichText,
-  useComponentProps,
-  GetComponentServerProps,
+  Text as JssText,
 } from '@sitecore-content-sdk/nextjs';
-import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
-import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
 import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
-import Icons from '@component-library/foundation/Icons/Icons';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
+import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
+import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import {
   PaymentFormConfirmationProps,
   TransactionStatusResponse,
 } from './Payment.types';
 import Header from '../PaymentForm/helpers/Header';
+import PrintConfirmationCta from './PrintConfirmationCta';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+
+type PaymentConfirmationContext = {
+  paymentConfirmation?: {
+    transactionId?: string;
+  };
+};
+
+const getPaymentConfirmationContext = (
+  props: PaymentFormConfirmationProps
+) => {
+  return (
+    props.page.layout.sitecore.context as typeof props.page.layout.sitecore.context &
+      PaymentConfirmationContext
+  ).paymentConfirmation;
+};
+
+const fetchTransactionStatus = async (
+  props: PaymentFormConfirmationProps
+): Promise<TransactionStatusResponse | undefined> => {
+  const paymentConfirmation = getPaymentConfirmationContext(props);
+  const transactionIdValue = paymentConfirmation?.transactionId;
+  let response: Response | undefined;
+
+  if (!transactionIdValue) {
+    debug.common('PaymentFormConfirmation missing transaction_id');
+    return;
+  }
+
+  const transactionId = `transactionId=${transactionIdValue}`;
+  const site = `site=${props.page.layout.sitecore.context.site?.name}`;
+  const itemPath = `itemPath=${props.page.layout.sitecore.context.itemPath}`;
+
+  try {
+    const url = `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`;
+    debug.common('PaymentFormConfirmation API fetch url', url);
+    response = await fetch(url, { cache: 'no-store' });
+    const transactionStatus = await response.json();
+    return transactionStatus?.response;
+  } catch {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(await response?.text?.());
+    }
+    return;
+  }
+};
 
 const PaymentFormConfirmationDefaultComponent = (
   props: PaymentFormConfirmationProps
@@ -41,12 +83,12 @@ const PaymentFormConfirmationDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
-  const transactionStatus = useComponentProps<TransactionStatusResponse>(
-    props.rendering?.uid
-  );
-
+export const Default = async (
+  props: PaymentFormConfirmationProps
+): Promise<JSX.Element> => {
+  const transactionStatus = await fetchTransactionStatus(props);
   const isExperienceEditor = props.page.mode.isEditing;
+
   if (!props.fields) {
     return <PaymentFormConfirmationDefaultComponent {...props} />;
   }
@@ -163,56 +205,8 @@ export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
             ]}
           />
         }
-        cta={
-          <Button variation="full-dark" size="large">
-            <button
-              onClick={() => {
-                window.print();
-              }}
-            >
-              <Icons iconName="iconPrint" />
-              Print confirmation
-            </button>
-          </Button>
-        }
+        cta={<PrintConfirmationCta />}
       />
     </>
   );
-};
-
-export const getComponentServerProps: GetComponentServerProps = async (
-  _,
-  layoutData,
-  context
-) => {
-  const { query = {}, req } = context as {
-    query?: Record<string, string | string[]>;
-    req?: { headers: { host?: string }; url?: string };
-  };
-
-  const transactionIdValue = query['transaction_id'];
-
-  // If no transaction_id, log full URL and skip request
-  if (!transactionIdValue) {
-    const fullUrl = `${req?.headers.host ?? ''}${req?.url ?? ''}`;
-    console.log('verifone payment failed:', fullUrl);
-    return {};
-  }
-
-  let response;
-  const transactionId = `transactionId=${transactionIdValue}`;
-  const site = `site=${layoutData.sitecore.context.site?.name}`;
-  const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
-
-  try {
-    response = await fetch(
-      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
-    );
-    const transactionStatus = await response.json();
-    return transactionStatus?.response;
-  } catch (error) {
-    process.env.NODE_ENV === 'development' &&
-      console.log(await response?.text?.());
-    return {};
-  }
 };

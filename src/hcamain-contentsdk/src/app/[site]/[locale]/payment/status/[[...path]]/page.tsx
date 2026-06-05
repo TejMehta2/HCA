@@ -14,7 +14,14 @@ type PaymentStatusPageProps = {
     locale: string;
     path?: string[];
   }>;
+  searchParams?: Promise<RouteSearchParams>;
 };
+
+type RouteSearchParams = Record<string, string | string[] | undefined>;
+
+const getSearchParam = (
+  value: string | string[] | undefined
+): string | undefined => (Array.isArray(value) ? value[0] : value);
 
 export const dynamic = 'force-dynamic';
 
@@ -22,8 +29,12 @@ const PAYMENT_STATUS_PATH = 'payment/status/';
 
 export default async function PaymentStatusPage({
   params,
+  searchParams,
 }: PaymentStatusPageProps) {
-  const { site, locale } = await params;
+  const [{ site, locale }, resolvedSearchParams] = await Promise.all([
+    params,
+    searchParams ?? Promise.resolve<RouteSearchParams>({}),
+  ]);
 
   setRequestLocale(`${site}_${locale}`);
 
@@ -46,6 +57,16 @@ export default async function PaymentStatusPage({
   if (!page?.layout.sitecore.route) {
     notFound();
   }
+
+  (
+    page.layout.sitecore.context as typeof page.layout.sitecore.context & {
+      paymentConfirmation?: {
+        transactionId?: string;
+      };
+    }
+  ).paymentConfirmation = {
+    transactionId: getSearchParam(resolvedSearchParams.transaction_id),
+  };
 
   return (
     <NextIntlClientProvider>

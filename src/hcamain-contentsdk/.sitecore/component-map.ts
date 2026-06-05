@@ -36,6 +36,7 @@ import * as ServiceLinesSearch from 'src/components/Page Content/ServiceLinesSea
 import * as ServiceCards from 'src/components/Page Content/ServiceCards/ServiceCards';
 import * as PricingInformation from 'src/components/Page Content/PricingInformation/PricingInformation';
 import * as PlainHeader from 'src/components/Page Content/PlainHeader/PlainHeader';
+import * as PrintConfirmationCta from 'src/components/Page Content/PaymentFormConfirmation/PrintConfirmationCta';
 import * as PaymentFormConfirmation from 'src/components/Page Content/PaymentFormConfirmation/PaymentFormConfirmation';
 import * as PaymentForm from 'src/components/Page Content/PaymentForm/PaymentForm';
 import * as PatientStoriesSearch from 'src/components/Page Content/PatientStoriesSearch/PatientStoriesSearch';
@@ -172,7 +173,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ServiceCards', { ...ServiceCards }],
   ['PricingInformation', { ...PricingInformation }],
   ['PlainHeader', { ...PlainHeader }],
-  ['PaymentFormConfirmation', { ...PaymentFormConfirmation, componentType: 'client' }],
+  ['PrintConfirmationCta', { ...PrintConfirmationCta, componentType: 'client' }],
+  ['PaymentFormConfirmation', { ...PaymentFormConfirmation }],
   ['PaymentForm', { ...PaymentForm, componentType: 'client' }],
   ['PatientStoriesSearch', { ...PatientStoriesSearch, componentType: 'client' }],
   ['PatientStoriesCards', { ...PatientStoriesCards, componentType: 'client' }],

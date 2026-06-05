@@ -53,6 +53,12 @@ import Image_5d8ce56058442d94361877e28c501c951a554a6a from 'next/image';
 import dynamic from 'next/dynamic';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import Button from '@component-library/core-components/Button/Button';
+import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
+import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
+import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
+import Header from 'src/components/Page Content/PaymentForm/helpers/Header';
+import PrintConfirmationCta from 'src/components/Page Content/PaymentFormConfirmation/PrintConfirmationCta';
 import FormProgressBar from '@component-library/site-components/FormProgressBar/FormProgressBar';
 import TextField from '@component-library/core-components/form/basic/TextField/TextField';
 import TextArea from '@component-library/core-components/Textarea/Textarea';
@@ -82,7 +88,6 @@ import { getDynamicTitleStyle as getDynamicTitleStyle_6dee24d6db350d49713bc0f636
 import HeaderWithImage from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import { darkThemes } from 'src/types/params';
 import YextSearch from '@component-library/yext/YextSearch/YextSearch';
-import Button from '@component-library/core-components/Button/Button';
 import AccordionsBlock from '@component-library/site-components/AccordionsBlock/AccordionsBlock';
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
@@ -412,6 +417,42 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/core-components/Button/Button',
+    exports: [
+      { name: 'default', value: Button },
+    ]
+  },
+  {
+    module: '@component-library/components/ConfirmationSummary/ConfirmationSummary',
+    exports: [
+      { name: 'default', value: ConfirmationSummary },
+    ]
+  },
+  {
+    module: '@component-library/site-components/HeaderText/HeaderText',
+    exports: [
+      { name: 'default', value: HeaderText },
+    ]
+  },
+  {
+    module: '@component-library/site-components/PaymentSummary/PaymentSummary',
+    exports: [
+      { name: 'default', value: PaymentSummary },
+    ]
+  },
+  {
+    module: 'src/components/Page Content/PaymentForm/helpers/Header',
+    exports: [
+      { name: 'default', value: Header },
+    ]
+  },
+  {
+    module: 'src/components/Page Content/PaymentFormConfirmation/PrintConfirmationCta',
+    exports: [
+      { name: 'default', value: PrintConfirmationCta },
+    ]
+  },
+  {
     module: '@component-library/site-components/FormProgressBar/FormProgressBar',
     exports: [
       { name: 'default', value: FormProgressBar },
@@ -579,12 +620,6 @@ const importMap = [
     module: '@component-library/yext/YextSearch/YextSearch',
     exports: [
       { name: 'default', value: YextSearch },
-    ]
-  },
-  {
-    module: '@component-library/core-components/Button/Button',
-    exports: [
-      { name: 'default', value: Button },
     ]
   },
   {
