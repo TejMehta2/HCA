@@ -7,6 +7,7 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
+import { generateSitecorePageMetadata } from 'lib/utility-functions/generateSitecorePageMetadata';
 
 type FertilityCalculatorPageProps = {
   params: Promise<{
@@ -14,12 +15,6 @@ type FertilityCalculatorPageProps = {
     locale: string;
     path?: string[];
   }>;
-};
-
-type FertilityCalculatorRouteFields = RouteFields & {
-  NoFollow?: { value?: boolean };
-  NoIndex?: { value?: boolean };
-  HideFromWebsiteSearch?: { value?: { valueOf(): unknown } | boolean };
 };
 
 export const dynamic = 'force-dynamic';
@@ -74,16 +69,5 @@ export const generateMetadata = async ({
     site,
     locale,
   });
-  const fields = page?.layout.sitecore.route?.fields as
-    | FertilityCalculatorRouteFields
-    | undefined;
-
-
-  return {
-    title: fields?.Title?.value?.toString() || 'Fertility Calculator',
-    robots: {
-      follow: !fields?.NoFollow?.value,
-      index: !fields?.NoIndex?.value,
-    }
-  };
+  return generateSitecorePageMetadata({ page, site, path });
 };

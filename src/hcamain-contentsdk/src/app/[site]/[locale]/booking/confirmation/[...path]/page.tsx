@@ -6,6 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
+import { generateSitecorePageMetadata } from 'lib/utility-functions/generateSitecorePageMetadata';
 
 type RouteSearchParams = Record<string, string | string[] | undefined>;
 
@@ -81,15 +82,11 @@ export default async function BookingConfirmationPage({
 export const generateMetadata = async ({
   params,
 }: BookingConfirmationPageProps) => {
-  const { site, locale } = await params;
+  const { path, site, locale } = await params;
   const page = await client.getPage(BOOKING_CONFIRMATION_PATH, {
     site,
     locale,
   });
 
-  return {
-    title:
-      (page?.layout.sitecore.route?.fields as RouteFields)?.Title?.value?.toString() ||
-      'Page',
-  };
+  return generateSitecorePageMetadata({ page, site, path });
 };
