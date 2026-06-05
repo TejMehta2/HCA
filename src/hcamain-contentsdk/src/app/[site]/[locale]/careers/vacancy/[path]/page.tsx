@@ -7,7 +7,6 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout from 'src/Layout';
 import Providers from 'src/Providers';
-import CustomTracking from 'components/core-components/CustomTracking';
 import VacancySchema from 'components/core-components/VacancySchema';
 import type {
   VacancyResponse,
@@ -97,8 +96,7 @@ export default async function VacancyPage({ params }: VacancyPageProps) {
   }
 
   return (
-    <NextIntlClientProvider>
-      <CustomTracking />
+    <NextIntlClientProvider>    
       <Providers page={page}>
         <VacancySchema vacancy={vacancy} />
         <Layout page={page} />

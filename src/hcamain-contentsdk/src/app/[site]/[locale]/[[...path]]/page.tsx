@@ -11,10 +11,8 @@ import Layout from 'src/Layout';
 import Providers from 'src/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import CustomTracking from 'components/core-components/CustomTracking';
 import Schema from 'src/Schema';
-import { getMetadataFields, getMetadataGtmKey } from 'lib/sitecore/metadata';
-import GtmScript from 'components/core-components/GtmScript';
+import { getMetadataFields } from 'lib/sitecore/metadata';
 import { PageRouteMetadata } from 'components/Page Content/Metadata/Metadata';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import { isSitecoreDateSet } from 'lib/utility-functions/isSitecoreDateSet';
@@ -57,14 +55,10 @@ export default async function Page({ params }: PageProps) {
   if (!page) {
     notFound();
   }
-
-  const gtmKey =
-    getMetadataGtmKey(page.layout) || process.env.NEXT_PUBLIC_GTM_KEY;
+ 
 
   return (
-    <NextIntlClientProvider>
-      <GtmScript gtmKey={gtmKey} />
-      <CustomTracking />
+    <NextIntlClientProvider>      
       <Providers page={page}>
         <Schema layoutData={page.layout} />
         <Layout page={page} />

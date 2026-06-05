@@ -6,7 +6,6 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
-import CustomTracking from 'components/core-components/CustomTracking';
 
 type RouteSearchParams = Record<string, string | string[] | undefined>;
 
@@ -71,8 +70,7 @@ export default async function BookingConfirmationPage({
   };
 
   return (
-    <NextIntlClientProvider>
-      <CustomTracking />
+    <NextIntlClientProvider>     
       <Providers page={page}>
         <Layout page={page} />
       </Providers>

@@ -6,7 +6,6 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
-import CustomTracking from 'components/core-components/CustomTracking';
 
 type PaymentStatusPageProps = {
   params: Promise<{
@@ -70,7 +69,6 @@ export default async function PaymentStatusPage({
 
   return (
     <NextIntlClientProvider>
-      <CustomTracking />
       <Providers page={page}>
         <Layout page={page} />
       </Providers>

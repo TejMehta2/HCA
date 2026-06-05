@@ -7,7 +7,6 @@ import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
-import CustomTracking from 'components/core-components/CustomTracking';
 
 type IvfPricerPageProps = {
   params: Promise<{
@@ -57,7 +56,6 @@ export default async function IvfPricerPage({ params }: IvfPricerPageProps) {
 
   return (
     <NextIntlClientProvider>
-      <CustomTracking />
       <Providers page={page}>
         <Layout page={page} />
       </Providers>

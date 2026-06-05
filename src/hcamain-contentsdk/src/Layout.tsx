@@ -12,6 +12,9 @@ import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
 import { themeModes } from '@component-library/foundation/Themes/Themes.config';
 import type { Theme } from '@component-library/foundation/Themes/Themes.types';
+import { getMetadataGtmKey } from 'lib/sitecore/metadata';
+import GtmScript from 'components/core-components/GtmScript';
+import CustomTracking from 'components/core-components/CustomTracking';
 
 interface LayoutProps {
   page: Page;
@@ -37,10 +40,16 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
     firstComponent.params.Theme in themeModes
       ? (firstComponent.params.Theme as Theme)
       : 'B-HCA-Navy-Blue';
+
+  const gtmKey =
+    getMetadataGtmKey(page.layout) || process.env.NEXT_PUBLIC_GTM_KEY;
+
   return (
     <>
       <Scripts />
-      <SitecoreStyles layoutData={layout} />      
+      <GtmScript gtmKey={gtmKey} />
+      <CustomTracking />
+      <SitecoreStyles layoutData={layout} />
       {/* root placeholder for the app, which we add components to using route data */}
       <YextProvider>
         <div className={mainClassPageEditing}>
@@ -57,7 +66,6 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
             )
           ) : (
             <>
-             
               <header>
                 <div id="header">
                   {route && (
