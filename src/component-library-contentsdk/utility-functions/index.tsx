@@ -208,4 +208,3 @@ export const isMobile = (breakpoint = 992): boolean => {
 
   return window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
 };
-

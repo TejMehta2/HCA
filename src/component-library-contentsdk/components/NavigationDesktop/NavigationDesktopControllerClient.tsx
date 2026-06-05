@@ -7,6 +7,8 @@ import { type Theme } from '../../foundation/Themes/Themes.types';
 import themeStyles from '../../foundation/Themes/Themes.module.scss';
 import styles from './NavigationDesktop.module.scss';
 
+const HOVER_OPEN_DELAY_MS = 160;
+
 type NavigationDesktopControllerClientProps = {
   initialActiveIndex?: number | null;
   themeClosed: Theme;
@@ -24,9 +26,7 @@ const NavigationDesktopControllerClient = ({
 
   useEffect(() => {
     const marker = markerRef.current;
-    const root = marker?.closest<HTMLElement>(
-      '[data-navigation-desktop-root]'
-    );
+    const root = marker?.closest<HTMLElement>('[data-navigation-desktop-root]');
 
     if (!root) return;
 
@@ -89,31 +89,53 @@ const NavigationDesktopControllerClient = ({
 
     const closeNavigation = () => setActiveIndex(null);
     const removeHandlers: Array<() => void> = [];
+    let hoverOpenTimeout: number | undefined;
+
+    const clearHoverOpenTimeout = () => {
+      if (hoverOpenTimeout === undefined) return;
+
+      window.clearTimeout(hoverOpenTimeout);
+      hoverOpenTimeout = undefined;
+    };
 
     controls.forEach((control) => {
       const tabIndex = Number(control.dataset.navigationDesktopTabIndex);
 
       const openTab = () => setActiveIndex(tabIndex);
-      const toggleTab = () =>
+      const openTabWithDelay = () => {
+        clearHoverOpenTimeout();
+        hoverOpenTimeout = window.setTimeout(openTab, HOVER_OPEN_DELAY_MS);
+      };
+      const toggleTab = () => {
+        clearHoverOpenTimeout();
         setActiveIndex(activeIndex === tabIndex ? null : tabIndex);
+      };
 
-      control.addEventListener('mouseenter', openTab);
+      control.addEventListener('mouseenter', openTabWithDelay);
+      control.addEventListener('mouseleave', clearHoverOpenTimeout);
       control.addEventListener('click', toggleTab);
 
       removeHandlers.push(() => {
-        control.removeEventListener('mouseenter', openTab);
+        control.removeEventListener('mouseenter', openTabWithDelay);
+        control.removeEventListener('mouseleave', clearHoverOpenTimeout);
         control.removeEventListener('click', toggleTab);
       });
     });
 
-    root.addEventListener('mouseleave', closeNavigation);
+    const closeNavigationOnLeave = () => {
+      clearHoverOpenTimeout();
+      closeNavigation();
+    };
+
+    root.addEventListener('mouseleave', closeNavigationOnLeave);
     removeHandlers.push(() =>
-      root.removeEventListener('mouseleave', closeNavigation)
+      root.removeEventListener('mouseleave', closeNavigationOnLeave)
     );
 
     setActiveIndex(initialActiveIndex);
 
     return () => {
+      clearHoverOpenTimeout();
       removeHandlers.forEach((removeHandler) => removeHandler());
     };
   }, [initialActiveIndex, themeClosed, themeOpen, pathname, searchParams]);
