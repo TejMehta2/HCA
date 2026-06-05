@@ -63,6 +63,35 @@ const nextConfig: NextConfig = {
         destination: '/api/robots',
         locale: false,
       },
+      // rewrite webhooks to integration layer proxy API route
+      {
+        source: '/webhooks/sitecore/:path*',
+        destination: `/api/api-layer/webhooks/sitecore/:path*`,
+        locale: false,
+      },
+      // rewrite forms to integration layer proxy API route
+      {
+        source: '/api/sitecore/:path*',
+        destination: `/api/api-layer/api/sitecore/:path*`,
+        locale: false,
+      },
+      // rewrite mail to integration layer proxy API route
+      {
+        source: '/referrer/mail/:path*',
+        destination: `/api/api-layer/referrer/mail/:path*`,
+        locale: false,
+      },
+      // consultant finder sitemap
+      {
+        source: '/sitemap.hca.consultant-finder.xml',
+        destination: `/api/api-layer/sitemap/consultants`,
+        locale: false,
+      },
+      {
+        source: '/paymentForm/:path*',
+        destination: '/api/payment/api/paymentForm/:path*',
+        locale: false,
+      },
     ];
   },
   webpack: (config) => {
