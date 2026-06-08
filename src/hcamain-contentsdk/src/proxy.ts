@@ -125,6 +125,6 @@ export const config = {
    */
   matcher: [
     '/',    
-    '/((?!api/|sitemap|robots|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|android-chrome-*|webhooks/sitecore/|api-layer/|referrer/|careers/vacancy/|paymentForm/|paymentform/).*)',
+    '/((?!api/|sitemap|robots|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|android-chrome-*|webhooks/sitecore/|api-layer/|referrer/|paymentForm/|paymentform/).*)',
   ],
 };
