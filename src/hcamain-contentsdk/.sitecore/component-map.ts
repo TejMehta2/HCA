@@ -224,7 +224,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ContentCardsSlider', { ...ContentCardsSlider }],
   ['ContentCardsMasonry', { ...ContentCardsMasonry }],
   ['ContentCards', { ...ContentCards }],
-  ['ContactDetailsBox', { ...ContactDetailsBox }],
+  ['ContactDetailsBox', { ...ContactDetailsBox, componentType: 'client' }],
   ['CallUsTodayCTA', { ...CallUsTodayCTA, componentType: 'client' }],
   ['BookAnAppointmentCTA', { ...BookAnAppointmentCTA, componentType: 'client' }],
   ['BlogText', { ...BlogText }],

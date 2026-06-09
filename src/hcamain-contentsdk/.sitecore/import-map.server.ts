@@ -107,7 +107,6 @@ import IconCtaBlock from '@component-library/site-components/IconCtaBlock/IconCt
 import CardWithModal from 'src/components/Page Content/ContentCardsSliderWithOverlay/CardWithModal';
 import { MasonryCard } from '@component-library/site-components/MasonryCards/MasonryCards';
 import MasonryCards from '@component-library/site-components/MasonryCards/MasonryCards';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
@@ -724,12 +723,6 @@ const importMap = [
     exports: [
       { name: 'MasonryCard', value: MasonryCard },
       { name: 'default', value: MasonryCards },
-    ]
-  },
-  {
-    module: '@component-library/consultant-finder/NeedHelp/NeedHelp',
-    exports: [
-      { name: 'default', value: NeedHelp },
     ]
   },
   {
