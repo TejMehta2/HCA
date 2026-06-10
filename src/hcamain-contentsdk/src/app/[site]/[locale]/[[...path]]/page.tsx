@@ -22,9 +22,8 @@ type PageProps = {
   }>;
 };
 
-const revalidateTime = Number(process.env.REVALIDATE_TIME);
-export const revalidate =
-  !isNaN(revalidateTime) && revalidateTime > 0 ? revalidateTime : 900;
+//revalidate needs to be statically analyzable
+export const revalidate = 900;
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
