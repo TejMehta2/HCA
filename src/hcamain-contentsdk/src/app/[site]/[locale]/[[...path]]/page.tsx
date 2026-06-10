@@ -23,7 +23,7 @@ type PageProps = {
 };
 
 //revalidate needs to be statically analyzable
-export const revalidate = 900;
+export const revalidate = 60;
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
