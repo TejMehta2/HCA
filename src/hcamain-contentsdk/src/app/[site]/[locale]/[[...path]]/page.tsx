@@ -22,6 +22,10 @@ type PageProps = {
   }>;
 };
 
+const revalidateTime = Number(process.env.REVALIDATE_TIME);
+export const revalidate =
+  !isNaN(revalidateTime) && revalidateTime > 0 ? revalidateTime : 900;
+
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
 
@@ -49,10 +53,9 @@ export default async function Page({ params }: PageProps) {
   if (!page) {
     notFound();
   }
- 
 
   return (
-    <NextIntlClientProvider>      
+    <NextIntlClientProvider>
       <Providers page={page}>
         <Schema layoutData={page.layout} />
         <Layout page={page} />
@@ -81,9 +84,7 @@ export const generateStaticParams = async () => {
   ];
 };
 // Metadata fields for the page.
-export const generateMetadata = async ({
-  params,
-}: PageProps) => {
+export const generateMetadata = async ({ params }: PageProps) => {
   const { path, site, locale } = await params;
 
   // The same call as for rendering the page. Should be cached by default react behavior
