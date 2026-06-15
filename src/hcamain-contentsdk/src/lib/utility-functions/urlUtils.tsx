@@ -2,11 +2,23 @@ import { headers as nextHeaders } from 'next/headers';
 import sites from '.sitecore/sites.json';
 
 const normalizeBaseUrl = (hostOrUrl?: string, protocol = 'https') => {
-  if (!hostOrUrl || hostOrUrl === '*') {
+  if (!hostOrUrl) {
     return undefined;
   }
 
-  const value = hostOrUrl.replace(/\/$/, '');
+  // Sitecore multisite host bindings can be a pipe-separated list
+  // (e.g. "thebirthcompany.co.uk|www.thebirthcompany.co.uk"). Use the first
+  // concrete host so the value is a valid single URL.
+  const firstHost = hostOrUrl
+    .split('|')
+    .map((entry) => entry.trim())
+    .find((entry) => entry && entry !== '*');
+
+  if (!firstHost) {
+    return undefined;
+  }
+
+  const value = firstHost.replace(/\/$/, '');
 
   return /^https?:\/\//i.test(value) ? value : `${protocol}://${value}`;
 };

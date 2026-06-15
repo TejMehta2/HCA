@@ -59,8 +59,14 @@ export const Default = (props: PaymentFormComponentProps): JSX.Element => {
   const [ukResident, setUkResident] = useState(true);
   const [serverMessages, setServerMessages] = useState<[]>([]);
 
-  const page = props.fields.data.item.pages.results[0];
-  const settings = props.fields.data.item.settings.results[0].children.results;
+  const item = props.fields?.data?.item;
+
+  if (!item?.pages?.results?.[0] || !item?.settings?.results?.[0]) {
+    return <></>;
+  }
+
+  const page = item.pages.results[0];
+  const settings = item.settings.results[0].children.results;
   const sections = page.children.results.filter((item) =>
     ['Section'].includes(item.template.name)
   );
