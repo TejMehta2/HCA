@@ -3,8 +3,8 @@
     <location path="sitecore">
         <system.webServer>
             <httpProtocol>
-                <customHeaders>	            
-                    <add name="Content-Security-Policy" value="frame-ancestors 'self' *.sitecorecloud.io *.sitecorecontenthub.cloud" xdt:Transform="Replace" xdt:Locator="Match(name)"/> 
+                <customHeaders>
+                    <add name="Content-Security-Policy" value="frame-ancestors 'self' *.sitecorecloud.io *.sitecorecontenthub.cloud; default-src 'self' 'unsafe-inline' 'unsafe-eval' http://xmc-horizontaldd3df-hcanonprod2a8e-dev64be.sitecorecloud.io; img-src 'self' data: https://hcil-p-001.sitecorecontenthub.cloud; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' 'unsafe-inline' https://fonts.gstatic.com; block-all-mixed-content; child-src 'self' https://hcil-p-001.sitecorecontenthub.cloud; connect-src 'self' https://hcil-p-001.sitecorecontenthub.cloud; media-src https://hcil-p-001.sitecorecontenthub.cloud" xdt:Transform="Replace" xdt:Locator="Match(name)"/>
                 </customHeaders>
             </httpProtocol>
         </system.webServer>
