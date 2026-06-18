@@ -67,7 +67,7 @@ export const Default = (props: StepProps): JSX.Element => {
     searchStringLocations,
     lat,
     lon,
-    distance
+    distance,
   } = useContext(ConsultantFinderContext);
   const [search, setSearch] = useState('');
   const [keywordId, setKewordId] = useState('');
@@ -106,8 +106,7 @@ export const Default = (props: StepProps): JSX.Element => {
               backLinkProfile={props?.fields?.BackLink?.value?.href}
               backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
               hasTitleName={false}
-            >
-            </Headline>
+            ></Headline>
             <ImageAndTextBlock
               noOverflownHidden={true}
               contentVariation={'hero-cf'}
@@ -150,21 +149,23 @@ export const Default = (props: StepProps): JSX.Element => {
                       setIsSelfPayment(e.target.checked);
                       setSearchStringPayment('');
                       if (!isMobile()) {
-                        if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
+                        if (
+                          searchStringLocations !== 'London' &&
+                          searchStringLocations !== 'Anywhere'
+                        ) {
                           router.push(
                             `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=${lat || '51.507217'}&lon=${lon || '-0.1275862'}&distance=${distance || 0}&limit=12&offset=0`
-                          )
-                        }
-                        else {
+                          );
+                        } else {
                           router.push(
-                            `${props.fields.NextLink.value.href ||
-                            '/finder/step-locations'
+                            `${
+                              props.fields.NextLink.value.href ||
+                              '/finder/step-locations'
                             }?keywordId=${keywordId}&searchString=${search}`
-                          )
+                          );
                         }
                       }
                     }
-
                   }}
                 ></Checkbox>
                 <SearchPayment
@@ -197,13 +198,12 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.API_Insurance_LoadingMsg?.value ||
                     'Loading...'
                   }
-                  nextLink={`${props.fields.NextLink.value.href ||
-                    '/finder/step-locations'
-                    }?keywordId=${keywordId}&searchString=${search}`}
+                  nextLink={`${
+                    props.fields.NextLink.value.href || '/finder/step-locations'
+                  }?keywordId=${keywordId}&searchString=${search}`}
                   search={search}
                 />
               </form>
-
             </ImageAndTextBlock>
             <Navigation showOnMobile={true}>
               <TextButton>
@@ -219,30 +219,34 @@ export const Default = (props: StepProps): JSX.Element => {
                     searchStringPayment === '' && !isSelfPayment ? true : false
                   }
                   onClick={() => {
-                    if (searchStringLocations !== 'London' && searchStringLocations !== 'Anywhere') {
+                    if (
+                      searchStringLocations !== 'London' &&
+                      searchStringLocations !== 'Anywhere'
+                    ) {
                       router.push(
-                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=${lat || '51.507217'}&lon=${lon || '-0.1275862'}&distance=${distance || 0}&limit=12&offset=0${isSelfPayment
-                          ? ''
-                          : `&insurer=${selectedInsurerPaymentStep}`
+                        `/finder/step-consultant-cards?search=${search}&keywordId=${keywordId}&sortType=relevance&lat=${lat || '51.507217'}&lon=${lon || '-0.1275862'}&distance=${distance || 0}&limit=12&offset=0${
+                          isSelfPayment
+                            ? ''
+                            : `&insurer=${selectedInsurerPaymentStep}`
                         }`
-                      )
+                      );
                     } else {
                       router.push(
-                        `${props.fields.NextLink.value.href ||
-                        '/finder/step-locations'
-                        }?keywordId=${keywordId}&searchString=${search}${isSelfPayment
-                          ? ''
-                          : `&insurer=${selectedInsurerPaymentStep}`
+                        `${
+                          props.fields.NextLink.value.href ||
+                          '/finder/step-locations'
+                        }?keywordId=${keywordId}&searchString=${search}${
+                          isSelfPayment
+                            ? ''
+                            : `&insurer=${selectedInsurerPaymentStep}`
                         }`
-                      )
+                      );
                     }
-                  }
-                  }
+                  }}
                 >
                   <span>{props.fields.NextLink.value.text}</span>
                 </button>
               </Button>
-
             </Navigation>
           </>
         )}

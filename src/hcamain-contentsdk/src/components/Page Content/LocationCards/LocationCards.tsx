@@ -1,12 +1,8 @@
-'use client';
-
 import { type JSX } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
   Link as JssLink,
-  GetComponentServerProps,
-  useComponentProps,
 } from '@sitecore-content-sdk/nextjs';
 import {
   LocationCardsProps,
@@ -266,10 +262,12 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
   return cards;
 };
 
-export const Grid = (props: LocationCardsProps): JSX.Element => {
+export const Grid = async (
+  props: LocationCardsProps
+): Promise<JSX.Element> => {
   const numberOfCards = props.params?.Columns || '3';
 
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const data = await fetchLocationCardsData(props);
 
   const ctaQuery = data?.ctaQuery;
   const isExperienceEditor = props.page.mode.isEditing;
@@ -389,8 +387,10 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   );
 };
 
-export const Slider = (props: LocationCardsProps): JSX.Element => {
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+export const Slider = async (
+  props: LocationCardsProps
+): Promise<JSX.Element> => {
+  const data = await fetchLocationCardsData(props);
   const ctaQuery = data?.ctaQuery;
   const isExperienceEditor = props.page.mode.isEditing;
 
@@ -493,14 +493,12 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
 
 export const Default = Grid;
 
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  componentRendering
-) => {
-  const rendering = componentRendering as unknown as LocationCardsProps;
+export const fetchLocationCardsData = async (
+  rendering: LocationCardsProps
+): Promise<StaticProps> => {
   // Skip locations search if locations were picked manually in the datasource
   if ((rendering.fields?.data?.item?.locations?.PagesList?.length ?? 0) > 0) {
-    return { Locations: [] };
+    return { Locations: [], ctaQuery: '' };
   }
 
   const fields = rendering.fields?.data?.item;

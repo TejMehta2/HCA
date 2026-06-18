@@ -1,11 +1,7 @@
 'use client';
 
 import { Suspense, type JSX, type RefObject, useRef } from 'react';
-import {
-  GetComponentServerProps,
-  Text as JssText,
-  RichText,
-} from '@sitecore-content-sdk/nextjs';
+import { Text as JssText, RichText } from '@sitecore-content-sdk/nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -37,13 +33,17 @@ import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import getHeadingTags from 'lib/getHeadingTags';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import { ComponentWithContextProps } from 'lib/component-props';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
-const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
+export type PatientStoriesSearchProps = ComponentWithContextProps &
+  ApiSearchProps;
+
 const PatientStoriesSearchDefaultComponent = (
-  props: ApiSearchProps
+  props: PatientStoriesSearchProps
 ): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
@@ -52,9 +52,9 @@ const PatientStoriesSearchDefaultComponent = (
   </div>
 );
 
-const DefaultContent = (props: ApiSearchProps): JSX.Element => {
+const DefaultContent = (props: PatientStoriesSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
-  const t = useTranslations();
+  const t = useTranslations(props?.page?.siteName);
 
   // Set up default baseline parameters from CMS
   const {
@@ -72,6 +72,7 @@ const DefaultContent = (props: ApiSearchProps): JSX.Element => {
     error,
     formHandlers,
     searchParams,
+    isResultsLoading,
     autocompleteData,
     autocompleteError,
   } = useSearchForm<ApiResponse, Autocomplete>({
@@ -81,10 +82,6 @@ const DefaultContent = (props: ApiSearchProps): JSX.Element => {
     fallbackData: fallbackData,
     baselineAutocompleteParams,
   });
-
-  if (fallbackData && fallbackData.ip) {
-    console.log(fallbackData.ip);
-  }
 
   if (!fields) {
     return <PatientStoriesSearchDefaultComponent {...props} />;
@@ -230,7 +227,9 @@ const DefaultContent = (props: ApiSearchProps): JSX.Element => {
       </Themes>
 
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        {error || !resultsCount ? (
+        {isResultsLoading ? (
+          <LoaderCF loadingMsg={t('loading') || 'Loading...'} />
+        ) : error || !resultsCount ? (
           <ErrorMessage />
         ) : (
           <SearchWrapper
@@ -337,36 +336,8 @@ const DefaultContent = (props: ApiSearchProps): JSX.Element => {
   );
 };
 
-export const Default = (props: ApiSearchProps): JSX.Element => (
+export const Default = (props: PatientStoriesSearchProps): JSX.Element => (
   <Suspense fallback={null}>
     <DefaultContent {...props} />
   </Suspense>
 );
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering: ApiSearchProps
-) => {
-  const { baselineParams } = getBaselineParams(rendering);
-  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
-
-  try {
-    const response = await fetch(url.href);
-    if (response.ok) {
-      const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as ApiResponse;
-      const res = await fetch('https://api.ipify.org/?format=text');
-      const ip = await res.text();
-
-      fallbackData.ip = ip;
-      return rendering;
-    } else {
-      throw response.statusText;
-    }
-  } catch (error) {
-    console.error(error);
-    return rendering;
-  }
-};

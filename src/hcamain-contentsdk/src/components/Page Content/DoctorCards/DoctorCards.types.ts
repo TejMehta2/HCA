@@ -88,7 +88,7 @@ export type StaticProps = {
   consultants?: Consultant[];
 };
 
-export type DoctorCardsProps = ComponentWithContextProps & StaticProps & {
+export type DoctorCardsProps = ComponentWithContextProps & {
   params?: Params;
   fields?: Fields;
   rendering?: {

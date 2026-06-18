@@ -1,179 +1,165 @@
 .stats {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: $hcauk-spacing-32;
+
+  &__title {
+    margin-bottom: $hcauk-spacing-24;
+
+    h2 {
+      margin: 0;
+      font-size: 26px;
+
+      span {
+        color: $hcauk-green-light-100;
+      }
+
+      @include breakpoint(md-above) {
+        font-size: 40px;
+      }
+    }
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      margin-bottom: $hcauk-spacing-12;
+      font-weight: normal;
+
+      @include breakpoint(md-above) {
+        font-size: 25px;
+      }
+    }
+  }
+
+  &__cards-container {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin-bottom: $hcauk-spacing-32;
+    width: 100%;
 
-    &__title {
-        margin-bottom: $hcauk-spacing-24;
-
-        h2 {
-            margin: 0;
-            font-size: 26px;
-
-            span {
-              color: $hcauk-green-light-100;
-            }
-
-            @include breakpoint(md-above) {
-              font-size: 40px;
-            }
-        }
-        h3 {
-            margin: 0;
-            font-size: 16px;
-            margin-bottom: $hcauk-spacing-12;
-            font-weight: normal;
-
-            @include breakpoint(md-above) {
-              font-size: 25px;
-            }
-        }
+    @include breakpoint(md-above) {
+      flex-direction: row;
     }
 
-    &__cards-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    .card {
+      flex: 1;
+      background-color: #ffffff;
+      text-align: left;
+      margin-bottom: $hcauk-spacing-16;
+
+      @include breakpoint(md-above) {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(2) {
+        margin: 0;
+        margin-bottom: $hcauk-spacing-16;
 
         @include breakpoint(md-above) {
-            flex-direction: row;
+          margin: 0 $hcauk-spacing-24;
         }
-        
-        .card {
-            flex: 1;
-            background-color: #ffffff;
-            text-align: left;
-            margin-bottom: $hcauk-spacing-16;
+      }
 
-            @include breakpoint(md-above) {
-                margin-bottom: 0;
-            }
+      &__rate-stats-container {
+        display: flex;
+        justify-content: space-between;
+      }
 
-            &:nth-child(2){
-                margin: 0;
-                margin-bottom: $hcauk-spacing-16;
+      .label-title {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        padding-bottom: $hcauk-spacing-10;
+        border-bottom: 1px solid $hcauk-green-light-200;
 
-                @include breakpoint(md-above) {
-                    margin: 0 $hcauk-spacing-24;
-                }
-            }
-
-            &__rate-stats-container {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .label-title {
-                display: flex;
-                align-items: center;
-                font-weight: bold;
-                padding-bottom: $hcauk-spacing-10;
-                border-bottom: 1px solid $hcauk-green-light-200;
-
-                button {
-                    margin-left: $hcauk-spacing-10;
-                }
-              }
-              
-              &__cycle,
-              &__pregnancy-rate,
-              &__birth-rate,
-              &__rate-title,
-              &__rate {
-                margin-bottom: $hcauk-spacing-16;
-              } 
-              
-              &__cycle {
-                display: flex;
-                justify-content: space-between;
-                padding: 0 0 $hcauk-spacing-16;
-                border-bottom: 1px solid #d7d7d8;
-                margin-top: $hcauk-spacing-16;
-              }
-              
-              &__cycle-data {
-                font-weight: bold;
-              }
-              
-              &__cycle-title {
-                margin-right: 30px;
-                font-size: 14px;
-              }
-              
-              &__rate-data-container {
-                background-color: $hcauk-grey-200;
-                border-radius: 8px;
-              }
-              
-              &__rate {
-                padding: 0 0 $hcauk-spacing-16;
-              }
-              
-              &__rate-title {
-                font-size: 14px;
-              }
-              
-              &__rate-data {
-                background-color: $hcauk-orange-light;
-                border-radius: 8px;
-                height: 10px;
-                opacity: 1;
-                transition: opacity 0.2s ease-in-out;
-
-                &--green {
-                    background-color: $hcauk-green-light-200;
-                }
-                  
-                &--orange {
-                background-color: #be552e;
-                }
-              }
-              
-              &__rate-percentage {
-                margin-bottom: 5px;
-                font-weight: bold;
-                color: $hcauk-orange-light;
-
-                &--green {
-                    color: $hcauk-green-light-100;
-                }
-              }
-              
-              &__rate-data:hover {
-                opacity: 0.7;
-              }
-              
-              &__rate--border-bttm-0 {
-                border-bottom: none;
-              }
-
+        button {
+          margin-left: $hcauk-spacing-10;
         }
+      }
+
+      &__cycle,
+      &__pregnancy-rate,
+      &__birth-rate,
+      &__rate-title,
+      &__rate {
+        margin-bottom: $hcauk-spacing-16;
+      }
+
+      &__cycle {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0 $hcauk-spacing-16;
+        border-bottom: 1px solid #d7d7d8;
+        margin-top: $hcauk-spacing-16;
+      }
+
+      &__cycle-data {
+        font-weight: bold;
+      }
+
+      &__cycle-title {
+        margin-right: 30px;
+        font-size: 14px;
+      }
+
+      &__rate-data-container {
+        background-color: $hcauk-grey-200;
+        border-radius: 8px;
+      }
+
+      &__rate {
+        padding: 0 0 $hcauk-spacing-16;
+      }
+
+      &__rate-title {
+        font-size: 14px;
+      }
+
+      &__rate-data {
+        background-color: $hcauk-orange-light;
+        border-radius: 8px;
+        height: 10px;
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+
+        &--green {
+          background-color: $hcauk-green-light-200;
+        }
+
+        &--orange {
+          background-color: #be552e;
+        }
+      }
+
+      &__rate-percentage {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: $hcauk-orange-light;
+
+        &--green {
+          color: $hcauk-green-light-100;
+        }
+      }
+
+      &__rate-data:hover {
+        opacity: 0.7;
+      }
+
+      &__rate--border-bttm-0 {
+        border-bottom: none;
+      }
     }
+  }
 }
 
+.rate-container {
+  position: relative;
+}
 
-
-
-
-
-
-
- 
-  
-  
-  
-  .rate-container {
-    position: relative;
+@media only screen and (max-width: 600px) {
+  .cards__container {
+    flex-direction: column;
   }
-  
-  @media only screen and (max-width: 600px) {
-    .cards__container {
-      flex-direction: column;
-    }
-    .card {
-      margin-bottom: 20px;
-    }
+  .card {
+    margin-bottom: 20px;
   }
-  
-  
+}

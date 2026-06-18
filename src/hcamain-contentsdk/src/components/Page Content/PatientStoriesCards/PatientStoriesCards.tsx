@@ -1,13 +1,9 @@
-'use client';
-
-/* eslint-disable prettier/prettier */
 import { type JSX } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
   Link as JssLink,
-  GetComponentServerProps,
-  useComponentProps,
+  debug,
 } from '@sitecore-content-sdk/nextjs';
 import {
   patientStories as PatientStory,
@@ -217,10 +213,12 @@ const returnFilteredCards = (
   return patientStoriesDisplayed;
 };
 
-export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
-  const numberOfCards = props.params?.Columns || '3';
+export const Default = async (
+  props: PatientStoriesCardsProps
+): Promise<JSX.Element> => {
+  const numberOfCards = props?.params?.Columns || '3';
 
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const data = await fetchPatientStoriesCardsData(props);
   const ctaQuery = data?.ctaQuery;
 
   const currentStoryId = props.page.layout.sitecore.route?.itemId?.toString();
@@ -250,7 +248,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -263,7 +262,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -341,8 +343,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+export const Slider = async (
+  props: PatientStoriesCardsProps
+): Promise<JSX.Element> => {
+  const data = await fetchPatientStoriesCardsData(props);
 
   const ctaQuery = data?.ctaQuery;
   const isExperienceEditor = props.page.mode.isEditing;
@@ -372,7 +376,8 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
@@ -386,7 +391,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   return (
     <CarouselCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -456,10 +464,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const SliderWithLeftText = (
+export const SliderWithLeftText = async (
   props: PatientStoriesCardsProps
-): JSX.Element => {
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+): Promise<JSX.Element> => {
+  const data = await fetchPatientStoriesCardsData(props);
   const ctaQuery = data?.ctaQuery;
   const isExperienceEditor = props.page.mode.isEditing;
   const currentStoryId = props.page.layout.sitecore.route?.itemId?.toString();
@@ -492,12 +500,16 @@ export const SliderWithLeftText = (
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <SideScrollingCards
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (
@@ -544,11 +556,9 @@ export const SliderWithLeftText = (
   );
 };
 
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  componentRendering
-) => {
-  const rendering = componentRendering as unknown as PatientStoriesCardsProps;
+export const fetchPatientStoriesCardsData = async (
+  rendering: PatientStoriesCardsProps
+): Promise<StaticProps> => {
   const fields = rendering.fields?.data?.item;
 
   // Format props into entries, then query params
@@ -566,21 +576,21 @@ export const getComponentServerProps: GetComponentServerProps = async (
   const contextSearchParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchParams || {})
-      .filter(([, nestedValue]) => nestedValue.value !== '')
-      .map(([key, nestedValue]) => [
-        key,
-        nestedValue?.value &&
-        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-      ]);
+        .filter(([, nestedValue]) => nestedValue.value !== '')
+        .map(([key, nestedValue]) => [
+          key,
+          nestedValue?.value &&
+            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]);
 
   const contextSearchIdParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchIdParams || {})
-      .filter(([, value]) => value !== '')
-      .map(([key, value]) => [
-        key,
-        value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-      ]); // clean up bad ID characters
+        .filter(([, value]) => value !== '')
+        .map(([key, value]) => [
+          key,
+          value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]); // clean up bad ID characters
 
   const params = [
     ['verticalKey', 'patientstories'],
@@ -600,6 +610,7 @@ export const getComponentServerProps: GetComponentServerProps = async (
 
   try {
     const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
+    debug.common('fetchPatientStoriesCardsData url', url.href);
 
     const response = await fetch(url.href);
     if (response.ok) {

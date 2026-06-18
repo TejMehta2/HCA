@@ -41,7 +41,6 @@ import * as PaymentFormConfirmation from 'src/components/Page Content/PaymentFor
 import * as PaymentForm from 'src/components/Page Content/PaymentForm/PaymentForm';
 import * as PatientStoriesSearch from 'src/components/Page Content/PatientStoriesSearch/PatientStoriesSearch';
 import * as PatientStoriesCards from 'src/components/Page Content/PatientStoriesCards/PatientStoriesCards';
-import * as PatientStories from 'src/components/Page Content/PatientStories/PatientStories';
 import * as PageTeaser from 'src/components/Page Content/PageTeaser/PageTeaser';
 import * as PackageComparison from 'src/components/Page Content/PackageComparison/PackageComparison';
 import * as MoreInformationCTA from 'src/components/Page Content/MoreInformationCTA/MoreInformationCTA';
@@ -108,6 +107,7 @@ import * as MainNavigation from 'src/components/Navigation/MainNavigation/MainNa
 import * as Footer from 'src/components/Navigation/Footer/Footer';
 import * as Breadcrumbs from 'src/components/Navigation/Breadcrumbs/Breadcrumbs';
 import * as BasicFooter from 'src/components/Navigation/BasicFooter/BasicFooter';
+import * as StructuredData from 'src/components/core-components/structured-data/StructuredData';
 import * as _StepTemplate from 'src/components/ConsultantFinder/_StepTemplate';
 import * as StepTermsAndConditions from 'src/components/ConsultantFinder/StepTermsAndConditions';
 import * as StepSlotSelect from 'src/components/ConsultantFinder/StepSlotSelect';
@@ -177,8 +177,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PaymentFormConfirmation', { ...PaymentFormConfirmation }],
   ['PaymentForm', { ...PaymentForm, componentType: 'client' }],
   ['PatientStoriesSearch', { ...PatientStoriesSearch, componentType: 'client' }],
-  ['PatientStoriesCards', { ...PatientStoriesCards, componentType: 'client' }],
-  ['PatientStories', { ...PatientStories }],
+  ['PatientStoriesCards', { ...PatientStoriesCards }],
   ['PageTeaser', { ...PageTeaser }],
   ['PackageComparison', { ...PackageComparison }],
   ['MoreInformationCTA', { ...MoreInformationCTA, componentType: 'client' }],
@@ -189,7 +188,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta, componentType: 'client' }],
   ['LocationsMap', { ...LocationsMap, componentType: 'client' }],
   ['LocationMap', { ...LocationMap, componentType: 'client' }],
-  ['LocationCards', { ...LocationCards, componentType: 'client' }],
+  ['LocationCards', { ...LocationCards }],
   ['LandingPageHeader', { ...LandingPageHeader }],
   ['IntroBlock', { ...IntroBlock }],
   ['ImageTextList', { ...ImageTextList }],
@@ -245,6 +244,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Footer', { ...Footer }],
   ['Breadcrumbs', { ...Breadcrumbs }],
   ['BasicFooter', { ...BasicFooter }],
+  ['StructuredData', { ...StructuredData }],
   ['_StepTemplate', { ..._StepTemplate }],
   ['StepTermsAndConditions', { ...StepTermsAndConditions, componentType: 'client' }],
   ['StepSlotSelect', { ...StepSlotSelect, componentType: 'client' }],

@@ -99,9 +99,7 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
         icon: card?.fields?.Icon ? (
           <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
         ) : undefined,
-        title: hasTitle ? (
-          card?.fields?.Title?.value
-        ) : undefined,
+        title: hasTitle ? card?.fields?.Title?.value : undefined,
         bodyText: hasText ? (
           <Text variation="body-medium">
             <JssRichText tag="div" field={card.fields?.Text} />
@@ -151,7 +149,10 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       cards={cards}
     ></CardBlockCarousel>
   );

@@ -19,13 +19,11 @@
 
   gap: px-to-rem(8) px-to-rem(16);
 
-  & > * {
+  &>* {
     @include responsive-grid-start(1);
-    @include responsive-grid-span(
-      $default: 6,
+    @include responsive-grid-span($default: 6,
       $breakpoint-m: 3,
-      $breakpoint-l: 6
-    );
+      $breakpoint-l: 6);
   }
 }
 
@@ -50,9 +48,10 @@
   & div[class*='slick-slide'] {
     padding-right: $spacing-4;
     height: inherit;
+    min-width: 320px;
 
     /* Empty div is automatically appended around each Card by react-slick. Need to set to full height so that cards are all equal */
-    & > div {
+    &>div {
       height: 100%;
     }
   }
@@ -83,6 +82,7 @@
 
   & div[class*='slick-next'] {
     transform: translateY(-100%) translateX(calc(100% + px-to-rem(8)));
+
     @include media(screen-m) {
       transform: translateY(-100%);
     }

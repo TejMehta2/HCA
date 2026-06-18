@@ -174,38 +174,46 @@ export const Default = (props: StepProps): JSX.Element => {
               gmcNumber={gmcNumber}
               reviewsTotal={reviewsTotal || 0}
               backLink={props?.fields?.BackLink?.value?.href}
-              headingText={props?.fields?.HeadingText?.value ||
-                'Please select a location'}
+              headingText={
+                props?.fields?.HeadingText?.value || 'Please select a location'
+              }
               backLinkText={props.fields.BackLink.value.text || 'Back'}
-              resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+              resultsLink={
+                props?.fields?.ResultsLink?.value ||
+                '/finder/step-consultant-cards'
+              }
               search={search}
               keywordId={keywordId}
-            >
-            </Headline>
+            ></Headline>
             {!loading && !error && (
               <SelectLocation
-                cantFindIcon={<SitecoreSvg>
-                  {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>}
-                cantFindTitle={<Text tag="p" variation="body-medium-large">
-                  {props?.fields?.CantFindBannerText?.value}
-                </Text>}
+                cantFindIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                cantFindTitle={
+                  <Text tag="p" variation="body-medium-large">
+                    {props?.fields?.CantFindBannerText?.value}
+                  </Text>
+                }
                 cantFindNumber={props?.fields?.CantFindPhoneNumber?.value}
-                nextLink={`${props?.fields?.NextLink?.value?.href ||
+                nextLink={`${
+                  props?.fields?.NextLink?.value?.href ||
                   '/finder/step-slot-select'
-                  }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
+                }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                 locations={locations}
-                viewOnMapText={props?.fields?.ViewMapText?.value ||
-                  'View location on Google Maps'}
+                viewOnMapText={
+                  props?.fields?.ViewMapText?.value ||
+                  'View location on Google Maps'
+                }
                 noLocationsMsg={''}
                 icon={
                   <SitecoreSvg>
                     {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
                   </SitecoreSvg>
                 }
-                iconPhone={
-                  <Icons iconName="iconPhone" />
-                }
+                iconPhone={<Icons iconName="iconPhone" />}
                 isSelected={isSelected}
                 setIsSelected={setIsSelected}
               />
@@ -231,8 +239,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     disabled={isSelected === '' ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href ||
-                        '/finder/step-slot-select'
+                        `${
+                          props?.fields?.NextLink?.value?.href ||
+                          '/finder/step-slot-select'
                         }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`
                       )
                     }

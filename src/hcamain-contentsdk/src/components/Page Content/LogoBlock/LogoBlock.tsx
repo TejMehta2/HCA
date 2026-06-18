@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { type JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import {
@@ -58,6 +57,7 @@ interface LogoBlockExtendedProps extends LogoBlockProps {
 export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const { variation = 'standard' } = props;
+  const isExperienceEditor = props.page.mode.isEditing;
 
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
@@ -68,7 +68,8 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
@@ -79,7 +80,10 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   return (
     <LogoBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'A-HCA-White'}
       columns={columns}
       variation={variation}
@@ -116,15 +120,31 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
           }
         />
       }
-      logos={props.fields?.Logos?.map((logo, index) =>
-        logo?.fields?.Link ? (
-          <JSSLink key={index} field={logo?.fields?.Link}>
-            <Image field={logo.fields?.LogoImage} />
+      logos={props.fields?.Logos?.map((logo, index) => {
+        const image = <Image field={logo.fields?.LogoImage} />;
+        const link = logo?.fields?.Link;
+
+        if (isExperienceEditor) {
+          return (
+            <div key={index}>
+              <div>{image}</div>
+              {link && (
+                <div>
+                  Image Link: <JSSLink field={link} />
+                </div>
+              )}
+            </div>
+          );
+        }
+
+        return link?.value?.href ? (
+          <JSSLink key={index} field={link}>
+            {image}
           </JSSLink>
         ) : (
-          <></>
-        )
-      )}
+          <span key={index}>{image}</span>
+        );
+      })}
     />
   );
 };

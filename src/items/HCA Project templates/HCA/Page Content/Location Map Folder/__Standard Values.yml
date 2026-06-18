@@ -1,0 +1,35 @@
+---
+ID: "56552ded-6461-4c05-8c25-9be7cfb704c2"
+Parent: "e1fe6c17-cc04-4744-8b21-1bfa802f4a85"
+Template: "e1fe6c17-cc04-4744-8b21-1bfa802f4a85"
+Path: /sitecore/templates/Project/HCA/Page Content/Location Map Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500d4f01"
+  Hint: __Masters
+  Value: "{C402A897-F4E3-49FB-A1DB-7D73763AB40C}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260610T000000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\matthew.fletcher@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\matthew.fletcher@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a8346842-e4c1-40c9-8aa5-90233ac2ff41"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.fletcher@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260610T000000Z

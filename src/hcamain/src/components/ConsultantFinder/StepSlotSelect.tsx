@@ -233,24 +233,28 @@ export const Default = (props: StepProps): JSX.Element => {
                   </SitecoreSvg>
                 }
                 modalRef={dialogRef}
-                resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+                resultsLink={
+                  props?.fields?.ResultsLink?.value ||
+                  '/finder/step-consultant-cards'
+                }
                 search={search}
                 keywordId={keywordId}
               />
-              <Modals ref={dialogRef} alignContent='center'>
+              <Modals ref={dialogRef} alignContent="center">
                 <Container alignItems={'center-align'}>
                   {selectedDate !== '' && selectedTime !== '' && (
                     <Text tag="p" variation="body-medium-extra-large">
                       {isBookableContent &&
-                        `${props?.fields?.AppointmentSelectedText?.value ||
-                        'Appointment selected on'
+                        `${
+                          props?.fields?.AppointmentSelectedText?.value ||
+                          'Appointment selected on'
                         } ${selectedDate} at ${selectedTime}`}
                       {!isBookableContent &&
                         props?.fields?.KeyShortNoticeText?.value}
                     </Text>
                   )}
                   {isBookableContent && (
-                    <Container marginBottom='spacing-4' marginTop='spacing-4'>
+                    <Container marginBottom="spacing-4" marginTop="spacing-4">
                       <Button size={'small'} variation={'full-dark'}>
                         <button
                           disabled={
@@ -265,14 +269,15 @@ export const Default = (props: StepProps): JSX.Element => {
                           }
                         >
                           <span>
-                            {props?.fields?.NextLink?.value?.text || 'Book Slot'}
+                            {props?.fields?.NextLink?.value?.text ||
+                              'Book Slot'}
                           </span>
                         </button>
                       </Button>
                     </Container>
                   )}
                   {!isBookableContent && (
-                    <Container marginBottom='spacing-4' marginTop='spacing-4'>
+                    <Container marginBottom="spacing-4" marginTop="spacing-4">
                       <Button size={'small'} variation={'full-dark'}>
                         <a
                           href={`tel:${props?.fields?.PhoneNumberToBook?.value.replace(
@@ -292,7 +297,10 @@ export const Default = (props: StepProps): JSX.Element => {
                     </Container>
                   )}
                   <TextButton>
-                    <button type="button" onClick={() => dialogRef?.current?.close()}>
+                    <button
+                      type="button"
+                      onClick={() => dialogRef?.current?.close()}
+                    >
                       <span>{'Cancel'}</span>
                     </button>
                   </TextButton>
@@ -312,8 +320,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 {selectedDate !== '' && selectedTime !== '' && (
                   <Text tag="p" variation="body-medium-extra-large">
                     {isBookableContent &&
-                      `${props?.fields?.AppointmentSelectedText?.value ||
-                      'Appointment selected on'
+                      `${
+                        props?.fields?.AppointmentSelectedText?.value ||
+                        'Appointment selected on'
                       } ${selectedDate} at ${selectedTime}`}
                     {!isBookableContent &&
                       props?.fields?.KeyShortNoticeText?.value}

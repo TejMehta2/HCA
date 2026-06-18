@@ -8,6 +8,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 interface Fields {
   Image?: ImageField;
@@ -39,6 +40,8 @@ export const Default = (props: BlogImageProps): JSX.Element => {
     return <BlogImageDefaultComponent {...props} />;
   }
 
+  const isInsideContainer = isInsideContainerComponent(props.params);
+
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle;
 
@@ -47,11 +50,10 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       ? props.fields.Image
       : props.page.layout.sitecore.route?.fields?.Image
   ) as ImageField;
-
-  const isContainerized = props?.params?.Containerized === '1';
+ 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
-  if (isContainerized) {
+  if (isInsideContainer) {
     return (
       <RichText
         additionalStyles={props?.params?.styles}

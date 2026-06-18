@@ -2,6 +2,7 @@
 
 @mixin diamond-image-mask() {
   display: none;
+
   @include media(screen-l) {
     display: block;
   }
@@ -11,7 +12,7 @@
   right: 0;
   width: 50%;
   height: 100%;
-  mask: url('../assets/shapes/diamond-curved.svg');
+  mask: url('/assets/shapes/diamond-curved.svg');
   mask-repeat: no-repeat;
   mask-size: auto 180%;
   mask-position: left;

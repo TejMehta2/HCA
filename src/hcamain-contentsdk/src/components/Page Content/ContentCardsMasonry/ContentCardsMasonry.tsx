@@ -1,6 +1,5 @@
 import { type JSX } from 'react';
 import { ComponentWithContextProps } from 'lib/component-props';
-/* eslint-disable prettier/prettier */
 
 import {
   Field,
@@ -227,7 +226,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
                 }
                 copy={
                   layoutPattern[index].showBodyCopy ? (
-                    <Text variation="body-large">
+                    <Text tag='div' variation="body-large">
                       {card.abstractText?.value ? (
                         <JssRichText tag="div" field={card.abstractText} />
                       ) : (

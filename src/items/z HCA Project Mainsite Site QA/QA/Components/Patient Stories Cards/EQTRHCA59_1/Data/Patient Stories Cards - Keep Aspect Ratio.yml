@@ -1,0 +1,49 @@
+﻿---
+ID: "d3067c17-e2fa-4cb5-bca2-e59f9cd172d1"
+Parent: "f1fb8d17-2744-4b8f-a024-4629e822adb0"
+Template: "1196a43b-003d-4cc8-b120-2014de3b73f5"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Patient Stories Cards/EQTRHCA59_1/Data/Patient Stories Cards - Keep Aspect Ratio"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: 
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240405T062950Z
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: 
+    - ID: "8686ffe5-371d-4d4b-831c-65a8c0cb4194"
+      Hint: CTAText
+      Value: Read the story
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1b413f40-b650-4996-b8a3-e330d1320e20"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View &lt;b&gt;all&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{2F2BEC59-B5A2-4100-A359-A22D0628503D}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d114a478-69e1-491f-8d51-d2f851d99690"
+      Hint: PatientStories
+      Value: |
+        {9BD9EEF6-9471-4D4B-92EC-F9545F740B4A}
+        {CE7E7EE8-F170-428E-AFC3-149439994639}
+        {45179635-2018-4AA4-B7EF-C235A71D4350}
+        {9C1BD107-BBBF-4CA9-B9CF-26DA877CD7ED}
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: More patient stories
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260612T115246Z
+    - ID: "f36b34ea-5278-41d5-a812-ab42ac4ab3eb"
+      Hint: NumberOfCards
+      Value: 

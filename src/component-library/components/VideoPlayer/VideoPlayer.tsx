@@ -20,7 +20,7 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
 
     // Preserve existing params and just add/update
     url.searchParams.set('autoplay', '1');
-    url.searchParams.set(isYoutube ? 'mute' : 'muted', '1');
+    url.searchParams.set(isYoutube ? 'mute' : 'muted', '0');
 
     if (!isScreenM) {
       url.searchParams.set('playsinline', '0');

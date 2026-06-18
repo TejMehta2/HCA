@@ -1,13 +1,10 @@
 import { type JSX } from 'react';
 
-import {
-  GetComponentServerProps,
-  Link as JssLink,
-} from '@sitecore-content-sdk/nextjs';
+import { debug, Link as JssLink } from '@sitecore-content-sdk/nextjs';
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
-import { DoctorCardsProps } from './DoctorCards.types';
+import { DoctorCardsProps, StaticProps } from './DoctorCards.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import {
   FindResponse,
@@ -24,11 +21,14 @@ const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
 
 const DoctorCardsDefaultComponent = (): JSX.Element => <></>;
 
-export const Default = (props: DoctorCardsProps): JSX.Element => {
+export const Default = async (
+  props: DoctorCardsProps
+): Promise<JSX.Element> => {
+  const data = await fetchDoctorCardsData(props);
   const isExperienceEditor = props.page.mode.isEditing;
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const consultants = props.consultants?.slice(0, Number(quantity) || 4);
-  const ctaQuery = props.ctaQuery || '';
+  const consultants = data.consultants?.slice(0, Number(quantity) || 4);
+  const ctaQuery = data.ctaQuery || '';
 
   if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
     return <DoctorCardsDefaultComponent />;
@@ -166,11 +166,10 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   );
 };
 
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering
-) => {
-  const renderingFields = rendering.fields as DoctorCardsProps['fields'];
+export const fetchDoctorCardsData = async (
+  rendering: DoctorCardsProps
+): Promise<StaticProps> => {
+  const renderingFields = rendering.fields;
   const fields = renderingFields?.data?.item;
 
   // Format props into entries, then query params
@@ -236,6 +235,7 @@ export const getComponentServerProps: GetComponentServerProps = async (
       const params = consultants.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
       const query = `?${params.join('&')}`;
       const url = new URL(query, `${SERVER_API_URL}/find`);
+      debug.common("doctor cards url /find", url.href);
       const response = await fetch(url.href);
       if (response.ok) {
         const consultants: FindResponse = await response.json();
@@ -270,6 +270,7 @@ export const getComponentServerProps: GetComponentServerProps = async (
       );
       const query = `?${params.join('&')}`;
       const url = new URL(query, `${SERVER_API_URL}/search`);
+      debug.common("doctor cards url /search", url.href);
       const response = await fetch(url.href);
       if (response.ok) {
         const data: SearchResponse = await response.json();

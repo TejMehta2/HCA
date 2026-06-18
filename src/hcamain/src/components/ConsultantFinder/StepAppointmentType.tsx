@@ -134,14 +134,18 @@ export const Default = (props: StepProps): JSX.Element => {
               gmcNumber={gmcNumber}
               reviewsTotal={reviewsTotal || 0}
               backLink={props?.fields?.BackLink?.value?.href}
-              headingText={props?.fields?.BodyText?.value ||
-                'Please choose a type of appointment'}
+              headingText={
+                props?.fields?.BodyText?.value ||
+                'Please choose a type of appointment'
+              }
               backLinkText={props?.fields?.BackLink?.value?.text || 'Back'}
-              resultsLink={props?.fields?.ResultsLink?.value || '/finder/step-consultant-cards'}
+              resultsLink={
+                props?.fields?.ResultsLink?.value ||
+                '/finder/step-consultant-cards'
+              }
               search={search}
               keywordId={keywordId}
-            >
-            </Headline>
+            ></Headline>
             <SelectAppointmentType
               iconCard1={
                 <SitecoreSvg>

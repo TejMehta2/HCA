@@ -82,7 +82,7 @@ export const Default = (props: TestimonialsProps): JSX.Element => {
               width: 1200,
               height: 1200,
               sizes: '(max-width: 1200px) 100vw, 30vw',
-              quality: 90
+              quality: 90,
             }}
           />
         ),
@@ -123,7 +123,10 @@ export const Default = (props: TestimonialsProps): JSX.Element => {
   return (
     <CarouselTestimonials
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       subtitle={
         isExperienceEditor || props.fields?.Heading?.value ? (

@@ -186,6 +186,33 @@
   --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
+@mixin apply-theme-e-cerulean-25 {
+  @include apply-shared-theme-light;
+
+  --background: #{$cerulean-25};
+  --card-background: #{$denim-5};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$navy-blue-100};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$denim-5};
+  --quote-tag-background-hover: #{$denim-20};
+  --table-color: #{$denim-10};
+  --reviews-stars: #{$teal-100};
+
+  @include apply-tag-denim-20;
+  @include apply-tabs($denim-5);
+  @include apply-pagination-denim-10;
+  @include apply-controls-medium;
+
+  --filter-button-1: #{$denim-10};
+  --filter-button-2: #{$denim-5};
+  --filter-button-3: #{$navy-blue-60};
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
+}
+
 @mixin apply-theme-f-fern {
   @include apply-shared-theme-light;
 

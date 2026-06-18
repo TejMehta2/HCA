@@ -1,0 +1,95 @@
+﻿---
+ID: "a73f0ffd-bf63-4a98-9947-c2c6ee4382c5"
+Parent: "6aac4fe3-9049-4b49-949f-70f957fe303b"
+Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Patient Stories Cards/EQTRHCA59_4"
+SharedFields:
+- ID: "24171bf1-c0e1-480e-be76-4c0a1876f916"
+  Hint: Page Design
+  Value: "{1627A290-CB00-4F15-990C-9204530C7FCA}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 3800
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8df01e2a-8190-4a4b-a8bd-2b16a089ea61"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{934AB578-1CE1-4CDE-9143-05D51CA9B996}"
+              p:before="*"
+              s:ds="d7168f1c-c910-484e-bc17-07a05b7bf53c"
+              s:id="{6B604A3D-BF64-4BFA-8C2B-F9B6B1640392}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B90B83010-FE05-42C5-B0F1-93F966FD4C2F%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="headless-main" />
+            <r
+              uid="{D125EA37-87FC-4AB6-ACFA-24372125F054}"
+              p:after="r[@uid='{934AB578-1CE1-4CDE-9143-05D51CA9B996}']"
+              s:ds="local:/Data/hero"
+              s:id="{48EA1434-F118-4CE2-9417-3D42054DF8BB}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B359EB1FC-FA8E-46DA-9B3D-138F2C33DD6F%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="headless-main" />
+            <r
+              uid="{CD06035D-FF95-4CAC-B014-63EE414651F0}"
+              p:after="*[1=2]"
+              s:ds="local:/Data/Patient Stories Cards"
+              s:id="{89DE6A21-463A-4BA5-A58B-76D9189662F2}"
+              s:par="HeadingTag=h3&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B889E5D6F-D680-41F2-BE02-A943A024650F%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "157522ca-ef62-4651-b3b2-4eb374879618"
+      Hint: GetDirections
+      Value: 
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240405T060447Z
+    - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
+      Hint: PostCode
+      Value: NW8 9LE
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "64765ef6-ea35-4e9e-8007-effd7c669ee6"
+      Hint: City
+      Value: London
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e1500541-50fc-49a1-be05-86e025af828f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca93c552-f857-493e-a649-387ff80f0649"
+      Hint: DoctifyReviews
+      Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
+    - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
+      Hint: AddressLine1
+      Value: Wellington Place St John's Wood
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260612T115044Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: EQTRHCA59_4
+    - ID: "de96f668-4af2-4eb8-bcef-394f5d2194a3"
+      Hint: CQCRating
+      Value: "{8C94A4C4-DCCB-42EF-89A7-51C869753A8F}"

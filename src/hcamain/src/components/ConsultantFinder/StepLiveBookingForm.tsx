@@ -641,11 +641,18 @@ export const Default = (props: StepProps): JSX.Element => {
     // console.log('user', watchFormChanges.user);
     // console.log('payment', watchFormChanges.payment);
     // remove values from hidden fields if not used anymore
-    if(watchFormChanges.user === 'patient' || watchFormChanges.user === 'medicalsecretary') {
+    if (
+      watchFormChanges.user === 'patient' ||
+      watchFormChanges.user === 'medicalsecretary'
+    ) {
       // https://hcauk-digital.atlassian.net/browse/HED-2496
       // drop hca entry unless on the insurer user type as this is only for insurers but we want to keep the list clean for patients and medical secretaries
       if (insurersLDB) {
-        setInsurersLDB(insurersLDB.filter((insurer: any) => insurer.name !== 'HCA Healthcare UK'));
+        setInsurersLDB(
+          insurersLDB.filter(
+            (insurer: any) => insurer.name !== 'HCA Healthcare UK'
+          )
+        );
       }
     }
     if (watchFormChanges.user === 'insurer') {

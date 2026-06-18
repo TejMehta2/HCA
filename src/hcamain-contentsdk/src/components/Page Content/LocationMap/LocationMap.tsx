@@ -8,19 +8,18 @@ import LocationMapComponent from '@component-library/components/LocationMap/Loca
 import CardMap from '@component-library/components/CardMap/CardMap';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
-import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import Params from 'src/types/params';
 
 type PageLocation = {
   lat?: { value?: string };
   lng?: { value?: string };
   title?: { value?: string };
-  description?: { value?: string };
+  addressLine1?: { value?: string };
+  addressLine2?: { value?: string };
+  city?: { value?: string };
+  postCode?: { value?: string };
   url?: { path?: string; url?: string };
-  proxyurl?: { jsonValue?: { value?: { href?: string } }; path?: string; text?: string };
-  googlePlaceId?: { value?: string };
   directions?: { value?: string };
-  geocodedCoordinate?: { jsonValue?: { value?: { latitude?: number; longitude?: number } } };
 };
 
 interface Fields {
@@ -62,16 +61,12 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
 
   const pages = props.fields.data.item.locations?.PagesList || [];
 
-  const locations = pages.map((p) => {
-    const lat = Number(p.lat?.value) ||
-      (p.geocodedCoordinate?.jsonValue?.value?.latitude as number) || 0;
-    const lng = Number(p.lng?.value) ||
-      (p.geocodedCoordinate?.jsonValue?.value?.longitude as number) || 0;
+  const locations = pages.flatMap((p) => {
+    const lat = Number(p.lat?.value) || 0;
+    const lng = Number(p.lng?.value) || 0;
+    if (lat === 0 && lng === 0) return [];
 
-    const googlePlaceId = p.googlePlaceId?.value || undefined;
-    const directions = p.directions?.value || undefined;
-    const geocodedCoordinate = p.geocodedCoordinate?.jsonValue?.value;
-    const directionsUrl = returnDirections(googlePlaceId || '', directions || '', geocodedCoordinate || {});
+    const directionsUrl = p.directions?.value || undefined;
     const pageUrl = p.url?.path || p.url?.url;
 
     const card = (hideCard: () => void) => (
@@ -83,7 +78,9 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
         }
         address={
           <Text tag="p" variation="body-large">
-            {p.description?.value}
+            {[p.addressLine1?.value, p.addressLine2?.value, p.city?.value, p.postCode?.value]
+              .filter((v): v is string => Boolean(v))
+              .join(', ')}
           </Text>
         }
         ctas={{
@@ -109,10 +106,7 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
       />
     );
 
-    return {
-      center: { lat, lng },
-      card,
-    };
+    return [{ center: { lat, lng }, card }];
   });
 
   const defaultCenter = locations[0]?.center || { lat: 51.5072, lng: -0.1276 };

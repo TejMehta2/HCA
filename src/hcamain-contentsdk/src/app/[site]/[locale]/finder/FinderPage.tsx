@@ -13,6 +13,7 @@ import componentMap from '.sitecore/component-map';
 import client from 'src/lib/sitecore-client';
 import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
+import type { FinderContext } from 'src/types/finder';
 
 export type FinderRouteParams = {
   site: string;
@@ -40,7 +41,8 @@ export const toFinderWildcardPath = (path?: string | string[]) => {
 async function getPage(
   params: FinderRouteParams,
   pagePath: string,
-  contextParams: ComponentContextParams
+  contextParams: ComponentContextParams,
+  finderContext?: FinderContext
 ) {
   setRequestLocale(`${params.site}_${params.locale}`);
 
@@ -67,6 +69,11 @@ async function getPage(
     notFound();
   }
 
+  page.layout.sitecore.context = {
+    ...page.layout.sitecore.context,
+    ...(finderContext ? { finder: finderContext } : {}),
+  };
+
   const componentProps = await client.getComponentData(
     page.layout,
     { params: contextParams } as never,
@@ -79,14 +86,20 @@ async function getPage(
 export async function renderFinderPage(
   params: FinderRouteParams,
   pagePath: string,
-  requestPath?: string | string[]
+  requestPath?: string | string[],
+  finderContext?: FinderContext
 ) {
-  const { page, componentProps } = await getPage(params, pagePath, {
-    site: params.site,
-    locale: params.locale,
-    path: pagePath,
-    requestPath,
-  });
+  const { page, componentProps } = await getPage(
+    params,
+    pagePath,
+    {
+      site: params.site,
+      locale: params.locale,
+      path: pagePath,
+      requestPath,
+    },
+    finderContext
+  );
 
   return (
     <NextIntlClientProvider>

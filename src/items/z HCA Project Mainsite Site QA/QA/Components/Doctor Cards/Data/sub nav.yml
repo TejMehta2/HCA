@@ -1,0 +1,26 @@
+﻿---
+ID: "76781022-1ed7-4d36-94d5-5bebca2053aa"
+Parent: "595dcbc9-072a-4740-a871-75582d9b1787"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Doctor Cards/Data/sub nav"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260615T153457Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c975522a-4631-480c-9c75-f8cb0c1f3a48"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{4D3CE3BD-EFC7-4FDF-9326-18FE85F15BF5}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260615T153526Z

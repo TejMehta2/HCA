@@ -60,25 +60,34 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       author={
         props.fields?.Author?.length
           ? {
-            name:
-              props.fields?.Author?.[0]?.fields?.Link &&
+              name:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+                  </a>
+                ) : (
                   <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-            image:
-              props.fields?.Author?.[0]?.fields?.Link &&
+                ),
+              image:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <NextJssImage
+                      field={props.fields?.Author?.[0]?.fields?.Avatar}
+                      next={{
+                        width: '70',
+                        height: '70',
+                      }}
+                    />
+                  </a>
+                ) : (
                   <NextJssImage
                     field={props.fields?.Author?.[0]?.fields?.Avatar}
                     next={{
@@ -86,37 +95,28 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
                       height: '70',
                     }}
                   />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-            tag:
-              props.fields?.Author?.[0]?.fields?.Link &&
+                ),
+              tag:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <span>
+                      <JssText
+                        field={props.fields?.Author?.[0]?.fields?.Position}
+                      />
+                    </span>
+                  </a>
+                ) : (
                   <span>
                     <JssText
                       field={props.fields?.Author?.[0]?.fields?.Position}
                     />
                   </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
-          }
+                ),
+            }
           : undefined
       }
       children={
@@ -132,9 +132,13 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}
+      <RichText
+        additionalStyles={props?.params?.styles}
         id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
       >
         <figure>{quoteBlock}</figure>
       </RichText>
@@ -146,7 +150,10 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={alignment ? `quote-${alignment}` : 'quote'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
@@ -165,25 +172,34 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
       author={
         props.fields?.Author?.length
           ? {
-            name:
-              props.fields?.Author?.[0]?.fields?.Link &&
+              name:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+                  </a>
+                ) : (
                   <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-            image:
-              props.fields?.Author?.[0]?.fields?.Link &&
+                ),
+              image:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <NextJssImage
+                      field={props.fields?.Author?.[0]?.fields?.Avatar}
+                      next={{
+                        width: '70',
+                        height: '70',
+                      }}
+                    />
+                  </a>
+                ) : (
                   <NextJssImage
                     field={props.fields?.Author?.[0]?.fields?.Avatar}
                     next={{
@@ -191,37 +207,28 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
                       height: '70',
                     }}
                   />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-            tag:
-              props.fields?.Author?.[0]?.fields?.Link &&
+                ),
+              tag:
+                props.fields?.Author?.[0]?.fields?.Link &&
                 props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <span>
+                      <JssText
+                        field={props.fields?.Author?.[0]?.fields?.Position}
+                      />
+                    </span>
+                  </a>
+                ) : (
                   <span>
                     <JssText
                       field={props.fields?.Author?.[0]?.fields?.Position}
                     />
                   </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
-          }
+                ),
+            }
           : undefined
       }
       children={
@@ -237,9 +244,13 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}
+      <RichText
+        additionalStyles={props?.params?.styles}
         id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
+          ? { tableOfContentTitle: tableOfContentTitle }
+          : {})}
       >
         <figure>{quoteBlock}</figure>
       </RichText>
@@ -250,7 +261,10 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>

@@ -96,7 +96,8 @@ export const Default = (props: TimelineProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -121,12 +122,15 @@ export const Default = (props: TimelineProps): JSX.Element => {
   );
   return (
     <>
-      <Themes theme={props?.params?.Theme || 'A-HCA-White'} tableOfContentTitle={tableOfContentTitle}>
+      <Themes
+        theme={props?.params?.Theme || 'A-HCA-White'}
+        tableOfContentTitle={tableOfContentTitle}
+      >
         <Timeline
           id={componentAnchorId}
           subheading={
             !isExperienceEditor ||
-              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            props.fields?.data?.item?.heading?.jsonValue?.value ? (
               <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
               </Text>
@@ -182,7 +186,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
                     </Text>
                   }
                   copy={
-                    <Text variation="body-large" tag='div'>
+                    <Text variation="body-large" tag="div">
                       {card.abstractText?.value ? (
                         <JssRichText tag="div" field={card.abstractText} />
                       ) : (

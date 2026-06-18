@@ -40,7 +40,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
 
   const cta =
     props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
-      props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
       <JssLink
         field={props.fields?.data?.item?.cTALink?.jsonValue}
         href={`${props.fields?.data?.item?.cTALink?.jsonValue.value.href}${ctaQuery}`}
@@ -104,12 +104,16 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   return (
     <CardDoctorLayout
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -126,46 +130,46 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
       {showFallbackCard
         ? fallbackCard
         : consultants?.map((consultant, index: number) => (
-          <CardDoctor
-            key={index}
-            image={
-              <Image
-                src={consultant?.images?.logo || ''}
-                alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
-                width="91"
-                height="91"
-              />
-            }
-            title={
-              <Text
-                variation="display-5"
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              >
-                <span>
-                  {consultant.title} {consultant.firstName}{' '}
-                  {consultant.lastName}
-                </span>
-              </Text>
-            }
-            department={<span>{getSpeciality(consultant)}</span>}
-            cta={
-              props.fields?.data?.item?.cTACard?.jsonValue?.value.text ? (
-                <JssLink
-                  field={props.fields?.data?.item?.cTACard?.jsonValue}
-                  href={`${FINDER_PROFILE_CANONICAL_BASE_URL}/${consultant.slug}`}
+            <CardDoctor
+              key={index}
+              image={
+                <Image
+                  src={consultant?.images?.logo || ''}
+                  alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
+                  width="91"
+                  height="91"
+                />
+              }
+              title={
+                <Text
+                  variation="display-5"
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                 >
-                  {!isExperienceEditor && (
-                    <SitecoreSvg>
-                      {props.fields?.data?.item?.cTACard.jsonValue.value.text}
-                    </SitecoreSvg>
-                  )}
-                </JssLink>
-              ) : (
-                <></>
-              )
-            }
-          />
-        ))}
+                  <span>
+                    {consultant.title} {consultant.firstName}{' '}
+                    {consultant.lastName}
+                  </span>
+                </Text>
+              }
+              department={<span>{getSpeciality(consultant)}</span>}
+              cta={
+                props.fields?.data?.item?.cTACard?.jsonValue?.value.text ? (
+                  <JssLink
+                    field={props.fields?.data?.item?.cTACard?.jsonValue}
+                    href={`${FINDER_PROFILE_CANONICAL_BASE_URL}/${consultant.slug}`}
+                  >
+                    {!isExperienceEditor && (
+                      <SitecoreSvg>
+                        {props.fields?.data?.item?.cTACard.jsonValue.value.text}
+                      </SitecoreSvg>
+                    )}
+                  </JssLink>
+                ) : (
+                  <></>
+                )
+              }
+            />
+          ))}
     </CardDoctorLayout>
   );
 };

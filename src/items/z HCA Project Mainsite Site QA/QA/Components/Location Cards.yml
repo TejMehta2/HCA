@@ -43,6 +43,18 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{15883D84-1E04-402C-9E58-28F0CB1A5D8B}"
+              s:ds="local:/Data/Dynamic Location Cards" />
+          </d>
+        </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240228T211913Z
@@ -59,7 +71,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b469c037-5d21-4b10-aee7-2c89c52a4641"
+      Value: "4696e075-59ca-4c90-8e17-d2b3b1afda7a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -69,7 +81,7 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260421T183517Z
+      Value: 20260611T170643Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Location Cards

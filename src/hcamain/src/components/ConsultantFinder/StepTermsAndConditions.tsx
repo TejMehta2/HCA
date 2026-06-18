@@ -142,9 +142,7 @@ export const Default = (props: StepProps): JSX.Element => {
               keywordId={keywordId}
             >
             </Headline> */}
-            <TermsConditionsCards
-              acceptBtn={null}
-            >
+            <TermsConditionsCards acceptBtn={null}>
               <InfoBox
                 backgroundColour="turquoise"
                 icon={
@@ -198,9 +196,10 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href &&
+                    href={`${
+                      props?.fields?.BackLink?.value?.href &&
                       props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
-                      }${slug}`}
+                    }${slug}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -214,9 +213,10 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container customBtn={true}>
                 <Button variation="full-dark" size="large">
                   <Link
-                    href={`${props?.fields?.NextLink?.value?.href ||
+                    href={`${
+                      props?.fields?.NextLink?.value?.href ||
                       '/finder/step-appointment-type'
-                      }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
+                    }?slug=${slug}&name=${encodeURIComponent(name)}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}&search=${search}&keywordId=${keywordId}`}
                   >
                     <span>
                       {props?.fields?.AcceptButtonText?.value || 'Accept'}

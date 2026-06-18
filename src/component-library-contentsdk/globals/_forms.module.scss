@@ -2,8 +2,7 @@
 @use '../utilities/index.module' as *;
 
 /* stylelint-disable selector-class-pattern, no-descending-specificity */
-byoc-sitecore-form,
-[data-byoc-sitecore-form] {
+.main-form-wrapper {
   * {
     font-family: $font-family !important;
     letter-spacing: -0.03em !important;

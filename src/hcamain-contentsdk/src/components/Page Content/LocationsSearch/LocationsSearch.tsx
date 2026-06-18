@@ -2,7 +2,6 @@
 
 import { Suspense, type JSX, type RefObject, useRef } from 'react';
 import {
-  GetComponentServerProps,
   Text as JssText,
   RichText as JssRichText,
   useComponentProps,
@@ -36,7 +35,6 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import { unpackFilterOptionJson } from 'lib/unpackFilterOption';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import { ApiSearchPropsJson } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useTranslations } from 'next-intl';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
@@ -46,9 +44,9 @@ import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import getHeadingTags from 'lib/getHeadingTags';
 import getBaselineParamsJson from 'lib/getBaselineParamsJson';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
-const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
 const AUTOCOMPLETE_PATH = '/locationApi/suggestLocation';
 
@@ -83,6 +81,7 @@ const DefaultContent = (props: WithHeaderProps): JSX.Element => {
     error,
     formHandlers,
     searchParams,
+    isResultsLoading,
     autocompleteData,
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
@@ -268,7 +267,9 @@ const DefaultContent = (props: WithHeaderProps): JSX.Element => {
       </Themes>
 
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        {error || !resultsCount ? (
+        {isResultsLoading ? (
+          <LoaderCF loadingMsg={t('loading') || 'Loading...'} />
+        ) : error || !resultsCount ? (
           <ErrorMessage />
         ) : (
           <SearchWrapper
@@ -524,39 +525,4 @@ export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
   }
 
   return <Default {...props} contentVariation="padding-small" />;
-};
-
-// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getComponentServerProps: GetComponentServerProps = async (
-  rendering: ApiSearchPropsJson
-) => {
-  const { baselineParams } = getBaselineParamsJson(rendering);
-  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
-
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      const fallbackData = await response.json();
-
-      const res = await fetch('https://api.ipify.org/?format=text');
-      const ip = await res.text();
-
-      fallbackData.ip = ip;
-      return fallbackData;
-    } else {
-      throw response.statusText;
-    }
-  } catch (error) {
-    console.error(
-      {
-        message: 'LocationSearch server-side data fetching error',
-        error: error,
-        requestUrl: url.href,
-      },
-      error
-    );
-    return { locations: [] };
-  }
 };

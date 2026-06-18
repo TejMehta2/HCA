@@ -164,6 +164,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
   return (
     <>
       <StickyCTA
+        theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
         cta={
           props?.fields?.data?.item?.cTAText?.jsonValue && (
             <Button size="large" variation="full">
@@ -234,10 +235,10 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                 const { href, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(link.jsonValue, doctifyId, 'practice')
                   : withKeywordIdIfNeeded(
-                    link.jsonValue,
-                    doctifyId,
-                    'keywordId'
-                  );
+                      link.jsonValue,
+                      doctifyId,
+                      'keywordId'
+                    );
 
                 return (
                   <Button
@@ -304,15 +305,15 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
 
                 const { href, text } = locationPageOrFirstParentLocation
                   ? withKeywordIdIfNeeded(
-                    link?.jsonValue,
-                    doctifyId,
-                    'practice'
-                  )
+                      link?.jsonValue,
+                      doctifyId,
+                      'practice'
+                    )
                   : withKeywordIdIfNeeded(
-                    link?.jsonValue,
-                    doctifyId,
-                    'keywordId'
-                  );
+                      link?.jsonValue,
+                      doctifyId,
+                      'keywordId'
+                    );
 
                 return (
                   <Button

@@ -236,7 +236,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     <CarouselCards
       id={componentAnchorId}
       {...(tableOfContentTitle &&
-        props?.params?.ExcludeFromTableOfContents !== '1'
+      props?.params?.ExcludeFromTableOfContents !== '1'
         ? { tableOfContentTitle: tableOfContentTitle }
         : {})}
       title={

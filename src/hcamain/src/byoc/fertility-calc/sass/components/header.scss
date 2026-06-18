@@ -1,39 +1,39 @@
 .header {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    // border-bottom: 1px solid $hcauk-grey-100;
-    padding-bottom: $hcauk-spacing-24;
-    margin-bottom: $hcauk-spacing-24;
-    // box-shadow: 0px 2px 8px rgba(30, 33, 36, 0.2);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  // border-bottom: 1px solid $hcauk-grey-100;
+  padding-bottom: $hcauk-spacing-24;
+  margin-bottom: $hcauk-spacing-24;
+  // box-shadow: 0px 2px 8px rgba(30, 33, 36, 0.2);
 
-    &__logo {
-        width: 120px;
-        height: auto;
+  &__logo {
+    width: 120px;
+    height: auto;
 
-        @include breakpoint(md-above) {
-            width: 160px;
-        }
+    @include breakpoint(md-above) {
+      width: 160px;
+    }
+  }
+
+  &__title {
+    h2 {
+      margin: 0;
+      font-size: 14px;
+      color: $hcauk-dark-blue;
+
+      @include breakpoint(md-above) {
+        font-size: 22px;
+      }
     }
 
-    &__title {
-        h2 {
-            margin: 0;
-            font-size: 14px;
-            color: $hcauk-dark-blue;
+    margin-left: $hcauk-spacing-10;
+    padding-left: $hcauk-spacing-10;
+    border-left: 1px solid $hcauk-green-light-100;
 
-            @include breakpoint(md-above) {
-                font-size: 22px;
-            }
-        }
-
-        margin-left: $hcauk-spacing-10;
-        padding-left: $hcauk-spacing-10;
-        border-left: 1px solid $hcauk-green-light-100;
-
-        @include breakpoint(md-above) {
-            margin-left: $hcauk-spacing-32;
-            padding-left: $hcauk-spacing-32;
-        }
+    @include breakpoint(md-above) {
+      margin-left: $hcauk-spacing-32;
+      padding-left: $hcauk-spacing-32;
     }
+  }
 }

@@ -8,6 +8,7 @@
   position: relative;
   overflow-x: scroll;
   cursor: grab;
+  padding-bottom: $spacing-12;
 
   &:active {
     cursor: grabbing;

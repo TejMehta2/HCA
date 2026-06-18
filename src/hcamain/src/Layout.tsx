@@ -91,8 +91,9 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
-  const browserTitle = `${MetaTitle?.value || titleStripped || routeData.displayName
-    }`;
+  const browserTitle = `${
+    MetaTitle?.value || titleStripped || routeData.displayName
+  }`;
 
   return (
     <>

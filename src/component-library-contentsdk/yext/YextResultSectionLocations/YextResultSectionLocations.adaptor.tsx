@@ -128,7 +128,7 @@ const YextResultSectionLocationsAdaptor = (
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://maps.google.com/?q=${result.rawData.geocodedCoordinate?.latitude},${result.rawData.geocodedCoordinate?.longitude}`}
+                href={`https://maps.google.com/?q=${coordinates?.latitude},${coordinates?.longitude}`}
               >
                 <Icons iconName="iconRedo" />
                 Get directions

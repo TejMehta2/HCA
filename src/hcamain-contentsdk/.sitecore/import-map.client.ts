@@ -89,15 +89,8 @@ import { getDynamicTitleStyle } from '@component-library/site-components/HeaderP
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import getHeadingTags from 'lib/getHeadingTags';
-import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
-import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
-import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
-import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
-import getSubheadingTag from 'lib/subheading-tag-getter';
-import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import ModalText from '@component-library/components/ModalText/ModalText';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
 import GeolocationPermissionsCta from 'src/components/Page Content/LocationsSearch/GeolocationPermissionsCta';
@@ -106,11 +99,12 @@ import getBaselineParamsJson from 'lib/getBaselineParamsJson';
 import { upsertQuerystringParam } from 'lib/utility-functions/addThumbnailParameter';
 import CardLocation from '@component-library/components/CardLocation/CardLocation';
 import dynamic from 'next/dynamic';
-import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { getDynamicTitleStyle as getDynamicTitleStyle_052a70acc82ee87fa72768a5daf956a3e407ecc2 } from '@component-library/site-components/HomepageHero/HomepageHero';
 import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
 import SearchButton from '@component-library/components/SearchButton/SearchButton';
 import { SEARCH_SUGGESTIONS_MODAL_ID, FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
@@ -196,6 +190,7 @@ import CmaDisclosure from '@component-library/consultant-finder/CmaDisclosure/Cm
 import useSWR from 'swr';
 import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
 import CareerSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
 const importMap = [
   {
@@ -693,57 +688,15 @@ const importMap = [
     ]
   },
   {
-    module: '@component-library/site-components/CardBlock/CardBlock',
+    module: '@component-library/components/ModalText/ModalText',
     exports: [
-      { name: 'default', value: CardBlock },
-    ]
-  },
-  {
-    module: '@component-library/components/CardPatientStories/CardPatientStories',
-    exports: [
-      { name: 'default', value: CardPatientStories },
-    ]
-  },
-  {
-    module: '@component-library/site-components/SideScrollingCards/SideScrollingCards',
-    exports: [
-      { name: 'default', value: SideScrollingCards },
-    ]
-  },
-  {
-    module: '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader',
-    exports: [
-      { name: 'default', value: AdvancedBlockHeader },
+      { name: 'default', value: ModalText },
     ]
   },
   {
     module: 'lib/subheading-tag-getter',
     exports: [
       { name: 'default', value: getSubheadingTag },
-    ]
-  },
-  {
-    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
-    exports: [
-      { name: 'default', value: NextJssImage },
-    ]
-  },
-  {
-    module: '@component-library/site-components/CarouselCards/CarouselCards',
-    exports: [
-      { name: 'default', value: CarouselCards },
-    ]
-  },
-  {
-    module: 'src/context/inPageNavGlobalStorage',
-    exports: [
-      { name: 'inPageNavGlobalStore', value: inPageNavGlobalStore },
-    ]
-  },
-  {
-    module: '@component-library/components/ModalText/ModalText',
-    exports: [
-      { name: 'default', value: ModalText },
     ]
   },
   {
@@ -795,9 +748,9 @@ const importMap = [
     ]
   },
   {
-    module: 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName',
+    module: 'src/context/inPageNavGlobalStorage',
     exports: [
-      { name: 'default', value: JssTextWithEntityName },
+      { name: 'inPageNavGlobalStore', value: inPageNavGlobalStore },
     ]
   },
   {
@@ -818,6 +771,12 @@ const importMap = [
     exports: [
       { name: 'SEARCH_SUGGESTIONS_MODAL_ID', value: SEARCH_SUGGESTIONS_MODAL_ID },
       { name: 'FINDER_PROFILE_CANONICAL_BASE_URL', value: FINDER_PROFILE_CANONICAL_BASE_URL },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/NextJssImage/NextJssImage',
+    exports: [
+      { name: 'default', value: NextJssImage },
     ]
   },
   {
@@ -1332,6 +1291,12 @@ const importMap = [
     module: '@component-library/careers/CareersSearchResults/CareersSearchResults',
     exports: [
       { name: 'default', value: CareerSearchResults },
+    ]
+  },
+  {
+    module: '@component-library/site-components/CarouselCards/CarouselCards',
+    exports: [
+      { name: 'default', value: CarouselCards },
     ]
   }
 ] as ImportEntry[];

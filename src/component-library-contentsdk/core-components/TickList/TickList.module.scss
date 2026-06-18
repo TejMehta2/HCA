@@ -22,7 +22,7 @@
       width: px-to-rem(24);
       height: px-to-rem(24);
       background: currentcolor;
-      mask: url('./tick.svg') no-repeat center;
+      mask: url('/tick.svg') no-repeat center;
       mask-size: contain;
     }
   }

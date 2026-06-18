@@ -314,7 +314,8 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const isOneTrustAvailable = () =>
-    typeof window !== 'undefined' && typeof (window as any).OneTrust !== 'undefined';
+    typeof window !== 'undefined' &&
+    typeof (window as any).OneTrust !== 'undefined';
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -365,8 +366,18 @@ export const Default = (props: StepProps): JSX.Element => {
       const saved = readCookie('location');
       const locationParam = router.query.location;
       if (locationParam) {
-        setSelectedLocationConsultants(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
-        setSearchStringLocations(locationParam.length > 0 ? locationParam.toString().charAt(0).toUpperCase() + locationParam.slice(1) : 'Anywhere');
+        setSelectedLocationConsultants(
+          locationParam.length > 0
+            ? locationParam.toString().charAt(0).toUpperCase() +
+                locationParam.slice(1)
+            : 'Anywhere'
+        );
+        setSearchStringLocations(
+          locationParam.length > 0
+            ? locationParam.toString().charAt(0).toUpperCase() +
+                locationParam.slice(1)
+            : 'Anywhere'
+        );
       }
 
       if (saved) {
@@ -383,7 +394,8 @@ export const Default = (props: StepProps): JSX.Element => {
 
     syncWithConsent();
     window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
-    return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
+    return () =>
+      window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
     // include searchStringLocations so the handler sees latest selection
   }, [router.isReady]);
 
@@ -603,7 +615,8 @@ export const Default = (props: StepProps): JSX.Element => {
     if (locationQuery) {
       const locationFormatted =
         locationQuery.length > 0
-          ? locationQuery.charAt(0).toUpperCase() + locationQuery.slice(1).toLowerCase()
+          ? locationQuery.charAt(0).toUpperCase() +
+            locationQuery.slice(1).toLowerCase()
           : 'Anywhere';
 
       setSelectedLocationConsultants(locationFormatted);
@@ -618,8 +631,7 @@ export const Default = (props: StepProps): JSX.Element => {
         ) ||
         locationConfig.find(
           (loc: any) =>
-            String(loc.lat) === latQuery &&
-            String(loc.lon) === lonQuery
+            String(loc.lat) === latQuery && String(loc.lon) === lonQuery
         );
 
       if (matchedLocation) {
@@ -795,9 +807,10 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: `${props?.fields?.BreadcrumbHomePage?.value?.href ||
+                link: `${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                  }`,
+                }`,
               }}
             >
               <TextLink>
@@ -807,9 +820,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <Link
-                href={`${props?.fields?.BreadcrumbHomePage?.value?.href ||
+                href={`${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
                   '/finder/step-intro'
-                  }`}
+                }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
@@ -873,7 +887,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LocationFilterOptions &&
                                 props?.fields?.LocationFilterOptions.length >
-                                0 &&
+                                  0 &&
                                 props?.fields?.LocationFilterOptions.map(
                                   (hospital: any, index: number) => (
                                     <Checkbox
@@ -1051,7 +1065,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             <div>
                               {props?.fields?.LanguageFilterOptions &&
                                 props?.fields?.LanguageFilterOptions?.length >
-                                0 && (
+                                  0 && (
                                   <select
                                     name="language"
                                     value={selectedLanguage}
@@ -1153,34 +1167,56 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Text>
                 }
                 locationSearch={
-                  <><SearchLocation
-                    isStepIntro={false}
-                    isStepCards={true}
-                    applyLocationToSearch={applyLocationToSearch}
-                    placeholder={props?.fields?.SearchPlaceholderText?.value ||
-                      'Type in a service, condition, treatment...'}
-                    doctifyBaseURL={props?.fields?.API_Autocomplete_BaseURL?.value ||
-                      'https://api.doctify.com/api/hca/search/autocomplete?search'}
-                    limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-                    noResultsMsg={props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                      'No matches found, please try typing something else.'}
-                    setKeywordId={setKeywordId}
-                    searchString={searchStringLocations}
-                    locationList={locationConfig || []}
-                    setSearchString={setSearchStringLocations}
-                    searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
-                      null}
-                    loadingText={props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                      'Loading...'}
-                    labelLocationsResults={props?.fields?.LocationsResultsLabelText?.value ||
-                      'LOCATIONS'} />
-                    {
-                      !hasFunctionalConsentCookie && isOneTrustAvailable() &&
+                  <>
+                    <SearchLocation
+                      isStepIntro={false}
+                      isStepCards={true}
+                      applyLocationToSearch={applyLocationToSearch}
+                      placeholder={
+                        props?.fields?.SearchPlaceholderText?.value ||
+                        'Type in a service, condition, treatment...'
+                      }
+                      doctifyBaseURL={
+                        props?.fields?.API_Autocomplete_BaseURL?.value ||
+                        'https://api.doctify.com/api/hca/search/autocomplete?search'
+                      }
+                      limit={
+                        Number(props?.fields?.API_Autocomplete_Limit?.value) ||
+                        20
+                      }
+                      noResultsMsg={
+                        props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                        'No matches found, please try typing something else.'
+                      }
+                      setKeywordId={setKeywordId}
+                      searchString={searchStringLocations}
+                      locationList={locationConfig || []}
+                      setSearchString={setSearchStringLocations}
+                      searchIcon={
+                        props?.fields?.SearchIcon?.fields?.SvgMarkup?.value ||
+                        null
+                      }
+                      loadingText={
+                        props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                        'Loading...'
+                      }
+                      labelLocationsResults={
+                        props?.fields?.LocationsResultsLabelText?.value ||
+                        'LOCATIONS'
+                      }
+                    />
+                    {!hasFunctionalConsentCookie && isOneTrustAvailable() && (
                       <FunctionalCookiesBox
-                        title={props.fields?.FunctionalCookieSaveNextTimeTitle?.value || 'Save this location for next time?'}
-                        label={props.fields?.FunctionalCookieSaveNextTimeLabel?.value || 'Activate functional cookies'}>
-                      </FunctionalCookiesBox>
-                    }
+                        title={
+                          props.fields?.FunctionalCookieSaveNextTimeTitle
+                            ?.value || 'Save this location for next time?'
+                        }
+                        label={
+                          props.fields?.FunctionalCookieSaveNextTimeLabel
+                            ?.value || 'Activate functional cookies'
+                        }
+                      ></FunctionalCookiesBox>
+                    )}
                   </>
                 }
               ></ConsultantListHeaderTtitle>
@@ -1196,12 +1232,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
                   <Text tag="p" variation="body-small">
                     {selectedLocationConsultants === 'London' ||
-                      selectedLocationConsultants === 'Anywhere'
+                    selectedLocationConsultants === 'Anywhere'
                       ? props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
-                      'No results'
+                        'No results'
                       : props?.fields?.API_DoctifySearch_NoResultsMsgLocations
-                        ?.value ||
-                      'No results, please select another location'}
+                          ?.value ||
+                        'No results, please select another location'}
                   </Text>
                 </Container>
               )}

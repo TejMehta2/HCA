@@ -86,7 +86,10 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
     >
       <Accreditations
         columns={columns}
@@ -134,7 +137,10 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
     >
       <Accreditations
         columns={3}

@@ -8,7 +8,7 @@
   "crons": [
     {
       "path": "/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND",
-      "schedule": "0 6 * * *"
+      "schedule": "*/5 * * * *"
     }
   ]
 }

@@ -331,6 +331,9 @@ export const ThemeDTeal: StoryObj<typeof Themes> = {
 export const ThemeECerulean: StoryObj<typeof Themes> = {
   args: { theme: 'E-HCA-Cerulean' },
 };
+export const ThemeECerulean25: StoryObj<typeof Themes> = {
+  args: { theme: 'E-HCA-Cerulean-25' },
+};
 export const ThemeFFern: StoryObj<typeof Themes> = {
   args: { theme: 'F-HCA-Fern' },
 };
