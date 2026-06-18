@@ -99,4 +99,5 @@ export type Location = {
 export type StaticProps = {
   ctaQuery: string;
   Locations: Location[];
+  apiUrl?: string;
 };

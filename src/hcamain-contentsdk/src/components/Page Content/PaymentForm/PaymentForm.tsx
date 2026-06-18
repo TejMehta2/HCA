@@ -59,9 +59,11 @@ export const Default = (props: PaymentFormComponentProps): JSX.Element => {
   const [ukResident, setUkResident] = useState(true);
   const [serverMessages, setServerMessages] = useState<[]>([]);
 
+  // Datasource may be unresolved during prerender/build (e.g. no datasource set
+  // on the page item), which leaves props.fields.data undefined. Bail out early
+  // to avoid a "Cannot read properties of undefined (reading 'item')" crash.
   const item = props.fields?.data?.item;
-
-  if (!item?.pages?.results?.[0] || !item?.settings?.results?.[0]) {
+  if (!item?.pages?.results?.length || !item?.settings?.results?.length) {
     return <></>;
   }
 

@@ -93,4 +93,5 @@ export type patientStories = {
 export type StaticProps = {
   ctaQuery: string;
   patientStories: patientStories[];
+  apiUrl?: string;
 };

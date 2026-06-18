@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { unstable_cache } from 'next/cache';
 import { parse } from 'node-html-parser';
@@ -736,7 +737,153 @@ export async function getCMA(id: string): Promise<any> {
   return cma;
 }
 
-// get structured data for the given slug
+// get structured data for the given slug - current
+// export async function getPhysicianStructuredData(
+//   slug: string,
+//   specialistProfileData?: any, // can be passed in to save a second call
+//   path?: string,
+//   site: string = `${BASE_URL}`
+// ): Promise<any> {
+//   if (!specialistProfileData) {
+//     specialistProfileData = await getSpecialistProfileData(slug);
+//   }
+//   let ret: any = null;
+
+//   // build the breadcrumbs dynamically
+//   const pathSegments = path?.split('/', 10);
+//   const breadcrumbList: any[] = [];
+//   breadcrumbList.push({
+//     '@type': 'ListItem',
+//     position: 1,
+//     item: {
+//       '@id': `${site}`,
+//       name: `Home`,
+//     },
+//   });
+
+//   let segmentTracker = site;
+//   pathSegments?.forEach((segment, idx) => {
+//     segmentTracker += '/' + segment;
+//     switch (idx) {
+//       case pathSegments.length - 1:
+//         {
+//           breadcrumbList.push({
+//             '@type': 'ListItem',
+//             position: `${idx + 2}`,
+//             item: {
+//               '@id': `${segmentTracker}${specialistProfileData.slug}`,
+//               name: `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName} ${specialistProfileData.suffix}`,
+//             },
+//           });
+//         }
+//         break;
+//       default:
+//         {
+//           breadcrumbList.push({
+//             '@type': 'ListItem',
+//             position: `${idx + 2}`,
+//             item: {
+//               '@id': `${segmentTracker}`,
+//               name: `${segment}`,
+//             },
+//           });
+//         }
+//         break;
+//     }
+//   });
+
+//   if (specialistProfileData && specialistProfileData.slug) {
+//     try {
+//       ret = {
+//         '@context': 'https://schema.org',
+//         '@type': 'MedicalWebPage',
+//         mainEntity: {
+//           '@context': 'https://schema.org',
+//           '@type': 'Physician',
+//           name: '',
+//           description: '',
+//           url: '',
+//           address: {
+//             '@type': 'PostalAddress',
+//             addressLocality: '',
+//             addressRegion: '',
+//             postalCode: '',
+//             streetAddress: '',
+//           },
+//           telephone: '',
+//           image: '',
+//           medicalSpecialty: {
+//             '@type': 'MedicalSpecialty',
+//             name: '',
+//             url: '',
+//           },
+//           hasCredential: [
+//             {
+//               '@type': 'EducationalOccupationalCredential',
+//               id: '',
+//               name: '',
+//             },
+//             {
+//               '@type': 'EducationalOccupationalCredential',
+//               id: '',
+//               name: '',
+//             },
+//           ],
+//           award: [],
+//           hospitalAffiliation: [],
+//         },
+//         breadcrumb: {
+//           '@type': 'BreadcrumbList',
+//           itemListElement: breadcrumbList,
+//         },
+//       };
+
+//       //console.log('in specialistProfileData');
+//       // top specialty
+//       const topSpecialty = specialistProfileData?.keywords?.filter(
+//         (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+//       );
+//       // locations
+//       const locations = specialistProfileData?.practices;
+//       ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
+//       ret.mainEntity.description = `${specialistProfileData.about}`;
+//       ret.mainEntity.url = `${segmentTracker}${specialistProfileData.slug}`;
+
+//       const HCAAPIConfig = await GetHCAConfig();
+//       ret.mainEntity.address.addressLocality = HCAAPIConfig?.hQAddressLocality;
+//       ret.mainEntity.address.addressRegion = HCAAPIConfig?.hQAddressRegion;
+//       ret.mainEntity.address.postalCode = HCAAPIConfig?.hQPostalCode;
+//       ret.mainEntity.address.streetAddress = HCAAPIConfig?.hQStreetAddress;
+//       ret.mainEntity.telephone = HCAAPIConfig?.generalConsultantBookingNumber;
+//       ret.mainEntity.image = specialistProfileData.images?.logo ?? '';
+//       ret.mainEntity.medicalSpecialty.name = topSpecialty
+//         ? topSpecialty[0].name
+//         : 'MD';
+//       ret.mainEntity.medicalSpecialty.url = `${site}/search-results?query=${ret.mainEntity.medicalSpecialty.name}`;
+//       ret.mainEntity.hasCredential[0].name = `${specialistProfileData.suffix}`;
+//       ret.mainEntity.hasCredential[0].id = `${segmentTracker}${specialistProfileData.slug}#Bio`;
+//       ret.mainEntity.hasCredential[1].name = `GMC Registration: ${specialistProfileData.gmcNumber}`;
+//       ret.mainEntity.hasCredential[1].id = `https://www.gmc-uk.org/doctors/${specialistProfileData.gmcNumber}`;
+//       locations?.forEach((loc: any, idx: number) => {
+//         ret.mainEntity.hospitalAffiliation[idx] = {
+//           '@type': 'Hospital',
+//           name: loc.name,
+//           address: `${loc.address?.street1},${loc.address?.street2},${loc.address?.city},${loc.address?.county},${loc.address?.postcode},${loc.address?.country}`,
+//           telephone: `${loc.phone}`,
+//           image: `${loc.images?.logo}`,
+//         };
+//       });
+//     } catch (e) {
+//       console.warn(
+//         `Could not load PhysicianStructuredData failed with exception ${e}`
+//       );
+//     }
+//   }
+
+//   return ret;
+// }
+
+// new
 export async function getPhysicianStructuredData(
   slug: string,
   specialistProfileData?: any, // can be passed in to save a second call
@@ -748,8 +895,19 @@ export async function getPhysicianStructuredData(
   }
   let ret: any = null;
 
+  // days of the week
+  const dayMap: Record<string, string> = {
+    '0': 'https://schema.org/Sunday',
+    '1': 'https://schema.org/Monday',
+    '2': 'https://schema.org/Tuesday',
+    '3': 'https://schema.org/Wednesday',
+    '4': 'https://schema.org/Thursday',
+    '5': 'https://schema.org/Friday',
+    '6': 'https://schema.org/Saturday',
+  };
+
   // build the breadcrumbs dynamically
-  const pathSegments = path?.split('/', 10);
+  const pathSegments = path?.split('/', 10) ?? [];
   const breadcrumbList: any[] = [];
   breadcrumbList.push({
     '@type': 'ListItem',
@@ -768,7 +926,7 @@ export async function getPhysicianStructuredData(
         {
           breadcrumbList.push({
             '@type': 'ListItem',
-            position: `${idx + 2}`,
+            position: idx + 2,
             item: {
               '@id': `${segmentTracker}${specialistProfileData.slug}`,
               name: `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName} ${specialistProfileData.suffix}`,
@@ -780,7 +938,7 @@ export async function getPhysicianStructuredData(
         {
           breadcrumbList.push({
             '@type': 'ListItem',
-            position: `${idx + 2}`,
+            position: idx + 2,
             item: {
               '@id': `${segmentTracker}`,
               name: `${segment}`,
@@ -793,42 +951,31 @@ export async function getPhysicianStructuredData(
 
   if (specialistProfileData && specialistProfileData.slug) {
     try {
+      const profileUrl = `${segmentTracker}${specialistProfileData.slug}`;
+
       ret = {
         '@context': 'https://schema.org',
         '@type': 'MedicalWebPage',
+        '@id': `${profileUrl}#webpage`,
+        url: profileUrl,
         mainEntity: {
-          '@context': 'https://schema.org',
-          '@type': 'Physician',
+          '@type': ['Physician', 'Person'],
+          '@id': `${profileUrl}#physician`,
           name: '',
-          description: '',
-          url: '',
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: '',
-            addressRegion: '',
-            postalCode: '',
-            streetAddress: '',
-          },
-          telephone: '',
+          honorificPrefix: '',
+          honorificSuffix: '',
+          givenName: '',
+          familyName: '',
+          gender: '',
           image: '',
-          medicalSpecialty: {
-            '@type': 'MedicalSpecialty',
-            name: '',
-            url: '',
-          },
-          hasCredential: [
-            {
-              '@type': 'EducationalOccupationalCredential',
-              id: '',
-              name: '',
-            },
-            {
-              '@type': 'EducationalOccupationalCredential',
-              id: '',
-              name: '',
-            },
-          ],
-          award: [],
+          description: '',
+          knowsLanguage: [],
+          medicalSpecialty: [],
+          identifier: [],
+          aggregateRating: null,
+          makesOffer: [],
+          availableService: [],
+          knowsAbout: [],
           hospitalAffiliation: [],
         },
         breadcrumb: {
@@ -837,41 +984,155 @@ export async function getPhysicianStructuredData(
         },
       };
 
-      //console.log('in specialistProfileData');
-      // top specialty
-      const topSpecialty = specialistProfileData?.keywords?.filter(
-        (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
-      );
       // locations
       const locations = specialistProfileData?.practices;
-      ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
-      ret.mainEntity.description = `${specialistProfileData.about}`;
-      ret.mainEntity.url = `${segmentTracker}${specialistProfileData.slug}`;
 
-      const HCAAPIConfig = await GetHCAConfig();
-      ret.mainEntity.address.addressLocality = HCAAPIConfig?.hQAddressLocality;
-      ret.mainEntity.address.addressRegion = HCAAPIConfig?.hQAddressRegion;
-      ret.mainEntity.address.postalCode = HCAAPIConfig?.hQPostalCode;
-      ret.mainEntity.address.streetAddress = HCAAPIConfig?.hQStreetAddress;
-      ret.mainEntity.telephone = HCAAPIConfig?.generalConsultantBookingNumber;
+      ret.mainEntity.name = `${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
+      ret.mainEntity.familyName = specialistProfileData.lastName;
+      ret.mainEntity.honorificPrefix = specialistProfileData.title;
+      ret.mainEntity.honorificSuffix = specialistProfileData.suffix;
+      ret.mainEntity.givenName = specialistProfileData.firstName;
+      ret.mainEntity.gender =
+        specialistProfileData.gender?.toLowerCase() === 'male'
+          ? 'https://schema.org/Male'
+          : specialistProfileData.gender?.toLowerCase() === 'female'
+            ? 'https://schema.org/Female'
+            : null;
       ret.mainEntity.image = specialistProfileData.images?.logo ?? '';
-      ret.mainEntity.medicalSpecialty.name = topSpecialty
-        ? topSpecialty[0].name
-        : 'MD';
-      ret.mainEntity.medicalSpecialty.url = `${site}/search-results?query=${ret.mainEntity.medicalSpecialty.name}`;
-      ret.mainEntity.hasCredential[0].name = `${specialistProfileData.suffix}`;
-      ret.mainEntity.hasCredential[0].id = `${segmentTracker}${specialistProfileData.slug}#Bio`;
-      ret.mainEntity.hasCredential[1].name = `GMC Registration: ${specialistProfileData.gmcNumber}`;
-      ret.mainEntity.hasCredential[1].id = `https://www.gmc-uk.org/doctors/${specialistProfileData.gmcNumber}`;
+      ret.mainEntity.description = parse(
+        specialistProfileData.about ?? ''
+      ).text.trim();
+
+      ret.mainEntity.knowsLanguage =
+        specialistProfileData.languages?.map((lang: any) => lang.isoCode) ?? [];
+
+      ret.mainEntity.medicalSpecialty = (specialistProfileData.keywords ?? [])
+        .filter((item: any) => item.keywordType === 'specialty')
+        .sort((a: any, b: any) => {
+          if (a.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD') return -1;
+          if (b.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD') return 1;
+          return 0;
+        })
+        .map((item: any) => item.name);
+
+      ret.mainEntity.identifier = specialistProfileData.gmcNumber
+        ? [
+            {
+              '@type': 'PropertyValue',
+              propertyID: 'GMC',
+              value: `${specialistProfileData.gmcNumber}`,
+              url: `https://www.gmc-uk.org/doctors/${specialistProfileData.gmcNumber}`,
+            },
+          ]
+        : [];
+
+      ret.mainEntity.aggregateRating =
+        specialistProfileData.averageRating &&
+        specialistProfileData.reviewsTotal
+          ? {
+              '@type': 'AggregateRating',
+              ratingValue: `${specialistProfileData.averageRating}`,
+              reviewCount: `${specialistProfileData.reviewsTotal}`,
+              bestRating: '5',
+            }
+          : undefined;
+
       locations?.forEach((loc: any, idx: number) => {
         ret.mainEntity.hospitalAffiliation[idx] = {
           '@type': 'Hospital',
           name: loc.name,
-          address: `${loc.address?.street1},${loc.address?.street2},${loc.address?.city},${loc.address?.county},${loc.address?.postcode},${loc.address?.country}`,
-          telephone: `${loc.phone}`,
-          image: `${loc.images?.logo}`,
+          url: loc.facilityURL,
+          telephone: Array.isArray(loc.phone) ? loc.phone[0] : loc.phone,
+          image: loc.images?.logo,
+
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: [loc.address?.street1, loc.address?.street2]
+              .filter(Boolean)
+              .join(', '),
+            addressLocality: loc.address?.city,
+            addressRegion: loc.address?.county,
+            postalCode: loc.address?.postcode,
+            addressCountry: 'GB',
+          },
+
+          geo: loc.address?.geolocation
+            ? {
+                '@type': 'GeoCoordinates',
+                latitude: loc.address.geolocation.lat,
+                longitude: loc.address.geolocation.lon,
+              }
+            : null,
+
+          openingHoursSpecification: Object.entries(
+            loc.workingOpeningHours ?? {}
+          ).flatMap(([day, hours]: any) =>
+            Array.isArray(hours)
+              ? hours
+                  .filter(
+                    (hour: any) => dayMap[day] && hour?.open && hour?.close
+                  )
+                  .map((hour: any) => ({
+                    '@type': 'OpeningHoursSpecification',
+                    dayOfWeek: dayMap[day],
+                    opens: hour.open,
+                    closes: hour.close,
+                  }))
+              : []
+          ),
+
+          aggregateRating: loc.review?.overallExperience
+            ? {
+                '@type': 'AggregateRating',
+                ratingValue: `${loc.review.overallExperience}`,
+                reviewCount: `${loc.review.reviewsTotal}`,
+                bestRating: '5',
+              }
+            : null,
         };
       });
+
+      ret.mainEntity.availableService = (specialistProfileData.keywords ?? [])
+        .filter((item: any) => item.keywordType === 'procedure')
+        .map((item: any) => ({
+          '@type': 'MedicalProcedure',
+          name: item.name,
+        }));
+
+      ret.mainEntity.knowsAbout =
+        specialistProfileData.keywords
+          ?.filter((item: any) => item.keywordType === 'condition')
+          .map((item: any) => ({
+            '@type': 'MedicalCondition',
+            name: item.name,
+          })) ?? [];
+
+      ret.mainEntity.makesOffer = specialistProfileData.consultationFees
+        ? [
+            specialistProfileData.consultationFees.new
+              ? {
+                  '@type': 'Offer',
+                  name: 'New consultation',
+                  price: specialistProfileData.consultationFees.new,
+                  priceCurrency:
+                    specialistProfileData.consultationFees.currency ?? 'GBP',
+                }
+              : null,
+
+            specialistProfileData.consultationFees.followUp
+              ? {
+                  '@type': 'Offer',
+                  name: 'Follow-up consultation',
+                  price: specialistProfileData.consultationFees.followUp,
+                  priceCurrency:
+                    specialistProfileData.consultationFees.currency ?? 'GBP',
+                }
+              : null,
+          ].filter(Boolean)
+        : [];
+
+      ret = JSON.parse(JSON.stringify(ret));
+      console.log('ret', ret);
     } catch (e) {
       console.warn(
         `Could not load PhysicianStructuredData failed with exception ${e}`
@@ -1133,7 +1394,7 @@ export async function submitBookingEnquiry(
         cache: 'no-cache',
       });
 
-      //console.log('res', res);
+      console.log('res', res);
       if (res.ok) {
         const retData = await res.text();
         //console.log('retData', retData);

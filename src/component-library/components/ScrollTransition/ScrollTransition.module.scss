@@ -4,7 +4,9 @@
 .main-wrapper {
   background-color: var(--background);
   color: var(--text);
-  transition: 800ms linear;
+  transition:
+    background-color 800ms linear,
+    color 800ms linear;
 
   /* Transitions for component elements as they come into view */
   [data-animate] {
@@ -42,7 +44,7 @@
     }
   }
 
-  > * {
+  >* {
     position: relative;
     z-index: 1;
   }

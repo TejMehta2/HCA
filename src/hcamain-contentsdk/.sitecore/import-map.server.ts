@@ -64,8 +64,9 @@ import TextField from '@component-library/core-components/form/basic/TextField/T
 import TextArea from '@component-library/core-components/Textarea/Textarea';
 import SelectField from '@component-library/core-components/form/basic/SelectField/SelectField';
 import { z } from 'zod';
-import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
+import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import { upsertQuerystringParam, addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 import PageTeaser from '@component-library/site-components/PageTeaser/PageTeaser';
@@ -74,6 +75,8 @@ import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
+import CardMap from '@component-library/components/CardMap/CardMap';
+import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
 import { Default as Default_66b42592331e4bf68eb42877389dcd792d3d92a5 } from 'src/components/Page Content/Doctify/DoctifyGraphQl';
 import { Default as Default_f7151e71b65df6ee8deb1c7c9323aad7148ff39e } from 'src/components/Page Content/CQCRating/CQCRatingGraphQl';
@@ -113,7 +116,6 @@ import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDetails/HeaderBlogDetails';
@@ -133,8 +135,10 @@ import MainNavigationSearchTriggerClient from 'src/components/Navigation/MainNav
 import { linkReducer, columnMapper, SocialMediaCta } from 'src/components/Navigation/Footer/Footer.utilities';
 import Footer from '@component-library/site-components/Footer/Footer';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import { StructuredData } from 'components/core-components/structured-data/StructuredData';
 import FooterSmall from '@component-library/site-components/FooterSmall/FooterSmall';
 import { GoogleTagManager } from '@next/third-parties/google';
+import { toJsonLdString } from 'lib/structured-data/jsonld';
 import { checkIfConsultantIsNoReviews, checkIfConsultantIsDoctifyPhoneNumber, checkIfLiveBookingIsAvailable, getPhysicianStructuredData, getActiveLiveDiaryConsultantSlugs, getDoctifyPhoneNumberConsultantSlugs, getIgnoreReviewsConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import { getSpecialistProfileData, isErrorWithProfileData, getInsuranceData } from 'lib/consultant-finder/API_Doctify';
 import { Default as Default_844964c826b725d51ce782898cf2eb97658009a2 } from 'src/components/ConsultantFinder/StepConsultantProfileClient';
@@ -482,15 +486,21 @@ const importMap = [
     ]
   },
   {
+    module: '@component-library/components/CardPatientStories/CardPatientStories',
+    exports: [
+      { name: 'default', value: CardPatientStories },
+    ]
+  },
+  {
     module: '@component-library/site-components/SideScrollingCards/SideScrollingCards',
     exports: [
       { name: 'default', value: SideScrollingCards },
     ]
   },
   {
-    module: '@component-library/components/CardPatientStories/CardPatientStories',
+    module: 'src/jss-abstractions/ImageUrl',
     exports: [
-      { name: 'default', value: CardPatientStories },
+      { name: 'default', value: ImageUrl },
     ]
   },
   {
@@ -540,6 +550,18 @@ const importMap = [
     module: '@component-library/site-components/LogoBlock/LogoBlock',
     exports: [
       { name: 'default', value: LogoBlock },
+    ]
+  },
+  {
+    module: '@component-library/components/CardMap/CardMap',
+    exports: [
+      { name: 'default', value: CardMap },
+    ]
+  },
+  {
+    module: 'src/jss-abstractions/GetDirections/GetDirections',
+    exports: [
+      { name: 'default', value: returnDirections },
     ]
   },
   {
@@ -762,12 +784,6 @@ const importMap = [
     ]
   },
   {
-    module: 'src/jss-abstractions/ImageUrl',
-    exports: [
-      { name: 'default', value: ImageUrl },
-    ]
-  },
-  {
     module: '@component-library/consultant-finder/LoaderCF/LoaderCF',
     exports: [
       { name: 'default', value: LoaderCF },
@@ -879,6 +895,12 @@ const importMap = [
     ]
   },
   {
+    module: 'components/core-components/structured-data/StructuredData',
+    exports: [
+      { name: 'StructuredData', value: StructuredData },
+    ]
+  },
+  {
     module: '@component-library/site-components/FooterSmall/FooterSmall',
     exports: [
       { name: 'default', value: FooterSmall },
@@ -888,6 +910,12 @@ const importMap = [
     module: '@next/third-parties/google',
     exports: [
       { name: 'GoogleTagManager', value: GoogleTagManager },
+    ]
+  },
+  {
+    module: 'lib/structured-data/jsonld',
+    exports: [
+      { name: 'toJsonLdString', value: toJsonLdString },
     ]
   },
   {

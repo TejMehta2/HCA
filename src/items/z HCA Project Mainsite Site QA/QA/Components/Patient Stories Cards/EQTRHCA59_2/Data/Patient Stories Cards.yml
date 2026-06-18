@@ -1,0 +1,51 @@
+﻿---
+ID: "55dab119-bce1-4431-a143-982e9595f9dc"
+Parent: "4d5aa643-a3f6-40cb-a6a9-77382c4691b6"
+Template: "1196a43b-003d-4cc8-b120-2014de3b73f5"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Patient Stories Cards/EQTRHCA59_2/Data/Patient Stories Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "18c213cb-ed01-4c9c-8c60-07f67127fd87"
+      Hint: SearchOptions
+      Value: "{F4E6B58E-2973-43D0-B76E-6214A1DF5816}"
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: 
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240405T062950Z
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: 
+    - ID: "8686ffe5-371d-4d4b-831c-65a8c0cb4194"
+      Hint: CTAText
+      Value: Read the story
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d92b24f4-38ae-44e4-b0f3-546a10427122"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View &lt;b&gt;all&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{2F2BEC59-B5A2-4100-A359-A22D0628503D}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "bf8fc4c7-d0e9-495c-8be6-ad25a12399ee"
+      Hint: FilterOptions
+      Value: "{1EEB8A14-FFDB-46B7-B757-A20FD90FE3D0}"
+    - ID: "d114a478-69e1-491f-8d51-d2f851d99690"
+      Hint: PatientStories
+      Value: 
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Dynamic patient stories
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260612T115313Z
+    - ID: "f36b34ea-5278-41d5-a812-ab42ac4ab3eb"
+      Hint: NumberOfCards
+      Value: 3

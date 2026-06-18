@@ -20,9 +20,7 @@ import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
-    import(
-      '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock'
-    ),
+    import('@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock'),
   {
     ssr: true,
   }
@@ -76,7 +74,8 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
@@ -88,7 +87,8 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     <>
       <DynamicImageAndTextBlock
         id={componentAnchorId}
-        {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1'
+        {...(tableOfContentTitle &&
+        props?.params?.ExcludeFromTableOfContents !== '1'
           ? { tableOfContentTitle: tableOfContentTitle }
           : {})}
         theme={props.params?.Theme || 'A-HCA-White'}

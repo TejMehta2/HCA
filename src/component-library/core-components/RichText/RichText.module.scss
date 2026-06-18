@@ -10,6 +10,7 @@
   color: var(--text);
 
   &:not(.quote-block) {
+
     h1,
     h2,
     h3,
@@ -53,15 +54,14 @@
         position: relative;
 
         &::before {
+          content: '';
           position: absolute;
           left: 0;
           top: px-to-rem(9);
-          content: '';
-          color: inherit;
-          display: inline-block;
-          background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle id='Ellipse 1' cx='3' cy='3' r='3' fill='%230C2141'/%3E%3C/svg%3E");
           width: px-to-rem(6);
           height: px-to-rem(6);
+          border-radius: 50%;
+          background-color: var(--text);
         }
       }
     }
@@ -164,39 +164,41 @@
 
   row-gap: 0;
 
-  > * {
+  >* {
     @include responsive-grid-span(6, 6, 12, 12);
   }
 
   @for $cols from 1 through 12 {
-    > .col-#{$cols} {
+    >.col-#{$cols} {
       grid-column-end: span #{$cols};
     }
-    > .offset-#{$cols} {
+
+    >.offset-#{$cols} {
       grid-column-start: #{$cols + 1};
     }
   }
 
   @for $i from 0 through 12 {
-    > .order-#{$i} {
+    >.order-#{$i} {
       order: #{$i};
     }
   }
 
-  > .order-first {
+  >.order-first {
     order: -1;
   }
 
-  > .order-last {
+  >.order-last {
     order: 13;
   }
 
   @for $cols from 1 through 12 {
     @include media(screen-m) {
-      > .col-md-#{$cols} {
+      >.col-md-#{$cols} {
         grid-column-end: span #{$cols};
       }
-      > .offset-md-#{$cols} {
+
+      >.offset-md-#{$cols} {
         grid-column-start: #{$cols + 1};
       }
     }
@@ -204,28 +206,29 @@
 
   @for $i from 0 through 12 {
     @include media(screen-m) {
-      > .order-md-#{$i} {
+      >.order-md-#{$i} {
         order: #{$i};
       }
     }
   }
 
   @include media(screen-m) {
-    > .order-md-first {
+    >.order-md-first {
       order: -1;
     }
 
-    > .order-md-last {
+    >.order-md-last {
       order: 13;
     }
   }
 
   @for $cols from 1 through 12 {
     @include media(screen-l) {
-      > .col-lg-#{$cols} {
+      >.col-lg-#{$cols} {
         grid-column-end: span #{$cols};
       }
-      > .offset-lg-#{$cols} {
+
+      >.offset-lg-#{$cols} {
         grid-column-start: #{$cols + 1};
       }
     }
@@ -233,30 +236,31 @@
 
   @for $i from 0 through 12 {
     @include media(screen-l) {
-      > .order-lg-#{$i} {
+      >.order-lg-#{$i} {
         order: #{$i};
       }
     }
   }
 
   @include media(screen-l) {
-    > .order-lg-first {
+    >.order-lg-first {
       order: -1;
     }
 
-    > .order-lg-last {
+    >.order-lg-last {
       order: 13;
     }
   }
 
   @for $cols from 1 through 12 {
     @include media(screen-xl) {
-      > .col-xl-#{$cols} {
+      >.col-xl-#{$cols} {
         @include media(screen-xl) {
           grid-column-end: span #{$cols};
         }
       }
-      > .offset-xl-#{$cols} {
+
+      >.offset-xl-#{$cols} {
         grid-column-start: #{$cols + 1};
       }
     }
@@ -264,18 +268,18 @@
 
   @for $i from 0 through 12 {
     @include media(screen-xl) {
-      > .order-xl-#{$i} {
+      >.order-xl-#{$i} {
         order: #{$i};
       }
     }
   }
 
   @include media(screen-xl) {
-    > .order-xl-first {
+    >.order-xl-first {
       order: -1;
     }
 
-    > .order-xl-last {
+    >.order-xl-last {
       order: 13;
     }
   }

@@ -84,12 +84,14 @@ SharedFields:
                         targetItem {
                           ...ItemFragment
                           ... on SocialMediaProvider {
-                            icon: icon_41f62b60e9c24694b01dcd8f0e164351 {
-                              targetItem {
-                                ...ItemFragment
-                                ... on HCAIcon {
-                                  svgMarkup {
-                                    value
+                            icon: field(name: "icon") {
+                              ... on LookupField {
+                                targetItem {
+                                  ...ItemFragment
+                                  ... on HCAIcon {
+                                    svgMarkup {
+                                      value
+                                    }
                                   }
                                 }
                               }
@@ -211,6 +213,7 @@ SharedFields:
         }
       }
     }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Navigation/Footer
@@ -231,7 +234,7 @@ SharedFields:
   Value: 
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "2bc37404-17ec-4dd5-aa0a-a807c5f4a74a"
+  Value: "d34cbfd1-b9de-442a-a9e7-158154471faf"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -278,14 +281,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ec2a5a2b-8a76-4a81-87f6-42642f3019dc"
+      Value: "508df50c-0f5a-4870-9ff3-e8e319d12057"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251110T202716Z
+      Value: 20260508T112415Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

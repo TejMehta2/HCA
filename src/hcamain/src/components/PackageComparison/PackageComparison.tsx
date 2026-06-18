@@ -119,7 +119,8 @@ export const Default = (props: PackageComparisonProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,
@@ -128,7 +129,10 @@ export const Default = (props: PackageComparisonProps): JSX.Element => {
   return (
     <CardBlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'J-HCA-Tangerine-20'}
@@ -236,14 +240,13 @@ function mapPricingVariants(
         £<JssText field={item?.price?.jsonValue} />
       </>
     ),
-    period:
-      ((item?.period?.jsonValue?.value &&
-        item.period.jsonValue.value.trim() !== '') ||
-        isExperienceEditor) && (
-        <>
-          / <JssText field={item.period?.jsonValue} />
-        </>
-      ),
+    period: ((item?.period?.jsonValue?.value &&
+      item.period.jsonValue.value.trim() !== '') ||
+      isExperienceEditor) && (
+      <>
+        / <JssText field={item.period?.jsonValue} />
+      </>
+    ),
     discount:
       item?.discount?.jsonValue?.value || isExperienceEditor ? (
         <JssText field={item.discount?.jsonValue} />

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import client from 'src/lib/sitecore-client';
-import Layout, { RouteFields } from 'src/Layout';
+import Layout from 'src/Layout';
 import Providers from 'src/Providers';
 import { generateSitecorePageMetadata } from 'lib/utility-functions/generateSitecorePageMetadata';
 

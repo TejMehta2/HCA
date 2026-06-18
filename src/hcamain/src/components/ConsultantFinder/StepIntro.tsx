@@ -77,7 +77,7 @@ export const Default = (props: StepProps): JSX.Element => {
     searchStringLocations,
     setSearchStringLocations,
     selectedLocationConsultants,
-    setSelectedLocationConsultants
+    setSelectedLocationConsultants,
   } = useContext(ConsultantFinderContext);
   // const [location, setLocation] = useState('London');
   const [hydrated, setHydrated] = useState(false);
@@ -121,7 +121,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const { latitude, longitude, distance } = selectedLocationConfig ?? {};
 
   const isOneTrustAvailable = () =>
-    typeof window !== 'undefined' && typeof (window as any).OneTrust !== 'undefined';
+    typeof window !== 'undefined' &&
+    typeof (window as any).OneTrust !== 'undefined';
 
   const hasFunctionalConsent = () => {
     const groups = (window as any).OnetrustActiveGroups || '';
@@ -183,7 +184,8 @@ export const Default = (props: StepProps): JSX.Element => {
 
     syncWithConsent();
     window.addEventListener('OneTrustGroupsUpdated', syncWithConsent);
-    return () => window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
+    return () =>
+      window.removeEventListener('OneTrustGroupsUpdated', syncWithConsent);
     // include searchStringLocations so the handler sees latest selection
   }, [selectedLocationConsultants]);
 
@@ -195,13 +197,13 @@ export const Default = (props: StepProps): JSX.Element => {
 
     router.push(
       `${baseURLResults}?search=${searchString}` +
-      `&keywordId=${keywordId}` +
-      `&sortType=relevance` +
-      `&lat=${latitude}` +
-      `&lon=${longitude}` +
-      `&distance=${distance}` +
-      `&limit=12` +
-      `&offset=0`
+        `&keywordId=${keywordId}` +
+        `&sortType=relevance` +
+        `&lat=${latitude}` +
+        `&lon=${longitude}` +
+        `&distance=${distance}` +
+        `&limit=12` +
+        `&offset=0`
     );
   };
 

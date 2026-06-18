@@ -92,7 +92,7 @@ const nextConfig: NextConfig = {
         destination: '/api/payment/api/paymentForm/:path*',
         locale: false,
       },
-        {
+      {
         source: '/paymentForm/:path*',
         destination: '/api/payment/api/paymentForm/:path*',
         locale: false,
@@ -100,20 +100,46 @@ const nextConfig: NextConfig = {
     ];
   },
   webpack: (config) => {
-    const assetRule = config.module.rules.find(
-      (rule: { test?: { test?: (value: string) => boolean } }) =>
-        rule.test?.test?.('.svg')
+    // const assetRule = config.module.rules.find(
+    //   (rule: { test?: { test?: (value: string) => boolean } }) =>
+    //     rule.test?.test?.('.svg')
+    // );
+
+    // if (assetRule) {
+    //   assetRule.exclude = /\.svg$/i;
+    // }
+
+    // config.module.rules.push({
+    //   test: /\.svg$/i,
+    //   issuer: /\.[jt]sx?$/,
+    //   use: [svgrLoader],
+    // });
+
+    // return config;
+
+    // Grab the existing rule that handles SVG imports
+    const fileLoaderRule = config.module.rules.find((rule: any) =>
+      rule.test?.test?.('.svg')
     );
 
-    if (assetRule) {
-      assetRule.exclude = /\.svg$/i;
-    }
+    config.module.rules.push(
+      // Reapply the existing rule, but only for svg imports ending in ?url
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/, // *.svg?url
+      },
+      // Convert all other *.svg imports to React components
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: /url/ }, // exclude if *.svg?url
+        use: ['@svgr/webpack'],
+      }
+    );
 
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: [svgrLoader],
-    });
+    // Modify the file loader rule to ignore *.svg, since we have it handled now.
+    fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
   },

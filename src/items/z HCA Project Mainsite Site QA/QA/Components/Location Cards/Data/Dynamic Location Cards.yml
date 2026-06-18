@@ -1,0 +1,51 @@
+﻿---
+ID: "f7d44dc8-90f9-4cd4-90a6-82fe487a83e4"
+Parent: "068edb6b-434c-4284-a1ad-28e7970a70ab"
+Template: "38ab0ea0-da28-4136-b857-77f863de1795"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Location Cards/Data/Dynamic Location Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
+      Hint: FilterOptions
+      Value: "{7DBCBC43-4F28-4187-BAC9-CE632D84AA3A}"
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: Dynamic List of locations
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240228T212004Z
+    - ID: "50f18c4e-7dd1-4672-91b5-74dc61a1dade"
+      Hint: Locations
+      Value: 
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
+    - ID: "767b8154-6c79-451f-ab22-d91aec9fd93c"
+      Hint: GetDirectionsText
+      Value: Get directions
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "dd5d005b-a84a-4fd2-b945-4ae05ea82b14"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View all" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4DE3BB9F-9B36-4B44-9DB2-15283C093353}" />
+    - ID: "b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012"
+      Hint: CTAText
+      Value: Learn more
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Locations
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260611T170658Z
+    - ID: "ec60c2d1-b6a4-4eae-a88d-ccb016b6b677"
+      Hint: NumberOfCards
+      Value: 12

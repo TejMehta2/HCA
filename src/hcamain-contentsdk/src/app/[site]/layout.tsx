@@ -1,6 +1,7 @@
 import { draftMode } from 'next/headers';
 import type { Metadata } from 'next';
 import Bootstrap from 'src/Bootstrap';
+import FormInstanceUidObserver from 'components/core-components/FormInstanceUidObserver';
 
 export const metadata: Metadata = {
   icons: {
@@ -49,6 +50,7 @@ export default async function SiteLayout({
   return (
     <>
       <Bootstrap siteName={site} isPreviewMode={isEnabled} />
+      <FormInstanceUidObserver />
       {children}
     </>
   );

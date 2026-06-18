@@ -18,14 +18,12 @@ import * as ServiceLinesSearch from 'src/components/Page Content/ServiceLinesSea
 import * as PrintConfirmationCta from 'src/components/Page Content/PaymentFormConfirmation/PrintConfirmationCta';
 import * as PaymentForm from 'src/components/Page Content/PaymentForm/PaymentForm';
 import * as PatientStoriesSearch from 'src/components/Page Content/PatientStoriesSearch/PatientStoriesSearch';
-import * as PatientStoriesCards from 'src/components/Page Content/PatientStoriesCards/PatientStoriesCards';
 import * as MoreInformationCTA from 'src/components/Page Content/MoreInformationCTA/MoreInformationCTA';
 import * as ModalContent from 'src/components/Page Content/ModalContent/ModalContent';
 import * as LocationsSearch from 'src/components/Page Content/LocationsSearch/LocationsSearch';
 import * as GeolocationPermissionsCta from 'src/components/Page Content/LocationsSearch/GeolocationPermissionsCta';
 import * as LocationsMap from 'src/components/Page Content/LocationsMap/LocationsMap';
 import * as LocationMap from 'src/components/Page Content/LocationMap/LocationMap';
-import * as LocationCards from 'src/components/Page Content/LocationCards/LocationCards';
 import * as HeroBannerWithSearch from 'src/components/Page Content/HeroBannerWithSearch/HeroBannerWithSearch';
 import * as Log404Email from 'src/components/Page Content/EmailUtils/Log404Email';
 import * as ContentCarouselExtended from 'src/components/Page Content/ContentCarouselExtended/ContentCarouselExtended';
@@ -73,14 +71,12 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PrintConfirmationCta', { ...PrintConfirmationCta }],
   ['PaymentForm', { ...PaymentForm }],
   ['PatientStoriesSearch', { ...PatientStoriesSearch }],
-  ['PatientStoriesCards', { ...PatientStoriesCards }],
   ['MoreInformationCTA', { ...MoreInformationCTA }],
   ['ModalContent', { ...ModalContent }],
   ['LocationsSearch', { ...LocationsSearch }],
   ['GeolocationPermissionsCta', { ...GeolocationPermissionsCta }],
   ['LocationsMap', { ...LocationsMap }],
   ['LocationMap', { ...LocationMap }],
-  ['LocationCards', { ...LocationCards }],
   ['HeroBannerWithSearch', { ...HeroBannerWithSearch }],
   ['Log404Email', { ...Log404Email }],
   ['ContentCarouselExtended', { ...ContentCarouselExtended }],

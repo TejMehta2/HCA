@@ -1,4 +1,5 @@
 import type { VacancyResponse } from 'components/Careers/JobDetailsHeader/JobDetailsHeader.types';
+import { StructuredData } from './structured-data/StructuredData';
 
 type VacancySchemaProps = {
   vacancy?: VacancyResponse | null;
@@ -68,12 +69,9 @@ export default function VacancySchema({ vacancy }: VacancySchemaProps) {
   });
 
   return (
-    <script
+    <StructuredData
       id={`ldjson-vacancy-${vacancy.id}`}
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(schema),
-      }}
-    />
+      data={schema}
+    ></StructuredData>
   );
 }

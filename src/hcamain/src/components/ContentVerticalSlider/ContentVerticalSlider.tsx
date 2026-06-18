@@ -101,7 +101,10 @@ export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
     <DynamicServiceCards
       theme={props.params?.Theme || 'I-HCA-Goldenrod'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       contentVariation={'role'}
       title={
         (props.fields?.Title || isExperienceEditor) && (

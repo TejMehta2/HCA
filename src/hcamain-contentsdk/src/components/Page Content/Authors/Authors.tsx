@@ -13,6 +13,7 @@ import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import { AuthorFields } from 'src/types/authorFields';
 import { MapAuthorsToBlockQuotes } from './Authors.mapping';
 import { ComponentWithContextProps } from 'lib/component-props';
+import { isInsideContainerComponent } from 'lib/utility-functions/insideContainerComponent';
 
 interface Fields {
   Title?: Field<string>;
@@ -56,9 +57,9 @@ export const Default = (props: AuthorsProps): JSX.Element => {
   const tableOfContentTitle =
     props?.params?.TableOfContentsLinkTitle || componentTitle;
 
-  const isContainerized = props?.params?.Containerized === '1';
+   const isInsideContainer = isInsideContainerComponent(props.params);
 
-  if (isContainerized) {
+  if (isInsideContainer) {
     return (
       <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlocks}</figure>

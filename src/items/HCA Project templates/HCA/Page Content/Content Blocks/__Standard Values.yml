@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Page Content/Content Blocks/__Standard Val
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{9A6B0A40-23A2-4D3A-9AF2-28BEAFAE3994}"
+  Value: "{CBD84AC0-B31C-4416-A0F5-B1ACEE778B50}"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "356e1e1c-6d26-40c7-ad67-1e28ff22fe43"
+  Value: "51770243-0c23-4321-b324-541bedc6ee5e"
 Languages:
 - Language: en
   Versions:
@@ -20,11 +20,11 @@ Languages:
       Value: 20231219T082925Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a5d70e10-cb03-4e35-af29-0409eee19ec8"
+      Value: "9507d961-22d4-4dcd-b67c-766b7d314970"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250424T124316Z
+      Value: 20260611T151530Z

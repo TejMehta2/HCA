@@ -37,9 +37,9 @@ export interface MainNavigationTabChild {
   };
   template?: {
     name:
-    | 'Navigation Content Block'
-    | 'Main Navigation Links List'
-    | 'Navigation Blog Post Card';
+      | 'Navigation Content Block'
+      | 'Main Navigation Links List'
+      | 'Navigation Blog Post Card';
   };
   date?: ExtendedDate;
   tag?: Field<string>;

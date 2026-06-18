@@ -91,12 +91,19 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
     >
-      {(
+      {
         <AdvancedBlockHeader
-          contentVariation='centered'
-          paddingSize='small-mobile'
+          contentVariation="centered"
+          paddingSize={
+            props.fields.Heading?.value || props.fields.Title?.value
+              ? 'small-mobile'
+              : 'none'
+          }
           subtitle={
             (props.fields.Heading?.value || isExperienceEditor) && (
               <Text tag={subheadingTag} variation="subheading-1">
@@ -123,9 +130,8 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
               </Text>
             )
           }
-        >
-        </AdvancedBlockHeader>
-      )}
+        ></AdvancedBlockHeader>
+      }
 
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
@@ -152,7 +158,7 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 )
               }
               copy={
-                (card?.fields?.Text || isExperienceEditor) ? (
+                card?.fields?.Text || isExperienceEditor ? (
                   <>
                     {card?.fields?.Text && (
                       <Text variation="body-large">
@@ -168,50 +174,50 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 <>
                   {(card?.fields?.PrimaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                      <Button
-                        variation="full"
-                        size="small"
-                        contentVariation="full-width"
-                      >
-                        <JssLink field={card.fields.PrimaryCTA}>
-                          {!isExperienceEditor && (
-                            <>
-                              {card?.fields?.PrimaryCTA.value?.text && (
-                                <JssRichText
-                                  tag="span"
-                                  field={{
-                                    value: card?.fields?.PrimaryCTA.value?.text,
-                                  }}
-                                />
-                              )}
-                            </>
-                          )}
-                        </JssLink>
-                      </Button>
-                    )}
+                    <Button
+                      variation="full"
+                      size="small"
+                      contentVariation="full-width"
+                    >
+                      <JssLink field={card.fields.PrimaryCTA}>
+                        {!isExperienceEditor && (
+                          <>
+                            {card?.fields?.PrimaryCTA.value?.text && (
+                              <JssRichText
+                                tag="span"
+                                field={{
+                                  value: card?.fields?.PrimaryCTA.value?.text,
+                                }}
+                              />
+                            )}
+                          </>
+                        )}
+                      </JssLink>
+                    </Button>
+                  )}
                   {(card?.fields?.SecondaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                      <Button
-                        variation="outline"
-                        size="small"
-                        contentVariation="full-width"
-                      >
-                        <JssLink field={card.fields.SecondaryCTA}>
-                          {!isExperienceEditor && (
-                            <>
-                              {card?.fields?.SecondaryCTA.value?.text && (
-                                <JssRichText
-                                  tag="span"
-                                  field={{
-                                    value: card?.fields?.SecondaryCTA.value?.text,
-                                  }}
-                                />
-                              )}
-                            </>
-                          )}
-                        </JssLink>
-                      </Button>
-                    )}
+                    <Button
+                      variation="outline"
+                      size="small"
+                      contentVariation="full-width"
+                    >
+                      <JssLink field={card.fields.SecondaryCTA}>
+                        {!isExperienceEditor && (
+                          <>
+                            {card?.fields?.SecondaryCTA.value?.text && (
+                              <JssRichText
+                                tag="span"
+                                field={{
+                                  value: card?.fields?.SecondaryCTA.value?.text,
+                                }}
+                              />
+                            )}
+                          </>
+                        )}
+                      </JssLink>
+                    </Button>
+                  )}
                 </>
               }
             />

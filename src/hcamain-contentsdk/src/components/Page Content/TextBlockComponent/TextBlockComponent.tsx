@@ -115,7 +115,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
         )
       }
       image={
-        props.fields?.Image?.value?.src || isExperienceEditor ? (
+        props.fields?.Image?.value?.src ? (
           <NextJssImage
             field={props.fields?.Image}
             next={{

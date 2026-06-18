@@ -1,126 +1,125 @@
 .selectors-container {
-    text-align: left;
-    border-bottom: 1px solid $hcauk-grey-100;
-    padding-bottom: $hcauk-spacing-32;
-    margin-bottom: $hcauk-spacing-32;
+  text-align: left;
+  border-bottom: 1px solid $hcauk-grey-100;
+  padding-bottom: $hcauk-spacing-32;
+  margin-bottom: $hcauk-spacing-32;
 
-    .select {
-        width: 100%;
+  .select {
+    width: 100%;
 
-        @include breakpoint(md-above) {
-            width: 70%;
-        }
-
-        button {
-            span {
-                pointer-events: none;
-                svg {
-                    pointer-events: none;
-                }
-            }
-        }
-
-        .label-title {
-            display: flex;
-            align-items: center;
-        }
-
-        &__label {
-            margin-right: $hcauk-spacing-10;
-            font-size: 14px;
-            font-weight: bold;
-
-            @include breakpoint(md-above) {
-                font-size: 18px;
-            }
-        }
-
-        &__label,
-        &__sublabel {
-            color: $hcauk-dark-blue;
-        }
-
-        .label-container {
-            margin-bottom: $hcauk-spacing-10;
-        }
-
-        &__menu-btn-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: $hcauk-spacing-16;
-        }
-
-        &__container {
-            display: flex;
-            position: relative;
-            margin-right: $hcauk-spacing-10;
-            flex-grow: 1;
-
-            select {
-                -moz-appearance: none;
-                appearance: none;
-                border: 1px solid $hcauk-dark-blue-600;
-                border-radius: 4px;
-                width: 100%;
-                padding: 8px;
-                color: $hcauk-dark-blue;
-                background-color: white;
-                transition: border 0.6s ease-in-out;
-                font-size: 14px;
-
-                @include breakpoint(md-above) {
-                    font-size: 16px;
-                }
-            }
-        }
-        &__arrow {
-            position: absolute;
-            z-index: 1;
-            right: 12px;
-            top: 10px;
-            pointer-events: none;
-        }
+    @include breakpoint(md-above) {
+      width: 70%;
     }
 
-    .reset-text {
-        margin-right: $hcauk-spacing-10;
-        text-decoration: underline;
-        color: $hcauk-dark-blue;
+    button {
+      span {
+        pointer-events: none;
+        svg {
+          pointer-events: none;
+        }
+      }
     }
 
-    .select__calculate-btn {
+    .label-title {
+      display: flex;
+      align-items: center;
+    }
+
+    &__label {
+      margin-right: $hcauk-spacing-10;
+      font-size: 14px;
+      font-weight: bold;
+
+      @include breakpoint(md-above) {
+        font-size: 18px;
+      }
+    }
+
+    &__label,
+    &__sublabel {
+      color: $hcauk-dark-blue;
+    }
+
+    .label-container {
+      margin-bottom: $hcauk-spacing-10;
+    }
+
+    &__menu-btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $hcauk-spacing-16;
+    }
+
+    &__container {
+      display: flex;
+      position: relative;
+      margin-right: $hcauk-spacing-10;
+      flex-grow: 1;
+
+      select {
         -moz-appearance: none;
         appearance: none;
-        font-size: 14px;
-        padding: 0.7em 2em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center; 
-        transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out,
-            color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-        cursor: pointer;
-        line-height: 1;
-        background-color: #08394a;
-        color: white;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-        opacity: 1;
-        margin-top: $hcauk-spacing-24;
+        border: 1px solid $hcauk-dark-blue-600;
+        border-radius: 4px;
         width: 100%;
+        padding: 8px;
+        color: $hcauk-dark-blue;
+        background-color: white;
+        transition: border 0.6s ease-in-out;
+        font-size: 14px;
 
         @include breakpoint(md-above) {
-            width: inherit;
+          font-size: 16px;
         }
-    
-        &:hover {
-            /* background-color: #04cac7; */
-            opacity: 0.7;
-        }
+      }
+    }
+    &__arrow {
+      position: absolute;
+      z-index: 1;
+      right: 12px;
+      top: 10px;
+      pointer-events: none;
+    }
+  }
+
+  .reset-text {
+    margin-right: $hcauk-spacing-10;
+    text-decoration: underline;
+    color: $hcauk-dark-blue;
+  }
+
+  .select__calculate-btn {
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    padding: 0.7em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition:
+      background-color 0.2s ease-in-out,
+      border 0.2s ease-in-out,
+      color 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+    cursor: pointer;
+    line-height: 1;
+    background-color: #08394a;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    opacity: 1;
+    margin-top: $hcauk-spacing-24;
+    width: 100%;
+
+    @include breakpoint(md-above) {
+      width: inherit;
     }
 
-
-
+    &:hover {
+      /* background-color: #04cac7; */
+      opacity: 0.7;
+    }
+  }
 }
-

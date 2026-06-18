@@ -159,8 +159,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               autocompleteError
                 ? []
                 : autocompleteData?.response.results?.map(
-                  (result) => `${result.value}`
-                )
+                    (result) => `${result.value}`
+                  )
             }
           >
             {hasFilters && (

@@ -5,7 +5,7 @@
 // Themes by name from design library to match backend
 
 /* stylelint-disable value-keyword-case, selector-class-pattern, scss/dollar-variable-pattern */
-$themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Cerulean,
+$themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Cerulean, E-HCA-Cerulean-25,
   F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
   J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
   N-HCA-Denim-5, O-HCA-Teal-20, Palace-White, Palace-Grey, Palace-Beige,
@@ -40,6 +40,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
 
 .E-HCA-Cerulean {
   @include apply-theme-e-cerulean;
+}
+
+.E-HCA-Cerulean-25 {
+  @include apply-theme-e-cerulean-25;
 }
 
 .F-HCA-Fern {
@@ -138,66 +142,18 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
   @include apply-theme-alan-light-grey;
 }
 
-.master-A-HCA-White,
-.master-B-HCA-Navy-Blue,
-.master-C-HCA-Denim,
-.master-D-HCA-Teal,
-.master-E-HCA-Cerulean,
-.master-F-HCA-Fern,
-.master-G-HCA-Orange,
-.master-H-HCA-Tangerine,
-.master-I-HCA-Goldenrod,
-.master-J-HCA-Tangerine-20,
-.master-K-HCA-Fern-20,
-.master-L-HCA-Teal-5,
-.master-M-HCA-Goldenrod-20,
-.master-N-HCA-Denim-5,
-.master-O-HCA-Teal-20,
-.master-Palace-White,
-.master-Palace-Grey,
-.master-Palace-Beige,
-.master-Palace-Red,
-.master-LBI,
-.master-Chelsea-White,
-.master-Chelsea-Navy-Blue,
-.master-Chelsea-Beige,
-.master-Chelsea-Gold,
-.master-Alan-Black,
-.master-Alan-White,
-.master-Alan-Light-Grey {
-  &>div {
-
-    &>.A-HCA-White,
-    &>.B-HCA-Navy-Blue,
-    &>.C-HCA-Denim,
-    &>.D-HCA-Teal,
-    &>.E-HCA-Cerulean,
-    &>.F-HCA-Fern,
-    &>.G-HCA-Orange,
-    &>.H-HCA-Tangerine,
-    &>.I-HCA-Goldenrod,
-    &>.J-HCA-Tangerine-20,
-    &>.K-HCA-Fern-20,
-    &>.L-HCA-Teal-5,
-    &>.M-HCA-Goldenrod-20,
-    &>.N-HCA-Denim-5,
-    &>.O-HCA-Teal-20,
-    &>.Palace-White,
-    &>.Palace-Grey,
-    &>.Palace-Beige,
-    &>.Palace-Red,
-    &>.Chelsea-White,
-    &>.Chelsea-Navy-Blue,
-    &>.Chelsea-Gold,
-    &>.LBI,
-    &>.LBI-Dark,
-    &>.LBI-White,
-    &>.Chelsea-Beige,
-    &>.Alan-Black,
-    &>.Alan-White,
-    &>.Alan-Light-Grey {
-      --background: #{transparent};
-      --text: #{unset};
+// When ScrollTransition applies a master theme, only collapse --background and --text when child theme differs from master theme
+@each $masterTheme in $themeOptions {
+  .master-#{$masterTheme} {
+    &>div {
+      @each $childTheme in $themeOptions {
+        @if $childTheme !=$masterTheme {
+          &>.#{$childTheme}[data-theme='#{$childTheme}'] {
+            --background: #{transparent};
+            --text: #{unset};
+          }
+        }
+      }
     }
   }
 }
@@ -210,6 +166,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal, E-HCA-Ceru
     C-HCA-Denim: light;
     D-HCA-Teal: dark;
     E-HCA-Cerulean: dark;
+    E-HCA-Cerulean-25: dark;
     F-HCA-Fern: dark;
     G-HCA-Orange: dark;
     H-HCA-Tangerine: dark;

@@ -36,8 +36,8 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const firstComponent = route?.placeholders?.['headless-main']?.[0];
   const firstComponentTheme: Theme =
     isHomepage &&
-    firstComponent?.params?.Theme &&
-    firstComponent.params.Theme in themeModes
+      firstComponent?.params?.Theme &&
+      firstComponent.params.Theme in themeModes
       ? (firstComponent.params.Theme as Theme)
       : 'B-HCA-Navy-Blue';
 
@@ -49,7 +49,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
       <Scripts />
       <GtmScript gtmKey={gtmKey} />
       <CustomTracking />
-      <SitecoreStyles layoutData={layout} />
+      <SitecoreStyles layoutData={layout} enableStyles={!mode.isNormal} />
       {/* root placeholder for the app, which we add components to using route data */}
       <YextProvider>
         <div className={mainClassPageEditing}>

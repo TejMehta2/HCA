@@ -20,7 +20,10 @@ export default async function CMADisclosuresPage({
   return renderFinderPage(
     resolvedParams,
     CMA_DISCLOSURES_WILDCARD_PATH,
-    resolvedParams.path
+    resolvedParams.path,
+    {
+      consultantSlug: resolvedParams.path,
+    }
   );
 }
 

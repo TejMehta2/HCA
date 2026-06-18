@@ -48,7 +48,8 @@ export const Default = (props: CTABlockProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const tableOfContentTitle = props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
+  const tableOfContentTitle =
+    props?.params?.TableOfContentsLinkTitle || tableOfContentsLinkTitle;
 
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
   const { headingTag, subheadingTag } = getHeadingTags(
@@ -58,7 +59,10 @@ export const Default = (props: CTABlockProps): JSX.Element => {
   return (
     <CTABlock
       id={componentAnchorId}
-      {...(tableOfContentTitle && props?.params?.ExcludeFromTableOfContents !== '1' ? { tableOfContentTitle: tableOfContentTitle } : {})}
+      {...(tableOfContentTitle &&
+      props?.params?.ExcludeFromTableOfContents !== '1'
+        ? { tableOfContentTitle: tableOfContentTitle }
+        : {})}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       subheader={
         <Text tag={subheadingTag} variation="subheading-1">

@@ -16,76 +16,90 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(initialTheme);
 
   useEffect(() => {
-    const targetSections = wrapperRef?.current?.querySelectorAll(
-      ':scope > div:not([data-content="diamond"]):not([data-content="header-with-image"])'
+    const targetSections = Array.from(
+      wrapperRef.current?.querySelectorAll<HTMLElement>(
+        ':scope > div:not([data-content="diamond"]):not([data-content="header-with-image"])'
+      ) ?? []
     );
 
-    const handleIntersection = () => {
-      let mostVisibleSection = targetSections?.[0];
-      let mostVisibleSectionHeight: number = 0;
+    let animationFrame: number | null = null;
 
-      targetSections?.forEach((section) => {
+    const updateCurrentSection = () => {
+      let mostVisibleSection: any = null;
+      let mostVisibleSectionHeight = 0;
+
+      targetSections.forEach((section: any) => {
         const { bottom, top } = section.getBoundingClientRect();
+
         if (top > window.innerHeight || bottom < 0) return;
+
         const visibleHeight =
           Math.min(window.innerHeight, bottom) - Math.max(0, top);
+
         if (visibleHeight > mostVisibleSectionHeight) {
           mostVisibleSection = section;
           mostVisibleSectionHeight = visibleHeight;
         }
       });
-      if (mostVisibleSection) {
-        // Transition background colors
-        if (transitionBackground) {
-          const intersectingTheme = mostVisibleSection?.getAttribute(
-            'data-theme'
-          ) as ThemeTypes;
-          if (intersectingTheme) {
-            setCurrentTheme(intersectingTheme);
-          }
-        }
 
-        // Animate individual component sections
-        if (
-          mostVisibleSection.getBoundingClientRect()?.top <=
-          window.innerHeight / 2
-        ) {
-          const animateSections =
-            mostVisibleSection.querySelectorAll('[data-animate]');
-          animateSections?.forEach((section) => {
-            section.setAttribute('data-animate-active', 'true');
-          });
-        }
+      if (!mostVisibleSection) return;
 
-        // Also animate diamond line if it's the next sibling
-        if (
-          mostVisibleSection?.nextElementSibling instanceof HTMLElement &&
-          mostVisibleSection?.nextElementSibling?.getAttribute(
-            'data-content'
-          ) === 'diamond'
-        ) {
-          const diamondElement =
-            mostVisibleSection?.nextElementSibling.querySelector(
-              '[data-animate]'
-            );
-          diamondElement?.setAttribute('data-animate-active', 'true');
+      // Transition background colors
+      if (transitionBackground) {
+        const intersectingTheme = mostVisibleSection.getAttribute(
+          'data-theme'
+        ) as ThemeTypes | null;
+
+        if (intersectingTheme) {
+          setCurrentTheme(intersectingTheme);
         }
+      }
+
+      // Animate individual component sections
+      if (mostVisibleSection.getBoundingClientRect().top <= window.innerHeight / 2) {
+        const animateSections =
+          mostVisibleSection.querySelectorAll('[data-animate]');
+
+        animateSections.forEach((section: any) => {
+          section.setAttribute('data-animate-active', 'true');
+        });
+      }
+
+      // Also animate diamond line if it's the next sibling
+      const nextElement = mostVisibleSection.nextElementSibling;
+
+      if (
+        nextElement instanceof HTMLElement &&
+        nextElement.getAttribute('data-content') === 'diamond'
+      ) {
+        const diamondElement = nextElement.querySelector('[data-animate]');
+        diamondElement?.setAttribute('data-animate-active', 'true');
       }
     };
 
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: [0.1, 0.2, 0.3, 0.4, 0.8, 1],
-    });
-    targetSections?.forEach((section) => {
-      observer.observe(section);
-    });
+    const handleScroll = () => {
+      if (animationFrame) return;
 
-    return () => {
-      targetSections?.forEach((section) => {
-        observer.unobserve(section);
+      animationFrame = window.requestAnimationFrame(() => {
+        updateCurrentSection();
+        animationFrame = null;
       });
     };
-  });
+
+    updateCurrentSection();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [transitionBackground, children]);
 
   const pageContent = (
     <div

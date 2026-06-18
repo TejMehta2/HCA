@@ -1,5 +1,5 @@
 // Example output format: 'Nov 7, 2023'
-const formatDate = (date: Date) => {
+const formatDate = (date: Date): string => {
   let month = date.toLocaleString(undefined, {
     month: 'short',
   });

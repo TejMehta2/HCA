@@ -1,44 +1,46 @@
 import { type JSX } from 'react';
-import { type GetComponentServerProps } from '@sitecore-content-sdk/nextjs';
 import { getSpecialistProfileData } from 'lib/consultant-finder/API_Doctify';
 import {
   Default as CMADisclosuresClient,
   type CMADisclosuresProps,
-  type CMADisclosuresServerSideProps,
 } from './CMADisclosuresClient';
+import type { FinderContext } from 'src/types/finder';
+import { debug } from '@sitecore-content-sdk/nextjs';
 
-const getRouteParam = (value: unknown): string => {
-  if (Array.isArray(value)) {
-    return value[0]?.toString() || '';
-  }
+const getFinderContext = (props: CMADisclosuresProps) =>
+  props.page.layout.sitecore
+    .context as typeof props.page.layout.sitecore.context & {
+    finder?: FinderContext;
+  };
 
-  return value?.toString() || '';
-};
+const fetchCMADisclosure = async (
+  props: CMADisclosuresProps
+): Promise<string> => {
+  const slug = getFinderContext(props).finder?.consultantSlug || '';
 
-export const getComponentServerProps: GetComponentServerProps = async (
-  _rendering,
-  _layoutData,
-  context
-) => {
-  const slug = getRouteParam(context?.params?.requestPath);
+  debug.common('fetchCMADisclosure slug', slug);
 
   if (!slug) {
-    return {
-      cmaHTML: '',
-    } satisfies CMADisclosuresServerSideProps;
+    return '';
   }
+
 
   const consultantProfileJson = await getSpecialistProfileData(slug);
 
-  return {
-    cmaHTML: consultantProfileJson?.customFields?.cmaHtml || '',
-  } satisfies CMADisclosuresServerSideProps;
+  return consultantProfileJson?.customFields?.cmaHtml || '';
 };
 
-export const Default = ({
-  rendering,
-  params,
-  fields,
-}: CMADisclosuresProps): JSX.Element => (
-  <CMADisclosuresClient rendering={rendering} params={params} fields={fields} />
-);
+export const Default = async (
+  props: CMADisclosuresProps
+): Promise<JSX.Element> => {
+  const cmaHTML = await fetchCMADisclosure(props);
+
+  return (
+    <CMADisclosuresClient
+      rendering={props.rendering}
+      params={props.params}
+      fields={props.fields}
+      cmaHTML={cmaHTML}
+    />
+  );
+};

@@ -1,11 +1,11 @@
-import React, { type JSX } from 'react';
+import { type JSX } from 'react';
 import { Field } from '@sitecore-content-sdk/nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 import Params from 'src/types/params';
-import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
+import { StructuredData } from 'components/core-components/structured-data/StructuredData';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -116,18 +116,17 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-      </Head>
+      <StructuredData
+        id="breadcrumbs-schema"
+        data={breadcrumbSchema}
+      ></StructuredData>
+
       <Breadcrumbs
         theme={props.params?.Theme || 'A-HCA-White'}
         collapse={true}
         backCta={{
-          link: combinedList[1].url?.url,
-          text: combinedList[1].displayName,
+          link: combinedList[1]?.url?.url,
+          text: combinedList[1]?.displayName,
         }}
       >
         <>{breadcrumbList}</>

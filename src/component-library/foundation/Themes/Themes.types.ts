@@ -6,6 +6,7 @@ export type Theme =
   | 'C-HCA-Denim'
   | 'D-HCA-Teal'
   | 'E-HCA-Cerulean'
+  | 'E-HCA-Cerulean-25'
   | 'F-HCA-Fern'
   | 'G-HCA-Orange'
   | 'H-HCA-Tangerine'

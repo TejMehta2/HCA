@@ -1,7 +1,7 @@
-import { headers as nextHeaders } from 'next/headers';
-import sites from '.sitecore/sites.json';
+import { headers as nextHeaders } from "next/headers";
+import sites from ".sitecore/sites.json";
 
-const normalizeBaseUrl = (hostOrUrl?: string, protocol = 'https') => {
+const normalizeBaseUrl = (hostOrUrl?: string, protocol = "https") => {
   if (!hostOrUrl) {
     return undefined;
   }
@@ -10,22 +10,22 @@ const normalizeBaseUrl = (hostOrUrl?: string, protocol = 'https') => {
   // (e.g. "thebirthcompany.co.uk|www.thebirthcompany.co.uk"). Use the first
   // concrete host so the value is a valid single URL.
   const firstHost = hostOrUrl
-    .split('|')
+    .split("|")
     .map((entry) => entry.trim())
-    .find((entry) => entry && entry !== '*');
+    .find((entry) => entry && entry !== "*");
 
   if (!firstHost) {
     return undefined;
   }
 
-  const value = firstHost.replace(/\/$/, '');
+  const value = firstHost.replace(/\/$/, "");
 
   return /^https?:\/\//i.test(value) ? value : `${protocol}://${value}`;
 };
 
 export const getSiteBaseUrl = async (siteName: string) => {
   const siteInfo = sites.find(
-    (site) => site.name === siteName && site.hostName && site.hostName !== '*'
+    (site) => site.name === siteName && site.hostName && site.hostName !== "*",
   );
 
   const siteBaseUrl = normalizeBaseUrl(siteInfo?.hostName);
@@ -36,10 +36,10 @@ export const getSiteBaseUrl = async (siteName: string) => {
 
   const requestHeaders = await nextHeaders();
   const host =
-    requestHeaders.get('x-forwarded-host') ??
-    requestHeaders.get('host') ??
-    requestHeaders.get(':authority');
-  const protocol = requestHeaders.get('x-forwarded-proto') ?? 'https';
+    requestHeaders.get("x-forwarded-host") ??
+    requestHeaders.get("host") ??
+    requestHeaders.get(":authority");
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? "https";
 
   return (
     normalizeBaseUrl(host ?? undefined, protocol) ||
@@ -49,18 +49,18 @@ export const getSiteBaseUrl = async (siteName: string) => {
 
 export const getPagePath = (itemPath?: string, path?: string[]) => {
   if (itemPath) {
-    return itemPath.startsWith('/') ? itemPath : `/${itemPath}`;
+    return itemPath.startsWith("/") ? itemPath : `/${itemPath}`;
   }
 
-  return path?.length ? `/${path.join('/')}` : '/';
+  return path?.length ? `/${path.join("/")}` : "/";
 };
 
 export const toTwitterCard = (card?: string) => {
-  switch (card?.toLowerCase().replace(/\s+/g, '_')) {
-    case 'summary_large_image':
-      return 'summary_large_image';
-    case 'summary':
-      return 'summary';
+  switch (card?.toLowerCase().replace(/\s+/g, "_")) {
+    case "summary_large_image":
+      return "summary_large_image";
+    case "summary":
+      return "summary";
     default:
       return undefined;
   }
